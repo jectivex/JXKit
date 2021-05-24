@@ -15,10 +15,10 @@ jobs:
   Linux:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - name: Install dependencies
-        run: apt-get update && apt-get install -y libjavascriptcoregtk-4.0-dev
-      - run: swift test --enable-test-discovery
+        run: sudo apt-get update && sudo apt-get install -y libjavascriptcoregtk-4.0-dev
+      - uses: actions/checkout@v2
+      - run: swift test
 
   watchOS:
     runs-on: macos-latest
