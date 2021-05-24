@@ -21,6 +21,7 @@ jobs:
       - run: swift test
 
   watchOS:
+    if: false # JavaScriptCore not available on watchOS
     runs-on: macos-latest
     needs: [Linux] # Linux must pass first
 
@@ -78,6 +79,7 @@ jobs:
         run: swift test
 
   Windows10:
+    if: false # JavaScriptCore not available on Windows
     runs-on: windows-latest
     needs: [Linux] # Linux must pass first
     steps:
