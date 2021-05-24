@@ -1,6 +1,6 @@
 # JXKit
 
-A pure swift interface the `JavaScriptCore` C API with support for `Codable`.
+A pure swift interface the `JavaScriptCore` C API with support for `Encodable` & `Decodable`.
 
 This permits JSC to be used on platforms where the Objective-C runtime is unavailable (e.g., Linux).
 
@@ -85,7 +85,7 @@ Swift code.
               targets: ["MyPackage"]),
       ],
       dependencies: [
-          .package(name: "JXKit", url: "https://github.com/jectivex/JXKit.git", .branch("main")),
+          .package(name: "JXKit", url: "https://github.com/jectivex/JXKit.git", .upToNextMajor(from: "1.0")),
       ],
       targets: [
           .target(
