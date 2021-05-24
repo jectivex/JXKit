@@ -5,7 +5,7 @@ final class JXKitTests: XCTestCase {
 
     /// https://www.destroyallsoftware.com/talks/wat
     func testWAT() throws {
-        let ctx = JSContext()
+        let ctx = JXContext()
 
         XCTAssertEqual(true, try ctx.eval(script: "[] + {}").isString)
         XCTAssertEqual("[object Object]", try ctx.eval(script: "[] + {}").stringValue)

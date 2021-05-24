@@ -4,7 +4,7 @@ import XCTest
 final class JXCodableTests: XCTestCase {
 
     func testRoundTripCodables() throws {
-        let ctx = JSContext()
+        let ctx = JXContext()
 
         func rt<T: Codable & Equatable>(equal: Bool = true, _ item: T, line: UInt = #line) throws {
             let encoded = try ctx.encode(item)
@@ -90,10 +90,10 @@ final class JXCodableTests: XCTestCase {
     }
 
     func testCodableArguments() throws {
-        let ctx = JSContext()
+        let ctx = JXContext()
 
-        let htpy = JSValue(newFunctionIn: ctx) { ctx, this, args in
-            JSValue(double: sqrt(pow(args.first?["x"].doubleValue ?? 0.0, 2) + pow(args.first?["y"].doubleValue ?? 0.0, 2)), in: ctx)
+        let htpy = JXValue(newFunctionIn: ctx) { ctx, this, args in
+            JXValue(double: sqrt(pow(args.first?["x"].doubleValue ?? 0.0, 2) + pow(args.first?["y"].doubleValue ?? 0.0, 2)), in: ctx)
         }
 
         struct Args : Encodable {

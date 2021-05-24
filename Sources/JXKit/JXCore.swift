@@ -1,5 +1,5 @@
 //
-//  Original SwiftJS license header:
+//  Follows is the original SwiftJS license header, on which much of this code was based:
 //
 //  The MIT License
 //  Copyright (c) 2015 - 2021 Susan Cheng. All rights reserved.
@@ -25,41 +25,88 @@
 
 import Foundation
 
+// In order to migrate from JavaScriptCore to JXKit, you can use place these aliases in your code to get started:
+//
+//import JXKit
+//@available(*, deprecated, renamed: "JXVirtualMachine")
+//public typealias JSVirtualMachine = JXVirtualMachine
+//@available(*, deprecated, renamed: "JXContext")
+//public typealias JSContext = JXContext
+//@available(*, deprecated, renamed: "JXValue")
+//public typealias JSValue = JXValue
+
 #if canImport(JavaScriptCore)
 import JavaScriptCore
 #else
 import CJSCore
 #endif
 
-// MARK: JSContext
+// MARK: JXVirtualMachine
+
+/// A JavaScript virtual machine.
+///
+/// This wraps a `JSContextGroupRef`, and is the equivalent of `JavaScriptCore.JSVirtualMachine`
+open class JXVirtualMachine {
+    @usableFromInline let group: JSContextGroupRef
+
+    @inlinable public init() {
+        self.group = JSContextGroupCreate()
+    }
+
+    @inlinable deinit {
+        JSContextGroupRelease(group)
+    }
+}
+
+// MARK: JXContext
 
 /// A JavaScript execution context.
-open class JSContext {
-    
-    public let virtualMachine: JSVirtualMachine
-
+///
+/// This wraps a `JSGlobalContextRef`, and is the equivalent of `JavaScriptCore.JSContext`
+open class JXContext {
+    public let virtualMachine: JXVirtualMachine
     public let context: JSGlobalContextRef
-    
-    open var exception: JSValue?
-    
-    open var exceptionHandler: ((JSContext?, JSValue?) -> Void)?
+    open var exception: JXValue?
+    open var exceptionHandler: ((JXContext?, JXValue?) -> Void)?
 
-    public convenience init() {
-        self.init(virtualMachine: JSVirtualMachine())
+    @inlinable public convenience init() {
+        self.init(virtualMachine: JXVirtualMachine())
     }
     
-    public init(virtualMachine: JSVirtualMachine) {
+    @inlinable public init(virtualMachine: JXVirtualMachine) {
         self.virtualMachine = virtualMachine
         self.context = JSGlobalContextCreateInGroup(virtualMachine.group, nil)
     }
 
-    deinit {
+    @inlinable deinit {
         JSGlobalContextRelease(context)
     }
 
 }
 
-extension JSContext {
+// MARK: JXValue
+
+/// A JavaScript object.
+///
+/// This wraps a `JSObjectRef`, and is the equivalent of `JavaScriptCore.JSValue`
+public class JXValue {
+    public let context: JXContext
+    public let object: JSObjectRef
+
+    @inlinable public init(context: JXContext, object: JSObjectRef) {
+        JSValueProtect(context.context, object)
+        self.context = context
+        self.object = object
+    }
+
+    @inlinable deinit {
+        JSValueUnprotect(context.context, object)
+    }
+}
+
+
+
+extension JXContext {
     
     @usableFromInline var _exception: JSObjectRef? {
         get {
@@ -71,15 +118,15 @@ extension JSContext {
             guard let newValue = newValue else { return }
             
             if let callback = exceptionHandler {
-                callback(self, JSValue(context: self, object: newValue))
+                callback(self, JXValue(context: self, object: newValue))
             } else {
-                exception = JSValue(context: self, object: newValue)
+                exception = JXValue(context: self, object: newValue)
             }
         }
     }
 }
 
-extension JSContext {
+extension JXContext {
 
     /// Performs a JavaScript garbage collection.
     ///
@@ -95,10 +142,10 @@ extension JSContext {
     }
 }
 
-extension JSContext {
+extension JXContext {
     /// The global object.
-    open var global: JSValue {
-        return JSValue(context: self, object: JSContextGetGlobalObject(context))
+    open var global: JXValue {
+        return JXValue(context: self, object: JSContextGetGlobalObject(context))
     }
 
     /// Tests whether global has a given property.
@@ -122,7 +169,7 @@ extension JSContext {
         return global.removeProperty(property)
     }
     
-    @inlinable open subscript(property: String) -> JSValue {
+    @inlinable open subscript(property: String) -> JXValue {
         get {
             return global[property]
         }
@@ -132,19 +179,19 @@ extension JSContext {
     }
 
     /// Returns the global "Object"
-    open var globalObject: JSValue { global["Object"] }
+    open var globalObject: JXValue { global["Object"] }
 
     /// Returns the global "Date"
-    open var globalDate: JSValue { global["Date"] }
+    open var globalDate: JXValue { global["Date"] }
 
     /// Returns the global "Array"
-    open var globalArray: JSValue { global["Array"] }
+    open var globalArray: JXValue { global["Array"] }
 
     /// Returns the global "ArrayBuffer"
-    open var globalArrayBuffer: JSValue { global["ArrayBuffer"] }
+    open var globalArrayBuffer: JXValue { global["ArrayBuffer"] }
 
     /// Returns the global "Error"
-    open var globalError: JSValue { global["Error"] }
+    open var globalError: JXValue { global["Error"] }
 
     /// Get the names of global’s enumerable properties
     @inlinable open var properties: [String] {
@@ -152,7 +199,7 @@ extension JSContext {
     }
 }
 
-extension JSContext {
+extension JXContext {
     
     /// Checks for syntax errors in a string of JavaScript.
     ///
@@ -182,8 +229,7 @@ extension JSContext {
     ///   - startingLineNumber: An integer value specifying the script's starting line number in the file located at sourceURL. This is only used when reporting exceptions.
     ///   
     /// - Returns: true if the script is syntactically correct; otherwise false.
-    @discardableResult
-    @inlinable open func evaluateScript(_ script: String, this: JSValue? = nil, withSourceURL sourceURL: URL? = nil, startingLineNumber: Int = 0) -> JSValue {
+    @discardableResult @inlinable open func evaluateScript(_ script: String, this: JXValue? = nil, withSourceURL sourceURL: URL? = nil, startingLineNumber: Int = 0) -> JXValue {
         
         let script = script.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(script) }
@@ -193,32 +239,32 @@ extension JSContext {
         
         let result = JSEvaluateScript(context, script, this?.object, sourceURL, Int32(startingLineNumber), &_exception)
         
-        return result.map { JSValue(context: self, object: $0) } ?? JSValue(undefinedIn: self)
+        return result.map { JXValue(context: self, object: $0) } ?? JXValue(undefinedIn: self)
     }
 }
 
 
-public extension JSContext {
+public extension JXContext {
     enum Errors : Error {
         /// An evaluation error occurred
         case evaluationErrorString(String)
         /// An evaluation error occurred
-        case evaluationError(JSValue)
-        /// The API call requires a higher system version (e.g., for JS type array support)
+        case evaluationError(JXValue)
+        /// The API call requires a higher system version (e.g., for JS typed array support)
         case minimumSystemVersion
     }
 }
 
 
-public extension JSContext {
+public extension JXContext {
     /// Runs the script at the given URL.
     /// - Parameter url: the URL from which to run the script
     /// - Throws: an error if one occurs
-    @discardableResult func eval(url: URL) throws -> JSValue {
+    @discardableResult func eval(url: URL) throws -> JXValue {
         try eval(script: String(contentsOf: url, encoding: .utf8), url: url)
     }
 
-    @discardableResult func eval(script: String, url: URL? = nil) throws -> JSValue {
+    @discardableResult func eval(script: String, url: URL? = nil) throws -> JXValue {
         try trying {
             evaluateScript(script, this: nil, withSourceURL: url, startingLineNumber: 0)
         }
@@ -245,25 +291,8 @@ public extension JSContext {
     }
 }
 
-// MARK: JSValue
 
-/// A JavaScript object.
-public class JSValue {
-    public let context: JSContext
-    public let object: JSObjectRef
-
-    @inlinable public init(context: JSContext, object: JSObjectRef) {
-        JSValueProtect(context.context, object)
-        self.context = context
-        self.object = object
-    }
-
-    deinit {
-        JSValueUnprotect(context.context, object)
-    }
-}
-
-extension JSValue {
+extension JXValue {
     open var jsValueRef: JSObjectRef {
         object
     }
@@ -278,13 +307,13 @@ extension JSValue {
 
 }
 
-extension JSValue {
+extension JXValue {
 
     /// Creates a JavaScript value of the `undefined` type.
     ///
     /// - Parameters:
     ///   - context: The execution context to use.
-    @inlinable public convenience init(undefinedIn context: JSContext) {
+    @inlinable public convenience init(undefinedIn context: JXContext) {
         self.init(context: context, object: JSValueMakeUndefined(context.context))
     }
 
@@ -292,7 +321,7 @@ extension JSValue {
     ///
     /// - Parameters:
     ///   - context: The execution context to use.
-    @inlinable public convenience init(nullIn context: JSContext) {
+    @inlinable public convenience init(nullIn context: JXContext) {
         self.init(context: context, object: JSValueMakeNull(context.context))
     }
 
@@ -301,7 +330,7 @@ extension JSValue {
     /// - Parameters:
     ///   - value: The value to assign to the object.
     ///   - context: The execution context to use.
-    @inlinable public convenience init(bool value: Bool, in context: JSContext) {
+    @inlinable public convenience init(bool value: Bool, in context: JXContext) {
         self.init(context: context, object: JSValueMakeBoolean(context.context, value))
     }
 
@@ -310,7 +339,7 @@ extension JSValue {
     /// - Parameters:
     ///   - value: The value to assign to the object.
     ///   - context: The execution context to use.
-    @inlinable public convenience init(double value: Double, in context: JSContext) {
+    @inlinable public convenience init(double value: Double, in context: JXContext) {
         self.init(context: context, object: JSValueMakeNumber(context.context, value))
     }
 
@@ -319,7 +348,7 @@ extension JSValue {
     /// - Parameters:
     ///   - value: The value to assign to the object.
     ///   - context: The execution context to use.
-    @inlinable public convenience init(string value: String, in context: JSContext) {
+    @inlinable public convenience init(string value: String, in context: JXContext) {
         let value = value.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(value) }
         self.init(context: context, object: JSValueMakeString(context.context, value))
@@ -330,7 +359,7 @@ extension JSValue {
     /// - Parameters:
     ///   - value: The JSON value to parse
     ///   - context: The execution context to use.
-    @inlinable public convenience init?(json value: String, in context: JSContext) {
+    @inlinable public convenience init?(json value: String, in context: JXContext) {
         let value = value.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(value) }
         guard let json = JSValueMakeFromJSONString(context.context, value) else {
@@ -344,8 +373,8 @@ extension JSValue {
     /// - Parameters:
     ///   - value: The value to assign to the object.
     ///   - context: The execution context to use.
-    @inlinable public convenience init(date value: Date, in context: JSContext) {
-        let arguments = [JSValue(string: JSValue.rfc3339.string(from: value), in: context)]
+    @inlinable public convenience init(date value: Date, in context: JXContext) {
+        let arguments = [JXValue(string: JXValue.rfc3339.string(from: value), in: context)]
         let object = JSObjectMakeDate(context.context, 1, arguments.map { $0.object }, &context._exception)
         self.init(context: context, object: object!)
     }
@@ -356,8 +385,8 @@ extension JSValue {
     ///   - pattern: The pattern of regular expression.
     ///   - flags: The flags pass to the constructor.
     ///   - context: The execution context to use.
-    @inlinable public convenience init(newRegularExpressionFromPattern pattern: String, flags: String, in context: JSContext) {
-        let arguments = [JSValue(string: pattern, in: context), JSValue(string: flags, in: context)]
+    @inlinable public convenience init(newRegularExpressionFromPattern pattern: String, flags: String, in context: JXContext) {
+        let arguments = [JXValue(string: pattern, in: context), JXValue(string: flags, in: context)]
         let object = JSObjectMakeRegExp(context.context, 2, arguments.map { $0.object }, &context._exception)
         self.init(context: context, object: object!)
     }
@@ -367,8 +396,8 @@ extension JSValue {
     /// - Parameters:
     ///   - message: The error message.
     ///   - context: The execution context to use.
-    @inlinable public convenience init(newErrorFromMessage message: String, in context: JSContext) {
-        let arguments = [JSValue(string: message, in: context)]
+    @inlinable public convenience init(newErrorFromMessage message: String, in context: JXContext) {
+        let arguments = [JXValue(string: message, in: context)]
         self.init(context: context, object: JSObjectMakeError(context.context, 1, arguments.map { $0.object }, &context._exception))
     }
 
@@ -376,7 +405,7 @@ extension JSValue {
     ///
     /// - Parameters:
     ///   - context: The execution context to use.
-    @inlinable public convenience init(newObjectIn context: JSContext) {
+    @inlinable public convenience init(newObjectIn context: JXContext) {
         self.init(context: context, object: JSObjectMake(context.context, nil, nil))
     }
 
@@ -385,7 +414,7 @@ extension JSValue {
     /// - Parameters:
     ///   - context: The execution context to use.
     ///   - prototype: The prototype to be used.
-    @inlinable public convenience init(newObjectIn context: JSContext, prototype: JSValue) {
+    @inlinable public convenience init(newObjectIn context: JXContext, prototype: JXValue) {
         let obj = context.globalObject.invokeMethod("create", withArguments: [prototype])
         self.init(context: context, object: obj.object)
     }
@@ -394,12 +423,12 @@ extension JSValue {
     ///
     /// - Parameters:
     ///   - context: The execution context to use.
-    @inlinable public convenience init(newArrayIn context: JSContext) {
+    @inlinable public convenience init(newArrayIn context: JXContext) {
         self.init(context: context, object: JSObjectMakeArray(context.context, 0, nil, &context._exception))
     }
 }
 
-extension JSValue: CustomStringConvertible {
+extension JXValue: CustomStringConvertible {
 
     @inlinable public var description: String {
         if self.isUndefined { return "undefined" }
@@ -411,17 +440,17 @@ extension JSValue: CustomStringConvertible {
     }
 }
 
-extension JSValue: Error {
+extension JXValue: Error {
 
 }
 
-extension JSValue {
+extension JXValue {
 
     /// Object’s prototype.
-    @inlinable public var prototype: JSValue {
+    @inlinable public var prototype: JXValue {
         get {
             let prototype = JSObjectGetPrototype(context.context, object)
-            return prototype.map { JSValue(context: context, object: $0) } ?? JSValue(undefinedIn: context)
+            return prototype.map { JXValue(context: context, object: $0) } ?? JXValue(undefinedIn: context)
         }
         set {
             JSObjectSetPrototype(context.context, object, newValue.object)
@@ -429,7 +458,7 @@ extension JSValue {
     }
 }
 
-extension JSValue {
+extension JXValue {
 
     /// Tests whether a JavaScript value’s type is the undefined type.
     @inlinable public var isUndefined: Bool {
@@ -488,7 +517,7 @@ extension JSValue {
     }
 }
 
-extension JSValue {
+extension JXValue {
 
     @inlinable public var isFrozen: Bool {
         return context.globalObject.invokeMethod("isFrozen", withArguments: [self]).boolValue
@@ -515,7 +544,7 @@ extension JSValue {
     }
 }
 
-extension JSValue {
+extension JXValue {
 
     /// Returns the JavaScript boolean value.
     @inlinable public var boolValue: Bool {
@@ -539,22 +568,22 @@ extension JSValue {
     /// Returns the JavaScript date value.
     @inlinable public var dateValue: Date? {
         let result = self.invokeMethod("toISOString", withArguments: [])
-        return result.stringValue.flatMap { JSValue.rfc3339.date(from: $0) }
+        return result.stringValue.flatMap { JXValue.rfc3339.date(from: $0) }
     }
 
     /// Returns the JavaScript array.
-    @inlinable public var array: [JSValue]? {
+    @inlinable public var array: [JXValue]? {
         guard self.isArray else { return nil }
         return (0..<self.count).map { self[$0] }
     }
 
     /// Returns the JavaScript object as dictionary.
-    @inlinable public var dictionary: [String: JSValue]? {
+    @inlinable public var dictionary: [String: JXValue]? {
         !isObject ? nil : self.properties.reduce(into: [:]) { $0[$1] = self[$1] }
     }
 }
 
-extension JSValue {
+extension JXValue {
 
     /// Calls an object as a function.
     ///
@@ -563,9 +592,9 @@ extension JSValue {
     ///   - this: The object to use as `this`, or `nil` to use the global object as `this`.
     ///
     /// - Returns: The object that results from calling object as a function
-    @discardableResult @inlinable public func call(withArguments arguments: [JSValue], this: JSValue? = nil) -> JSValue {
+    @discardableResult @inlinable public func call(withArguments arguments: [JXValue], this: JXValue? = nil) -> JXValue {
          let result = JSObjectCallAsFunction(context.context, object, this?.object, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.object }, &context._exception)
-        return result.map { JSValue(context: context, object: $0) } ?? JSValue(undefinedIn: context)
+        return result.map { JXValue(context: context, object: $0) } ?? JXValue(undefinedIn: context)
     }
 
     /// Calls an object as a constructor.
@@ -574,9 +603,9 @@ extension JSValue {
     ///   - arguments: The arguments pass to the function.
     ///
     /// - Returns: The object that results from calling object as a constructor.
-    @inlinable public func construct(withArguments arguments: [JSValue]) -> JSValue {
+    @inlinable public func construct(withArguments arguments: [JXValue]) -> JXValue {
         let result = JSObjectCallAsConstructor(context.context, object, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.object }, &context._exception)
-        return result.map { JSValue(context: context, object: $0) } ?? JSValue(undefinedIn: context)
+        return result.map { JXValue(context: context, object: $0) } ?? JXValue(undefinedIn: context)
     }
 
     /// Invoke an object's method.
@@ -587,12 +616,12 @@ extension JSValue {
     ///
     /// - Returns: The object that results from calling the method.
     @discardableResult
-    @inlinable public func invokeMethod(_ name: String, withArguments arguments: [JSValue]) -> JSValue {
+    @inlinable public func invokeMethod(_ name: String, withArguments arguments: [JXValue]) -> JXValue {
         return self[name].call(withArguments: arguments, this: self)
     }
 }
 
-extension JSValue {
+extension JXValue {
 
     /// Tests whether two JavaScript values are strict equal, as compared by the JS `===` operator.
     ///
@@ -600,7 +629,7 @@ extension JSValue {
     ///   - other: The other value to be compare.
     ///
     /// - Returns: true if the two values are strict equal; otherwise false.
-    @inlinable public func isEqual(to other: JSValue) -> Bool {
+    @inlinable public func isEqual(to other: JXValue) -> Bool {
         return JSValueIsStrictEqual(context.context, object, other.object)
     }
 
@@ -610,7 +639,7 @@ extension JSValue {
     ///   - other: The other value to be compare.
     ///
     /// - Returns: true if the two values are equal; false if they are not equal or an exception is thrown.
-    @inlinable public func isEqualWithTypeCoercion(to other: JSValue) -> Bool {
+    @inlinable public func isEqualWithTypeCoercion(to other: JXValue) -> Bool {
         return JSValueIsEqual(context.context, object, other.object, &context._exception)
     }
 
@@ -620,12 +649,12 @@ extension JSValue {
     ///   - other: The constructor to test against.
     ///
     /// - Returns: true if the value is an object constructed by constructor, as compared by the JS isInstance(of:) operator; otherwise false.
-    @inlinable public func isInstance(of other: JSValue) -> Bool {
+    @inlinable public func isInstance(of other: JXValue) -> Bool {
         return JSValueIsInstanceOfConstructor(context.context, object, other.object, &context._exception)
     }
 }
 
-extension JSValue {
+extension JXValue {
 
     /// Get the names of an object’s enumerable properties.
     @inlinable public var properties: [String] {
@@ -665,7 +694,7 @@ extension JSValue {
     }
 
     /// The value of the property.
-    @inlinable public subscript(propertyName: String) -> JSValue {
+    @inlinable public subscript(propertyName: String) -> JXValue {
         get {
             let property = JSStringCreateWithUTF8CString(propertyName)
 
@@ -675,7 +704,7 @@ extension JSValue {
 
             let result = JSObjectGetProperty(context.context, object, property, &context._exception)
 
-            return result.map { JSValue(context: context, object: $0) } ?? JSValue(undefinedIn: context)
+            return result.map { JXValue(context: context, object: $0) } ?? JXValue(undefinedIn: context)
         }
 
         set {
@@ -688,7 +717,7 @@ extension JSValue {
     }
 }
 
-extension JSValue {
+extension JXValue {
 
     /// The length of the object.
     @inlinable public var count: Int {
@@ -697,10 +726,10 @@ extension JSValue {
     }
 
     /// The value in object at index.
-    @inlinable public subscript(index: Int) -> JSValue {
+    @inlinable public subscript(index: Int) -> JXValue {
         get {
             let result = JSObjectGetPropertyAtIndex(context.context, object, UInt32(index), &context._exception)
-            return result.map { JSValue(context: context, object: $0) } ?? JSValue(undefinedIn: context)
+            return result.map { JXValue(context: context, object: $0) } ?? JXValue(undefinedIn: context)
         }
         set {
             JSObjectSetPropertyAtIndex(context.context, object, UInt32(index), newValue.object, &context._exception)
@@ -708,7 +737,7 @@ extension JSValue {
     }
 }
 
-extension JSValue {
+extension JXValue {
     /// Returns the JavaScript string value.
     @inlinable public func toJSON(indent: UInt32 = 0) -> String? {
         var ex: JSValueRef?
@@ -718,15 +747,15 @@ extension JSValue {
     }
 }
 
-extension JSValue {
+extension JXValue {
 
     /// Creates a JavaScript `ArrayBuffer` object.
     ///
     /// - Parameters:
     ///   - length: Length of new `ArrayBuffer` object.
     ///   - context: The execution context to use.
-    public convenience init(newArrayBufferWithLength length: Int, in context: JSContext) {
-        let obj = context.globalArrayBuffer.construct(withArguments: [JSValue(double: Double(length), in: context)])
+    public convenience init(newArrayBufferWithLength length: Int, in context: JXContext) {
+        let obj = context.globalArrayBuffer.construct(withArguments: [JXValue(double: Double(length), in: context)])
         self.init(context: context, object: obj.object)
     }
 
@@ -740,7 +769,7 @@ extension JSValue {
     public convenience init(
         newArrayBufferWithBytesNoCopy bytes: UnsafeMutableRawBufferPointer,
         deallocator: @escaping (UnsafeMutableRawBufferPointer) -> Void,
-        in context: JSContext
+        in context: JXContext
     ) {
 
         typealias Deallocator = () -> Void
@@ -771,7 +800,7 @@ extension JSValue {
     ///   - bytes: A buffer to copy.
     ///   - context: The execution context to use.
     @available(macOS 10.12, iOS 10.0, tvOS 10.0, *)
-    public convenience init<S: DataProtocol>(newArrayBufferWithBytes bytes: S, in context: JSContext) {
+    public convenience init<S: DataProtocol>(newArrayBufferWithBytes bytes: S, in context: JXContext) {
 
         let buffer: UnsafeMutableRawPointer = .allocate(byteCount: bytes.count, alignment: MemoryLayout<UInt8>.alignment)
         bytes.copyBytes(to: UnsafeMutableRawBufferPointer(start: buffer, count: bytes.count))
@@ -780,7 +809,7 @@ extension JSValue {
     }
 }
 
-extension JSValue {
+extension JXValue {
 
     /// Tests whether a JavaScript value’s type is the `ArrayBuffer` type.
     public var isArrayBuffer: Bool {
@@ -804,11 +833,11 @@ extension JSValue {
 
 
 
-public typealias JSObjectCallAsFunctionCallback = (JSContext, JSValue?, [JSValue]) throws -> JSValue
+public typealias JSObjectCallAsFunctionCallback = (JXContext, JXValue?, [JXValue]) throws -> JXValue
 
 private struct JSObjectCallbackInfo {
     
-    unowned let context: JSContext
+    unowned let context: JXContext
     
     let callback: JSObjectCallAsFunctionCallback
 }
@@ -833,7 +862,7 @@ private func function_constructor(
     
     do {
         
-        let arguments = (0..<argumentCount).map { JSValue(context: context, object: arguments![$0]!) }
+        let arguments = (0..<argumentCount).map { JXValue(context: context, object: arguments![$0]!) }
         let result = try info.pointee.callback(context, nil, arguments)
         
         let prototype = JSObjectGetPrototype(context.context, object)
@@ -843,7 +872,7 @@ private func function_constructor(
         
     } catch let error {
         
-        let error = error as? JSValue ?? JSValue(newErrorFromMessage: "\(error)", in: context)
+        let error = error as? JXValue ?? JXValue(newErrorFromMessage: "\(error)", in: context)
         exception?.pointee = error.object
         
         return nil
@@ -864,15 +893,15 @@ private func function_callback(
     
     do {
         
-        let this = this.map { JSValue(context: context, object: $0) }
-        let arguments = (0..<argumentCount).map { JSValue(context: context, object: arguments![$0]!) }
+        let this = this.map { JXValue(context: context, object: $0) }
+        let arguments = (0..<argumentCount).map { JXValue(context: context, object: arguments![$0]!) }
         let result = try info.pointee.callback(context, this, arguments)
         
         return result.object
         
     } catch let error {
         
-        let error = error as? JSValue ?? JSValue(newErrorFromMessage: "\(error)", in: context)
+        let error = error as? JXValue ?? JXValue(newErrorFromMessage: "\(error)", in: context)
         exception?.pointee = error.object
         
         return nil
@@ -896,14 +925,14 @@ private func function_instanceof(
     return JSValueIsStrictEqual(context.context, prototype_0, prototype_1)
 }
 
-extension JSValue {
+extension JXValue {
     
     /// Creates a JavaScript value of the function type.
     ///
     /// - Parameters:
     ///   - context: The execution context to use.
     ///   - callback: The callback function.
-    public convenience init(newFunctionIn context: JSContext, callback: @escaping JSObjectCallAsFunctionCallback) {
+    public convenience init(newFunctionIn context: JXContext, callback: @escaping JSObjectCallAsFunctionCallback) {
         
         let info: UnsafeMutablePointer<JSObjectCallbackInfo> = .allocate(capacity: 1)
         info.initialize(to: JSObjectCallbackInfo(context: context, callback: callback))
@@ -924,12 +953,12 @@ extension JSValue {
 
 /// A descriptor for property’s definition
 public struct JSPropertyDescriptor {
-    public let value: JSValue?
+    public let value: JXValue?
     public let writable: Bool?
-    fileprivate let _getter: JSValue?
-    fileprivate let _setter: JSValue?
-    public let getter: ((JSValue) throws -> JSValue)?
-    public let setter: ((JSValue, JSValue) throws -> Void)?
+    fileprivate let _getter: JXValue?
+    fileprivate let _setter: JXValue?
+    public let getter: ((JXValue) throws -> JXValue)?
+    public let setter: ((JXValue, JXValue) throws -> Void)?
     public var configurable: Bool? = nil
     public var enumerable: Bool? = nil
     
@@ -951,7 +980,7 @@ public struct JSPropertyDescriptor {
     /// Contains one or both of the keys value and writable, and optionally also contains the keys enumerable or configurable. Use a
     /// data descriptor to create or modify the attributes of a data property on an object (replacing any existing accessor property).
     public init(
-        value: JSValue? = nil,
+        value: JXValue? = nil,
         writable: Bool? = nil,
         configurable: Bool? = nil,
         enumerable: Bool? = nil
@@ -978,8 +1007,8 @@ public struct JSPropertyDescriptor {
     /// )
     /// ```
     public init(
-        getter: ((JSValue) -> JSValue)? = nil,
-        setter: ((JSValue, JSValue) -> Void)? = nil,
+        getter: ((JXValue) -> JXValue)? = nil,
+        setter: ((JXValue, JXValue) -> Void)? = nil,
         configurable: Bool? = nil,
         enumerable: Bool? = nil
     ) {
@@ -998,8 +1027,8 @@ public struct JSPropertyDescriptor {
     /// Contains one or both of the keys get or set, and optionally also contains the keys enumerable or configurable. Use an accessor
     /// descriptor to create or modify the attributes of an accessor property on an object (replacing any existing data property).
     public init(
-        getter: JSValue? = nil,
-        setter: JSValue? = nil,
+        getter: JXValue? = nil,
+        setter: JXValue? = nil,
         configurable: Bool? = nil,
         enumerable: Bool? = nil
     ) {
@@ -1016,7 +1045,7 @@ public struct JSPropertyDescriptor {
     }
 }
 
-extension JSValue {
+extension JXValue {
     
     /// Defines a property on the JavaScript object value or modifies a property’s definition.
     ///
@@ -1028,51 +1057,39 @@ extension JSValue {
     @discardableResult
     public func defineProperty(_ property: String, _ descriptor: JSPropertyDescriptor) -> Bool {
         
-        let desc = JSValue(newObjectIn: context)
+        let desc = JXValue(newObjectIn: context)
         
         if let value = descriptor.value { desc["value"] = value }
-        if let writable = descriptor.writable { desc["writable"] = JSValue(bool: writable, in: context) }
+        if let writable = descriptor.writable { desc["writable"] = JXValue(bool: writable, in: context) }
         if let getter = descriptor._getter {
             desc["get"] = getter
         } else if let getter = descriptor.getter {
-            desc["get"] = JSValue(newFunctionIn: context) { _, this, _ in try getter(this!) }
+            desc["get"] = JXValue(newFunctionIn: context) { _, this, _ in try getter(this!) }
         }
         if let setter = descriptor._setter {
             desc["set"] = setter
         } else if let setter = descriptor.setter {
-            desc["set"] = JSValue(newFunctionIn: context) { context, this, arguments in
+            desc["set"] = JXValue(newFunctionIn: context) { context, this, arguments in
                 try setter(this!, arguments[0])
-                return JSValue(undefinedIn: context)
+                return JXValue(undefinedIn: context)
             }
         }
-        if let configurable = descriptor.configurable { desc["configurable"] = JSValue(bool: configurable, in: context) }
-        if let enumerable = descriptor.enumerable { desc["enumerable"] = JSValue(bool: enumerable, in: context) }
+        if let configurable = descriptor.configurable { desc["configurable"] = JXValue(bool: configurable, in: context) }
+        if let enumerable = descriptor.enumerable { desc["enumerable"] = JXValue(bool: enumerable, in: context) }
         
-        context.globalObject.invokeMethod("defineProperty", withArguments: [self, JSValue(string: property, in: context), desc])
+        context.globalObject.invokeMethod("defineProperty", withArguments: [self, JXValue(string: property, in: context), desc])
         
         return context.exception == nil
     }
     
-    public func propertyDescriptor(_ property: String) -> JSValue {
-        return context.globalObject.invokeMethod("getOwnPropertyDescriptor", withArguments: [self, JSValue(string: property, in: context)])
+    public func propertyDescriptor(_ property: String) -> JXValue {
+        return context.globalObject.invokeMethod("getOwnPropertyDescriptor", withArguments: [self, JXValue(string: property, in: context)])
     }
 }
 
 public extension String {
+    /// Creates a `Swift.String` from a `JSStringRef`
     @inlinable init(_ str: JSStringRef) {
         self.init(utf16CodeUnits: JSStringGetCharactersPtr(str), count: JSStringGetLength(str))
-    }
-}
-
-/// A JavaScript virtual machine.
-open class JSVirtualMachine {
-    @usableFromInline let group: JSContextGroupRef
-    
-    @inlinable public init() {
-        self.group = JSContextGroupCreate()
-    }
-    
-    @inlinable deinit {
-        JSContextGroupRelease(group)
     }
 }

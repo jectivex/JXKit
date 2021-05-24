@@ -30,10 +30,10 @@ import XCTest
 class JXCoreTests: XCTestCase {
     
     func testArrayBuffer() {
-        let context = JSContext()
+        let context = JXContext()
         
         let bytes: [UInt8] = [1, 2, 3, 4, 5, 6, 7, 8]
-        context.global["buffer"] = JSValue(newArrayBufferWithBytes: bytes, in: context)
+        context.global["buffer"] = JXValue(newArrayBufferWithBytes: bytes, in: context)
         
         XCTAssertTrue(context.global["buffer"].isArrayBuffer)
         XCTAssertEqual(context.global["buffer"].byteLength, 8)
@@ -43,11 +43,11 @@ class JXCoreTests: XCTestCase {
         var flag = 0
         
         do {
-            let context = JSContext()
+            let context = JXContext()
             var bytes: [UInt8] = [1, 2, 3, 4, 5, 6, 7, 8]
             
             bytes.withUnsafeMutableBytes { bytes in
-                context.global["buffer"] = JSValue(
+                context.global["buffer"] = JXValue(
                     newArrayBufferWithBytesNoCopy: bytes,
                     deallocator: { _ in flag = 1 },
                     in: context)
@@ -61,10 +61,10 @@ class JXCoreTests: XCTestCase {
     }
     
     func testDataView() {
-        let context = JSContext()
+        let context = JXContext()
         
         let bytes: [UInt8] = [1, 2, 3, 4, 5, 6, 7, 8]
-        context.global["buffer"] = JSValue(newArrayBufferWithBytes: bytes, in: context)
+        context.global["buffer"] = JXValue(newArrayBufferWithBytes: bytes, in: context)
         
         context.evaluateScript("new DataView(buffer).setUint8(0, 5)")
         
@@ -72,23 +72,23 @@ class JXCoreTests: XCTestCase {
     }
     
     func testSlice() {
-        let context = JSContext()
+        let context = JXContext()
         
         let bytes: [UInt8] = [1, 2, 3, 4, 5, 6, 7, 8]
-        context.global["buffer"] = JSValue(newArrayBufferWithBytes: bytes, in: context)
+        context.global["buffer"] = JXValue(newArrayBufferWithBytes: bytes, in: context)
         
         XCTAssertEqual(context.evaluateScript("buffer.slice(2, 4)").copyBytes().map(Array.init), [3, 4])
     }
     
     func testFunctionConstructor() {
-        let context = JSContext()
+        let context = JXContext()
 
-        let myClass = JSValue(newFunctionIn: context) { context, this, arguments in
+        let myClass = JXValue(newFunctionIn: context) { context, this, arguments in
 
             let result = arguments[0].doubleValue! + arguments[1].doubleValue!
 
-            let object = JSValue(newObjectIn: context)
-            object["result"] = JSValue(double: result, in: context)
+            let object = JXValue(newObjectIn: context)
+            object["result"] = JXValue(double: result, in: context)
 
             return object
         }
@@ -107,18 +107,18 @@ class JXCoreTests: XCTestCase {
     }
 
     func testFunction1() {
-        let context = JSContext()
+        let context = JXContext()
 
-        let myFunction = JSValue(newFunctionIn: context) { context, this, arguments in
+        let myFunction = JXValue(newFunctionIn: context) { context, this, arguments in
 
             let result = arguments[0].doubleValue! + arguments[1].doubleValue!
 
-            return JSValue(double: result, in: context)
+            return JXValue(double: result, in: context)
         }
 
         XCTAssertTrue(myFunction.isFunction)
 
-        let result = myFunction.call(withArguments: [JSValue(double: 1, in: context), JSValue(double: 2, in: context)])
+        let result = myFunction.call(withArguments: [JXValue(double: 1, in: context), JXValue(double: 2, in: context)])
         XCTAssertNil(context.exception, "\(context.exception!)")
 
         XCTAssertTrue(result.isNumber)
@@ -126,13 +126,13 @@ class JXCoreTests: XCTestCase {
     }
 
     func testFunction2() {
-        let context = JSContext()
+        let context = JXContext()
 
-        let myFunction = JSValue(newFunctionIn: context) { context, this, arguments in
+        let myFunction = JXValue(newFunctionIn: context) { context, this, arguments in
 
             let result = arguments[0].doubleValue! + arguments[1].doubleValue!
 
-            return JSValue(double: result, in: context)
+            return JXValue(double: result, in: context)
         }
 
         XCTAssertTrue(myFunction.isFunction)
@@ -147,7 +147,7 @@ class JXCoreTests: XCTestCase {
     }
 
     func testCalculation() {
-        let context = JSContext()
+        let context = JXContext()
 
         let result = context.evaluateScript("1 + 1")
         XCTAssertNil(context.exception, "\(context.exception!)")
@@ -157,7 +157,7 @@ class JXCoreTests: XCTestCase {
     }
 
     func testArray() {
-        let context = JSContext()
+        let context = JXContext()
 
         let result = context.evaluateScript("[1 + 2, \"BMW\", \"Volvo\"]")
         XCTAssertNil(context.exception, "\(context.exception!)")
@@ -173,12 +173,12 @@ class JXCoreTests: XCTestCase {
     }
 
     func testGetter() {
-        let context = JSContext()
+        let context = JXContext()
 
-        context.global["obj"] = JSValue(newObjectIn: context)
+        context.global["obj"] = JXValue(newObjectIn: context)
 
         let desc = JSPropertyDescriptor(
-            getter: { this in JSValue(double: 3, in: this.context) }
+            getter: { this in JXValue(double: 3, in: this.context) }
         )
 
         context.global["obj"].defineProperty("three", desc)
@@ -190,9 +190,9 @@ class JXCoreTests: XCTestCase {
     }
 
     func testSetter() {
-        let context = JSContext()
+        let context = JXContext()
 
-        context.global["obj"] = JSValue(newObjectIn: context)
+        context.global["obj"] = JXValue(newObjectIn: context)
 
         let desc = JSPropertyDescriptor(
             getter: { this in this["number_container"] },
