@@ -89,6 +89,19 @@ final class JXCodableTests: XCTestCase {
         }
     }
 
+    func testCodableData() throws {
+        let ctx = JXContext()
+        let dataValue = try ctx.encode(Data([1,2,3,4]))
+        XCTAssertEqual("[object ArrayBuffer]", dataValue.stringValue)
+        XCTAssertEqual(4, dataValue["byteLength"].doubleValue)
+    }
+
+    func testCodableDate() throws {
+        let ctx = JXContext()
+        let dateValue = try ctx.encode(Date(timeIntervalSince1970: 1234))
+        XCTAssertEqual("Thu, 01 Jan 1970 00:20:34 GMT", dateValue.invokeMethod("toGMTString", withArguments: []).stringValue)
+    }
+
     /// An example of invoking `Math.hypot` directly with numeric arguments
     func testCodableParams() throws {
         let ctx = JXContext()
@@ -106,9 +119,23 @@ final class JXCodableTests: XCTestCase {
         let ctx = JXContext()
         let hypot = try ctx.eval(script: "(function(args) { return { c: Math.hypot(args.a, args.b) }; })")
         XCTAssert(hypot.isFunction)
-        
+
         let result: C = try hypot.call(withArguments: [ctx.encode(AB(a: 3, b: 4))]).toDecodable(ofType: C.self)
         XCTAssertEqual(5, result.c)
+    }
+
+    func testCodableAPI() throws {
+        let ctx = JXMathContext()
+        XCTAssertEqual(5 as Int, try ctx.hypot(3, 4))
+        XCTAssertEqual(5 as Float, try ctx.hypot(3, 4))
+        XCTAssertEqual(5 as Double, try ctx.hypot(3, 4))
+        XCTAssertEqual(5 as Int16, try ctx.hypot(3, 4))
+        XCTAssertEqual(5 as Int8, try ctx.hypot(3, 4))
+        XCTAssertEqual(5 as UInt32, try ctx.hypot(3, 4))
+
+        // Double vs. Int inferrence
+        XCTAssertEqual(21.02379604162864, try ctx.hypot(9, 19))
+        XCTAssertEqual(21, try ctx.hypot(9, 19))
     }
 
     func testCodableArguments() throws {
@@ -134,3 +161,17 @@ final class JXCodableTests: XCTestCase {
     }
 }
 
+/// An example of wrapping a context to provide structured access to JS APIs with cached function values
+final class JXMathContext {
+    let ctx: JXContext
+    private lazy var _math: JXValue = ctx["Math"]
+    private lazy var _hypot: JXValue = _math["hypot"]
+
+    init(ctx: JXContext = JXContext()) {
+        self.ctx = ctx
+    }
+
+    func hypot<T: Numeric & Codable>(_ a: T, _ b: T) throws -> T {
+        try _hypot.call(withArguments: try [ctx.encode(a), ctx.encode(b)]).toDecodable(ofType: T.self)
+    }
+}

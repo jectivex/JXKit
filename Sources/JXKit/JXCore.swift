@@ -69,8 +69,9 @@ open class JXContext {
     open var exception: JXValue?
     open var exceptionHandler: ((JXContext?, JXValue?) -> Void)?
 
-    @inlinable public convenience init() {
-        self.init(virtualMachine: JXVirtualMachine())
+    @inlinable public init() {
+        self.virtualMachine = JXVirtualMachine()
+        self.context = JSGlobalContextCreateInGroup(virtualMachine.group, nil)
     }
     
     @inlinable public init(virtualMachine: JXVirtualMachine) {
