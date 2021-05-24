@@ -1,0 +1,128 @@
+name: JXKit CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches:
+      - '*'
+  schedule:
+    # run at 6AM & 6PM UTC
+    - cron:  '0 6,18 * * *'
+
+# construct CI latticeflow with cheaper platforms first: Linux & Windows then macOS10, macOS11, iOS, tvOS, watchOS
+jobs:
+  Linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: swift test --enable-test-discovery
+
+  watchOS:
+    runs-on: macos-latest
+    needs: [Linux] # Linux must pass first
+
+    steps:
+      - uses: actions/checkout@v2
+      # note that we just build rather than test because:
+      # “XCTest is not available when building for watchOS Simulator”
+      - run: |
+            xcodebuild clean build \
+              -scheme "JXKit" \
+              -sdk "watchsimulator7.2" \
+              -destination "OS=7.2,name=Apple Watch Series 6 - 44mm" \
+              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
+
+  iOS:
+    runs-on: macos-latest
+    needs: [watchOS] # watchOS must pass first
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+            xcodebuild clean test \
+              -scheme "JXKit" \
+              -sdk "iphonesimulator14.4" \
+              -destination "OS=14.4,name=iPhone 12 Mini" \
+              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
+
+  tvOS:
+    runs-on: macos-latest
+    needs: [iOS] # iOS must pass first
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+            xcodebuild clean test \
+              -scheme "JXKit" \
+              -sdk "appletvsimulator14.3" \
+              -destination "OS=14.3,name=Apple TV" \
+              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
+
+  macOS10:
+    runs-on: macos-10.15
+    needs: [Linux] # Linux must pass first
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: swift test
+
+  macOS11:
+    runs-on: macos-11.0
+    needs: [macOS10] # macOS10 must pass first
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: swift test
+
+  Windows10:
+    runs-on: windows-latest
+    needs: [Linux] # Linux must pass first
+    steps:
+      - uses: actions/checkout@v2
+      - uses: seanmiddleditch/gha-setup-vsdevenv@master
+
+      - name: Install swift-DEVELOPMENT-SNAPSHOT-2021-02-18-a
+        run: |
+          Install-Binary -Url "https://swift.org/builds/development/windows10/swift-DEVELOPMENT-SNAPSHOT-2021-02-18-a/swift-DEVELOPMENT-SNAPSHOT-2021-02-18-a-windows10.exe" -Name "installer.exe" -ArgumentList ("-q")
+      - name: Set Environment Variables
+        run: |
+          echo "SDKROOT=C:\Library\Developer\Platforms\Windows.platform\Developer\SDKs\Windows.sdk" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          echo "DEVELOPER_DIR=C:\Library\Developer" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+      - name: Adjust Paths
+        run: |
+          echo "C:\Library\Swift-development\bin;C:\Library\icu-67\usr\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          echo "C:\Library\Developer\Toolchains\unknown-Asserts-development.xctoolchain\usr\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+      - name: Install Supporting Files
+        run: |
+          Copy-Item "$env:SDKROOT\usr\share\ucrt.modulemap" -destination "$env:UniversalCRTSdkDir\Include\$env:UCRTVersion\ucrt\module.modulemap"
+          Copy-Item "$env:SDKROOT\usr\share\visualc.modulemap" -destination "$env:VCToolsInstallDir\include\module.modulemap"
+          Copy-Item "$env:SDKROOT\usr\share\visualc.apinotes" -destination "$env:VCToolsInstallDir\include\visualc.apinotes"
+          Copy-Item "$env:SDKROOT\usr\share\winsdk.modulemap" -destination "$env:UniversalCRTSdkDir\Include\$env:UCRTVersion\um\module.modulemap"
+
+      - name: Swift Version
+        run: swift --version
+      - name: Build (Debug)
+        run: swift build -v -c debug
+      - name: Build (Release)
+        run: swift build -v -c release
+      - name: Test (Debug)
+        run: swift test -v --configuration debug --enable-test-discovery
+      - name: Test (Release)
+        run: swift test -v --configuration release -Xswiftc -enable-testing --enable-test-discovery
+
+  Release:
+    runs-on: ubuntu-latest
+    needs: [Linux, macOS10, macOS11, iOS, tvOS, watchOS, Windows10]
+
+    steps:
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            CHANGELOG.md
+            RELEASE_NOTES.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
