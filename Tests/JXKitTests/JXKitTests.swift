@@ -3,6 +3,12 @@ import XCTest
 
 final class JXKitTests: XCTestCase {
 
+    func testAPI() throws {
+        let ctx = JXContext()
+        let value: JXValue = ctx.evaluateScript("1+2")
+        XCTAssertEqual(3, value.doubleValue)
+    }
+
     /// https://www.destroyallsoftware.com/talks/wat
     func testWAT() throws {
         let ctx = JXContext()
