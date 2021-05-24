@@ -7,16 +7,16 @@ This permits JSC to be used on platforms where the Objective-C runtime is unavai
 
 ## API
 
-### Direct function access
+### Direct function invocation
 
-Functions can be accessed (and cached), and invoked directly with codable arguments:
+Functions can be accessed (and cached) to be invoked directly with codable arguments:
 
 ```swift
 let ctx = JXContext()
 let hypot = ctx["Math"]["hypot"]
-XCTAssert(hypot.isFunction)
+assert(hypot.isFunction == true)
 let result = hypot.call(withArguments: try [ctx.encode(3), ctx.encode(4)])
-XCTAssertEqual(5, result.doubleValue)
+assert(result.doubleValue == 5)
 ```
 
 ### Codable passing
@@ -33,10 +33,10 @@ struct C : Decodable { let c: Double }
 let ctx = JXContext()
 
 let hypot = try ctx.eval(script: "(function(args) { return { c: Math.hypot(args.a, args.b) }; })")
-XCTAssert(hypot.isFunction)
+assert(hypot.isFunction == true)
 
 let result: C = try hypot.call(withArguments: [ctx.encode(AB(a: 3, b: 4))]).toDecodable(ofType: C.self)
-XCTAssertEqual(5, result.c)
+assert(result.c == 5)
 ```
 
 ### JavaScriptCore Compatibility
@@ -48,7 +48,7 @@ import JavaScriptCore
 
 let ctx = JSContext()
 let value: JXValue = ctx.evaluateScript("1+2")
-XCTAssertEqual(3, value.doubleValue)
+assert(value.doubleValue == 3)
 ```
 
 becomes:
@@ -58,9 +58,8 @@ import JXKit
 
 let ctx = JXContext()
 let value: JXValue = ctx.evaluateScript("1+2")
-XCTAssertEqual(3, value.doubleValue)
+assert(value.doubleValue == 3)
 ```
-
 
 ## Installation
 
