@@ -89,6 +89,28 @@ final class JXCodableTests: XCTestCase {
         }
     }
 
+    /// An example of invoking `Math.hypot` directly with numeric arguments
+    func testCodableParams() throws {
+        let ctx = JXContext()
+        let hypot = ctx["Math"]["hypot"]
+        XCTAssert(hypot.isFunction)
+        let result = hypot.call(withArguments: try [ctx.encode(3), ctx.encode(4)])
+        XCTAssertEqual(5, result.doubleValue)
+    }
+
+    /// An example of invoking `Math.hypot` in a wrapper function that takes an encodable argument and returns a Decodable retult.
+    func testCodableParamObject() throws {
+        struct AB : Encodable { let a, b: Double }
+        struct C : Decodable { let c: Double }
+
+        let ctx = JXContext()
+        let hypot = try ctx.eval(script: "(function(args) { return { c: Math.hypot(args.a, args.b) }; })")
+        XCTAssert(hypot.isFunction)
+        
+        let result: C = try hypot.call(withArguments: [ctx.encode(AB(a: 3, b: 4))]).toDecodable(ofType: C.self)
+        XCTAssertEqual(5, result.c)
+    }
+
     func testCodableArguments() throws {
         let ctx = JXContext()
 
