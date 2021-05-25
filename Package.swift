@@ -2,10 +2,10 @@
 
 import PackageDescription
 
-#if os(Linux)
-let linux = true
+#if os(Linux) || os(Windows)
+let useCJSCore = true
 #else
-let linux = false
+let useCJSCore = false
 #endif
 
 let package = Package(
@@ -14,10 +14,13 @@ let package = Package(
         .library(name: "JXKit", targets: ["JXKit"]),
     ],
     targets:
-        (!linux ? [ .target(name: "JXKit") ]
+        (!useCJSCore ? [ .target(name: "JXKit") ]
             : [ .target(name: "CJSCore"),
                 .target(name: "JXKit", dependencies: [ "CJSCore" ],
-                        cSettings: [ .unsafeFlags(["-I/usr/include/webkitgtk-4.0"]) ]
+                    cSettings: [
+                        .unsafeFlags(["-I/usr/include/webkitgtk-4.0"]),
+                        .unsafeFlags(["-I/Library/Developer/Platforms/Windows.platform/Developer"])
+                    ]
                 )
             ]) + [
                 .testTarget(

@@ -53,16 +53,23 @@ jobs:
         run: swift test
 
   Windows10:
-    if: false # JavaScriptCore not available on Windows
+    #if: false # JavaScriptCore not available on Windows
+    #needs: [Linux] # Linux must pass first
     runs-on: windows-latest
-    needs: [Linux] # Linux must pass first
     steps:
       - uses: actions/checkout@v2
+
+      - name: Install JavaScriptCore.dll
+        run: |
+          Install-Binary -Url "https://secure-appldnld.apple.com/itunes12/001-97787-20210421-F0E5A3C2-A2C9-11EB-A40B-A128318AD179/iTunes64Setup.exe" -Name "iTunes64Setup.exe" -ArgumentList ("-q")
+
+
       - uses: seanmiddleditch/gha-setup-vsdevenv@master
 
-      - name: Install swift-DEVELOPMENT-SNAPSHOT-2021-02-18-a
+      - name: Install Install swift-5.4-RELEASE
         run: |
-          Install-Binary -Url "https://swift.org/builds/development/windows10/swift-DEVELOPMENT-SNAPSHOT-2021-02-18-a/swift-DEVELOPMENT-SNAPSHOT-2021-02-18-a-windows10.exe" -Name "installer.exe" -ArgumentList ("-q")
+          Install-Binary -Url "https://swift.org/builds/swift-5.4-release/windows10/swift-5.4-RELEASE/swift-5.4-RELEASE-windows10.exe" -Name "installer.exe" -ArgumentList ("-q")
+
       - name: Set Environment Variables
         run: |
           echo "SDKROOT=C:\Library\Developer\Platforms\Windows.platform\Developer\SDKs\Windows.sdk" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
