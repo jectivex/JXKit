@@ -14,18 +14,18 @@ let package = Package(
         .library(name: "JXKit", targets: ["JXKit"]),
     ],
     targets:
-        (!useCJSCore ? [ .target(name: "JXKit") ]
-            : [ .target(name: "CJSCore"),
-                .target(name: "JXKit", dependencies: [ "CJSCore" ],
+        (!useCJSCore
+            ? [ .target(name: "JXKit") ]
+            : [ .target(name: "CJSCore"), .target(name: "JXKit", dependencies: [ "CJSCore" ],
                     cSettings: [
                         .unsafeFlags(["-I/usr/include/webkitgtk-4.0"]),
                         .unsafeFlags(["-I/Library/Developer/Platforms/Windows.platform/Developer"])
                     ]
                 )
-            ]) + [
-                .testTarget(
-                    name: "JXKitTests",
-                    dependencies: ["JXKit"]
-                )
-            ]
+        ]) + [
+            .testTarget(
+                name: "JXKitTests",
+                dependencies: ["JXKit"]
+            )
+        ]
 )

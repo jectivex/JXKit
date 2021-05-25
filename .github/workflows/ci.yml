@@ -53,7 +53,7 @@ jobs:
         run: swift test
 
   Windows10:
-    #if: false # JavaScriptCore not available on Windows
+    if: false # pending a way to link against JavaScriptCore.dll…
     #needs: [Linux] # Linux must pass first
     runs-on: windows-latest
     steps:
