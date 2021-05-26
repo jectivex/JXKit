@@ -18,7 +18,7 @@ public extension JXContext {
 }
 
 extension JXValue {
-    /// Uses a `JXValueDecoder` to decode the `JObj` `JCtx` `TrinketVM`
+    /// Uses a `JXValueDecoder` to decode the `Decodable`
     @inlinable public func toDecodable<T: Decodable>(ofType: T.Type) throws -> T {
         try JXValueDecoder(context: context).decode(ofType, from: self)
     }
@@ -69,11 +69,11 @@ open class JXValueEncoder {
         return _Options(userInfo: userInfo)
     }
 
-    let context: JXContext
+    @usableFromInline let context: JXContext
 
     // MARK: - Constructing a script object Encoder
     /// Initializes `self` with default strategies.
-    public init(context: JXContext) {
+    @inlinable public init(context: JXContext) {
         self.context = context
     }
 
@@ -84,7 +84,7 @@ open class JXValueEncoder {
     /// - returns: A new `Data` value containing the encoded script object data.
     /// - throws: `EncodingError.invalidValue` if a non-conforming floating-point value is encountered during encoding, and the encoding strategy is `.throw`.
     /// - throws: An error if any value throws an error during encoding.
-    open func encode<Value : Encodable>(_ value: Value) throws -> JXValue {
+    @inlinable open func encode<Value : Encodable>(_ value: Value) throws -> JXValue {
         try encodeToTopLevelContainer(value)
     }
 
@@ -94,7 +94,7 @@ open class JXValueEncoder {
     /// - returns: A new top-level array or dictionary representing the value.
     /// - throws: `EncodingError.invalidValue` if a non-conforming floating-point value is encountered during encoding, and the encoding strategy is `.throw`.
     /// - throws: An error if any value throws an error during encoding.
-    internal func encodeToTopLevelContainer<Value : Encodable>(_ value: Value) throws -> JXValue {
+    @usableFromInline internal func encodeToTopLevelContainer<Value : Encodable>(_ value: Value) throws -> JXValue {
         let encoder = JXEncoder(context: context, options: self.options)
         guard let topLevel = try encoder.box_(value) else {
             throw EncodingError.invalidValue(value,
@@ -692,7 +692,7 @@ open class JXValueDecoder {
     /// - returns: A value of the requested type.
     /// - throws: `DecodingError.dataCorrupted` if values requested from the payload are corrupted, or if the given data is not a valid script object.
     /// - throws: An error if any value throws an error during decoding.
-    open func decode<T : Decodable>(_ type: T.Type, from data: JXValue) throws -> T {
+    @inlinable open func decode<T : Decodable>(_ type: T.Type, from data: JXValue) throws -> T {
         var format: PropertyListSerialization.PropertyListFormat = .binary
         return try decode(type, from: data, format: &format)
     }
@@ -705,7 +705,7 @@ open class JXValueDecoder {
     /// - returns: A value of the requested type along with the detected format of the script object.
     /// - throws: `DecodingError.dataCorrupted` if values requested from the payload are corrupted, or if the given data is not a valid script object.
     /// - throws: An error if any value throws an error during decoding.
-    open func decode<T : Decodable>(_ type: T.Type, from object: JXValue, format: inout PropertyListSerialization.PropertyListFormat) throws -> T {
+    @inlinable open func decode<T : Decodable>(_ type: T.Type, from object: JXValue, format: inout PropertyListSerialization.PropertyListFormat) throws -> T {
         return try decode(type, fromTopLevel: object)
     }
 
@@ -716,7 +716,7 @@ open class JXValueDecoder {
     /// - returns: A value of the requested type.
     /// - throws: `DecodingError.dataCorrupted` if values requested from the payload are corrupted, or if the given data is not a valid script object.
     /// - throws: An error if any value throws an error during decoding.
-    internal func decode<T : Decodable>(_ type: T.Type, fromTopLevel container: JXValue) throws -> T {
+    @usableFromInline internal func decode<T : Decodable>(_ type: T.Type, fromTopLevel container: JXValue) throws -> T {
         let decoder = __JSDecoder(referencing: container, options: self.options)
         guard let value = try decoder.unbox(container, as: type) else {
             throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: [], debugDescription: "The given data did not contain a top-level value."))

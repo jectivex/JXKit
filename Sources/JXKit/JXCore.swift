@@ -834,13 +834,13 @@ extension JXValue {
 
 
 
-public typealias JSObjectCallAsFunctionCallback = (JXContext, JXValue?, [JXValue]) throws -> JXValue
+public typealias JXObjectCallAsFunctionCallback = (JXContext, JXValue?, [JXValue]) throws -> JXValue
 
 private struct JSObjectCallbackInfo {
     
     unowned let context: JXContext
     
-    let callback: JSObjectCallAsFunctionCallback
+    let callback: JXObjectCallAsFunctionCallback
 }
 
 private func function_finalize(_ object: JSObjectRef?) -> Void {
@@ -933,7 +933,7 @@ extension JXValue {
     /// - Parameters:
     ///   - context: The execution context to use.
     ///   - callback: The callback function.
-    public convenience init(newFunctionIn context: JXContext, callback: @escaping JSObjectCallAsFunctionCallback) {
+    public convenience init(newFunctionIn context: JXContext, callback: @escaping JXObjectCallAsFunctionCallback) {
         
         let info: UnsafeMutablePointer<JSObjectCallbackInfo> = .allocate(capacity: 1)
         info.initialize(to: JSObjectCallbackInfo(context: context, callback: callback))

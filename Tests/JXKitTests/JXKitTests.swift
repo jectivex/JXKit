@@ -20,10 +20,9 @@ final class JXKitTests: XCTestCase {
         XCTAssertEqual("", try ctx.eval(script: "[] + []").stringValue)
 
         XCTAssertEqual(true, try ctx.eval(script: "{} + {}").isNumber)
-        XCTAssertEqual(true, try ctx.eval(script: "{} + []").isNumber)
-
         XCTAssertEqual(true, try ctx.eval(script: "{} + {}").doubleValue?.isNaN)
 
+        XCTAssertEqual(true, try ctx.eval(script: "{} + []").isNumber)
         XCTAssertEqual(0.0, try ctx.eval(script: "{} + []").doubleValue)
 
         XCTAssertEqual(true, try ctx.eval(script: "1.0 === 1.0000000000000001").boolValue)
@@ -31,6 +30,7 @@ final class JXKitTests: XCTestCase {
         XCTAssertEqual(1, try ctx.eval(script: "y = {}; y[[]] = 1; Object.keys(y)").array?.count)
 
         XCTAssertEqual(10, try ctx.eval(script: "['10', '10', '10'].map(parseInt)").array?.first?.doubleValue)
+        XCTAssertEqual("NaN", try ctx.eval(script: "['10', '10', '10'].map(parseInt)").array?.dropFirst().first?.stringValue)
         XCTAssertEqual(2, try ctx.eval(script: "['10', '10', '10'].map(parseInt)").array?.last?.doubleValue)
     }
 }
