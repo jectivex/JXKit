@@ -749,7 +749,7 @@ fileprivate class __JSDecoder : Decoder {
     // MARK: - Initialization
     /// Initializes `self` with the given top-level container and options.
     fileprivate init(referencing container: JXValue, at codingPath: [CodingKey] = [], options: JXValueDecoder._Options) {
-        self.context = container.context
+        self.context = container.env
         self.storage = _ScriptDecodingStorage()
         self.storage.push(container: container)
         self.codingPath = codingPath

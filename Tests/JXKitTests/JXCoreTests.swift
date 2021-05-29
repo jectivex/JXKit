@@ -98,7 +98,7 @@ class JXCoreTests: XCTestCase {
         context.global["myClass"] = myClass
 
         let result = context.evaluateScript("new myClass(1, 2)")
-        XCTAssertNil(context.exception, "\(context.exception!)")
+        XCTAssertNil(context.currentError, "\(context.currentError!)")
 
         XCTAssertTrue(result.isObject)
         XCTAssertEqual(result["result"].doubleValue, 3)
@@ -119,7 +119,7 @@ class JXCoreTests: XCTestCase {
         XCTAssertTrue(myFunction.isFunction)
 
         let result = myFunction.call(withArguments: [JXValue(double: 1, in: context), JXValue(double: 2, in: context)])
-        XCTAssertNil(context.exception, "\(context.exception!)")
+        XCTAssertNil(context.currentError, "\(context.currentError!)")
 
         XCTAssertTrue(result.isNumber)
         XCTAssertEqual(result.doubleValue, 3)
@@ -140,7 +140,7 @@ class JXCoreTests: XCTestCase {
         context.global["myFunction"] = myFunction
 
         let result = context.evaluateScript("myFunction(1, 2)")
-        XCTAssertNil(context.exception, "\(context.exception!)")
+        XCTAssertNil(context.currentError, "\(context.currentError!)")
 
         XCTAssertTrue(result.isNumber)
         XCTAssertEqual(result.doubleValue, 3)
@@ -150,7 +150,7 @@ class JXCoreTests: XCTestCase {
         let context = JXContext()
 
         let result = context.evaluateScript("1 + 1")
-        XCTAssertNil(context.exception, "\(context.exception!)")
+        XCTAssertNil(context.currentError, "\(context.currentError!)")
 
         XCTAssertTrue(result.isNumber)
         XCTAssertEqual(result.doubleValue, 2)
@@ -160,7 +160,7 @@ class JXCoreTests: XCTestCase {
         let context = JXContext()
 
         let result = context.evaluateScript("[1 + 2, \"BMW\", \"Volvo\"]")
-        XCTAssertNil(context.exception, "\(context.exception!)")
+        XCTAssertNil(context.currentError, "\(context.currentError!)")
 
         XCTAssertTrue(result.isArray)
 
@@ -178,13 +178,13 @@ class JXCoreTests: XCTestCase {
         context.global["obj"] = JXValue(newObjectIn: context)
 
         let desc = JSPropertyDescriptor(
-            getter: { this in JXValue(double: 3, in: this.context) }
+            getter: { this in JXValue(double: 3, in: this.env) }
         )
 
         context.global["obj"].defineProperty("three", desc)
 
         let result = context.evaluateScript("obj.three")
-        XCTAssertNil(context.exception, "\(context.exception!)")
+        XCTAssertNil(context.currentError, "\(context.currentError!)")
 
         XCTAssertEqual(result.doubleValue, 3)
     }
@@ -202,13 +202,13 @@ class JXCoreTests: XCTestCase {
         context.global["obj"].defineProperty("number", desc)
 
         context.evaluateScript("obj.number = 5")
-        XCTAssertNil(context.exception, "\(context.exception!)")
+        XCTAssertNil(context.currentError, "\(context.currentError!)")
 
         XCTAssertEqual(context.global["obj"]["number"].doubleValue, 5)
         XCTAssertEqual(context.global["obj"]["number_container"].doubleValue, 5)
 
         context.evaluateScript("obj.number = 3")
-        XCTAssertNil(context.exception, "\(context.exception!)")
+        XCTAssertNil(context.currentError, "\(context.currentError!)")
 
         XCTAssertEqual(context.global["obj"]["number"].doubleValue, 3)
         XCTAssertEqual(context.global["obj"]["number_container"].doubleValue, 3)
