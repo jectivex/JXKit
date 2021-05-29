@@ -20,7 +20,7 @@ public extension JXContext {
 extension JXValue {
     /// Uses a `JXValueDecoder` to decode the `Decodable`
     @inlinable public func toDecodable<T: Decodable>(ofType: T.Type) throws -> T {
-        try JXValueDecoder(context: context).decode(ofType, from: self)
+        try JXValueDecoder(context: env).decode(ofType, from: self)
     }
 }
 
