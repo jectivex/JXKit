@@ -19,7 +19,7 @@ public extension JXContext {
 
 extension JXValue {
     /// Uses a `JXValueDecoder` to decode the `Decodable`
-    public func toDecodable<T: Decodable>(ofType: T.Type) throws -> T {
+    @inlinable public func toDecodable<T: Decodable>(ofType: T.Type) throws -> T {
         try JXValueDecoder(context: env).decode(ofType, from: self)
     }
 }
@@ -660,7 +660,7 @@ fileprivate class __JSReferencingEncoder : JXEncoder {
 
 // MARK: Decoder
 
-/// `JXValueDecoder` facilitates the decoding of `JXValue` values into semantic `Decodable` types.
+/// `JXValueDecoder` facilitates the decoding of `JXValue` values into `Decodable` types.
 open class JXValueDecoder {
     @usableFromInline let context: JXContext
     

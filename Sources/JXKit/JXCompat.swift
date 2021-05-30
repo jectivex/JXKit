@@ -1,4 +1,8 @@
-
+#if canImport(JavaScriptCore)
+import JavaScriptCore
+#else
+import CJSCore
+#endif
 
 // MARK: JXKit.JXContext : JXEnv
 

@@ -871,14 +871,15 @@ private func function_instanceof(
 }
 
 extension JXValue {
-    
     /// Creates a JavaScript value of the function type.
     ///
     /// - Parameters:
     ///   - context: The execution context to use.
     ///   - callback: The callback function.
+    ///
+    /// - Note: This object is callable as a function (due to `JSClassDefinition.callAsFunction`), but the JavaScript runtime doesn't treat is exactly like a function. For example, you cannot call "apply" on it. It could be better to use `JSObjectMakeFunctionWithCallback`, which may act more like a "true" JavaScript function.
     public convenience init(newFunctionIn env: JXContext, callback: @escaping JXObjectCallAsFunctionCallback) {
-        
+
         let info: UnsafeMutablePointer<JSObjectCallbackInfo> = .allocate(capacity: 1)
         info.initialize(to: JSObjectCallbackInfo(context: env, callback: callback))
         
@@ -887,10 +888,10 @@ extension JXValue {
         def.callAsConstructor = function_constructor
         def.callAsFunction = function_callback
         def.hasInstance = function_instanceof
-        
+
         let _class = JSClassCreate(&def)
         defer { JSClassRelease(_class) }
-        
+
         self.init(env: env, value: JSObjectMake(env.context, _class, info))
     }
 }

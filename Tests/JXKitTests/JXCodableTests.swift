@@ -43,6 +43,8 @@ final class JXCodableTests: XCTestCase {
 
             try rt([[1, 2, 3], [4, 5, 6]])
 
+            try rt(["1": ["2": ["3": ["4": ["5": "six"]]]]])
+
             struct NumStruct: Codable, Equatable {
                 var num: Double?
             }
