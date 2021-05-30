@@ -1611,7 +1611,7 @@ extension __JSDecoder {
     }
 
     fileprivate func unbox(_ value: JXValue, as type: Data.Type) throws -> Data? {
-        guard value.isArrayBuffer, #available(macOS 10.12, iOS 10.0, tvOS 10.0, *), let data = value.copyBytes() else {
+        guard value.isArrayBuffer, #available(macOS 10.12, macCatalyst 13.0, iOS 10.0, tvOS 10.0, *), let data = value.copyBytes() else {
             throw DecodingError._typeMismatch(at: self.codingPath, expectation: type, reality: value)
         }
 

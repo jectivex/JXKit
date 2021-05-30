@@ -794,7 +794,7 @@ extension JXValue {
     /// Copy the bytes of `ArrayBuffer`.
     public func copyBytes() -> Data? {
         guard self.isArrayBuffer else { return nil }
-        if #available(macOS 10.12, iOS 10.0, tvOS 10.0, *) {
+        if #available(macOS 10.12, macCatalyst 13.0, iOS 10.0, tvOS 10.0, *) {
             let length = JSObjectGetArrayBufferByteLength(env.context, value, &env._currentError)
             return Data(bytes: JSObjectGetArrayBufferBytesPtr(env.context, value, &env._currentError), count: length)
         } else {
