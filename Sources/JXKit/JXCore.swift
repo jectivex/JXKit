@@ -348,7 +348,7 @@ extension JXValue {
     ///   - context: The execution context to use.
     ///   - prototype: The prototype to be used.
     @inlinable public convenience init(newObjectIn env: JXContext, prototype: JXValue) {
-        let obj = env.globalObject.invokeMethod("create", withArguments: [prototype])
+        let obj = env.objectPrototype.invokeMethod("create", withArguments: [prototype])
         self.init(env: env, value: obj.value)
     }
 
@@ -425,12 +425,12 @@ extension JXValue {
 
     /// Tests whether a JavaScript value’s type is the date type.
     @inlinable public var isDate: Bool {
-        return self.isInstance(of: env.globalDate)
+        return self.isInstance(of: env.datePrototype)
     }
 
     /// Tests whether a JavaScript value’s type is the array type.
     @inlinable public var isArray: Bool {
-        let result = env.globalArray.invokeMethod("isArray", withArguments: [self])
+        let result = env.arrayPrototype.invokeMethod("isArray", withArguments: [self])
         return JSValueToBoolean(env.context, result.value)
     }
 
@@ -446,34 +446,34 @@ extension JXValue {
 
     /// Tests whether a JavaScript value’s type is the error type.
     @inlinable public var isError: Bool {
-        return self.isInstance(of: env.globalError)
+        return self.isInstance(of: env.errorPrototype)
     }
 }
 
 extension JXValue {
 
     @inlinable public var isFrozen: Bool {
-        return env.globalObject.invokeMethod("isFrozen", withArguments: [self]).booleanValue
+        return env.objectPrototype.invokeMethod("isFrozen", withArguments: [self]).booleanValue
     }
 
     @inlinable public var isExtensible: Bool {
-        return env.globalObject.invokeMethod("isExtensible", withArguments: [self]).booleanValue
+        return env.objectPrototype.invokeMethod("isExtensible", withArguments: [self]).booleanValue
     }
 
     @inlinable public var isSealed: Bool {
-        return env.globalObject.invokeMethod("isSealed", withArguments: [self]).booleanValue
+        return env.objectPrototype.invokeMethod("isSealed", withArguments: [self]).booleanValue
     }
 
     @inlinable public func freeze() {
-        env.globalObject.invokeMethod("freeze", withArguments: [self])
+        env.objectPrototype.invokeMethod("freeze", withArguments: [self])
     }
 
     @inlinable public func preventExtensions() {
-        env.globalObject.invokeMethod("preventExtensions", withArguments: [self])
+        env.objectPrototype.invokeMethod("preventExtensions", withArguments: [self])
     }
 
     @inlinable public func seal() {
-        env.globalObject.invokeMethod("seal", withArguments: [self])
+        env.objectPrototype.invokeMethod("seal", withArguments: [self])
     }
 }
 
@@ -707,7 +707,7 @@ extension JXValue {
     ///   - length: Length of new `ArrayBuffer` object.
     ///   - context: The execution context to use.
     public convenience init(newArrayBufferWithLength length: Int, in env: JXContext) {
-        let obj = env.globalArrayBuffer.construct(withArguments: [JXValue(double: Double(length), in: env)])
+        let obj = env.arrayBufferPrototype.construct(withArguments: [JXValue(double: Double(length), in: env)])
         self.init(env: env, value: obj.value)
     }
 
@@ -765,7 +765,7 @@ extension JXValue {
 
     /// Tests whether a JavaScript value’s type is the `ArrayBuffer` type.
     public var isArrayBuffer: Bool {
-        return self.isInstance(of: env.globalArrayBuffer)
+        return self.isInstance(of: env.arrayBufferPrototype)
     }
 
     /// The length (in bytes) of the `ArrayBuffer`.
@@ -1023,13 +1023,13 @@ extension JXValue {
         if let configurable = descriptor.configurable { desc["configurable"] = JXValue(bool: configurable, in: env) }
         if let enumerable = descriptor.enumerable { desc["enumerable"] = JXValue(bool: enumerable, in: env) }
         
-        env.globalObject.invokeMethod("defineProperty", withArguments: [self, JXValue(string: property, in: env), desc])
+        env.objectPrototype.invokeMethod("defineProperty", withArguments: [self, JXValue(string: property, in: env), desc])
         
         return env.currentError == nil
     }
     
     public func propertyDescriptor(_ property: String) -> JXValue {
-        return env.globalObject.invokeMethod("getOwnPropertyDescriptor", withArguments: [self, JXValue(string: property, in: env)])
+        return env.objectPrototype.invokeMethod("getOwnPropertyDescriptor", withArguments: [self, JXValue(string: property, in: env)])
     }
 }
 

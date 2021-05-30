@@ -118,18 +118,18 @@ extension JXEnv {
     public typealias BaseValType = JXValType.EnvType.JXValType
 
     /// Returns the global "Object"
-    public var globalObject: BaseValType { global["Object"] }
+    public var objectPrototype: BaseValType { global["Object"] }
 
     /// Returns the global "Date"
-    public var globalDate: BaseValType { global["Date"] }
+    public var datePrototype: BaseValType { global["Date"] }
 
     /// Returns the global "Array"
-    public var globalArray: BaseValType { global["Array"] }
+    public var arrayPrototype: BaseValType { global["Array"] }
 
     /// Returns the global "ArrayBuffer"
-    public var globalArrayBuffer: BaseValType { global["ArrayBuffer"] }
+    public var arrayBufferPrototype: BaseValType { global["ArrayBuffer"] }
 
     /// Returns the global "Error"
-    public var globalError: BaseValType { global["Error"] }
+    public var errorPrototype: BaseValType { global["Error"] }
 }
 
