@@ -1,39 +1,19 @@
 //
-//  Follows is the original SwiftJS license header, on which much of this code was based:
+//  JavaScript execution context & value types.
 //
-//  The MIT License
+//  Adapted from https://github.com/SusanDoggie/SwiftJS :
 //  Copyright (c) 2015 - 2021 Susan Cheng. All rights reserved.
-//
-//  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the "Software"), to deal
-//  in the Software without restriction, including without limitation the rights
-//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the Software is
-//  furnished to do so, subject to the following conditions:
-//
-//  The above copyright notice and this permission notice shall be included in
-//  all copies or substantial portions of the Software.
-//
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-//  THE SOFTWARE.
 //
 
 import Foundation
 
-// In order to migrate from JavaScriptCore to JXKit, you can use place these aliases in your code to get started:
+// The following aliases can be helpful when migrating from JavaScriptCore to JXKit:
 //
-//import JXKit
-//@available(*, deprecated, renamed: "JXVirtualMachine")
-//public typealias JSVirtualMachine = JXVirtualMachine
-//@available(*, deprecated, renamed: "JXContext")
-//public typealias JSContext = JXContext
-//@available(*, deprecated, renamed: "JXValue")
-//public typealias JSValue = JXValue
+// import JXKit
+// @available(*, deprecated, renamed: "JXContext")
+// public typealias JSContext = JXContext
+// @available(*, deprecated, renamed: "JXValue")
+// public typealias JSValue = JXValue
 
 #if canImport(JavaScriptCore)
 import JavaScriptCore
@@ -133,26 +113,6 @@ extension JXContext {
 
     /// Returns the global context reference for this context
     public var jsGlobalContextRef: JSGlobalContextRef { context }
-}
-
-/// Utilities common to all `JXEnv` implementations
-extension JXEnv {
-    public typealias BaseValType = JXValType.EnvType.JXValType
-
-    /// Returns the global "Object"
-    public var globalObject: BaseValType { global["Object"] }
-
-    /// Returns the global "Date"
-    public var globalDate: BaseValType { global["Date"] }
-
-    /// Returns the global "Array"
-    public var globalArray: BaseValType { global["Array"] }
-
-    /// Returns the global "ArrayBuffer"
-    public var globalArrayBuffer: BaseValType { global["ArrayBuffer"] }
-
-    /// Returns the global "Error"
-    public var globalError: BaseValType { global["Error"] }
 }
 
 extension JXContext {
@@ -406,8 +366,8 @@ extension JXValue: CustomStringConvertible {
     @inlinable public var description: String {
         if self.isUndefined { return "undefined" }
         if self.isNull { return "null" }
-        if self.isBoolean { return "\(self.boolValue)" }
-        if self.isNumber { return "\(self.doubleValue!)" }
+        if self.isBoolean { return "\(self.booleanValue)" }
+        if self.isNumber { return "\(self.numberValue!)" }
         if self.isString { return "\"\(self.stringValue!.unicodeScalars.reduce(into: "") { $0 += $1.escaped(asASCII: false) })\"" }
         return self.invokeMethod("toString", withArguments: []).stringValue!
     }
@@ -493,15 +453,15 @@ extension JXValue {
 extension JXValue {
 
     @inlinable public var isFrozen: Bool {
-        return env.globalObject.invokeMethod("isFrozen", withArguments: [self]).boolValue
+        return env.globalObject.invokeMethod("isFrozen", withArguments: [self]).booleanValue
     }
 
     @inlinable public var isExtensible: Bool {
-        return env.globalObject.invokeMethod("isExtensible", withArguments: [self]).boolValue
+        return env.globalObject.invokeMethod("isExtensible", withArguments: [self]).booleanValue
     }
 
     @inlinable public var isSealed: Bool {
-        return env.globalObject.invokeMethod("isSealed", withArguments: [self]).boolValue
+        return env.globalObject.invokeMethod("isSealed", withArguments: [self]).booleanValue
     }
 
     @inlinable public func freeze() {
@@ -520,12 +480,12 @@ extension JXValue {
 extension JXValue {
 
     /// Returns the JavaScript boolean value.
-    @inlinable public var boolValue: Bool {
+    @inlinable public var booleanValue: Bool {
         return JSValueToBoolean(env.context, value)
     }
 
     /// Returns the JavaScript number value.
-    @inlinable public var doubleValue: Double? {
+    @inlinable public var numberValue: Double? {
         var exception: JSObjectRef?
         let result = JSValueToNumber(env.context, value, &exception)
         return exception == nil ? result : nil
@@ -711,7 +671,7 @@ extension JXValue {
 extension JXValue {
     /// The length of the object.
     @inlinable public var count: Int {
-        let dbl = self["length"].doubleValue ?? 0
+        let dbl = self["length"].numberValue ?? 0
         return dbl.isNaN || dbl.isSignalingNaN || dbl.isInfinite == true ? 0 : Int(dbl)
     }
 
@@ -810,7 +770,7 @@ extension JXValue {
 
     /// The length (in bytes) of the `ArrayBuffer`.
     public var byteLength: Int {
-        return Int(self["byteLength"].doubleValue ?? 0)
+        return Int(self["byteLength"].numberValue ?? 0)
     }
 
     /// Copy the bytes of `ArrayBuffer`.

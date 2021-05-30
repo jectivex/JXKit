@@ -85,7 +85,7 @@ class JXCoreTests: XCTestCase {
 
         let myClass = JXValue(newFunctionIn: context) { context, this, arguments in
 
-            let result = arguments[0].doubleValue! + arguments[1].doubleValue!
+            let result = arguments[0].numberValue! + arguments[1].numberValue!
 
             let object = JXValue(newObjectIn: context)
             object["result"] = JXValue(double: result, in: context)
@@ -101,7 +101,7 @@ class JXCoreTests: XCTestCase {
         XCTAssertNil(context.currentError, "\(context.currentError!)")
 
         XCTAssertTrue(result.isObject)
-        XCTAssertEqual(result["result"].doubleValue, 3)
+        XCTAssertEqual(result["result"].numberValue, 3)
 
         XCTAssertTrue(result.isInstance(of: myClass))
     }
@@ -111,7 +111,7 @@ class JXCoreTests: XCTestCase {
 
         let myFunction = JXValue(newFunctionIn: context) { context, this, arguments in
 
-            let result = arguments[0].doubleValue! + arguments[1].doubleValue!
+            let result = arguments[0].numberValue! + arguments[1].numberValue!
 
             return JXValue(double: result, in: context)
         }
@@ -122,7 +122,7 @@ class JXCoreTests: XCTestCase {
         XCTAssertNil(context.currentError, "\(context.currentError!)")
 
         XCTAssertTrue(result.isNumber)
-        XCTAssertEqual(result.doubleValue, 3)
+        XCTAssertEqual(result.numberValue, 3)
     }
 
     func testFunction2() {
@@ -130,7 +130,7 @@ class JXCoreTests: XCTestCase {
 
         let myFunction = JXValue(newFunctionIn: context) { context, this, arguments in
 
-            let result = arguments[0].doubleValue! + arguments[1].doubleValue!
+            let result = arguments[0].numberValue! + arguments[1].numberValue!
 
             return JXValue(double: result, in: context)
         }
@@ -143,7 +143,7 @@ class JXCoreTests: XCTestCase {
         XCTAssertNil(context.currentError, "\(context.currentError!)")
 
         XCTAssertTrue(result.isNumber)
-        XCTAssertEqual(result.doubleValue, 3)
+        XCTAssertEqual(result.numberValue, 3)
     }
 
     func testCalculation() {
@@ -153,7 +153,7 @@ class JXCoreTests: XCTestCase {
         XCTAssertNil(context.currentError, "\(context.currentError!)")
 
         XCTAssertTrue(result.isNumber)
-        XCTAssertEqual(result.doubleValue, 2)
+        XCTAssertEqual(result.numberValue, 2)
     }
 
     func testArray() {
@@ -165,9 +165,9 @@ class JXCoreTests: XCTestCase {
         XCTAssertTrue(result.isArray)
 
         let length = result["length"]
-        XCTAssertEqual(length.doubleValue, 3)
+        XCTAssertEqual(length.numberValue, 3)
 
-        XCTAssertEqual(result[0].doubleValue, 3)
+        XCTAssertEqual(result[0].numberValue, 3)
         XCTAssertEqual(result[1].stringValue, "BMW")
         XCTAssertEqual(result[2].stringValue, "Volvo")
     }
@@ -186,7 +186,7 @@ class JXCoreTests: XCTestCase {
         let result = context.evaluateScript("obj.three")
         XCTAssertNil(context.currentError, "\(context.currentError!)")
 
-        XCTAssertEqual(result.doubleValue, 3)
+        XCTAssertEqual(result.numberValue, 3)
     }
 
     func testSetter() {
@@ -204,13 +204,13 @@ class JXCoreTests: XCTestCase {
         context.evaluateScript("obj.number = 5")
         XCTAssertNil(context.currentError, "\(context.currentError!)")
 
-        XCTAssertEqual(context.global["obj"]["number"].doubleValue, 5)
-        XCTAssertEqual(context.global["obj"]["number_container"].doubleValue, 5)
+        XCTAssertEqual(context.global["obj"]["number"].numberValue, 5)
+        XCTAssertEqual(context.global["obj"]["number_container"].numberValue, 5)
 
         context.evaluateScript("obj.number = 3")
         XCTAssertNil(context.currentError, "\(context.currentError!)")
 
-        XCTAssertEqual(context.global["obj"]["number"].doubleValue, 3)
-        XCTAssertEqual(context.global["obj"]["number_container"].doubleValue, 3)
+        XCTAssertEqual(context.global["obj"]["number"].numberValue, 3)
+        XCTAssertEqual(context.global["obj"]["number_container"].numberValue, 3)
     }
 }

@@ -19,7 +19,7 @@ public extension JXContext {
 
 extension JXValue {
     /// Uses a `JXValueDecoder` to decode the `Decodable`
-    @inlinable public func toDecodable<T: Decodable>(ofType: T.Type) throws -> T {
+    public func toDecodable<T: Decodable>(ofType: T.Type) throws -> T {
         try JXValueDecoder(context: env).decode(ofType, from: self)
     }
 }
@@ -662,7 +662,7 @@ fileprivate class __JSReferencingEncoder : JXEncoder {
 
 /// `JXValueDecoder` facilitates the decoding of `JXValue` values into semantic `Decodable` types.
 open class JXValueDecoder {
-    let context: JXContext
+    @usableFromInline let context: JXContext
     
     // MARK: Options
     /// Contextual user-provided information for use during decoding.
@@ -1580,11 +1580,11 @@ extension __JSDecoder {
             throw DecodingError._typeMismatch(at: self.codingPath, expectation: type, reality: value)
         }
 
-        return value.boolValue
+        return value.booleanValue
     }
 
     fileprivate func unboxNumber(_ value: JXValue) throws -> Double {
-        guard value.isNumber, let double = value.doubleValue else {
+        guard value.isNumber, let double = value.numberValue else {
             throw DecodingError._typeMismatch(at: self.codingPath, expectation: Double.self, reality: value)
         }
         return double

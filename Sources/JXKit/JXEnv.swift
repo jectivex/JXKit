@@ -1,15 +1,11 @@
 //
-//  File.swift
-//  
+//  JXEnv.swift
+//
+//  A JavaScript execution environment with a single associated value type.
 //
 //  Created by Marc Prud'hommeaux on 5/29/21.
 //
-
 import Foundation
-
-/// Work-in-progress, simply to highlight a line with a deprecation warning
-@available(*, deprecated, message: "work-in-progress")
-@discardableResult @inlinable func wip<T>(_ value: T) -> T { value }
 
 /// A `JXEnv` is an abstraction of a JavaScript execution environment. The associated `ValueType` represents the value encapsulations type.
 public protocol JXEnv : AnyObject {
@@ -28,6 +24,9 @@ public protocol JXEnv : AnyObject {
     /// Creates a new `undefined` instance for this environment
     func undefined() -> JXValType
 
+    /// Creates a boolean in the environment from the given value
+    func boolean(_ value: Bool) -> JXValType
+
     /// Creates a string in the environment from the given value
     func string<S: StringProtocol>(_ value: S) -> JXValType
 
@@ -43,10 +42,12 @@ public protocol JXEnv : AnyObject {
     /// Creates a number in the environment from the given value
     func number<I: BinaryInteger>(_ value: I) -> JXValType
 
+    /// Evaluates the given script and returns the return value.
+    /// - Parameters:
+    ///   - this: the current `this`, or `nil`
+    ///   - url: the URL for the script being executed; used merely for debug and error messages
+    ///   - script: the script string to execute
     func eval(this: JXValue?, url: URL?, script: String) throws -> JXValType
-
-    /// Accesses the value for the given property
-    subscript(_ property: String) -> JXValType { get set }
 }
 
 /// A `JXEnv` is an abstraction of a JavaScript value.
@@ -61,20 +62,27 @@ public protocol JXVal : AnyObject {
     func hasProperty(_ value: String) -> Bool
 
     var isUndefined: Bool { get }
-    var isString: Bool { get }
-    var isNumber: Bool { get }
+    var isNull: Bool { get }
+    var isObject: Bool { get }
 
+    var isNumber: Bool { get }
+    var numberValue: Double? { get }
+
+    var isString: Bool { get }
     var stringValue: String? { get }
+
+    var dateValue: Date? { get }
+
+    /// Returns the JavaScript array.
+    var array: [EnvType.JXValType]? { get }
+
+    /// Returns the JavaScript object as dictionary.
+    var dictionary: [String: EnvType.JXValType]? { get }
 
     /// Accesses the value for the given property if this is an object type
     subscript(_ property: String) -> EnvType.JXValType { get set }
 }
 
-
-extension JXValue {
-    @available(*, deprecated, renamed: "env")
-    var context: JXContext { env }
-}
 
 public extension JXEnv {
     /// Evaluates with a `nil` this
@@ -104,3 +112,24 @@ public extension JXEnv {
         }
     }
 }
+
+/// Utilities common to all `JXEnv` implementations
+extension JXEnv {
+    public typealias BaseValType = JXValType.EnvType.JXValType
+
+    /// Returns the global "Object"
+    public var globalObject: BaseValType { global["Object"] }
+
+    /// Returns the global "Date"
+    public var globalDate: BaseValType { global["Date"] }
+
+    /// Returns the global "Array"
+    public var globalArray: BaseValType { global["Array"] }
+
+    /// Returns the global "ArrayBuffer"
+    public var globalArrayBuffer: BaseValType { global["ArrayBuffer"] }
+
+    /// Returns the global "Error"
+    public var globalError: BaseValType { global["Error"] }
+}
+

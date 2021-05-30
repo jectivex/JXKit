@@ -14,32 +14,39 @@ public protocol JavaScriptCoreContext : AnyObject {
 extension JXContext : JavaScriptCoreContext { }
 
 
+extension JXValue : JXVal {
+}
+
 extension JXContext : JXEnv {
-    public func null() -> JXValue {
+    @inlinable public func null() -> JXValue {
         JXValue(nullIn: self)
     }
 
-    public func undefined() -> JXValue {
+    @inlinable public func undefined() -> JXValue {
         JXValue(undefinedIn: self)
     }
 
-    public func number<F: BinaryFloatingPoint>(_ value: F) -> JXValue {
+    @inlinable public func boolean(_ value: Bool) -> JXValue {
+        JXValue(bool: value, in: self)
+    }
+
+    @inlinable public func number<F: BinaryFloatingPoint>(_ value: F) -> JXValue {
         JXValue(double: Double(value), in: self)
     }
 
-    public func number<I: BinaryInteger>(_ value: I) -> JXValue {
+    @inlinable public func number<I: BinaryInteger>(_ value: I) -> JXValue {
         JXValue(double: Double(value), in: self)
     }
 
-    public func string<S: StringProtocol>(_ value: S) -> JXValue {
+    @inlinable public func string<S: StringProtocol>(_ value: S) -> JXValue {
         JXValue(string: String(value), in: self)
     }
 
-    public func date(_ value: Date) -> JXValue {
+    @inlinable public func date(_ value: Date) -> JXValue {
         JXValue(date: value, in: self)
     }
 
-    public func data<D: DataProtocol>(_ value: D) -> JXValue {
+    @inlinable public func data<D: DataProtocol>(_ value: D) -> JXValue {
         if #available(macOS 10.12, iOS 10.0, tvOS 10.0, *) {
             return JXValue(newArrayBufferWithBytes: value, in: self)
         } else {
@@ -47,10 +54,6 @@ extension JXContext : JXEnv {
         }
     }
 }
-
-extension JXValue : JXVal {
-}
-
 
 
 /// Shim for supporting `JXKit` functionality in the `JSContext` & `JSValue` classes on Objective-C-suppored platforms
@@ -99,6 +102,10 @@ extension JSContext : JXEnv {
         JSValue(undefinedIn: self)
     }
 
+    public func boolean(_ value: Bool) -> JSValue {
+        JSValue(bool: value, in: self)
+    }
+
     public func number<F>(_ value: F) -> JSValue where F : BinaryFloatingPoint {
         JSValue(double: Double(value), in: self)
     }
@@ -132,7 +139,6 @@ extension JSValue : JXVal {
         self.context // `JSValue.context` has a `JSContext!` type
     }
 
-
     @available(*, deprecated, message: "not yet implemented")
     public subscript(property: String) -> JSValue {
         get {
@@ -141,6 +147,11 @@ extension JSValue : JXVal {
 
         set {
         }
+    }
+
+    @available(*, deprecated, message: "not yet implemented")
+    public var numberValue: Double? {
+        wip(nil) // TODO
     }
 
     @available(*, deprecated, message: "not yet implemented")
@@ -157,6 +168,25 @@ extension JSValue : JXVal {
     public func hasProperty(_ value: String) -> Bool {
         wip(false) // TODO
     }
+
+    @available(*, deprecated, message: "not yet implemented")
+    public var dateValue: Date? {
+        wip(nil) // TODO
+    }
+
+    @available(*, deprecated, message: "not yet implemented")
+    public var array: [JSValue]? {
+        wip(nil) // TODO
+    }
+
+    @available(*, deprecated, message: "not yet implemented")
+    public var dictionary: [String : JSValue]? {
+        wip(nil) // TODO
+    }
 }
 #endif
 
+
+/// Work-in-progress, simply to highlight a line with a deprecation warning
+@available(*, deprecated, message: "work-in-progress")
+fileprivate func wip<T>(_ value: T) -> T { value }

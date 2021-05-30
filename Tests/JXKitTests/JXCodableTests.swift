@@ -93,7 +93,7 @@ final class JXCodableTests: XCTestCase {
         let ctx = JXContext()
         let dataValue = try ctx.encode(Data([1,2,3,4]))
         XCTAssertEqual("[object ArrayBuffer]", dataValue.stringValue)
-        XCTAssertEqual(4, dataValue["byteLength"].doubleValue)
+        XCTAssertEqual(4, dataValue["byteLength"].numberValue)
     }
 
     func testCodableDate() throws {
@@ -108,7 +108,7 @@ final class JXCodableTests: XCTestCase {
         let hypot = ctx["Math"]["hypot"]
         XCTAssert(hypot.isFunction)
         let result = hypot.call(withArguments: try [ctx.encode(3), ctx.encode(4)])
-        XCTAssertEqual(5, result.doubleValue)
+        XCTAssertEqual(5, result.numberValue)
     }
 
     /// An example of invoking `Math.hypot` in a wrapper function that takes an encodable argument and returns a Decodable retult.
@@ -142,7 +142,7 @@ final class JXCodableTests: XCTestCase {
         let ctx = JXContext()
 
         let htpy = JXValue(newFunctionIn: ctx) { ctx, this, args in
-            JXValue(double: sqrt(pow(args.first?["x"].doubleValue ?? 0.0, 2) + pow(args.first?["y"].doubleValue ?? 0.0, 2)), in: ctx)
+            JXValue(double: sqrt(pow(args.first?["x"].numberValue ?? 0.0, 2) + pow(args.first?["y"].numberValue ?? 0.0, 2)), in: ctx)
         }
 
         struct Args : Encodable {
@@ -151,7 +151,7 @@ final class JXCodableTests: XCTestCase {
         }
 
         func hfun(_ args: Args) throws -> Double? {
-            htpy.call(withArguments: [try ctx.encode(args)]).doubleValue
+            htpy.call(withArguments: [try ctx.encode(args)]).numberValue
         }
 
         XCTAssertEqual(5, try hfun(Args(x: 3, y: 4)))
