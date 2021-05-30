@@ -633,10 +633,19 @@ extension JXValue {
     ///   - property: The property's key (usually a string or number).
     ///
     /// - Returns: true if a property with the given key exists
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
     @discardableResult
     @inlinable public func hasProperty(_ property: JXValue) -> Bool {
-        JSValueIsObject(env.context, value) && JSObjectHasPropertyForKey(env.context, value, property.value, &env._currentError)
+        if !isObject { return false }
+
+        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
+            return JSObjectHasPropertyForKey(env.context, value, property.value, &env._currentError)
+        } else {
+            if let prop = property.stringValue {
+                return self[prop].isUndefined == false
+            } else {
+                return false
+            }
+        }
     }
 
     /// Deletes a property from an object or array.
@@ -645,10 +654,19 @@ extension JXValue {
     ///   - property: The property's name.
     ///
     /// - Returns: true if the delete operation succeeds, otherwise false.
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
     @discardableResult
     @inlinable public func deleteProperty(_ property: JXValue) -> Bool {
-        return JSObjectDeletePropertyForKey(env.context, value, property.value, &env._currentError)
+        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
+            return JSObjectDeletePropertyForKey(env.context, value, property.value, &env._currentError)
+        } else {
+            if let prop = property.stringValue {
+                let existed = self[prop].isUndefined == false
+                self[prop] = env.undefined()
+                return existed
+            } else {
+                return false
+            }
+        }
     }
 
     /// The value of the property.
