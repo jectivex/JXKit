@@ -222,7 +222,6 @@ extension JXContext {
             self.global[named] = exp
             return exp
         }
-
     }
 }
 
