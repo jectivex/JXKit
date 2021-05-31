@@ -50,6 +50,10 @@ extension JXContext : JXEnv {
         JXValue(string: String(value), in: self)
     }
 
+    @inlinable public func object() -> JXValue {
+        JXValue(newObjectIn: self)
+    }
+
     @inlinable public func date(_ value: Date) -> JXValue {
         JXValue(date: value, in: self)
     }
@@ -114,22 +118,26 @@ extension JSContext : JXEnv {
         JSValue(bool: value, in: self)
     }
 
-    public func number<F>(_ value: F) -> JSValue where F : BinaryFloatingPoint {
+    public func number<F : BinaryFloatingPoint>(_ value: F) -> JSValue {
         JSValue(double: Double(value), in: self)
     }
 
-    public func number<I>(_ value: I) -> JSValue where I : BinaryInteger {
+    public func number<I : BinaryInteger>(_ value: I) -> JSValue {
         JSValue(double: Double(value), in: self)
     }
 
-    public func string<S>(_ value: S) -> JSValue where S : StringProtocol {
+    public func string<S : StringProtocol>(_ value: S) -> JSValue {
         let value = value.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(value) }
         return JSValue(jsValueRef: JSValueMakeString(jsGlobalContextRef, value), in: self)
     }
 
+    @inlinable public func object() -> JSValue {
+        return JSValue(newObjectIn: self)
+    }
+
     @available(*, deprecated, message: "not yet implemented")
-    public func data<D>(_ value: D) -> JSValue where D : DataProtocol {
+    public func data<D: DataProtocol>(_ value: D) -> JSValue {
         wip(undefined()) // TODO
     }
 

@@ -211,6 +211,19 @@ extension JXContext {
     @inlinable open var properties: [String] {
         return global.properties
     }
+
+    /// Checks for the presence of a top-level "exports" variable and creates it if it isn't already an object.
+    @inlinable open func globalObject(property named: String) -> JXValue {
+        let exp = self.global[named]
+        if exp.isObject {
+            return exp
+        } else {
+            let exp = self.object()
+            self.global[named] = exp
+            return exp
+        }
+
+    }
 }
 
 public extension JXContext {
@@ -254,12 +267,12 @@ extension JXEnv {
     ///     try installScript(named: "esprima", in: .module)
     /// }
     /// ```
-    public func installModule(named name: String, in bundle: Bundle) throws {
+    public func installModule(named name: String, in bundle: Bundle) throws -> JXValType {
         guard let url = bundle.url(forResource: name, withExtension: "js", subdirectory: "Resources/JavaScript") else {
             throw JXContext.Errors.missingResource(name)
         }
 
-        try self.eval(url: url)
+        return try self.eval(url: url)
     }
 }
 
@@ -707,6 +720,7 @@ extension JXValue {
     /// The value of the property.
     @inlinable public subscript(propertyName: String) -> JXValue {
         get {
+            if !isObject { return env.undefined() }
             let property = JSStringCreateWithUTF8CString(propertyName)
             defer { JSStringRelease(property) }
             let result = JSObjectGetProperty(env.context, value, property, &env._currentError)
@@ -714,6 +728,7 @@ extension JXValue {
         }
 
         set {
+            if !isObject { return }
             let property = JSStringCreateWithUTF8CString(propertyName)
             defer { JSStringRelease(property) }
             JSObjectSetProperty(env.context, value, property, newValue.value, 0, &env._currentError)
