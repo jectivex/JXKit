@@ -53,6 +53,53 @@ open class JXContext {
         JSGlobalContextRelease(context)
     }
 
+    @discardableResult open func eval(this: JXValue? = nil, url: URL? = nil, script: String) throws -> JXValue {
+        try trying {
+            evaluateScript(script, this: this, withSourceURL: url, startingLineNumber: 0)
+        }
+    }
+
+    /// Checks for syntax errors in a string of JavaScript.
+    ///
+    /// - Parameters:
+    ///   - script: The script to check for syntax errors.
+    ///   - sourceURL: A URL for the script's source file. This is only used when reporting exceptions. Pass `nil` to omit source file information in exceptions.
+    ///   - startingLineNumber: An integer value specifying the script's starting line number in the file located at sourceURL. This is only used when reporting exceptions.
+    ///
+    /// - Returns: true if the script is syntactically correct; otherwise false.
+    @inlinable open func checkScriptSyntax(_ script: String, sourceURL: URL? = nil, startingLineNumber: Int = 0) -> Bool {
+
+        let script = script.withCString(JSStringCreateWithUTF8CString)
+        defer { JSStringRelease(script) }
+
+        let sourceURL = sourceURL?.absoluteString.withCString(JSStringCreateWithUTF8CString)
+        defer { sourceURL.map(JSStringRelease) }
+
+        return JSCheckScriptSyntax(context, script, sourceURL, Int32(startingLineNumber), &_currentError)
+    }
+
+    /// Evaluates a string of JavaScript.
+    ///
+    /// - Parameters:
+    ///   - script: The script to check for syntax errors.
+    ///   - this: The object to use as this or `nil` to use the global object as this.
+    ///   - sourceURL: A URL for the script's source file. This is only used when reporting exceptions. Pass `nil` to omit source file information in exceptions.
+    ///   - startingLineNumber: An integer value specifying the script's starting line number in the file located at sourceURL. This is only used when reporting exceptions.
+    ///
+    /// - Returns: true if the script is syntactically correct; otherwise false.
+    @discardableResult @inlinable open func evaluateScript(_ script: String, this: JXValue? = nil, withSourceURL sourceURL: URL? = nil, startingLineNumber: Int = 0) -> JXValue {
+
+        let script = script.withCString(JSStringCreateWithUTF8CString)
+        defer { JSStringRelease(script) }
+
+        let sourceURL = sourceURL?.absoluteString.withCString(JSStringCreateWithUTF8CString)
+        defer { sourceURL.map(JSStringRelease) }
+
+        let result = JSEvaluateScript(context, script, this?.value, sourceURL, Int32(startingLineNumber), &_currentError)
+
+        return result.map { JXValue(env: self, value: $0) } ?? JXValue(undefinedIn: self)
+    }
+
 }
 
 // MARK: JXValue
@@ -166,53 +213,10 @@ extension JXContext {
     }
 }
 
-extension JXContext {
-    
-    /// Checks for syntax errors in a string of JavaScript.
-    ///
-    /// - Parameters:
-    ///   - script: The script to check for syntax errors.
-    ///   - sourceURL: A URL for the script's source file. This is only used when reporting exceptions. Pass `nil` to omit source file information in exceptions.
-    ///   - startingLineNumber: An integer value specifying the script's starting line number in the file located at sourceURL. This is only used when reporting exceptions.
-    ///   
-    /// - Returns: true if the script is syntactically correct; otherwise false.
-    @inlinable open func checkScriptSyntax(_ script: String, sourceURL: URL? = nil, startingLineNumber: Int = 0) -> Bool {
-        
-        let script = script.withCString(JSStringCreateWithUTF8CString)
-        defer { JSStringRelease(script) }
-        
-        let sourceURL = sourceURL?.absoluteString.withCString(JSStringCreateWithUTF8CString)
-        defer { sourceURL.map(JSStringRelease) }
-        
-        return JSCheckScriptSyntax(context, script, sourceURL, Int32(startingLineNumber), &_currentError)
-    }
-    
-    /// Evaluates a string of JavaScript.
-    ///
-    /// - Parameters:
-    ///   - script: The script to check for syntax errors.
-    ///   - this: The object to use as this or `nil` to use the global object as this.
-    ///   - sourceURL: A URL for the script's source file. This is only used when reporting exceptions. Pass `nil` to omit source file information in exceptions.
-    ///   - startingLineNumber: An integer value specifying the script's starting line number in the file located at sourceURL. This is only used when reporting exceptions.
-    ///   
-    /// - Returns: true if the script is syntactically correct; otherwise false.
-    @discardableResult @inlinable open func evaluateScript(_ script: String, this: JXValue? = nil, withSourceURL sourceURL: URL? = nil, startingLineNumber: Int = 0) -> JXValue {
-        
-        let script = script.withCString(JSStringCreateWithUTF8CString)
-        defer { JSStringRelease(script) }
-        
-        let sourceURL = sourceURL?.absoluteString.withCString(JSStringCreateWithUTF8CString)
-        defer { sourceURL.map(JSStringRelease) }
-        
-        let result = JSEvaluateScript(context, script, this?.value, sourceURL, Int32(startingLineNumber), &_currentError)
-        
-        return result.map { JXValue(env: self, value: $0) } ?? JXValue(undefinedIn: self)
-    }
-}
-
-
 public extension JXContext {
     enum Errors : Error {
+        /// A required resource was missing
+        case missingResource(String)
         /// An evaluation error occurred
         case evaluationErrorString(String)
         /// An evaluation error occurred
@@ -225,18 +229,37 @@ public extension JXContext {
 }
 
 
-public extension JXContext {
+extension JXEnv {
     /// Runs the script at the given URL.
     /// - Parameter url: the URL from which to run the script
-    /// - Throws: an error if one occurs
-    @discardableResult func eval(url: URL) throws -> JXValue {
-        try eval(url: url, script: String(contentsOf: url, encoding: .utf8))
+    /// - Parameter this: the `this` for the script
+    /// - Throws: an error if the contents of the URL cannot be loaded, or if a JavaScript exception occurs
+    /// - Returns: the value as returned by the script (which may be `isUndefined` for void)
+    @discardableResult public func eval(url: URL, this: JXValue? = nil) throws -> JXValType {
+        try eval(this: this, url: url, script: String(contentsOf: url, encoding: .utf8))
     }
 
-    @discardableResult func eval(this: JXValue? = nil, url: URL? = nil, script: String) throws -> JXValue {
-        try trying {
-            evaluateScript(script, this: this, withSourceURL: url, startingLineNumber: 0)
+    /// Runs a script in the standard bundle module location `"Resources/JavaScript"`.
+    ///
+    /// - Parameters:
+    ///   - name: the name of the script to run (not including the ".js" extension)
+    ///   - bundle: the bundle from which the load the script (typically `Bundle.module` for a Swift package)
+    /// - Throws: an error if the script could not be located or if an error occured when running
+    ///
+    /// Example:
+    ///
+    /// ```swift
+    /// /// Installs the `esprima.js` JavaScript parser
+    /// public func installEsprima() throws {
+    ///     try installScript(named: "esprima", in: .module)
+    /// }
+    /// ```
+    public func installModule(named name: String, in bundle: Bundle) throws {
+        guard let url = bundle.url(forResource: name, withExtension: "js", subdirectory: "Resources/JavaScript") else {
+            throw JXContext.Errors.missingResource(name)
         }
+
+        try self.eval(url: url)
     }
 }
 
