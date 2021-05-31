@@ -1095,3 +1095,4 @@ public extension String {
         self.init(utf16CodeUnits: JSStringGetCharactersPtr(str), count: JSStringGetLength(str))
     }
 }
+

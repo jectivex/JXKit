@@ -18,8 +18,7 @@ let package = Package(
             ? [ .target(name: "JXKit") ]
             : [ .target(name: "CJSCore"), .target(name: "JXKit", dependencies: [ "CJSCore" ],
                     cSettings: [
-                        .unsafeFlags(["-I/usr/include/webkitgtk-4.0"]),
-                        .unsafeFlags(["-I/Library/Developer/Platforms/Windows.platform/Developer"])
+                        .unsafeFlags(["-I/usr/include/webkitgtk-4.0"])
                     ]
                 )
         ]) + [
