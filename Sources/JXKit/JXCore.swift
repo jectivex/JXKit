@@ -44,19 +44,21 @@ open class JXVirtualMachine {
 ///
 /// This wraps a `JSGlobalContextRef`, and is the equivalent of `JavaScriptCore.JSContext`
 open class JXContext {
-    public let virtualMachine: JXVirtualMachine
     public let context: JSGlobalContextRef
     open var currentError: JXValue?
     open var exceptionHandler: ((JXContext?, JXValue?) -> Void)?
 
     @inlinable public init() {
-        self.virtualMachine = JXVirtualMachine()
-        self.context = JSGlobalContextCreateInGroup(virtualMachine.group, nil)
+        self.context = JSGlobalContextCreate(nil)
     }
     
     @inlinable public init(virtualMachine: JXVirtualMachine) {
-        self.virtualMachine = virtualMachine
         self.context = JSGlobalContextCreateInGroup(virtualMachine.group, nil)
+    }
+
+    @inlinable public init(context: JSGlobalContextRef) {
+        self.context = context
+        JSGlobalContextRetain(context)
     }
 
     @inlinable deinit {

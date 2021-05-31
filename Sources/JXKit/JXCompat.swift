@@ -13,13 +13,13 @@ import CJSCore
 /// A reference type that a wraps `JSGlobalContextRef`.
 ///
 /// - Note: This protocol is implemented by both `JXKit.JXContext` and `JavaScriptCore.JSContext` to enable migration & inter-operability between the frameworks.
-public protocol JavaScriptCoreContext : AnyObject {
+public protocol JSCEnv : JXEnv {
     /// The JavaScriptCore's underlying context
     var context: JSContextRef { get }
 }
 
 /// `JXContext.context` already exists, so conformance is automatic
-extension JXContext : JavaScriptCoreContext { }
+extension JXContext : JSCEnv { }
 
 
 extension JXValue : JXVal {
@@ -71,7 +71,7 @@ extension JXContext : JXEnv {
 
 import JavaScriptCore
 
-extension JSContext : JavaScriptCoreContext {
+extension JSContext : JSCEnv {
     /// `JSContext.context` is the `jsGlobalContextRef` value
     public var context: JSGlobalContextRef { jsGlobalContextRef }
 }
@@ -138,6 +138,35 @@ extension JSContext : JXEnv {
         wip(undefined()) // TODO
     }
 }
+
+extension JXContext {
+    /// Converts between `JXKit.JXContext` and `JavaScriptCore.JSContext`
+    var asJSContext: JSContext {
+        JSContext(jsGlobalContextRef: self.context)
+    }
+}
+
+extension JXValue {
+    /// Converts between `JXKit.JXValue` and `JavaScriptCore.JSValue`
+    var asJSValue: JSValue {
+        JSValue(jsValueRef: self.value, in: self.env.asJSContext)
+    }
+}
+
+extension JSContext {
+    /// Converts between `JXKit.JXContext` and `JavaScriptCore.JSContext`
+    var asJXContext: JXContext {
+        JXContext(context: self.context)
+    }
+}
+
+extension JSValue {
+    /// Converts between `JXKit.JXValue` and `JavaScriptCore.JSValue`
+    var asJXValue: JXValue {
+        JXValue(env: env.asJXContext, value: jsValueRef)
+    }
+}
+
 
 /// Support for `JXVal` in `JavaScriptCore`. Useful for porting from `JavaScriptCore` to `JXCore`
 extension JSValue : JXVal {
