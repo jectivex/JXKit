@@ -129,7 +129,7 @@ class JXCoreTests: XCTestCase {
     @available(macOS 10.12, macCatalyst 13.0, iOS 10.0, tvOS 10.0, *)
     func testArrayBufferWithBytesNoCopy() {
         var flag = 0
-        
+
         do {
             let context = JXContext()
             var bytes: [UInt8] = [1, 2, 3, 4, 5, 6, 7, 8]
@@ -143,12 +143,11 @@ class JXCoreTests: XCTestCase {
                 XCTAssertTrue(context.global["buffer"].isArrayBuffer)
                 XCTAssertEqual(context.global["buffer"].byteLength, 8)
             }
-            XCTAssertEqual(flag, 0) // not yet deallocated
-         }
+        }
 
         XCTAssertEqual(flag, 1)
     }
-    
+
     @available(macOS 10.12, macCatalyst 13.0, iOS 10.0, tvOS 10.0, *)
     func testDataView() {
         let context = JXContext()

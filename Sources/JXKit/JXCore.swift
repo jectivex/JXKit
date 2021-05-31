@@ -21,47 +21,35 @@ import JavaScriptCore
 import CJSCore
 #endif
 
-// MARK: JXVirtualMachine
-
-/// A JavaScript virtual machine.
-///
-/// This wraps a `JSContextGroupRef`, and is the equivalent of `JavaScriptCore.JSVirtualMachine`
-open class JXVirtualMachine {
-    @usableFromInline let group: JSContextGroupRef
-
-    @inlinable public init() {
-        self.group = JSContextGroupCreate()
-    }
-
-    @inlinable deinit {
-        JSContextGroupRelease(group)
-    }
-}
-
 // MARK: JXContext
 
 /// A JavaScript execution context.
 ///
 /// This wraps a `JSGlobalContextRef`, and is the equivalent of `JavaScriptCore.JSContext`
 open class JXContext {
+    public let group: JXContextGroup
     public let context: JSGlobalContextRef
     open var currentError: JXValue?
     open var exceptionHandler: ((JXContext?, JXValue?) -> Void)?
 
-    @inlinable public init() {
-        self.context = JSGlobalContextCreate(nil)
-    }
-    
-    @inlinable public init(virtualMachine: JXVirtualMachine) {
-        self.context = JSGlobalContextCreateInGroup(virtualMachine.group, nil)
+    public init(group: JXContextGroup) {
+        self.group = group
+        self.context = JSGlobalContextCreateInGroup(group.group, nil)
     }
 
-    @inlinable public init(context: JSGlobalContextRef) {
+    /// Wraps an existing `JSGlobalContextRef` in a `JXContext`. Address space will be shared between both contexts.
+    public init(context: JSGlobalContextRef) {
+        self.group = JXContextGroup(group: JSContextGetGroup(context))
         self.context = context
         JSGlobalContextRetain(context)
     }
 
-    @inlinable deinit {
+    /// Creates a new `JXContext` with a new `JXContextGroup` virtual machine.
+    public convenience init() {
+        self.init(group: JXContextGroup())
+    }
+
+    deinit {
         JSGlobalContextRelease(context)
     }
 
@@ -76,14 +64,36 @@ open class JXValue {
     public let env: JXContext
     public let value: JSValueRef
 
-    @inlinable public init(env: JXContext, value: JSValueRef) {
+    public init(env: JXContext, value: JSValueRef) {
         JSValueProtect(env.context, value)
         self.env = env
         self.value = value
     }
 
-    @inlinable deinit {
+    deinit {
         JSValueUnprotect(env.context, value)
+    }
+}
+
+// MARK: JXContextGroup / JSVirtualMachine
+
+/// A JavaScript virtual machine.
+///
+/// - Note: This wraps a `JSContextGroupRef`, and is the equivalent of `JavaScriptCore.JSVirtualMachine`
+open class JXContextGroup {
+    @usableFromInline let group: JSContextGroupRef
+
+    public init() {
+        self.group = JSContextGroupCreate()
+    }
+
+    public init(group: JSContextGroupRef) {
+        self.group = group
+        JSContextGroupRetain(group)
+    }
+
+    deinit {
+        JSContextGroupRelease(group)
     }
 }
 
