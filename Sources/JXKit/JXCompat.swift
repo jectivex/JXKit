@@ -42,6 +42,13 @@ extension JXContext : JSCEnv {
 }
 
 
+extension JXContextGroup : JXVM {
+    public func env() -> JXContext {
+        JXContext(group: self)
+    }
+}
+
+
 extension JXValue : JXVal {
 }
 
@@ -94,6 +101,13 @@ extension JXContext : JXEnv {
 // MARK: JavaScriptCore.JSContext : JXEnv
 
 import JavaScriptCore
+
+
+extension JSVirtualMachine : JXVM {
+    public func env() -> JSContext {
+        JSContext(virtualMachine: self)
+    }
+}
 
 extension JSContext : JSCEnv {
     /// `JSContext.context` is the `jsGlobalContextRef` value

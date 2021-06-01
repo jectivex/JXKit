@@ -7,7 +7,16 @@
 //
 import Foundation
 
-/// A `JXEnv` is an abstraction of a JavaScript execution environment. The associated `ValueType` represents the value encapsulations type.
+/// A `JXVM` is an abstraction of a JavaScript vitual machine. The associated `EnvType` represents the environment encapsulations type.
+public protocol JXVM : AnyObject {
+    /// The value type that is associated with this environment
+    associatedtype EnvType : JXEnv
+
+    /// Create a new environment from this VM
+    func env() -> EnvType
+}
+
+/// A `JXEnv` is an abstraction of a JavaScript execution environment. The associated `ValueType` represents the value encapsulationd type.
 public protocol JXEnv : AnyObject {
     /// The value type that is associated with this environment
     associatedtype JXValType : JXVal

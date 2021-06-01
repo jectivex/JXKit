@@ -261,8 +261,8 @@ extension JXEnv {
     /// Example:
     ///
     /// ```swift
-    /// /// Installs the `JSSwift` module
-    /// public func installJSSwift() throws {
+    /// /// Installs the `esprima` module used by `JavaScriptParser`
+    /// public func installJavaScriptParser() throws {
     ///     try installModule(named: "esprima", in: .module)
     /// }
     /// ```
