@@ -19,7 +19,27 @@ public protocol JSCEnv : JXEnv {
 }
 
 /// `JXContext.context` already exists, so conformance is automatic
-extension JXContext : JSCEnv { }
+extension JXContext : JSCEnv {
+    /// Whether the `JavaScriptCore` implementation on the current platform phohibits writable and executable memory (`mmap(MAP_JIT)`), thereby disabling the fast-path of the JavaScriptCore framework.
+    ///
+    /// Without the Allow Execution of JIT-compiled Code Entitlement, frameworks that rely on just-in-time (JIT) compilation will fall back to an interpreter.
+    ///
+    /// To add the entitlement to your app, first enable the Hardened Runtime capability in Xcode, and then under Runtime Exceptions, select Allow Execution of JIT-compiled Code.
+    ///
+    /// See: [Allow Execution of JIT-compiled Code Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_cs_allow-jit)
+    public static let isHobbled: Bool = {
+        // we could check for the hardened runtime's "com.apple.security.cs.allow-jit" property, but it is easier to just attempt to mmap PROT_WRITE|PROT_EXEC and see if it was successful
+
+        let ptr = mmap(nil, Int(getpagesize()), PROT_WRITE|PROT_EXEC, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0)
+        if ptr == MAP_FAILED {
+            return true // JIT forbidden
+        } else {
+            munmap(ptr, Int(getpagesize()))
+            return false
+        }
+    }()
+
+}
 
 
 extension JXValue : JXVal {
@@ -212,6 +232,11 @@ extension JSValue : JXVal {
     @available(*, deprecated, message: "not yet implemented")
     public func hasProperty(_ value: String) -> Bool {
         wip(false) // TODO
+    }
+
+    @available(*, deprecated, message: "not yet implemented")
+    public var isDate: Bool {
+        return false
     }
 
     @available(*, deprecated, message: "not yet implemented")

@@ -33,7 +33,9 @@ public protocol JXEnv : AnyObject {
     /// Creates a new object in the environment
     func object() -> JXValType
 
-    /// Creates a data in the environment from the given value
+    /// Creates a data in the environment from the given value.
+    ///
+    /// On platform where array buffers are unsupported, this will return `undefined()`
     func data<D: DataProtocol>(_ value: D) -> JXValType
 
     /// Creates a date in the environment from the given value
@@ -74,6 +76,8 @@ public protocol JXVal : AnyObject {
     var isString: Bool { get }
     var stringValue: String? { get }
 
+    /// If this is a date type, returns the Date value
+    var isDate: Bool { get }
     var dateValue: Date? { get }
 
     /// Returns the JavaScript array.

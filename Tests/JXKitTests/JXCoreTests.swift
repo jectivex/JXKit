@@ -7,6 +7,15 @@ import JXKit
 import XCTest
 
 class JXCoreTests: XCTestCase {
+
+    func testHobbled() {
+        #if os(iOS) || os(tvOS)
+        XCTAssertEqual(true, JXContext.isHobbled)
+        #else
+        XCTAssertEqual(false, JXContext.isHobbled)
+        #endif
+    }
+
     func testFunction1() {
         let context = JXContext()
 
