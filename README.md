@@ -21,7 +21,7 @@ let ctx = JXContext()
 let hypot = ctx["Math"]["hypot"]
 assert(hypot.isFunction == true)
 let result = hypot.call(withArguments: try [ctx.encode(3), ctx.encode(4)])
-assert(result.doubleValue == 5)
+assert(result.numberValue == 5)
 ```
 
 ### Codable passing
