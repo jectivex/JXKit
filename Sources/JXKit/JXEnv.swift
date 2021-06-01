@@ -87,21 +87,21 @@ public protocol JXVal : AnyObject {
 }
 
 
-public extension JXEnv {
+extension JXEnv {
     /// Evaluates with a `nil` this
-    func eval(_ script: String) throws -> JXValType {
+    public func eval(_ script: String) throws -> JXValType {
         try eval(this: nil, url: nil, script: script)
     }
 
     /// Tries to execute the given operation, and throws any exceptions that may exists
-    func trying<T>(operation: () throws -> T) throws -> T {
+    @inlinable public func trying<T>(operation: () throws -> T) throws -> T {
         let result = try operation()
         try throwException()
         return result
     }
 
     /// If an exception occurred, throw it and clear the current exception
-    func throwException() throws {
+    public func throwException() throws {
         if let error = self.currentError {
             defer { self.currentError = nil }
             // TODO: extract standard error properties into a structured Error instance
