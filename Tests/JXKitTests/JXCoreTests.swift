@@ -10,7 +10,9 @@ class JXCoreTests: XCTestCase {
 
     func testHobbled() {
         #if os(iOS) || os(tvOS)
-        XCTAssertEqual(true, JXContext.isHobbled)
+        #if !targetEnvironment(simulator)
+        XCTAssertEqual(true, JXContext.isHobbled) // only check on devices, since simulator seems to permit executable pages
+        #endif
         #else
         XCTAssertEqual(false, JXContext.isHobbled)
         #endif
