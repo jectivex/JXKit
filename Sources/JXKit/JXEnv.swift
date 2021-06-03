@@ -85,6 +85,10 @@ public protocol JXVal : AnyObject {
     var isString: Bool { get }
     var stringValue: String? { get }
 
+    var isFunction: Bool { get }
+    /// Invokes this function with the specified arguments
+    func call(withArguments arguments: [EnvType.JXValType], this: EnvType.JXValType?) -> EnvType.JXValType
+
     /// If this is a date type, returns the Date value
     var isDate: Bool { get }
     var dateValue: Date? { get }

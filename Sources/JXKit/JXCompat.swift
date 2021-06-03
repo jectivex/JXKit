@@ -267,6 +267,16 @@ extension JSValue : JXVal {
     public var dictionary: [String : JSValue]? {
         wip(nil) // TODO
     }
+
+    public var isFunction: Bool {
+        return isObject && JSObjectIsFunction(env.context, jsValueRef)
+    }
+
+    @available(*, deprecated, message: "not yet implemented")
+    public func call(withArguments arguments: [JSValue], this: JSValue?) -> JSValue {
+        wip(env.undefined()) // TODO
+    }
+
 }
 #endif
 

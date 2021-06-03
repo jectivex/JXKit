@@ -261,17 +261,18 @@ extension JXEnv {
     /// Example:
     ///
     /// ```swift
-    /// /// Installs the `esprima` module used by `JavaScriptParser`
+    /// /// Installs the `esprima` module used by `JavaScriptParser`.
+    /// /// This will execute the bundle's `Resources/esprima.js` resource.
     /// public func installJavaScriptParser() throws {
     ///     try installModule(named: "esprima", in: .module)
     /// }
     /// ```
     public func installModule(named name: String, in bundle: Bundle) throws -> JXValType {
-        guard let url = bundle.url(forResource: name, withExtension: "js", subdirectory: "Resources/JavaScript") else {
+        guard let url = bundle.url(forResource: name, withExtension: "js") else {
             throw JXContext.Errors.missingResource(name)
         }
 
-        return try self.eval(url: url)
+        return try eval(url: url)
     }
 }
 
@@ -762,7 +763,7 @@ extension JXValue {
         let str = JSValueCreateJSONString(env.context, value, indent, &ex)
         if let ex = ex { throw JXValue(env: env, value: ex) }
         defer { str.map(JSStringRelease) }
-        return str.map(String.init) ?? "{}"
+        return str.map(String.init) ?? "null"
     }
 }
 
