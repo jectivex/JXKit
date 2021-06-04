@@ -23,7 +23,9 @@ import CJSCore
 
 // MARK: JXContext
 
-/// A JavaScript execution context.
+/// A JavaScript execution context. This is a cross-platform analogue to the Objective-C `JavaScriptCore.JSContext`.
+///
+/// The `JXContext` used the system's `JavaScriptCore` C interface on Apple platforms, and `webkitgtk-4.0` on Linux platforms. Windows is TBD.
 ///
 /// This wraps a `JSGlobalContextRef`, and is the equivalent of `JavaScriptCore.JSContext`
 open class JXContext {
@@ -32,6 +34,7 @@ open class JXContext {
     open var currentError: JXValue?
     open var exceptionHandler: ((JXContext?, JXValue?) -> Void)?
 
+    /// Creates `JXContext` with the given `JXContextGroup`.  `JXValue` references may be used interchangably with multiple instances of `JXContext` with the same `JXContextGroup`, but sharing between  separate `JXContextGroup`s will result in undefined behavior.
     public init(group: JXContextGroup) {
         self.group = group
         self.context = JSGlobalContextCreateInGroup(group.group, nil)
@@ -124,7 +127,9 @@ open class JXValue {
 
 // MARK: JXContextGroup / JSVirtualMachine
 
-/// A JavaScript virtual machine.
+/// A JavaScript virtual machine that is used by a `JXContextGroup` instance.
+///
+/// `JXValue` references may be used interchangably with separate `JXContext`  instances that created from the same `JXContextGroup`, but sharing between  different `JXContextGroup`s will result in undefined behavior.
 ///
 /// - Note: This wraps a `JSContextGroupRef`, and is the equivalent of `JavaScriptCore.JSVirtualMachine`
 open class JXContextGroup {
