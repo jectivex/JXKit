@@ -969,7 +969,7 @@ extension JXValue {
 
 
 /// A descriptor for property’s definition
-public struct JSPropertyDescriptor {
+public struct JXProp {
     public let value: JXValue?
     public let writable: Bool?
     fileprivate let _getter: JXValue?
@@ -1018,7 +1018,7 @@ public struct JSPropertyDescriptor {
     /// descriptor to create or modify the attributes of an accessor property on an object (replacing any existing data property).
     ///
     /// ```
-    /// let desc = JSPropertyDescriptor(
+    /// let desc = JXProp(
     ///     getter: { this in this["private_val"] },
     ///     setter: { this, newValue in this["private_val"] = newValue }
     /// )
@@ -1072,7 +1072,7 @@ extension JXValue {
     ///   
     /// - Returns: true if the operation succeeds, otherwise false.
     @discardableResult
-    public func defineProperty(_ property: String, _ descriptor: JSPropertyDescriptor) -> Bool {
+    public func defineProperty(_ property: String, _ descriptor: JXProp) -> Bool {
         
         let desc = JXValue(newObjectIn: env)
         
