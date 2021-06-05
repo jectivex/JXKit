@@ -107,14 +107,17 @@ open class JXContext {
 
 // MARK: JXValue
 
+/// The underlying type that represents a value in the JavaScript environment
+public typealias JXValueRef = JSValueRef
+
 /// A JavaScript object.
 ///
 /// This wraps a `JSObjectRef`, and is the equivalent of `JavaScriptCore.JSValue`
 open class JXValue {
     public let env: JXContext
-    public let value: JSValueRef
+    public let value: JXValueRef
 
-    public init(env: JXContext, value: JSValueRef) {
+    public init(env: JXContext, value: JXValueRef) {
         JSValueProtect(env.context, value)
         self.env = env
         self.value = value
@@ -1113,8 +1116,13 @@ extension JXValue {
                 return JXValue(undefinedIn: context)
             }
         }
-        if let configurable = descriptor.configurable { desc["configurable"] = JXValue(bool: configurable, in: env) }
-        if let enumerable = descriptor.enumerable { desc["enumerable"] = JXValue(bool: enumerable, in: env) }
+        if let configurable = descriptor.configurable {
+            desc["configurable"] = JXValue(bool: configurable, in: env)
+        }
+
+        if let enumerable = descriptor.enumerable {
+            desc["enumerable"] = JXValue(bool: enumerable, in: env)
+        }
 
         env.objectPrototype.invokeMethod("defineProperty", withArguments: [self, JXValue(string: property, in: env), desc])
 
