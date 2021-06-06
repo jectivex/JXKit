@@ -107,8 +107,13 @@ open class JXContext {
 
 // MARK: JXValue
 
+public typealias JXContextRef = JSContextRef
+
 /// The underlying type that represents a value in the JavaScript environment
 public typealias JXValueRef = JSValueRef
+
+/// The underlying type that represents a string in the JavaScript environment
+public typealias JXStringRef = JSStringRef
 
 /// A JavaScript object.
 ///
@@ -838,7 +843,6 @@ extension JXValue {
 }
 
 extension JXValue {
-
     /// Tests whether a JavaScript value’s type is the `ArrayBuffer` type.
     public var isArrayBuffer: Bool {
         return self.isInstance(of: env.arrayBufferPrototype)
@@ -863,8 +867,8 @@ extension JXValue {
 
 
 public extension String {
-    /// Creates a `Swift.String` from a `JSStringRef`
-    @inlinable init(_ str: JSStringRef) {
+    /// Creates a `Swift.String` from a `JXStringRef`
+    @inlinable init(_ str: JXStringRef) {
         self.init(utf16CodeUnits: JSStringGetCharactersPtr(str), count: JSStringGetLength(str))
     }
 }
@@ -886,9 +890,8 @@ extension JXValue {
     ///
     /// - Note: This object is callable as a function (due to `JSClassDefinition.callAsFunction`), but the JavaScript runtime doesn't treat is exactly like a function. For example, you cannot call "apply" on it. It could be better to use `JSObjectMakeFunctionWithCallback`, which may act more like a "true" JavaScript function.
     public convenience init(newFunctionIn env: JXContext, callback: @escaping JXFunction) {
-
-        let info: UnsafeMutablePointer<JSObjectCallbackInfo> = .allocate(capacity: 1)
-        info.initialize(to: JSObjectCallbackInfo(context: env, callback: callback))
+        let info: UnsafeMutablePointer<JXFunctionInfo> = .allocate(capacity: 1)
+        info.initialize(to: JXFunctionInfo(context: env, callback: callback))
 
         var def = JSClassDefinition()
         def.finalize = function_finalize
@@ -902,29 +905,23 @@ extension JXValue {
         self.init(env: env, value: JSObjectMake(env.context, _class, info))
     }
 }
-private struct JSObjectCallbackInfo {
-    unowned let context: JXContext
 
+private struct JXFunctionInfo {
+    unowned let context: JXContext
     let callback: JXFunction
 }
 
 private func function_finalize(_ object: JSObjectRef?) -> Void {
 
-    let info = JSObjectGetPrivate(object).assumingMemoryBound(to: JSObjectCallbackInfo.self)
+    let info = JSObjectGetPrivate(object).assumingMemoryBound(to: JXFunctionInfo.self)
 
     info.deinitialize(count: 1)
     info.deallocate()
 }
 
-private func function_constructor(
-    _ ctx: JSContextRef?,
-    _ object: JSObjectRef?,
-    _ argumentCount: Int,
-    _ arguments: UnsafePointer<JSValueRef?>?,
-    _ exception: UnsafeMutablePointer<JSValueRef?>?
-) -> JSObjectRef? {
+private func function_constructor(_ ctx: JXContextRef?, _ object: JSObjectRef?, _ argumentCount: Int, _ arguments: UnsafePointer<JSValueRef?>?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> JSObjectRef? {
 
-    let info = JSObjectGetPrivate(object).assumingMemoryBound(to: JSObjectCallbackInfo.self)
+    let info = JSObjectGetPrivate(object).assumingMemoryBound(to: JXFunctionInfo.self)
     let env = info.pointee.context
 
     do {
@@ -942,53 +939,30 @@ private func function_constructor(
     }
 }
 
-private func function_callback(
-    _ ctx: JSContextRef?,
-    _ object: JSObjectRef?,
-    _ this: JSObjectRef?,
-    _ argumentCount: Int,
-    _ arguments: UnsafePointer<JSValueRef?>?,
-    _ exception: UnsafeMutablePointer<JSValueRef?>?
-) -> JSValueRef? {
+private func function_callback(_ ctx: JXContextRef?, _ object: JSObjectRef?, _ this: JSObjectRef?, _ argumentCount: Int, _ arguments: UnsafePointer<JSValueRef?>?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> JSValueRef? {
 
-    let info = JSObjectGetPrivate(object).assumingMemoryBound(to: JSObjectCallbackInfo.self)
+    let info = JSObjectGetPrivate(object).assumingMemoryBound(to: JXFunctionInfo.self)
     let env = info.pointee.context
 
     do {
-
         let this = this.map { JXValue(env: env, value: $0) }
         let arguments = (0..<argumentCount).map { JXValue(env: env, value: arguments![$0]!) }
         let result = try info.pointee.callback(env, this, arguments)
-
         return result.value
-
     } catch let error {
-
         let error = error as? JXValue ?? JXValue(newErrorFromMessage: "\(error)", in: env)
         exception?.pointee = error.value
-
         return nil
     }
 }
 
-private func function_instanceof(
-    _ ctx: JSContextRef?,
-    _ constructor: JSObjectRef?,
-    _ possibleInstance: JSValueRef?,
-    _ exception: UnsafeMutablePointer<JSValueRef?>?
-) -> Bool {
-
-    let info = JSObjectGetPrivate(constructor).assumingMemoryBound(to: JSObjectCallbackInfo.self)
-
+private func function_instanceof(_ ctx: JXContextRef?, _ constructor: JSObjectRef?, _ possibleInstance: JSValueRef?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> Bool {
+    let info = JSObjectGetPrivate(constructor).assumingMemoryBound(to: JXFunctionInfo.self)
     let env = info.pointee.context
-
-    let prototype_0 = JSObjectGetPrototype(env.context, constructor)
-    let prototype_1 = JSObjectGetPrototype(env.context, possibleInstance)
-
-    return JSValueIsStrictEqual(env.context, prototype_0, prototype_1)
+    let pt1 = JSObjectGetPrototype(env.context, constructor)
+    let pt2 = JSObjectGetPrototype(env.context, possibleInstance)
+    return JSValueIsStrictEqual(env.context, pt1, pt2)
 }
-
-
 
 
 // MARK: Properties
