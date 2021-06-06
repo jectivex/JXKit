@@ -968,7 +968,7 @@ private func function_instanceof(_ ctx: JXContextRef?, _ constructor: JSObjectRe
 // MARK: Properties
 
 /// A descriptor for property’s definition
-public struct JXProp {
+public struct JXProperty {
     public let value: JXValue?
     public let writable: Bool?
     fileprivate let _getter: JXValue?
@@ -1017,7 +1017,7 @@ public struct JXProp {
     /// descriptor to create or modify the attributes of an accessor property on an object (replacing any existing data property).
     ///
     /// ```
-    /// let desc = JXProp(
+    /// let desc = JXProperty(
     ///     getter: { this in this["private_val"] },
     ///     setter: { this, newValue in this["private_val"] = newValue }
     /// )
@@ -1071,7 +1071,7 @@ extension JXValue {
     ///
     /// - Returns: true if the operation succeeds, otherwise false.
     @discardableResult
-    public func defineProperty(_ property: String, _ descriptor: JXProp) -> Bool {
+    public func defineProperty(_ property: String, _ descriptor: JXProperty) -> Bool {
 
         let desc = JXValue(newObjectIn: env)
 

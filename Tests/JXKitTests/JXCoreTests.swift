@@ -89,7 +89,7 @@ class JXCoreTests: XCTestCase {
 
         context.global["obj"] = JXValue(newObjectIn: context)
 
-        let desc = JXProp(
+        let desc = JXProperty(
             getter: { this in JXValue(double: 3, in: this.env) }
         )
 
@@ -106,7 +106,7 @@ class JXCoreTests: XCTestCase {
 
         context.global["obj"] = JXValue(newObjectIn: context)
 
-        let desc = JXProp(
+        let desc = JXProperty(
             getter: { this in this["number_container"] },
             setter: { this, newValue in this["number_container"] = newValue }
         )
