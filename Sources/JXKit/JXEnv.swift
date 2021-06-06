@@ -39,6 +39,9 @@ public protocol JXEnv : AnyObject {
     /// Creates a string in the environment from the given value
     func string<S: StringProtocol>(_ value: S) -> JXValType
 
+    /// Creates a new array in the environment
+    func array(_ values: [JXValType]) -> JXValType
+
     /// Creates a new object in the environment
     func object() -> JXValType
 

@@ -81,6 +81,16 @@ extension JXContext : JXEnv {
         JXValue(newObjectIn: self)
     }
 
+    /// Creates a new array in the environment
+    @inlinable public func array(_ values: [JXValue]) -> JXValue {
+        let array = JXValue(newArrayIn: self)
+        for (index, value) in values.enumerated() {
+            array[index] = value
+        }
+        return array
+    }
+
+
     @inlinable public func date(_ value: Date) -> JXValue {
         JXValue(date: value, in: self)
     }
@@ -168,6 +178,14 @@ extension JSContext : JXEnv {
 
     @inlinable public func object() -> JSValue {
         return JSValue(newObjectIn: self)
+    }
+
+    @inlinable public func array(_ values: [JSValue]) -> JSValue {
+        guard let array = JSValue(newArrayIn: self) else { return undefined() }
+        for (index, value) in values.enumerated() {
+            array.setObject(value, atIndexedSubscript: index)
+        }
+        return array
     }
 
     @available(*, deprecated, message: "not yet implemented")
