@@ -263,30 +263,6 @@ extension JXEnv {
     @discardableResult public func eval(url: URL, this: JXValue? = nil) throws -> JXValType {
         try eval(this: this, url: url, script: String(contentsOf: url, encoding: .utf8))
     }
-
-    /// Runs a script in the standard bundle module location `"Resources/JavaScript"`.
-    ///
-    /// - Parameters:
-    ///   - name: the name of the script to run (not including the ".js" extension)
-    ///   - bundle: the bundle from which the load the script (typically `Bundle.module` for a Swift package)
-    /// - Throws: an error if the script could not be located or if an error occured when running
-    ///
-    /// Example:
-    ///
-    /// ```swift
-    /// /// Installs the `esprima` module used by `JavaScriptParser`.
-    /// /// This will execute the bundle's `Resources/esprima.js` resource.
-    /// public func installJavaScriptParser() throws {
-    ///     try installModule(named: "esprima", in: .module)
-    /// }
-    /// ```
-    public func installModule(named name: String, in bundle: Bundle) throws -> JXValType {
-        guard let url = bundle.url(forResource: name, withExtension: "js") else {
-            throw JXContext.Errors.missingResource(name)
-        }
-
-        return try eval(url: url)
-    }
 }
 
 
