@@ -246,14 +246,34 @@ extension JSValue : JXVal {
         }
     }
 
-    @available(*, deprecated, message: "not yet implemented")
-    public var numberValue: Double? {
-        wip(nil) // TODO
+    /// Returns the JavaScript boolean value.
+    @inlinable public var booleanValue: Bool {
+        return JSValueToBoolean(env.context, jsValueRef)
     }
 
-    @available(*, deprecated, message: "not yet implemented")
-    public var stringValue: String? {
-        wip(nil) // TODO
+    @inlinable public var isArray: Bool {
+        let result = env.arrayPrototype.invokeMethod("isArray", withArguments: [self])
+        return JSValueToBoolean(env.context, result?.jsValueRef)
+    }
+
+    /// Returns the JavaScript number value.
+    @inlinable public var numberValue: Double? {
+        var exception: JSObjectRef?
+        let result = JSValueToNumber(env.context, jsValueRef, &exception)
+        return exception == nil ? result : nil
+    }
+
+    /// Returns the JavaScript string value.
+    @inlinable public var stringValue: String? {
+        let str = JSValueToStringCopy(env.context, jsValueRef, nil)
+        defer { str.map(JSStringRelease) }
+        return str.map(String.init)
+    }
+
+    /// Returns the JavaScript date value.
+    @inlinable public var dateValue: Date? {
+        let result = self.invokeMethod("toISOString", withArguments: [])
+        return result?.stringValue.flatMap { JXValue.rfc3339.date(from: $0) }
     }
 
     @available(*, deprecated, message: "not yet implemented")
@@ -266,14 +286,8 @@ extension JSValue : JXVal {
         wip(false) // TODO
     }
 
-    @available(*, deprecated, message: "not yet implemented")
     public var isDate: Bool {
-        return false
-    }
-
-    @available(*, deprecated, message: "not yet implemented")
-    public var dateValue: Date? {
-        wip(nil) // TODO
+        return self.isInstance(of: env.datePrototype)
     }
 
     @available(*, deprecated, message: "not yet implemented")
@@ -284,6 +298,10 @@ extension JSValue : JXVal {
     @available(*, deprecated, message: "not yet implemented")
     public var dictionary: [String : JSValue]? {
         wip(nil) // TODO
+    }
+
+    public var isBoolean: Bool {
+        JSValueIsBoolean(env.context, jsValueRef)
     }
 
     public var isFunction: Bool {

@@ -10,6 +10,13 @@
 
 import Foundation
 
+extension JXVal {
+    /// Returns true if the value is either null or undefined
+    @inlinable var isNullOrUndefined: Bool {
+        isUndefined || isNull
+    }
+}
+
 public extension JXContext {
     /// Encodes the given object into this context
     func encode<T: Encodable>(_ value: T) throws -> JXValue {
@@ -758,7 +765,7 @@ fileprivate class __JSDecoder : Decoder {
 
     // MARK: - Decoder Methods
     public func container<Key>(keyedBy type: Key.Type) throws -> KeyedDecodingContainer<Key> {
-        guard !(self.storage.topContainer.isNull) else {
+        guard !(self.storage.topContainer.isNullOrUndefined) else {
             throw DecodingError.valueNotFound(KeyedDecodingContainer<Key>.self,
                                               DecodingError.Context(codingPath: self.codingPath,
                                                       debugDescription: "Cannot get keyed decoding container -- found null value instead."))
@@ -773,7 +780,7 @@ fileprivate class __JSDecoder : Decoder {
     }
 
     public func unkeyedContainer() throws -> UnkeyedDecodingContainer {
-        guard !(self.storage.topContainer.isNull) else {
+        guard !(self.storage.topContainer.isNullOrUndefined) else {
             throw DecodingError.valueNotFound(UnkeyedDecodingContainer.self,
                                               DecodingError.Context(codingPath: self.codingPath,
                                                       debugDescription: "Cannot get unkeyed decoding container -- found null value instead."))
@@ -854,7 +861,7 @@ fileprivate struct _JSKeyedDecodingContainer<K : CodingKey> : KeyedDecodingConta
     }
 
     public func decodeNil(forKey key: Key) throws -> Bool {
-        self.container[key.stringValue]?.isNull == true
+        self.container[key.stringValue]?.isNullOrUndefined == true
     }
 
     public func decode(_ type: Bool.Type, forKey key: Key) throws -> Bool {
@@ -1170,7 +1177,7 @@ fileprivate struct _ScriptUnkeyedDecodingContainer : UnkeyedDecodingContainer {
             throw DecodingError.valueNotFound(Any?.self, DecodingError.Context(codingPath: self.decoder.codingPath + [_JSKey(index: self.currentIndex)], debugDescription: "Unkeyed container is at end."))
         }
 
-        if self.container[self.currentIndex].isNull {
+        if self.container[self.currentIndex].isNullOrUndefined {
             self.currentIndex += 1
             return true
         } else {
@@ -1429,7 +1436,7 @@ fileprivate struct _ScriptUnkeyedDecodingContainer : UnkeyedDecodingContainer {
         }
 
         let value = self.container[self.currentIndex]
-        guard !value.isNull else {
+        guard !value.isNullOrUndefined else {
             throw DecodingError.valueNotFound(KeyedDecodingContainer<NestedKey>.self,
                                               DecodingError.Context(codingPath: self.codingPath,
                                                       debugDescription: "Cannot get keyed decoding container -- found null value instead."))
@@ -1455,7 +1462,7 @@ fileprivate struct _ScriptUnkeyedDecodingContainer : UnkeyedDecodingContainer {
         }
 
         let value = self.container[self.currentIndex]
-        guard !(value.isNull) else {
+        guard !(value.isNullOrUndefined) else {
             throw DecodingError.valueNotFound(UnkeyedDecodingContainer.self,
                                               DecodingError.Context(codingPath: self.codingPath,
                                                       debugDescription: "Cannot get keyed decoding container -- found null value instead."))
@@ -1487,13 +1494,13 @@ fileprivate struct _ScriptUnkeyedDecodingContainer : UnkeyedDecodingContainer {
 extension __JSDecoder : SingleValueDecodingContainer {
     // MARK: SingleValueDecodingContainer Methods
     private func expectNonNull<T>(_ type: T.Type) throws {
-        if storage.topContainer.isUndefined || storage.topContainer.isNull {
+        if storage.topContainer.isNullOrUndefined {
             throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.codingPath, debugDescription: "Expected \(type) but found null value instead."))
         }
     }
 
     public func decodeNil() -> Bool {
-        storage.topContainer.isUndefined || storage.topContainer.isNull
+        storage.topContainer.isNullOrUndefined
     }
 
     public func decode(_ type: Bool.Type) throws -> Bool {

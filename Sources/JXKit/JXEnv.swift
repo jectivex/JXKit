@@ -7,6 +7,24 @@
 //
 import Foundation
 
+/// A type of JavaScript instance.
+public enum JXType : Hashable {
+    /// A boolean type.
+    case boolean
+    /// A number type.
+    case number
+    /// A date type.
+    case date
+    /// A buffer type
+    case buffer
+    /// A string type.
+    case string
+    /// An array type.
+    case array
+    /// An object type
+    case object
+}
+
 /// A `JXVM` is an abstraction of a JavaScript vitual machine. The associated `EnvType` represents the environment encapsulations type.
 public protocol JXVM : AnyObject {
     /// The value type that is associated with this environment
@@ -80,19 +98,28 @@ public protocol JXVal : AnyObject {
 
     var isUndefined: Bool { get }
     var isNull: Bool { get }
+
+    /// Returns true is this is a JavaScript object.
     var isObject: Bool { get }
 
-    var isNumber: Bool { get }
     var numberValue: Double? { get }
+    var isNumber: Bool { get }
 
-    var isString: Bool { get }
     var stringValue: String? { get }
+    var isString: Bool { get }
+
+    /// Returns `true` if this is a JavaScript array. Note that `isObject` will also return `true`.
+    var isArray: Bool { get }
+
+    /// Returns this value as a boolean. Note that this will use JavaScript's rules for treating other value types as booleans
+    var booleanValue: Bool { get }
+    var isBoolean: Bool { get }
 
     var isFunction: Bool { get }
     /// Invokes this function with the specified arguments
     func call(withArguments arguments: [EnvType.JXValType], this: EnvType.JXValType?) -> EnvType.JXValType
 
-    /// If this is a date type, returns the Date value
+    /// If this is a date type, returns the Date value. Note that `isObject` will also return true fir t
     var isDate: Bool { get }
     var dateValue: Date? { get }
 
@@ -106,6 +133,19 @@ public protocol JXVal : AnyObject {
     subscript(_ property: String) -> EnvType.JXValType { get set }
 }
 
+extension JXVal {
+    @inlinable public var type: JXType? {
+        if isUndefined { return nil }
+        if isNull { return nil }
+        if isBoolean { return .boolean }
+        if isNumber { return .number }
+        if isDate { return .date }
+        if isString { return .string }
+        if isArray { return .array }
+        if isObject { return .object }
+        return nil
+    }
+}
 
 extension JXEnv {
     /// Evaluates with a `nil` this
