@@ -18,10 +18,10 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y libjavascriptcoregtk-4.0-dev
       - uses: actions/checkout@v2
       - name: Test (Debug)
-        run: swift test -v --configuration debug --enable-test-discovery
+        run: swift test -v --configuration debug
       # crash: https://bugs.swift.org/browse/SR-14748
       #- name: Test (Release)
-      #  run: swift test -v --configuration release -Xswiftc -enable-testing --enable-test-discovery
+      #  run: swift test -v --configuration release -Xswiftc -enable-testing
 
   iOS:
     runs-on: macos-latest
