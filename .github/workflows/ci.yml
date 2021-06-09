@@ -19,8 +19,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Test (Debug)
         run: swift test -v --configuration debug --enable-test-discovery
-      - name: Test (Release)
-        run: swift test -v --configuration release -Xswiftc -enable-testing --enable-test-discovery
+      # crash: https://bugs.swift.org/browse/SR-14748
+      #- name: Test (Release)
+      #  run: swift test -v --configuration release -Xswiftc -enable-testing --enable-test-discovery
 
   iOS:
     runs-on: macos-latest
