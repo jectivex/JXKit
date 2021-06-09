@@ -98,9 +98,9 @@ jobs:
       - name: Build (Release)
         run: swift build -v -c release
       - name: Test (Debug)
-        run: swift test -v --configuration debug
+        run: swift test -v --configuration debug --enable-test-discovery
       - name: Test (Release)
-        run: swift test -v --configuration release -Xswiftc -enable-testing
+        run: swift test -v --configuration release -Xswiftc -enable-testing --enable-test-discovery
 
   Release:
     runs-on: ubuntu-latest
