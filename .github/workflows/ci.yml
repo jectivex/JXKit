@@ -17,7 +17,10 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get update && sudo apt-get install -y libjavascriptcoregtk-4.0-dev
       - uses: actions/checkout@v2
-      - run: swift test
+      - name: Test (Debug)
+        run: swift test -v --configuration debug
+      - name: Test (Release)
+        run: swift test -v --configuration release -Xswiftc -enable-testing
 
   iOS:
     runs-on: macos-latest
@@ -49,8 +52,10 @@ jobs:
     needs: [Linux] # Linux must pass first
     steps:
       - uses: actions/checkout@v2
-      - name: Run tests
-        run: swift test
+      - name: Test (Debug)
+        run: swift test -v --configuration debug
+      - name: Test (Release)
+        run: swift test -v --configuration release -Xswiftc -enable-testing
 
   Windows10:
     if: false # pending a way to link against JavaScriptCore.dll…
@@ -92,9 +97,9 @@ jobs:
       - name: Build (Release)
         run: swift build -v -c release
       - name: Test (Debug)
-        run: swift test -v --configuration debug --enable-test-discovery
+        run: swift test -v --configuration debug
       - name: Test (Release)
-        run: swift test -v --configuration release -Xswiftc -enable-testing --enable-test-discovery
+        run: swift test -v --configuration release -Xswiftc -enable-testing
 
   Release:
     runs-on: ubuntu-latest
