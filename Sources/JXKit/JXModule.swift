@@ -60,7 +60,7 @@ extension Bundle {
             .appendingPathComponent(path)
             .appendingPathExtension(ext)
 
-        if FileManager.default.fileExists(atPath: resourceURL.path) {
+        if FileManager.default.isReadableFile(atPath: resourceURL.path) {
             return resourceURL
         }
 
