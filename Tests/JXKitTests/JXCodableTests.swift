@@ -126,6 +126,48 @@ final class JXCodableTests: XCTestCase {
         XCTAssertEqual(5, result.c)
     }
 
+    func testFibJS() throws {
+        let ctx = JXContext()
+        let jsfib = try ctx.eval(script: "(function fibo(x) { if (x<=2) return 1; else return fibo(x-1) + fibo(x-2) })")
+
+        func fib(_ n: Int) -> Double {
+            jsfib.call(withArguments: [ctx.number(n)]).numberValue ?? 0
+        }
+
+        XCTAssertEqual(3, fib(4))
+        XCTAssertEqual(5, fib(5))
+        XCTAssertEqual(8, fib(6))
+        XCTAssertEqual(13, fib(7))
+        XCTAssertEqual(21, fib(8))
+
+        XCTAssertEqual(6765, fib(20))
+
+        // measured [Time, seconds] average: 0.005, relative standard deviation: 8.271%, values: [0.005701, 0.004532, 0.004498, 0.004410, 0.004411, 0.004482, 0.004414, 0.004397, 0.004411, 0.004485], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , polarity: unspecified, maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+        measure {
+            XCTAssertEqual(832040, fib(30))
+        }
+    }
+
+    func testFibNative() throws {
+        func fib(_ n: Int) -> Int {
+            guard n > 1 else { return n }
+            return fib(n-1) + fib(n-2)
+        }
+
+        XCTAssertEqual(3, fib(4))
+        XCTAssertEqual(5, fib(5))
+        XCTAssertEqual(8, fib(6))
+        XCTAssertEqual(13, fib(7))
+        XCTAssertEqual(21, fib(8))
+
+        XCTAssertEqual(6765, fib(20))
+
+        // measured [Time, seconds] average: 0.018, relative standard deviation: 4.494%, values: [0.020162, 0.018207, 0.017625, 0.017501, 0.017514, 0.017609, 0.017366, 0.017698, 0.018720, 0.018391], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , polarity: unspecified, maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+        measure {
+            XCTAssertEqual(832040, fib(30))
+        }
+    }
+
     func testCodableAPI() throws {
         let ctx = JXMathContext()
         XCTAssertEqual(5 as Int, try ctx.hypot(3, 4))
