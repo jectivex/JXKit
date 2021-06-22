@@ -16,7 +16,8 @@ let package = Package(
     targets:
         (!useCJSCore
             ? [ .target(name: "JXKit") ]
-            : [ .target(name: "CJSCore"), .target(name: "JXKit", dependencies: [ "CJSCore" ],
+            : [ .systemLibrary(name: "CJSCore", pkgConfig: "libjavascriptcoregtk-4.0-dev", providers: [.brew(["libjavascriptcoregtk-4.0-dev"]), .apt(["libjavascriptcoregtk-4.0-dev"])]),
+                .target(name: "JXKit", dependencies: [ "CJSCore" ],
                     cSettings: [
                         .unsafeFlags(["-I/usr/include/webkitgtk-4.0"])
                     ]
