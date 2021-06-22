@@ -2,15 +2,15 @@
 
 import PackageDescription
 
-#if canImport(JavaScriptCore)
+#if os(Linux)
 let targets: [Target] = [
-    .target(name: "JXKit"),
+    .systemLibrary(name: "CJSCore", pkgConfig: "javascriptcoregtk-4.0", providers: [.apt(["libjavascriptcoregtk-4.0-dev"])]),
+    .target(name: "JXKit", dependencies: ["CJSCore"], cSettings: [ .unsafeFlags(["-I/usr/include/webkitgtk-4.0"]) ]),
     .testTarget(name: "JXKitTests", dependencies: ["JXKit"])
 ]
 #else
 let targets: [Target] = [
-    .systemLibrary(name: "CJSCore", pkgConfig: "javascriptcoregtk-4.0", providers: [.apt(["libjavascriptcoregtk-4.0-dev"])]),
-    .target(name: "JXKit", dependencies: ["CJSCore"], cSettings: [ .unsafeFlags(["-I/usr/include/webkitgtk-4.0"]) ]),
+    .target(name: "JXKit"),
     .testTarget(name: "JXKitTests", dependencies: ["JXKit"])
 ]
 #endif
