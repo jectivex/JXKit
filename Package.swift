@@ -5,7 +5,7 @@ import PackageDescription
 #if os(Linux)
 let targets: [Target] = [
     .systemLibrary(name: "CJSCore", pkgConfig: "javascriptcoregtk-4.0", providers: [.apt(["libjavascriptcoregtk-4.0-dev"])]),
-    .target(name: "JXKit", dependencies: ["CJSCore"], cSettings: [ .unsafeFlags(["-I/usr/include/webkitgtk-4.0"]) ]),
+    .target(name: "JXKit", dependencies: ["CJSCore"]),
     .testTarget(name: "JXKitTests", dependencies: ["JXKit"])
 ]
 #else
