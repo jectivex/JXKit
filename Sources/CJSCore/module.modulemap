@@ -1,4 +1,4 @@
-module CZlib {
+module CJSCore {
     header "include/jscore_c.h"
     link "javascriptcoregtk"
     export *
