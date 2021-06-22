@@ -2,30 +2,25 @@
 
 import PackageDescription
 
-#if os(Linux) || os(Windows)
-let useCJSCore = true
+#if canImport(JavaScriptCore)
+let targets: [Target] = [
+    .target(name: "JXKit"),
+    .testTarget(name: "JXKitTests", dependencies: ["JXKit"])
+]
 #else
-let useCJSCore = false
+let targets: [Target] = [
+    .systemLibrary(name: "CJSCore", pkgConfig: "webkitgtk", providers: [.brew(["webkitgtk"]), .apt(["webkitgtk"])]),
+    .target(name: "JXKit", dependencies: ["CJSCore"], cSettings: [.define("_GNU_SOURCE", to: "1")]),
+    .testTarget(name: "JXKitTests", dependencies: ["JXKit"])
+]
 #endif
+
+//.unsafeFlags(["-I/usr/include/webkitgtk-4.0"])
 
 let package = Package(
     name: "JXKit",
     products: [
         .library(name: "JXKit", targets: ["JXKit"]),
     ],
-    targets:
-        (!useCJSCore
-            ? [ .target(name: "JXKit") ]
-            : [ .systemLibrary(name: "CJSCore", pkgConfig: "libjavascriptcoregtk-4.0-dev", providers: [.brew(["libjavascriptcoregtk-4.0-dev"]), .apt(["libjavascriptcoregtk-4.0-dev"])]),
-                .target(name: "JXKit", dependencies: [ "CJSCore" ],
-                    cSettings: [
-                        .unsafeFlags(["-I/usr/include/webkitgtk-4.0"])
-                    ]
-                )
-        ]) + [
-            .testTarget(
-                name: "JXKitTests",
-                dependencies: ["JXKit"]
-            )
-        ]
+    targets: targets
 )
