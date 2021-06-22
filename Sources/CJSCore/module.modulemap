@@ -1,0 +1,6 @@
+module CZlib {
+    header "include/jscore_c.h"
+    link "javascriptcoregtk"
+    export *
+}
+
