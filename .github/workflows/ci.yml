@@ -17,14 +17,14 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install -y libjavascriptcoregtk-4.0-dev
       - run: pkg-config --libs zlib
-      - run: pkg-config --libs libjavascriptcoregtk-4.0-dev
-      - run: pkg-config --libs javascriptcoregtk-4.0-dev
-      - run: pkg-config --libs libjavascriptcoregtk
-      - run: pkg-config --libs libjavascriptcoregtk-4.0
-      - run: pkg-config --libs libjavascriptcoregtk-dev
-      - run: pkg-config --libs javascriptcoregtk-dev
-      - run: pkg-config --libs javascriptcoregtk
-      - run: pkg-config --libs javascriptcore
+      - run: pkg-config --libs libjavascriptcoregtk-4.0-dev || true
+      - run: pkg-config --libs javascriptcoregtk-4.0-dev || true
+      - run: pkg-config --libs libjavascriptcoregtk || true
+      - run: pkg-config --libs libjavascriptcoregtk-4.0 || true
+      - run: pkg-config --libs libjavascriptcoregtk-dev || true
+      - run: pkg-config --libs javascriptcoregtk-dev || true
+      - run: pkg-config --libs javascriptcoregtk || true
+      - run: pkg-config --libs javascriptcore || true
       - uses: actions/checkout@v2
       - name: Test (Debug)
         run: swift test -v --configuration debug
