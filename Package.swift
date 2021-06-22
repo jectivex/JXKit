@@ -9,7 +9,7 @@ let targets: [Target] = [
 ]
 #else
 let targets: [Target] = [
-    .systemLibrary(name: "CJSCore", pkgConfig: "webkitgtk", providers: [.brew(["webkitgtk"]), .apt(["webkitgtk"])]),
+    .systemLibrary(name: "CJSCore", pkgConfig: "javascriptcoregtk", providers: [.brew(["libjavascriptcoregtk-4.0-dev"]), .apt(["libjavascriptcoregtk-4.0-dev"])]),
     .target(name: "JXKit", dependencies: ["CJSCore"], cSettings: [.define("_GNU_SOURCE", to: "1")]),
     .testTarget(name: "JXKitTests", dependencies: ["JXKit"])
 ]
