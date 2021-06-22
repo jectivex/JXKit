@@ -16,6 +16,7 @@ jobs:
     steps:
       - name: Install dependencies
         run: sudo apt-get install -y libjavascriptcoregtk-4.0-dev
+      - run: pkg-config --list-all || true
       - run: pkg-config --libs zlib
       - run: pkg-config --libs libjavascriptcoregtk-4.0-dev || true
       - run: pkg-config --libs javascriptcoregtk-4.0-dev || true
