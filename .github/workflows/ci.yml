@@ -60,7 +60,7 @@ jobs:
         run: swift test -v --configuration release -Xswiftc -enable-testing
 
   Windows10:
-    if: false # pending a way to link against JavaScriptCore.dll…
+    #if: false # pending a way to link against JavaScriptCore.dll…
     #needs: [Linux] # Linux must pass first
     runs-on: windows-latest
     steps:

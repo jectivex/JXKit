@@ -135,6 +135,19 @@ class JXCoreTests: XCTestCase {
 
         XCTAssertTrue(context.global["buffer"].isArrayBuffer)
         XCTAssertEqual(context.global["buffer"].byteLength, 8)
+
+        let bufferSize = 99_999_999
+        //let bufferData = Data((1...bufferSize).map({ _ in UInt8.random(in: (.min)...(.max)) }))
+        let bufferData = Data(repeating: UInt8.random(in: (.min)...(.max)), count: bufferSize)
+
+        measure { // 1M average: 0.001; 10M average: 0.002; 100M average: average: 0.030
+            let arrayBuffer = JXValue(newArrayBufferWithBytes: bufferData, in: context)
+            let isView = context.global["ArrayBuffer"]["isView"].call(withArguments: [arrayBuffer])
+            XCTAssertEqual(true, isView.isBoolean)
+            XCTAssertEqual(false, isView.booleanValue)
+
+            XCTAssertEqual(.init(bufferSize), arrayBuffer["byteLength"].numberValue)
+        }
     }
     
     @available(macOS 10.12, macCatalyst 13.0, iOS 10.0, tvOS 10.0, *)
