@@ -1,8 +1,3 @@
-//
-//  Adapted from https://github.com/SusanDoggie/SwiftJS :
-//  Copyright (c) 2015 - 2021 Susan Cheng. All rights reserved.
-//
-
 import JXKit
 import XCTest
 
@@ -136,7 +131,7 @@ class JXCoreTests: XCTestCase {
         XCTAssertTrue(context.global["buffer"].isArrayBuffer)
         XCTAssertEqual(context.global["buffer"].byteLength, 8)
 
-        let bufferSize = 99_999_999
+        let bufferSize = 999_999
         //let bufferData = Data((1...bufferSize).map({ _ in UInt8.random(in: (.min)...(.max)) }))
         let bufferData = Data(repeating: UInt8.random(in: (.min)...(.max)), count: bufferSize)
 
