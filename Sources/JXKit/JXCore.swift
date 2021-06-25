@@ -393,8 +393,13 @@ extension JXValue {
     ///
     /// - Parameters:
     ///   - context: The execution context to use.
-    @inlinable public convenience init(newArrayIn env: JXContext) {
+    @inlinable public convenience init(newArrayIn env: JXContext, values: [JXValue]? = nil) {
         self.init(env: env, value: JSObjectMakeArray(env.context, 0, nil, &env._currentError))
+        if let values = values {
+            for (index, element) in values.enumerated() {
+                self[index] = element
+            }
+        }
     }
 }
 
