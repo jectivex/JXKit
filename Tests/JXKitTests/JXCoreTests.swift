@@ -168,6 +168,26 @@ class JXCoreTests: XCTestCase {
     }
 
     @available(macOS 10.12, macCatalyst 13.0, iOS 10.0, tvOS 10.0, *)
+    func testArrayBufferClosure() {
+        // this should always measure around zero regardless of the size of the buffer that is passed, since we guarantee that no copy will be made
+        let size = 1_000_000
+        // let size = 1_000_000_000
+
+        let data = Data(repeating: 9, count: size)
+        let context = JXContext()
+
+        XCTAssertEqual(true, context["ArrayBuffer"].isObject)
+
+        measure { // average: 0.000, relative standard deviation: 99.521%, values: [0.000434, 0.000037, 0.000959, 0.000050, 0.000471, 0.000048, 0.000394, 0.000048, 0.000389, 0.000047]
+            XCTAssertEqual(Double?.some(.init(size)), context.withArrayBuffer(source: data) { buffer in
+                XCTAssertEqual(true, buffer["byteLength"].booleanValue)
+                XCTAssertEqual(true, buffer["slice"].isFunction)
+                return buffer["byteLength"].numberValue
+            })
+        }
+    }
+
+    @available(macOS 10.12, macCatalyst 13.0, iOS 10.0, tvOS 10.0, *)
     func testDataView() {
         let context = JXContext()
         

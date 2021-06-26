@@ -265,6 +265,27 @@ extension JXEnv {
     }
 }
 
+extension JXContext {
+
+    /// Invokes the given closure with the bytes without copying
+    /// - Parameters:
+    ///   - source: the data to use
+    ///   - block: the block that passes the temporary JXValue wrapping the buffer data
+    /// - Returns: the result of the closure
+    @available(macOS 10.12, iOS 10.0, tvOS 10.0, *)
+    public func withArrayBuffer<T>(source: Data, block: (JXValue) throws -> (T)) rethrows -> T {
+        var source = source
+        return try source.withUnsafeMutableBytes { bytes in
+            let buffer = JXValue(newArrayBufferWithBytesNoCopy: bytes,
+                deallocator: { _ in
+                    //print("buffer deallocated")
+                },
+                in: self)
+            return try block(buffer)
+        }
+    }
+}
+
 
 extension JXValue {
     @usableFromInline static let rfc3339: DateFormatter = {
@@ -567,7 +588,8 @@ extension JXValue {
     ///   - this: The object to use as `this`, or `nil` to use the global object as `this`.
     ///
     /// - Returns: The object that results from calling object as a function
-    @discardableResult @inlinable public func call(withArguments arguments: [JXValue], this: JXValue? = nil) -> JXValue {
+    @discardableResult @inlinable public func call(withArguments arguments: [JXValue] = [], this: JXValue? = nil) -> JXValue {
+        // if !isFunction { throw err("target is not a function") } // we should have already validated that it is a function
         let result = JSObjectCallAsFunction(env.context, value, this?.value, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.value }, &env._currentError)
         return result.map { JXValue(env: env, value: $0) } ?? JXValue(undefinedIn: env)
     }
