@@ -904,31 +904,30 @@ extension JXValue {
         let _class = JSClassCreate(&def)
         defer { JSClassRelease(_class) }
 
-        // JSObjectMakeFunction(env.context, <#T##name: JSStringRef!##JSStringRef!#>, <#T##parameterCount: UInt32##UInt32#>, <#T##parameterNames: UnsafePointer<JSStringRef?>!##UnsafePointer<JSStringRef?>!#>, <#T##body: JSStringRef!##JSStringRef!#>, <#T##sourceURL: JSStringRef!##JSStringRef!#>, <#T##startingLineNumber: Int32##Int32#>, <#T##exception: UnsafeMutablePointer<JSValueRef?>!##UnsafeMutablePointer<JSValueRef?>!#>)
         self.init(env: env, value: JSObjectMake(env.context, _class, info))
     }
 
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
     public convenience init?(newPromiseIn env: JXContext, executor: @escaping (JXContext, _ resolve: JXValue, _ reject: JXValue) -> ()) {
-        var resolve: JSObjectRef?
-        var reject: JSObjectRef?
-        var exception: JSValueRef?
+        var resolveRef: JSObjectRef?
+        var rejectRef: JSObjectRef?
+        var exceptionRef: JSValueRef?
 
         // https://github.com/WebKit/WebKit/blob/b46f54e33e5cb968174e4d20392513e14d04839f/Source/JavaScriptCore/API/JSValue.mm#L158
-        guard let promise = JSObjectMakeDeferredPromise(env.context, &resolve, &reject, &exception) else {
+        guard let promise = JSObjectMakeDeferredPromise(env.context, &resolveRef, &rejectRef, &exceptionRef) else {
             return nil
         }
 
-        if exception != nil {
+        if exceptionRef != nil {
             return nil
         }
 
-        guard let resolve = resolve else {
+        guard let resolve = resolveRef else {
             return nil
         }
         let resolveValue = JXValue(env: env, value: resolve)
 
-        guard let reject = reject else {
+        guard let reject = rejectRef else {
             return nil
         }
         let rejectValue = JXValue(env: env, value: reject)
