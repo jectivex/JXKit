@@ -907,7 +907,7 @@ extension JXValue {
         self.init(env: env, value: JSObjectMake(env.context, _class, info))
     }
 
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
     public convenience init?(newPromiseIn env: JXContext, executor: @escaping (JXContext, _ resolve: JXValue, _ reject: JXValue) -> ()) {
         var resolveRef: JSObjectRef?
         var rejectRef: JSObjectRef?
@@ -937,14 +937,14 @@ extension JXValue {
         self.init(env: env, value: promise)
     }
 
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
     public convenience init?(newPromiseResolvedWithResult result: JXValue, in env: JXContext) {
         self.init(newPromiseIn: env) { ctx, resolve, reject in
             resolve.call(withArguments: [result])
         }
     }
 
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
     public convenience init?(newPromiseRejectedWithResult reason: JXValue, in env: JXContext) {
         self.init(newPromiseIn: env) { ctx, resolve, reject in
             reject.call(withArguments: [reason])
