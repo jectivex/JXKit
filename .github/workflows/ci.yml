@@ -25,7 +25,10 @@ jobs:
       #  run: swift test -v --configuration release -Xswiftc -enable-testing
 
   iOS:
-    runs-on: macos-11
+    runs-on: macos-latest
+    needs: [Linux] # Linux must pass first
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_12.5.app/Contents/Developer
 
     steps:
       - uses: actions/checkout@v2
@@ -41,6 +44,8 @@ jobs:
   tvOS:
     runs-on: macos-latest
     needs: [iOS] # iOS must pass first
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_12.5.app/Contents/Developer
 
     steps:
       - uses: actions/checkout@v2
