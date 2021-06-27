@@ -27,14 +27,14 @@ jobs:
   iOS:
     runs-on: macos-latest
     needs: [Linux] # Linux must pass first
-    env:
-      DEVELOPER_DIR: /Applications/Xcode_12.5.app/Contents/Developer
+      #env:
+      #DEVELOPER_DIR: /Applications/Xcode_12.5.app/Contents/Developer
+      #-disablePackageRepositoryCache \
 
     steps:
       - uses: actions/checkout@v2
       - run: |
             xcodebuild clean test \
-              -disablePackageRepositoryCache \
               -configuration Release \
               -scheme "JXKit" \
               -sdk "iphonesimulator" \
@@ -44,14 +44,14 @@ jobs:
   tvOS:
     runs-on: macos-latest
     needs: [iOS] # iOS must pass first
-    env:
-      DEVELOPER_DIR: /Applications/Xcode_12.5.app/Contents/Developer
+      #env:
+      #DEVELOPER_DIR: /Applications/Xcode_12.5.app/Contents/Developer
+      #-disablePackageRepositoryCache \
 
     steps:
       - uses: actions/checkout@v2
       - run: |
             xcodebuild clean test \
-              -disablePackageRepositoryCache \
               -configuration Release \
               -scheme "JXKit" \
               -sdk "appletvsimulator" \
