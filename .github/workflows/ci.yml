@@ -25,7 +25,7 @@ jobs:
       #  run: swift test -v --configuration release -Xswiftc -enable-testing
 
   iOS:
-    runs-on: macos-latest
+    runs-on: macos-11
     needs: [Linux] # Linux must pass first
       #env:
       #DEVELOPER_DIR: /Applications/Xcode_12.5.app/Contents/Developer
