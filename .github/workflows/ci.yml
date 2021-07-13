@@ -69,7 +69,6 @@ jobs:
         run: swift test -v --configuration release -Xswiftc -enable-testing
 
   macOS11:
-    if: false # not yet authorized for macOS11
     runs-on: macos-11
     needs: [macOS10] 
     steps:
@@ -125,7 +124,7 @@ jobs:
 
   Release:
     runs-on: ubuntu-latest
-    needs: [Linux, macOS10, iOS, tvOS]
+    needs: [Linux, macOS11, iOS, tvOS]
 
     steps:
       - name: Release
