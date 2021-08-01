@@ -14,6 +14,7 @@ jobs:
   Linux:
     runs-on: ubuntu-latest
     steps:
+      - run: sudo apt-get update
       - name: Install dependencies
         run: sudo apt-get install -y libjavascriptcoregtk-4.0-dev
       - run: pkg-config --libs javascriptcoregtk-4.0
