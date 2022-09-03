@@ -58,16 +58,20 @@ jobs:
         run: swift test -v --configuration release -Xswiftc -enable-testing
 
   windows:
+    # installer seems to no longer work as of Swift 5.6
+    if: false
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
 
       - uses: seanmiddleditch/gha-setup-vsdevenv@master
         # not needed anymore?
-        if: false
+        if: true
 
       # https://www.swift.org/download/#windows
       - name: Install Required Dependencies
+        # winget not installed?
+        if: false
         run: |
           winget install Git.Git
           winget install Python.Python.3 --version 3.10.2150.0
