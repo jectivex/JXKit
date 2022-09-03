@@ -68,7 +68,7 @@ jobs:
 
       - uses: MaxDesiatov/swift-windows-action@v1
         with:
-          swift-version: "5.5"
-          #swift-version: "5.6.3"
+          #swift-version: "5.5"
+          swift-version: "5.6.2"
           #shell-action: swift test -v --configuration release
 
