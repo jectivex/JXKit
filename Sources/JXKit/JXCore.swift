@@ -181,7 +181,7 @@ extension JXContext {
     ///
     /// During JavaScript execution, you are not required to call this function; the JavaScript engine will garbage collect as needed.
     /// JavaScript values created within a context group are automatically destroyed when the last reference to the context group is released.
-    open func garbageCollect() { JSGarbageCollect(context) }
+    public func garbageCollect() { JSGarbageCollect(context) }
 
     /// Returns the global context reference for this context
     public var jsGlobalContextRef: JSGlobalContextRef { context }
@@ -189,7 +189,7 @@ extension JXContext {
 
 extension JXContext {
     /// The global object.
-    open var global: JXValue {
+    public var global: JXValue {
         return JXValue(env: self, value: JSContextGetGlobalObject(context))
     }
 
@@ -199,7 +199,7 @@ extension JXContext {
     ///   - property: The property's name.
     ///   
     /// - Returns: true if the object has `property`, otherwise false.
-    @inlinable open func hasProperty(_ property: String) -> Bool {
+    @inlinable public func hasProperty(_ property: String) -> Bool {
         return global.hasProperty(property)
     }
     
@@ -210,23 +210,23 @@ extension JXContext {
     ///   
     /// - Returns: true if the delete operation succeeds, otherwise false.
     @discardableResult
-    @inlinable open func removeProperty(_ property: String) -> Bool {
+    @inlinable public func removeProperty(_ property: String) -> Bool {
         return global.removeProperty(property)
     }
 
     /// Returns the global property at the given subscript
-    @inlinable open subscript(property: String) -> JXValue {
+    @inlinable public subscript(property: String) -> JXValue {
         get { global[property] }
         set { global[property] = newValue }
     }
 
     /// Get the names of global’s enumerable properties
-    @inlinable open var properties: [String] {
+    @inlinable public var properties: [String] {
         return global.properties
     }
 
     /// Checks for the presence of a top-level "exports" variable and creates it if it isn't already an object.
-    @inlinable open func globalObject(property named: String) -> JXValue {
+    @inlinable public func globalObject(property named: String) -> JXValue {
         let exp = self.global[named]
         if exp.isObject {
             return exp

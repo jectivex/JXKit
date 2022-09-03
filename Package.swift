@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.5
 
 import PackageDescription
 
@@ -24,7 +24,7 @@ let targets: [Target] = [
     .systemLibrary(name: "CJSCore", 
         pkgConfig: "javascriptcoregtk-4.0", 
         providers: [.apt(["libjavascriptcoregtk-4.0-dev"]), .yum(["webkit2gtk"])]),
-    .target(name: "JXKit", dependencies: ["CJSCore"])
+    .target(name: "JXKit", dependencies: ["CJSCore"], resources: [.process("Resources")])
 ]
 #endif
 
