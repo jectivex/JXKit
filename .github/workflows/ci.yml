@@ -62,12 +62,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install JavaScriptCore.dll
-        run: |
-          Install-Binary -Url "https://secure-appldnld.apple.com/itunes12/001-97787-20210421-F0E5A3C2-A2C9-11EB-A40B-A128318AD179/iTunes64Setup.exe" -Name "iTunes64Setup.exe" -ArgumentList ("-q")
-
-
       - uses: seanmiddleditch/gha-setup-vsdevenv@master
+        # not needed anymore?
+        if: false
+
+      # https://www.swift.org/download/#windows
+      - name: Install Required Dependencies
+        run: |
+          winget install Git.Git
+          winget install Python.Python.3 --version 3.10.2150.0
+
+          curl -sOL https://aka.ms/vs/16/release/vs_community.exe
+          start /w vs_community.exe --passive --wait --norestart --nocache --installPath "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community" --add Microsoft.VisualStudio.Component.Windows10SDK.19041 --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64
+          del /q vs_community.exe
+          pip install six
 
       - name: Install Install swift-5.6.3-RELEASE
         run: |
@@ -90,6 +98,11 @@ jobs:
 
       - name: Swift Version
         run: swift --version
+
+      - name: Install JavaScriptCore.dll
+        run: |
+          Install-Binary -Url "https://secure-appldnld.apple.com/itunes12/001-97787-20210421-F0E5A3C2-A2C9-11EB-A40B-A128318AD179/iTunes64Setup.exe" -Name "iTunes64Setup.exe" -ArgumentList ("-q")
+
       - name: Build (Debug)
         run: swift build -v -c debug
       - name: Build (Release)
