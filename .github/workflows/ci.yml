@@ -66,7 +66,7 @@ jobs:
         run: |
           Install-Binary -Url "https://secure-appldnld.apple.com/itunes12/001-97787-20210421-F0E5A3C2-A2C9-11EB-A40B-A128318AD179/iTunes64Setup.exe" -Name "iTunes64Setup.exe" -ArgumentList ("-q")
 
-      - uses: MaxDesiatov/swift-windows-action@v1
+      - uses: marcprux/swift-windows-action@main
         with:
           #swift-version: "5.5"
           swift-version: "5.6.2"
