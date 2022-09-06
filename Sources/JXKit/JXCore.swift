@@ -560,8 +560,25 @@ extension JXValue {
         return str.map(String.init)
     }
 
-    /// Returns the JavaScript date value.
     @inlinable public var dateValue: Date? {
+        //dateValueMS
+        dateValueISO
+    }
+
+//    /// Returns the JavaScript date value.
+//    @inlinable public var dateValueMS: Date? {
+//        if !isDate {
+//            return nil
+//        }
+//        let result = self.invokeMethod("getTime", withArguments: [])
+//        return result.numberValue.flatMap { Date(timeIntervalSince1970: $0) }
+//    }
+
+    /// Returns the JavaScript date value.
+    @inlinable public var dateValueISO: Date? {
+        if !isDate {
+            return nil
+        }
         let result = self.invokeMethod("toISOString", withArguments: [])
         return result.stringValue.flatMap { JXValue.rfc3339.date(from: $0) }
     }
@@ -588,7 +605,10 @@ extension JXValue {
     ///
     /// - Returns: The object that results from calling object as a function
     @discardableResult @inlinable public func call(withArguments arguments: [JXValue] = [], this: JXValue? = nil) -> JXValue {
-        // if !isFunction { throw err("target is not a function") } // we should have already validated that it is a function
+        if !isFunction {
+            // we should have already validated that it is a function
+            fatalError("target was not a function")
+        }
         let result = JSObjectCallAsFunction(env.context, value, this?.value, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.value }, &env._currentError)
         return result.map { JXValue(env: env, value: $0) } ?? JXValue(undefinedIn: env)
     }
