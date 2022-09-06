@@ -149,7 +149,7 @@ extension JXVal {
 
 extension JXEnv {
     /// Evaluates with a `nil` this
-    public func eval(_ script: String) throws -> JXValType {
+    @discardableResult public func eval(_ script: String) throws -> JXValType {
         try eval(this: nil, url: nil, script: script)
     }
 
