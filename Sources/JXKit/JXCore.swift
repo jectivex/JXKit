@@ -6,6 +6,9 @@
 //
 
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 // The following aliases can be helpful when migrating from JavaScriptCore to JXKit:
 //
@@ -14,6 +17,10 @@ import Foundation
 // public typealias JSContext = JXContext
 // @available(*, deprecated, renamed: "JXValue")
 // public typealias JSValue = JXValue
+
+
+@available(*, deprecated, message: "for memory testing")
+var globalStuff: Any? = nil
 
 #if canImport(JavaScriptCore)
 import JavaScriptCore
@@ -56,9 +63,63 @@ open class JXContext {
         JSGlobalContextRelease(context)
     }
 
-    @discardableResult open func eval(this: JXValue? = nil, url: URL? = nil, script: String) throws -> JXValue {
+    @discardableResult open func eval(_ script: String, this: JXValue? = nil) throws -> JXValue {
         try trying {
-            evaluateScript(script, this: this, withSourceURL: url, startingLineNumber: 0)
+            evaluateScript(script, this: this, withSourceURL: nil, startingLineNumber: 0)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
+    /// Evaluates with a `nil` this
+    @discardableResult public func eval(_ script: String, this: JXValue? = nil, priority: TaskPriority) async throws -> JXValType {
+
+        try await withCheckedThrowingContinuation { [weak self] c in
+            do {
+                guard let self = self else {
+                    return c.resume(throwing: Errors.cannotCreatePromise)
+                }
+
+                let fulfilled = JXValue(newFunctionIn: self) { ctx, this, args in
+                    c.resume(returning: args.first ?? JXValue(undefinedIn: ctx))
+                    return JXValue(undefinedIn: ctx)
+                }
+
+                let rejected = JXValue(newFunctionIn: self) { ctx, this, arg in
+                    c.resume(throwing: Errors.cannotCreatePromise)
+                    return JXValue(undefinedIn: ctx)
+                }
+
+                self["fulfilledX"] = fulfilled
+                self["rejectedX"] = rejected
+                let px = try eval(script + ".then(fulfilledX, rejectedX)", this: this)
+
+                return // XXX
+
+
+                let promise = try eval(script, this: this)
+
+                if promise.isFunction || promise.isConstructor { // should return a Promise, nor a function
+                    throw Errors.asyncEvalMustReturnPromise
+                }
+
+                if !promise.isObject || promise.stringValue != "[object Promise]" {
+                    throw Errors.asyncEvalMustReturnPromise
+                }
+
+                let then = promise["then"]
+
+                if then.isFunction == false {
+                    throw Errors.asyncEvalMustReturnPromise
+                }
+
+                globalStuff = (fulfilled, rejected)
+                let presult = then.call(withArguments: [fulfilled, rejected], this: this)
+
+                print("### then:", then, "this:", this)
+                print("### presult:", presult)
+            } catch {
+                return c.resume(throwing: error)
+            }
         }
     }
 
@@ -102,7 +163,6 @@ open class JXContext {
 
         return result.map { JXValue(env: self, value: $0) } ?? JXValue(undefinedIn: self)
     }
-
 }
 
 // MARK: JXValue
@@ -118,7 +178,7 @@ public typealias JXStringRef = JSStringRef
 /// A JavaScript object.
 ///
 /// This wraps a `JSObjectRef`, and is the equivalent of `JavaScriptCore.JSValue`
-open class JXValue {
+public final class JXValue {
     public let env: JXContext
     public let value: JXValueRef
 
@@ -190,7 +250,7 @@ extension JXContext {
 extension JXContext {
     /// The global object.
     public var global: JXValue {
-        return JXValue(env: self, value: JSContextGetGlobalObject(context))
+        JXValue(env: self, value: JSContextGetGlobalObject(context))
     }
 
     /// Tests whether global has a given property.
@@ -200,7 +260,7 @@ extension JXContext {
     ///   
     /// - Returns: true if the object has `property`, otherwise false.
     @inlinable public func hasProperty(_ property: String) -> Bool {
-        return global.hasProperty(property)
+        global.hasProperty(property)
     }
     
     /// Deletes a property from global.
@@ -211,7 +271,7 @@ extension JXContext {
     /// - Returns: true if the delete operation succeeds, otherwise false.
     @discardableResult
     @inlinable public func removeProperty(_ property: String) -> Bool {
-        return global.removeProperty(property)
+        global.removeProperty(property)
     }
 
     /// Returns the global property at the given subscript
@@ -222,7 +282,7 @@ extension JXContext {
 
     /// Get the names of global’s enumerable properties
     @inlinable public var properties: [String] {
-        return global.properties
+        global.properties
     }
 
     /// Checks for the presence of a top-level "exports" variable and creates it if it isn't already an object.
@@ -250,6 +310,11 @@ public extension JXContext {
         case evaluationErrorUnknown
         /// The API call requires a higher system version (e.g., for JS typed array support)
         case minimumSystemVersion
+        /// Unable to create a new promise
+        case cannotCreatePromise
+        case cannotLoadScriptURL(URL, URLResponse)
+        case asyncEvalMustReturnPromise
+
     }
 }
 
@@ -259,8 +324,15 @@ extension JXEnv {
     /// - Parameter this: the `this` for the script
     /// - Throws: an error if the contents of the URL cannot be loaded, or if a JavaScript exception occurs
     /// - Returns: the value as returned by the script (which may be `isUndefined` for void)
-    @discardableResult public func eval(url: URL, this: JXValue? = nil) throws -> JXValType {
-        try eval(this: this, url: url, script: String(contentsOf: url, encoding: .utf8))
+    @available(macOS 12, iOS 15, tvOS 15, *)
+    @discardableResult public func evaluate(remote url: URL, session: URLSession = .shared, this: JXValue? = nil) async throws -> JXValType {
+        let (data, response) = try await URLSession.shared.data(for: URLRequest(url: url))
+        if !(200..<300).contains((response as? HTTPURLResponse)?.statusCode ?? 0) {
+            throw JXContext.Errors.cannotLoadScriptURL(url, response)
+        }
+        let script = String(data: data, encoding: .utf8) ?? ""
+        let result = try eval(script, this: this)
+        return result
     }
 }
 
@@ -457,37 +529,37 @@ extension JXValue {
 
     /// Tests whether a JavaScript value’s type is the undefined type.
     @inlinable public var isUndefined: Bool {
-        return JSValueIsUndefined(env.context, value)
+        JSValueIsUndefined(env.context, value)
     }
 
     /// Tests whether a JavaScript value’s type is the null type.
     @inlinable public var isNull: Bool {
-        return JSValueIsNull(env.context, value)
+        JSValueIsNull(env.context, value)
     }
 
     /// Tests whether a JavaScript value is Boolean.
     @inlinable public var isBoolean: Bool {
-        return JSValueIsBoolean(env.context, value)
+        JSValueIsBoolean(env.context, value)
     }
 
     /// Tests whether a JavaScript value’s type is the number type.
     @inlinable public var isNumber: Bool {
-        return JSValueIsNumber(env.context, value)
+        JSValueIsNumber(env.context, value)
     }
 
     /// Tests whether a JavaScript value’s type is the string type.
     @inlinable public var isString: Bool {
-        return JSValueIsString(env.context, value)
+        JSValueIsString(env.context, value)
     }
 
     /// Tests whether a JavaScript value’s type is the object type.
     @inlinable public var isObject: Bool {
-        return JSValueIsObject(env.context, value)
+        JSValueIsObject(env.context, value)
     }
 
     /// Tests whether a JavaScript value’s type is the date type.
     @inlinable public var isDate: Bool {
-        return self.isInstance(of: env.datePrototype)
+        self.isInstance(of: env.datePrototype)
     }
 
     /// Tests whether a JavaScript value’s type is the array type.
@@ -498,32 +570,32 @@ extension JXValue {
 
     /// Tests whether an object can be called as a constructor.
     @inlinable public var isConstructor: Bool {
-        return isObject && JSObjectIsConstructor(env.context, value)
+        isObject && JSObjectIsConstructor(env.context, value)
     }
 
     /// Tests whether an object can be called as a function.
     @inlinable public var isFunction: Bool {
-        return isObject && JSObjectIsFunction(env.context, value)
+        isObject && JSObjectIsFunction(env.context, value)
     }
 
     /// Tests whether a JavaScript value’s type is the error type.
     @inlinable public var isError: Bool {
-        return self.isInstance(of: env.errorPrototype)
+        self.isInstance(of: env.errorPrototype)
     }
 }
 
 extension JXValue {
 
     @inlinable public var isFrozen: Bool {
-        return env.objectPrototype.invokeMethod("isFrozen", withArguments: [self]).booleanValue
+        env.objectPrototype.invokeMethod("isFrozen", withArguments: [self]).booleanValue
     }
 
     @inlinable public var isExtensible: Bool {
-        return env.objectPrototype.invokeMethod("isExtensible", withArguments: [self]).booleanValue
+        env.objectPrototype.invokeMethod("isExtensible", withArguments: [self]).booleanValue
     }
 
     @inlinable public var isSealed: Bool {
-        return env.objectPrototype.invokeMethod("isSealed", withArguments: [self]).booleanValue
+        env.objectPrototype.invokeMethod("isSealed", withArguments: [self]).booleanValue
     }
 
     @inlinable public func freeze() {
@@ -543,12 +615,13 @@ extension JXValue {
 
     /// Returns the JavaScript boolean value.
     @inlinable public var booleanValue: Bool {
-        return JSValueToBoolean(env.context, value)
+        JSValueToBoolean(env.context, value)
     }
 
     /// Returns the JavaScript number value.
     @inlinable public var numberValue: Double? {
         var exception: JSObjectRef?
+        //if !JSValueIsNumber(env.context, value) { return nil }
         let result = JSValueToNumber(env.context, value, &exception)
         return exception == nil ? result : nil
     }
@@ -610,11 +683,16 @@ extension JXValue {
             fatalError("target was not a function")
         }
         let result = JSObjectCallAsFunction(env.context, value, this?.value, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.value }, &env._currentError)
-        return result.map { JXValue(env: env, value: $0) } ?? JXValue(undefinedIn: env)
+        return result.map {
+            let v = JXValue(env: env, value: $0)
+            //print("CALLING:", $0, "this:", this?.value, "err:", env._currentError, v.isUndefined)
+            //assert(!v.isUndefined)
+            return v
+        } ?? JXValue(undefinedIn: env)
     }
 
     /// Calls an object as a constructor.
-    ///
+    ///a
     /// - Parameters:
     ///   - arguments: The arguments pass to the function.
     ///
@@ -633,7 +711,7 @@ extension JXValue {
     /// - Returns: The object that results from calling the method.
     @discardableResult
     @inlinable public func invokeMethod(_ name: String, withArguments arguments: [JXValue]) -> JXValue {
-        return self[name].call(withArguments: arguments, this: self)
+        self[name].call(withArguments: arguments, this: self)
     }
 }
 
@@ -646,7 +724,7 @@ extension JXValue {
     ///
     /// - Returns: true if the two values are strict equal; otherwise false.
     @inlinable public func isEqual(to other: JXValue) -> Bool {
-        return JSValueIsStrictEqual(env.context, value, other.value)
+        JSValueIsStrictEqual(env.context, value, other.value)
     }
 
     /// Tests whether two JavaScript values are equal, as compared by the JS `==` operator.
@@ -656,7 +734,7 @@ extension JXValue {
     ///
     /// - Returns: true if the two values are equal; false if they are not equal or an exception is thrown.
     @inlinable public func isEqualWithTypeCoercion(to other: JXValue) -> Bool {
-        return JSValueIsEqual(env.context, value, other.value, &env._currentError)
+        JSValueIsEqual(env.context, value, other.value, &env._currentError)
     }
 
     /// Tests whether a JavaScript value is an object constructed by a given constructor, as compared by the `isInstance(of:)` operator.
@@ -666,7 +744,7 @@ extension JXValue {
     ///
     /// - Returns: true if the value is an object constructed by constructor, as compared by the JS isInstance(of:) operator; otherwise false.
     @inlinable public func isInstance(of other: JXValue) -> Bool {
-        return JSValueIsInstanceOfConstructor(env.context, value, other.value, &env._currentError)
+        JSValueIsInstanceOfConstructor(env.context, value, other.value, &env._currentError)
     }
 }
 
@@ -867,12 +945,12 @@ extension JXValue {
 extension JXValue {
     /// Tests whether a JavaScript value’s type is the `ArrayBuffer` type.
     public var isArrayBuffer: Bool {
-        return self.isInstance(of: env.arrayBufferPrototype)
+        self.isInstance(of: env.arrayBufferPrototype)
     }
 
     /// The length (in bytes) of the `ArrayBuffer`.
     public var byteLength: Int {
-        return Int(self["byteLength"].numberValue ?? 0)
+        Int(self["byteLength"].numberValue ?? 0)
     }
 
     /// Copy the bytes of `ArrayBuffer`.
@@ -928,45 +1006,54 @@ extension JXValue {
     }
 
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
-    public convenience init?(newPromiseIn env: JXContext, executor: @escaping (JXContext, _ resolve: JXValue, _ reject: JXValue) -> ()) {
+    public static func createPromise(in env: JXContext) throws -> JXPromise {
         var resolveRef: JSObjectRef?
         var rejectRef: JSObjectRef?
         var exceptionRef: JSValueRef?
 
         // https://github.com/WebKit/WebKit/blob/b46f54e33e5cb968174e4d20392513e14d04839f/Source/JavaScriptCore/API/JSValue.mm#L158
         guard let promise = JSObjectMakeDeferredPromise(env.context, &resolveRef, &rejectRef, &exceptionRef) else {
-            return nil
+            throw JXContext.Errors.cannotCreatePromise
         }
 
         if exceptionRef != nil {
-            return nil
+            throw JXContext.Errors.cannotCreatePromise
         }
 
         guard let resolve = resolveRef else {
-            return nil
+            throw JXContext.Errors.cannotCreatePromise
         }
-        let resolveValue = JXValue(env: env, value: resolve)
+        let resolveFunction = JXValue(env: env, value: resolve)
 
         guard let reject = rejectRef else {
-            return nil
+            throw JXContext.Errors.cannotCreatePromise
         }
-        let rejectValue = JXValue(env: env, value: reject)
+        let rejectFunction = JXValue(env: env, value: reject)
 
-        executor(env, resolveValue, rejectValue)
+        return (promise, resolveFunction, rejectFunction)
+    }
 
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
+    /// Creates a promise and executes it immediately
+    /// - Parameters:
+    ///   - env: the context to use for creation
+    ///   - executor: the executor callback
+    public convenience init(newPromiseIn env: JXContext, executor: (JXContext, _ resolve: JXValue, _ reject: JXValue) throws -> ()) throws {
+        let (promise, resolve, reject) = try Self.createPromise(in: env)
+        try executor(env, resolve, reject)
         self.init(env: env, value: promise)
     }
 
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
-    public convenience init?(newPromiseResolvedWithResult result: JXValue, in env: JXContext) {
-        self.init(newPromiseIn: env) { ctx, resolve, reject in
+    public convenience init(newPromiseResolvedWithResult result: JXValue, in env: JXContext) throws {
+        try self.init(newPromiseIn: env) { ctx, resolve, reject in
             resolve.call(withArguments: [result])
         }
     }
 
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
-    public convenience init?(newPromiseRejectedWithResult reason: JXValue, in env: JXContext) {
-        self.init(newPromiseIn: env) { ctx, resolve, reject in
+    public convenience init(newPromiseRejectedWithResult reason: JXValue, in env: JXContext) throws {
+        try self.init(newPromiseIn: env) { ctx, resolve, reject in
             reject.call(withArguments: [reason])
         }
     }
@@ -977,6 +1064,8 @@ private struct JXFunctionInfo {
     unowned let context: JXContext
     let callback: JXFunction
 }
+
+public typealias JXPromise = (promise: JXValueRef, resolveFunction: JXValue, rejectFunction: JXValue)
 
 private func function_finalize(_ object: JSObjectRef?) -> Void {
 
@@ -1171,6 +1260,6 @@ extension JXValue {
     }
 
     public func propertyDescriptor(_ property: String) -> JXValue {
-        return env.objectPrototype.invokeMethod("getOwnPropertyDescriptor", withArguments: [self, JXValue(string: property, in: env)])
+        env.objectPrototype.invokeMethod("getOwnPropertyDescriptor", withArguments: [self, JXValue(string: property, in: env)])
     }
 }

@@ -79,10 +79,9 @@ public protocol JXEnv : AnyObject {
 
     /// Evaluates the given script and returns the return value.
     /// - Parameters:
+    ///   - script: the JavaScript string to execute
     ///   - this: the current `this`, or `nil`
-    ///   - url: the URL for the script being executed; used merely for debug and error messages
-    ///   - script: the script string to execute
-    func eval(this: JXValue?, url: URL?, script: String) throws -> JXValType
+    func eval(_ script: String, this: JXValue?) throws -> JXValType
 }
 
 /// A `JXEnv` is an abstraction of a JavaScript value.
@@ -148,11 +147,6 @@ extension JXVal {
 }
 
 extension JXEnv {
-    /// Evaluates with a `nil` this
-    @discardableResult public func eval(_ script: String) throws -> JXValType {
-        try eval(this: nil, url: nil, script: script)
-    }
-
     /// Tries to execute the given operation, and throws any exceptions that may exists
     @inlinable public func trying<T>(operation: () throws -> T) throws -> T {
         let result = try operation()

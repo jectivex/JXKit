@@ -137,10 +137,10 @@ extension JSContext : JXEnv {
         set { self.exception = newValue }
     }
 
-    public func eval(this: JXValue?, url: URL?, script: String) throws -> JSValue {
+    public func eval(_ script: String, this: JXValue?) throws -> JSValue {
         try trying {
             // TODO: set the current `this`
-            evaluateScript(script, withSourceURL: url)
+            evaluateScript(script, withSourceURL: nil)
         }
     }
 

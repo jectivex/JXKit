@@ -2,33 +2,6 @@ import class Foundation.Bundle
 import class Foundation.FileManager
 import struct Foundation.URL
 
-extension JXEnv {
-
-    /// Runs a script in the standard bundle module location `"Resources/JavaScript"`.
-    ///
-    /// - Parameters:
-    ///   - name: the name of the script to run (not including the ".js" extension)
-    ///   - bundle: the bundle from which the load the script (typically `Bundle.module` for a Swift package)
-    /// - Throws: an error if the script could not be located or if an error occured when running
-    ///
-    /// Example:
-    ///
-    /// ```swift
-    /// /// Installs the `esprima` module used by `JavaScriptParser`.
-    /// /// This will execute the bundle's `Resources/esprima.js` resource.
-    /// public func installJavaScriptParser() throws {
-    ///     try installModule(named: "esprima", in: .module)
-    /// }
-    /// ```
-    public func installModule(named name: String, in bundle: @autoclosure () -> Bundle, file sourceFilePathRelativeToResources: String = #file) throws -> JXValType {
-        guard let url = Bundle.moduleResource(named: name, withExtension: "js", in: bundle(), file: sourceFilePathRelativeToResources) else {
-            throw JXContext.Errors.missingResource(name)
-        }
-
-        return try eval(url: url)
-    }
-}
-
 extension Bundle {
     /// Returns the resource bundle associated with the current Swift module.
     ///

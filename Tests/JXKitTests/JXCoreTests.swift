@@ -237,15 +237,15 @@ class JXCoreTests: XCTestCase {
 
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
     func testPromises() throws {
-        let ctx = JXContext()
+        let jsc = JXContext()
 
         do {
-            ctx["setTimeout"] = JXValue(newFunctionIn: ctx) { ctx, this, args in
+            jsc["setTimeout"] = JXValue(newFunctionIn: jsc) { jsc, this, args in
                 print("setTimeout", args.map(\.stringValue))
-                return ctx.number(0)
+                return jsc.number(0)
             }
 
-            let result = try ctx.eval("""
+            let result = try jsc.eval("""
                 var arr = [];
                 (async () => {
                   await 1;
@@ -260,18 +260,15 @@ class JXCoreTests: XCTestCase {
             //XCTAssertEqual(3, result.numberValue)
 
             // https://developer.apple.com/forums/thread/678277
-            //XCTAssertEqual([1, 3, 2], ctx["arr"].array?.compactMap(\.numberValue))
+            //XCTAssertEqual([1, 3, 2], jsc["arr"].array?.compactMap(\.numberValue))
         }
 
         do {
             let str = UUID().uuidString
-            guard let resolvedPromise = JXValue(newPromiseResolvedWithResult: ctx.string(str), in: ctx) else {
-                return XCTFail("could not create promise")
-            }
-
-            ctx["prm"] = resolvedPromise
-            let _ = try ctx.eval("(async () => { this['cb'] = await prm; })();")
-            XCTAssertEqual(str, ctx["cb"].stringValue)
+            let resolvedPromise = try JXValue(newPromiseResolvedWithResult: jsc.string(str), in: jsc)
+            jsc["prm"] = resolvedPromise
+            let _ = try jsc.eval("(async () => { this['cb'] = await prm; })();")
+            XCTAssertEqual(str, jsc["cb"].stringValue)
         }
     }
 }

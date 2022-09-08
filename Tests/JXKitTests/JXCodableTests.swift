@@ -4,10 +4,10 @@ import XCTest
 final class JXCodableTests: XCTestCase {
 
     func testRoundTripCodables() throws {
-        let ctx = JXContext()
+        let jsc = JXContext()
 
         func rt<T: Codable & Equatable>(equal: Bool = true, _ item: T, line: UInt = #line) throws {
-            let encoded = try ctx.encode(item)
+            let encoded = try jsc.encode(item)
             let decoded = try encoded.toDecodable(ofType: T.self)
 
             if equal {
@@ -92,24 +92,24 @@ final class JXCodableTests: XCTestCase {
     }
 
     func testCodableData() throws {
-        let ctx = JXContext()
-        let dataValue = try ctx.encode(Data([1,2,3,4]))
+        let jsc = JXContext()
+        let dataValue = try jsc.encode(Data([1,2,3,4]))
         XCTAssertEqual("[object ArrayBuffer]", dataValue.stringValue)
         XCTAssertEqual(4, dataValue["byteLength"].numberValue)
     }
 
     func testCodableDate() throws {
-        let ctx = JXContext()
-        let dateValue = try ctx.encode(Date(timeIntervalSince1970: 1234))
+        let jsc = JXContext()
+        let dateValue = try jsc.encode(Date(timeIntervalSince1970: 1234))
         XCTAssertEqual("Thu, 01 Jan 1970 00:20:34 GMT", dateValue.invokeMethod("toGMTString", withArguments: []).stringValue)
     }
 
     /// An example of invoking `Math.hypot` directly with numeric arguments
     func testCodableParams() throws {
-        let ctx = JXContext()
-        let hypot = ctx["Math"]["hypot"]
+        let jsc = JXContext()
+        let hypot = jsc["Math"]["hypot"]
         XCTAssert(hypot.isFunction)
-        let result = hypot.call(withArguments: try [ctx.encode(3), ctx.encode(4)])
+        let result = hypot.call(withArguments: try [jsc.encode(3), jsc.encode(4)])
         XCTAssertEqual(5, result.numberValue)
     }
 
@@ -118,20 +118,20 @@ final class JXCodableTests: XCTestCase {
         struct AB : Encodable { let a, b: Double }
         struct C : Decodable { let c: Double }
 
-        let ctx = JXContext()
-        let hypot = try ctx.eval(script: "(function(args) { return { c: Math.hypot(args.a, args.b) }; })")
+        let jsc = JXContext()
+        let hypot = try jsc.eval("(function(args) { return { c: Math.hypot(args.a, args.b) }; })")
         XCTAssert(hypot.isFunction)
 
-        let result: C = try hypot.call(withArguments: [ctx.encode(AB(a: 3, b: 4))]).toDecodable(ofType: C.self)
+        let result: C = try hypot.call(withArguments: [jsc.encode(AB(a: 3, b: 4))]).toDecodable(ofType: C.self)
         XCTAssertEqual(5, result.c)
     }
 
     func testFibJS() throws {
-        let ctx = JXContext()
-        let jsfib = try ctx.eval(script: "(function fibo(x) { if (x<=2) return 1; else return fibo(x-1) + fibo(x-2) })")
+        let jsc = JXContext()
+        let jsfib = try jsc.eval("(function fibo(x) { if (x<=2) return 1; else return fibo(x-1) + fibo(x-2) })")
 
         func fib(_ n: Int) -> Double {
-            jsfib.call(withArguments: [ctx.number(n)]).numberValue ?? 0
+            jsfib.call(withArguments: [jsc.number(n)]).numberValue ?? 0
         }
 
         XCTAssertEqual(3, fib(4))
@@ -169,24 +169,24 @@ final class JXCodableTests: XCTestCase {
     }
 
     func testCodableAPI() throws {
-        let ctx = JXMathContext()
-        XCTAssertEqual(5 as Int, try ctx.hypot(3, 4))
-        XCTAssertEqual(5 as Float, try ctx.hypot(3, 4))
-        XCTAssertEqual(5 as Double, try ctx.hypot(3, 4))
-        XCTAssertEqual(5 as Int16, try ctx.hypot(3, 4))
-        XCTAssertEqual(5 as Int8, try ctx.hypot(3, 4))
-        XCTAssertEqual(5 as UInt32, try ctx.hypot(3, 4))
+        let jsc = JXMathContext()
+        XCTAssertEqual(5 as Int, try jsc.hypot(3, 4))
+        XCTAssertEqual(5 as Float, try jsc.hypot(3, 4))
+        XCTAssertEqual(5 as Double, try jsc.hypot(3, 4))
+        XCTAssertEqual(5 as Int16, try jsc.hypot(3, 4))
+        XCTAssertEqual(5 as Int8, try jsc.hypot(3, 4))
+        XCTAssertEqual(5 as UInt32, try jsc.hypot(3, 4))
 
-        // Double vs. Int inferrence
-        XCTAssertEqual(21.02379604162864, try ctx.hypot(9, 19))
-        XCTAssertEqual(21, try ctx.hypot(9, 19))
+        // Double vs. Int inference
+        XCTAssertEqual(21.02379604162864, try jsc.hypot(9, 19))
+        XCTAssertEqual(21, try jsc.hypot(9, 19))
     }
 
     func testCodableArguments() throws {
-        let ctx = JXContext()
+        let jsc = JXContext()
 
-        let htpy = JXValue(newFunctionIn: ctx) { ctx, this, args in
-            JXValue(double: sqrt(pow(args.first?["x"].numberValue ?? 0.0, 2) + pow(args.first?["y"].numberValue ?? 0.0, 2)), in: ctx)
+        let htpy = JXValue(newFunctionIn: jsc) { jsc, this, args in
+            JXValue(double: sqrt(pow(args.first?["x"].numberValue ?? 0.0, 2) + pow(args.first?["y"].numberValue ?? 0.0, 2)), in: jsc)
         }
 
         struct Args : Encodable {
@@ -195,7 +195,7 @@ final class JXCodableTests: XCTestCase {
         }
 
         func hfun(_ args: Args) throws -> Double? {
-            htpy.call(withArguments: [try ctx.encode(args)]).numberValue
+            htpy.call(withArguments: [try jsc.encode(args)]).numberValue
         }
 
         XCTAssertEqual(5, try hfun(Args(x: 3, y: 4)))
@@ -207,15 +207,15 @@ final class JXCodableTests: XCTestCase {
 
 /// An example of wrapping a context to provide structured access to JS APIs with cached function values
 final class JXMathContext {
-    let ctx: JXContext
-    private lazy var _math: JXValue = ctx["Math"]
+    let jsc: JXContext
+    private lazy var _math: JXValue = jsc["Math"]
     private lazy var _hypot: JXValue = _math["hypot"]
 
-    init(ctx: JXContext = JXContext()) {
-        self.ctx = ctx
+    init(jsc: JXContext = JXContext()) {
+        self.jsc = jsc
     }
 
     func hypot<T: Numeric & Codable>(_ a: T, _ b: T) throws -> T {
-        try _hypot.call(withArguments: try [ctx.encode(a), ctx.encode(b)]).toDecodable(ofType: T.self)
+        try _hypot.call(withArguments: try [jsc.encode(a), jsc.encode(b)]).toDecodable(ofType: T.self)
     }
 }
