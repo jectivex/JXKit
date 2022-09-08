@@ -319,6 +319,7 @@ public extension JXContext {
 }
 
 extension JXEnv {
+    #if !os(Linux) // URLSession.shared.data not available yet
     /// Runs the script at the given URL.
     /// - Parameter url: the URL from which to run the script
     /// - Parameter this: the `this` for the script
@@ -326,7 +327,7 @@ extension JXEnv {
     /// - Returns: the value as returned by the script (which may be `isUndefined` for void)
     @available(macOS 12, iOS 15, tvOS 15, *)
     @discardableResult public func evaluate(remote url: URL, session: URLSession = .shared, this: JXValue? = nil) async throws -> JXValType {
-        let (data, response) = try await URLSession.shared.data(for: URLRequest(url: url))
+        let (data, response) = try await session.data(for: URLRequest(url: url))
         if !(200..<300).contains((response as? HTTPURLResponse)?.statusCode ?? 0) {
             throw JXContext.Errors.cannotLoadScriptURL(url, response)
         }
@@ -334,6 +335,7 @@ extension JXEnv {
         let result = try eval(script, this: this)
         return result
     }
+    #endif
 }
 
 extension JXContext {
