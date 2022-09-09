@@ -18,10 +18,6 @@ import FoundationNetworking
 // @available(*, deprecated, renamed: "JXValue")
 // public typealias JSValue = JXValue
 
-
-@available(*, deprecated, message: "for memory testing")
-var globalStuff: Any? = nil
-
 #if canImport(JavaScriptCore)
 import JavaScriptCore
 #else
@@ -71,7 +67,7 @@ open class JXContext {
 
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
     /// Evaluates with a `nil` this
-    @discardableResult public func eval(_ script: String, this: JXValue? = nil, priority: TaskPriority) async throws -> JXValType {
+    @discardableResult public func eval(_ script: String, method: Bool = true, this: JXValue? = nil, priority: TaskPriority) async throws -> JXValType {
 
         try await withCheckedThrowingContinuation { [weak self] c in
             do {
@@ -85,20 +81,13 @@ open class JXContext {
                 }
 
                 let rejected = JXValue(newFunctionIn: self) { ctx, this, arg in
-                    c.resume(throwing: Errors.cannotCreatePromise)
+                    c.resume(throwing: arg.first ?? Errors.cannotCreatePromise)
                     return JXValue(undefinedIn: ctx)
                 }
 
-                self["fulfilledX"] = fulfilled
-                self["rejectedX"] = rejected
-                let px = try eval(script + ".then(fulfilledX, rejectedX)", this: this)
-
-                return // XXX
-
-
                 let promise = try eval(script, this: this)
 
-                if promise.isFunction || promise.isConstructor { // should return a Promise, nor a function
+                if promise.isFunction || promise.isConstructor { // should return a Promise, not a function
                     throw Errors.asyncEvalMustReturnPromise
                 }
 
@@ -107,16 +96,18 @@ open class JXContext {
                 }
 
                 let then = promise["then"]
-
-                if then.isFunction == false {
+                guard then.isFunction == false else {
                     throw Errors.asyncEvalMustReturnPromise
                 }
 
-                globalStuff = (fulfilled, rejected)
-                let presult = then.call(withArguments: [fulfilled, rejected], this: this)
+                let presult = then.call(withArguments: [fulfilled, rejected], this: promise)
 
-                print("### then:", then, "this:", this)
-                print("### presult:", presult)
+                // then() should return a promise as well
+                if !presult.isObject || presult.stringValue != "[object Promise]" {
+                    // we can't throw here because it might complete the promise multiple times
+                    //throw Errors.asyncEvalMustReturnPromise
+                    fatalError("Promise.then did not return a promise")
+                }
             } catch {
                 return c.resume(throwing: error)
             }
