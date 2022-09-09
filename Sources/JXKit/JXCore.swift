@@ -66,7 +66,7 @@ open class JXContext {
     }
 
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
-    /// Evaluates with a `nil` this
+    /// Asynchronously evaulates the given script
     @discardableResult public func eval(_ script: String, method: Bool = true, this: JXValue? = nil, priority: TaskPriority) async throws -> JXValType {
 
         try await withCheckedThrowingContinuation { [weak self] c in
@@ -87,16 +87,16 @@ open class JXContext {
 
                 let promise = try eval(script, this: this)
 
-                if promise.isFunction || promise.isConstructor { // should return a Promise, not a function
+                guard !promise.isFunction && !promise.isConstructor else { // should return a Promise, not a function
                     throw Errors.asyncEvalMustReturnPromise
                 }
 
-                if !promise.isObject || promise.stringValue != "[object Promise]" {
+                guard promise.isObject && promise.stringValue == "[object Promise]" else {
                     throw Errors.asyncEvalMustReturnPromise
                 }
 
                 let then = promise["then"]
-                guard then.isFunction == false else {
+                guard then.isFunction else {
                     throw Errors.asyncEvalMustReturnPromise
                 }
 
