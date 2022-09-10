@@ -1,7 +1,7 @@
 import JXKit
 import XCTest
 
-@available(macOS 11, iOS 12, tvOS 12, *)
+@available(macOS 11, iOS 13, tvOS 13, *)
 class JXCoreTests: XCTestCase {
 
     func testHobbled() {

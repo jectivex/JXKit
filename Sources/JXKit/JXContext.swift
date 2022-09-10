@@ -18,7 +18,7 @@ import FoundationNetworking
 /// The `JXContext` used the system's `JavaScriptCore` C interface on Apple platforms, and `webkitgtk-4.0` on Linux platforms. Windows is TBD.
 ///
 /// This wraps a `JSGlobalContextRef`, and is the equivalent of `JavaScriptCore.JSContext`
-@available(macOS 11, iOS 12, tvOS 12, *)
+@available(macOS 11, iOS 13, tvOS 13, *)
 public final class JXContext : JXEnv {
     public let group: JXContextGroup
     public let context: JSGlobalContextRef

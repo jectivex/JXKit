@@ -23,7 +23,7 @@ public protocol JXEnv : AnyObject {
 /// `JXValue` references may be used interchangably with separate `JXContext`  instances that created from the same `JXContextGroup`, but sharing between  different `JXContextGroup`s will result in undefined behavior.
 ///
 /// - Note: This wraps a `JSContextGroupRef`, and is the equivalent of `JavaScriptCore.JSVirtualMachine`
-@available(macOS 11, iOS 12, tvOS 12, *)
+@available(macOS 11, iOS 13, tvOS 13, *)
 public final class JXContextGroup {
     @usableFromInline let group: JSContextGroupRef
 
