@@ -1,6 +1,7 @@
 import JXKit
 import XCTest
 
+@available(macOS 11, iOS 12, tvOS 12, *)
 class JXCoreTests: XCTestCase {
 
     func testHobbled() {
@@ -121,7 +122,6 @@ class JXCoreTests: XCTestCase {
         XCTAssertEqual(context.global["obj"]["number_container"].numberValue, 3)
     }
 
-    @available(macOS 10.12, macCatalyst 13.0, iOS 10.0, tvOS 10.0, *)
     func testArrayBuffer() {
         let context = JXContext()
         
@@ -145,7 +145,6 @@ class JXCoreTests: XCTestCase {
         }
     }
     
-    @available(macOS 10.12, macCatalyst 13.0, iOS 10.0, tvOS 10.0, *)
     func testArrayBufferWithBytesNoCopy() {
         var flag = 0
 
@@ -167,7 +166,6 @@ class JXCoreTests: XCTestCase {
         XCTAssertEqual(flag, 1)
     }
 
-    @available(macOS 10.12, macCatalyst 13.0, iOS 10.0, tvOS 10.0, *)
     func testArrayBufferClosure() {
         // this should always measure around zero regardless of the size of the buffer that is passed, since we guarantee that no copy will be made
         let size = 1_000_000
@@ -187,7 +185,6 @@ class JXCoreTests: XCTestCase {
         }
     }
 
-    @available(macOS 10.12, macCatalyst 13.0, iOS 10.0, tvOS 10.0, *)
     func testDataView() {
         let context = JXContext()
         
@@ -199,7 +196,6 @@ class JXCoreTests: XCTestCase {
         XCTAssertEqual(context["buffer"].copyBytes().map(Array.init), [5, 2, 3, 4, 5, 6, 7, 8])
     }
     
-    @available(macOS 10.12, macCatalyst 13.0, iOS 10.0, tvOS 10.0, *)
     func testSlice() {
         let context = JXContext()
         
@@ -235,7 +231,6 @@ class JXCoreTests: XCTestCase {
         XCTAssertTrue(result.isInstance(of: myClass))
     }
 
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
     func testPromises() throws {
         let jsc = JXContext()
 

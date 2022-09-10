@@ -1,22 +1,18 @@
 //
-//  JXCoding.swift
-//
 //  Codable support for encoding/decoding to/from a JSObject in a JXContext
-//
-//  This is heavily based on https://github.com/apple/swift-corelibs-foundation/blob/main/Darwin/Foundation-swiftoverlay/PlistEncoder.swift
-//
-//  Created by Marc Prud'hommeaux on 5/22/21.
 //
 
 import Foundation
 
-extension JXVal {
+@available(macOS 11, iOS 12, tvOS 12, *)
+extension JXValue {
     /// Returns true if the value is either null or undefined
     @inlinable var isNullOrUndefined: Bool {
         isUndefined || isNull
     }
 }
 
+@available(macOS 11, iOS 12, tvOS 12, *)
 public extension JXContext {
     /// Encodes the given object into this context
     func encode<T: Encodable>(_ value: T) throws -> JXValue {
@@ -24,6 +20,7 @@ public extension JXContext {
     }
 }
 
+@available(macOS 11, iOS 12, tvOS 12, *)
 extension JXValue {
     /// Uses a `JXValueDecoder` to decode the `Decodable`
     @inlinable public func toDecodable<T: Decodable>(ofType: T.Type) throws -> T {
@@ -34,6 +31,7 @@ extension JXValue {
 
 // MARK: Encoding
 
+@available(macOS 11, iOS 12, tvOS 12, *)
 extension JXValue {
     /// Adds the given object as the final element of this array
     func add(_ object: JXValue) {
@@ -56,6 +54,7 @@ extension JXValue {
     }
 }
 
+@available(macOS 11, iOS 12, tvOS 12, *)
 open class JXValueEncoder {
 
     // MARK: - Options
@@ -116,6 +115,7 @@ open class JXValueEncoder {
 
 // MARK: - JXEncoder
 
+@available(macOS 11, iOS 12, tvOS 12, *)
 fileprivate class JXEncoder : Encoder {
     fileprivate let context: JXContext
 
@@ -198,6 +198,7 @@ fileprivate class JXEncoder : Encoder {
 }
 
 // MARK: - Encoding Storage and Containers
+@available(macOS 11, iOS 12, tvOS 12, *)
 fileprivate struct _ScriptEncodingStorage {
     // MARK: Properties
     /// The container stack.
@@ -237,6 +238,7 @@ fileprivate struct _ScriptEncodingStorage {
 
 // MARK: - Encoding Containers
 
+@available(macOS 11, iOS 12, tvOS 12, *)
 fileprivate struct _ScriptUnkeyedEncodingContainer : UnkeyedEncodingContainer {
     // MARK: Properties
     /// A reference to the encoder we're writing to.
@@ -309,6 +311,7 @@ fileprivate struct _ScriptUnkeyedEncodingContainer : UnkeyedEncodingContainer {
     }
 }
 
+@available(macOS 11, iOS 12, tvOS 12, *)
 extension JXEncoder : SingleValueEncodingContainer {
     // MARK: - SingleValueEncodingContainer Methods
     private func assertCanEncodeNewValue() {
@@ -397,6 +400,7 @@ extension JXEncoder : SingleValueEncodingContainer {
 }
 
 // MARK: - Concrete Value Representations
+@available(macOS 11, iOS 12, tvOS 12, *)
 extension JXEncoder {
 
     /// Returns the given value boxed in a container appropriate for pushing onto the container stack.
@@ -453,7 +457,7 @@ extension JXEncoder {
             return JXValue(date: date, in: context)
         }
 
-        if let data = value as? Data, #available(macOS 10.12, iOS 10.0, tvOS 10.0, *) {
+        if let data = value as? Data {
             return JXValue(newArrayBufferWithBytes: data, in: context)
         }
 
@@ -480,6 +484,7 @@ extension JXEncoder {
     }
 }
 
+@available(macOS 11, iOS 12, tvOS 12, *)
 fileprivate struct _JSKeyedEncodingContainer<K : CodingKey> : KeyedEncodingContainerProtocol {
     typealias Key = K
 
@@ -601,6 +606,7 @@ fileprivate struct _JSKeyedEncodingContainer<K : CodingKey> : KeyedEncodingConta
 // MARK: - __JSReferencingEncoder
 /// __JSReferencingEncoder is a special subclass of JXEncoder which has its own storage, but references the contents of a different encoder.
 /// It's used in superEncoder(), which returns a new encoder for encoding a superclass -- the lifetime of the encoder should not escape the scope it's created in, but it doesn't necessarily know when it's done being used (to write to the original container).
+@available(macOS 11, iOS 12, tvOS 12, *)
 fileprivate class __JSReferencingEncoder : JXEncoder {
     // MARK: Reference types.
     /// The type of container we're referencing.
@@ -669,6 +675,7 @@ fileprivate class __JSReferencingEncoder : JXEncoder {
 // MARK: Decoder
 
 /// `JXValueDecoder` facilitates the decoding of `JXValue` values into `Decodable` types.
+@available(macOS 11, iOS 12, tvOS 12, *)
 open class JXValueDecoder {
     @usableFromInline let context: JXContext
     
@@ -736,6 +743,7 @@ open class JXValueDecoder {
 
 // MARK: - __JSDecoder
 
+@available(macOS 11, iOS 12, tvOS 12, *)
 fileprivate class __JSDecoder : Decoder {
     let context: JXContext
 
@@ -769,7 +777,7 @@ fileprivate class __JSDecoder : Decoder {
         guard !(self.storage.topContainer.isNullOrUndefined) else {
             throw DecodingError.valueNotFound(KeyedDecodingContainer<Key>.self,
                                               DecodingError.Context(codingPath: self.codingPath,
-                                                      debugDescription: "Cannot get keyed decoding container -- found null value instead."))
+                                                                    debugDescription: "Cannot get keyed decoding container -- found null value instead."))
         }
 
         guard self.storage.topContainer.isObject else {
@@ -784,7 +792,7 @@ fileprivate class __JSDecoder : Decoder {
         guard !(self.storage.topContainer.isNullOrUndefined) else {
             throw DecodingError.valueNotFound(UnkeyedDecodingContainer.self,
                                               DecodingError.Context(codingPath: self.codingPath,
-                                                      debugDescription: "Cannot get unkeyed decoding container -- found null value instead."))
+                                                                    debugDescription: "Cannot get unkeyed decoding container -- found null value instead."))
         }
 
         guard self.storage.topContainer.isArray, let topContainer = self.storage.topContainer.array else {
@@ -800,6 +808,7 @@ fileprivate class __JSDecoder : Decoder {
 }
 
 // MARK: - Decoding Storage
+@available(macOS 11, iOS 12, tvOS 12, *)
 fileprivate struct _ScriptDecodingStorage {
     // MARK: Properties
     /// The container stack.
@@ -831,6 +840,7 @@ fileprivate struct _ScriptDecodingStorage {
 }
 
 // MARK: Decoding Containers
+@available(macOS 11, iOS 12, tvOS 12, *)
 fileprivate struct _JSKeyedDecodingContainer<K : CodingKey> : KeyedDecodingContainerProtocol {
     typealias Key = K
 
@@ -1096,7 +1106,7 @@ fileprivate struct _JSKeyedDecodingContainer<K : CodingKey> : KeyedDecodingConta
         guard let value = self.container[key.stringValue] else {
             throw DecodingError.valueNotFound(KeyedDecodingContainer<NestedKey>.self,
                                               DecodingError.Context(codingPath: self.codingPath,
-                                                      debugDescription: "Cannot get nested keyed container -- no value found for key \"\(key.stringValue)\""))
+                                                                    debugDescription: "Cannot get nested keyed container -- no value found for key \"\(key.stringValue)\""))
         }
 
         guard value.isObject else {
@@ -1114,7 +1124,7 @@ fileprivate struct _JSKeyedDecodingContainer<K : CodingKey> : KeyedDecodingConta
         guard let value = self.container[key.stringValue] else {
             throw DecodingError.valueNotFound(UnkeyedDecodingContainer.self,
                                               DecodingError.Context(codingPath: self.codingPath,
-                                                      debugDescription: "Cannot get nested unkeyed container -- no value found for key \"\(key.stringValue)\""))
+                                                                    debugDescription: "Cannot get nested unkeyed container -- no value found for key \"\(key.stringValue)\""))
         }
 
         guard value.isArray, let array = value.array else {
@@ -1141,6 +1151,7 @@ fileprivate struct _JSKeyedDecodingContainer<K : CodingKey> : KeyedDecodingConta
     }
 }
 
+@available(macOS 11, iOS 12, tvOS 12, *)
 fileprivate struct _ScriptUnkeyedDecodingContainer : UnkeyedDecodingContainer {
     // MARK: Properties
     /// A reference to the decoder we're reading from.
@@ -1433,14 +1444,14 @@ fileprivate struct _ScriptUnkeyedDecodingContainer : UnkeyedDecodingContainer {
         guard !self.isAtEnd else {
             throw DecodingError.valueNotFound(KeyedDecodingContainer<NestedKey>.self,
                                               DecodingError.Context(codingPath: self.codingPath,
-                                                      debugDescription: "Cannot get nested keyed container -- unkeyed container is at end."))
+                                                                    debugDescription: "Cannot get nested keyed container -- unkeyed container is at end."))
         }
 
         let value = self.container[self.currentIndex]
         guard !value.isNullOrUndefined else {
             throw DecodingError.valueNotFound(KeyedDecodingContainer<NestedKey>.self,
                                               DecodingError.Context(codingPath: self.codingPath,
-                                                      debugDescription: "Cannot get keyed decoding container -- found null value instead."))
+                                                                    debugDescription: "Cannot get keyed decoding container -- found null value instead."))
         }
 
         guard value.isObject else {
@@ -1459,14 +1470,14 @@ fileprivate struct _ScriptUnkeyedDecodingContainer : UnkeyedDecodingContainer {
         guard !self.isAtEnd else {
             throw DecodingError.valueNotFound(UnkeyedDecodingContainer.self,
                                               DecodingError.Context(codingPath: self.codingPath,
-                                                      debugDescription: "Cannot get nested unkeyed container -- unkeyed container is at end."))
+                                                                    debugDescription: "Cannot get nested unkeyed container -- unkeyed container is at end."))
         }
 
         let value = self.container[self.currentIndex]
         guard !(value.isNullOrUndefined) else {
             throw DecodingError.valueNotFound(UnkeyedDecodingContainer.self,
                                               DecodingError.Context(codingPath: self.codingPath,
-                                                      debugDescription: "Cannot get keyed decoding container -- found null value instead."))
+                                                                    debugDescription: "Cannot get keyed decoding container -- found null value instead."))
         }
 
         guard value.isArray, let array = value.array else {
@@ -1483,7 +1494,7 @@ fileprivate struct _ScriptUnkeyedDecodingContainer : UnkeyedDecodingContainer {
 
         guard !self.isAtEnd else {
             throw DecodingError.valueNotFound(Decoder.self, DecodingError.Context(codingPath: self.codingPath,
-                                                                    debugDescription: "Cannot get superDecoder() -- unkeyed container is at end."))
+                                                                                  debugDescription: "Cannot get superDecoder() -- unkeyed container is at end."))
         }
 
         let value = self.container[self.currentIndex]
@@ -1492,6 +1503,7 @@ fileprivate struct _ScriptUnkeyedDecodingContainer : UnkeyedDecodingContainer {
     }
 }
 
+@available(macOS 11, iOS 12, tvOS 12, *)
 extension __JSDecoder : SingleValueDecodingContainer {
     // MARK: SingleValueDecodingContainer Methods
     private func expectNonNull<T>(_ type: T.Type) throws {
@@ -1581,6 +1593,7 @@ extension __JSDecoder : SingleValueDecodingContainer {
 }
 
 // MARK: - Concrete Value Representations
+@available(macOS 11, iOS 12, tvOS 12, *)
 extension __JSDecoder {
     /// Returns the given value unboxed from a container.
     fileprivate func unbox(_ value: JXValue, as type: Bool.Type) throws -> Bool? {
@@ -1619,7 +1632,7 @@ extension __JSDecoder {
     }
 
     fileprivate func unbox(_ value: JXValue, as type: Data.Type) throws -> Data? {
-        guard value.isArrayBuffer, #available(macOS 10.12, macCatalyst 13.0, iOS 10.0, tvOS 10.0, *), let data = value.copyBytes() else {
+        guard value.isArrayBuffer, let data = value.copyBytes() else {
             throw DecodingError._typeMismatch(at: self.codingPath, expectation: type, reality: value)
         }
 
@@ -1639,7 +1652,7 @@ extension __JSDecoder {
     }
 }
 
-
+@available(macOS 11, iOS 12, tvOS 12, *)
 extension DecodingError {
     /// Returns a `.typeMismatch` error describing the expected type.
     ///
@@ -1655,6 +1668,7 @@ extension DecodingError {
 
 // MARK: Shared
 
+@available(macOS 11, iOS 12, tvOS 12, *)
 fileprivate struct _JSKey : CodingKey {
     public var stringValue: String
     public var intValue: Int?
