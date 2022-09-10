@@ -85,7 +85,7 @@ extension JXContext : JXEnv {
     @inlinable public func array(_ values: [JXValue]) -> JXValue {
         let array = JXValue(newArrayIn: self)
         for (index, value) in values.enumerated() {
-            array[index] = value
+            array[UInt32(index)] = value
         }
         return array
     }

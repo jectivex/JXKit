@@ -38,7 +38,7 @@ extension JXValue {
     /// Adds the given object as the final element of this array
     func add(_ object: JXValue) {
         if isArray {
-            self[self.count] = object
+            self[UInt32(count)] = object
         } else {
             print("warning: ignoring array call on non-array")
         }
@@ -47,9 +47,9 @@ extension JXValue {
     func insert(_ object: JXValue, at index: Int) {
         if isArray {
             for i in (max(1, index)...count).reversed() {
-                self[i] = self[i-1] // shift all the latter elements up by one
+                self[UInt32(i)] = self[UInt32(i-1)] // shift all the latter elements up by one
             }
-            self[index] = object // and fill in the index (JS permits assigning a non-existent index)
+            self[UInt32(index)] = object // and fill in the index (JS permits assigning a non-existent index)
         } else {
             print("warning: ignoring array call on non-array")
         }
@@ -59,6 +59,7 @@ extension JXValue {
 open class JXValueEncoder {
 
     // MARK: - Options
+    
     /// The output format to write the script object data in. Defaults to `.binary`.
     // open var outputFormat: Format = .binary
 
