@@ -240,6 +240,7 @@ public final class JXContext : JXEnv {
     /// - Parameter this: the `this` for the script
     /// - Throws: an error if the contents of the URL cannot be loaded, or if a JavaScript exception occurs
     /// - Returns: the value as returned by the script (which may be `isUndefined` for void)
+    @available(macOS 12, iOS 15, tvOS 15, *)
     @discardableResult public func evaluate(remote url: URL, session: URLSession = .shared, this: JXValue? = nil) async throws -> JXValue {
         let (data, response) = try await session.data(for: URLRequest(url: url))
         if !(200..<300).contains((response as? HTTPURLResponse)?.statusCode ?? 0) {
