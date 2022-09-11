@@ -219,6 +219,7 @@ final class JXCodableTests: XCTestCase {
 }
 
 /// An example of wrapping a context to provide structured access to JS APIs with cached function values
+@available(macOS 11, iOS 13, tvOS 13, *)
 final class JXMathContext {
     let jsc: JXContext
     private lazy var _math = Result { try jsc["Math"] }
