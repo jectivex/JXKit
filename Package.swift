@@ -33,7 +33,9 @@ let package = Package(
     products: [
         .library(name: "JXKit", targets: ["JXKit"]),
     ],
-dependencies: [ .package(name: "swift-docc-plugin", url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0") ], targets: targets + [
+    dependencies: [ .package(name: "swift-docc-plugin", url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"), 
+    ],
+    targets: targets + [
         .testTarget(name: "JXKitTests", 
             dependencies: ["JXKit"])
     ]
