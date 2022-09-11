@@ -14,6 +14,8 @@ This permits JSC to be used on platforms where the Objective-C runtime is unavai
 
 ## API
 
+Browse the [API Documentation].
+
 ### Direct function invocation
 
 Functions can be accessed (and cached) to be invoked directly with codable arguments:
@@ -53,8 +55,8 @@ The JXKit API is a mostly drop-in replacement for the Objective-C `JavaScriptCor
 ```swift
 import JavaScriptCore
 
-let ctx = JSContext()
-let value: JXValue = ctx.evaluateScript("1+2")
+let jsc = JSContext()
+let value: JSValue = jsc.evaluateScript("1+2")
 assert(value.doubleValue == 3)
 ```
 
@@ -63,14 +65,14 @@ becomes:
 ```swift
 import JXKit
 
-let ctx = JXContext()
-let value: JXValue = ctx.evaluateScript("1+2")
-assert(value.doubleValue == 3)
+let jxc = JXContext()
+let value: JXValue = try jxc.eval("1+2")
+assert(try value.numberValue == 3)
 ```
 
 ## Installation
 
-> _Note:_ Requires Swift 5.3+
+> _Note:_ Requires Swift 5.5+
 
 ### Swift Package Manager
 
@@ -111,3 +113,6 @@ Swift code.
   ```
 
 [Swift Package Manager]: https://swift.org/package-manager
+[API Documentation]: https://jectivex.github.io/JXKit
+
+

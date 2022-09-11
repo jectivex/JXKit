@@ -128,8 +128,9 @@ jobs:
           swift -version
           export SWIFTPM_ENABLE_COMMAND_PLUGINS=1
           export DOCC_JSON_PRETTYPRINT="YES"
-          # add in the docc plugin to generate the docs
-          sed -I "" 's;// zero dependencies;.package(name: "swift-docc-plugin", url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0");g' Package.swift
+
+          # insert the docc dependency
+          sed -I "" 's;^ *targets: ;dependencies: [ .package(name: "swift-docc-plugin", url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0") ], targets: ;1' Package.swift
 
           swift package --allow-writing-to-directory docs \
             generate-documentation --target JXKit \
