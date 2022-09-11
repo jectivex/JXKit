@@ -63,10 +63,9 @@ extension JXVM {
 }
 
 /// The underlying type that represents a value in the JavaScript environment
-public typealias JXValueRef = JSValueRef
+@usableFromInline internal typealias JXValueRef = JSValueRef
 
 @usableFromInline internal typealias JXContextRef = JSContextRef
-
 
 /// The underlying type that represents a string in the JavaScript environment
 @usableFromInline internal typealias JXStringRef = JSStringRef
@@ -74,3 +73,4 @@ public typealias JXValueRef = JSValueRef
 /// Work-in-progress, simply to highlight a line with a deprecation warning
 @available(*, deprecated, message: "work-in-progress")
 @usableFromInline internal func wip<T>(_ value: T) -> T { value }
+

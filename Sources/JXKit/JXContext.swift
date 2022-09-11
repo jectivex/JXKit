@@ -90,10 +90,10 @@ extension JXContext {
         var err: JSValueRef?
         let result = JSEvaluateScript(context, script, this?.value, nil, 0, &err)
         if let err = err {
-            throw JXErrors.jxerror(JXValue(env: self, value: err))
+            throw JXErrors.jxerror(JXValue(env: self, valueRef: err))
         }
 
-        return result.map { JXValue(env: self, value: $0) } ?? JXValue(undefinedIn: self)
+        return result.map { JXValue(env: self, valueRef: $0) } ?? JXValue(undefinedIn: self)
     }
 
     /// Asynchronously evaulates the given script
@@ -171,7 +171,7 @@ extension JXContext {
 
     /// The global object.
     public var global: JXValue {
-        JXValue(env: self, value: JSContextGetGlobalObject(context))
+        JXValue(env: self, valueRef: JSContextGetGlobalObject(context))
     }
 
     /// Tests whether global has a given property.

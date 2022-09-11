@@ -21,10 +21,14 @@ public final class JXValue {
     @usableFromInline let env: JXContext
     @usableFromInline let value: JXValueRef
 
-    public init(env: JXContext, value: JXValueRef) {
-        JSValueProtect(env.context, value)
+    public convenience init(env: JXContext, value: JXValue) {
+        self.init(env: env, valueRef: value.value)
+    }
+
+    @usableFromInline internal init(env: JXContext, valueRef: JXValueRef) {
+        JSValueProtect(env.context, valueRef)
         self.env = env
-        self.value = value
+        self.value = valueRef
     }
 
     deinit {
@@ -52,7 +56,7 @@ extension JXValue {
     /// - Parameters:
     ///   - context: The execution context to use.
     @inlinable public convenience init(undefinedIn env: JXContext) {
-        self.init(env: env, value: JSValueMakeUndefined(env.context))
+        self.init(env: env, valueRef: JSValueMakeUndefined(env.context))
     }
 
     /// Creates a JavaScript value of the `null` type.
@@ -60,7 +64,7 @@ extension JXValue {
     /// - Parameters:
     ///   - context: The execution context to use.
     @inlinable public convenience init(nullIn env: JXContext) {
-        self.init(env: env, value: JSValueMakeNull(env.context))
+        self.init(env: env, valueRef: JSValueMakeNull(env.context))
     }
 
     /// Creates a JavaScript `Boolean` value.
@@ -69,7 +73,7 @@ extension JXValue {
     ///   - value: The value to assign to the object.
     ///   - context: The execution context to use.
     @inlinable public convenience init(bool value: Bool, in env: JXContext) {
-        self.init(env: env, value: JSValueMakeBoolean(env.context, value))
+        self.init(env: env, valueRef: JSValueMakeBoolean(env.context, value))
     }
 
     /// Creates a JavaScript value of the `Number` type.
@@ -78,7 +82,7 @@ extension JXValue {
     ///   - value: The value to assign to the object.
     ///   - context: The execution context to use.
     @inlinable public convenience init(double value: Double, in env: JXContext) {
-        self.init(env: env, value: JSValueMakeNumber(env.context, value))
+        self.init(env: env, valueRef: JSValueMakeNumber(env.context, value))
     }
 
     /// Creates a JavaScript value of the `String` type.
@@ -89,7 +93,7 @@ extension JXValue {
     @inlinable public convenience init(string value: String, in env: JXContext) {
         let value = value.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(value) }
-        self.init(env: env, value: JSValueMakeString(env.context, value))
+        self.init(env: env, valueRef: JSValueMakeString(env.context, value))
     }
 
     /// Creates a JavaScript value of the parsed `JSON`.
@@ -103,7 +107,7 @@ extension JXValue {
         guard let json = JSValueMakeFromJSONString(env.context, value) else {
             return nil // TODO: throw error
         }
-        self.init(env: env, value: json)
+        self.init(env: env, valueRef: json)
     }
 
     /// Creates a JavaScript `Date` object, as if by invoking the built-in `RegExp` constructor.
@@ -116,7 +120,7 @@ extension JXValue {
         let object = try throwing(env: env) {
             JSObjectMakeDate(env.context, 1, arguments.map { $0.value }, $0)
         }
-        self.init(env: env, value: object!)
+        self.init(env: env, valueRef: object!)
     }
 
     /// Creates a JavaScript `RegExp` object, as if by invoking the built-in `RegExp` constructor.
@@ -130,7 +134,7 @@ extension JXValue {
         let object = try throwing(env: env) {
             JSObjectMakeRegExp(env.context, 2, arguments.map { $0.value }, $0)
         }
-        self.init(env: env, value: object!)
+        self.init(env: env, valueRef: object!)
     }
 
     /// Creates a JavaScript `Error` object, as if by invoking the built-in `Error` constructor.
@@ -143,7 +147,7 @@ extension JXValue {
         let object = try throwing(env: env) {
             JSObjectMakeError(env.context, arguments.count, arguments.map { $0.value }, $0)
         }
-        self.init(env: env, value: object!)
+        self.init(env: env, valueRef: object!)
     }
 
     /// Creates a JavaScript `Object`.
@@ -151,7 +155,7 @@ extension JXValue {
     /// - Parameters:
     ///   - context: The execution context to use.
     @inlinable public convenience init(newObjectIn env: JXContext) {
-        self.init(env: env, value: JSObjectMake(env.context, nil, nil))
+        self.init(env: env, valueRef: JSObjectMake(env.context, nil, nil))
     }
 
     /// Creates a JavaScript `Object` with prototype.
@@ -161,7 +165,7 @@ extension JXValue {
     ///   - prototype: The prototype to be used.
     @inlinable public convenience init(newObjectIn env: JXContext, prototype: JXValue) throws {
         let obj = try env.objectPrototype.invokeMethod("create", withArguments: [prototype])
-        self.init(env: env, value: obj.value)
+        self.init(env: env, valueRef: obj.value)
     }
 
     /// Creates a JavaScript `Array` object.
@@ -172,7 +176,7 @@ extension JXValue {
         let array = try throwing(env: env) {
             JSObjectMakeArray(env.context, 0, nil, $0)
         }
-        self.init(env: env, value: array!)
+        self.init(env: env, valueRef: array!)
         if let values = values {
             for (index, element) in values.enumerated() {
                 try self.setElement(element, at: UInt32(index))
@@ -214,7 +218,7 @@ extension JXValue {
     @inlinable public var prototype: JXValue {
         get {
             let prototype = JSObjectGetPrototype(env.context, value)
-            return prototype.map { JXValue(env: env, value: $0) } ?? JXValue(undefinedIn: env)
+            return prototype.map { JXValue(env: env, valueRef: $0) } ?? JXValue(undefinedIn: env)
         }
         set {
             JSObjectSetPrototype(env.context, value, newValue.value)
@@ -412,7 +416,7 @@ extension JXValue {
             JSObjectCallAsFunction(env.context, value, this?.value, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.value }, $0)
         }
         return result.map {
-            let v = JXValue(env: env, value: $0)
+            let v = JXValue(env: env, valueRef: $0)
             return v
         } ?? JXValue(undefinedIn: env)
     }
@@ -427,7 +431,7 @@ extension JXValue {
         let result = try throwing(env: env) {
             JSObjectCallAsConstructor(env.context, value, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.value }, $0)
         }
-        return result.map { JXValue(env: env, value: $0) } ?? JXValue(undefinedIn: env)
+        return result.map { JXValue(env: env, valueRef: $0) } ?? JXValue(undefinedIn: env)
     }
 
     /// Invoke an object's method.
@@ -486,7 +490,7 @@ extension JXValue {
     var val: JSValueRef?
     let result = try block(&val)
     if let val = val {
-        throw JXErrors.jxerror(JXValue(env: env, value: val))
+        throw JXErrors.jxerror(JXValue(env: env, valueRef: val))
     }
     return result
 }
@@ -570,7 +574,7 @@ extension JXValue {
             let result = try throwing(env: env) {
                 JSObjectGetProperty(env.context, value, property, $0)
             }
-            return result.map { JXValue(env: env, value: $0) } ?? JXValue(undefinedIn: env)
+            return result.map { JXValue(env: env, valueRef: $0) } ?? JXValue(undefinedIn: env)
         }
     }
 
@@ -603,7 +607,7 @@ extension JXValue {
             let result = try throwing(env: env) {
                 JSObjectGetPropertyAtIndex(env.context, value, index, $0)
             }
-            return result.map { JXValue(env: env, value: $0) } ?? JXValue(undefinedIn: env)
+            return result.map { JXValue(env: env, valueRef: $0) } ?? JXValue(undefinedIn: env)
         }
     }
 
@@ -636,7 +640,7 @@ extension JXValue {
     ///   - context: The execution context to use.
     public convenience init(newArrayBufferWithLength length: Int, in env: JXContext) throws {
         let obj = try env.arrayBufferPrototype.construct(withArguments: [JXValue(double: Double(length), in: env)])
-        self.init(env: env, value: obj.value)
+        self.init(env: env, valueRef: obj.value)
     }
 
     /// Creates a JavaScript `ArrayBuffer` object.
@@ -664,7 +668,7 @@ extension JXValue {
             throw JXErrors.cannotCreateArrayBuffer
         }
 
-        self.init(env: env, value: value)
+        self.init(env: env, valueRef: value)
     }
 
     /// Creates a JavaScript `ArrayBuffer` object.
@@ -683,7 +687,7 @@ extension JXValue {
             throw JXErrors.cannotCreateArrayBuffer
         }
 
-        self.init(env: env, value: bufValue)
+        self.init(env: env, valueRef: bufValue)
     }
 }
 
@@ -753,7 +757,7 @@ extension JXValue {
         let _class = JSClassCreate(&def)
         defer { JSClassRelease(_class) }
 
-        self.init(env: env, value: JSObjectMake(env.context, _class, info))
+        self.init(env: env, valueRef: JSObjectMake(env.context, _class, info))
     }
 
     public static func createPromise(in env: JXContext) throws -> JXPromise {
@@ -770,14 +774,14 @@ extension JXValue {
         guard let resolve = resolveRef else {
             throw JXErrors.cannotCreatePromise
         }
-        let resolveFunction = JXValue(env: env, value: resolve)
+        let resolveFunction = JXValue(env: env, valueRef: resolve)
 
         guard let reject = rejectRef else {
             throw JXErrors.cannotCreatePromise
         }
-        let rejectFunction = JXValue(env: env, value: reject)
+        let rejectFunction = JXValue(env: env, valueRef: reject)
 
-        return (promise, resolveFunction, rejectFunction)
+        return (JXValue(env: env, valueRef: promise), resolveFunction, rejectFunction)
     }
 
     /// Creates a promise and executes it immediately
@@ -811,7 +815,7 @@ private struct JXFunctionInfo {
 }
 
 @available(macOS 11, iOS 13, tvOS 13, *)
-public typealias JXPromise = (promise: JXValueRef, resolveFunction: JXValue, rejectFunction: JXValue)
+public typealias JXPromise = (promise: JXValue, resolveFunction: JXValue, rejectFunction: JXValue)
 
 @available(macOS 11, iOS 13, tvOS 13, *)
 private func JXFunctionFinalize(_ object: JSObjectRef?) -> Void {
@@ -827,7 +831,7 @@ private func JXFunctionConstructor(_ ctx: JXContextRef?, _ object: JSObjectRef?,
     let env = info.pointee.context
 
     do {
-        let arguments = (0..<argumentCount).map { JXValue(env: env, value: arguments![$0]!) }
+        let arguments = (0..<argumentCount).map { JXValue(env: env, valueRef: arguments![$0]!) }
         let result = try info.pointee.callback(env, nil, arguments)
 
         let prototype = JSObjectGetPrototype(env.context, object)
@@ -848,8 +852,8 @@ private func JXFunctionCallback(_ ctx: JXContextRef?, _ object: JSObjectRef?, _ 
     let env = info.pointee.context
 
     do {
-        let this = this.map { JXValue(env: env, value: $0) }
-        let arguments = (0..<argumentCount).map { JXValue(env: env, value: arguments![$0]!) }
+        let this = this.map { JXValue(env: env, valueRef: $0) }
+        let arguments = (0..<argumentCount).map { JXValue(env: env, valueRef: arguments![$0]!) }
         let result = try info.pointee.callback(env, this, arguments)
         return result.value
     } catch let error {

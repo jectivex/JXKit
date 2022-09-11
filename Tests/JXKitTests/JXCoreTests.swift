@@ -1,4 +1,4 @@
-@testable import JXKit
+import JXKit
 import XCTest
 
 @available(macOS 11, iOS 13, tvOS 13, *)
@@ -77,7 +77,7 @@ class JXCoreTests: XCTestCase {
         XCTAssertTrue(try context.global["obj"].isObject)
 
         let desc = JXProperty { this in
-            JXValue(double: 3, in: this.env)
+            JXValue(double: 3, in: context)
         }
 
         try context.global["obj"].defineProperty("three", desc)
