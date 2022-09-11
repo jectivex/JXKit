@@ -222,8 +222,6 @@ class JXCoreTests: XCTestCase {
         let jsc = JXContext()
 
         do {
-            // Bug 161942: Shouldn't drain the micro task queue when calling out
-            // https://developer.apple.com/forums/thread/678277
             try jsc.setProperty("setTimeout", JXValue(newFunctionIn: jsc) { jsc, this, args in
                 print("setTimeout", try args.map({ try $0.stringValue }))
                 return jsc.number(0)
@@ -241,9 +239,18 @@ class JXCoreTests: XCTestCase {
                 """)
 
             XCTAssertGreaterThan(try result.numberValue, 0)
-            XCTAssertEqual(2, try result.numberValue)
 
-            XCTAssertEqual([1.0, 2.0, 3.0], try jsc["arr"].array.map({ try $0.numberValue }))
+            // this appears to be fixed in macOS 13 / iOS 16
+            // Bug 161942: Shouldn't drain the micro task queue when calling out
+            // https://developer.apple.com/forums/thread/678277
+
+            if #available(macOS 13.0, iOS 16.0, tvOS 16.0, *) {
+                XCTAssertEqual(2, try result.numberValue)
+                XCTAssertEqual([1.0, 2.0, 3.0], try jsc["arr"].array.map({ try $0.numberValue }))
+            } else {
+                XCTAssertEqual(3, try result.numberValue)
+                XCTAssertEqual([1.0, 3.0, 2.0], try jsc["arr"].array.map({ try $0.numberValue }))
+            }
         }
 
         do {
