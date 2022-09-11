@@ -1,6 +1,7 @@
 import JXKit
 import XCTest
 
+@available(macOS 11, iOS 13, tvOS 13, *)
 final class JXKitTests: XCTestCase {
 
     func testAPI() throws {
