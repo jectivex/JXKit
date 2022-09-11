@@ -210,8 +210,7 @@
     },
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXVM\/isHobbled",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXVM\/shared"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXVM\/isHobbled"
       ],
       "title" : "Type Properties"
     }
@@ -232,7 +231,10 @@
 "references": {
 "doc://JXKit/documentation/JXKit": {
   "abstract" : [
-
+    {
+      "text" : "Cross-platform interface to JavaScriptCore in fluent Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/JXKit\/documentation\/JXKit",
   "kind" : "symbol",
@@ -402,51 +404,6 @@
   "title" : "isHobbled",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvm\/ishobbled"
-},
-"doc://JXKit/documentation/JXKit/JXVM/shared": {
-  "abstract" : [
-    {
-      "text" : "A shared singleton virtual machine",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "static"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "let"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "shared"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit4JXVMC",
-      "text" : "JXVM"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXVM\/shared",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "shared",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvm\/shared"
 }
 }
 }

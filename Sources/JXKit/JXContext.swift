@@ -15,8 +15,6 @@ import FoundationNetworking
 
 /// A JavaScript execution context. This is a cross-platform analogue to the Objective-C `JavaScriptCore.JSContext`.
 ///
-/// The `JXContext` used the system's `JavaScriptCore` C interface on Apple platforms, and `webkitgtk-4.0` on Linux platforms. Windows is TBD.
-///
 /// This wraps a `JSGlobalContextRef`, and is the equivalent of `JavaScriptCore.JSContext`
 @available(macOS 11, iOS 13, tvOS 13, *)
 public final class JXContext {
@@ -160,46 +158,6 @@ extension JXContext {
     /// The global object.
     public var global: JXValue {
         JXValue(env: self, valueRef: JSContextGetGlobalObject(context))
-    }
-
-    /// Tests whether global has a given property.
-    ///
-    /// - Parameters:
-    ///   - property: The property's name.
-    ///
-    /// - Returns: true if the object has `property`, otherwise false.
-    @available(*, deprecated)
-    @inlinable public func hasProperty(_ property: String) -> Bool {
-        global.hasProperty(property)
-    }
-
-    /// Deletes a property from global.
-    ///
-    /// - Parameters:
-    ///   - property: The property's name.
-    ///
-    /// - Returns: true if the delete operation succeeds, otherwise false.
-    @available(*, deprecated)
-    @discardableResult
-    @inlinable public func removeProperty(_ property: String) throws -> Bool {
-        try global.removeProperty(property)
-    }
-
-    /// Returns the global property at the given subscript
-    @available(*, deprecated)
-    @inlinable public subscript(property: String) -> JXValue {
-        get throws { try global[property] }
-    }
-
-    @available(*, deprecated)
-    @inlinable public func setProperty(_ key: String, _ value: JXValue) throws {
-        try global.setProperty(key, value)
-    }
-
-    /// Get the names of global’s enumerable properties
-    @available(*, deprecated)
-    @inlinable public var properties: [String] {
-        global.properties
     }
 
     /// Checks for the presence of a top-level "exports" variable and creates it if it isn't already an object.

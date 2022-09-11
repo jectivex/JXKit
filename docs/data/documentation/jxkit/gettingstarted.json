@@ -8,14 +8,13 @@
   "hierarchy" : {
     "paths" : [
       [
-        "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXType"
+        "doc:\/\/JXKit\/documentation\/JXKit"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/Equatable-Implementations"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/GettingStarted"
   },
   "kind" : "article",
   "metadata" : {
@@ -24,8 +23,9 @@
         "name" : "JXKit"
       }
     ],
-    "role" : "collectionGroup",
-    "title" : "Equatable Implementations"
+    "role" : "article",
+    "roleHeading" : "Article",
+    "title" : "Getting Started with JXKit"
   },
   "schemaVersion" : {
     "major" : 0,
@@ -35,19 +35,20 @@
   "sections" : [
 
   ],
-  "topicSections" : [
+  "seeAlsoSections" : [
     {
       "generated" : true,
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/!=(_:_:)"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
       ],
-      "title" : "Operators"
+      "title" : "Essentials"
     }
   ],
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxtype\/equatable-implementations"
+        "\/documentation\/jxkit\/gettingstarted"
       ],
       "traits" : [
         {
@@ -72,17 +73,25 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXType": {
+"doc://JXKit/documentation/JXKit/JXContext": {
   "abstract" : [
     {
-      "text" : "A type of JavaScript instance.",
+      "text" : "A JavaScript execution context. This is a cross-platform analogue to the Objective-C ",
+      "type" : "text"
+    },
+    {
+      "code" : "JavaScriptCore.JSContext",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "enum"
+      "text" : "class"
     },
     {
       "kind" : "text",
@@ -90,38 +99,33 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXType"
+      "text" : "JXContext"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXType"
+      "text" : "JXContext"
     }
   ],
   "role" : "symbol",
-  "title" : "JXType",
+  "title" : "JXContext",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxtype"
+  "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXType/!=(_:_:)": {
+"doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
-
+    {
+      "text" : "A JavaScript object.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "static"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "func"
+      "text" : "class"
     },
     {
       "kind" : "text",
@@ -129,44 +133,21 @@
     },
     {
       "kind" : "identifier",
-      "text" : "!="
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "text" : "Self"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "text" : "Self"
-    },
-    {
-      "kind" : "text",
-      "text" : ") -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
+      "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/!=(_:_:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
   "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXValue"
+    }
+  ],
   "role" : "symbol",
-  "title" : "!=(_:_:)",
+  "title" : "JXValue",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxtype\/!=(_:_:)"
+  "url" : "\/documentation\/jxkit\/jxvalue"
 }
 }
 }

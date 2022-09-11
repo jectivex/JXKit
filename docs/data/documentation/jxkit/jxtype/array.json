@@ -97,7 +97,10 @@
 "references": {
 "doc://JXKit/documentation/JXKit": {
   "abstract" : [
-
+    {
+      "text" : "Cross-platform interface to JavaScriptCore in fluent Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/JXKit\/documentation\/JXKit",
   "kind" : "symbol",

@@ -127,39 +127,6 @@
         {
           "inlineContent" : [
             {
-              "text" : "The ",
-              "type" : "text"
-            },
-            {
-              "code" : "JXContext",
-              "type" : "codeVoice"
-            },
-            {
-              "text" : " used the system’s ",
-              "type" : "text"
-            },
-            {
-              "code" : "JavaScriptCore",
-              "type" : "codeVoice"
-            },
-            {
-              "text" : " C interface on Apple platforms, and ",
-              "type" : "text"
-            },
-            {
-              "code" : "webkitgtk-4.0",
-              "type" : "codeVoice"
-            },
-            {
-              "text" : " on Linux platforms. Windows is TBD.",
-              "type" : "text"
-            }
-          ],
-          "type" : "paragraph"
-        },
-        {
-          "inlineContent" : [
-            {
               "text" : "This wraps a ",
               "type" : "text"
             },
@@ -190,6 +157,16 @@
   "sections" : [
 
   ],
+  "seeAlsoSections" : [
+    {
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/GettingStarted",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
+      ],
+      "title" : "Essentials"
+    }
+  ],
   "topicSections" : [
     {
       "identifiers" : [
@@ -209,7 +186,6 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/global",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/objectPrototype",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/promisePrototype",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/properties",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/vm"
       ],
       "title" : "Instance Properties"
@@ -227,24 +203,15 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/garbageCollect()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/globalObject(property:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/hasProperty(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/null()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/number(_:)-3hm3m",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/number(_:)-7xicn",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object()",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/removeProperty(_:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/setProperty(_:_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/string(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/undefined()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withArrayBuffer(source:block:)"
       ],
       "title" : "Instance Methods"
-    },
-    {
-      "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/subscript(_:)"
-      ],
-      "title" : "Subscripts"
     }
   ],
   "variants" : [
@@ -263,7 +230,10 @@
 "references": {
 "doc://JXKit/documentation/JXKit": {
   "abstract" : [
-
+    {
+      "text" : "Cross-platform interface to JavaScriptCore in fluent Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/JXKit\/documentation\/JXKit",
   "kind" : "symbol",
@@ -271,6 +241,17 @@
   "title" : "JXKit",
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
+},
+"doc://JXKit/documentation/JXKit/GettingStarted": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/GettingStarted",
+  "kind" : "article",
+  "role" : "article",
+  "title" : "Getting Started with JXKit",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/gettingstarted"
 },
 "doc://JXKit/documentation/JXKit/JXContext": {
   "abstract" : [
@@ -1280,53 +1261,6 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/globalobject(property:)"
 },
-"doc://JXKit/documentation/JXKit/JXContext/hasProperty(_:)": {
-  "abstract" : [
-    {
-      "text" : "Tests whether global has a given property.",
-      "type" : "text"
-    }
-  ],
-  "deprecated" : true,
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "hasProperty"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ") -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/hasProperty(_:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "hasProperty(_:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/hasproperty(_:)"
-},
 "doc://JXKit/documentation/JXKit/JXContext/init(env:)": {
   "abstract" : [
     {
@@ -1715,155 +1649,6 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/promiseprototype"
 },
-"doc://JXKit/documentation/JXKit/JXContext/properties": {
-  "abstract" : [
-    {
-      "text" : "Get the names of global’s enumerable properties",
-      "type" : "text"
-    }
-  ],
-  "deprecated" : true,
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "var"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "properties"
-    },
-    {
-      "kind" : "text",
-      "text" : ": ["
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : "]"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/properties",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "properties",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/properties"
-},
-"doc://JXKit/documentation/JXKit/JXContext/removeProperty(_:)": {
-  "abstract" : [
-    {
-      "text" : "Deletes a property from global.",
-      "type" : "text"
-    }
-  ],
-  "deprecated" : true,
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "removeProperty"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/removeProperty(_:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "removeProperty(_:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/removeproperty(_:)"
-},
-"doc://JXKit/documentation/JXKit/JXContext/setProperty(_:_:)": {
-  "abstract" : [
-
-  ],
-  "deprecated" : true,
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "setProperty"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/setProperty(_:_:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "setProperty(_:_:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/setproperty(_:_:)"
-},
 "doc://JXKit/documentation/JXKit/JXContext/string(_:)": {
   "abstract" : [
 
@@ -1913,45 +1698,6 @@
   "title" : "string(_:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/string(_:)"
-},
-"doc://JXKit/documentation/JXKit/JXContext/subscript(_:)": {
-  "abstract" : [
-    {
-      "text" : "Returns the global property at the given subscript",
-      "type" : "text"
-    }
-  ],
-  "deprecated" : true,
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "subscript"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ") -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/subscript(_:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "subscript(_:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/subscript(_:)"
 },
 "doc://JXKit/documentation/JXKit/JXContext/undefined()": {
   "abstract" : [
@@ -2122,6 +1868,40 @@
   "title" : "withArrayBuffer(source:block:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/witharraybuffer(source:block:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue": {
+  "abstract" : [
+    {
+      "text" : "A JavaScript object.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXValue"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXValue",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue"
 }
 }
 }

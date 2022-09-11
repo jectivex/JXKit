@@ -21,9 +21,6 @@ import CJSCore
 /// - Note: This wraps a `JSContextGroupRef`, and is the equivalent of `JavaScriptCore.JSVirtualMachine`
 @available(macOS 11, iOS 13, tvOS 13, *)
 public final class JXVM {
-    /// A shared singleton virtual machine
-    public static let shared = JXVM()
-
     @usableFromInline let group: JSContextGroupRef
 
     public init() {

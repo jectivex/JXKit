@@ -159,6 +159,16 @@
   "sections" : [
 
   ],
+  "seeAlsoSections" : [
+    {
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/GettingStarted",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext"
+      ],
+      "title" : "Essentials"
+    }
+  ],
   "topicSections" : [
     {
       "identifiers" : [
@@ -268,7 +278,10 @@
 "references": {
 "doc://JXKit/documentation/JXKit": {
   "abstract" : [
-
+    {
+      "text" : "Cross-platform interface to JavaScriptCore in fluent Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/JXKit\/documentation\/JXKit",
   "kind" : "symbol",
@@ -276,6 +289,59 @@
   "title" : "JXKit",
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
+},
+"doc://JXKit/documentation/JXKit/GettingStarted": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/GettingStarted",
+  "kind" : "article",
+  "role" : "article",
+  "title" : "Getting Started with JXKit",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/gettingstarted"
+},
+"doc://JXKit/documentation/JXKit/JXContext": {
+  "abstract" : [
+    {
+      "text" : "A JavaScript execution context. This is a cross-platform analogue to the Objective-C ",
+      "type" : "text"
+    },
+    {
+      "code" : "JavaScriptCore.JSContext",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXContext"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXContext"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXContext",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext"
 },
 "doc://JXKit/documentation/JXKit/JXError": {
   "abstract" : [

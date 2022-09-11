@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "",
+      "text" : "Cross-platform interface to JavaScriptCore in fluent Swift.",
       "type" : "text"
     }
   ],
@@ -29,6 +29,77 @@
     "symbolKind" : "module",
     "title" : "JXKit"
   },
+  "primaryContentSections" : [
+    {
+      "content" : [
+        {
+          "anchor" : "Overview",
+          "level" : 2,
+          "text" : "Overview",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "By using ",
+              "type" : "text"
+            },
+            {
+              "code" : "JXKit",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : ", you can create and manage a JavaScript",
+              "type" : "text"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "text" : "execution engine from Swift, and interface between the script envrionment",
+              "type" : "text"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "text" : "using simple Swift types.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "anchor" : "Additional-Resources",
+          "level" : 4,
+          "text" : "Additional Resources",
+          "type" : "heading"
+        },
+        {
+          "items" : [
+            {
+              "content" : [
+                {
+                  "inlineContent" : [
+                    {
+                      "identifier" : "https:\/\/trac.webkit.org\/wiki\/JavaScriptCore",
+                      "isActive" : true,
+                      "type" : "reference"
+                    }
+                  ],
+                  "type" : "paragraph"
+                }
+              ]
+            }
+          ],
+          "type" : "unorderedList"
+        }
+      ],
+      "kind" : "content"
+    }
+  ],
   "schemaVersion" : {
     "major" : 0,
     "minor" : 2,
@@ -40,10 +111,16 @@
   "topicSections" : [
     {
       "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/GettingStarted",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
+      ],
+      "title" : "Essentials"
+    },
+    {
+      "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXVM",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValueDecoder",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValueEncoder",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValueError"
@@ -87,7 +164,10 @@
 "references": {
 "doc://JXKit/documentation/JXKit": {
   "abstract" : [
-
+    {
+      "text" : "Cross-platform interface to JavaScriptCore in fluent Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/JXKit\/documentation\/JXKit",
   "kind" : "symbol",
@@ -95,6 +175,17 @@
   "title" : "JXKit",
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
+},
+"doc://JXKit/documentation/JXKit/GettingStarted": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/GettingStarted",
+  "kind" : "article",
+  "role" : "article",
+  "title" : "Getting Started with JXKit",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/gettingstarted"
 },
 "doc://JXKit/documentation/JXKit/JXContext": {
   "abstract" : [
@@ -527,6 +618,22 @@
   "title" : "JXValueError",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalueerror"
+},
+"https://trac.webkit.org/wiki/JavaScriptCore": {
+  "identifier" : "https:\/\/trac.webkit.org\/wiki\/JavaScriptCore",
+  "title" : "JavaScriptCore at webkit.org",
+  "titleInlineContent" : [
+    {
+      "code" : "JavaScriptCore",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " at webkit.org",
+      "type" : "text"
+    }
+  ],
+  "type" : "link",
+  "url" : "https:\/\/trac.webkit.org\/wiki\/JavaScriptCore"
 }
 }
 }
