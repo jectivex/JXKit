@@ -108,7 +108,7 @@ final class JXCodableTests: XCTestCase {
     /// An example of invoking `Math.hypot` directly with numeric arguments
     func testCodableParams() throws {
         let jsc = JXContext()
-        let hypot = try jsc["Math"]["hypot"]
+        let hypot = try jsc.global["Math"]["hypot"]
         XCTAssert(hypot.isFunction)
         let result = try hypot.call(withArguments: try [jsc.encode(3), jsc.encode(4)])
         XCTAssertEqual(5, try result.numberValue)
@@ -187,7 +187,7 @@ final class JXCodableTests: XCTestCase {
         let jsc = JXContext()
 
         let htpy = JXValue(newFunctionIn: jsc) { jsc, this, args in
-            try JXValue(double: sqrt(pow(args.first?["x"].numberValue ?? 0.0, 2) + pow(args.first?["y"].numberValue ?? 0.0, 2)), in: jsc)
+            jsc.number(try sqrt(pow(args.first?["x"].numberValue ?? 0.0, 2) + pow(args.first?["y"].numberValue ?? 0.0, 2)))
         }
 
         struct Args : Encodable {
@@ -199,22 +199,10 @@ final class JXCodableTests: XCTestCase {
             try htpy.call(withArguments: [try jsc.encode(args)]).numberValue
         }
 
-        do {
-            let x = try hfun(Args(x: 3, y: 4))
-            XCTAssertEqual(5, x)
-        }
-        do {
-            let x = try hfun(Args(x: 1, y: 2))
-            XCTAssertEqual(hypot(1, 2), x)
-        }
-        do {
-            let x = try hfun(Args(x: 2, y: 2))
-            XCTAssertEqual(hypot(2, 2), x)
-        }
-        do {
-            let x = try hfun(Args(x: 10, y: 10))
-            XCTAssertEqual(hypot(10, 10), x)
-        }
+        XCTAssertEqual(5, try hfun(Args(x: 3, y: 4)))
+        XCTAssertEqual(hypot(1, 2), try hfun(Args(x: 1, y: 2)))
+        XCTAssertEqual(hypot(2, 2), try hfun(Args(x: 2, y: 2)))
+        XCTAssertEqual(hypot(10, 10), try hfun(Args(x: 10, y: 10)))
     }
 }
 
@@ -222,7 +210,7 @@ final class JXCodableTests: XCTestCase {
 @available(macOS 11, iOS 13, tvOS 13, *)
 final class JXMathContext {
     let jsc: JXContext
-    private lazy var _math = Result { try jsc["Math"] }
+    private lazy var _math = Result { try jsc.global["Math"] }
     private lazy var _hypot = Result { try _math.get()["hypot"] }
 
     init(jsc: JXContext = JXContext()) {

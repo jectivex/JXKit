@@ -17,7 +17,7 @@ import FoundationNetworking
 ///
 /// This wraps a `JSObjectRef`, and is the equivalent of `JavaScriptCore.JSValue`
 @available(macOS 11, iOS 13, tvOS 13, *)
-public final class JXValue {
+public class JXValue {
     @usableFromInline let env: JXContext
     @usableFromInline let value: JXValueRef
 
@@ -34,6 +34,11 @@ public final class JXValue {
     deinit {
         JSValueUnprotect(env.context, value)
     }
+}
+
+/// An error thrown from JavaScript evaluation.
+@available(macOS 11, iOS 13, tvOS 13, *)
+public class JXError : JXValue, Error, @unchecked Sendable {
 }
 
 @available(macOS 11, iOS 13, tvOS 13, *)
@@ -55,7 +60,7 @@ extension JXValue {
     ///
     /// - Parameters:
     ///   - context: The execution context to use.
-    @inlinable public convenience init(undefinedIn env: JXContext) {
+    @usableFromInline internal convenience init(undefinedIn env: JXContext) {
         self.init(env: env, valueRef: JSValueMakeUndefined(env.context))
     }
 
@@ -63,7 +68,7 @@ extension JXValue {
     ///
     /// - Parameters:
     ///   - context: The execution context to use.
-    @inlinable public convenience init(nullIn env: JXContext) {
+    @usableFromInline internal convenience init(nullIn env: JXContext) {
         self.init(env: env, valueRef: JSValueMakeNull(env.context))
     }
 
@@ -72,7 +77,7 @@ extension JXValue {
     /// - Parameters:
     ///   - value: The value to assign to the object.
     ///   - context: The execution context to use.
-    @inlinable public convenience init(bool value: Bool, in env: JXContext) {
+    @usableFromInline internal convenience init(bool value: Bool, in env: JXContext) {
         self.init(env: env, valueRef: JSValueMakeBoolean(env.context, value))
     }
 
@@ -81,7 +86,7 @@ extension JXValue {
     /// - Parameters:
     ///   - value: The value to assign to the object.
     ///   - context: The execution context to use.
-    @inlinable public convenience init(double value: Double, in env: JXContext) {
+    @usableFromInline internal convenience init(double value: Double, in env: JXContext) {
         self.init(env: env, valueRef: JSValueMakeNumber(env.context, value))
     }
 
@@ -90,7 +95,7 @@ extension JXValue {
     /// - Parameters:
     ///   - value: The value to assign to the object.
     ///   - context: The execution context to use.
-    @inlinable public convenience init(string value: String, in env: JXContext) {
+    @usableFromInline internal convenience init(string value: String, in env: JXContext) {
         let value = value.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(value) }
         self.init(env: env, valueRef: JSValueMakeString(env.context, value))
@@ -101,11 +106,11 @@ extension JXValue {
     /// - Parameters:
     ///   - value: The JSON value to parse
     ///   - context: The execution context to use.
-    @inlinable public convenience init?(json value: String, in env: JXContext) {
+    @usableFromInline internal convenience init?(json value: String, in env: JXContext) {
         let value = value.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(value) }
         guard let json = JSValueMakeFromJSONString(env.context, value) else {
-            return nil // TODO: throw error
+            return nil // we just return nil since there is no error parameter
         }
         self.init(env: env, valueRef: json)
     }
@@ -115,9 +120,9 @@ extension JXValue {
     /// - Parameters:
     ///   - value: The value to assign to the object.
     ///   - context: The execution context to use.
-    @inlinable public convenience init(date value: Date, in env: JXContext) throws {
+    @usableFromInline internal convenience init(date value: Date, in env: JXContext) throws {
         let arguments = [JXValue(string: JXValue.rfc3339.string(from: value), in: env)]
-        let object = try throwing(env: env) {
+        let object = try env.trying {
             JSObjectMakeDate(env.context, 1, arguments.map { $0.value }, $0)
         }
         self.init(env: env, valueRef: object!)
@@ -129,9 +134,9 @@ extension JXValue {
     ///   - pattern: The pattern of regular expression.
     ///   - flags: The flags pass to the constructor.
     ///   - context: The execution context to use.
-    @inlinable public convenience init(newRegularExpressionFromPattern pattern: String, flags: String, in env: JXContext) throws {
+    @usableFromInline internal convenience init(newRegularExpressionFromPattern pattern: String, flags: String, in env: JXContext) throws {
         let arguments = [JXValue(string: pattern, in: env), JXValue(string: flags, in: env)]
-        let object = try throwing(env: env) {
+        let object = try env.trying {
             JSObjectMakeRegExp(env.context, 2, arguments.map { $0.value }, $0)
         }
         self.init(env: env, valueRef: object!)
@@ -142,9 +147,9 @@ extension JXValue {
     /// - Parameters:
     ///   - message: The error message.
     ///   - context: The execution context to use.
-    @inlinable public convenience init(newErrorFromMessage message: String, in env: JXContext) throws {
+    @usableFromInline internal convenience init(newErrorFromMessage message: String, in env: JXContext) throws {
         let arguments = [JXValue(string: message, in: env)]
-        let object = try throwing(env: env) {
+        let object = try env.trying {
             JSObjectMakeError(env.context, arguments.count, arguments.map { $0.value }, $0)
         }
         self.init(env: env, valueRef: object!)
@@ -154,7 +159,7 @@ extension JXValue {
     ///
     /// - Parameters:
     ///   - context: The execution context to use.
-    @inlinable public convenience init(newObjectIn env: JXContext) {
+    @usableFromInline internal convenience init(newObjectIn env: JXContext) {
         self.init(env: env, valueRef: JSObjectMake(env.context, nil, nil))
     }
 
@@ -163,7 +168,7 @@ extension JXValue {
     /// - Parameters:
     ///   - context: The execution context to use.
     ///   - prototype: The prototype to be used.
-    @inlinable public convenience init(newObjectIn env: JXContext, prototype: JXValue) throws {
+    @usableFromInline internal convenience init(newObjectIn env: JXContext, prototype: JXValue) throws {
         let obj = try env.objectPrototype.invokeMethod("create", withArguments: [prototype])
         self.init(env: env, valueRef: obj.value)
     }
@@ -172,8 +177,8 @@ extension JXValue {
     ///
     /// - Parameters:
     ///   - context: The execution context to use.
-    @inlinable public convenience init(newArrayIn env: JXContext, values: [JXValue]? = nil) throws {
-        let array = try throwing(env: env) {
+    @usableFromInline internal convenience init(newArrayIn env: JXContext, values: [JXValue]? = nil) throws {
+        let array = try env.trying {
             JSObjectMakeArray(env.context, 0, nil, $0)
         }
         self.init(env: env, valueRef: array!)
@@ -203,6 +208,9 @@ extension JXValue: CustomStringConvertible {
         }
         if self.isString {
             return (try? self.stringValue) ?? "string"
+        }
+        if (try? self.isError) == true {
+            return (try? self.stringValue) ?? "error"
         }
 
         // better to not invoke a method from `description`
@@ -276,6 +284,12 @@ extension JXValue {
         }
     }
 
+    @inlinable public var isPromise: Bool {
+        get throws {
+            try isInstance(of: env.promisePrototype)
+        }
+    }
+
     /// Tests whether a JavaScript value’s type is the array type.
     @inlinable public var isArray: Bool {
         get throws {
@@ -295,32 +309,57 @@ extension JXValue {
 @available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
 
+    /// Whether or not the given object is frozen.
+    ///
+    /// An object is frozen if and only if it is not extensible, all its properties are non-configurable, and all its data properties (that is, properties which are not accessor properties with getter or setter components) are non-writable.
     @inlinable public var isFrozen: Bool {
         get throws {
             try env.objectPrototype.invokeMethod("isFrozen", withArguments: [self]).booleanValue
         }
     }
 
+    /// The Object.isExtensible() method determines if an object is extensible (whether it can have new properties added to it).
+    ///
+    /// Objects are extensible by default: they can have new properties added to them, and their `Prototype` can be re-assigned. An object can be marked as non-extensible using one of ``preventExtensions()`, `seal()`, `freeze()`, or `Reflect.preventExtensions()`.
     @inlinable public var isExtensible: Bool {
         get throws {
             try env.objectPrototype.invokeMethod("isExtensible", withArguments: [self]).booleanValue
         }
     }
 
+    /// The Object.isSealed() method determines if an object is sealed.
+    ///
+    /// Returns true if the object is sealed, otherwise false. An object is sealed if it is not extensible and if all its properties are non-configurable and therefore not removable (but not necessarily non-writable).
     @inlinable public var isSealed: Bool {
         get throws {
             try env.objectPrototype.invokeMethod("isSealed", withArguments: [self]).booleanValue
         }
     }
 
+    /// The Object.freeze() method freezes an object. Freezing an object prevents extensions and makes existing properties non-writable and non-configurable. A frozen object can no longer be changed: new properties cannot be added, existing properties cannot be removed, their enumerability, configurability, writability, or value cannot be changed, and the object's prototype cannot be re-assigned. freeze() returns the same object that was passed in.
+    ///
+    /// Freezing an object is equivalent to preventing extensions and then changing all existing properties' descriptors' configurable to false — and for data properties, writable to false as well. Nothing can be added to or removed from the properties set of a frozen object. Any attempt to do so will fail, either silently or by throwing a TypeError exception (most commonly, but not exclusively, when in strict mode).
+    ///
+    /// For data properties of a frozen object, their values cannot be changed since the writable and configurable attributes are set to false. Accessor properties (getters and setters) work the same — the property value returned by the getter may still change, and the setter can still be called without throwing errors when setting the property. Note that values that are objects can still be modified, unless they are also frozen. As an object, an array can be frozen; after doing so, its elements cannot be altered and no elements can be added to or removed from the array.
     @inlinable public func freeze() throws {
         try env.objectPrototype.invokeMethod("freeze", withArguments: [self])
     }
 
+    /// The Object.preventExtensions() method prevents new properties from ever being added to an object (i.e. prevents future extensions to the object). It also prevents the object's prototype from being re-assigned.
+    /// An object is extensible if new properties can be added to it. Object.preventExtensions() marks an object as no longer extensible, so that it will never have properties beyond the ones it had at the time it was marked as non-extensible. Note that the properties of a non-extensible object, in general, may still be deleted. Attempting to add new properties to a non-extensible object will fail, either silently or, in strict mode, throwing a TypeError.
+    ///
+    /// Unlike Object.seal() and Object.freeze(), Object.preventExtensions() invokes an intrinsic JavaScript behavior and cannot be replaced with a composition of several other operations. It also has its Reflect counterpart (which only exists for intrinsic operations), Reflect.preventExtensions().
+    ///
+    /// Object.preventExtensions() only prevents addition of own properties. Properties can still be added to the object prototype.
+    ///
+    /// This method makes the [[Prototype]] of the target immutable; any [[Prototype]] re-assignment will throw a TypeError. This behavior is specific to the internal [[Prototype]] property; other properties of the target object will remain mutable.
+    ///
+    /// There is no way to make an object extensible again once it has been made non-extensible.
     @inlinable public func preventExtensions() throws {
         try env.objectPrototype.invokeMethod("preventExtensions", withArguments: [self])
     }
 
+    /// The Object.seal() method seals an object. Sealing an object prevents extensions and makes existing properties non-configurable. A sealed object has a fixed set of properties: new properties cannot be added, existing properties cannot be removed, their enumerability and configurability cannot be changed, and its prototype cannot be re-assigned. Values of existing properties can still be changed as long as they are writable. seal() returns the same object that was passed in.
     @inlinable public func seal() throws {
         try env.objectPrototype.invokeMethod("seal", withArguments: [self])
     }
@@ -338,7 +377,7 @@ extension JXValue {
     @inlinable public var numberValue: Double {
         get throws {
             //if !JSValueIsNumber(env.context, value) { return nil }
-            try throwing(env: env) {
+            try env.trying {
                 JSValueToNumber(env.context, value, $0)
             }
         }
@@ -347,7 +386,7 @@ extension JXValue {
     /// Returns the JavaScript string value.
     @inlinable public var stringValue: String {
         get throws {
-            let str = try throwing(env: env) {
+            let str = try env.trying {
                 JSValueToStringCopy(env.context, value, $0)
             }
             defer { str.map(JSStringRelease) }
@@ -412,7 +451,7 @@ extension JXValue {
             // we should have already validated that it is a function
             throw JXErrors.callOnNonFunction
         }
-        let result = try throwing(env: env) {
+        let result = try env.trying {
             JSObjectCallAsFunction(env.context, value, this?.value, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.value }, $0)
         }
         return result.map {
@@ -428,7 +467,7 @@ extension JXValue {
     ///
     /// - Returns: The object that results from calling object as a constructor.
     @inlinable public func construct(withArguments arguments: [JXValue]) throws -> JXValue {
-        let result = try throwing(env: env) {
+        let result = try env.trying {
             JSObjectCallAsConstructor(env.context, value, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.value }, $0)
         }
         return result.map { JXValue(env: env, valueRef: $0) } ?? JXValue(undefinedIn: env)
@@ -467,7 +506,7 @@ extension JXValue {
     ///
     /// - Returns: true if the two values are equal; false if they are not equal or an exception is thrown.
     @inlinable public func isEqualWithTypeCoercion(to other: JXValue) throws -> Bool {
-        try throwing(env: env) {
+        try env.trying {
             JSValueIsEqual(env.context, value, other.value, $0)
         }
     }
@@ -479,20 +518,10 @@ extension JXValue {
     ///
     /// - Returns: true if the value is an object constructed by constructor, as compared by the JS isInstance(of:) operator; otherwise false.
     @inlinable public func isInstance(of other: JXValue) throws -> Bool {
-        try throwing(env: env) {
+        try env.trying {
             JSValueIsInstanceOfConstructor(env.context, value, other.value, $0)
         }
     }
-}
-
-@available(macOS 11, iOS 13, tvOS 13, *)
-@usableFromInline func throwing<T>(env: JXContext, block: (UnsafeMutablePointer<JSValueRef?>) throws -> T?) throws -> T! {
-    var val: JSValueRef?
-    let result = try block(&val)
-    if let val = val {
-        throw JXErrors.jxerror(JXValue(env: env, valueRef: val))
-    }
-    return result
 }
 
 @available(macOS 11, iOS 13, tvOS 13, *)
@@ -533,7 +562,7 @@ extension JXValue {
     @inlinable public func removeProperty(_ property: String) throws -> Bool {
         let property = property.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(property) }
-        return try throwing(env: env) {
+        return try env.trying {
             JSObjectDeleteProperty(env.context, value, property, $0)
         }
     }
@@ -547,7 +576,7 @@ extension JXValue {
     @discardableResult
     @inlinable public func hasProperty(_ property: JXValue) throws -> Bool {
         if !isObject { return false }
-        return try throwing(env: env) {
+        return try env.trying {
             JSObjectHasPropertyForKey(env.context, value, property.value, $0)
         }
     }
@@ -560,7 +589,7 @@ extension JXValue {
     /// - Returns: true if the delete operation succeeds, otherwise false.
     @discardableResult
     @inlinable public func deleteProperty(_ property: JXValue) throws -> Bool {
-        try throwing(env: env) {
+        try env.trying {
             JSObjectDeletePropertyForKey(env.context, value, property.value, $0)
         }
     }
@@ -571,7 +600,7 @@ extension JXValue {
             if !isObject { return env.undefined() }
             let property = JSStringCreateWithUTF8CString(propertyName)
             defer { JSStringRelease(property) }
-            let result = try throwing(env: env) {
+            let result = try env.trying {
                 JSObjectGetProperty(env.context, value, property, $0)
             }
             return result.map { JXValue(env: env, valueRef: $0) } ?? JXValue(undefinedIn: env)
@@ -585,7 +614,7 @@ extension JXValue {
 
         let property = JSStringCreateWithUTF8CString(key)
         defer { JSStringRelease(property) }
-        try throwing(env: env) {
+        try env.trying {
             JSObjectSetProperty(env.context, value, property, newValue.value, 0, $0)
         }
     }
@@ -604,7 +633,7 @@ extension JXValue {
     /// The value in object at index.
     @inlinable public subscript(index: UInt32) -> JXValue {
         get throws {
-            let result = try throwing(env: env) {
+            let result = try env.trying {
                 JSObjectGetPropertyAtIndex(env.context, value, index, $0)
             }
             return result.map { JXValue(env: env, valueRef: $0) } ?? JXValue(undefinedIn: env)
@@ -612,7 +641,7 @@ extension JXValue {
     }
 
     @inlinable public func setElement(_ element: JXValue, at index: UInt32) throws {
-        try throwing(env: env) {
+        try env.trying {
             JSObjectSetPropertyAtIndex(env.context, value, index, element.value, $0)
         }
     }
@@ -622,7 +651,7 @@ extension JXValue {
 extension JXValue {
     /// Returns the JavaScript string with the given indentation. This should be the same as the output of `JSON.stringify`.
     @inlinable public func toJSON(indent: UInt32 = 0) throws -> String {
-        let str = try throwing(env: env) {
+        let str = try env.trying {
             JSValueCreateJSONString(env.context, value, indent, $0)
         }
         defer { str.map(JSStringRelease) }
@@ -656,7 +685,7 @@ extension JXValue {
         let info: UnsafeMutablePointer<Deallocator> = .allocate(capacity: 1)
         info.initialize(to: { deallocator(bytes) })
 
-        let value = try throwing(env: env) {
+        let value = try env.trying {
             JSObjectMakeArrayBufferWithBytesNoCopy(env.context, bytes.baseAddress, bytes.count, { _, info in
                 guard let info = info?.assumingMemoryBound(to: Deallocator.self) else { return }
                 info.pointee()
@@ -681,7 +710,7 @@ extension JXValue {
         let buffer: UnsafeMutableRawPointer = .allocate(byteCount: bytes.count, alignment: MemoryLayout<UInt8>.alignment)
         bytes.copyBytes(to: UnsafeMutableRawBufferPointer(start: buffer, count: bytes.count))
 
-        guard let bufValue = try throwing(env: env, block: {
+        guard let bufValue = try env.trying(function: {
             JSObjectMakeArrayBufferWithBytesNoCopy(env.context, buffer, bytes.count, { buffer, _ in buffer?.deallocate() }, nil, $0)
         }) else {
             throw JXErrors.cannotCreateArrayBuffer
@@ -710,10 +739,10 @@ extension JXValue {
     /// Copy the bytes of `ArrayBuffer`.
     public func copyBytes() throws -> Data? {
         guard try self.isArrayBuffer else { return nil }
-        let length = try throwing(env: env) {
+        let length = try env.trying {
             JSObjectGetArrayBufferByteLength(env.context, value, $0)
         }
-        return try throwing(env: env) {
+        return try env.trying {
             Data(bytes: JSObjectGetArrayBufferBytesPtr(env.context, value, $0), count: length!)
         }
     }
@@ -765,7 +794,7 @@ extension JXValue {
         var rejectRef: JSObjectRef?
 
         // https://github.com/WebKit/WebKit/blob/b46f54e33e5cb968174e4d20392513e14d04839f/Source/JavaScriptCore/API/JSValue.mm#L158
-        guard let promise = try throwing(env: env, block: {
+        guard let promise = try env.trying(function: {
             JSObjectMakeDeferredPromise(env.context, &resolveRef, &rejectRef, $0)
         }) else {
             throw JXErrors.cannotCreatePromise
@@ -795,17 +824,16 @@ extension JXValue {
     }
 
     public convenience init(newPromiseResolvedWithResult result: JXValue, in env: JXContext) throws {
-        try self.init(newPromiseIn: env) { ctx, resolve, reject in
+        try self.init(newPromiseIn: env) { jsc, resolve, reject in
             try resolve.call(withArguments: [result])
         }
     }
 
     public convenience init(newPromiseRejectedWithResult reason: JXValue, in env: JXContext) throws {
-        try self.init(newPromiseIn: env) { ctx, resolve, reject in
+        try self.init(newPromiseIn: env) { jsc, resolve, reject in
             try reject.call(withArguments: [reason])
         }
     }
-
 }
 
 @available(macOS 11, iOS 13, tvOS 13, *)
@@ -825,7 +853,7 @@ private func JXFunctionFinalize(_ object: JSObjectRef?) -> Void {
 }
 
 @available(macOS 11, iOS 13, tvOS 13, *)
-private func JXFunctionConstructor(_ ctx: JXContextRef?, _ object: JSObjectRef?, _ argumentCount: Int, _ arguments: UnsafePointer<JSValueRef?>?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> JSObjectRef? {
+private func JXFunctionConstructor(_ jsc: JXContextRef?, _ object: JSObjectRef?, _ argumentCount: Int, _ arguments: UnsafePointer<JSValueRef?>?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> JSObjectRef? {
 
     let info = JSObjectGetPrivate(object).assumingMemoryBound(to: JXFunctionInfo.self)
     let env = info.pointee.context
@@ -846,7 +874,7 @@ private func JXFunctionConstructor(_ ctx: JXContextRef?, _ object: JSObjectRef?,
 }
 
 @available(macOS 11, iOS 13, tvOS 13, *)
-private func JXFunctionCallback(_ ctx: JXContextRef?, _ object: JSObjectRef?, _ this: JSObjectRef?, _ argumentCount: Int, _ arguments: UnsafePointer<JSValueRef?>?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> JSValueRef? {
+private func JXFunctionCallback(_ jsc: JXContextRef?, _ object: JSObjectRef?, _ this: JSObjectRef?, _ argumentCount: Int, _ arguments: UnsafePointer<JSValueRef?>?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> JSValueRef? {
 
     let info = JSObjectGetPrivate(object).assumingMemoryBound(to: JXFunctionInfo.self)
     let env = info.pointee.context
@@ -864,7 +892,7 @@ private func JXFunctionCallback(_ ctx: JXContextRef?, _ object: JSObjectRef?, _ 
 }
 
 @available(macOS 11, iOS 13, tvOS 13, *)
-private func JXFunctionInstanceOf(_ ctx: JXContextRef?, _ constructor: JSObjectRef?, _ possibleInstance: JSValueRef?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> Bool {
+private func JXFunctionInstanceOf(_ jsc: JXContextRef?, _ constructor: JSObjectRef?, _ possibleInstance: JSValueRef?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> Bool {
     let info = JSObjectGetPrivate(constructor).assumingMemoryBound(to: JXFunctionInfo.self)
     let env = info.pointee.context
     let pt1 = JSObjectGetPrototype(env.context, constructor)

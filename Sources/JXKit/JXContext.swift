@@ -55,14 +55,10 @@ public final class JXValueError {
 
 @available(macOS 11, iOS 13, tvOS 13, *)
 public enum JXErrors : Error {
-    /// An error thrown from the JS environment
-    case jxerror(JXValue)
     /// A required resource was missing
     case missingResource(String)
     /// An evaluation error occurred
     case evaluationErrorString(String)
-    /// An evaluation error occurred
-    case evaluationError(JXValue)
     /// An evaluation error occurred
     case evaluationErrorUnknown
     /// The API call requires a higher system version (e.g., for JS typed array support)
@@ -78,7 +74,6 @@ public enum JXErrors : Error {
     case addToNonArray
 }
 
-
 @available(macOS 11, iOS 13, tvOS 13, *)
 extension JXContext {
 
@@ -87,10 +82,8 @@ extension JXContext {
         let script = script.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(script) }
 
-        var err: JSValueRef?
-        let result = JSEvaluateScript(context, script, this?.value, nil, 0, &err)
-        if let err = err {
-            throw JXErrors.jxerror(JXValue(env: self, valueRef: err))
+        let result = try trying {
+            JSEvaluateScript(context, script, this?.value, nil, 0, $0)
         }
 
         return result.map { JXValue(env: self, valueRef: $0) } ?? JXValue(undefinedIn: self)
@@ -99,12 +92,7 @@ extension JXContext {
     /// Asynchronously evaulates the given script
     @discardableResult public func eval(_ script: String, method: Bool = true, this: JXValue? = nil, priority: TaskPriority) async throws -> JXValue {
         let promise = try eval(script, this: this)
-
-        guard !promise.isFunction && !promise.isConstructor else { // should return a Promise, not a function
-            throw JXErrors.asyncEvalMustReturnPromise
-        }
-
-        guard try promise.isObject && promise.stringValue == "[object Promise]" else {
+        guard try promise.isPromise else {
             throw JXErrors.asyncEvalMustReturnPromise
         }
 
@@ -119,20 +107,20 @@ extension JXContext {
                     return c.resume(throwing: JXErrors.cannotCreatePromise)
                 }
 
-                let fulfilled = JXValue(newFunctionIn: self) { ctx, this, args in
-                    c.resume(returning: args.first ?? JXValue(undefinedIn: ctx))
-                    return JXValue(undefinedIn: ctx)
+                let fulfilled = JXValue(newFunctionIn: self) { jsc, this, args in
+                    c.resume(returning: args.first ?? JXValue(undefinedIn: jsc))
+                    return JXValue(undefinedIn: jsc)
                 }
 
-                let rejected = JXValue(newFunctionIn: self) { ctx, this, arg in
-                    c.resume(throwing: arg.first.map(JXErrors.jxerror) ?? JXErrors.cannotCreatePromise)
-                    return JXValue(undefinedIn: ctx)
+                let rejected = JXValue(newFunctionIn: self) { jsc, this, arg in
+                    c.resume(throwing: arg.first.map({ JXError(env: jsc, valueRef: $0.value) }) ?? JXErrors.cannotCreatePromise)
+                    return JXValue(undefinedIn: jsc)
                 }
 
                 let presult = try then.call(withArguments: [fulfilled, rejected], this: promise)
 
                 // then() should return a promise as well
-                if try !presult.isObject || presult.stringValue != "[object Promise]" {
+                if try !presult.isPromise {
                     // we can't throw here because it could complete the promise multiple times
                     throw JXErrors.asyncEvalMustReturnPromise
                 }
@@ -158,7 +146,7 @@ extension JXContext {
         let sourceURL = URLString?.withCString(JSStringCreateWithUTF8CString)
         defer { sourceURL.map(JSStringRelease) }
 
-        return try throwing(env: self) {
+        return try trying {
             JSCheckScriptSyntax(context, script, sourceURL, Int32(startingLineNumber), $0)
         }
     }
@@ -180,6 +168,7 @@ extension JXContext {
     ///   - property: The property's name.
     ///
     /// - Returns: true if the object has `property`, otherwise false.
+    @available(*, deprecated)
     @inlinable public func hasProperty(_ property: String) -> Bool {
         global.hasProperty(property)
     }
@@ -190,21 +179,25 @@ extension JXContext {
     ///   - property: The property's name.
     ///
     /// - Returns: true if the delete operation succeeds, otherwise false.
+    @available(*, deprecated)
     @discardableResult
     @inlinable public func removeProperty(_ property: String) throws -> Bool {
         try global.removeProperty(property)
     }
 
     /// Returns the global property at the given subscript
+    @available(*, deprecated)
     @inlinable public subscript(property: String) -> JXValue {
         get throws { try global[property] }
     }
 
+    @available(*, deprecated)
     @inlinable public func setProperty(_ key: String, _ value: JXValue) throws {
         try global.setProperty(key, value)
     }
 
     /// Get the names of global’s enumerable properties
+    @available(*, deprecated)
     @inlinable public var properties: [String] {
         global.properties
     }
@@ -273,6 +266,13 @@ extension JXContext {
         }
     }
 
+    /// Returns the global "Promise"
+    public var promisePrototype: JXValue {
+        get throws {
+            try global["Promise"]
+        }
+    }
+
     @inlinable public func null() -> JXValue {
         JXValue(nullIn: self)
     }
@@ -310,12 +310,25 @@ extension JXContext {
         return array
     }
 
-
     @inlinable public func date(_ value: Date) throws -> JXValue {
         try JXValue(date: value, in: self)
     }
 
     @inlinable public func data<D: DataProtocol>(_ value: D) throws -> JXValue {
         try JXValue(newArrayBufferWithBytes: value, in: self)
+    }
+
+    @inlinable public func error<E: Error>(_ error: E) throws -> JXValue {
+        try JXValue(newErrorFromMessage: "\(error)", in: self)
+    }
+
+    /// Attempts the operation whose failure is expecter to set the given error pointer.
+    @inlinable internal func trying<T>(function: (UnsafeMutablePointer<JSValueRef?>) throws -> T?) throws -> T! {
+        var errorPointer: JSValueRef?
+        let result = try function(&errorPointer)
+        if let errorPointer = errorPointer {
+            throw JXError(env: self, valueRef: errorPointer)
+        }
+        return result
     }
 }

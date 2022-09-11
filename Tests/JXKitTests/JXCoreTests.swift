@@ -15,49 +15,47 @@ class JXCoreTests: XCTestCase {
     }
 
     func testFunction1() throws {
-        let context = JXContext()
-        let myFunction = JXValue(newFunctionIn: context) { context, this, arguments in
-            let result = try arguments[0].numberValue + arguments[1].numberValue
-            return JXValue(double: result, in: context)
+        let jsc = JXContext()
+        let myFunction = JXValue(newFunctionIn: jsc) { jsc, this, arguments in
+            jsc.number(try arguments[0].numberValue + arguments[1].numberValue)
         }
 
         XCTAssertTrue(myFunction.isFunction)
 
-        let result = try myFunction.call(withArguments: [JXValue(double: 1, in: context), JXValue(double: 2, in: context)])
+        let result = try myFunction.call(withArguments: [jsc.number(1), jsc.number(2)])
 
         XCTAssertTrue(result.isNumber)
         XCTAssertEqual(try result.numberValue, 3)
     }
 
     func testFunction2() throws {
-        let context = JXContext()
-        let myFunction = JXValue(newFunctionIn: context) { context, this, arguments in
-            let result = try arguments[0].numberValue + arguments[1].numberValue
-            return JXValue(double: result, in: context)
+        let jsc = JXContext()
+        let myFunction = JXValue(newFunctionIn: jsc) { jsc, this, arguments in
+            jsc.number(try arguments[0].numberValue + arguments[1].numberValue)
         }
 
         XCTAssertTrue(myFunction.isFunction)
-        try context.global.setProperty("myFunction", myFunction)
+        try jsc.global.setProperty("myFunction", myFunction)
 
-        let result = try context.eval("myFunction(1, 2)")
+        let result = try jsc.eval("myFunction(1, 2)")
 
         XCTAssertTrue(result.isNumber)
         XCTAssertEqual(try result.numberValue, 3)
     }
 
     func testCalculation() throws {
-        let context = JXContext()
+        let jsc = JXContext()
 
-        let result = try context.eval("1 + 1")
+        let result = try jsc.eval("1 + 1")
 
         XCTAssertTrue(result.isNumber)
         XCTAssertEqual(try result.numberValue, 2)
     }
 
     func testArray() throws {
-        let context = JXContext()
+        let jsc = JXContext()
 
-        let result = try context.eval("[1 + 2, \"BMW\", \"Volvo\"]")
+        let result = try jsc.eval("[1 + 2, \"BMW\", \"Volvo\"]")
 
         XCTAssertTrue(try result.isArray)
 
@@ -70,64 +68,60 @@ class JXCoreTests: XCTestCase {
     }
 
     func testGetter() throws {
-        let context = JXContext()
+        let jsc = JXContext()
 
-        XCTAssertTrue(context.global.isObject)
-        try context.global.setProperty("obj", JXValue(newObjectIn: context))
-        XCTAssertTrue(try context.global["obj"].isObject)
+        XCTAssertTrue(jsc.global.isObject)
+        try jsc.global.setProperty("obj", jsc.object())
+        XCTAssertTrue(try jsc.global["obj"].isObject)
 
-        let desc = JXProperty { this in
-            JXValue(double: 3, in: context)
-        }
+        let desc = JXProperty { _ in jsc.number(3) }
 
-        try context.global["obj"].defineProperty("three", desc)
-
-        let result = try context.eval("obj.three")
-
+        try jsc.global["obj"].defineProperty("three", desc)
+        let result = try jsc.eval("obj.three")
         XCTAssertEqual(try result.numberValue, 3)
     }
 
     func testSetter() throws {
-        let context = JXContext()
+        let jsc = JXContext()
 
-        try context.global.setProperty("obj", JXValue(newObjectIn: context))
+        try jsc.global.setProperty("obj", jsc.object())
 
         let desc = JXProperty(
             getter: { this in try this["number_container"] },
             setter: { this, newValue in try this.setProperty("number_container", newValue) }
         )
 
-        try context.global["obj"].defineProperty("number", desc)
+        try jsc.global["obj"].defineProperty("number", desc)
 
-        try context.eval("obj.number = 5")
+        try jsc.eval("obj.number = 5")
 
-        XCTAssertEqual(try context.global["obj"]["number"].numberValue, 5)
-        XCTAssertEqual(try context.global["obj"]["number_container"].numberValue, 5)
+        XCTAssertEqual(try jsc.global["obj"]["number"].numberValue, 5)
+        XCTAssertEqual(try jsc.global["obj"]["number_container"].numberValue, 5)
 
-        try context.eval("obj.number = 3")
+        try jsc.eval("obj.number = 3")
 
-        XCTAssertEqual(try context.global["obj"]["number"].numberValue, 3)
-        XCTAssertEqual(try context.global["obj"]["number_container"].numberValue, 3)
+        XCTAssertEqual(try jsc.global["obj"]["number"].numberValue, 3)
+        XCTAssertEqual(try jsc.global["obj"]["number_container"].numberValue, 3)
     }
 
     func testArrayBuffer() throws {
-        let context = JXContext()
+        let jsc = JXContext()
         
         let bytes: [UInt8] = [1, 2, 3, 4, 5, 6, 7, 8]
-        try context.global.setProperty("buffer", JXValue(newArrayBufferWithBytes: bytes, in: context))
+        try jsc.global.setProperty("buffer", JXValue(newArrayBufferWithBytes: bytes, in: jsc))
 
-        XCTAssertTrue(try context.global["buffer"].isArrayBuffer)
-        XCTAssertEqual(try context.global["buffer"].byteLength, 8)
+        XCTAssertTrue(try jsc.global["buffer"].isArrayBuffer)
+        XCTAssertEqual(try jsc.global["buffer"].byteLength, 8)
 
         let bufferSize = 999_999
         //let bufferData = Data((1...bufferSize).map({ _ in UInt8.random(in: (.min)...(.max)) }))
         let bufferData = Data(repeating: UInt8.random(in: (.min)...(.max)), count: bufferSize)
 
         measure { // 1M average: 0.001; 10M average: 0.002; 100M average: average: 0.030
-            guard let arrayBuffer = try? JXValue(newArrayBufferWithBytes: bufferData, in: context) else {
+            guard let arrayBuffer = try? JXValue(newArrayBufferWithBytes: bufferData, in: jsc) else {
                 return XCTFail("failed")
             }
-            guard let isView = try? context.global["ArrayBuffer"]["isView"].call(withArguments: [arrayBuffer]) else {
+            guard let isView = try? jsc.global["ArrayBuffer"]["isView"].call(withArguments: [arrayBuffer]) else {
                 return XCTFail("failed")
             }
             XCTAssertEqual(true, isView.isBoolean)
@@ -141,18 +135,18 @@ class JXCoreTests: XCTestCase {
         var flag = 0
 
         do {
-            let context = JXContext()
+            let jsc = JXContext()
             var bytes: [UInt8] = [1, 2, 3, 4, 5, 6, 7, 8]
 
             try bytes.withUnsafeMutableBytes { bytes in
-                try context.global.setProperty("buffer", JXValue(newArrayBufferWithBytesNoCopy: bytes, deallocator: { _ in flag = 1 }, in: context))
+                try jsc.global.setProperty("buffer", JXValue(newArrayBufferWithBytesNoCopy: bytes, deallocator: { _ in flag = 1 }, in: jsc))
 
-                XCTAssertTrue(try context.global["buffer"].isArrayBuffer)
-                XCTAssertEqual(try context.global["buffer"].byteLength, 8)
+                XCTAssertTrue(try jsc.global["buffer"].isArrayBuffer)
+                XCTAssertEqual(try jsc.global["buffer"].byteLength, 8)
             }
         }
 
-        XCTAssertEqual(flag, 1)
+        XCTAssertEqual(flag, 1, "context was not deallocated")
     }
 
     func testArrayBufferClosure() throws {
@@ -161,12 +155,12 @@ class JXCoreTests: XCTestCase {
         // let size = 1_000_000_000
 
         let data = Data(repeating: 9, count: size)
-        let context = JXContext()
+        let jsc = JXContext()
 
-        XCTAssertEqual(true, try context["ArrayBuffer"].isObject)
+        XCTAssertEqual(true, try jsc.global["ArrayBuffer"].isObject)
 
         measure { // average: 0.000, relative standard deviation: 99.521%, values: [0.000434, 0.000037, 0.000959, 0.000050, 0.000471, 0.000048, 0.000394, 0.000048, 0.000389, 0.000047]
-            let result: Double? = try? context.withArrayBuffer(source: data) { buffer in
+            let result: Double? = try? jsc.withArrayBuffer(source: data) { buffer in
                 XCTAssertEqual(true, try buffer["byteLength"].booleanValue)
                 XCTAssertEqual(true, try buffer["slice"].isFunction)
                 return try buffer["byteLength"].numberValue
@@ -176,41 +170,41 @@ class JXCoreTests: XCTestCase {
     }
 
     func testDataView() throws {
-        let context = JXContext()
+        let jsc = JXContext()
         
         let bytes: [UInt8] = [1, 2, 3, 4, 5, 6, 7, 8]
-        try context.global.setProperty("buffer", JXValue(newArrayBufferWithBytes: bytes, in: context))
+        try jsc.global.setProperty("buffer", JXValue(newArrayBufferWithBytes: bytes, in: jsc))
         
-        try context.eval("new DataView(buffer).setUint8(0, 5)")
+        try jsc.eval("new DataView(buffer).setUint8(0, 5)")
         
-        XCTAssertEqual(try context["buffer"].copyBytes().map(Array.init), [5, 2, 3, 4, 5, 6, 7, 8])
+        XCTAssertEqual(try jsc.global["buffer"].copyBytes().map(Array.init), [5, 2, 3, 4, 5, 6, 7, 8])
     }
     
     func testSlice() throws {
-        let context = JXContext()
+        let jsc = JXContext()
         
         let bytes: [UInt8] = [1, 2, 3, 4, 5, 6, 7, 8]
-        try context.global.setProperty("buffer", JXValue(newArrayBufferWithBytes: bytes, in: context))
+        try jsc.global.setProperty("buffer", JXValue(newArrayBufferWithBytes: bytes, in: jsc))
 
-        XCTAssertEqual(try context.eval("buffer.slice(2, 4)").copyBytes().map(Array.init), [3, 4])
+        XCTAssertEqual(try jsc.eval("buffer.slice(2, 4)").copyBytes().map(Array.init), [3, 4])
     }
     
     func testFunctionConstructor() throws {
-        let context = JXContext()
+        let jsc = JXContext()
 
-        let myClass = JXValue(newFunctionIn: context) { context, this, arguments in
+        let myClass = JXValue(newFunctionIn: jsc) { jsc, this, arguments in
             let result = try arguments[0].numberValue + arguments[1].numberValue
-            let object = JXValue(newObjectIn: context)
-            try object.setProperty("result", JXValue(double: result, in: context))
+            let object = jsc.object()
+            try object.setProperty("result", jsc.number(result))
 
             return object
         }
 
         XCTAssertTrue(myClass.isConstructor)
 
-        try context.global.setProperty("myClass", myClass)
+        try jsc.global.setProperty("myClass", myClass)
 
-        let result = try context.eval("new myClass(1, 2)")
+        let result = try jsc.eval("new myClass(1, 2)")
 
         XCTAssertTrue(result.isObject)
         XCTAssertEqual(try result["result"].numberValue, 3)
@@ -222,7 +216,7 @@ class JXCoreTests: XCTestCase {
         let jsc = JXContext()
 
         do {
-            try jsc.setProperty("setTimeout", JXValue(newFunctionIn: jsc) { jsc, this, args in
+            try jsc.global.setProperty("setTimeout", JXValue(newFunctionIn: jsc) { jsc, this, args in
                 print("setTimeout", try args.map({ try $0.stringValue }))
                 return jsc.number(0)
             })
@@ -246,19 +240,73 @@ class JXCoreTests: XCTestCase {
 
             if #available(macOS 13, iOS 15, tvOS 15, *) {
                 XCTAssertEqual(2, try result.numberValue)
-                XCTAssertEqual([1.0, 2.0, 3.0], try jsc["arr"].array.map({ try $0.numberValue }))
+                XCTAssertEqual([1.0, 2.0, 3.0], try jsc.global["arr"].array.map({ try $0.numberValue }))
             } else {
                 XCTAssertEqual(3, try result.numberValue)
-                XCTAssertEqual([1.0, 3.0, 2.0], try jsc["arr"].array.map({ try $0.numberValue }))
+                XCTAssertEqual([1.0, 3.0, 2.0], try jsc.global["arr"].array.map({ try $0.numberValue }))
             }
         }
 
         do {
             let str = UUID().uuidString
             let resolvedPromise = try JXValue(newPromiseResolvedWithResult: jsc.string(str), in: jsc)
-            try jsc.setProperty("prm", resolvedPromise)
+            try jsc.global.setProperty("prm", resolvedPromise)
             let _ = try jsc.eval("(async () => { this['cb'] = await prm; })();")
-            XCTAssertEqual(str, try jsc["cb"].stringValue)
+            XCTAssertEqual(str, try jsc.global["cb"].stringValue)
         }
+    }
+
+    func testTypes() throws {
+        let jsc = JXContext()
+
+        XCTAssertEqual(true, try jsc.eval("new Object()").isObject)
+        XCTAssertEqual(true, try jsc.eval("new Date()").isDate)
+        XCTAssertEqual(true, try jsc.eval("new Array()").isArray)
+        XCTAssertEqual(true, try jsc.eval("new ArrayBuffer()").isArrayBuffer)
+        XCTAssertEqual(true, try jsc.eval("(async () => { })").isFunction)
+        XCTAssertEqual(true, try jsc.eval("(async () => { })()").isPromise)
+
+        XCTAssertEqual(true, jsc.string("").isString)
+        XCTAssertEqual(true, jsc.number(1.1).isNumber)
+        XCTAssertEqual(true, jsc.null().isNull)
+        XCTAssertEqual(true, try jsc.array([]).isArray)
+
+       try jsc.withArrayBuffer(source: Data([1,2,3]), block: { val in
+           XCTAssertEqual(true, try val.isArrayBuffer)
+       })
+
+//        XCTAssertEqual(true, try JXValue(newErrorFromMessage: "", in: jsc).isError)
+
+    }
+
+    func testCheck() throws {
+        func lint(_ script: String) throws -> String? {
+            do {
+                let jsc = JXContext()
+                try jsc.eval(script)
+                return nil
+            } catch let error as JXError {
+                return try error.stringValue
+            } catch {
+                XCTFail("unexpected error type: \(error)")
+                return nil
+            }
+        }
+
+        XCTAssertEqual(try lint("1"), nil)
+        XCTAssertEqual(try lint("1.1"), nil)
+        XCTAssertEqual(try lint("Math.PI.x"), nil)
+
+        XCTAssertEqual(try lint("Math.PIE.x"), "TypeError: undefined is not an object (evaluating \'Math.PIE.x\')")
+        XCTAssertEqual(try lint("1X"), "SyntaxError: No identifiers allowed directly after numeric literal")
+        XCTAssertEqual(try lint("1["), "SyntaxError: Unexpected end of script")
+        XCTAssertEqual(try lint("1]"), "SyntaxError: Unexpected token \']\'. Parse error.")
+
+        // strict checks
+
+        XCTAssertEqual(try lint("use strict"), "SyntaxError: Unexpected identifier \'strict\'") // need to quote
+        XCTAssertEqual(try lint("'use strict'\nmistypeVarible = 17"), "ReferenceError: Can\'t find variable: mistypeVarible")
+        XCTAssertEqual(try lint("mistypeVarible = 17"), nil)
+
     }
 }
