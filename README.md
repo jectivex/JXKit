@@ -7,7 +7,7 @@
 
 A pure swift interface the `JavaScriptCore` C API with support for `Encodable` & `Decodable`.
 
-Browse the [API Documentation](https://www.jective.org/docs/JXKit/).
+Browse the [API Documentation].
 
 This permits JSC to be used on platforms where the Objective-C runtime is unavailable (e.g., Linux).
 
