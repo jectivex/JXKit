@@ -82,7 +82,7 @@ Swift code.
 1. Add the following to your `Package.swift` file:
 
   ```swift
-  // swift-tools-version:5.3
+  // swift-tools-version:5.6
   import PackageDescription
 
   let package = Package(
@@ -93,7 +93,7 @@ Swift code.
               targets: ["MyPackage"]),
       ],
       dependencies: [
-          .package(name: "JXKit", url: "https://github.com/jectivex/JXKit.git", .upToNextMajor(from: "1.0")),
+          .package(name: "JXKit", url: "https://github.com/jectivex/JXKit.git", .upToNextMajor(from: "2.0")),
       ],
       targets: [
           .target(
@@ -113,6 +113,6 @@ Swift code.
   ```
 
 [Swift Package Manager]: https://swift.org/package-manager
-[API Documentation]: https://jectivex.github.io/JXKit
+[API Documentation]: https://www.jective.org/JXKit/documentation/jxkit/
 
 
