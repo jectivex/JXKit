@@ -240,11 +240,11 @@ class JXCoreTests: XCTestCase {
 
             XCTAssertGreaterThan(try result.numberValue, 0)
 
-            // this appears to be fixed in macOS 13 / iOS 16
+            // this appears to be fixed in macOS 13 and iOS 15
             // Bug 161942: Shouldn't drain the micro task queue when calling out
             // https://developer.apple.com/forums/thread/678277
 
-            if #available(macOS 13.0, iOS 16.0, tvOS 16.0, *) {
+            if #available(macOS 13, iOS 15, tvOS 15, *) {
                 XCTAssertEqual(2, try result.numberValue)
                 XCTAssertEqual([1.0, 2.0, 3.0], try jsc["arr"].array.map({ try $0.numberValue }))
             } else {
