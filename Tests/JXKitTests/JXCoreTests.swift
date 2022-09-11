@@ -166,7 +166,7 @@ class JXCoreTests: XCTestCase {
         XCTAssertEqual(true, try context["ArrayBuffer"].isObject)
 
         measure { // average: 0.000, relative standard deviation: 99.521%, values: [0.000434, 0.000037, 0.000959, 0.000050, 0.000471, 0.000048, 0.000394, 0.000048, 0.000389, 0.000047]
-            let result = try? context.withArrayBuffer(source: data) { buffer in
+            let result: Double? = try? context.withArrayBuffer(source: data) { buffer in
                 XCTAssertEqual(true, try buffer["byteLength"].booleanValue)
                 XCTAssertEqual(true, try buffer["slice"].isFunction)
                 return try buffer["byteLength"].numberValue
