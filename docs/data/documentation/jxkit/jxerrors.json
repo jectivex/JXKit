@@ -1,0 +1,590 @@
+{
+  "abstract" : [
+    {
+      "text" : "No overview available.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/JXKit\/documentation\/JXKit"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:5JXKit8JXErrorsO",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "enum"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "JXErrors"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "JXKit"
+      }
+    ],
+    "navigatorTitle" : [
+      {
+        "kind" : "identifier",
+        "text" : "JXErrors"
+      }
+    ],
+    "platforms" : [
+      {
+        "beta" : false,
+        "deprecated" : false,
+        "introducedAt" : "13.0",
+        "name" : "iOS",
+        "unavailable" : false
+      },
+      {
+        "beta" : false,
+        "deprecated" : false,
+        "introducedAt" : "11.0",
+        "name" : "macOS",
+        "unavailable" : false
+      },
+      {
+        "beta" : false,
+        "deprecated" : false,
+        "introducedAt" : "13.0",
+        "name" : "tvOS",
+        "unavailable" : false
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Enumeration",
+    "symbolKind" : "enum",
+    "title" : "JXErrors"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "macOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "enum"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "JXErrors"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "relationshipsSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/JXKit\/s5ErrorP",
+        "doc:\/\/JXKit\/s8SendableP"
+      ],
+      "kind" : "relationships",
+      "title" : "Conforms To",
+      "type" : "conformsTo"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 2,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "topicSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/addToNonArray",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/asyncEvalMustReturnPromise",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/callOnNonFunction",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotCreateArrayBuffer",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotCreatePromise",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotLoadScriptURL(_:_:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/evaluationErrorString(_:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/evaluationErrorUnknown",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidAsyncPromise",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/minimumSystemVersion",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/missingResource(_:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/propertyAccessNonObject"
+      ],
+      "title" : "Enumeration Cases"
+    },
+    {
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/Error-Implementations"
+      ],
+      "title" : "Default Implementations"
+    }
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/jxkit\/jxerrors"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://JXKit/documentation/JXKit": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "JXKit",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit"
+},
+"doc://JXKit/documentation/JXKit/JXErrors": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "enum"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXErrors"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXErrors"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXErrors",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/Error-Implementations": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/Error-Implementations",
+  "kind" : "article",
+  "role" : "collectionGroup",
+  "title" : "Error Implementations",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/error-implementations"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/addToNonArray": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "addToNonArray"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/addToNonArray",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.addToNonArray",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/addtononarray"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/asyncEvalMustReturnPromise": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "asyncEvalMustReturnPromise"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/asyncEvalMustReturnPromise",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.asyncEvalMustReturnPromise",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/asyncevalmustreturnpromise"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/callOnNonFunction": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "callOnNonFunction"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/callOnNonFunction",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.callOnNonFunction",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/callonnonfunction"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/cannotCreateArrayBuffer": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "cannotCreateArrayBuffer"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotCreateArrayBuffer",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.cannotCreateArrayBuffer",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/cannotcreatearraybuffer"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/cannotCreatePromise": {
+  "abstract" : [
+    {
+      "text" : "Unable to create a new promise",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "cannotCreatePromise"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotCreatePromise",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.cannotCreatePromise",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/cannotcreatepromise"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/cannotLoadScriptURL(_:_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "cannotLoadScriptURL"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10Foundation3URLV",
+      "text" : "URL"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSURLResponse",
+      "text" : "URLResponse"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotLoadScriptURL(_:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.cannotLoadScriptURL(_:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/cannotloadscripturl(_:_:)"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/evaluationErrorString(_:)": {
+  "abstract" : [
+    {
+      "text" : "An evaluation error occurred",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "evaluationErrorString"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/evaluationErrorString(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.evaluationErrorString(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/evaluationerrorstring(_:)"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/evaluationErrorUnknown": {
+  "abstract" : [
+    {
+      "text" : "An evaluation error occurred",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "evaluationErrorUnknown"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/evaluationErrorUnknown",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.evaluationErrorUnknown",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/evaluationerrorunknown"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/invalidAsyncPromise": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "invalidAsyncPromise"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidAsyncPromise",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.invalidAsyncPromise",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/invalidasyncpromise"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/minimumSystemVersion": {
+  "abstract" : [
+    {
+      "text" : "The API call requires a higher system version (e.g., for JS typed array support)",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "minimumSystemVersion"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/minimumSystemVersion",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.minimumSystemVersion",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/minimumsystemversion"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/missingResource(_:)": {
+  "abstract" : [
+    {
+      "text" : "A required resource was missing",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "missingResource"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/missingResource(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.missingResource(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/missingresource(_:)"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/propertyAccessNonObject": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "propertyAccessNonObject"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/propertyAccessNonObject",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.propertyAccessNonObject",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/propertyaccessnonobject"
+},
+"doc://JXKit/s5ErrorP": {
+  "identifier" : "doc:\/\/JXKit\/s5ErrorP",
+  "title" : "Swift.Error",
+  "type" : "unresolvable"
+},
+"doc://JXKit/s8SendableP": {
+  "identifier" : "doc:\/\/JXKit\/s8SendableP",
+  "title" : "Swift.Sendable",
+  "type" : "unresolvable"
+}
+}
+}

@@ -1,0 +1,3378 @@
+{
+  "abstract" : [
+    {
+      "text" : "A JavaScript object.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/JXKit\/documentation\/JXKit"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:5JXKit7JXValueC",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "class"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "JXValue"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "JXKit"
+      }
+    ],
+    "navigatorTitle" : [
+      {
+        "kind" : "identifier",
+        "text" : "JXValue"
+      }
+    ],
+    "platforms" : [
+      {
+        "beta" : false,
+        "deprecated" : false,
+        "introducedAt" : "13.0",
+        "name" : "iOS",
+        "unavailable" : false
+      },
+      {
+        "beta" : false,
+        "deprecated" : false,
+        "introducedAt" : "11.0",
+        "name" : "macOS",
+        "unavailable" : false
+      },
+      {
+        "beta" : false,
+        "deprecated" : false,
+        "introducedAt" : "13.0",
+        "name" : "tvOS",
+        "unavailable" : false
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Class",
+    "symbolKind" : "class",
+    "title" : "JXValue"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "macOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "class"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "JXValue"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "overview",
+          "level" : 2,
+          "text" : "Overview",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "This wraps a ",
+              "type" : "text"
+            },
+            {
+              "code" : "JSObjectRef",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : ", and is the equivalent of ",
+              "type" : "text"
+            },
+            {
+              "code" : "JavaScriptCore.JSValue",
+              "type" : "codeVoice"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
+    }
+  ],
+  "relationshipsSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXError"
+      ],
+      "kind" : "relationships",
+      "title" : "Inherited By",
+      "type" : "inheritedBy"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/JXKit\/s23CustomStringConvertibleP"
+      ],
+      "kind" : "relationships",
+      "title" : "Conforms To",
+      "type" : "conformsTo"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 2,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "topicSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(env:value:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newArrayBufferWithBytes:in:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newArrayBufferWithBytesNoCopy:deallocator:in:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newArrayBufferWithLength:in:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newFunctionIn:callback:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newPromiseIn:executor:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newPromiseRejectedWithResult:in:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newPromiseResolvedWithResult:in:)"
+      ],
+      "title" : "Initializers"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/array",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/booleanValue",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/byteLength",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/count",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dateValue",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dateValueISO",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dictionary",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isArray",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isArrayBuffer",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isBoolean",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isConstructor",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isDate",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isError",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isExtensible",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isFrozen",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isFunction",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isNull",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isNumber",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isObject",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isPromise",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isSealed",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isString",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isUndefined",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/numberValue",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/properties",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/prototype",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/stringValue",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/type"
+      ],
+      "title" : "Instance Properties"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/call(withArguments:this:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/construct(withArguments:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/copyBytes()",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/defineProperty(_:_:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/deleteProperty(_:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/freeze()",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/hasProperty(_:)-1e3mh",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/hasProperty(_:)-2ontd",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/invokeMethod(_:withArguments:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isEqual(to:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isEqualWithTypeCoercion(to:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isInstance(of:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/preventExtensions()",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/propertyDescriptor(_:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/removeProperty(_:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/seal()",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setElement(_:at:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/toDecodable(ofType:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/toJSON(indent:)"
+      ],
+      "title" : "Instance Methods"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/subscript(_:)-44yy0",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/subscript(_:)-8iv6o"
+      ],
+      "title" : "Subscripts"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/createPromise(in:)"
+      ],
+      "title" : "Type Methods"
+    },
+    {
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/CustomStringConvertible-Implementations"
+      ],
+      "title" : "Default Implementations"
+    }
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/jxkit\/jxvalue"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://JXKit/documentation/JXKit": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "JXKit",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit"
+},
+"doc://JXKit/documentation/JXKit/JXError": {
+  "abstract" : [
+    {
+      "text" : "An error thrown from JavaScript evaluation.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXError"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXError"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXError",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerror"
+},
+"doc://JXKit/documentation/JXKit/JXValue": {
+  "abstract" : [
+    {
+      "text" : "A JavaScript object.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXValue"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXValue",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue"
+},
+"doc://JXKit/documentation/JXKit/JXValue/CustomStringConvertible-Implementations": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/CustomStringConvertible-Implementations",
+  "kind" : "article",
+  "role" : "collectionGroup",
+  "title" : "CustomStringConvertible Implementations",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/customstringconvertible-implementations"
+},
+"doc://JXKit/documentation/JXKit/JXValue/array": {
+  "abstract" : [
+    {
+      "text" : "Returns the JavaScript array.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "array"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "]"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/array",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "array",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/array"
+},
+"doc://JXKit/documentation/JXKit/JXValue/booleanValue": {
+  "abstract" : [
+    {
+      "text" : "Returns the JavaScript boolean value.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "booleanValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/booleanValue",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "booleanValue",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/booleanvalue"
+},
+"doc://JXKit/documentation/JXKit/JXValue/byteLength": {
+  "abstract" : [
+    {
+      "text" : "The length (in bytes) of the ",
+      "type" : "text"
+    },
+    {
+      "code" : "ArrayBuffer",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "byteLength"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/byteLength",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "byteLength",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/bytelength"
+},
+"doc://JXKit/documentation/JXKit/JXValue/call(withArguments:this:)": {
+  "abstract" : [
+    {
+      "text" : "Calls an object as a function.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "call"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "withArguments"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "], "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "this"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "?) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/call(withArguments:this:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "call(withArguments:this:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/call(witharguments:this:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/construct(withArguments:)": {
+  "abstract" : [
+    {
+      "text" : "Calls an object as a constructor.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "a",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "construct"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "withArguments"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "]) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/construct(withArguments:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "construct(withArguments:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/construct(witharguments:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/copyBytes()": {
+  "abstract" : [
+    {
+      "text" : "Copy the bytes of ",
+      "type" : "text"
+    },
+    {
+      "code" : "ArrayBuffer",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "copyBytes"
+    },
+    {
+      "kind" : "text",
+      "text" : "() "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10Foundation4DataV",
+      "text" : "Data"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/copyBytes()",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "copyBytes()",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/copybytes()"
+},
+"doc://JXKit/documentation/JXKit/JXValue/count": {
+  "abstract" : [
+    {
+      "text" : "The length of the object.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "count"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/count",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "count",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/count"
+},
+"doc://JXKit/documentation/JXKit/JXValue/createPromise(in:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "createPromise"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "in"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXPromisea",
+      "text" : "JXPromise"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/createPromise(in:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "createPromise(in:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/createpromise(in:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/dateValue": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "dateValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10Foundation4DateV",
+      "text" : "Date"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dateValue",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "dateValue",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/datevalue"
+},
+"doc://JXKit/documentation/JXKit/JXValue/dateValueISO": {
+  "abstract" : [
+    {
+      "text" : "Returns the JavaScript date value.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "dateValueISO"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10Foundation4DateV",
+      "text" : "Date"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dateValueISO",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "dateValueISO",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/datevalueiso"
+},
+"doc://JXKit/documentation/JXKit/JXValue/defineProperty(_:_:)": {
+  "abstract" : [
+    {
+      "text" : "Defines a property on the JavaScript object value or modifies a property’s definition.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "defineProperty"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit10JXPropertyV",
+      "text" : "JXProperty"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/defineProperty(_:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "defineProperty(_:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/defineproperty(_:_:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/deleteProperty(_:)": {
+  "abstract" : [
+    {
+      "text" : "Deletes a property from an object or array.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "deleteProperty"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/deleteProperty(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "deleteProperty(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/deleteproperty(_:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/dictionary": {
+  "abstract" : [
+    {
+      "text" : "Returns the JavaScript object as dictionary.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "dictionary"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : " : "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "]?"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dictionary",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "dictionary",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/dictionary"
+},
+"doc://JXKit/documentation/JXKit/JXValue/freeze()": {
+  "abstract" : [
+    {
+      "text" : "The Object.freeze() method freezes an object. Freezing an object prevents extensions and makes existing properties non-writable and non-configurable. A frozen object can no longer be changed: new properties cannot be added, existing properties cannot be removed, their enumerability, configurability, writability, or value cannot be changed, and the object’s prototype cannot be re-assigned. freeze() returns the same object that was passed in.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "freeze"
+    },
+    {
+      "kind" : "text",
+      "text" : "() "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/freeze()",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "freeze()",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/freeze()"
+},
+"doc://JXKit/documentation/JXKit/JXValue/hasProperty(_:)-1e3mh": {
+  "abstract" : [
+    {
+      "text" : "Checks if a property exists",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "hasProperty"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/hasProperty(_:)-1e3mh",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "hasProperty(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/hasproperty(_:)-1e3mh"
+},
+"doc://JXKit/documentation/JXKit/JXValue/hasProperty(_:)-2ontd": {
+  "abstract" : [
+    {
+      "text" : "Tests whether an object has a given property.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "hasProperty"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/hasProperty(_:)-2ontd",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "hasProperty(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/hasproperty(_:)-2ontd"
+},
+"doc://JXKit/documentation/JXKit/JXValue/init(env:value:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "convenience"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "env"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "value"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(env:value:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(env:value:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/init(env:value:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/init(newArrayBufferWithBytes:in:)": {
+  "abstract" : [
+    {
+      "text" : "Creates a JavaScript ",
+      "type" : "text"
+    },
+    {
+      "code" : "ArrayBuffer",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " object.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "convenience"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "S"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "newArrayBufferWithBytes"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "S"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "in"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newArrayBufferWithBytes:in:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(newArrayBufferWithBytes:in:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/init(newarraybufferwithbytes:in:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/init(newArrayBufferWithBytesNoCopy:deallocator:in:)": {
+  "abstract" : [
+    {
+      "text" : "Creates a JavaScript ",
+      "type" : "text"
+    },
+    {
+      "code" : "ArrayBuffer",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " object.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "convenience"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "newArrayBufferWithBytesNoCopy"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sw",
+      "text" : "UnsafeMutableRawBufferPointer"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "deallocator"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sw",
+      "text" : "UnsafeMutableRawBufferPointer"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "in"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newArrayBufferWithBytesNoCopy:deallocator:in:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(newArrayBufferWithBytesNoCopy:deallocator:in:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/init(newarraybufferwithbytesnocopy:deallocator:in:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/init(newArrayBufferWithLength:in:)": {
+  "abstract" : [
+    {
+      "text" : "Creates a JavaScript ",
+      "type" : "text"
+    },
+    {
+      "code" : "ArrayBuffer",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " object.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "convenience"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "newArrayBufferWithLength"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "in"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newArrayBufferWithLength:in:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(newArrayBufferWithLength:in:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/init(newarraybufferwithlength:in:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/init(newFunctionIn:callback:)": {
+  "abstract" : [
+    {
+      "text" : "Creates a JavaScript value of the function type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "convenience"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "newFunctionIn"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "callback"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit10JXFunctiona",
+      "text" : "JXFunction"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newFunctionIn:callback:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(newFunctionIn:callback:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/init(newfunctionin:callback:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/init(newPromiseIn:executor:)": {
+  "abstract" : [
+    {
+      "text" : "Creates a promise and executes it immediately",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "convenience"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "newPromiseIn"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "executor"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> ()) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newPromiseIn:executor:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(newPromiseIn:executor:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/init(newpromisein:executor:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/init(newPromiseRejectedWithResult:in:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "convenience"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "newPromiseRejectedWithResult"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "in"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newPromiseRejectedWithResult:in:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(newPromiseRejectedWithResult:in:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/init(newpromiserejectedwithresult:in:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/init(newPromiseResolvedWithResult:in:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "convenience"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "newPromiseResolvedWithResult"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "in"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newPromiseResolvedWithResult:in:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(newPromiseResolvedWithResult:in:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/init(newpromiseresolvedwithresult:in:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/invokeMethod(_:withArguments:)": {
+  "abstract" : [
+    {
+      "text" : "Invoke an object’s method.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "invokeMethod"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "withArguments"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "]) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/invokeMethod(_:withArguments:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "invokeMethod(_:withArguments:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/invokemethod(_:witharguments:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isArray": {
+  "abstract" : [
+    {
+      "text" : "Tests whether a JavaScript value’s type is the array type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isArray"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isArray",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isArray",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/isarray"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isArrayBuffer": {
+  "abstract" : [
+    {
+      "text" : "Tests whether a JavaScript value’s type is the ",
+      "type" : "text"
+    },
+    {
+      "code" : "ArrayBuffer",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isArrayBuffer"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isArrayBuffer",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isArrayBuffer",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/isarraybuffer"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isBoolean": {
+  "abstract" : [
+    {
+      "text" : "Tests whether a JavaScript value is Boolean.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isBoolean"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isBoolean",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isBoolean",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/isboolean"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isConstructor": {
+  "abstract" : [
+    {
+      "text" : "Tests whether an object can be called as a constructor.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isConstructor"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isConstructor",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isConstructor",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/isconstructor"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isDate": {
+  "abstract" : [
+    {
+      "text" : "Tests whether a JavaScript value’s type is the date type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isDate"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isDate",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isDate",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/isdate"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isEqual(to:)": {
+  "abstract" : [
+    {
+      "text" : "Tests whether two JavaScript values are strict equal, as compared by the JS ",
+      "type" : "text"
+    },
+    {
+      "code" : "===",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " operator.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isEqual"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "to"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isEqual(to:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isEqual(to:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/isequal(to:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isEqualWithTypeCoercion(to:)": {
+  "abstract" : [
+    {
+      "text" : "Tests whether two JavaScript values are equal, as compared by the JS ",
+      "type" : "text"
+    },
+    {
+      "code" : "==",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " operator.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isEqualWithTypeCoercion"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "to"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isEqualWithTypeCoercion(to:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isEqualWithTypeCoercion(to:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/isequalwithtypecoercion(to:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isError": {
+  "abstract" : [
+    {
+      "text" : "Tests whether a JavaScript value’s type is the error type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isError"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isError",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isError",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/iserror"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isExtensible": {
+  "abstract" : [
+    {
+      "text" : "The Object.isExtensible() method determines if an object is extensible (whether it can have new properties added to it).",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isExtensible"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isExtensible",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isExtensible",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/isextensible"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isFrozen": {
+  "abstract" : [
+    {
+      "text" : "Whether or not the given object is frozen.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isFrozen"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isFrozen",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isFrozen",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/isfrozen"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isFunction": {
+  "abstract" : [
+    {
+      "text" : "Tests whether an object can be called as a function.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isFunction"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isFunction",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isFunction",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/isfunction"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isInstance(of:)": {
+  "abstract" : [
+    {
+      "text" : "Tests whether a JavaScript value is an object constructed by a given constructor, as compared by the ",
+      "type" : "text"
+    },
+    {
+      "code" : "isInstance(of:)",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " operator.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isInstance"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "of"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isInstance(of:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isInstance(of:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/isinstance(of:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isNull": {
+  "abstract" : [
+    {
+      "text" : "Tests whether a JavaScript value’s type is the null type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isNull"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isNull",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isNull",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/isnull"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isNumber": {
+  "abstract" : [
+    {
+      "text" : "Tests whether a JavaScript value’s type is the number type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isNumber"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isNumber",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isNumber",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/isnumber"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isObject": {
+  "abstract" : [
+    {
+      "text" : "Tests whether a JavaScript value’s type is the object type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isObject"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isObject",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isObject",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/isobject"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isPromise": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isPromise"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isPromise",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isPromise",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/ispromise"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isSealed": {
+  "abstract" : [
+    {
+      "text" : "The Object.isSealed() method determines if an object is sealed.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isSealed"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isSealed",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isSealed",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/issealed"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isString": {
+  "abstract" : [
+    {
+      "text" : "Tests whether a JavaScript value’s type is the string type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isString"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isString",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isString",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/isstring"
+},
+"doc://JXKit/documentation/JXKit/JXValue/isUndefined": {
+  "abstract" : [
+    {
+      "text" : "Tests whether a JavaScript value’s type is the undefined type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isUndefined"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isUndefined",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isUndefined",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/isundefined"
+},
+"doc://JXKit/documentation/JXKit/JXValue/numberValue": {
+  "abstract" : [
+    {
+      "text" : "Returns the JavaScript number value.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "numberValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sd",
+      "text" : "Double"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/numberValue",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "numberValue",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/numbervalue"
+},
+"doc://JXKit/documentation/JXKit/JXValue/preventExtensions()": {
+  "abstract" : [
+    {
+      "text" : "The Object.preventExtensions() method prevents new properties from ever being added to an object (i.e. prevents future extensions to the object). It also prevents the object’s prototype from being re-assigned.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "An object is extensible if new properties can be added to it. Object.preventExtensions() marks an object as no longer extensible, so that it will never have properties beyond the ones it had at the time it was marked as non-extensible. Note that the properties of a non-extensible object, in general, may still be deleted. Attempting to add new properties to a non-extensible object will fail, either silently or, in strict mode, throwing a TypeError.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "preventExtensions"
+    },
+    {
+      "kind" : "text",
+      "text" : "() "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/preventExtensions()",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "preventExtensions()",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/preventextensions()"
+},
+"doc://JXKit/documentation/JXKit/JXValue/properties": {
+  "abstract" : [
+    {
+      "text" : "Get the names of an object’s enumerable properties.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "properties"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "]"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/properties",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "properties",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/properties"
+},
+"doc://JXKit/documentation/JXKit/JXValue/propertyDescriptor(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "propertyDescriptor"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/propertyDescriptor(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "propertyDescriptor(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/propertydescriptor(_:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/prototype": {
+  "abstract" : [
+    {
+      "text" : "Object’s prototype.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "prototype"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/prototype",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "prototype",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/prototype"
+},
+"doc://JXKit/documentation/JXKit/JXValue/removeProperty(_:)": {
+  "abstract" : [
+    {
+      "text" : "Deletes a property from an object.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "removeProperty"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/removeProperty(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "removeProperty(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/removeproperty(_:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/seal()": {
+  "abstract" : [
+    {
+      "text" : "The Object.seal() method seals an object. Sealing an object prevents extensions and makes existing properties non-configurable. A sealed object has a fixed set of properties: new properties cannot be added, existing properties cannot be removed, their enumerability and configurability cannot be changed, and its prototype cannot be re-assigned. Values of existing properties can still be changed as long as they are writable. seal() returns the same object that was passed in.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "seal"
+    },
+    {
+      "kind" : "text",
+      "text" : "() "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/seal()",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "seal()",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/seal()"
+},
+"doc://JXKit/documentation/JXKit/JXValue/setElement(_:at:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setElement"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "at"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s6UInt32V",
+      "text" : "UInt32"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setElement(_:at:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "setElement(_:at:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/setelement(_:at:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/setProperty(_:_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setProperty"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "setProperty(_:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/setproperty(_:_:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/stringValue": {
+  "abstract" : [
+    {
+      "text" : "Returns the JavaScript string value.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "stringValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/stringValue",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "stringValue",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/stringvalue"
+},
+"doc://JXKit/documentation/JXKit/JXValue/subscript(_:)-44yy0": {
+  "abstract" : [
+    {
+      "text" : "The value in object at index.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "subscript"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s6UInt32V",
+      "text" : "UInt32"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/subscript(_:)-44yy0",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "subscript(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/subscript(_:)-44yy0"
+},
+"doc://JXKit/documentation/JXKit/JXValue/subscript(_:)-8iv6o": {
+  "abstract" : [
+    {
+      "text" : "The value of the property.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "subscript"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/subscript(_:)-8iv6o",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "subscript(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/subscript(_:)-8iv6o"
+},
+"doc://JXKit/documentation/JXKit/JXValue/toDecodable(ofType:)": {
+  "abstract" : [
+    {
+      "text" : "Uses a ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXValueDecoder",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " to decode the ",
+      "type" : "text"
+    },
+    {
+      "code" : "Decodable",
+      "type" : "codeVoice"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "toDecodable"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "ofType"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : ".Type) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/toDecodable(ofType:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "toDecodable(ofType:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/todecodable(oftype:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/toJSON(indent:)": {
+  "abstract" : [
+    {
+      "text" : "Returns the JavaScript string with the given indentation. This should be the same as the output of ",
+      "type" : "text"
+    },
+    {
+      "code" : "JSON.stringify",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "toJSON"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "indent"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s6UInt32V",
+      "text" : "UInt32"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/toJSON(indent:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "toJSON(indent:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/tojson(indent:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/type": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "type"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit6JXTypeO",
+      "text" : "JXType"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/type",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "type",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/type"
+},
+"doc://JXKit/s23CustomStringConvertibleP": {
+  "identifier" : "doc:\/\/JXKit\/s23CustomStringConvertibleP",
+  "title" : "Swift.CustomStringConvertible",
+  "type" : "unresolvable"
+}
+}
+}

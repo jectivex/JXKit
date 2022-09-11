@@ -1,0 +1,6 @@
+module CJSCore {
+    header "include/jscore_c.h"
+    link "javascriptcoregtk-4.0"
+    export *
+}
+
