@@ -33,6 +33,8 @@ let package = Package(
     products: [
         .library(name: "JXKit", targets: ["JXKit"]),
     ],
+    dependencies: [
+    ],
     targets: targets + [
         .testTarget(name: "JXKitTests", 
             dependencies: ["JXKit"])
