@@ -352,7 +352,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/arrayBufferPrototype": {
   "abstract" : [
     {
-      "text" : "Returns the global “ArrayBuffer”",
+      "text" : "Returns the global “ArrayBuffer” prototype",
       "type" : "text"
     }
   ],
@@ -389,7 +389,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/arrayPrototype": {
   "abstract" : [
     {
-      "text" : "Returns the global “Array”",
+      "text" : "Returns the global “Array” prototype",
       "type" : "text"
     }
   ],
@@ -425,7 +425,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXContext/boolean(_:)": {
   "abstract" : [
-
+    {
+      "text" : "Creates a new boolean with the given value in the context.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -700,7 +703,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/datePrototype": {
   "abstract" : [
     {
-      "text" : "Returns the global “Date”",
+      "text" : "Returns the global “Date” prototype",
       "type" : "text"
     }
   ],
@@ -856,7 +859,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/errorPrototype": {
   "abstract" : [
     {
-      "text" : "Returns the global “Error”",
+      "text" : "Returns the global “Error” prototype",
       "type" : "text"
     }
   ],
@@ -893,7 +896,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/eval(_:method:this:priority:)": {
   "abstract" : [
     {
-      "text" : "Asynchronously evaulates the given script",
+      "text" : "Asynchronously evaulates the given script.",
       "type" : "text"
     }
   ],
@@ -1409,7 +1412,18 @@
 },
 "doc://JXKit/documentation/JXKit/JXContext/null()": {
   "abstract" : [
-
+    {
+      "text" : "Creates a new ",
+      "type" : "text"
+    },
+    {
+      "code" : "null",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " instance in the context.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -1443,7 +1457,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXContext/number(_:)-3hm3m": {
   "abstract" : [
-
+    {
+      "text" : "Creates a new number with the given value in the context.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -1493,7 +1510,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXContext/number(_:)-7xicn": {
   "abstract" : [
-
+    {
+      "text" : "Creates a new number with the given value in the context.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -1543,7 +1563,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXContext/object()": {
   "abstract" : [
-
+    {
+      "text" : "Creates a new object in this context.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -1578,7 +1601,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/objectPrototype": {
   "abstract" : [
     {
-      "text" : "Returns the global “Object”",
+      "text" : "Returns the global “Object” prototype",
       "type" : "text"
     }
   ],
@@ -1615,7 +1638,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/promisePrototype": {
   "abstract" : [
     {
-      "text" : "Returns the global “Promise”",
+      "text" : "Returns the global “Promise” prototype",
       "type" : "text"
     }
   ],
@@ -1651,7 +1674,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXContext/string(_:)": {
   "abstract" : [
-
+    {
+      "text" : "Creates a new string with the given value in the context.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -1701,7 +1727,18 @@
 },
 "doc://JXKit/documentation/JXKit/JXContext/undefined()": {
   "abstract" : [
-
+    {
+      "text" : "Creates a new ",
+      "type" : "text"
+    },
+    {
+      "code" : "undefined",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " instance in the context.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

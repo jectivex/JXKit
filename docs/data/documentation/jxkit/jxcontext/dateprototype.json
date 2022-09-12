@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Returns the global “Date”",
+      "text" : "Returns the global “Date” prototype",
       "type" : "text"
     }
   ],
@@ -217,7 +217,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/datePrototype": {
   "abstract" : [
     {
-      "text" : "Returns the global “Date”",
+      "text" : "Returns the global “Date” prototype",
       "type" : "text"
     }
   ],

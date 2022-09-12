@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Asynchronously evaulates the given script",
+      "text" : "Asynchronously evaulates the given script.",
       "type" : "text"
     }
   ],
@@ -291,6 +291,42 @@
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "discussion",
+          "level" : 2,
+          "text" : "Discussion",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "The script is expected to return a ",
+              "type" : "text"
+            },
+            {
+              "code" : "Promise",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " either directly or through the implicit promise",
+              "type" : "text"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "text" : "that is created in async calls.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -374,7 +410,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/eval(_:method:this:priority:)": {
   "abstract" : [
     {
-      "text" : "Asynchronously evaulates the given script",
+      "text" : "Asynchronously evaulates the given script.",
       "type" : "text"
     }
   ],

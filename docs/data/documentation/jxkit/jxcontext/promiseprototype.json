@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Returns the global “Promise”",
+      "text" : "Returns the global “Promise” prototype",
       "type" : "text"
     }
   ],
@@ -217,7 +217,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/promisePrototype": {
   "abstract" : [
     {
-      "text" : "Returns the global “Promise”",
+      "text" : "Returns the global “Promise” prototype",
       "type" : "text"
     }
   ],

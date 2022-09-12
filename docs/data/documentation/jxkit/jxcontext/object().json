@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "No overview available.",
+      "text" : "Creates a new object in this context.",
       "type" : "text"
     }
   ],
@@ -196,7 +196,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXContext/object()": {
   "abstract" : [
-
+    {
+      "text" : "Creates a new object in this context.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

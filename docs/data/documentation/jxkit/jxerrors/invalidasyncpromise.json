@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "No overview available.",
+      "text" : "The promise returned from an async call is not value",
       "type" : "text"
     }
   ],
@@ -165,7 +165,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXErrors/invalidAsyncPromise": {
   "abstract" : [
-
+    {
+      "text" : "The promise returned from an async call is not value",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

@@ -128,7 +128,6 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/callOnNonFunction",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotCreateArrayBuffer",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotCreatePromise",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotLoadScriptURL(_:_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/evaluationErrorString(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/evaluationErrorUnknown",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidAsyncPromise",
@@ -218,7 +217,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXErrors/addToNonArray": {
   "abstract" : [
-
+    {
+      "text" : "Attempt to add to something that is not an array",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -243,7 +245,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXErrors/asyncEvalMustReturnPromise": {
   "abstract" : [
-
+    {
+      "text" : "An async call is expected to return a promise",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -268,7 +273,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXErrors/callOnNonFunction": {
   "abstract" : [
-
+    {
+      "text" : "Attempt to invoke a non-function object",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -293,7 +301,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXErrors/cannotCreateArrayBuffer": {
   "abstract" : [
-
+    {
+      "text" : "Unable to create a new array buffer",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -343,53 +354,6 @@
   "title" : "JXErrors.cannotCreatePromise",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerrors\/cannotcreatepromise"
-},
-"doc://JXKit/documentation/JXKit/JXErrors/cannotLoadScriptURL(_:_:)": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "case"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "cannotLoadScriptURL"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:10Foundation3URLV",
-      "text" : "URL"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "c:objc(cs)NSURLResponse",
-      "text" : "URLResponse"
-    },
-    {
-      "kind" : "text",
-      "text" : ")"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotLoadScriptURL(_:_:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "JXErrors.cannotLoadScriptURL(_:_:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors\/cannotloadscripturl(_:_:)"
 },
 "doc://JXKit/documentation/JXKit/JXErrors/evaluationErrorString(_:)": {
   "abstract" : [
@@ -462,7 +426,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXErrors/invalidAsyncPromise": {
   "abstract" : [
-
+    {
+      "text" : "The promise returned from an async call is not value",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -556,7 +523,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXErrors/propertyAccessNonObject": {
   "abstract" : [
-
+    {
+      "text" : "Attempt to access a property on an instance that is not an object",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

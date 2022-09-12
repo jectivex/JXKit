@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Returns the global “Array”",
+      "text" : "Returns the global “Array” prototype",
       "type" : "text"
     }
   ],
@@ -217,7 +217,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/arrayPrototype": {
   "abstract" : [
     {
-      "text" : "Returns the global “Array”",
+      "text" : "Returns the global “Array” prototype",
       "type" : "text"
     }
   ],

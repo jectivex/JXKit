@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "No overview available.",
+      "text" : "Unable to create a new array buffer",
       "type" : "text"
     }
   ],
@@ -165,7 +165,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXErrors/cannotCreateArrayBuffer": {
   "abstract" : [
-
+    {
+      "text" : "Unable to create a new array buffer",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "No overview available.",
+      "text" : "Attempt to access a property on an instance that is not an object",
       "type" : "text"
     }
   ],
@@ -165,7 +165,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXErrors/propertyAccessNonObject": {
   "abstract" : [
-
+    {
+      "text" : "Attempt to access a property on an instance that is not an object",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

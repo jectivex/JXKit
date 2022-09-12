@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Returns the global “Object”",
+      "text" : "Returns the global “Object” prototype",
       "type" : "text"
     }
   ],
@@ -217,7 +217,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/objectPrototype": {
   "abstract" : [
     {
-      "text" : "Returns the global “Object”",
+      "text" : "Returns the global “Object” prototype",
       "type" : "text"
     }
   ],

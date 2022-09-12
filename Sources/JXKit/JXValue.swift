@@ -18,7 +18,7 @@ import FoundationNetworking
 /// This wraps a `JSObjectRef`, and is the equivalent of `JavaScriptCore.JSValue`
 @available(macOS 11, iOS 13, tvOS 13, *)
 public class JXValue {
-    @usableFromInline let env: JXContext
+    public let env: JXContext
     @usableFromInline let value: JXValueRef
 
     public convenience init(env: JXContext, value: JXValue) {
@@ -824,13 +824,13 @@ extension JXValue {
     }
 
     public convenience init(newPromiseResolvedWithResult result: JXValue, in env: JXContext) throws {
-        try self.init(newPromiseIn: env) { jsc, resolve, reject in
+        try self.init(newPromiseIn: env) { jxc, resolve, reject in
             try resolve.call(withArguments: [result])
         }
     }
 
     public convenience init(newPromiseRejectedWithResult reason: JXValue, in env: JXContext) throws {
-        try self.init(newPromiseIn: env) { jsc, resolve, reject in
+        try self.init(newPromiseIn: env) { jxc, resolve, reject in
             try reject.call(withArguments: [reason])
         }
     }
@@ -853,7 +853,7 @@ private func JXFunctionFinalize(_ object: JSObjectRef?) -> Void {
 }
 
 @available(macOS 11, iOS 13, tvOS 13, *)
-private func JXFunctionConstructor(_ jsc: JXContextRef?, _ object: JSObjectRef?, _ argumentCount: Int, _ arguments: UnsafePointer<JSValueRef?>?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> JSObjectRef? {
+private func JXFunctionConstructor(_ jxc: JXContextRef?, _ object: JSObjectRef?, _ argumentCount: Int, _ arguments: UnsafePointer<JSValueRef?>?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> JSObjectRef? {
 
     let info = JSObjectGetPrivate(object).assumingMemoryBound(to: JXFunctionInfo.self)
     let env = info.pointee.context
@@ -874,7 +874,7 @@ private func JXFunctionConstructor(_ jsc: JXContextRef?, _ object: JSObjectRef?,
 }
 
 @available(macOS 11, iOS 13, tvOS 13, *)
-private func JXFunctionCallback(_ jsc: JXContextRef?, _ object: JSObjectRef?, _ this: JSObjectRef?, _ argumentCount: Int, _ arguments: UnsafePointer<JSValueRef?>?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> JSValueRef? {
+private func JXFunctionCallback(_ jxc: JXContextRef?, _ object: JSObjectRef?, _ this: JSObjectRef?, _ argumentCount: Int, _ arguments: UnsafePointer<JSValueRef?>?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> JSValueRef? {
 
     let info = JSObjectGetPrivate(object).assumingMemoryBound(to: JXFunctionInfo.self)
     let env = info.pointee.context
@@ -892,7 +892,7 @@ private func JXFunctionCallback(_ jsc: JXContextRef?, _ object: JSObjectRef?, _ 
 }
 
 @available(macOS 11, iOS 13, tvOS 13, *)
-private func JXFunctionInstanceOf(_ jsc: JXContextRef?, _ constructor: JSObjectRef?, _ possibleInstance: JSValueRef?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> Bool {
+private func JXFunctionInstanceOf(_ jxc: JXContextRef?, _ constructor: JSObjectRef?, _ possibleInstance: JSValueRef?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> Bool {
     let info = JSObjectGetPrivate(constructor).assumingMemoryBound(to: JXFunctionInfo.self)
     let env = info.pointee.context
     let pt1 = JSObjectGetPrototype(env.context, constructor)

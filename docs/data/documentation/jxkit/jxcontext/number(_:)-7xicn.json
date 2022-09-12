@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "No overview available.",
+      "text" : "Creates a new number with the given value in the context.",
       "type" : "text"
     }
   ],
@@ -269,7 +269,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXContext/number(_:)-7xicn": {
   "abstract" : [
-
+    {
+      "text" : "Creates a new number with the given value in the context.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

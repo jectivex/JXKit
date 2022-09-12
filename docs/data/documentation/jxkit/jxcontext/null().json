@@ -1,7 +1,15 @@
 {
   "abstract" : [
     {
-      "text" : "No overview available.",
+      "text" : "Creates a new ",
+      "type" : "text"
+    },
+    {
+      "code" : "null",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " instance in the context.",
       "type" : "text"
     }
   ],
@@ -196,7 +204,18 @@
 },
 "doc://JXKit/documentation/JXKit/JXContext/null()": {
   "abstract" : [
-
+    {
+      "text" : "Creates a new ",
+      "type" : "text"
+    },
+    {
+      "code" : "null",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " instance in the context.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "No overview available.",
+      "text" : "An async call is expected to return a promise",
       "type" : "text"
     }
   ],
@@ -165,7 +165,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXErrors/asyncEvalMustReturnPromise": {
   "abstract" : [
-
+    {
+      "text" : "An async call is expected to return a promise",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
