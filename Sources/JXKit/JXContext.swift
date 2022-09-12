@@ -63,12 +63,17 @@ public enum JXErrors : Error {
     case minimumSystemVersion
     /// Unable to create a new promise
     case cannotCreatePromise
+    /// Unable to create a new array buffer
     case cannotCreateArrayBuffer
-    case cannotLoadScriptURL(URL, URLResponse)
+    /// An async call is expected to return a promise
     case asyncEvalMustReturnPromise
+    /// The promise returned from an async call is not value
     case invalidAsyncPromise
+    /// Attempt to invoke a non-function object
     case callOnNonFunction
+    /// Attempt to access a property on an instance that is not an object
     case propertyAccessNonObject
+    /// Attempt to add to something that is not an array
     case addToNonArray
 }
 
@@ -87,7 +92,10 @@ extension JXContext {
         return result.map { JXValue(env: self, valueRef: $0) } ?? JXValue(undefinedIn: self)
     }
 
-    /// Asynchronously evaulates the given script
+    /// Asynchronously evaulates the given script.
+    ///
+    /// The script is expected to return a `Promise` either directly or through the implicit promise
+    /// that is created in async calls.
     @discardableResult public func eval(_ script: String, method: Bool = true, this: JXValue? = nil, priority: TaskPriority) async throws -> JXValue {
         let promise = try eval(script, this: this)
         guard try promise.isPromise else {
@@ -105,14 +113,14 @@ extension JXContext {
                     return c.resume(throwing: JXErrors.cannotCreatePromise)
                 }
 
-                let fulfilled = JXValue(newFunctionIn: self) { jsc, this, args in
-                    c.resume(returning: args.first ?? JXValue(undefinedIn: jsc))
-                    return JXValue(undefinedIn: jsc)
+                let fulfilled = JXValue(newFunctionIn: self) { jxc, this, args in
+                    c.resume(returning: args.first ?? JXValue(undefinedIn: jxc))
+                    return JXValue(undefinedIn: jxc)
                 }
 
-                let rejected = JXValue(newFunctionIn: self) { jsc, this, arg in
-                    c.resume(throwing: arg.first.map({ JXError(env: jsc, valueRef: $0.value) }) ?? JXErrors.cannotCreatePromise)
-                    return JXValue(undefinedIn: jsc)
+                let rejected = JXValue(newFunctionIn: self) { jxc, this, arg in
+                    c.resume(throwing: arg.first.map({ JXError(env: jxc, valueRef: $0.value) }) ?? JXErrors.cannotCreatePromise)
+                    return JXValue(undefinedIn: jxc)
                 }
 
                 let presult = try then.call(withArguments: [fulfilled, rejected], this: promise)
@@ -189,72 +197,79 @@ extension JXContext {
         }
     }
 
-    /// Returns the global "Object"
+    /// Returns the global "Object" prototype
     public var objectPrototype: JXValue {
         get throws {
             try global["Object"]
         }
     }
 
-    /// Returns the global "Date"
+    /// Returns the global "Date" prototype
     public var datePrototype: JXValue {
         get throws {
             try global["Date"]
         }
     }
 
-    /// Returns the global "Array"
+    /// Returns the global "Array" prototype
     public var arrayPrototype: JXValue {
         get throws {
             try global["Array"]
         }
     }
 
-    /// Returns the global "ArrayBuffer"
+    /// Returns the global "ArrayBuffer" prototype
     public var arrayBufferPrototype: JXValue {
         get throws {
             try global["ArrayBuffer"]
         }
     }
 
-    /// Returns the global "Error"
+    /// Returns the global "Error" prototype
     public var errorPrototype: JXValue {
         get throws {
             try global["Error"]
         }
     }
 
-    /// Returns the global "Promise"
+    /// Returns the global "Promise" prototype
     public var promisePrototype: JXValue {
         get throws {
             try global["Promise"]
         }
     }
 
+    /// Creates a new `null` instance in the context.
     @inlinable public func null() -> JXValue {
         JXValue(nullIn: self)
     }
 
+    /// Creates a new `undefined` instance in the context.
     @inlinable public func undefined() -> JXValue {
         JXValue(undefinedIn: self)
     }
 
+    /// Creates a new boolean with the given value in the context.
     @inlinable public func boolean(_ value: Bool) -> JXValue {
         JXValue(bool: value, in: self)
     }
 
+    /// Creates a new number with the given value in the context.
     @inlinable public func number<F: BinaryFloatingPoint>(_ value: F) -> JXValue {
         JXValue(double: Double(value), in: self)
     }
 
+    /// Creates a new number with the given value in the context.
     @inlinable public func number<I: BinaryInteger>(_ value: I) -> JXValue {
         JXValue(double: Double(value), in: self)
     }
 
+    /// Creates a new string with the given value in the context.
     @inlinable public func string<S: StringProtocol>(_ value: S) -> JXValue {
         JXValue(string: String(value), in: self)
     }
 
+    /// Creates a new object in this context.
     @inlinable public func object() -> JXValue {
         JXValue(newObjectIn: self)
     }
