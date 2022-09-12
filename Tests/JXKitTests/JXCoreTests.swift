@@ -307,6 +307,5 @@ class JXCoreTests: XCTestCase {
         XCTAssertEqual(try lint("use strict"), "SyntaxError: Unexpected identifier \'strict\'") // need to quote
         XCTAssertEqual(try lint("'use strict'\nmistypeVarible = 17"), "ReferenceError: Can\'t find variable: mistypeVarible")
         XCTAssertEqual(try lint("mistypeVarible = 17"), nil)
-
     }
 }
