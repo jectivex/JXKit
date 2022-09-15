@@ -75,6 +75,10 @@ public enum JXErrors : Error {
     case propertyAccessNonObject
     /// Attempt to add to something that is not an array
     case addToNonArray
+    /// This can occur when the bound instance is not retained anywhere.
+    case jumpContextInvalid
+    /// Expected an array for conversion
+    case valueNotArray
 }
 
 @available(macOS 11, iOS 13, tvOS 13, *)

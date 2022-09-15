@@ -144,6 +144,7 @@
     },
     {
       "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible",
         "doc:\/\/JXKit\/s23CustomStringConvertibleP"
       ],
       "kind" : "relationships",
@@ -221,6 +222,7 @@
       "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/call(withArguments:this:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/construct(withArguments:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(in:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/copyBytes()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/defineProperty(_:_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/deleteProperty(_:)",
@@ -235,6 +237,7 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/propertyDescriptor(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/removeProperty(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/seal()",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/set(_:object:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setElement(_:at:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/toDecodable(ofType:)",
@@ -258,7 +261,8 @@
     {
       "generated" : true,
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/CustomStringConvertible-Implementations"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/CustomStringConvertible-Implementations",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/JXConvertible-Implementations"
       ],
       "title" : "Default Implementations"
     }
@@ -344,6 +348,40 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
+"doc://JXKit/documentation/JXKit/JXConvertible": {
+  "abstract" : [
+    {
+      "text" : "A type that can move back and forth between Swift and JavaScipt, either through direct reference or by serialization.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "protocol"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXConvertible"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXConvertible"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXConvertible",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxconvertible"
+},
 "doc://JXKit/documentation/JXKit/JXError": {
   "abstract" : [
     {
@@ -422,6 +460,17 @@
   "title" : "CustomStringConvertible Implementations",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/customstringconvertible-implementations"
+},
+"doc://JXKit/documentation/JXKit/JXValue/JXConvertible-Implementations": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/JXConvertible-Implementations",
+  "kind" : "article",
+  "role" : "collectionGroup",
+  "title" : "JXConvertible Implementations",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/jxconvertible-implementations"
 },
 "doc://JXKit/documentation/JXKit/JXValue/array": {
   "abstract" : [
@@ -694,6 +743,75 @@
   "title" : "construct(withArguments:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/construct(witharguments:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/convey(in:)": {
+  "abstract" : [
+    {
+      "text" : "Attempts to convey the given result from the JS environment.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "convey"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "in"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(in:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "convey(in:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/convey(in:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue/copyBytes()": {
   "abstract" : [
@@ -3058,6 +3176,83 @@
   "title" : "seal()",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/seal()"
+},
+"doc://JXKit/documentation/JXKit/JXValue/set(_:object:)": {
+  "abstract" : [
+    {
+      "text" : "Sets a ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXConvertible",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " in this value object.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "set"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "object"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/set(_:object:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "set(_:object:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/set(_:object:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue/setElement(_:at:)": {
   "abstract" : [

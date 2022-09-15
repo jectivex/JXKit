@@ -131,9 +131,11 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/evaluationErrorString(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/evaluationErrorUnknown",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidAsyncPromise",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/jumpContextInvalid",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/minimumSystemVersion",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/missingResource(_:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/propertyAccessNonObject"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/propertyAccessNonObject",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/valueNotArray"
       ],
       "title" : "Enumeration Cases"
     },
@@ -452,6 +454,34 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerrors\/invalidasyncpromise"
 },
+"doc://JXKit/documentation/JXKit/JXErrors/jumpContextInvalid": {
+  "abstract" : [
+    {
+      "text" : "This can occur when the bound instance is not retained anywhere.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "jumpContextInvalid"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/jumpContextInvalid",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.jumpContextInvalid",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/jumpcontextinvalid"
+},
 "doc://JXKit/documentation/JXKit/JXErrors/minimumSystemVersion": {
   "abstract" : [
     {
@@ -548,6 +578,34 @@
   "title" : "JXErrors.propertyAccessNonObject",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerrors\/propertyaccessnonobject"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/valueNotArray": {
+  "abstract" : [
+    {
+      "text" : "Expected an array for conversion",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "valueNotArray"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/valueNotArray",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.valueNotArray",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/valuenotarray"
 },
 "doc://JXKit/s5ErrorP": {
   "identifier" : "doc:\/\/JXKit\/s5ErrorP",
