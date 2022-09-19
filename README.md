@@ -1,9 +1,9 @@
 # JXKit
 
-[![Build Status](https://github.com/jectivex/JXKit/workflows/JXKit%20CI/badge.svg?branch=main)](https://github.com/jectivex/JXKit/actions)
-[![Swift Package Manager compatible](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
-[![Platform](https://img.shields.io/badge/Platforms-macOS%20|%20iOS%20|%20tvOS%20|%20Linux-lightgrey.svg)](https://github.com/jectivex/JXKit)
-[![](https://tokei.rs/b1/github/jectivex/JXKit)](https://github.com/jectivex/JXKit)
+[![Build Status][GitHubActionBadge]][ActionsLink]
+[![Swift5 compatible][Swift5Badge]][Swift5Link] 
+![Platform][SwiftPlatforms]
+<!-- [![](https://tokei.rs/b1/github/jectivex/Jack)](https://github.com/jectivex/Jack) -->
 
 A pure swift interface the `JavaScriptCore` C API with support for `Encodable` & `Decodable`.
 
@@ -112,7 +112,29 @@ Swift code.
   $ swift build
   ```
 
-[Swift Package Manager]: https://swift.org/package-manager
-[API Documentation]: https://www.jective.org/JXKit/documentation/jxkit/
 
+## Related
+
+Projects that are based on JXKit:
+
+ - [Jack][] Cross-platform scripting framework for `Combine.ObservableObject` and SwiftUI
+
+
+[Swift Package Manager]: https://swift.org/package-manager
+[API Documentation]: https://www.jective.org/Jack/documentation/jack/
+
+[ProjectLink]: https://github.com/jectivex/Jack
+[ActionsLink]: https://github.com/jectivex/Jack/actions
+[API Documentation]: https://www.jective.org/Jack/documentation/jack/
+
+[Swift]: https://swift.org/
+[OpenCombine]: https://github.com/OpenCombine/OpenCombine
+[Jack]: https://github.com/jectivex/Jack
+[JXKit]: https://github.com/jectivex/JXKit
+
+[GitHubActionBadge]: https://img.shields.io/github/workflow/status/jectivex/Jack/Jack%20CI
+
+[Swift5Badge]: https://img.shields.io/badge/swift-5-orange.svg?style=flat
+[Swift5Link]: https://developer.apple.com/swift/
+[SwiftPlatforms]: https://img.shields.io/badge/Platforms-macOS%20|%20iOS%20|%20tvOS%20|%20Linux-teal.svg
 
