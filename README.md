@@ -112,6 +112,11 @@ Swift code.
   $ swift build
   ```
 
+## License
+
+Like the JavaScriptCore framework upon which it depends,
+JXKt is licensed under the GNU LGPL license.
+See [LICENSE.LGPL](LICENSE.LGPL) for details.
 
 ## Related
 
