@@ -117,7 +117,13 @@ Swift code.
 
 Projects that are based on JXKit:
 
- - [Jack][] Cross-platform scripting framework for `Combine.ObservableObject` and SwiftUI
+ - [Jack][]: Cross-platform framework for scripting `Combine.ObservableObject` and SwiftUI (LGPL)
+
+## Dependencies
+
+ - [JavaScriptCore][]: Cross-platform JavaScript engine (LGPL)[^1]
+
+[^1]: JavaScriptCore is included with macOS and iOS as part of the embedded [WebCore](https://webkit.org/licensing-webkit/) framework (LGPL); on Linux JXKit uses [WebKit GTK JavaScriptCore](https://webkitgtk.org/).
 
 
 [Swift Package Manager]: https://swift.org/package-manager
@@ -131,6 +137,7 @@ Projects that are based on JXKit:
 [OpenCombine]: https://github.com/OpenCombine/OpenCombine
 [Jack]: https://github.com/jectivex/Jack
 [JXKit]: https://github.com/jectivex/JXKit
+[JavaScriptCore]: https://trac.webkit.org/wiki/JavaScriptCore
 
 [GitHubActionBadge]: https://img.shields.io/github/workflow/status/jectivex/Jack/Jack%20CI
 
