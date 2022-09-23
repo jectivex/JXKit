@@ -81,29 +81,6 @@
         "name" : "JXKit"
       }
     ],
-    "platforms" : [
-      {
-        "beta" : false,
-        "deprecated" : false,
-        "introducedAt" : "13.0",
-        "name" : "iOS",
-        "unavailable" : false
-      },
-      {
-        "beta" : false,
-        "deprecated" : false,
-        "introducedAt" : "11.0",
-        "name" : "macOS",
-        "unavailable" : false
-      },
-      {
-        "beta" : false,
-        "deprecated" : false,
-        "introducedAt" : "13.0",
-        "name" : "tvOS",
-        "unavailable" : false
-      }
-    ],
     "required" : true,
     "role" : "symbol",
     "roleHeading" : "Instance Method",

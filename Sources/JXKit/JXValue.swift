@@ -16,7 +16,6 @@ import FoundationNetworking
 /// A JavaScript object.
 ///
 /// This wraps a `JSObjectRef`, and is the equivalent of `JavaScriptCore.JSValue`
-@available(macOS 11, iOS 13, tvOS 13, *)
 public class JXValue {
     public let env: JXContext
     @usableFromInline let value: JXValueRef
@@ -37,11 +36,9 @@ public class JXValue {
 }
 
 /// An error thrown from JavaScript evaluation.
-@available(macOS 11, iOS 13, tvOS 13, *)
 public class JXError : JXValue, Error, @unchecked Sendable {
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
     @usableFromInline static let rfc3339: DateFormatter = {
         let formatter = DateFormatter()
@@ -53,7 +50,6 @@ extension JXValue {
 
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
 
     /// Creates a JavaScript value of the `undefined` type.
@@ -190,7 +186,6 @@ extension JXValue {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue: CustomStringConvertible {
 
     @inlinable public var description: String {
@@ -220,7 +215,6 @@ extension JXValue: CustomStringConvertible {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
     /// Object’s prototype.
     @inlinable public var prototype: JXValue {
@@ -234,7 +228,6 @@ extension JXValue {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
 
     /// Tests whether a JavaScript value’s type is the undefined type.
@@ -306,7 +299,6 @@ extension JXValue {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
 
     /// Whether or not the given object is frozen.
@@ -365,7 +357,6 @@ extension JXValue {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
 
     /// Returns the JavaScript boolean value.
@@ -436,7 +427,6 @@ extension JXValue {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
 
     /// Calls an object as a function.
@@ -486,7 +476,6 @@ extension JXValue {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
 
     /// Tests whether two JavaScript values are strict equal, as compared by the JS `===` operator.
@@ -524,7 +513,6 @@ extension JXValue {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
 
     /// Get the names of an object’s enumerable properties.
@@ -620,7 +608,6 @@ extension JXValue {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
     /// The length of the object.
     @inlinable public var count: Int {
@@ -647,7 +634,6 @@ extension JXValue {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
     /// Returns the JavaScript string with the given indentation. This should be the same as the output of `JSON.stringify`.
     @inlinable public func toJSON(indent: UInt32 = 0) throws -> String {
@@ -659,7 +645,6 @@ extension JXValue {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
 
     /// Creates a JavaScript `ArrayBuffer` object.
@@ -720,7 +705,6 @@ extension JXValue {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
     /// Tests whether a JavaScript value’s type is the `ArrayBuffer` type.
     public var isArrayBuffer: Bool {
@@ -760,11 +744,9 @@ extension String {
 
 
 /// A function definition, used when defining callbacks.
-@available(macOS 11, iOS 13, tvOS 13, *)
 public typealias JXFunction = (JXContext, JXValue?, [JXValue]) throws -> JXValue
 
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
     /// Creates a JavaScript value of the function type.
     ///
@@ -836,23 +818,19 @@ extension JXValue {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 private struct JXFunctionInfo {
     unowned let context: JXContext
     let callback: JXFunction
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 public typealias JXPromise = (promise: JXValue, resolveFunction: JXValue, rejectFunction: JXValue)
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 private func JXFunctionFinalize(_ object: JSObjectRef?) -> Void {
     let info = JSObjectGetPrivate(object).assumingMemoryBound(to: JXFunctionInfo.self)
     info.deinitialize(count: 1)
     info.deallocate()
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 private func JXFunctionConstructor(_ jxc: JXContextRef?, _ object: JSObjectRef?, _ argumentCount: Int, _ arguments: UnsafePointer<JSValueRef?>?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> JSObjectRef? {
 
     let info = JSObjectGetPrivate(object).assumingMemoryBound(to: JXFunctionInfo.self)
@@ -873,7 +851,6 @@ private func JXFunctionConstructor(_ jxc: JXContextRef?, _ object: JSObjectRef?,
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 private func JXFunctionCallback(_ jxc: JXContextRef?, _ object: JSObjectRef?, _ this: JSObjectRef?, _ argumentCount: Int, _ arguments: UnsafePointer<JSValueRef?>?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> JSValueRef? {
 
     let info = JSObjectGetPrivate(object).assumingMemoryBound(to: JXFunctionInfo.self)
@@ -891,7 +868,6 @@ private func JXFunctionCallback(_ jxc: JXContextRef?, _ object: JSObjectRef?, _ 
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 private func JXFunctionInstanceOf(_ jxc: JXContextRef?, _ constructor: JSObjectRef?, _ possibleInstance: JSValueRef?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> Bool {
     let info = JSObjectGetPrivate(constructor).assumingMemoryBound(to: JXFunctionInfo.self)
     let env = info.pointee.context
@@ -901,7 +877,6 @@ private func JXFunctionInstanceOf(_ jxc: JXContextRef?, _ constructor: JSObjectR
 }
 
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
 
     /// Defines a property on the JavaScript object value or modifies a property’s definition.
@@ -957,7 +932,6 @@ extension JXValue {
 // MARK: Properties
 
 /// A descriptor for property’s definition
-@available(macOS 11, iOS 13, tvOS 13, *)
 public struct JXProperty {
     public let value: JXValue?
     public let writable: Bool?
@@ -1055,7 +1029,6 @@ public enum JXType : Hashable {
     case object
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
     @inlinable public var type: JXType? {
         if isUndefined { return nil }

@@ -4,7 +4,6 @@
 
 import Foundation
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
     /// Returns true if the value is either null or undefined
     @inlinable var isNullOrUndefined: Bool {
@@ -12,7 +11,6 @@ extension JXValue {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 public extension JXContext {
     /// Encodes the given object into this context
     func encode<T: Encodable>(_ value: T) throws -> JXValue {
@@ -20,7 +18,6 @@ public extension JXContext {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
     /// Uses a `JXValueDecoder` to decode the `Decodable`
     @inlinable public func toDecodable<T: Decodable>(ofType: T.Type) throws -> T {
@@ -31,7 +28,6 @@ extension JXValue {
 
 // MARK: Encoding
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
     /// Adds the given object as the final element of this array
     func add(_ object: JXValue) throws {
@@ -52,7 +48,6 @@ extension JXValue {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 open class JXValueEncoder {
 
     // MARK: - Options
@@ -113,7 +108,6 @@ open class JXValueEncoder {
 
 // MARK: - JXEncoder
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 fileprivate class JXEncoder : Encoder {
     fileprivate let context: JXContext
 
@@ -200,7 +194,6 @@ fileprivate class JXEncoder : Encoder {
 }
 
 // MARK: - Encoding Storage and Containers
-@available(macOS 11, iOS 13, tvOS 13, *)
 fileprivate struct _ScriptEncodingStorage {
     // MARK: Properties
     /// The container stack.
@@ -240,7 +233,6 @@ fileprivate struct _ScriptEncodingStorage {
 
 // MARK: - Encoding Containers
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 fileprivate struct _ScriptUnkeyedEncodingContainer : UnkeyedEncodingContainer {
     // MARK: Properties
     /// A reference to the encoder we're writing to.
@@ -317,7 +309,6 @@ fileprivate struct _ScriptUnkeyedEncodingContainer : UnkeyedEncodingContainer {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXEncoder : SingleValueEncodingContainer {
     // MARK: - SingleValueEncodingContainer Methods
     private func assertCanEncodeNewValue() {
@@ -406,7 +397,6 @@ extension JXEncoder : SingleValueEncodingContainer {
 }
 
 // MARK: - Concrete Value Representations
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXEncoder {
 
     /// Returns the given value boxed in a container appropriate for pushing onto the container stack.
@@ -490,7 +480,6 @@ extension JXEncoder {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 fileprivate struct _JSKeyedEncodingContainer<K : CodingKey> : KeyedEncodingContainerProtocol {
     typealias Key = K
 
@@ -616,7 +605,6 @@ fileprivate struct _JSKeyedEncodingContainer<K : CodingKey> : KeyedEncodingConta
 // MARK: - __JSReferencingEncoder
 /// __JSReferencingEncoder is a special subclass of JXEncoder which has its own storage, but references the contents of a different encoder.
 /// It's used in superEncoder(), which returns a new encoder for encoding a superclass -- the lifetime of the encoder should not escape the scope it's created in, but it doesn't necessarily know when it's done being used (to write to the original container).
-@available(macOS 11, iOS 13, tvOS 13, *)
 fileprivate class __JSReferencingEncoder : JXEncoder {
     // MARK: Reference types.
     /// The type of container we're referencing.
@@ -685,7 +673,6 @@ fileprivate class __JSReferencingEncoder : JXEncoder {
 // MARK: Decoder
 
 /// `JXValueDecoder` facilitates the decoding of `JXValue` values into `Decodable` types.
-@available(macOS 11, iOS 13, tvOS 13, *)
 open class JXValueDecoder {
     @usableFromInline let context: JXContext
     
@@ -753,7 +740,6 @@ open class JXValueDecoder {
 
 // MARK: - __JSDecoder
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 fileprivate class __JSDecoder : Decoder {
     let context: JXContext
 
@@ -820,7 +806,6 @@ fileprivate class __JSDecoder : Decoder {
 }
 
 // MARK: - Decoding Storage
-@available(macOS 11, iOS 13, tvOS 13, *)
 fileprivate struct _ScriptDecodingStorage {
     // MARK: Properties
     /// The container stack.
@@ -852,7 +837,6 @@ fileprivate struct _ScriptDecodingStorage {
 }
 
 // MARK: Decoding Containers
-@available(macOS 11, iOS 13, tvOS 13, *)
 fileprivate struct _JSKeyedDecodingContainer<K : CodingKey> : KeyedDecodingContainerProtocol {
     typealias Key = K
 
@@ -1165,7 +1149,6 @@ fileprivate struct _JSKeyedDecodingContainer<K : CodingKey> : KeyedDecodingConta
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 fileprivate struct _ScriptUnkeyedDecodingContainer : UnkeyedDecodingContainer {
     // MARK: Properties
     /// A reference to the decoder we're reading from.
@@ -1516,7 +1499,6 @@ fileprivate struct _ScriptUnkeyedDecodingContainer : UnkeyedDecodingContainer {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension __JSDecoder : SingleValueDecodingContainer {
     // MARK: SingleValueDecodingContainer Methods
     private func expectNonNull<T>(_ type: T.Type) throws {
@@ -1606,7 +1588,6 @@ extension __JSDecoder : SingleValueDecodingContainer {
 }
 
 // MARK: - Concrete Value Representations
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension __JSDecoder {
     /// Returns the given value unboxed from a container.
     fileprivate func unbox(_ value: JXValue, as type: Bool.Type) throws -> Bool? {
@@ -1665,7 +1646,6 @@ extension __JSDecoder {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension DecodingError {
     /// Returns a `.typeMismatch` error describing the expected type.
     ///
@@ -1681,7 +1661,6 @@ extension DecodingError {
 
 // MARK: Shared
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 fileprivate struct _JSKey : CodingKey {
     public var stringValue: String
     public var intValue: Int?

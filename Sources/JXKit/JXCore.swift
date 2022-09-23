@@ -19,7 +19,6 @@ import CJSCore
 /// `JXValue` references may be used interchangably with separate `JXContext`  instances that created from the same `JXContextGroup`, but sharing between  different `JXContextGroup`s will result in undefined behavior.
 ///
 /// - Note: This wraps a `JSContextGroupRef`, and is the equivalent of `JavaScriptCore.JSVirtualMachine`
-@available(macOS 11, iOS 13, tvOS 13, *)
 public final class JXVM {
     @usableFromInline let group: JSContextGroupRef
 
@@ -37,7 +36,6 @@ public final class JXVM {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXVM {
     /// Whether the `JavaScriptCore` implementation on the current platform phohibits writable and executable memory (`mmap(MAP_JIT)`), thereby disabling the fast-path of the JavaScriptCore framework.
     ///
