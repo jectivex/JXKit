@@ -3,7 +3,6 @@ import Foundation
 /// A type that can move back and forth between Swift and JavaScipt, either through direct reference or by serialization.
 ///
 /// In order to export Swift properties to the JS context, the types must conform to ``JXConvertible``.`
-@available(macOS 11, iOS 13, tvOS 13, *)
 public protocol JXConvertible {
     /// Converts this value into a JXContext
     static func makeJX(from value: JXValue, in context: JXContext) throws -> Self
@@ -13,7 +12,6 @@ public protocol JXConvertible {
 }
 
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
     /// Attempts to convey the given result from the JS environment.
     /// - Parameter context: the context to use
@@ -24,7 +22,6 @@ extension JXValue {
 }
 
 /// Default implementation of ``JXConvertible`` will be to encode and decode ``Codable`` instances between Swift & JS
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXConvertible where Self : Codable {
     public static func makeJX(from value: JXValue, in context: JXContext) throws -> Self {
         try value.toDecodable(ofType: Self.self)
@@ -35,7 +32,6 @@ extension JXConvertible where Self : Codable {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue : JXConvertible {
     public static func makeJX(from value: JXValue, in context: JXContext) throws -> Self {
         guard let value = value as? Self else {
@@ -50,7 +46,6 @@ extension JXValue : JXConvertible {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension Optional : JXConvertible where Wrapped : JXConvertible {
     public static func makeJX(from value: JXValue, in context: JXContext) throws -> Self {
         if value.isNull {
@@ -65,7 +60,6 @@ extension Optional : JXConvertible where Wrapped : JXConvertible {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension Array : JXConvertible where Element : JXConvertible {
     public static func makeJX(from value: JXValue, in context: JXContext) throws -> Self {
         guard try value.isArray else {
@@ -86,7 +80,6 @@ extension Array : JXConvertible where Element : JXConvertible {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXValue {
     /// Sets a `JXConvertible` in this value object.
     /// - Parameters:

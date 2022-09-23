@@ -16,7 +16,6 @@ import FoundationNetworking
 /// A JavaScript execution context. This is a cross-platform analogue to the Objective-C `JavaScriptCore.JSContext`.
 ///
 /// This wraps a `JSGlobalContextRef`, and is the equivalent of `JavaScriptCore.JSContext`
-@available(macOS 11, iOS 13, tvOS 13, *)
 public final class JXContext {
     public let vm: JXVM
     public let context: JSGlobalContextRef
@@ -40,7 +39,6 @@ public final class JXContext {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 public final class JXValueError {
     public let value: JXValue
     public let msg: String?
@@ -51,7 +49,6 @@ public final class JXValueError {
     }
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 public enum JXErrors : Error {
     /// A required resource was missing
     case missingResource(String)
@@ -81,7 +78,6 @@ public enum JXErrors : Error {
     case valueNotArray
 }
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 extension JXContext {
 
     /// Evaulates the JavaScript.

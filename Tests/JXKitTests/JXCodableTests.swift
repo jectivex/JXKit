@@ -1,7 +1,6 @@
 import JXKit
 import XCTest
 
-@available(macOS 11, iOS 13, tvOS 13, *)
 final class JXCodableTests: XCTestCase {
 
     func testRoundTripCodables() throws {
@@ -207,7 +206,6 @@ final class JXCodableTests: XCTestCase {
 }
 
 /// An example of wrapping a context to provide structured access to JS APIs with cached function values
-@available(macOS 11, iOS 13, tvOS 13, *)
 final class JXMathContext {
     let jxc: JXContext
     private lazy var _math = Result { try jxc.global["Math"] }
