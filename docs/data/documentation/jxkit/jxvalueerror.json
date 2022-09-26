@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "A value that wraps an error.",
+      "text" : "No overview available.",
       "type" : "text"
     }
   ],
@@ -139,10 +139,7 @@
 },
 "doc://JXKit/documentation/JXKit/JXValueError": {
   "abstract" : [
-    {
-      "text" : "A value that wraps an error.",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
     {

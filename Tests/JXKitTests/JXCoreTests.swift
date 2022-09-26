@@ -279,7 +279,7 @@ class JXCoreTests: XCTestCase {
     }
 
     func testCheck() throws {
-        func lint(_ script: String, strict: Bool = true) throws -> String? {
+        func lint(_ script: String, strict: Bool = false) throws -> String? {
             do {
                 let jxc = JXContext(strict: strict)
                 try jxc.eval(script)
@@ -291,9 +291,6 @@ class JXCoreTests: XCTestCase {
                 return nil
             }
         }
-
-        XCTAssertEqual(try lint("mistypeVarible = 17", strict: false), nil)
-        XCTAssertEqual(try lint("mistypeVarible = 17", strict: true), "ReferenceError: Can\'t find variable: mistypeVarible")
 
         XCTAssertEqual(try lint("1"), nil)
         XCTAssertEqual(try lint("1.1"), nil)

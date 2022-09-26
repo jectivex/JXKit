@@ -22,6 +22,8 @@ public final class JXContext {
     public var exceptionHandler: ((JXContext?, JXValue?) -> Void)?
     public let strict: Bool
 
+    private var strictEvaluated: Bool = false
+
     /// Creates `JXContext` with the given `JXVM`.  `JXValue` references may be used interchangably with multiple instances of `JXContext` with the same `JXVM`, but sharing between  separate `JXVM`s will result in undefined behavior.
     /// - Parameters:
     ///   - vm: the shared virtual machine to use; defaults  to creating a new VM per context
@@ -48,7 +50,6 @@ public final class JXContext {
     }
 }
 
-/// A value that wraps an error.
 public final class JXValueError {
     public let value: JXValue
     public let msg: String?
@@ -92,8 +93,18 @@ extension JXContext {
 
     /// Evaulates the JavaScript.
     @discardableResult public func eval(_ script: String, this: JXValue? = nil) throws -> JXValue {
-        let script = ((strict ? "\"use strict\";\n" : "") + script).withCString(JSStringCreateWithUTF8CString)
-        
+        if strict == true && strictEvaluated == false {
+            let useStrict = "\"use strict\";\n" // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
+            let script = useStrict.withCString(JSStringCreateWithUTF8CString)
+            defer { JSStringRelease(script) }
+            let _ = try trying {
+                JSEvaluateScript(context, script, this?.value, nil, 0, $0)
+            }
+            strictEvaluated = true
+        }
+
+        let script = script.withCString(JSStringCreateWithUTF8CString)
+
         defer { JSStringRelease(script) }
 
         let result = try trying {
