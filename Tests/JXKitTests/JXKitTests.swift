@@ -27,7 +27,7 @@ final class JXKitTests: XCTestCase {
 
         XCTAssertEqual(true, try jxc.eval("1.0 === 1.0000000000000001").booleanValue)
 
-        XCTAssertEqual(1, try jxc.eval("y = {}; y[[]] = 1; Object.keys(y)").array.count)
+        XCTAssertEqual(1, try jxc.eval("let y = {}; y[[]] = 1; Object.keys(y)").array.count)
 
         XCTAssertEqual(10, try jxc.eval("['10', '10', '10'].map(parseInt)").array.first?.numberValue)
         XCTAssertEqual("NaN", try jxc.eval("['10', '10', '10'].map(parseInt)").array.dropFirst().first?.stringValue)

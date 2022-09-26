@@ -279,10 +279,10 @@ class JXCoreTests: XCTestCase {
     }
 
     func testCheck() throws {
-        func lint(_ script: String) throws -> String? {
+        func lint(_ script: String, strict: Bool = true) throws -> String? {
             do {
                 let jxc = JXContext()
-                try jxc.eval(script)
+                try jxc.eval(script, preamble: strict ? JXContext.useStrict : nil)
                 return nil
             } catch let error as JXError {
                 return try error.stringValue
@@ -291,6 +291,9 @@ class JXCoreTests: XCTestCase {
                 return nil
             }
         }
+
+        XCTAssertEqual(try lint("mistypeVarible = 17", strict: false), nil)
+        XCTAssertEqual(try lint("mistypeVarible = 17", strict: true), "ReferenceError: Can\'t find variable: mistypeVarible")
 
         XCTAssertEqual(try lint("1"), nil)
         XCTAssertEqual(try lint("1.1"), nil)
@@ -305,6 +308,5 @@ class JXCoreTests: XCTestCase {
 
         XCTAssertEqual(try lint("use strict"), "SyntaxError: Unexpected identifier \'strict\'") // need to quote
         XCTAssertEqual(try lint("'use strict'\nmistypeVarible = 17"), "ReferenceError: Can\'t find variable: mistypeVarible")
-        XCTAssertEqual(try lint("mistypeVarible = 17"), nil)
     }
 }
