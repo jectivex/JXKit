@@ -22,10 +22,11 @@ Functions can be accessed (and cached) to be invoked directly with codable argum
 
 ```swift
 let ctx = JXContext()
-let hypot = ctx["Math"]["hypot"]
+let hypot = try ctx.global["Math"]["hypot"]
 assert(hypot.isFunction == true)
-let result = hypot.call(withArguments: try [ctx.encode(3), ctx.encode(4)])
-assert(result.numberValue == 5)
+let result = try hypot.call(withArguments: try [ctx.encode(3), ctx.encode(4)])
+let hypotValue = try result.numberValue
+assert(hypotValue == 5)
 ```
 
 ### Codable passing
@@ -41,7 +42,7 @@ struct C : Decodable { let c: Double }
 
 let ctx = JXContext()
 
-let hypot = try ctx.eval(script: "(function(args) { return { c: Math.hypot(args.a, args.b) }; })")
+let hypot = try ctx.eval("(function(args) { return { c: Math.hypot(args.a, args.b) }; })")
 assert(hypot.isFunction == true)
 
 let result: C = try hypot.call(withArguments: [ctx.encode(AB(a: 3, b: 4))]).toDecodable(ofType: C.self)
