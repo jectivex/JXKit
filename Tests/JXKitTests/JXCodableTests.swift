@@ -219,3 +219,4 @@ final class JXMathContext {
         try _hypot.get().call(withArguments: try [jxc.encode(a), jxc.encode(b)]).toDecodable(ofType: T.self)
     }
 }
+
