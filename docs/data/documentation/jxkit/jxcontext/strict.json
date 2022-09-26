@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "The “use strict” preamble, which compels rigit adherance to the rules.",
+      "text" : "No overview available.",
       "type" : "text"
     }
   ],
@@ -15,21 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/useStrict"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/strict"
   },
   "kind" : "symbol",
   "metadata" : {
-    "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC9useStrictSSvpZ",
+    "externalID" : "s:5JXKit9JXContextC6strictSbvp",
     "fragments" : [
-      {
-        "kind" : "keyword",
-        "text" : "static"
-      },
-      {
-        "kind" : "text",
-        "text" : " "
-      },
       {
         "kind" : "keyword",
         "text" : "let"
@@ -40,7 +31,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "useStrict"
+        "text" : "strict"
       },
       {
         "kind" : "text",
@@ -48,8 +39,8 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:SS",
-        "text" : "String"
+        "preciseIdentifier" : "s:Sb",
+        "text" : "Bool"
       }
     ],
     "modules" : [
@@ -58,9 +49,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Type Property",
+    "roleHeading" : "Instance Property",
     "symbolKind" : "property",
-    "title" : "useStrict"
+    "title" : "strict"
   },
   "primaryContentSections" : [
     {
@@ -75,14 +66,6 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "static"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "keyword",
               "text" : "let"
             },
             {
@@ -91,7 +74,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "useStrict"
+              "text" : "strict"
             },
             {
               "kind" : "text",
@@ -99,8 +82,8 @@
             },
             {
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:SS",
-              "text" : "String"
+              "preciseIdentifier" : "s:Sb",
+              "text" : "Bool"
             }
           ]
         }
@@ -119,7 +102,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/usestrict"
+        "\/documentation\/jxkit\/jxcontext\/strict"
       ],
       "traits" : [
         {
@@ -186,22 +169,11 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/useStrict": {
+"doc://JXKit/documentation/JXKit/JXContext/strict": {
   "abstract" : [
-    {
-      "text" : "The “use strict” preamble, which compels rigit adherance to the rules.",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "static"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
     {
       "kind" : "keyword",
       "text" : "let"
@@ -212,7 +184,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "useStrict"
+      "text" : "strict"
     },
     {
       "kind" : "text",
@@ -220,16 +192,16 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/useStrict",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/strict",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "useStrict",
+  "title" : "strict",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/usestrict"
+  "url" : "\/documentation\/jxkit\/jxcontext\/strict"
 }
 }
 }

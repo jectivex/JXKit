@@ -147,8 +147,8 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(env:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(virtualMachine:)"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(env:strict:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(virtualMachine:strict:)"
       ],
       "title" : "Initializers"
     },
@@ -163,6 +163,7 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/global",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/objectPrototype",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/promisePrototype",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/strict",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/vm"
       ],
       "title" : "Instance Properties"
@@ -176,8 +177,8 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/date(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/encode(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/error(_:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:preamble:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:preamble:priority:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:method:this:priority:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/garbageCollect()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/globalObject(property:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/null()",
@@ -189,12 +190,6 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withArrayBuffer(source:block:)"
       ],
       "title" : "Instance Methods"
-    },
-    {
-      "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/useStrict"
-      ],
-      "title" : "Type Properties"
     }
   ],
   "variants" : [
@@ -876,95 +871,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/errorprototype"
 },
-"doc://JXKit/documentation/JXKit/JXContext/eval(_:this:preamble:)": {
-  "abstract" : [
-    {
-      "text" : "Evaulates the given JavaScript.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "eval"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "this"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    },
-    {
-      "kind" : "text",
-      "text" : "?, "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "preamble"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : "?) "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:preamble:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "eval(_:this:preamble:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:preamble:)"
-},
-"doc://JXKit/documentation/JXKit/JXContext/eval(_:this:preamble:priority:)": {
+"doc://JXKit/documentation/JXKit/JXContext/eval(_:method:this:priority:)": {
   "abstract" : [
     {
       "text" : "Asynchronously evaulates the given script.",
@@ -999,6 +906,23 @@
     },
     {
       "kind" : "externalParam",
+      "text" : "method"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
       "text" : "this"
     },
     {
@@ -1009,23 +933,6 @@
       "kind" : "typeIdentifier",
       "preciseIdentifier" : "s:5JXKit7JXValueC",
       "text" : "JXValue"
-    },
-    {
-      "kind" : "text",
-      "text" : "?, "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "preamble"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
     },
     {
       "kind" : "text",
@@ -1070,12 +977,83 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:preamble:priority:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:method:this:priority:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "eval(_:this:preamble:priority:)",
+  "title" : "eval(_:method:this:priority:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:preamble:priority:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:method:this:priority:)"
+},
+"doc://JXKit/documentation/JXKit/JXContext/eval(_:this:)": {
+  "abstract" : [
+    {
+      "text" : "Evaulates the JavaScript.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "eval"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "this"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "?) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "eval(_:this:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:)"
 },
 "doc://JXKit/documentation/JXKit/JXContext/exceptionHandler": {
   "abstract" : [
@@ -1264,7 +1242,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/globalobject(property:)"
 },
-"doc://JXKit/documentation/JXKit/JXContext/init(env:)": {
+"doc://JXKit/documentation/JXKit/JXContext/init(env:strict:)": {
   "abstract" : [
     {
       "text" : "Wraps an existing ",
@@ -1311,17 +1289,34 @@
     },
     {
       "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "strict"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(env:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(env:strict:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "init(env:)",
+  "title" : "init(env:strict:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/init(env:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/init(env:strict:)"
 },
-"doc://JXKit/documentation/JXKit/JXContext/init(virtualMachine:)": {
+"doc://JXKit/documentation/JXKit/JXContext/init(virtualMachine:strict:)": {
   "abstract" : [
     {
       "text" : "Creates ",
@@ -1400,15 +1395,32 @@
     },
     {
       "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "strict"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(virtualMachine:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(virtualMachine:strict:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "init(virtualMachine:)",
+  "title" : "init(virtualMachine:strict:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/init(virtualmachine:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/init(virtualmachine:strict:)"
 },
 "doc://JXKit/documentation/JXKit/JXContext/null()": {
   "abstract" : [
@@ -1672,6 +1684,40 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/promiseprototype"
 },
+"doc://JXKit/documentation/JXKit/JXContext/strict": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "strict"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/strict",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "strict",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/strict"
+},
 "doc://JXKit/documentation/JXKit/JXContext/string(_:)": {
   "abstract" : [
     {
@@ -1769,51 +1815,6 @@
   "title" : "undefined()",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/undefined()"
-},
-"doc://JXKit/documentation/JXKit/JXContext/useStrict": {
-  "abstract" : [
-    {
-      "text" : "The “use strict” preamble, which compels rigit adherance to the rules.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "static"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "let"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "useStrict"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/useStrict",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "useStrict",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/usestrict"
 },
 "doc://JXKit/documentation/JXKit/JXContext/vm": {
   "abstract" : [

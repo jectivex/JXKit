@@ -164,7 +164,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXValueError": {
   "abstract" : [
-
+    {
+      "text" : "A value that wraps an error.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

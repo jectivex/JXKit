@@ -1,7 +1,15 @@
 {
   "abstract" : [
     {
-      "text" : "Creates ",
+      "text" : "Wraps an existing ",
+      "type" : "text"
+    },
+    {
+      "code" : "JSGlobalContextRef",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " in a ",
       "type" : "text"
     },
     {
@@ -9,47 +17,7 @@
       "type" : "codeVoice"
     },
     {
-      "text" : " with the given ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXVM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".  ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXValue",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " references may be used interchangably with multiple instances of ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " with the same ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXVM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ", but sharing between  separate ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXVM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : "s will result in undefined behavior.",
+      "text" : ". Address space will be shared between both contexts.",
       "type" : "text"
     }
   ],
@@ -63,11 +31,11 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(virtualMachine:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(env:strict:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit9JXContextC14virtualMachineAcA4JXVMC_tcfc",
+    "externalID" : "s:5JXKit9JXContextC3env6strictA2C_Sbtcfc",
     "fragments" : [
       {
         "kind" : "identifier",
@@ -79,7 +47,7 @@
       },
       {
         "kind" : "externalParam",
-        "text" : "virtualMachine"
+        "text" : "env"
       },
       {
         "kind" : "text",
@@ -87,8 +55,25 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit4JXVMC",
-        "text" : "JXVM"
+        "preciseIdentifier" : "s:5JXKit9JXContextC",
+        "text" : "JXContext"
+      },
+      {
+        "kind" : "text",
+        "text" : ", "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "strict"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:Sb",
+        "text" : "Bool"
       },
       {
         "kind" : "text",
@@ -103,7 +88,7 @@
     "role" : "symbol",
     "roleHeading" : "Initializer",
     "symbolKind" : "init",
-    "title" : "init(virtualMachine:)"
+    "title" : "init(env:strict:)"
   },
   "primaryContentSections" : [
     {
@@ -126,34 +111,76 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "virtualMachine"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "internalParam",
-              "text" : "vm"
+              "text" : "env"
             },
             {
               "kind" : "text",
               "text" : ": "
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXVM",
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit4JXVMC",
-              "text" : "JXVM"
+              "preciseIdentifier" : "s:5JXKit9JXContextC",
+              "text" : "JXContext"
             },
             {
               "kind" : "text",
-              "text" : " = JXVM())"
+              "text" : ", "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "strict"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:Sb",
+              "text" : "Bool"
+            },
+            {
+              "kind" : "text",
+              "text" : " = true)"
             }
           ]
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "kind" : "parameters",
+      "parameters" : [
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "the shared JXContext to use",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "env"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "whether to evaluate in strict mode",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "strict"
+        }
+      ]
     }
   ],
   "schemaVersion" : {
@@ -167,7 +194,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/init(virtualmachine:)"
+        "\/documentation\/jxkit\/jxcontext\/init(env:strict:)"
       ],
       "traits" : [
         {
@@ -234,10 +261,18 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/init(virtualMachine:)": {
+"doc://JXKit/documentation/JXKit/JXContext/init(env:strict:)": {
   "abstract" : [
     {
-      "text" : "Creates ",
+      "text" : "Wraps an existing ",
+      "type" : "text"
+    },
+    {
+      "code" : "JSGlobalContextRef",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " in a ",
       "type" : "text"
     },
     {
@@ -245,47 +280,7 @@
       "type" : "codeVoice"
     },
     {
-      "text" : " with the given ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXVM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".  ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXValue",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " references may be used interchangably with multiple instances of ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " with the same ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXVM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ", but sharing between  separate ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXVM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : "s will result in undefined behavior.",
+      "text" : ". Address space will be shared between both contexts.",
       "type" : "text"
     }
   ],
@@ -300,7 +295,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "virtualMachine"
+      "text" : "env"
     },
     {
       "kind" : "text",
@@ -308,62 +303,37 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit4JXVMC",
-      "text" : "JXVM"
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "strict"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
     },
     {
       "kind" : "text",
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(virtualMachine:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(env:strict:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "init(virtualMachine:)",
+  "title" : "init(env:strict:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/init(virtualmachine:)"
-},
-"doc://JXKit/documentation/JXKit/JXVM": {
-  "abstract" : [
-    {
-      "text" : "A JavaScript virtual machine that is used by a ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXContextGroup",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " instance.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXVM"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXVM",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXVM"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXVM",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvm"
+  "url" : "\/documentation\/jxkit\/jxcontext\/init(env:strict:)"
 }
 }
 }

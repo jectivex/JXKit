@@ -281,8 +281,8 @@ class JXCoreTests: XCTestCase {
     func testCheck() throws {
         func lint(_ script: String, strict: Bool = true) throws -> String? {
             do {
-                let jxc = JXContext()
-                try jxc.eval(script, preamble: strict ? JXContext.useStrict : nil)
+                let jxc = JXContext(strict: strict)
+                try jxc.eval(script)
                 return nil
             } catch let error as JXError {
                 return try error.stringValue
