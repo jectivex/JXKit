@@ -79,10 +79,17 @@ public enum JXErrors : Error {
 }
 
 extension JXContext {
+    /// The "use strict" preamble, which compels rigit adherance to the rules.
+    public static let useStrict = "\"use strict\";\n"
 
-    /// Evaulates the JavaScript.
-    @discardableResult public func eval(_ script: String, this: JXValue? = nil) throws -> JXValue {
-        let script = script.withCString(JSStringCreateWithUTF8CString)
+    /// Evaulates the given JavaScript.
+    /// - Parameters:
+    ///   - script: the script source to execute
+    ///   - this: the meaning of `this`
+    ///   - preamble: any leading script to execute, defaulting to `"use strict";`
+    /// - Returns: the resulting `JXValue` of the script execution
+    @discardableResult public func eval(_ script: String, this: JXValue? = nil, preamble: String? = useStrict) throws -> JXValue {
+        let script = ((preamble ?? "") + script).withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(script) }
 
         let result = try trying {
@@ -96,8 +103,8 @@ extension JXContext {
     ///
     /// The script is expected to return a `Promise` either directly or through the implicit promise
     /// that is created in async calls.
-    @discardableResult public func eval(_ script: String, method: Bool = true, this: JXValue? = nil, priority: TaskPriority) async throws -> JXValue {
-        let promise = try eval(script, this: this)
+    @discardableResult public func eval(_ script: String, this: JXValue? = nil, preamble: String? = useStrict, priority: TaskPriority) async throws -> JXValue {
+        let promise = try eval(script, this: this, preamble: preamble)
         guard try promise.isPromise else {
             throw JXErrors.asyncEvalMustReturnPromise
         }

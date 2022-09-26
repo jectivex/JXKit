@@ -1,0 +1,235 @@
+{
+  "abstract" : [
+    {
+      "text" : "The “use strict” preamble, which compels rigit adherance to the rules.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/JXKit\/documentation\/JXKit",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/useStrict"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "extendedModule" : "JXKit",
+    "externalID" : "s:5JXKit9JXContextC9useStrictSSvpZ",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "static"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "keyword",
+        "text" : "let"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "useStrict"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "JXKit"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Type Property",
+    "symbolKind" : "property",
+    "title" : "useStrict"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "macOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "static"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "let"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "useStrict"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 2,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/jxkit\/jxcontext\/usestrict"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://JXKit/documentation/JXKit": {
+  "abstract" : [
+    {
+      "text" : "Cross-platform interface to JavaScriptCore in fluent Swift.",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "JXKit",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit"
+},
+"doc://JXKit/documentation/JXKit/JXContext": {
+  "abstract" : [
+    {
+      "text" : "A JavaScript execution context. This is a cross-platform analogue to the Objective-C ",
+      "type" : "text"
+    },
+    {
+      "code" : "JavaScriptCore.JSContext",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXContext"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXContext"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXContext",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext"
+},
+"doc://JXKit/documentation/JXKit/JXContext/useStrict": {
+  "abstract" : [
+    {
+      "text" : "The “use strict” preamble, which compels rigit adherance to the rules.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "useStrict"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/useStrict",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "useStrict",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/usestrict"
+}
+}
+}

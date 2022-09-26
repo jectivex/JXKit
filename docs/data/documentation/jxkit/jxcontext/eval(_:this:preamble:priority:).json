@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:method:this:priority:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:preamble:priority:)"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC4eval_6method4this8priorityAA7JXValueCSS_SbAISgScPtYaKF",
+    "externalID" : "s:5JXKit9JXContextC4eval_4this8preamble8priorityAA7JXValueCSS_AISgSSSgScPtYaKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -49,23 +49,6 @@
       },
       {
         "kind" : "externalParam",
-        "text" : "method"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:Sb",
-        "text" : "Bool"
-      },
-      {
-        "kind" : "text",
-        "text" : ", "
-      },
-      {
-        "kind" : "externalParam",
         "text" : "this"
       },
       {
@@ -76,6 +59,23 @@
         "kind" : "typeIdentifier",
         "preciseIdentifier" : "s:5JXKit7JXValueC",
         "text" : "JXValue"
+      },
+      {
+        "kind" : "text",
+        "text" : "?, "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "preamble"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
       },
       {
         "kind" : "text",
@@ -128,7 +128,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "eval(_:method:this:priority:)"
+    "title" : "eval(_:this:preamble:priority:)"
   },
   "primaryContentSections" : [
     {
@@ -192,23 +192,6 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "method"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:Sb",
-              "text" : "Bool"
-            },
-            {
-              "kind" : "text",
-              "text" : " = true, "
-            },
-            {
-              "kind" : "externalParam",
               "text" : "this"
             },
             {
@@ -224,6 +207,23 @@
             {
               "kind" : "text",
               "text" : "? = nil, "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "preamble"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : "? = useStrict, "
             },
             {
               "kind" : "externalParam",
@@ -317,7 +317,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/eval(_:method:this:priority:)"
+        "\/documentation\/jxkit\/jxcontext\/eval(_:this:preamble:priority:)"
       ],
       "traits" : [
         {
@@ -384,7 +384,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/eval(_:method:this:priority:)": {
+"doc://JXKit/documentation/JXKit/JXContext/eval(_:this:preamble:priority:)": {
   "abstract" : [
     {
       "text" : "Asynchronously evaulates the given script.",
@@ -419,23 +419,6 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "method"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
       "text" : "this"
     },
     {
@@ -446,6 +429,23 @@
       "kind" : "typeIdentifier",
       "preciseIdentifier" : "s:5JXKit7JXValueC",
       "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "preamble"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
     },
     {
       "kind" : "text",
@@ -490,12 +490,12 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:method:this:priority:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:preamble:priority:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "eval(_:method:this:priority:)",
+  "title" : "eval(_:this:preamble:priority:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:method:this:priority:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:preamble:priority:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [

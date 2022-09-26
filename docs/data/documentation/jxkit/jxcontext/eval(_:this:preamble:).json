@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Evaulates the JavaScript.",
+      "text" : "Evaulates the given JavaScript.",
       "type" : "text"
     }
   ],
@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:preamble:)"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC4eval_4thisAA7JXValueCSS_AGSgtKF",
+    "externalID" : "s:5JXKit9JXContextC4eval_4this8preambleAA7JXValueCSS_AHSgSSSgtKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -62,6 +62,23 @@
       },
       {
         "kind" : "text",
+        "text" : "?, "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "preamble"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
+      },
+      {
+        "kind" : "text",
         "text" : "?) "
       },
       {
@@ -86,7 +103,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "eval(_:this:)"
+    "title" : "eval(_:this:preamble:)"
   },
   "primaryContentSections" : [
     {
@@ -164,7 +181,24 @@
             },
             {
               "kind" : "text",
-              "text" : "? = nil) "
+              "text" : "? = nil, "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "preamble"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : "? = useStrict) "
             },
             {
               "kind" : "keyword",
@@ -184,6 +218,89 @@
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "return-value",
+          "level" : 2,
+          "text" : "Return Value",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "the resulting ",
+              "type" : "text"
+            },
+            {
+              "code" : "JXValue",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " of the script execution",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
+    },
+    {
+      "kind" : "parameters",
+      "parameters" : [
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "the script source to execute",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "script"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "the meaning of ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "this",
+                  "type" : "codeVoice"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "this"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "any leading script to execute, defaulting to ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "\"use strict\";",
+                  "type" : "codeVoice"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "preamble"
+        }
+      ]
     }
   ],
   "schemaVersion" : {
@@ -197,7 +314,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/eval(_:this:)"
+        "\/documentation\/jxkit\/jxcontext\/eval(_:this:preamble:)"
       ],
       "traits" : [
         {
@@ -264,10 +381,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/eval(_:this:)": {
+"doc://JXKit/documentation/JXKit/JXContext/eval(_:this:preamble:)": {
   "abstract" : [
     {
-      "text" : "Evaulates the JavaScript.",
+      "text" : "Evaulates the given JavaScript.",
       "type" : "text"
     }
   ],
@@ -312,6 +429,23 @@
     },
     {
       "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "preamble"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
       "text" : "?) "
     },
     {
@@ -328,12 +462,12 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:preamble:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "eval(_:this:)",
+  "title" : "eval(_:this:preamble:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:preamble:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
