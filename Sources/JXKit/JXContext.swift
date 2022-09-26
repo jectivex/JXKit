@@ -20,17 +20,26 @@ public final class JXContext {
     public let vm: JXVM
     public let context: JSGlobalContextRef
     public var exceptionHandler: ((JXContext?, JXValue?) -> Void)?
+    public let strict: Bool
 
     /// Creates `JXContext` with the given `JXVM`.  `JXValue` references may be used interchangably with multiple instances of `JXContext` with the same `JXVM`, but sharing between  separate `JXVM`s will result in undefined behavior.
-    public init(virtualMachine vm: JXVM = JXVM()) {
+    /// - Parameters:
+    ///   - vm: the shared virtual machine to use; defaults  to creating a new VM per context
+    ///   - strict: whether to evaluate in strict mode
+    public init(virtualMachine vm: JXVM = JXVM(), strict: Bool = true) {
         self.vm = vm
         self.context = JSGlobalContextCreateInGroup(vm.group, nil)
+        self.strict = strict
     }
 
     /// Wraps an existing `JSGlobalContextRef` in a `JXContext`. Address space will be shared between both contexts.
-    public init(env: JXContext) {
+    /// - Parameters:
+    ///   - env: the shared JXContext to use
+    ///   - strict: whether to evaluate in strict mode
+    public init(env: JXContext, strict: Bool = true) {
         self.vm = JXVM(group: JSContextGetGroup(env.context))
         self.context = env.context
+        self.strict = strict
         JSGlobalContextRetain(env.context)
     }
 
@@ -39,6 +48,7 @@ public final class JXContext {
     }
 }
 
+/// A value that wraps an error.
 public final class JXValueError {
     public let value: JXValue
     public let msg: String?
@@ -79,17 +89,11 @@ public enum JXErrors : Error {
 }
 
 extension JXContext {
-    /// The "use strict" preamble, which compels rigit adherance to the rules.
-    public static let useStrict = "\"use strict\";\n"
 
-    /// Evaulates the given JavaScript.
-    /// - Parameters:
-    ///   - script: the script source to execute
-    ///   - this: the meaning of `this`
-    ///   - preamble: any leading script to execute, defaulting to `"use strict";`
-    /// - Returns: the resulting `JXValue` of the script execution
-    @discardableResult public func eval(_ script: String, this: JXValue? = nil, preamble: String? = useStrict) throws -> JXValue {
-        let script = ((preamble ?? "") + script).withCString(JSStringCreateWithUTF8CString)
+    /// Evaulates the JavaScript.
+    @discardableResult public func eval(_ script: String, this: JXValue? = nil) throws -> JXValue {
+        let script = ((strict ? "\"use strict\";\n" : "") + script).withCString(JSStringCreateWithUTF8CString)
+        
         defer { JSStringRelease(script) }
 
         let result = try trying {
@@ -103,8 +107,8 @@ extension JXContext {
     ///
     /// The script is expected to return a `Promise` either directly or through the implicit promise
     /// that is created in async calls.
-    @discardableResult public func eval(_ script: String, this: JXValue? = nil, preamble: String? = useStrict, priority: TaskPriority) async throws -> JXValue {
-        let promise = try eval(script, this: this, preamble: preamble)
+    @discardableResult public func eval(_ script: String, method: Bool = true, this: JXValue? = nil, priority: TaskPriority) async throws -> JXValue {
+        let promise = try eval(script, this: this)
         guard try promise.isPromise else {
             throw JXErrors.asyncEvalMustReturnPromise
         }
