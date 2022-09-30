@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Creates a new object in this context.",
+      "text" : "A conversion to another numic type failed",
       "type" : "text"
     }
   ],
@@ -9,22 +9,21 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object()"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidNumericConversion(_:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC6objectAA7JXValueCyF",
+    "externalID" : "s:5JXKit8JXErrorsO24invalidNumericConversionyACSdcACmF",
     "fragments" : [
       {
         "kind" : "keyword",
-        "text" : "func"
+        "text" : "case"
       },
       {
         "kind" : "text",
@@ -32,16 +31,20 @@
       },
       {
         "kind" : "identifier",
-        "text" : "object"
+        "text" : "invalidNumericConversion"
       },
       {
         "kind" : "text",
-        "text" : "() -> "
+        "text" : "("
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
+        "preciseIdentifier" : "s:Sd",
+        "text" : "Double"
+      },
+      {
+        "kind" : "text",
+        "text" : ")"
       }
     ],
     "modules" : [
@@ -50,9 +53,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Instance Method",
-    "symbolKind" : "method",
-    "title" : "object()"
+    "roleHeading" : "Case",
+    "symbolKind" : "case",
+    "title" : "JXErrors.invalidNumericConversion(_:)"
   },
   "primaryContentSections" : [
     {
@@ -67,7 +70,7 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "func"
+              "text" : "case"
             },
             {
               "kind" : "text",
@@ -75,17 +78,20 @@
             },
             {
               "kind" : "identifier",
-              "text" : "object"
+              "text" : "invalidNumericConversion"
             },
             {
               "kind" : "text",
-              "text" : "() -> "
+              "text" : "("
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
+              "preciseIdentifier" : "s:Sd",
+              "text" : "Double"
+            },
+            {
+              "kind" : "text",
+              "text" : ")"
             }
           ]
         }
@@ -104,7 +110,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/object()"
+        "\/documentation\/jxkit\/jxerrors\/invalidnumericconversion(_:)"
       ],
       "traits" : [
         {
@@ -129,25 +135,14 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXContext": {
+"doc://JXKit/documentation/JXKit/JXErrors": {
   "abstract" : [
-    {
-      "text" : "A JavaScript execution context. This is a cross-platform analogue to the Objective-C ",
-      "type" : "text"
-    },
-    {
-      "code" : "JavaScriptCore.JSContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "class"
+      "text" : "enum"
     },
     {
       "kind" : "text",
@@ -155,33 +150,33 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXContext"
+      "text" : "JXErrors"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXContext"
+      "text" : "JXErrors"
     }
   ],
   "role" : "symbol",
-  "title" : "JXContext",
+  "title" : "JXErrors",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext"
+  "url" : "\/documentation\/jxkit\/jxerrors"
 },
-"doc://JXKit/documentation/JXKit/JXContext/object()": {
+"doc://JXKit/documentation/JXKit/JXErrors/invalidNumericConversion(_:)": {
   "abstract" : [
     {
-      "text" : "Creates a new object in this context.",
+      "text" : "A conversion to another numic type failed",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "func"
+      "text" : "case"
     },
     {
       "kind" : "text",
@@ -189,58 +184,28 @@
     },
     {
       "kind" : "identifier",
-      "text" : "object"
+      "text" : "invalidNumericConversion"
     },
     {
       "kind" : "text",
-      "text" : "() -> "
+      "text" : "("
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object()",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "object()",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/object()"
-},
-"doc://JXKit/documentation/JXKit/JXValue": {
-  "abstract" : [
-    {
-      "text" : "A JavaScript object.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
+      "preciseIdentifier" : "s:Sd",
+      "text" : "Double"
     },
     {
       "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXValue"
+      "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidNumericConversion(_:)",
   "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXValue"
-    }
-  ],
   "role" : "symbol",
-  "title" : "JXValue",
+  "title" : "JXErrors.invalidNumericConversion(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue"
+  "url" : "\/documentation\/jxkit\/jxerrors\/invalidnumericconversion(_:)"
 }
 }
 }

@@ -16,11 +16,18 @@ import FoundationNetworking
 /// A JavaScript execution context. This is a cross-platform analogue to the Objective-C `JavaScriptCore.JSContext`.
 ///
 /// This wraps a `JSGlobalContextRef`, and is the equivalent of `JavaScriptCore.JSContext`
-public final class JXContext {
+open class JXContext {
+    /// The virtual machine associated with this context
     public let vm: JXVM
-    public let context: JSGlobalContextRef
-    public var exceptionHandler: ((JXContext?, JXValue?) -> Void)?
+
+    /// Whether scripts evaluated by this context should be assessed in `strict` mode.
     public let strict: Bool
+
+    /// The underlying `JSGlobalContextRef` that is wrapped by this context
+    public let context: JSGlobalContextRef
+
+    /// An exception handler for the given context
+    public var exceptionHandler: ((JXContext?, JXValue?) -> Void)?
 
     private var strictEvaluated: Bool = false
 
@@ -87,6 +94,11 @@ public enum JXErrors : Error {
     case jumpContextInvalid
     /// Expected an array for conversion
     case valueNotArray
+    /// A synbolic key was attempted to be set, but the value was not a symbol
+    case keyNotSymbol
+
+    /// A conversion to another numic type failed
+    case invalidNumericConversion(Double)
 }
 
 extension JXContext {
@@ -190,18 +202,6 @@ extension JXContext {
         JXValue(env: self, valueRef: JSContextGetGlobalObject(context))
     }
 
-    /// Checks for the presence of a top-level "exports" variable and creates it if it isn't already an object.
-    @inlinable public func globalObject(property named: String) throws -> JXValue {
-        let exp = try self.global[named]
-        if exp.isObject {
-            return exp
-        } else {
-            let exp = self.object()
-            try self.global.setProperty(named, exp)
-            return exp
-        }
-    }
-
     /// Invokes the given closure with the bytes without copying
     /// - Parameters:
     ///   - source: the data to use
@@ -291,9 +291,35 @@ extension JXContext {
         JXValue(string: String(value), in: self)
     }
 
-    /// Creates a new object in this context.
-    @inlinable public func object() -> JXValue {
-        JXValue(newObjectIn: self)
+    /// Creates a new Symbol with the given name in the context.
+    @inlinable public func symbol<S: StringProtocol>(_ value: S) -> JXValue {
+        JXValue(symbol: String(value), in: self)
+    }
+
+    /// Creates a new object in this context and assigns it the given peer object.
+    @inlinable public func object(peer: AnyObject? = nil) -> JXValue {
+        guard let peer = peer else {
+            return JXValue(newObjectIn: self)
+        }
+
+        let info: UnsafeMutablePointer<AnyObject?> = .allocate(capacity: 1)
+        info.initialize(to: peer)
+
+        // we seem to need to assign a class definition in order to set the associated data for the object
+        var def = JSClassDefinition()
+        let _class = JSClassCreate(&def)
+        defer { JSClassRelease(_class) }
+
+        let value = JXValue(env: self, valueRef: JSObjectMake(self.context, _class, info))
+        return value
+    }
+
+    /// Returns an existing object peer for the given JXValue object.
+    @inlinable public func peer(for key: JXValue) -> AnyObject? {
+        guard key.isObject, !key.isFunction, let ptr = JSObjectGetPrivate(key.value) else {
+            return nil
+        }
+        return ptr.assumingMemoryBound(to: AnyObject?.self).pointee
     }
 
     /// Creates a new array in the environment

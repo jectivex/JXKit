@@ -1,15 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Sets a ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXConvertible",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " in this value object.",
+      "text" : "Attempts to convey the given result from the JS environment.",
       "type" : "text"
     }
   ],
@@ -23,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/set(_:object:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC3set_6objectySS_xtKAA13JXConvertibleRzlF",
+    "externalID" : "s:5JXKit7JXValueC6convey2toxxm_tKAA13JXConvertibleRzlF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -40,7 +32,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "set"
+        "text" : "convey"
       },
       {
         "kind" : "text",
@@ -55,17 +47,8 @@
         "text" : ">("
       },
       {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:SS",
-        "text" : "String"
-      },
-      {
-        "kind" : "text",
-        "text" : ", "
-      },
-      {
         "kind" : "externalParam",
-        "text" : "object"
+        "text" : "to"
       },
       {
         "kind" : "text",
@@ -77,11 +60,19 @@
       },
       {
         "kind" : "text",
-        "text" : ") "
+        "text" : ".Type) "
       },
       {
         "kind" : "keyword",
         "text" : "throws"
+      },
+      {
+        "kind" : "text",
+        "text" : " -> "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "text" : "T"
       }
     ],
     "modules" : [
@@ -92,7 +83,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "set(_:object:)"
+    "title" : "convey(to:)"
   },
   "primaryContentSections" : [
     {
@@ -115,7 +106,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "set"
+              "text" : "convey"
             },
             {
               "kind" : "text",
@@ -131,7 +122,7 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "_"
+              "text" : "to"
             },
             {
               "kind" : "text",
@@ -139,24 +130,7 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "key"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:SS",
-              "text" : "String"
-            },
-            {
-              "kind" : "text",
-              "text" : ", "
-            },
-            {
-              "kind" : "externalParam",
-              "text" : "object"
+              "text" : "type"
             },
             {
               "kind" : "text",
@@ -168,11 +142,19 @@
             },
             {
               "kind" : "text",
-              "text" : ") "
+              "text" : ".Type = T.self) "
             },
             {
               "kind" : "keyword",
               "text" : "throws"
+            },
+            {
+              "kind" : "text",
+              "text" : " -> "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "text" : "T"
             },
             {
               "kind" : "text",
@@ -206,6 +188,26 @@
       "kind" : "declarations"
     },
     {
+      "content" : [
+        {
+          "anchor" : "return-value",
+          "level" : 2,
+          "text" : "Return Value",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "the conveyed instance",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
+    },
+    {
       "kind" : "parameters",
       "parameters" : [
         {
@@ -213,36 +215,14 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "the key to set",
+                  "text" : "the context to use",
                   "type" : "text"
                 }
               ],
               "type" : "paragraph"
             }
           ],
-          "name" : "key"
-        },
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "the ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "JXConvertible",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : " to convert",
-                  "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "object"
+          "name" : "context"
         }
       ]
     }
@@ -258,7 +238,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxvalue\/set(_:object:)"
+        "\/documentation\/jxkit\/jxvalue\/convey(to:)"
       ],
       "traits" : [
         {
@@ -351,18 +331,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue"
 },
-"doc://JXKit/documentation/JXKit/JXValue/set(_:object:)": {
+"doc://JXKit/documentation/JXKit/JXValue/convey(to:)": {
   "abstract" : [
     {
-      "text" : "Sets a ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXConvertible",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " in this value object.",
+      "text" : "Attempts to convey the given result from the JS environment.",
       "type" : "text"
     }
   ],
@@ -377,7 +349,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "set"
+      "text" : "convey"
     },
     {
       "kind" : "text",
@@ -392,17 +364,8 @@
       "text" : ">("
     },
     {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
       "kind" : "externalParam",
-      "text" : "object"
+      "text" : "to"
     },
     {
       "kind" : "text",
@@ -414,19 +377,27 @@
     },
     {
       "kind" : "text",
-      "text" : ") "
+      "text" : ".Type) "
     },
     {
       "kind" : "keyword",
       "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/set(_:object:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "set(_:object:)",
+  "title" : "convey(to:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/set(_:object:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/convey(to:)"
 }
 }
 }

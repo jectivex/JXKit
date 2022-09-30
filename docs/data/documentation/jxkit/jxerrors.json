@@ -108,7 +108,9 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/evaluationErrorString(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/evaluationErrorUnknown",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidAsyncPromise",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidNumericConversion(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/jumpContextInvalid",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/keyNotSymbol",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/minimumSystemVersion",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/missingResource(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/propertyAccessNonObject",
@@ -431,6 +433,47 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerrors\/invalidasyncpromise"
 },
+"doc://JXKit/documentation/JXKit/JXErrors/invalidNumericConversion(_:)": {
+  "abstract" : [
+    {
+      "text" : "A conversion to another numic type failed",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "invalidNumericConversion"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sd",
+      "text" : "Double"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidNumericConversion(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.invalidNumericConversion(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/invalidnumericconversion(_:)"
+},
 "doc://JXKit/documentation/JXKit/JXErrors/jumpContextInvalid": {
   "abstract" : [
     {
@@ -458,6 +501,34 @@
   "title" : "JXErrors.jumpContextInvalid",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerrors\/jumpcontextinvalid"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/keyNotSymbol": {
+  "abstract" : [
+    {
+      "text" : "A synbolic key was attempted to be set, but the value was not a symbol",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "keyNotSymbol"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/keyNotSymbol",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.keyNotSymbol",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/keynotsymbol"
 },
 "doc://JXKit/documentation/JXKit/JXErrors/minimumSystemVersion": {
   "abstract" : [

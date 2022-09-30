@@ -1,7 +1,15 @@
 {
   "abstract" : [
     {
-      "text" : "Converts this value into a JXContext",
+      "text" : "Inherited from ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXConvertible.getJX(from:)",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
       "type" : "text"
     }
   ],
@@ -262,10 +270,7 @@
 },
 "doc://JXKit/documentation/JXKit/JXValue/getJX(from:)": {
   "abstract" : [
-    {
-      "text" : "Converts this value into a JXContext",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
     {

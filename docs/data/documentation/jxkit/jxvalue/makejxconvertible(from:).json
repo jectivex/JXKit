@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Checks for the presence of a top-level “exports” variable and creates it if it isn’t already an object.",
+      "text" : "No overview available.",
       "type" : "text"
     }
   ],
@@ -9,19 +9,27 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/globalObject(property:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/makeJXConvertible(from:)"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC12globalObject8propertyAA7JXValueCSS_tKF",
+    "externalID" : "s:5JXKit7JXValueC17makeJXConvertible4fromACXDAC_tKFZ",
     "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "static"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
       {
         "kind" : "keyword",
         "text" : "func"
@@ -32,7 +40,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "globalObject"
+        "text" : "makeJXConvertible"
       },
       {
         "kind" : "text",
@@ -40,7 +48,7 @@
       },
       {
         "kind" : "externalParam",
-        "text" : "property"
+        "text" : "from"
       },
       {
         "kind" : "text",
@@ -48,8 +56,8 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:SS",
-        "text" : "String"
+        "preciseIdentifier" : "s:5JXKit7JXValueC",
+        "text" : "JXValue"
       },
       {
         "kind" : "text",
@@ -65,8 +73,7 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
+        "text" : "Self"
       }
     ],
     "modules" : [
@@ -75,9 +82,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Instance Method",
+    "roleHeading" : "Type Method",
     "symbolKind" : "method",
-    "title" : "globalObject(property:)"
+    "title" : "makeJXConvertible(from:)"
   },
   "primaryContentSections" : [
     {
@@ -92,6 +99,14 @@
           "tokens" : [
             {
               "kind" : "keyword",
+              "text" : "static"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "keyword",
               "text" : "func"
             },
             {
@@ -100,7 +115,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "globalObject"
+              "text" : "makeJXConvertible"
             },
             {
               "kind" : "text",
@@ -108,7 +123,7 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "property"
+              "text" : "from"
             },
             {
               "kind" : "text",
@@ -116,16 +131,17 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "named"
+              "text" : "value"
             },
             {
               "kind" : "text",
               "text" : ": "
             },
             {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:SS",
-              "text" : "String"
+              "preciseIdentifier" : "s:5JXKit7JXValueC",
+              "text" : "JXValue"
             },
             {
               "kind" : "text",
@@ -140,10 +156,8 @@
               "text" : " -> "
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
+              "text" : "Self"
             }
           ]
         }
@@ -162,7 +176,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/globalobject(property:)"
+        "\/documentation\/jxkit\/jxvalue\/makejxconvertible(from:)"
       ],
       "traits" : [
         {
@@ -186,110 +200,6 @@
   "title" : "JXKit",
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
-},
-"doc://JXKit/documentation/JXKit/JXContext": {
-  "abstract" : [
-    {
-      "text" : "A JavaScript execution context. This is a cross-platform analogue to the Objective-C ",
-      "type" : "text"
-    },
-    {
-      "code" : "JavaScriptCore.JSContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXContext"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXContext"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXContext",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext"
-},
-"doc://JXKit/documentation/JXKit/JXContext/globalObject(property:)": {
-  "abstract" : [
-    {
-      "text" : "Checks for the presence of a top-level “exports” variable and creates it if it isn’t already an object.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "globalObject"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "property"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/globalObject(property:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "globalObject(property:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/globalobject(property:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
@@ -324,6 +234,72 @@
   "title" : "JXValue",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue"
+},
+"doc://JXKit/documentation/JXKit/JXValue/makeJXConvertible(from:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "makeJXConvertible"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "from"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "Self"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/makeJXConvertible(from:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "makeJXConvertible(from:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/makejxconvertible(from:)"
 }
 }
 }

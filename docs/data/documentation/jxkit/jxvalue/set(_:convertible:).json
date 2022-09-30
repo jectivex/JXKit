@@ -1,7 +1,15 @@
 {
   "abstract" : [
     {
-      "text" : "Creates a JavaScript value of the function type.",
+      "text" : "Sets a ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXConvertible",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " in this value object.",
       "type" : "text"
     }
   ],
@@ -15,16 +23,16 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newFunctionIn:callback:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/set(_:convertible:)"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC13newFunctionIn8callbackAcA9JXContextC_AcG_ACSgSayACGtKctcfc",
+    "externalID" : "s:5JXKit7JXValueC3set_11convertibleySS_xtKAA13JXConvertibleRzlF",
     "fragments" : [
       {
         "kind" : "keyword",
-        "text" : "convenience"
+        "text" : "func"
       },
       {
         "kind" : "text",
@@ -32,24 +40,24 @@
       },
       {
         "kind" : "identifier",
-        "text" : "init"
+        "text" : "set"
       },
       {
         "kind" : "text",
-        "text" : "("
+        "text" : "<"
       },
       {
-        "kind" : "externalParam",
-        "text" : "newFunctionIn"
+        "kind" : "genericParameter",
+        "text" : "T"
       },
       {
         "kind" : "text",
-        "text" : ": "
+        "text" : ">("
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit9JXContextC",
-        "text" : "JXContext"
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
       },
       {
         "kind" : "text",
@@ -57,7 +65,7 @@
       },
       {
         "kind" : "externalParam",
-        "text" : "callback"
+        "text" : "convertible"
       },
       {
         "kind" : "text",
@@ -65,12 +73,15 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit10JXFunctiona",
-        "text" : "JXFunction"
+        "text" : "T"
       },
       {
         "kind" : "text",
-        "text" : ")"
+        "text" : ") "
+      },
+      {
+        "kind" : "keyword",
+        "text" : "throws"
       }
     ],
     "modules" : [
@@ -79,9 +90,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Initializer",
-    "symbolKind" : "init",
-    "title" : "init(newFunctionIn:callback:)"
+    "roleHeading" : "Instance Method",
+    "symbolKind" : "method",
+    "title" : "set(_:convertible:)"
   },
   "primaryContentSections" : [
     {
@@ -96,23 +107,31 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "convenience"
+              "text" : "func"
             },
             {
               "kind" : "text",
               "text" : " "
             },
             {
-              "kind" : "keyword",
-              "text" : "init"
+              "kind" : "identifier",
+              "text" : "set"
             },
             {
               "kind" : "text",
-              "text" : "("
+              "text" : "<"
+            },
+            {
+              "kind" : "genericParameter",
+              "text" : "T"
+            },
+            {
+              "kind" : "text",
+              "text" : ">("
             },
             {
               "kind" : "externalParam",
-              "text" : "newFunctionIn"
+              "text" : "_"
             },
             {
               "kind" : "text",
@@ -120,17 +139,16 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "env"
+              "text" : "key"
             },
             {
               "kind" : "text",
               "text" : ": "
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit9JXContextC",
-              "text" : "JXContext"
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
             },
             {
               "kind" : "text",
@@ -138,29 +156,57 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "callback"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "kind" : "keyword",
-              "text" : "@escaping"
+              "text" : "convertible"
             },
             {
               "kind" : "text",
               "text" : " "
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXFunction",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit10JXFunctiona",
-              "text" : "JXFunction"
+              "kind" : "internalParam",
+              "text" : "object"
             },
             {
               "kind" : "text",
-              "text" : ")"
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "text" : "T"
+            },
+            {
+              "kind" : "text",
+              "text" : ") "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "throws"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "where"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "text" : "T"
+            },
+            {
+              "kind" : "text",
+              "text" : " : "
+            },
+            {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5JXKit13JXConvertibleP",
+              "text" : "JXConvertible"
             }
           ]
         }
@@ -175,72 +221,38 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "The execution context to use.",
+                  "text" : "the key to set",
                   "type" : "text"
                 }
               ],
               "type" : "paragraph"
             }
           ],
-          "name" : "context"
+          "name" : "key"
         },
         {
           "content" : [
             {
               "inlineContent" : [
                 {
-                  "text" : "The callback function.",
+                  "text" : "the ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "JXConvertible",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : " to convert",
                   "type" : "text"
                 }
               ],
               "type" : "paragraph"
             }
           ],
-          "name" : "callback"
+          "name" : "object"
         }
       ]
-    },
-    {
-      "content" : [
-        {
-          "anchor" : "discussion",
-          "level" : 2,
-          "text" : "Discussion",
-          "type" : "heading"
-        },
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "This object is callable as a function (due to ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "JSClassDefinition.callAsFunction",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : "), but the JavaScript runtime doesn’t treat it exactly like a function. For example, you cannot call “apply” on it. It could be better to use ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "JSObjectMakeFunctionWithCallback",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : ", which may act more like a “true” JavaScript function.",
-                  "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "style" : "note",
-          "type" : "aside"
-        }
-      ],
-      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -254,7 +266,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxvalue\/init(newfunctionin:callback:)"
+        "\/documentation\/jxkit\/jxvalue\/set(_:convertible:)"
       ],
       "traits" : [
         {
@@ -279,25 +291,17 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXContext": {
+"doc://JXKit/documentation/JXKit/JXConvertible": {
   "abstract" : [
     {
-      "text" : "A JavaScript execution context. This is a cross-platform analogue to the Objective-C ",
-      "type" : "text"
-    },
-    {
-      "code" : "JavaScriptCore.JSContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
+      "text" : "A type that can move back and forth between Swift and JavaScipt, either through direct reference or by serialization.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "class"
+      "text" : "protocol"
     },
     {
       "kind" : "text",
@@ -305,55 +309,21 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXContext"
+      "text" : "JXConvertible"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXContext"
+      "text" : "JXConvertible"
     }
   ],
   "role" : "symbol",
-  "title" : "JXContext",
+  "title" : "JXConvertible",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext"
-},
-"doc://JXKit/documentation/JXKit/JXFunction": {
-  "abstract" : [
-    {
-      "text" : "A function definition, used when defining callbacks.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "typealias"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXFunction"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXFunction",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXFunction"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXFunction",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxfunction"
+  "url" : "\/documentation\/jxkit\/jxconvertible"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
@@ -389,17 +359,25 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue"
 },
-"doc://JXKit/documentation/JXKit/JXValue/init(newFunctionIn:callback:)": {
+"doc://JXKit/documentation/JXKit/JXValue/set(_:convertible:)": {
   "abstract" : [
     {
-      "text" : "Creates a JavaScript value of the function type.",
+      "text" : "Sets a ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXConvertible",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " in this value object.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "convenience"
+      "text" : "func"
     },
     {
       "kind" : "text",
@@ -407,24 +385,24 @@
     },
     {
       "kind" : "identifier",
-      "text" : "init"
+      "text" : "set"
     },
     {
       "kind" : "text",
-      "text" : "("
+      "text" : "<"
     },
     {
-      "kind" : "externalParam",
-      "text" : "newFunctionIn"
+      "kind" : "genericParameter",
+      "text" : "T"
     },
     {
       "kind" : "text",
-      "text" : ": "
+      "text" : ">("
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit9JXContextC",
-      "text" : "JXContext"
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
     },
     {
       "kind" : "text",
@@ -432,7 +410,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "callback"
+      "text" : "convertible"
     },
     {
       "kind" : "text",
@@ -440,20 +418,23 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit10JXFunctiona",
-      "text" : "JXFunction"
+      "text" : "T"
     },
     {
       "kind" : "text",
-      "text" : ")"
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newFunctionIn:callback:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/set(_:convertible:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "init(newFunctionIn:callback:)",
+  "title" : "set(_:convertible:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/init(newfunctionin:callback:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/set(_:convertible:)"
 }
 }
 }

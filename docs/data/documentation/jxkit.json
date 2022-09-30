@@ -142,7 +142,8 @@
     {
       "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXFunction",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXPromise"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXPromise",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValueRef"
       ],
       "title" : "Type Aliases"
     },
@@ -658,6 +659,40 @@
   "title" : "JXValueError",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalueerror"
+},
+"doc://JXKit/documentation/JXKit/JXValueRef": {
+  "abstract" : [
+    {
+      "text" : "The underlying type that represents a value in the JavaScript environment",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "typealias"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXValueRef"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValueRef",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXValueRef"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXValueRef",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalueref"
 },
 "https://trac.webkit.org/wiki/JavaScriptCore": {
   "identifier" : "https:\/\/trac.webkit.org\/wiki\/JavaScriptCore",

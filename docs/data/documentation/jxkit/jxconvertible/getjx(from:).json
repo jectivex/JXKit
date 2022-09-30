@@ -1,15 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Inherited from ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXConvertible.makeJX(from:in:)",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
+      "text" : "Converts this value into a JXContext",
       "type" : "text"
     }
   ],
@@ -17,68 +9,18 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/makeJX(from:in:)-2nsz2"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/makeJX(from:in:)-8yvom"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/getJX(from:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "conformance" : {
-      "availabilityPrefix" : [
-        {
-          "text" : "Available when",
-          "type" : "text"
-        }
-      ],
-      "conformancePrefix" : [
-        {
-          "text" : "Conforms when",
-          "type" : "text"
-        }
-      ],
-      "constraints" : [
-        {
-          "code" : "Self",
-          "type" : "codeVoice"
-        },
-        {
-          "text" : " conforms to ",
-          "type" : "text"
-        },
-        {
-          "code" : "Decodable",
-          "type" : "codeVoice"
-        },
-        {
-          "text" : " and ",
-          "type" : "text"
-        },
-        {
-          "code" : "Encodable",
-          "type" : "codeVoice"
-        },
-        {
-          "text" : ".",
-          "type" : "text"
-        }
-      ]
-    },
-    "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit13JXConvertiblePAASeRzSERzrlE6makeJX4from2inxAA7JXValueC_AA9JXContextCtKFZ",
+    "externalID" : "s:5JXKit13JXConvertibleP5getJX4fromAA7JXValueCAA9JXContextC_tKF",
     "fragments" : [
-      {
-        "kind" : "keyword",
-        "text" : "static"
-      },
-      {
-        "kind" : "text",
-        "text" : " "
-      },
       {
         "kind" : "keyword",
         "text" : "func"
@@ -89,7 +31,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "makeJX"
+        "text" : "getJX"
       },
       {
         "kind" : "text",
@@ -98,23 +40,6 @@
       {
         "kind" : "externalParam",
         "text" : "from"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
-      },
-      {
-        "kind" : "text",
-        "text" : ", "
-      },
-      {
-        "kind" : "externalParam",
-        "text" : "in"
       },
       {
         "kind" : "text",
@@ -139,7 +64,8 @@
       },
       {
         "kind" : "typeIdentifier",
-        "text" : "Self"
+        "preciseIdentifier" : "s:5JXKit7JXValueC",
+        "text" : "JXValue"
       }
     ],
     "modules" : [
@@ -147,10 +73,11 @@
         "name" : "JXKit"
       }
     ],
+    "required" : true,
     "role" : "symbol",
-    "roleHeading" : "Type Method",
+    "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "makeJX(from:in:)"
+    "title" : "getJX(from:)"
   },
   "primaryContentSections" : [
     {
@@ -165,14 +92,6 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "static"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "keyword",
               "text" : "func"
             },
             {
@@ -181,7 +100,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "makeJX"
+              "text" : "getJX"
             },
             {
               "kind" : "text",
@@ -190,32 +109,6 @@
             {
               "kind" : "externalParam",
               "text" : "from"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "internalParam",
-              "text" : "value"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
-            },
-            {
-              "kind" : "text",
-              "text" : ", "
-            },
-            {
-              "kind" : "externalParam",
-              "text" : "in"
             },
             {
               "kind" : "text",
@@ -248,8 +141,10 @@
               "text" : " -> "
             },
             {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
-              "text" : "Self"
+              "preciseIdentifier" : "s:5JXKit7JXValueC",
+              "text" : "JXValue"
             }
           ]
         }
@@ -268,7 +163,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxconvertible\/makejx(from:in:)-8yvom"
+        "\/documentation\/jxkit\/jxconvertible\/getjx(from:)"
       ],
       "traits" : [
         {
@@ -369,23 +264,14 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxconvertible"
 },
-"doc://JXKit/documentation/JXKit/JXConvertible/makeJX(from:in:)-2nsz2": {
+"doc://JXKit/documentation/JXKit/JXConvertible/getJX(from:)": {
   "abstract" : [
     {
       "text" : "Converts this value into a JXContext",
       "type" : "text"
     }
   ],
-  "defaultImplementations" : 1,
   "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "static"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
     {
       "kind" : "keyword",
       "text" : "func"
@@ -396,7 +282,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "makeJX"
+      "text" : "getJX"
     },
     {
       "kind" : "text",
@@ -405,23 +291,6 @@
     {
       "kind" : "externalParam",
       "text" : "from"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "in"
     },
     {
       "kind" : "text",
@@ -446,139 +315,17 @@
     },
     {
       "kind" : "typeIdentifier",
-      "text" : "Self"
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/makeJX(from:in:)-2nsz2",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/getJX(from:)",
   "kind" : "symbol",
   "required" : true,
   "role" : "symbol",
-  "title" : "makeJX(from:in:)",
+  "title" : "getJX(from:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxconvertible\/makejx(from:in:)-2nsz2"
-},
-"doc://JXKit/documentation/JXKit/JXConvertible/makeJX(from:in:)-8yvom": {
-  "abstract" : [
-
-  ],
-  "conformance" : {
-    "availabilityPrefix" : [
-      {
-        "text" : "Available when",
-        "type" : "text"
-      }
-    ],
-    "conformancePrefix" : [
-      {
-        "text" : "Conforms when",
-        "type" : "text"
-      }
-    ],
-    "constraints" : [
-      {
-        "code" : "Self",
-        "type" : "codeVoice"
-      },
-      {
-        "text" : " conforms to ",
-        "type" : "text"
-      },
-      {
-        "code" : "Decodable",
-        "type" : "codeVoice"
-      },
-      {
-        "text" : " and ",
-        "type" : "text"
-      },
-      {
-        "code" : "Encodable",
-        "type" : "codeVoice"
-      },
-      {
-        "text" : ".",
-        "type" : "text"
-      }
-    ]
-  },
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "static"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "makeJX"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "from"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "in"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit9JXContextC",
-      "text" : "JXContext"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "text" : "Self"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/makeJX(from:in:)-8yvom",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "makeJX(from:in:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxconvertible\/makejx(from:in:)-8yvom"
+  "url" : "\/documentation\/jxkit\/jxconvertible\/getjx(from:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [

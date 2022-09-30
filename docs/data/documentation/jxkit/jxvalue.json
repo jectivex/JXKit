@@ -186,6 +186,7 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isPromise",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isSealed",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isString",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isSymbol",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isUndefined",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/numberValue",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/properties",
@@ -199,11 +200,12 @@
       "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/call(withArguments:this:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/construct(withArguments:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(in:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/copyBytes()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/defineProperty(_:_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/deleteProperty(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/freeze()",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/getJXConvertible(from:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/hasProperty(_:)-1e3mh",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/hasProperty(_:)-2ontd",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/invokeMethod(_:withArguments:)",
@@ -214,9 +216,10 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/propertyDescriptor(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/removeProperty(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/seal()",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/set(_:object:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/set(_:convertible:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setElement(_:at:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(symbol:_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/toDecodable(ofType:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/toJSON(indent:)"
       ],
@@ -225,13 +228,15 @@
     {
       "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/subscript(_:)-44yy0",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/subscript(_:)-8iv6o"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/subscript(_:)-8iv6o",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/subscript(symbol:)"
       ],
       "title" : "Subscripts"
     },
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/createPromise(in:)"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/createPromise(in:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/makeJXConvertible(from:)"
       ],
       "title" : "Type Methods"
     },
@@ -721,7 +726,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/construct(witharguments:)"
 },
-"doc://JXKit/documentation/JXKit/JXValue/convey(in:)": {
+"doc://JXKit/documentation/JXKit/JXValue/convey(to:)": {
   "abstract" : [
     {
       "text" : "Attempts to convey the given result from the JS environment.",
@@ -755,7 +760,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "in"
+      "text" : "to"
     },
     {
       "kind" : "text",
@@ -763,12 +768,11 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit9JXContextC",
-      "text" : "JXContext"
+      "text" : "T"
     },
     {
       "kind" : "text",
-      "text" : ") "
+      "text" : ".Type) "
     },
     {
       "kind" : "keyword",
@@ -783,12 +787,12 @@
       "text" : "T"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(in:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "convey(in:)",
+  "title" : "convey(to:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/convey(in:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/convey(to:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue/copyBytes()": {
   "abstract" : [
@@ -1056,8 +1060,8 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
     },
     {
       "kind" : "text",
@@ -1257,6 +1261,60 @@
   "title" : "freeze()",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/freeze()"
+},
+"doc://JXKit/documentation/JXKit/JXValue/getJXConvertible(from:)": {
+  "abstract" : [
+    {
+      "text" : "Converts this value into a JXContext",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "getJXConvertible"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "from"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/getJXConvertible(from:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "getJXConvertible(from:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/getjxconvertible(from:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue/hasProperty(_:)-1e3mh": {
   "abstract" : [
@@ -2817,6 +2875,43 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/isstring"
 },
+"doc://JXKit/documentation/JXKit/JXValue/isSymbol": {
+  "abstract" : [
+    {
+      "text" : "Tests whether an object can be called as a function.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isSymbol"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isSymbol",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isSymbol",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/issymbol"
+},
 "doc://JXKit/documentation/JXKit/JXValue/isUndefined": {
   "abstract" : [
     {
@@ -2853,6 +2948,72 @@
   "title" : "isUndefined",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/isundefined"
+},
+"doc://JXKit/documentation/JXKit/JXValue/makeJXConvertible(from:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "makeJXConvertible"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "from"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "Self"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/makeJXConvertible(from:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "makeJXConvertible(from:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/makejxconvertible(from:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue/numberValue": {
   "abstract" : [
@@ -2999,8 +3160,8 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
     },
     {
       "kind" : "text",
@@ -3154,7 +3315,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/seal()"
 },
-"doc://JXKit/documentation/JXKit/JXValue/set(_:object:)": {
+"doc://JXKit/documentation/JXKit/JXValue/set(_:convertible:)": {
   "abstract" : [
     {
       "text" : "Sets a ",
@@ -3205,7 +3366,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "object"
+      "text" : "convertible"
     },
     {
       "kind" : "text",
@@ -3224,12 +3385,12 @@
       "text" : "throws"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/set(_:object:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/set(_:convertible:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "set(_:object:)",
+  "title" : "set(_:convertible:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/set(_:object:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/set(_:convertible:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue/setElement(_:at:)": {
   "abstract" : [
@@ -3340,6 +3501,68 @@
   "title" : "setProperty(_:_:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/setproperty(_:_:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/setProperty(symbol:_:)": {
+  "abstract" : [
+    {
+      "text" : "Sets the property specified by the symbol key.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setProperty"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "symbol"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(symbol:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "setProperty(symbol:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/setproperty(symbol:_:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue/stringValue": {
   "abstract" : [
@@ -3453,6 +3676,52 @@
   "title" : "subscript(_:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/subscript(_:)-8iv6o"
+},
+"doc://JXKit/documentation/JXKit/JXValue/subscript(symbol:)": {
+  "abstract" : [
+    {
+      "text" : "The value of the property for the given symbol.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "subscript"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "symbol"
+    },
+    {
+      "kind" : "text",
+      "text" : " _: "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/subscript(symbol:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "subscript(symbol:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/subscript(symbol:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue/toDecodable(ofType:)": {
   "abstract" : [

@@ -1,15 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Whether scripts evaluated by this context should be assessed in ",
-      "type" : "text"
-    },
-    {
-      "code" : "strict",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " mode.",
+      "text" : "An symbol type",
       "type" : "text"
     }
   ],
@@ -17,21 +9,21 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXType"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/strict"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/symbol"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit9JXContextC6strictSbvp",
+    "externalID" : "s:5JXKit6JXTypeO6symbolyA2CmF",
     "fragments" : [
       {
         "kind" : "keyword",
-        "text" : "let"
+        "text" : "case"
       },
       {
         "kind" : "text",
@@ -39,16 +31,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "strict"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:Sb",
-        "text" : "Bool"
+        "text" : "symbol"
       }
     ],
     "modules" : [
@@ -57,9 +40,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Instance Property",
-    "symbolKind" : "property",
-    "title" : "strict"
+    "roleHeading" : "Case",
+    "symbolKind" : "case",
+    "title" : "JXType.symbol"
   },
   "primaryContentSections" : [
     {
@@ -74,7 +57,7 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "let"
+              "text" : "case"
             },
             {
               "kind" : "text",
@@ -82,16 +65,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "strict"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:Sb",
-              "text" : "Bool"
+              "text" : "symbol"
             }
           ]
         }
@@ -110,7 +84,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/strict"
+        "\/documentation\/jxkit\/jxtype\/symbol"
       ],
       "traits" : [
         {
@@ -135,25 +109,17 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXContext": {
+"doc://JXKit/documentation/JXKit/JXType": {
   "abstract" : [
     {
-      "text" : "A JavaScript execution context. This is a cross-platform analogue to the Objective-C ",
-      "type" : "text"
-    },
-    {
-      "code" : "JavaScriptCore.JSContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
+      "text" : "A type of JavaScript instance.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "class"
+      "text" : "enum"
     },
     {
       "kind" : "text",
@@ -161,41 +127,33 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXContext"
+      "text" : "JXType"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXContext"
+      "text" : "JXType"
     }
   ],
   "role" : "symbol",
-  "title" : "JXContext",
+  "title" : "JXType",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext"
+  "url" : "\/documentation\/jxkit\/jxtype"
 },
-"doc://JXKit/documentation/JXKit/JXContext/strict": {
+"doc://JXKit/documentation/JXKit/JXType/symbol": {
   "abstract" : [
     {
-      "text" : "Whether scripts evaluated by this context should be assessed in ",
-      "type" : "text"
-    },
-    {
-      "code" : "strict",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " mode.",
+      "text" : "An symbol type",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "let"
+      "text" : "case"
     },
     {
       "kind" : "text",
@@ -203,24 +161,15 @@
     },
     {
       "kind" : "identifier",
-      "text" : "strict"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
+      "text" : "symbol"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/strict",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/symbol",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "strict",
+  "title" : "JXType.symbol",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/strict"
+  "url" : "\/documentation\/jxkit\/jxtype\/symbol"
 }
 }
 }

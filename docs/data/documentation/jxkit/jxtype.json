@@ -106,7 +106,8 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/date",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/number",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/object",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/string"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/string",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/symbol"
       ],
       "title" : "Enumeration Cases"
     },
@@ -396,6 +397,34 @@
   "title" : "JXType.string",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxtype\/string"
+},
+"doc://JXKit/documentation/JXKit/JXType/symbol": {
+  "abstract" : [
+    {
+      "text" : "An symbol type",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "symbol"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/symbol",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXType.symbol",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxtype\/symbol"
 }
 }
 }

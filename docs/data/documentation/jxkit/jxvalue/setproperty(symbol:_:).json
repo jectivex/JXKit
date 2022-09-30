@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Attempts to convey the given result from the JS environment.",
+      "text" : "Sets the property specified by the symbol key.",
       "type" : "text"
     }
   ],
@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(in:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(symbol:_:)"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC6convey2inxAA9JXContextC_tKAA13JXConvertibleRzlF",
+    "externalID" : "s:5JXKit7JXValueC11setProperty6symbol_yAC_ACtKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,23 +32,15 @@
       },
       {
         "kind" : "identifier",
-        "text" : "convey"
+        "text" : "setProperty"
       },
       {
         "kind" : "text",
-        "text" : "<"
-      },
-      {
-        "kind" : "genericParameter",
-        "text" : "T"
-      },
-      {
-        "kind" : "text",
-        "text" : ">("
+        "text" : "("
       },
       {
         "kind" : "externalParam",
-        "text" : "in"
+        "text" : "symbol"
       },
       {
         "kind" : "text",
@@ -56,8 +48,17 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit9JXContextC",
-        "text" : "JXContext"
+        "preciseIdentifier" : "s:5JXKit7JXValueC",
+        "text" : "JXValue"
+      },
+      {
+        "kind" : "text",
+        "text" : ", "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:5JXKit7JXValueC",
+        "text" : "JXValue"
       },
       {
         "kind" : "text",
@@ -66,14 +67,6 @@
       {
         "kind" : "keyword",
         "text" : "throws"
-      },
-      {
-        "kind" : "text",
-        "text" : " -> "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "text" : "T"
       }
     ],
     "modules" : [
@@ -84,7 +77,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "convey(in:)"
+    "title" : "setProperty(symbol:_:)"
   },
   "primaryContentSections" : [
     {
@@ -107,23 +100,33 @@
             },
             {
               "kind" : "identifier",
-              "text" : "convey"
+              "text" : "setProperty"
             },
             {
               "kind" : "text",
-              "text" : "<"
-            },
-            {
-              "kind" : "genericParameter",
-              "text" : "T"
-            },
-            {
-              "kind" : "text",
-              "text" : ">("
+              "text" : "("
             },
             {
               "kind" : "externalParam",
-              "text" : "in"
+              "text" : "symbol"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5JXKit7JXValueC",
+              "text" : "JXValue"
+            },
+            {
+              "kind" : "text",
+              "text" : ", "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "_"
             },
             {
               "kind" : "text",
@@ -131,17 +134,17 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "context"
+              "text" : "newValue"
             },
             {
               "kind" : "text",
               "text" : ": "
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit9JXContextC",
-              "text" : "JXContext"
+              "preciseIdentifier" : "s:5JXKit7JXValueC",
+              "text" : "JXValue"
             },
             {
               "kind" : "text",
@@ -150,40 +153,6 @@
             {
               "kind" : "keyword",
               "text" : "throws"
-            },
-            {
-              "kind" : "text",
-              "text" : " -> "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "text" : "T"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "keyword",
-              "text" : "where"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "text" : "T"
-            },
-            {
-              "kind" : "text",
-              "text" : " : "
-            },
-            {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit13JXConvertibleP",
-              "text" : "JXConvertible"
             }
           ]
         }
@@ -201,7 +170,7 @@
         {
           "inlineContent" : [
             {
-              "text" : "the conveyed instance",
+              "text" : "",
               "type" : "text"
             }
           ],
@@ -218,14 +187,28 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "the context to use",
+                  "text" : "the name of the symbol to use",
                   "type" : "text"
                 }
               ],
               "type" : "paragraph"
             }
           ],
-          "name" : "context"
+          "name" : "key"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "the value to set the property",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "newValue"
         }
       ]
     }
@@ -241,7 +224,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxvalue\/convey(in:)"
+        "\/documentation\/jxkit\/jxvalue\/setproperty(symbol:_:)"
       ],
       "traits" : [
         {
@@ -265,82 +248,6 @@
   "title" : "JXKit",
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
-},
-"doc://JXKit/documentation/JXKit/JXContext": {
-  "abstract" : [
-    {
-      "text" : "A JavaScript execution context. This is a cross-platform analogue to the Objective-C ",
-      "type" : "text"
-    },
-    {
-      "code" : "JavaScriptCore.JSContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXContext"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXContext"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXContext",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext"
-},
-"doc://JXKit/documentation/JXKit/JXConvertible": {
-  "abstract" : [
-    {
-      "text" : "A type that can move back and forth between Swift and JavaScipt, either through direct reference or by serialization.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "protocol"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXConvertible"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXConvertible"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXConvertible",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxconvertible"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
@@ -376,10 +283,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue"
 },
-"doc://JXKit/documentation/JXKit/JXValue/convey(in:)": {
+"doc://JXKit/documentation/JXKit/JXValue/setProperty(symbol:_:)": {
   "abstract" : [
     {
-      "text" : "Attempts to convey the given result from the JS environment.",
+      "text" : "Sets the property specified by the symbol key.",
       "type" : "text"
     }
   ],
@@ -394,23 +301,15 @@
     },
     {
       "kind" : "identifier",
-      "text" : "convey"
+      "text" : "setProperty"
     },
     {
       "kind" : "text",
-      "text" : "<"
-    },
-    {
-      "kind" : "genericParameter",
-      "text" : "T"
-    },
-    {
-      "kind" : "text",
-      "text" : ">("
+      "text" : "("
     },
     {
       "kind" : "externalParam",
-      "text" : "in"
+      "text" : "symbol"
     },
     {
       "kind" : "text",
@@ -418,8 +317,17 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit9JXContextC",
-      "text" : "JXContext"
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
     },
     {
       "kind" : "text",
@@ -428,22 +336,14 @@
     {
       "kind" : "keyword",
       "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "text" : "T"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(in:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(symbol:_:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "convey(in:)",
+  "title" : "setProperty(symbol:_:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/convey(in:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/setproperty(symbol:_:)"
 }
 }
 }

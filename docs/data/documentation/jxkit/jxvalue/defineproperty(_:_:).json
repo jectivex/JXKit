@@ -20,7 +20,7 @@
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC14definePropertyyySS_AA10JXPropertyVtKF",
+    "externalID" : "s:5JXKit7JXValueC14definePropertyyyAC_AA10JXPropertyVtKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -40,8 +40,8 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:SS",
-        "text" : "String"
+        "preciseIdentifier" : "s:5JXKit7JXValueC",
+        "text" : "JXValue"
       },
       {
         "kind" : "text",
@@ -115,9 +115,10 @@
               "text" : ": "
             },
             {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:SS",
-              "text" : "String"
+              "preciseIdentifier" : "s:5JXKit7JXValueC",
+              "text" : "JXValue"
             },
             {
               "kind" : "text",
@@ -169,7 +170,7 @@
         {
           "inlineContent" : [
             {
-              "text" : "true if the operation succeeds, otherwise false.",
+              "text" : "the key for the property that was defined",
               "type" : "text"
             }
           ],
@@ -186,7 +187,7 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "The property’s name.",
+                  "text" : "The property’s key, which can either be a string or a symbol.",
                   "type" : "text"
                 }
               ],
@@ -342,8 +343,8 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
     },
     {
       "kind" : "text",

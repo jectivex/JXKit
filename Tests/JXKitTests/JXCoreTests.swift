@@ -75,7 +75,7 @@ class JXCoreTests: XCTestCase {
 
         let desc = JXProperty { _ in jxc.number(3) }
 
-        try jxc.global["obj"].defineProperty("three", desc)
+        try jxc.global["obj"].defineProperty(jxc.string("three"), desc)
         let result = try jxc.eval("obj.three")
         XCTAssertEqual(try result.numberValue, 3)
     }
@@ -90,7 +90,7 @@ class JXCoreTests: XCTestCase {
             setter: { this, newValue in try this.setProperty("number_container", newValue) }
         )
 
-        try jxc.global["obj"].defineProperty("number", desc)
+        try jxc.global["obj"].defineProperty(jxc.string("number"), desc)
 
         try jxc.eval("obj.number = 5")
 
@@ -101,6 +101,44 @@ class JXCoreTests: XCTestCase {
 
         XCTAssertEqual(try jxc.global["obj"]["number"].numberValue, 3)
         XCTAssertEqual(try jxc.global["obj"]["number_container"].numberValue, 3)
+    }
+
+    func testSymbols() throws {
+        let jxc = JXContext()
+
+        let obj = jxc.symbol("obj") // the unique symbol for the object
+
+        XCTAssertEqual(true, try jxc.global[symbol: obj].isUndefined)
+        try jxc.global.setProperty(symbol: obj, jxc.object())
+        XCTAssertEqual(true, try jxc.global[symbol: obj].isObject)
+
+        XCTAssertEqual(true, try jxc.global["obj"].isUndefined, "should not be able to reference symbol by name externally")
+//        XCTAssertEqual(true, try jxc.eval("this['obj']").isObject, "should be able to reference symbol by name internally")
+
+        let container = jxc.symbol("container")
+
+        let gobj = try jxc.global[symbol: obj]
+        try gobj.setProperty(symbol: container, jxc.number(0))
+
+        let desc = JXProperty(
+            getter: { this in try this[symbol: container] },
+            setter: { this, newValue in try this.setProperty(symbol: container, newValue) }
+        )
+
+        try gobj.defineProperty(jxc.symbol("number"), desc)
+
+        XCTAssertEqual(false, try jxc.global["object_symbol"].isSymbol)
+        try jxc.global.setProperty("object_symbol", obj)
+        XCTAssertEqual(true, try jxc.global["object_symbol"].isSymbol)
+
+        try jxc.eval("this[object_symbol].number = 5")
+
+        XCTAssertEqual(try gobj["number"].numberValue, 5)
+
+        try jxc.eval("this[object_symbol].number = 3")
+
+        XCTAssertEqual(try jxc.global[symbol: obj]["number"].numberValue, 3)
+        //XCTAssertEqual(try jxc.global[symbol: obj][symbol: container].numberValue, 3)
     }
 
     func testArrayBuffer() throws {
@@ -134,7 +172,8 @@ class JXCoreTests: XCTestCase {
         var flag = 0
 
         do {
-            let jxc = JXContext()
+            let vm = JXVM()
+            let jxc = JXContext(virtualMachine: vm)
             var bytes: [UInt8] = [1, 2, 3, 4, 5, 6, 7, 8]
 
             try bytes.withUnsafeMutableBytes { bytes in
@@ -265,7 +304,19 @@ class JXCoreTests: XCTestCase {
         XCTAssertEqual(true, try jxc.eval("(async () => { })").isFunction)
         XCTAssertEqual(true, try jxc.eval("(async () => { })()").isPromise)
 
+        XCTAssertEqual(true, try jxc.eval("Symbol('xxx')").isSymbol)
+        //XCTAssertEqual("xxx", try jxc.eval("Symbol('xxx')"))
+
+        XCTAssertThrowsError(try jxc.eval("new Symbol('xxx')")) { error in
+            XCTAssertEqual("TypeError: function is not a constructor (evaluating 'new Symbol('xxx')')", "\(error)")
+        }
+
+        XCTAssertThrowsError(try jxc.eval("Symbol('xxx')").stringValue) { error in
+            XCTAssertEqual("TypeError: Cannot convert a symbol to a string", "\(error)")
+        }
+
         XCTAssertEqual(true, jxc.string("").isString)
+        XCTAssertEqual(false, jxc.string("").isSymbol)
         XCTAssertEqual(true, jxc.number(1.1).isNumber)
         XCTAssertEqual(true, jxc.null().isNull)
         XCTAssertEqual(true, try jxc.array([]).isArray)
@@ -306,4 +357,31 @@ class JXCoreTests: XCTestCase {
         XCTAssertEqual(try lint("use strict"), "SyntaxError: Unexpected identifier \'strict\'") // need to quote
         XCTAssertEqual(try lint("'use strict'\nmistypeVarible = 17"), "ReferenceError: Can\'t find variable: mistypeVarible")
     }
+
+
+    static var peerCount = 0
+
+    func testPeers() throws {
+        class AssociatedObject {
+            var str: String
+            init(str: String) {
+                self.str = str
+                JXCoreTests.peerCount += 1
+            }
+            deinit {
+                JXCoreTests.peerCount -= 1
+            }
+        }
+
+        do {
+            let jxc = JXContext()
+            XCTAssertEqual(0, JXCoreTests.peerCount)
+            let obj = jxc.object(peer: AssociatedObject(str: "ABC"))
+            XCTAssertNotNil(jxc.peer(for: obj))
+            XCTAssertEqual("ABC", (jxc.peer(for: obj) as? AssociatedObject)?.str)
+            XCTAssertEqual(1, JXCoreTests.peerCount)
+        }
+        XCTAssertEqual(1, JXCoreTests.peerCount) // TODO: should be 0
+    }
+
 }

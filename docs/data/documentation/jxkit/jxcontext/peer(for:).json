@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "An exception handler for the given context",
+      "text" : "Returns an existing object peer for the given JXValue object.",
       "type" : "text"
     }
   ],
@@ -15,15 +15,16 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/exceptionHandler"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/peer(for:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit9JXContextC16exceptionHandleryACSg_AA7JXValueCSgtcSgvp",
+    "extendedModule" : "JXKit",
+    "externalID" : "s:5JXKit9JXContextC4peer3foryXlSgAA7JXValueC_tF",
     "fragments" : [
       {
         "kind" : "keyword",
-        "text" : "var"
+        "text" : "func"
       },
       {
         "kind" : "text",
@@ -31,20 +32,19 @@
       },
       {
         "kind" : "identifier",
-        "text" : "exceptionHandler"
+        "text" : "peer"
       },
       {
         "kind" : "text",
-        "text" : ": (("
+        "text" : "("
       },
       {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit9JXContextC",
-        "text" : "JXContext"
+        "kind" : "externalParam",
+        "text" : "for"
       },
       {
         "kind" : "text",
-        "text" : "?, "
+        "text" : ": "
       },
       {
         "kind" : "typeIdentifier",
@@ -53,16 +53,16 @@
       },
       {
         "kind" : "text",
-        "text" : "?) -> "
+        "text" : ") -> "
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:s4Voida",
-        "text" : "Void"
+        "preciseIdentifier" : "s:s9AnyObjecta",
+        "text" : "AnyObject"
       },
       {
         "kind" : "text",
-        "text" : ")?"
+        "text" : "?"
       }
     ],
     "modules" : [
@@ -71,9 +71,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Instance Property",
-    "symbolKind" : "property",
-    "title" : "exceptionHandler"
+    "roleHeading" : "Instance Method",
+    "symbolKind" : "method",
+    "title" : "peer(for:)"
   },
   "primaryContentSections" : [
     {
@@ -88,7 +88,7 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "var"
+              "text" : "func"
             },
             {
               "kind" : "text",
@@ -96,21 +96,27 @@
             },
             {
               "kind" : "identifier",
-              "text" : "exceptionHandler"
+              "text" : "peer"
             },
             {
               "kind" : "text",
-              "text" : ": (("
+              "text" : "("
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit9JXContextC",
-              "text" : "JXContext"
+              "kind" : "externalParam",
+              "text" : "for"
             },
             {
               "kind" : "text",
-              "text" : "?, "
+              "text" : " "
+            },
+            {
+              "kind" : "internalParam",
+              "text" : "key"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
             },
             {
               "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
@@ -120,16 +126,16 @@
             },
             {
               "kind" : "text",
-              "text" : "?) -> "
+              "text" : ") -> "
             },
             {
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:s4Voida",
-              "text" : "Void"
+              "preciseIdentifier" : "s:s9AnyObjecta",
+              "text" : "AnyObject"
             },
             {
               "kind" : "text",
-              "text" : ")?"
+              "text" : "?"
             }
           ]
         }
@@ -148,7 +154,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/exceptionhandler"
+        "\/documentation\/jxkit\/jxcontext\/peer(for:)"
       ],
       "traits" : [
         {
@@ -215,17 +221,17 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/exceptionHandler": {
+"doc://JXKit/documentation/JXKit/JXContext/peer(for:)": {
   "abstract" : [
     {
-      "text" : "An exception handler for the given context",
+      "text" : "Returns an existing object peer for the given JXValue object.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "var"
+      "text" : "func"
     },
     {
       "kind" : "text",
@@ -233,20 +239,19 @@
     },
     {
       "kind" : "identifier",
-      "text" : "exceptionHandler"
+      "text" : "peer"
     },
     {
       "kind" : "text",
-      "text" : ": (("
+      "text" : "("
     },
     {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit9JXContextC",
-      "text" : "JXContext"
+      "kind" : "externalParam",
+      "text" : "for"
     },
     {
       "kind" : "text",
-      "text" : "?, "
+      "text" : ": "
     },
     {
       "kind" : "typeIdentifier",
@@ -255,24 +260,24 @@
     },
     {
       "kind" : "text",
-      "text" : "?) -> "
+      "text" : ") -> "
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:s4Voida",
-      "text" : "Void"
+      "preciseIdentifier" : "s:s9AnyObjecta",
+      "text" : "AnyObject"
     },
     {
       "kind" : "text",
-      "text" : ")?"
+      "text" : "?"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/exceptionHandler",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/peer(for:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "exceptionHandler",
+  "title" : "peer(for:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/exceptionhandler"
+  "url" : "\/documentation\/jxkit\/jxcontext\/peer(for:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [

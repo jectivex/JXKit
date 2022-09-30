@@ -1,15 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Whether scripts evaluated by this context should be assessed in ",
-      "type" : "text"
-    },
-    {
-      "code" : "strict",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " mode.",
+      "text" : "Creates a new object in this context and assigns it the given peer object.",
       "type" : "text"
     }
   ],
@@ -23,15 +15,16 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/strict"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(peer:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit9JXContextC6strictSbvp",
+    "extendedModule" : "JXKit",
+    "externalID" : "s:5JXKit9JXContextC6object4peerAA7JXValueCyXlSg_tF",
     "fragments" : [
       {
         "kind" : "keyword",
-        "text" : "let"
+        "text" : "func"
       },
       {
         "kind" : "text",
@@ -39,7 +32,15 @@
       },
       {
         "kind" : "identifier",
-        "text" : "strict"
+        "text" : "object"
+      },
+      {
+        "kind" : "text",
+        "text" : "("
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "peer"
       },
       {
         "kind" : "text",
@@ -47,8 +48,17 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:Sb",
-        "text" : "Bool"
+        "preciseIdentifier" : "s:s9AnyObjecta",
+        "text" : "AnyObject"
+      },
+      {
+        "kind" : "text",
+        "text" : "?) -> "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:5JXKit7JXValueC",
+        "text" : "JXValue"
       }
     ],
     "modules" : [
@@ -57,9 +67,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Instance Property",
-    "symbolKind" : "property",
-    "title" : "strict"
+    "roleHeading" : "Instance Method",
+    "symbolKind" : "method",
+    "title" : "object(peer:)"
   },
   "primaryContentSections" : [
     {
@@ -74,7 +84,7 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "let"
+              "text" : "func"
             },
             {
               "kind" : "text",
@@ -82,7 +92,15 @@
             },
             {
               "kind" : "identifier",
-              "text" : "strict"
+              "text" : "object"
+            },
+            {
+              "kind" : "text",
+              "text" : "("
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "peer"
             },
             {
               "kind" : "text",
@@ -90,8 +108,18 @@
             },
             {
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:Sb",
-              "text" : "Bool"
+              "preciseIdentifier" : "s:s9AnyObjecta",
+              "text" : "AnyObject"
+            },
+            {
+              "kind" : "text",
+              "text" : "? = nil) -> "
+            },
+            {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5JXKit7JXValueC",
+              "text" : "JXValue"
             }
           ]
         }
@@ -110,7 +138,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/strict"
+        "\/documentation\/jxkit\/jxcontext\/object(peer:)"
       ],
       "traits" : [
         {
@@ -177,25 +205,17 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/strict": {
+"doc://JXKit/documentation/JXKit/JXContext/object(peer:)": {
   "abstract" : [
     {
-      "text" : "Whether scripts evaluated by this context should be assessed in ",
-      "type" : "text"
-    },
-    {
-      "code" : "strict",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " mode.",
+      "text" : "Creates a new object in this context and assigns it the given peer object.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "let"
+      "text" : "func"
     },
     {
       "kind" : "text",
@@ -203,7 +223,15 @@
     },
     {
       "kind" : "identifier",
-      "text" : "strict"
+      "text" : "object"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "peer"
     },
     {
       "kind" : "text",
@@ -211,16 +239,59 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
+      "preciseIdentifier" : "s:s9AnyObjecta",
+      "text" : "AnyObject"
+    },
+    {
+      "kind" : "text",
+      "text" : "?) -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/strict",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(peer:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "strict",
+  "title" : "object(peer:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/strict"
+  "url" : "\/documentation\/jxkit\/jxcontext\/object(peer:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue": {
+  "abstract" : [
+    {
+      "text" : "A JavaScript object.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXValue"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXValue",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue"
 }
 }
 }

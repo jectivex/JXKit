@@ -5,29 +5,22 @@
       "type" : "text"
     }
   ],
-  "defaultImplementationsSections" : [
-    {
-      "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/getJX(from:)-1p2pp"
-      ],
-      "title" : "JXConvertible Implementations"
-    }
-  ],
   "hierarchy" : {
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/getJX(from:)-76hxb"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/getJXConvertible(from:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit13JXConvertibleP5getJX4fromAA7JXValueCAA9JXContextC_tKF",
+    "extendedModule" : "JXKit",
+    "externalID" : "s:5JXKit7JXValueC16getJXConvertible4fromAcA9JXContextC_tF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -39,7 +32,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "getJX"
+        "text" : "getJXConvertible"
       },
       {
         "kind" : "text",
@@ -60,15 +53,7 @@
       },
       {
         "kind" : "text",
-        "text" : ") "
-      },
-      {
-        "kind" : "keyword",
-        "text" : "throws"
-      },
-      {
-        "kind" : "text",
-        "text" : " -> "
+        "text" : ") -> "
       },
       {
         "kind" : "typeIdentifier",
@@ -81,11 +66,10 @@
         "name" : "JXKit"
       }
     ],
-    "required" : true,
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "getJX(from:)"
+    "title" : "getJXConvertible(from:)"
   },
   "primaryContentSections" : [
     {
@@ -108,7 +92,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "getJX"
+              "text" : "getJXConvertible"
             },
             {
               "kind" : "text",
@@ -138,15 +122,7 @@
             },
             {
               "kind" : "text",
-              "text" : ") "
-            },
-            {
-              "kind" : "keyword",
-              "text" : "throws"
-            },
-            {
-              "kind" : "text",
-              "text" : " -> "
+              "text" : ") -> "
             },
             {
               "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
@@ -171,7 +147,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxconvertible\/getjx(from:)-76hxb"
+        "\/documentation\/jxkit\/jxvalue\/getjxconvertible(from:)"
       ],
       "traits" : [
         {
@@ -238,203 +214,6 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXConvertible": {
-  "abstract" : [
-    {
-      "text" : "A type that can move back and forth between Swift and JavaScipt, either through direct reference or by serialization.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "protocol"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXConvertible"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXConvertible"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXConvertible",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxconvertible"
-},
-"doc://JXKit/documentation/JXKit/JXConvertible/getJX(from:)-1p2pp": {
-  "abstract" : [
-
-  ],
-  "conformance" : {
-    "availabilityPrefix" : [
-      {
-        "text" : "Available when",
-        "type" : "text"
-      }
-    ],
-    "conformancePrefix" : [
-      {
-        "text" : "Conforms when",
-        "type" : "text"
-      }
-    ],
-    "constraints" : [
-      {
-        "code" : "Self",
-        "type" : "codeVoice"
-      },
-      {
-        "text" : " conforms to ",
-        "type" : "text"
-      },
-      {
-        "code" : "Decodable",
-        "type" : "codeVoice"
-      },
-      {
-        "text" : " and ",
-        "type" : "text"
-      },
-      {
-        "code" : "Encodable",
-        "type" : "codeVoice"
-      },
-      {
-        "text" : ".",
-        "type" : "text"
-      }
-    ]
-  },
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "getJX"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "from"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit9JXContextC",
-      "text" : "JXContext"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/getJX(from:)-1p2pp",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "getJX(from:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxconvertible\/getjx(from:)-1p2pp"
-},
-"doc://JXKit/documentation/JXKit/JXConvertible/getJX(from:)-76hxb": {
-  "abstract" : [
-    {
-      "text" : "Converts this value into a JXContext",
-      "type" : "text"
-    }
-  ],
-  "defaultImplementations" : 1,
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "getJX"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "from"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit9JXContextC",
-      "text" : "JXContext"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/getJX(from:)-76hxb",
-  "kind" : "symbol",
-  "required" : true,
-  "role" : "symbol",
-  "title" : "getJX(from:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxconvertible\/getjx(from:)-76hxb"
-},
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
     {
@@ -468,6 +247,60 @@
   "title" : "JXValue",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue"
+},
+"doc://JXKit/documentation/JXKit/JXValue/getJXConvertible(from:)": {
+  "abstract" : [
+    {
+      "text" : "Converts this value into a JXContext",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "getJXConvertible"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "from"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/getJXConvertible(from:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "getJXConvertible(from:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/getjxconvertible(from:)"
 }
 }
 }

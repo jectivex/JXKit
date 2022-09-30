@@ -31,6 +31,11 @@ public class JXValue {
     }
 
     deinit {
+//        if self.isObject,
+//           !self.isFunction, // function store the callback in the private region
+//           let ptr = JSObjectGetPrivate(self.value) {
+//            ptr.deallocate()
+//        }
         JSValueUnprotect(env.context, value)
     }
 }
@@ -95,6 +100,17 @@ extension JXValue {
         let value = value.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(value) }
         self.init(env: env, valueRef: JSValueMakeString(env.context, value))
+    }
+
+    /// Creates a JavaScript value of the `Symbol` type.
+    ///
+    /// - Parameters:
+    ///   - value: The value to assign to the object.
+    ///   - context: The execution context to use.
+    @usableFromInline internal convenience init(symbol value: String, in env: JXContext) {
+        let value = value.withCString(JSStringCreateWithUTF8CString)
+        defer { JSStringRelease(value) }
+        self.init(env: env, valueRef: JSValueMakeSymbol(env.context, value))
     }
 
     /// Creates a JavaScript value of the parsed `JSON`.
@@ -268,6 +284,11 @@ extension JXValue {
     /// Tests whether an object can be called as a function.
     @inlinable public var isFunction: Bool {
         isObject && JSObjectIsFunction(env.context, value)
+    }
+
+    /// Tests whether an object can be called as a function.
+    @inlinable public var isSymbol: Bool {
+        JSValueIsSymbol(env.context, value)
     }
 
     /// Tests whether a JavaScript value’s type is the date type.
@@ -595,6 +616,22 @@ extension JXValue {
         }
     }
 
+    /// The value of the property for the given symbol.
+    @inlinable public subscript(symbol symbol: JXValue) -> JXValue {
+        get throws {
+            if !isObject {
+                throw JXErrors.propertyAccessNonObject
+            }
+            if !symbol.isSymbol {
+                throw JXErrors.keyNotSymbol
+            }
+            let result = try env.trying {
+                JSObjectGetPropertyForKey(env.context, value, symbol.value, $0)
+            }
+            return result.map { JXValue(env: env, valueRef: $0) } ?? JXValue(undefinedIn: env)
+        }
+    }
+
     @inlinable public func setProperty(_ key: String, _ newValue: JXValue) throws {
         if !isObject {
             throw JXErrors.propertyAccessNonObject
@@ -604,6 +641,21 @@ extension JXValue {
         defer { JSStringRelease(property) }
         try env.trying {
             JSObjectSetProperty(env.context, value, property, newValue.value, 0, $0)
+        }
+    }
+
+    /// Sets the property specified by the symbol key.
+    /// - Parameters:
+    ///   - key: the name of the symbol to use
+    ///   - newValue: the value to set the property
+    /// - Returns:
+    @inlinable public func setProperty(symbol: JXValue, _ newValue: JXValue) throws {
+        if !isObject {
+            throw JXErrors.propertyAccessNonObject
+        }
+
+        try env.trying {
+            JSObjectSetPropertyForKey(env.context, value, symbol.value, newValue.value, 0, $0)
         }
     }
 }
@@ -716,7 +768,11 @@ extension JXValue {
     /// The length (in bytes) of the `ArrayBuffer`.
     public var byteLength: Int {
         get throws {
-            try Int(self["byteLength"].numberValue)
+            let num = try self["byteLength"].numberValue
+            if let int = Int(exactly: num) {
+                return int
+            }
+            throw JXErrors.invalidNumericConversion(num)
         }
     }
 
@@ -754,7 +810,7 @@ extension JXValue {
     ///   - context: The execution context to use.
     ///   - callback: The callback function.
     ///
-    /// - Note: This object is callable as a function (due to `JSClassDefinition.callAsFunction`), but the JavaScript runtime doesn't treat is exactly like a function. For example, you cannot call "apply" on it. It could be better to use `JSObjectMakeFunctionWithCallback`, which may act more like a "true" JavaScript function.
+    /// - Note: This object is callable as a function (due to `JSClassDefinition.callAsFunction`), but the JavaScript runtime doesn't treat it exactly like a function. For example, you cannot call "apply" on it. It could be better to use `JSObjectMakeFunctionWithCallback`, which may act more like a "true" JavaScript function.
     public convenience init(newFunctionIn env: JXContext, callback: @escaping JXFunction) {
         let info: UnsafeMutablePointer<JXFunctionInfo> = .allocate(capacity: 1)
         info.initialize(to: JXFunctionInfo(context: env, callback: callback))
@@ -768,6 +824,7 @@ extension JXValue {
         let _class = JSClassCreate(&def)
         defer { JSClassRelease(_class) }
 
+        // JSObjectMakeFunctionWithCallback(env.context, JSStringRef, JSObjectCallAsFunctionCallback)
         self.init(env: env, valueRef: JSObjectMake(env.context, _class, info))
     }
 
@@ -882,11 +939,11 @@ extension JXValue {
     /// Defines a property on the JavaScript object value or modifies a property’s definition.
     ///
     /// - Parameters:
-    ///   - property: The property's name.
+    ///   - property: The property's key, which can either be a string or a symbol.
     ///   - descriptor: The descriptor object.
     ///
-    /// - Returns: true if the operation succeeds, otherwise false.
-    public func defineProperty(_ property: String, _ descriptor: JXProperty) throws {
+    /// - Returns: the key for the property that was defined
+    @inlinable public func defineProperty(_ property: JXValue, _ descriptor: JXProperty) throws {
         let desc = JXValue(newObjectIn: env)
 
         if let value = descriptor.value {
@@ -920,11 +977,11 @@ extension JXValue {
             try desc.setProperty("enumerable", JXValue(bool: enumerable, in: env))
         }
 
-        try env.objectPrototype.invokeMethod("defineProperty", withArguments: [self, JXValue(string: property, in: env), desc])
+        try env.objectPrototype.invokeMethod("defineProperty", withArguments: [self, property, desc])
     }
 
-    public func propertyDescriptor(_ property: String) throws -> JXValue {
-        try env.objectPrototype.invokeMethod("getOwnPropertyDescriptor", withArguments: [self, JXValue(string: property, in: env)])
+    public func propertyDescriptor(_ property: JXValue) throws -> JXValue {
+        try env.objectPrototype.invokeMethod("getOwnPropertyDescriptor", withArguments: [self, property])
     }
 }
 
@@ -935,8 +992,8 @@ extension JXValue {
 public struct JXProperty {
     public let value: JXValue?
     public let writable: Bool?
-    fileprivate let _getter: JXValue?
-    fileprivate let _setter: JXValue?
+    @usableFromInline internal let _getter: JXValue?
+    @usableFromInline internal let _setter: JXValue?
     public let getter: ((JXValue) throws -> JXValue)?
     public let setter: ((JXValue, JXValue) throws -> Void)?
     public var configurable: Bool? = nil
@@ -1027,6 +1084,8 @@ public enum JXType : Hashable {
     case array
     /// An object type
     case object
+    /// An symbol type
+    case symbol
 }
 
 extension JXValue {
@@ -1035,6 +1094,7 @@ extension JXValue {
         if isNull { return nil }
         if isBoolean { return .boolean }
         if isNumber { return .number }
+        if isSymbol { return .symbol }
         if (try? isDate) == true { return .date }
         if isString { return .string }
         if (try? isArray) == true { return .array }

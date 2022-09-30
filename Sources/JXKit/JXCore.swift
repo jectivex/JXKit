@@ -58,7 +58,7 @@ extension JXVM {
 }
 
 /// The underlying type that represents a value in the JavaScript environment
-@usableFromInline internal typealias JXValueRef = JSValueRef
+public typealias JXValueRef = JSValueRef
 
 @usableFromInline internal typealias JXContextRef = JSContextRef
 

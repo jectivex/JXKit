@@ -1,15 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Inherited from ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXConvertible.makeJX(from:in:)",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
+      "text" : "Creates a new Symbol with the given name in the context.",
       "type" : "text"
     }
   ],
@@ -17,28 +9,19 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/JXConvertible-Implementations"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/makeJX(from:in:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/symbol(_:)"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC6makeJX4from2inACXDAC_AA9JXContextCtKFZ",
+    "externalID" : "s:5JXKit9JXContextC6symbolyAA7JXValueCxSyRzlF",
     "fragments" : [
-      {
-        "kind" : "keyword",
-        "text" : "static"
-      },
-      {
-        "kind" : "text",
-        "text" : " "
-      },
       {
         "kind" : "keyword",
         "text" : "func"
@@ -49,57 +32,32 @@
       },
       {
         "kind" : "identifier",
-        "text" : "makeJX"
+        "text" : "symbol"
       },
       {
         "kind" : "text",
-        "text" : "("
+        "text" : "<"
       },
       {
-        "kind" : "externalParam",
-        "text" : "from"
+        "kind" : "genericParameter",
+        "text" : "S"
       },
       {
         "kind" : "text",
-        "text" : ": "
+        "text" : ">("
+      },
+      {
+        "kind" : "typeIdentifier",
+        "text" : "S"
+      },
+      {
+        "kind" : "text",
+        "text" : ") -> "
       },
       {
         "kind" : "typeIdentifier",
         "preciseIdentifier" : "s:5JXKit7JXValueC",
         "text" : "JXValue"
-      },
-      {
-        "kind" : "text",
-        "text" : ", "
-      },
-      {
-        "kind" : "externalParam",
-        "text" : "in"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit9JXContextC",
-        "text" : "JXContext"
-      },
-      {
-        "kind" : "text",
-        "text" : ") "
-      },
-      {
-        "kind" : "keyword",
-        "text" : "throws"
-      },
-      {
-        "kind" : "text",
-        "text" : " -> "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "text" : "Self"
       }
     ],
     "modules" : [
@@ -108,9 +66,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Type Method",
+    "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "makeJX(from:in:)"
+    "title" : "symbol(_:)"
   },
   "primaryContentSections" : [
     {
@@ -125,14 +83,6 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "static"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "keyword",
               "text" : "func"
             },
             {
@@ -141,15 +91,23 @@
             },
             {
               "kind" : "identifier",
-              "text" : "makeJX"
+              "text" : "symbol"
             },
             {
               "kind" : "text",
-              "text" : "("
+              "text" : "<"
+            },
+            {
+              "kind" : "genericParameter",
+              "text" : "S"
+            },
+            {
+              "kind" : "text",
+              "text" : ">("
             },
             {
               "kind" : "externalParam",
-              "text" : "from"
+              "text" : "_"
             },
             {
               "kind" : "text",
@@ -164,6 +122,14 @@
               "text" : ": "
             },
             {
+              "kind" : "typeIdentifier",
+              "text" : "S"
+            },
+            {
+              "kind" : "text",
+              "text" : ") -> "
+            },
+            {
               "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
               "preciseIdentifier" : "s:5JXKit7JXValueC",
@@ -171,45 +137,28 @@
             },
             {
               "kind" : "text",
-              "text" : ", "
+              "text" : " "
             },
             {
-              "kind" : "externalParam",
-              "text" : "in"
+              "kind" : "keyword",
+              "text" : "where"
             },
             {
               "kind" : "text",
               "text" : " "
             },
             {
-              "kind" : "internalParam",
-              "text" : "context"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit9JXContextC",
-              "text" : "JXContext"
+              "text" : "S"
             },
             {
               "kind" : "text",
-              "text" : ") "
-            },
-            {
-              "kind" : "keyword",
-              "text" : "throws"
-            },
-            {
-              "kind" : "text",
-              "text" : " -> "
+              "text" : " : "
             },
             {
               "kind" : "typeIdentifier",
-              "text" : "Self"
+              "preciseIdentifier" : "s:Sy",
+              "text" : "StringProtocol"
             }
           ]
         }
@@ -228,7 +177,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxvalue\/makejx(from:in:)"
+        "\/documentation\/jxkit\/jxcontext\/symbol(_:)"
       ],
       "traits" : [
         {
@@ -295,6 +244,59 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
+"doc://JXKit/documentation/JXKit/JXContext/symbol(_:)": {
+  "abstract" : [
+    {
+      "text" : "Creates a new Symbol with the given name in the context.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "symbol"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "S"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "S"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/symbol(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "symbol(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/symbol(_:)"
+},
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
     {
@@ -328,100 +330,6 @@
   "title" : "JXValue",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue"
-},
-"doc://JXKit/documentation/JXKit/JXValue/JXConvertible-Implementations": {
-  "abstract" : [
-
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/JXConvertible-Implementations",
-  "kind" : "article",
-  "role" : "collectionGroup",
-  "title" : "JXConvertible Implementations",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/jxconvertible-implementations"
-},
-"doc://JXKit/documentation/JXKit/JXValue/makeJX(from:in:)": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "static"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "makeJX"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "from"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "in"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit9JXContextC",
-      "text" : "JXContext"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "text" : "Self"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/makeJX(from:in:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "makeJX(from:in:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/makejx(from:in:)"
 }
 }
 }

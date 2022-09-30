@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "No overview available.",
+      "text" : "The virtual machine associated with this context",
       "type" : "text"
     }
   ],
@@ -172,7 +172,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXContext/vm": {
   "abstract" : [
-
+    {
+      "text" : "The virtual machine associated with this context",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

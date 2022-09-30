@@ -1,7 +1,15 @@
 {
   "abstract" : [
     {
-      "text" : "No overview available.",
+      "text" : "The underlying ",
+      "type" : "text"
+    },
+    {
+      "code" : "JSGlobalContextRef",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " that is wrapped by this context",
       "type" : "text"
     }
   ],
@@ -171,7 +179,18 @@
 },
 "doc://JXKit/documentation/JXKit/JXContext/context": {
   "abstract" : [
-
+    {
+      "text" : "The underlying ",
+      "type" : "text"
+    },
+    {
+      "code" : "JSGlobalContextRef",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " that is wrapped by this context",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

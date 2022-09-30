@@ -70,14 +70,6 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "final"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "keyword",
               "text" : "class"
             },
             {
@@ -180,12 +172,13 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:method:this:priority:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/garbageCollect()",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/globalObject(property:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/null()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/number(_:)-3hm3m",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/number(_:)-7xicn",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object()",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(peer:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/peer(for:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/string(_:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/symbol(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/undefined()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withArrayBuffer(source:block:)"
       ],
@@ -537,7 +530,18 @@
 },
 "doc://JXKit/documentation/JXKit/JXContext/context": {
   "abstract" : [
-
+    {
+      "text" : "The underlying ",
+      "type" : "text"
+    },
+    {
+      "code" : "JSGlobalContextRef",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " that is wrapped by this context",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -1057,7 +1061,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXContext/exceptionHandler": {
   "abstract" : [
-
+    {
+      "text" : "An exception handler for the given context",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -1179,68 +1186,6 @@
   "title" : "global",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/global"
-},
-"doc://JXKit/documentation/JXKit/JXContext/globalObject(property:)": {
-  "abstract" : [
-    {
-      "text" : "Checks for the presence of a top-level “exports” variable and creates it if it isn’t already an object.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "globalObject"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "property"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/globalObject(property:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "globalObject(property:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/globalobject(property:)"
 },
 "doc://JXKit/documentation/JXKit/JXContext/init(env:strict:)": {
   "abstract" : [
@@ -1573,10 +1518,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/number(_:)-7xicn"
 },
-"doc://JXKit/documentation/JXKit/JXContext/object()": {
+"doc://JXKit/documentation/JXKit/JXContext/object(peer:)": {
   "abstract" : [
     {
-      "text" : "Creates a new object in this context.",
+      "text" : "Creates a new object in this context and assigns it the given peer object.",
       "type" : "text"
     }
   ],
@@ -1595,7 +1540,24 @@
     },
     {
       "kind" : "text",
-      "text" : "() -> "
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "peer"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s9AnyObjecta",
+      "text" : "AnyObject"
+    },
+    {
+      "kind" : "text",
+      "text" : "?) -> "
     },
     {
       "kind" : "typeIdentifier",
@@ -1603,12 +1565,12 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object()",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(peer:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "object()",
+  "title" : "object(peer:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/object()"
+  "url" : "\/documentation\/jxkit\/jxcontext\/object(peer:)"
 },
 "doc://JXKit/documentation/JXKit/JXContext/objectPrototype": {
   "abstract" : [
@@ -1646,6 +1608,64 @@
   "title" : "objectPrototype",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/objectprototype"
+},
+"doc://JXKit/documentation/JXKit/JXContext/peer(for:)": {
+  "abstract" : [
+    {
+      "text" : "Returns an existing object peer for the given JXValue object.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "peer"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "for"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s9AnyObjecta",
+      "text" : "AnyObject"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/peer(for:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "peer(for:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/peer(for:)"
 },
 "doc://JXKit/documentation/JXKit/JXContext/promisePrototype": {
   "abstract" : [
@@ -1686,7 +1706,18 @@
 },
 "doc://JXKit/documentation/JXKit/JXContext/strict": {
   "abstract" : [
-
+    {
+      "text" : "Whether scripts evaluated by this context should be assessed in ",
+      "type" : "text"
+    },
+    {
+      "code" : "strict",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " mode.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -1771,6 +1802,59 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/string(_:)"
 },
+"doc://JXKit/documentation/JXKit/JXContext/symbol(_:)": {
+  "abstract" : [
+    {
+      "text" : "Creates a new Symbol with the given name in the context.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "symbol"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "S"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "S"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/symbol(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "symbol(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/symbol(_:)"
+},
 "doc://JXKit/documentation/JXKit/JXContext/undefined()": {
   "abstract" : [
     {
@@ -1818,7 +1902,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXContext/vm": {
   "abstract" : [
-
+    {
+      "text" : "The virtual machine associated with this context",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

@@ -46,7 +46,7 @@
     {
       "generated" : true,
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/makeJX(from:in:)"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/makeJX(from:)"
       ],
       "title" : "Type Methods"
     }
@@ -115,10 +115,7 @@
 },
 "doc://JXKit/documentation/JXKit/JXValue/getJX(from:)": {
   "abstract" : [
-    {
-      "text" : "Converts this value into a JXContext",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
     {
@@ -167,7 +164,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/getjx(from:)"
 },
-"doc://JXKit/documentation/JXKit/JXValue/makeJX(from:in:)": {
+"doc://JXKit/documentation/JXKit/JXValue/makeJX(from:)": {
   "abstract" : [
 
   ],
@@ -211,23 +208,6 @@
     },
     {
       "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "in"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit9JXContextC",
-      "text" : "JXContext"
-    },
-    {
-      "kind" : "text",
       "text" : ") "
     },
     {
@@ -243,12 +223,12 @@
       "text" : "Self"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/makeJX(from:in:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/makeJX(from:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "makeJX(from:in:)",
+  "title" : "makeJX(from:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/makejx(from:in:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/makejx(from:)"
 }
 }
 }

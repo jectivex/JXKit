@@ -129,13 +129,13 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/getJX(from:)-76hxb"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/getJX(from:)"
       ],
       "title" : "Instance Methods"
     },
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/makeJX(from:in:)-2nsz2"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/makeJX(from:)"
       ],
       "title" : "Type Methods"
     }
@@ -202,14 +202,13 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxconvertible"
 },
-"doc://JXKit/documentation/JXKit/JXConvertible/getJX(from:)-76hxb": {
+"doc://JXKit/documentation/JXKit/JXConvertible/getJX(from:)": {
   "abstract" : [
     {
       "text" : "Converts this value into a JXContext",
       "type" : "text"
     }
   ],
-  "defaultImplementations" : 1,
   "fragments" : [
     {
       "kind" : "keyword",
@@ -258,22 +257,21 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/getJX(from:)-76hxb",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/getJX(from:)",
   "kind" : "symbol",
   "required" : true,
   "role" : "symbol",
   "title" : "getJX(from:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxconvertible\/getjx(from:)-76hxb"
+  "url" : "\/documentation\/jxkit\/jxconvertible\/getjx(from:)"
 },
-"doc://JXKit/documentation/JXKit/JXConvertible/makeJX(from:in:)-2nsz2": {
+"doc://JXKit/documentation/JXKit/JXConvertible/makeJX(from:)": {
   "abstract" : [
     {
       "text" : "Converts this value into a JXContext",
       "type" : "text"
     }
   ],
-  "defaultImplementations" : 1,
   "fragments" : [
     {
       "kind" : "keyword",
@@ -314,23 +312,6 @@
     },
     {
       "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "in"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit9JXContextC",
-      "text" : "JXContext"
-    },
-    {
-      "kind" : "text",
       "text" : ") "
     },
     {
@@ -346,13 +327,13 @@
       "text" : "Self"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/makeJX(from:in:)-2nsz2",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/makeJX(from:)",
   "kind" : "symbol",
   "required" : true,
   "role" : "symbol",
-  "title" : "makeJX(from:in:)",
+  "title" : "makeJX(from:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxconvertible\/makejx(from:in:)-2nsz2"
+  "url" : "\/documentation\/jxkit\/jxconvertible\/makejx(from:)"
 },
 "doc://JXKit/documentation/JXKit/JXError": {
   "abstract" : [
