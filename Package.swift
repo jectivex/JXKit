@@ -1,10 +1,10 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.7
 
 import PackageDescription
 
 #if canImport(JavaScriptCore)
 let targets: [Target] = [
-    .target(name: "JXKit")
+    .target(name: "JXKit", resources: [.process("Resources")])
 ]
 #elseif os(Windows)
 // Windows iTunes installs JSC at: C:/Program Files/iTunes/JavaScriptCore.dll

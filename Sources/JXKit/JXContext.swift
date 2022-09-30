@@ -307,19 +307,16 @@ extension JXContext {
 
         // we seem to need to assign a class definition in order to set the associated data for the object
         var def = JSClassDefinition()
+        def.finalize = {
+            let ptr = JSObjectGetPrivate($0)
+            ptr?.assumingMemoryBound(to: AnyObject?.self).deinitialize(count: 1)
+            ptr?.deallocate()
+        }
         let _class = JSClassCreate(&def)
         defer { JSClassRelease(_class) }
 
         let value = JXValue(env: self, valueRef: JSObjectMake(self.context, _class, info))
         return value
-    }
-
-    /// Returns an existing object peer for the given JXValue object.
-    @inlinable public func peer(for key: JXValue) -> AnyObject? {
-        guard key.isObject, !key.isFunction, let ptr = JSObjectGetPrivate(key.value) else {
-            return nil
-        }
-        return ptr.assumingMemoryBound(to: AnyObject?.self).pointee
     }
 
     /// Creates a new array in the environment

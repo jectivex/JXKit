@@ -2,7 +2,6 @@ import JXKit
 import XCTest
 
 final class JXKitTests: XCTestCase {
-
     func testAPI() throws {
         let jxc = JXContext()
         let value: JXValue = try jxc.eval("1+2")
