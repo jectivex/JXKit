@@ -119,8 +119,6 @@ jobs:
   api-doc:
     runs-on: macos-12 # needed to be able to document SwiftUI
     timeout-minutes: 20
-    env:
-      DEVELOPER_DIR: /Applications/Xcode_13.3.app/Contents/Developer
     steps:
       - uses: actions/checkout@v2
       - name: Build documentation
