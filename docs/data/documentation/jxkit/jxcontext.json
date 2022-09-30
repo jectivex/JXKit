@@ -176,7 +176,6 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/number(_:)-3hm3m",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/number(_:)-7xicn",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(peer:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/peer(for:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/string(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/symbol(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/undefined()",
@@ -1608,64 +1607,6 @@
   "title" : "objectPrototype",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/objectprototype"
-},
-"doc://JXKit/documentation/JXKit/JXContext/peer(for:)": {
-  "abstract" : [
-    {
-      "text" : "Returns an existing object peer for the given JXValue object.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "peer"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "for"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    },
-    {
-      "kind" : "text",
-      "text" : ") -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:s9AnyObjecta",
-      "text" : "AnyObject"
-    },
-    {
-      "kind" : "text",
-      "text" : "?"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/peer(for:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "peer(for:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/peer(for:)"
 },
 "doc://JXKit/documentation/JXKit/JXContext/promisePrototype": {
   "abstract" : [

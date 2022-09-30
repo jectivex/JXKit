@@ -2,6 +2,10 @@ import JXKit
 import XCTest
 
 class JXCoreTests: XCTestCase {
+    func testModuleVersion() throws {
+        XCTAssertEqual("org.jectivex.JXKit", JXKitBundleIdentifier)
+        XCTAssertLessThanOrEqual(3_000_000, JXKitVersionNumber, "should have been version 3.0.0 or higher")
+    }
 
     func testHobbled() {
 #if arch(x86_64)
@@ -373,15 +377,15 @@ class JXCoreTests: XCTestCase {
             }
         }
 
-        do {
+        measure {
             let jxc = JXContext()
             XCTAssertEqual(0, JXCoreTests.peerCount)
             let obj = jxc.object(peer: AssociatedObject(str: "ABC"))
-            XCTAssertNotNil(jxc.peer(for: obj))
-            XCTAssertEqual("ABC", (jxc.peer(for: obj) as? AssociatedObject)?.str)
+            XCTAssertNotNil(obj.peer)
+            XCTAssertEqual("ABC", (obj.peer as? AssociatedObject)?.str)
             XCTAssertEqual(1, JXCoreTests.peerCount)
         }
-        XCTAssertEqual(1, JXCoreTests.peerCount) // TODO: should be 0
-    }
 
+        XCTAssertEqual(0, JXCoreTests.peerCount, "peer instances should have been deallocated")
+    }
 }

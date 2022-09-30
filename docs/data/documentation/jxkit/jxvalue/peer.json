@@ -1,7 +1,23 @@
 {
   "abstract" : [
     {
-      "text" : "Contextual user-provided information for use during encoding.",
+      "text" : "A peer is an instance of ",
+      "type" : "text"
+    },
+    {
+      "code" : "AnyObject",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " that is created from ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXContext.object",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " with a peer argument.",
       "type" : "text"
     }
   ],
@@ -9,17 +25,18 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValueEncoder"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValueEncoder\/userInfo"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/peer"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit14JXValueEncoderC8userInfoSDys010CodingUserE3KeyVypGvp",
+    "extendedModule" : "JXKit",
+    "externalID" : "s:5JXKit7JXValueC4peeryXlSgvp",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -31,28 +48,20 @@
       },
       {
         "kind" : "identifier",
-        "text" : "userInfo"
+        "text" : "peer"
       },
       {
         "kind" : "text",
-        "text" : ": ["
+        "text" : ": "
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:s17CodingUserInfoKeyV",
-        "text" : "CodingUserInfoKey"
+        "preciseIdentifier" : "s:s9AnyObjecta",
+        "text" : "AnyObject"
       },
       {
         "kind" : "text",
-        "text" : " : "
-      },
-      {
-        "kind" : "keyword",
-        "text" : "Any"
-      },
-      {
-        "kind" : "text",
-        "text" : "]"
+        "text" : "?"
       }
     ],
     "modules" : [
@@ -63,7 +72,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Property",
     "symbolKind" : "property",
-    "title" : "userInfo"
+    "title" : "peer"
   },
   "primaryContentSections" : [
     {
@@ -86,33 +95,53 @@
             },
             {
               "kind" : "identifier",
-              "text" : "userInfo"
+              "text" : "peer"
             },
             {
               "kind" : "text",
-              "text" : ": ["
+              "text" : ": "
             },
             {
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:s17CodingUserInfoKeyV",
-              "text" : "CodingUserInfoKey"
+              "preciseIdentifier" : "s:s9AnyObjecta",
+              "text" : "AnyObject"
             },
             {
               "kind" : "text",
-              "text" : " : "
+              "text" : "? { "
             },
             {
               "kind" : "keyword",
-              "text" : "Any"
+              "text" : "get"
             },
             {
               "kind" : "text",
-              "text" : "]"
+              "text" : " }"
             }
           ]
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "discussion",
+          "level" : 2,
+          "text" : "Discussion",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "The peer cannot be changed once an object has been initialized with it.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -126,7 +155,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxvalueencoder\/userinfo"
+        "\/documentation\/jxkit\/jxvalue\/peer"
       ],
       "traits" : [
         {
@@ -151,9 +180,12 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXValueEncoder": {
+"doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
-
+    {
+      "text" : "A JavaScript object.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -166,26 +198,42 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXValueEncoder"
+      "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValueEncoder",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXValueEncoder"
+      "text" : "JXValue"
     }
   ],
   "role" : "symbol",
-  "title" : "JXValueEncoder",
+  "title" : "JXValue",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalueencoder"
+  "url" : "\/documentation\/jxkit\/jxvalue"
 },
-"doc://JXKit/documentation/JXKit/JXValueEncoder/userInfo": {
+"doc://JXKit/documentation/JXKit/JXValue/peer": {
   "abstract" : [
     {
-      "text" : "Contextual user-provided information for use during encoding.",
+      "text" : "A peer is an instance of ",
+      "type" : "text"
+    },
+    {
+      "code" : "AnyObject",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " that is created from ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXContext.object",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " with a peer argument.",
       "type" : "text"
     }
   ],
@@ -200,36 +248,28 @@
     },
     {
       "kind" : "identifier",
-      "text" : "userInfo"
+      "text" : "peer"
     },
     {
       "kind" : "text",
-      "text" : ": ["
+      "text" : ": "
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:s17CodingUserInfoKeyV",
-      "text" : "CodingUserInfoKey"
+      "preciseIdentifier" : "s:s9AnyObjecta",
+      "text" : "AnyObject"
     },
     {
       "kind" : "text",
-      "text" : " : "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "Any"
-    },
-    {
-      "kind" : "text",
-      "text" : "]"
+      "text" : "?"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValueEncoder\/userInfo",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/peer",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "userInfo",
+  "title" : "peer",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalueencoder\/userinfo"
+  "url" : "\/documentation\/jxkit\/jxvalue\/peer"
 }
 }
 }

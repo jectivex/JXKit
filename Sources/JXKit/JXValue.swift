@@ -1102,3 +1102,22 @@ extension JXValue {
         return nil
     }
 }
+
+/// MARK: Peers
+
+extension JXValue {
+    /// A peer is an instance of `AnyObject` that is created from ``JXContext.object`` with a peer argument.
+    ///
+    /// The peer cannot be changed once an object has been initialized with it.
+    public var peer: AnyObject? {
+        get {
+            guard isObject,
+                  !isFunction,
+                  let ptr = JSObjectGetPrivate(value) else {
+                return nil
+            }
+            return ptr.assumingMemoryBound(to: AnyObject?.self).pointee
+        }
+    }
+}
+

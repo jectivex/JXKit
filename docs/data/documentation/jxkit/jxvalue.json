@@ -189,6 +189,7 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isSymbol",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isUndefined",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/numberValue",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/peer",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/properties",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/prototype",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/stringValue",
@@ -3051,6 +3052,63 @@
   "title" : "numberValue",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/numbervalue"
+},
+"doc://JXKit/documentation/JXKit/JXValue/peer": {
+  "abstract" : [
+    {
+      "text" : "A peer is an instance of ",
+      "type" : "text"
+    },
+    {
+      "code" : "AnyObject",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " that is created from ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXContext.object",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " with a peer argument.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "peer"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s9AnyObjecta",
+      "text" : "AnyObject"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/peer",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "peer",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/peer"
 },
 "doc://JXKit/documentation/JXKit/JXValue/preventExtensions()": {
   "abstract" : [

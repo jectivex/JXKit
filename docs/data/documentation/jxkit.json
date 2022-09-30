@@ -121,8 +121,6 @@
       "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXVM",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValueDecoder",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValueEncoder",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValueError"
       ],
       "title" : "Classes"
@@ -138,6 +136,14 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXProperty"
       ],
       "title" : "Structures"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXKitBundle",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXKitBundleIdentifier",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXKitInfo"
+      ],
+      "title" : "Variables"
     },
     {
       "identifiers" : [
@@ -369,6 +375,165 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxfunction"
 },
+"doc://JXKit/documentation/JXKit/JXKitBundle": {
+  "abstract" : [
+    {
+      "text" : "The bundle for the ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXKit",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " module.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXKitBundle"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSBundle",
+      "text" : "Bundle"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXKitBundle",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXKitBundle",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxkitbundle"
+},
+"doc://JXKit/documentation/JXKit/JXKitBundleIdentifier": {
+  "abstract" : [
+    {
+      "text" : "The bundle identifier of the ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXKit",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " module as specified by the ",
+      "type" : "text"
+    },
+    {
+      "code" : "CFBundleIdentifier",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " of the ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXKitInfo",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXKitBundleIdentifier"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "!"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXKitBundleIdentifier",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXKitBundleIdentifier",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxkitbundleidentifier"
+},
+"doc://JXKit/documentation/JXKit/JXKitInfo": {
+  "abstract" : [
+    {
+      "text" : "The info dictionary for the ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXKit",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " module.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXKitInfo"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSDictionary",
+      "text" : "NSDictionary"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXKitInfo",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXKitInfo",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxkitinfo"
+},
 "doc://JXKit/documentation/JXKit/JXPromise": {
   "abstract" : [
 
@@ -543,91 +708,6 @@
   "title" : "JXValue",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue"
-},
-"doc://JXKit/documentation/JXKit/JXValueDecoder": {
-  "abstract" : [
-    {
-      "code" : "JXValueDecoder",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " facilitates the decoding of ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXValue",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " values into ",
-      "type" : "text"
-    },
-    {
-      "code" : "Decodable",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " types.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXValueDecoder"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValueDecoder",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXValueDecoder"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXValueDecoder",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvaluedecoder"
-},
-"doc://JXKit/documentation/JXKit/JXValueEncoder": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXValueEncoder"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValueEncoder",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXValueEncoder"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXValueEncoder",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalueencoder"
 },
 "doc://JXKit/documentation/JXKit/JXValueError": {
   "abstract" : [

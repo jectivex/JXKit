@@ -48,15 +48,15 @@ extension JXValue {
     }
 }
 
-open class JXValueEncoder {
+class JXValueEncoder {
 
     // MARK: - Options
     
     /// The output format to write the script object data in. Defaults to `.binary`.
-    // open var outputFormat: Format = .binary
+    // var outputFormat: Format = .binary
 
     /// Contextual user-provided information for use during encoding.
-    open var userInfo: [CodingUserInfoKey : Any] = [:]
+    var userInfo: [CodingUserInfoKey : Any] = [:]
 
     /// Options set on the top-level encoder to pass down the encoding hierarchy.
     fileprivate struct _Options {
@@ -84,7 +84,7 @@ open class JXValueEncoder {
     /// - returns: A new `Data` value containing the encoded script object data.
     /// - throws: `EncodingError.invalidValue` if a non-conforming floating-point value is encountered during encoding, and the encoding strategy is `.throw`.
     /// - throws: An error if any value throws an error during encoding.
-    @inlinable open func encode<Value : Encodable>(_ value: Value) throws -> JXValue {
+    @inlinable func encode<Value : Encodable>(_ value: Value) throws -> JXValue {
         try encodeToTopLevelContainer(value)
     }
 
@@ -673,12 +673,12 @@ fileprivate class __JSReferencingEncoder : JXEncoder {
 // MARK: Decoder
 
 /// `JXValueDecoder` facilitates the decoding of `JXValue` values into `Decodable` types.
-open class JXValueDecoder {
+@usableFromInline class JXValueDecoder {
     @usableFromInline let context: JXContext
     
     // MARK: Options
     /// Contextual user-provided information for use during decoding.
-    open var userInfo: [CodingUserInfoKey : Any] = [:]
+    var userInfo: [CodingUserInfoKey : Any] = [:]
 
     /// Options set on the top-level encoder to pass down the decoding hierarchy.
     fileprivate struct _Options {
@@ -704,7 +704,7 @@ open class JXValueDecoder {
     /// - returns: A value of the requested type.
     /// - throws: `DecodingError.dataCorrupted` if values requested from the payload are corrupted, or if the given data is not a valid script object.
     /// - throws: An error if any value throws an error during decoding.
-    @inlinable open func decode<T : Decodable>(_ type: T.Type, from data: JXValue) throws -> T {
+    @usableFromInline func decode<T : Decodable>(_ type: T.Type, from data: JXValue) throws -> T {
         var format: PropertyListSerialization.PropertyListFormat = .binary
         return try decode(type, from: data, format: &format)
     }
@@ -717,7 +717,7 @@ open class JXValueDecoder {
     /// - returns: A value of the requested type along with the detected format of the script object.
     /// - throws: `DecodingError.dataCorrupted` if values requested from the payload are corrupted, or if the given data is not a valid script object.
     /// - throws: An error if any value throws an error during decoding.
-    @inlinable open func decode<T : Decodable>(_ type: T.Type, from object: JXValue, format: inout PropertyListSerialization.PropertyListFormat) throws -> T {
+    @inlinable func decode<T : Decodable>(_ type: T.Type, from object: JXValue, format: inout PropertyListSerialization.PropertyListFormat) throws -> T {
         return try decode(type, fromTopLevel: object)
     }
 
