@@ -5,7 +5,6 @@ class JXCoreTests: XCTestCase {
     func testModuleVersion() throws {
         XCTAssertEqual("org.jectivex.JXKit", JXKitBundleIdentifier)
         XCTAssertLessThanOrEqual(3_000_000, JXKitVersionNumber, "should have been version 3.0.0 or higher")
-        XCTAssertEqual(["en"], JXKitBundle.localizations)
     }
 
     func testHobbled() {
