@@ -3,7 +3,7 @@
 [![Build Status][GitHubActionBadge]][ActionsLink]
 [![Swift5 compatible][Swift5Badge]][Swift5Link] 
 ![Platform][SwiftPlatforms]
-<!-- [![](https://tokei.rs/b1/github/jectivex/Jack)](https://github.com/jectivex/Jack) -->
+<!-- [![](https://tokei.rs/b1/github/jectivex/JXKit)](https://github.com/jectivex/JXKit) -->
 
 A pure swift interface the `JavaScriptCore` C API with support for `Encodable` & `Decodable`.
 
@@ -133,19 +133,19 @@ Projects that are based on JXKit:
 
 
 [Swift Package Manager]: https://swift.org/package-manager
-[API Documentation]: https://www.jective.org/Jack/documentation/jack/
+[API Documentation]: https://www.jective.org/JKKit/documentation/jkkit/
 
-[ProjectLink]: https://github.com/jectivex/Jack
-[ActionsLink]: https://github.com/jectivex/Jack/actions
-[API Documentation]: https://www.jective.org/Jack/documentation/jack/
+[ProjectLink]: https://github.com/jectivex/JKKit
+[ActionsLink]: https://github.com/jectivex/JKKit/actions
+[API Documentation]: https://www.jective.org/JKKit/documentation/jack/
 
 [Swift]: https://swift.org/
 [OpenCombine]: https://github.com/OpenCombine/OpenCombine
-[Jack]: https://github.com/jectivex/Jack
 [JXKit]: https://github.com/jectivex/JXKit
+[Jack]: https://github.com/jectivex/Jack
 [JavaScriptCore]: https://trac.webkit.org/wiki/JavaScriptCore
 
-[GitHubActionBadge]: https://img.shields.io/github/workflow/status/jectivex/Jack/Jack%20CI
+[GitHubActionBadge]: https://img.shields.io/github/workflow/status/jectivex/JXKit/JXKit%20CI
 
 [Swift5Badge]: https://img.shields.io/badge/swift-5-orange.svg?style=flat
 [Swift5Link]: https://developer.apple.com/swift/
