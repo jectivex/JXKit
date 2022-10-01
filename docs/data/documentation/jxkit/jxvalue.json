@@ -150,7 +150,7 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(env:value:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(ctx:value:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newArrayBufferWithBytes:in:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newArrayBufferWithBytesNoCopy:deallocator:in:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newArrayBufferWithLength:in:)",
@@ -167,6 +167,7 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/booleanValue",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/byteLength",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/count",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/ctx",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dateValue",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dateValueISO",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dictionary",
@@ -956,6 +957,40 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/createpromise(in:)"
 },
+"doc://JXKit/documentation/JXKit/JXValue/ctx": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "ctx"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/ctx",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "ctx",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/ctx"
+},
 "doc://JXKit/documentation/JXKit/JXValue/dateValue": {
   "abstract" : [
 
@@ -1197,10 +1232,11 @@
   "abstract" : [
 
   ],
+  "deprecated" : true,
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "let"
+      "text" : "var"
     },
     {
       "kind" : "text",
@@ -1417,7 +1453,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/hasproperty(_:)-2ontd"
 },
-"doc://JXKit/documentation/JXKit/JXValue/init(env:value:)": {
+"doc://JXKit/documentation/JXKit/JXValue/init(ctx:value:)": {
   "abstract" : [
 
   ],
@@ -1440,7 +1476,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "env"
+      "text" : "ctx"
     },
     {
       "kind" : "text",
@@ -1473,12 +1509,12 @@
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(env:value:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(ctx:value:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "init(env:value:)",
+  "title" : "init(ctx:value:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/init(env:value:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/init(ctx:value:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue/init(newArrayBufferWithBytes:in:)": {
   "abstract" : [

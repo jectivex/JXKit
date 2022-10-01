@@ -139,7 +139,7 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(env:strict:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(ctx:strict:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(virtualMachine:strict:)"
       ],
       "title" : "Initializers"
@@ -1186,7 +1186,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/global"
 },
-"doc://JXKit/documentation/JXKit/JXContext/init(env:strict:)": {
+"doc://JXKit/documentation/JXKit/JXContext/init(ctx:strict:)": {
   "abstract" : [
     {
       "text" : "Wraps an existing ",
@@ -1220,7 +1220,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "env"
+      "text" : "ctx"
     },
     {
       "kind" : "text",
@@ -1253,12 +1253,12 @@
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(env:strict:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(ctx:strict:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "init(env:strict:)",
+  "title" : "init(ctx:strict:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/init(env:strict:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/init(ctx:strict:)"
 },
 "doc://JXKit/documentation/JXKit/JXContext/init(virtualMachine:strict:)": {
   "abstract" : [

@@ -45,11 +45,11 @@ open class JXContext {
     /// - Parameters:
     ///   - env: the shared JXContext to use
     ///   - strict: whether to evaluate in strict mode
-    public init(env: JXContext, strict: Bool = true) {
-        self.vm = JXVM(group: JSContextGetGroup(env.context))
-        self.context = env.context
+    public init(ctx: JXContext, strict: Bool = true) {
+        self.vm = JXVM(group: JSContextGetGroup(ctx.context))
+        self.context = ctx.context
         self.strict = strict
-        JSGlobalContextRetain(env.context)
+        JSGlobalContextRetain(ctx.context)
     }
 
     deinit {
@@ -60,7 +60,7 @@ open class JXContext {
 public final class JXValueError {
     public let value: JXValue
     public let msg: String?
-
+    
     public init(value: JXValue) throws {
         self.value = value
         self.msg = value.description
@@ -123,7 +123,7 @@ extension JXContext {
             JSEvaluateScript(context, script, this?.value, nil, 0, $0)
         }
 
-        return result.map { JXValue(env: self, valueRef: $0) } ?? JXValue(undefinedIn: self)
+        return result.map { JXValue(ctx: self, valueRef: $0) } ?? JXValue(undefinedIn: self)
     }
 
     /// Asynchronously evaulates the given script.
@@ -153,7 +153,7 @@ extension JXContext {
                 }
 
                 let rejected = JXValue(newFunctionIn: self) { jxc, this, arg in
-                    c.resume(throwing: arg.first.map({ JXError(env: jxc, valueRef: $0.value) }) ?? JXErrors.cannotCreatePromise)
+                    c.resume(throwing: arg.first.map({ JXError(ctx: jxc, valueRef: $0.value) }) ?? JXErrors.cannotCreatePromise)
                     return JXValue(undefinedIn: jxc)
                 }
 
@@ -199,7 +199,7 @@ extension JXContext {
 
     /// The global object.
     public var global: JXValue {
-        JXValue(env: self, valueRef: JSContextGetGlobalObject(context))
+        JXValue(ctx: self, valueRef: JSContextGetGlobalObject(context))
     }
 
     /// Invokes the given closure with the bytes without copying
@@ -308,14 +308,15 @@ extension JXContext {
         // we seem to need to assign a class definition in order to set the associated data for the object
         var def = JSClassDefinition()
         def.finalize = {
-            let ptr = JSObjectGetPrivate($0)
-            ptr?.assumingMemoryBound(to: AnyObject?.self).deinitialize(count: 1)
-            ptr?.deallocate()
+            if let ptr = JSObjectGetPrivate($0) {
+                ptr.assumingMemoryBound(to: AnyObject?.self).deinitialize(count: 1)
+                ptr.deallocate()
+            }
         }
         let _class = JSClassCreate(&def)
         defer { JSClassRelease(_class) }
 
-        let value = JXValue(env: self, valueRef: JSObjectMake(self.context, _class, info))
+        let value = JXValue(ctx: self, valueRef: JSObjectMake(self.context, _class, info))
         return value
     }
 
@@ -345,7 +346,7 @@ extension JXContext {
         var errorPointer: JSValueRef?
         let result = try function(&errorPointer)
         if let errorPointer = errorPointer {
-            throw JXError(env: self, valueRef: errorPointer)
+            throw JXError(ctx: self, valueRef: errorPointer)
         }
         return result
     }

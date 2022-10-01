@@ -126,6 +126,6 @@ extension JXValue {
     ///   - key: the key to set
     ///   - object: the `JXConvertible` to convert
     public func set<T : JXConvertible>(_ key: String, convertible object: T) throws {
-        try setProperty(key, object.getJX(from: self.env))
+        try setProperty(key, object.getJX(from: self.ctx))
     }
 }

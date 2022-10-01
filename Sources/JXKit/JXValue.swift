@@ -13,20 +13,27 @@ import FoundationNetworking
 
 // MARK: JXValue
 
+extension JXValue {
+    @available(*, deprecated, renamed: "ctx")
+    public var env: JXContext {
+        ctx
+    }
+}
+
 /// A JavaScript object.
 ///
 /// This wraps a `JSObjectRef`, and is the equivalent of `JavaScriptCore.JSValue`
 public class JXValue {
-    public let env: JXContext
+    public let ctx: JXContext
     @usableFromInline let value: JXValueRef
 
-    public convenience init(env: JXContext, value: JXValue) {
-        self.init(env: env, valueRef: value.value)
+    public convenience init(ctx: JXContext, value: JXValue) {
+        self.init(ctx: ctx, valueRef: value.value)
     }
 
-    @usableFromInline internal init(env: JXContext, valueRef: JXValueRef) {
-        JSValueProtect(env.context, valueRef)
-        self.env = env
+    @usableFromInline internal init(ctx: JXContext, valueRef: JXValueRef) {
+        JSValueProtect(ctx.context, valueRef)
+        self.ctx = ctx
         self.value = valueRef
     }
 
@@ -36,7 +43,7 @@ public class JXValue {
 //           let ptr = JSObjectGetPrivate(self.value) {
 //            ptr.deallocate()
 //        }
-        JSValueUnprotect(env.context, value)
+        JSValueUnprotect(ctx.context, value)
     }
 }
 
@@ -61,16 +68,16 @@ extension JXValue {
     ///
     /// - Parameters:
     ///   - context: The execution context to use.
-    @usableFromInline internal convenience init(undefinedIn env: JXContext) {
-        self.init(env: env, valueRef: JSValueMakeUndefined(env.context))
+    @usableFromInline internal convenience init(undefinedIn ctx: JXContext) {
+        self.init(ctx: ctx, valueRef: JSValueMakeUndefined(ctx.context))
     }
 
     /// Creates a JavaScript value of the `null` type.
     ///
     /// - Parameters:
     ///   - context: The execution context to use.
-    @usableFromInline internal convenience init(nullIn env: JXContext) {
-        self.init(env: env, valueRef: JSValueMakeNull(env.context))
+    @usableFromInline internal convenience init(nullIn ctx: JXContext) {
+        self.init(ctx: ctx, valueRef: JSValueMakeNull(ctx.context))
     }
 
     /// Creates a JavaScript `Boolean` value.
@@ -78,8 +85,8 @@ extension JXValue {
     /// - Parameters:
     ///   - value: The value to assign to the object.
     ///   - context: The execution context to use.
-    @usableFromInline internal convenience init(bool value: Bool, in env: JXContext) {
-        self.init(env: env, valueRef: JSValueMakeBoolean(env.context, value))
+    @usableFromInline internal convenience init(bool value: Bool, in ctx: JXContext) {
+        self.init(ctx: ctx, valueRef: JSValueMakeBoolean(ctx.context, value))
     }
 
     /// Creates a JavaScript value of the `Number` type.
@@ -87,8 +94,8 @@ extension JXValue {
     /// - Parameters:
     ///   - value: The value to assign to the object.
     ///   - context: The execution context to use.
-    @usableFromInline internal convenience init(double value: Double, in env: JXContext) {
-        self.init(env: env, valueRef: JSValueMakeNumber(env.context, value))
+    @usableFromInline internal convenience init(double value: Double, in ctx: JXContext) {
+        self.init(ctx: ctx, valueRef: JSValueMakeNumber(ctx.context, value))
     }
 
     /// Creates a JavaScript value of the `String` type.
@@ -96,10 +103,10 @@ extension JXValue {
     /// - Parameters:
     ///   - value: The value to assign to the object.
     ///   - context: The execution context to use.
-    @usableFromInline internal convenience init(string value: String, in env: JXContext) {
+    @usableFromInline internal convenience init(string value: String, in ctx: JXContext) {
         let value = value.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(value) }
-        self.init(env: env, valueRef: JSValueMakeString(env.context, value))
+        self.init(ctx: ctx, valueRef: JSValueMakeString(ctx.context, value))
     }
 
     /// Creates a JavaScript value of the `Symbol` type.
@@ -107,10 +114,10 @@ extension JXValue {
     /// - Parameters:
     ///   - value: The value to assign to the object.
     ///   - context: The execution context to use.
-    @usableFromInline internal convenience init(symbol value: String, in env: JXContext) {
+    @usableFromInline internal convenience init(symbol value: String, in ctx: JXContext) {
         let value = value.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(value) }
-        self.init(env: env, valueRef: JSValueMakeSymbol(env.context, value))
+        self.init(ctx: ctx, valueRef: JSValueMakeSymbol(ctx.context, value))
     }
 
     /// Creates a JavaScript value of the parsed `JSON`.
@@ -118,13 +125,13 @@ extension JXValue {
     /// - Parameters:
     ///   - value: The JSON value to parse
     ///   - context: The execution context to use.
-    @usableFromInline internal convenience init?(json value: String, in env: JXContext) {
+    @usableFromInline internal convenience init?(json value: String, in ctx: JXContext) {
         let value = value.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(value) }
-        guard let json = JSValueMakeFromJSONString(env.context, value) else {
+        guard let json = JSValueMakeFromJSONString(ctx.context, value) else {
             return nil // we just return nil since there is no error parameter
         }
-        self.init(env: env, valueRef: json)
+        self.init(ctx: ctx, valueRef: json)
     }
 
     /// Creates a JavaScript `Date` object, as if by invoking the built-in `RegExp` constructor.
@@ -132,12 +139,12 @@ extension JXValue {
     /// - Parameters:
     ///   - value: The value to assign to the object.
     ///   - context: The execution context to use.
-    @usableFromInline internal convenience init(date value: Date, in env: JXContext) throws {
-        let arguments = [JXValue(string: JXValue.rfc3339.string(from: value), in: env)]
-        let object = try env.trying {
-            JSObjectMakeDate(env.context, 1, arguments.map { $0.value }, $0)
+    @usableFromInline internal convenience init(date value: Date, in ctx: JXContext) throws {
+        let arguments = [JXValue(string: JXValue.rfc3339.string(from: value), in: ctx)]
+        let object = try ctx.trying {
+            JSObjectMakeDate(ctx.context, 1, arguments.map { $0.value }, $0)
         }
-        self.init(env: env, valueRef: object!)
+        self.init(ctx: ctx, valueRef: object!)
     }
 
     /// Creates a JavaScript `RegExp` object, as if by invoking the built-in `RegExp` constructor.
@@ -146,12 +153,12 @@ extension JXValue {
     ///   - pattern: The pattern of regular expression.
     ///   - flags: The flags pass to the constructor.
     ///   - context: The execution context to use.
-    @usableFromInline internal convenience init(newRegularExpressionFromPattern pattern: String, flags: String, in env: JXContext) throws {
-        let arguments = [JXValue(string: pattern, in: env), JXValue(string: flags, in: env)]
-        let object = try env.trying {
-            JSObjectMakeRegExp(env.context, 2, arguments.map { $0.value }, $0)
+    @usableFromInline internal convenience init(newRegularExpressionFromPattern pattern: String, flags: String, in ctx: JXContext) throws {
+        let arguments = [JXValue(string: pattern, in: ctx), JXValue(string: flags, in: ctx)]
+        let object = try ctx.trying {
+            JSObjectMakeRegExp(ctx.context, 2, arguments.map { $0.value }, $0)
         }
-        self.init(env: env, valueRef: object!)
+        self.init(ctx: ctx, valueRef: object!)
     }
 
     /// Creates a JavaScript `Error` object, as if by invoking the built-in `Error` constructor.
@@ -159,20 +166,20 @@ extension JXValue {
     /// - Parameters:
     ///   - message: The error message.
     ///   - context: The execution context to use.
-    @usableFromInline internal convenience init(newErrorFromMessage message: String, in env: JXContext) throws {
-        let arguments = [JXValue(string: message, in: env)]
-        let object = try env.trying {
-            JSObjectMakeError(env.context, arguments.count, arguments.map { $0.value }, $0)
+    @usableFromInline internal convenience init(newErrorFromMessage message: String, in ctx: JXContext) throws {
+        let arguments = [JXValue(string: message, in: ctx)]
+        let object = try ctx.trying {
+            JSObjectMakeError(ctx.context, arguments.count, arguments.map { $0.value }, $0)
         }
-        self.init(env: env, valueRef: object!)
+        self.init(ctx: ctx, valueRef: object!)
     }
 
     /// Creates a JavaScript `Object`.
     ///
     /// - Parameters:
     ///   - context: The execution context to use.
-    @usableFromInline internal convenience init(newObjectIn env: JXContext) {
-        self.init(env: env, valueRef: JSObjectMake(env.context, nil, nil))
+    @usableFromInline internal convenience init(newObjectIn ctx: JXContext) {
+        self.init(ctx: ctx, valueRef: JSObjectMake(ctx.context, nil, nil))
     }
 
     /// Creates a JavaScript `Object` with prototype.
@@ -180,20 +187,20 @@ extension JXValue {
     /// - Parameters:
     ///   - context: The execution context to use.
     ///   - prototype: The prototype to be used.
-    @usableFromInline internal convenience init(newObjectIn env: JXContext, prototype: JXValue) throws {
-        let obj = try env.objectPrototype.invokeMethod("create", withArguments: [prototype])
-        self.init(env: env, valueRef: obj.value)
+    @usableFromInline internal convenience init(newObjectIn ctx: JXContext, prototype: JXValue) throws {
+        let obj = try ctx.objectPrototype.invokeMethod("create", withArguments: [prototype])
+        self.init(ctx: ctx, valueRef: obj.value)
     }
 
     /// Creates a JavaScript `Array` object.
     ///
     /// - Parameters:
     ///   - context: The execution context to use.
-    @usableFromInline internal convenience init(newArrayIn env: JXContext, values: [JXValue]? = nil) throws {
-        let array = try env.trying {
-            JSObjectMakeArray(env.context, 0, nil, $0)
+    @usableFromInline internal convenience init(newArrayIn ctx: JXContext, values: [JXValue]? = nil) throws {
+        let array = try ctx.trying {
+            JSObjectMakeArray(ctx.context, 0, nil, $0)
         }
-        self.init(env: env, valueRef: array!)
+        self.init(ctx: ctx, valueRef: array!)
         if let values = values {
             for (index, element) in values.enumerated() {
                 try self.setElement(element, at: UInt32(index))
@@ -235,11 +242,11 @@ extension JXValue {
     /// Object’s prototype.
     @inlinable public var prototype: JXValue {
         get {
-            let prototype = JSObjectGetPrototype(env.context, value)
-            return prototype.map { JXValue(env: env, valueRef: $0) } ?? JXValue(undefinedIn: env)
+            let prototype = JSObjectGetPrototype(ctx.context, value)
+            return prototype.map { JXValue(ctx: ctx, valueRef: $0) } ?? JXValue(undefinedIn: ctx)
         }
         set {
-            JSObjectSetPrototype(env.context, value, newValue.value)
+            JSObjectSetPrototype(ctx.context, value, newValue.value)
         }
     }
 }
@@ -248,74 +255,74 @@ extension JXValue {
 
     /// Tests whether a JavaScript value’s type is the undefined type.
     @inlinable public var isUndefined: Bool {
-        JSValueIsUndefined(env.context, value)
+        JSValueIsUndefined(ctx.context, value)
     }
 
     /// Tests whether a JavaScript value’s type is the null type.
     @inlinable public var isNull: Bool {
-        JSValueIsNull(env.context, value)
+        JSValueIsNull(ctx.context, value)
     }
 
     /// Tests whether a JavaScript value is Boolean.
     @inlinable public var isBoolean: Bool {
-        JSValueIsBoolean(env.context, value)
+        JSValueIsBoolean(ctx.context, value)
     }
 
     /// Tests whether a JavaScript value’s type is the number type.
     @inlinable public var isNumber: Bool {
-        JSValueIsNumber(env.context, value)
+        JSValueIsNumber(ctx.context, value)
     }
 
     /// Tests whether a JavaScript value’s type is the string type.
     @inlinable public var isString: Bool {
-        JSValueIsString(env.context, value)
+        JSValueIsString(ctx.context, value)
     }
 
     /// Tests whether a JavaScript value’s type is the object type.
     @inlinable public var isObject: Bool {
-        JSValueIsObject(env.context, value)
+        JSValueIsObject(ctx.context, value)
     }
 
     /// Tests whether an object can be called as a constructor.
     @inlinable public var isConstructor: Bool {
-        isObject && JSObjectIsConstructor(env.context, value)
+        isObject && JSObjectIsConstructor(ctx.context, value)
     }
 
     /// Tests whether an object can be called as a function.
     @inlinable public var isFunction: Bool {
-        isObject && JSObjectIsFunction(env.context, value)
+        isObject && JSObjectIsFunction(ctx.context, value)
     }
 
     /// Tests whether an object can be called as a function.
     @inlinable public var isSymbol: Bool {
-        JSValueIsSymbol(env.context, value)
+        JSValueIsSymbol(ctx.context, value)
     }
 
     /// Tests whether a JavaScript value’s type is the date type.
     @inlinable public var isDate: Bool {
         get throws {
-            try isInstance(of: env.datePrototype)
+            try isInstance(of: ctx.datePrototype)
         }
     }
 
     @inlinable public var isPromise: Bool {
         get throws {
-            try isInstance(of: env.promisePrototype)
+            try isInstance(of: ctx.promisePrototype)
         }
     }
 
     /// Tests whether a JavaScript value’s type is the array type.
     @inlinable public var isArray: Bool {
         get throws {
-            let result = try env.arrayPrototype.invokeMethod("isArray", withArguments: [self])
-            return JSValueToBoolean(env.context, result.value)
+            let result = try ctx.arrayPrototype.invokeMethod("isArray", withArguments: [self])
+            return JSValueToBoolean(ctx.context, result.value)
         }
     }
 
     /// Tests whether a JavaScript value’s type is the error type.
     @inlinable public var isError: Bool {
         get throws {
-            try isInstance(of: env.errorPrototype)
+            try isInstance(of: ctx.errorPrototype)
         }
     }
 }
@@ -327,7 +334,7 @@ extension JXValue {
     /// An object is frozen if and only if it is not extensible, all its properties are non-configurable, and all its data properties (that is, properties which are not accessor properties with getter or setter components) are non-writable.
     @inlinable public var isFrozen: Bool {
         get throws {
-            try env.objectPrototype.invokeMethod("isFrozen", withArguments: [self]).booleanValue
+            try ctx.objectPrototype.invokeMethod("isFrozen", withArguments: [self]).booleanValue
         }
     }
 
@@ -336,7 +343,7 @@ extension JXValue {
     /// Objects are extensible by default: they can have new properties added to them, and their `Prototype` can be re-assigned. An object can be marked as non-extensible using one of ``preventExtensions()`, `seal()`, `freeze()`, or `Reflect.preventExtensions()`.
     @inlinable public var isExtensible: Bool {
         get throws {
-            try env.objectPrototype.invokeMethod("isExtensible", withArguments: [self]).booleanValue
+            try ctx.objectPrototype.invokeMethod("isExtensible", withArguments: [self]).booleanValue
         }
     }
 
@@ -345,7 +352,7 @@ extension JXValue {
     /// Returns true if the object is sealed, otherwise false. An object is sealed if it is not extensible and if all its properties are non-configurable and therefore not removable (but not necessarily non-writable).
     @inlinable public var isSealed: Bool {
         get throws {
-            try env.objectPrototype.invokeMethod("isSealed", withArguments: [self]).booleanValue
+            try ctx.objectPrototype.invokeMethod("isSealed", withArguments: [self]).booleanValue
         }
     }
 
@@ -355,7 +362,7 @@ extension JXValue {
     ///
     /// For data properties of a frozen object, their values cannot be changed since the writable and configurable attributes are set to false. Accessor properties (getters and setters) work the same — the property value returned by the getter may still change, and the setter can still be called without throwing errors when setting the property. Note that values that are objects can still be modified, unless they are also frozen. As an object, an array can be frozen; after doing so, its elements cannot be altered and no elements can be added to or removed from the array.
     @inlinable public func freeze() throws {
-        try env.objectPrototype.invokeMethod("freeze", withArguments: [self])
+        try ctx.objectPrototype.invokeMethod("freeze", withArguments: [self])
     }
 
     /// The Object.preventExtensions() method prevents new properties from ever being added to an object (i.e. prevents future extensions to the object). It also prevents the object's prototype from being re-assigned.
@@ -369,12 +376,12 @@ extension JXValue {
     ///
     /// There is no way to make an object extensible again once it has been made non-extensible.
     @inlinable public func preventExtensions() throws {
-        try env.objectPrototype.invokeMethod("preventExtensions", withArguments: [self])
+        try ctx.objectPrototype.invokeMethod("preventExtensions", withArguments: [self])
     }
 
     /// The Object.seal() method seals an object. Sealing an object prevents extensions and makes existing properties non-configurable. A sealed object has a fixed set of properties: new properties cannot be added, existing properties cannot be removed, their enumerability and configurability cannot be changed, and its prototype cannot be re-assigned. Values of existing properties can still be changed as long as they are writable. seal() returns the same object that was passed in.
     @inlinable public func seal() throws {
-        try env.objectPrototype.invokeMethod("seal", withArguments: [self])
+        try ctx.objectPrototype.invokeMethod("seal", withArguments: [self])
     }
 }
 
@@ -382,15 +389,15 @@ extension JXValue {
 
     /// Returns the JavaScript boolean value.
     @inlinable public var booleanValue: Bool {
-        JSValueToBoolean(env.context, value)
+        JSValueToBoolean(ctx.context, value)
     }
 
     /// Returns the JavaScript number value.
     @inlinable public var numberValue: Double {
         get throws {
-            //if !JSValueIsNumber(env.context, value) { return nil }
-            try env.trying {
-                JSValueToNumber(env.context, value, $0)
+            //if !JSValueIsNumber(ctx.context, value) { return nil }
+            try ctx.trying {
+                JSValueToNumber(ctx.context, value, $0)
             }
         }
     }
@@ -398,8 +405,8 @@ extension JXValue {
     /// Returns the JavaScript string value.
     @inlinable public var stringValue: String {
         get throws {
-            let str = try env.trying {
-                JSValueToStringCopy(env.context, value, $0)
+            let str = try ctx.trying {
+                JSValueToStringCopy(ctx.context, value, $0)
             }
             defer { str.map(JSStringRelease) }
             return str.map(String.init) ?? ""
@@ -462,13 +469,13 @@ extension JXValue {
             // we should have already validated that it is a function
             throw JXErrors.callOnNonFunction
         }
-        let result = try env.trying {
-            JSObjectCallAsFunction(env.context, value, this?.value, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.value }, $0)
+        let result = try ctx.trying {
+            JSObjectCallAsFunction(ctx.context, value, this?.value, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.value }, $0)
         }
         return result.map {
-            let v = JXValue(env: env, valueRef: $0)
+            let v = JXValue(ctx: ctx, valueRef: $0)
             return v
-        } ?? JXValue(undefinedIn: env)
+        } ?? JXValue(undefinedIn: ctx)
     }
 
     /// Calls an object as a constructor.
@@ -478,10 +485,10 @@ extension JXValue {
     ///
     /// - Returns: The object that results from calling object as a constructor.
     @inlinable public func construct(withArguments arguments: [JXValue]) throws -> JXValue {
-        let result = try env.trying {
-            JSObjectCallAsConstructor(env.context, value, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.value }, $0)
+        let result = try ctx.trying {
+            JSObjectCallAsConstructor(ctx.context, value, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.value }, $0)
         }
-        return result.map { JXValue(env: env, valueRef: $0) } ?? JXValue(undefinedIn: env)
+        return result.map { JXValue(ctx: ctx, valueRef: $0) } ?? JXValue(undefinedIn: ctx)
     }
 
     /// Invoke an object's method.
@@ -506,7 +513,7 @@ extension JXValue {
     ///
     /// - Returns: true if the two values are strict equal; otherwise false.
     @inlinable public func isEqual(to other: JXValue) -> Bool {
-        JSValueIsStrictEqual(env.context, value, other.value)
+        JSValueIsStrictEqual(ctx.context, value, other.value)
     }
 
     /// Tests whether two JavaScript values are equal, as compared by the JS `==` operator.
@@ -516,8 +523,8 @@ extension JXValue {
     ///
     /// - Returns: true if the two values are equal; false if they are not equal or an exception is thrown.
     @inlinable public func isEqualWithTypeCoercion(to other: JXValue) throws -> Bool {
-        try env.trying {
-            JSValueIsEqual(env.context, value, other.value, $0)
+        try ctx.trying {
+            JSValueIsEqual(ctx.context, value, other.value, $0)
         }
     }
 
@@ -528,8 +535,8 @@ extension JXValue {
     ///
     /// - Returns: true if the value is an object constructed by constructor, as compared by the JS isInstance(of:) operator; otherwise false.
     @inlinable public func isInstance(of other: JXValue) throws -> Bool {
-        try env.trying {
-            JSValueIsInstanceOfConstructor(env.context, value, other.value, $0)
+        try ctx.trying {
+            JSValueIsInstanceOfConstructor(ctx.context, value, other.value, $0)
         }
     }
 }
@@ -540,7 +547,7 @@ extension JXValue {
     @inlinable public var properties: [String] {
         if !isObject { return [] }
 
-        let _list = JSObjectCopyPropertyNames(env.context, value)
+        let _list = JSObjectCopyPropertyNames(ctx.context, value)
         defer { JSPropertyNameArrayRelease(_list) }
 
         let count = JSPropertyNameArrayGetCount(_list)
@@ -558,7 +565,7 @@ extension JXValue {
     @inlinable public func hasProperty(_ property: String) -> Bool {
         let property = property.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(property) }
-        return JSObjectHasProperty(env.context, value, property)
+        return JSObjectHasProperty(ctx.context, value, property)
     }
 
     /// Deletes a property from an object.
@@ -571,8 +578,8 @@ extension JXValue {
     @inlinable public func removeProperty(_ property: String) throws -> Bool {
         let property = property.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(property) }
-        return try env.trying {
-            JSObjectDeleteProperty(env.context, value, property, $0)
+        return try ctx.trying {
+            JSObjectDeleteProperty(ctx.context, value, property, $0)
         }
     }
 
@@ -585,8 +592,8 @@ extension JXValue {
     @discardableResult
     @inlinable public func hasProperty(_ property: JXValue) throws -> Bool {
         if !isObject { return false }
-        return try env.trying {
-            JSObjectHasPropertyForKey(env.context, value, property.value, $0)
+        return try ctx.trying {
+            JSObjectHasPropertyForKey(ctx.context, value, property.value, $0)
         }
     }
 
@@ -598,21 +605,21 @@ extension JXValue {
     /// - Returns: true if the delete operation succeeds, otherwise false.
     @discardableResult
     @inlinable public func deleteProperty(_ property: JXValue) throws -> Bool {
-        try env.trying {
-            JSObjectDeletePropertyForKey(env.context, value, property.value, $0)
+        try ctx.trying {
+            JSObjectDeletePropertyForKey(ctx.context, value, property.value, $0)
         }
     }
 
     /// The value of the property.
     @inlinable public subscript(propertyName: String) -> JXValue {
         get throws {
-            if !isObject { return env.undefined() }
+            if !isObject { return ctx.undefined() }
             let property = JSStringCreateWithUTF8CString(propertyName)
             defer { JSStringRelease(property) }
-            let result = try env.trying {
-                JSObjectGetProperty(env.context, value, property, $0)
+            let result = try ctx.trying {
+                JSObjectGetProperty(ctx.context, value, property, $0)
             }
-            return result.map { JXValue(env: env, valueRef: $0) } ?? JXValue(undefinedIn: env)
+            return result.map { JXValue(ctx: ctx, valueRef: $0) } ?? JXValue(undefinedIn: ctx)
         }
     }
 
@@ -625,10 +632,10 @@ extension JXValue {
             if !symbol.isSymbol {
                 throw JXErrors.keyNotSymbol
             }
-            let result = try env.trying {
-                JSObjectGetPropertyForKey(env.context, value, symbol.value, $0)
+            let result = try ctx.trying {
+                JSObjectGetPropertyForKey(ctx.context, value, symbol.value, $0)
             }
-            return result.map { JXValue(env: env, valueRef: $0) } ?? JXValue(undefinedIn: env)
+            return result.map { JXValue(ctx: ctx, valueRef: $0) } ?? JXValue(undefinedIn: ctx)
         }
     }
 
@@ -639,8 +646,8 @@ extension JXValue {
 
         let property = JSStringCreateWithUTF8CString(key)
         defer { JSStringRelease(property) }
-        try env.trying {
-            JSObjectSetProperty(env.context, value, property, newValue.value, 0, $0)
+        try ctx.trying {
+            JSObjectSetProperty(ctx.context, value, property, newValue.value, 0, $0)
         }
     }
 
@@ -654,8 +661,8 @@ extension JXValue {
             throw JXErrors.propertyAccessNonObject
         }
 
-        try env.trying {
-            JSObjectSetPropertyForKey(env.context, value, symbol.value, newValue.value, 0, $0)
+        try ctx.trying {
+            JSObjectSetPropertyForKey(ctx.context, value, symbol.value, newValue.value, 0, $0)
         }
     }
 }
@@ -672,16 +679,16 @@ extension JXValue {
     /// The value in object at index.
     @inlinable public subscript(index: UInt32) -> JXValue {
         get throws {
-            let result = try env.trying {
-                JSObjectGetPropertyAtIndex(env.context, value, index, $0)
+            let result = try ctx.trying {
+                JSObjectGetPropertyAtIndex(ctx.context, value, index, $0)
             }
-            return result.map { JXValue(env: env, valueRef: $0) } ?? JXValue(undefinedIn: env)
+            return result.map { JXValue(ctx: ctx, valueRef: $0) } ?? JXValue(undefinedIn: ctx)
         }
     }
 
     @inlinable public func setElement(_ element: JXValue, at index: UInt32) throws {
-        try env.trying {
-            JSObjectSetPropertyAtIndex(env.context, value, index, element.value, $0)
+        try ctx.trying {
+            JSObjectSetPropertyAtIndex(ctx.context, value, index, element.value, $0)
         }
     }
 }
@@ -689,8 +696,8 @@ extension JXValue {
 extension JXValue {
     /// Returns the JavaScript string with the given indentation. This should be the same as the output of `JSON.stringify`.
     @inlinable public func toJSON(indent: UInt32 = 0) throws -> String {
-        let str = try env.trying {
-            JSValueCreateJSONString(env.context, value, indent, $0)
+        let str = try ctx.trying {
+            JSValueCreateJSONString(ctx.context, value, indent, $0)
         }
         defer { str.map(JSStringRelease) }
         return str.map(String.init) ?? "null"
@@ -704,9 +711,9 @@ extension JXValue {
     /// - Parameters:
     ///   - length: Length of new `ArrayBuffer` object.
     ///   - context: The execution context to use.
-    public convenience init(newArrayBufferWithLength length: Int, in env: JXContext) throws {
-        let obj = try env.arrayBufferPrototype.construct(withArguments: [JXValue(double: Double(length), in: env)])
-        self.init(env: env, valueRef: obj.value)
+    public convenience init(newArrayBufferWithLength length: Int, in ctx: JXContext) throws {
+        let obj = try ctx.arrayBufferPrototype.construct(withArguments: [JXValue(double: Double(length), in: ctx)])
+        self.init(ctx: ctx, valueRef: obj.value)
     }
 
     /// Creates a JavaScript `ArrayBuffer` object.
@@ -715,15 +722,15 @@ extension JXValue {
     ///   - bytes: A buffer to be used as the backing store of the `ArrayBuffer` object.
     ///   - deallocator: The allocator to use to deallocate the external buffer when the `ArrayBuffer` object is deallocated.
     ///   - context: The execution context to use.
-    public convenience init(newArrayBufferWithBytesNoCopy bytes: UnsafeMutableRawBufferPointer, deallocator: @escaping (UnsafeMutableRawBufferPointer) -> Void, in env: JXContext) throws {
+    public convenience init(newArrayBufferWithBytesNoCopy bytes: UnsafeMutableRawBufferPointer, deallocator: @escaping (UnsafeMutableRawBufferPointer) -> Void, in ctx: JXContext) throws {
 
         typealias Deallocator = () -> Void
 
         let info: UnsafeMutablePointer<Deallocator> = .allocate(capacity: 1)
         info.initialize(to: { deallocator(bytes) })
 
-        let value = try env.trying {
-            JSObjectMakeArrayBufferWithBytesNoCopy(env.context, bytes.baseAddress, bytes.count, { _, info in
+        let value = try ctx.trying {
+            JSObjectMakeArrayBufferWithBytesNoCopy(ctx.context, bytes.baseAddress, bytes.count, { _, info in
                 guard let info = info?.assumingMemoryBound(to: Deallocator.self) else { return }
                 info.pointee()
                 info.deinitialize(count: 1).deallocate()
@@ -734,7 +741,7 @@ extension JXValue {
             throw JXErrors.cannotCreateArrayBuffer
         }
 
-        self.init(env: env, valueRef: value)
+        self.init(ctx: ctx, valueRef: value)
     }
 
     /// Creates a JavaScript `ArrayBuffer` object.
@@ -742,18 +749,18 @@ extension JXValue {
     /// - Parameters:
     ///   - bytes: A buffer to copy.
     ///   - context: The execution context to use.
-    public convenience init<S: DataProtocol>(newArrayBufferWithBytes bytes: S, in env: JXContext) throws {
+    public convenience init<S: DataProtocol>(newArrayBufferWithBytes bytes: S, in ctx: JXContext) throws {
 
         let buffer: UnsafeMutableRawPointer = .allocate(byteCount: bytes.count, alignment: MemoryLayout<UInt8>.alignment)
         bytes.copyBytes(to: UnsafeMutableRawBufferPointer(start: buffer, count: bytes.count))
 
-        guard let bufValue = try env.trying(function: {
-            JSObjectMakeArrayBufferWithBytesNoCopy(env.context, buffer, bytes.count, { buffer, _ in buffer?.deallocate() }, nil, $0)
+        guard let bufValue = try ctx.trying(function: {
+            JSObjectMakeArrayBufferWithBytesNoCopy(ctx.context, buffer, bytes.count, { buffer, _ in buffer?.deallocate() }, nil, $0)
         }) else {
             throw JXErrors.cannotCreateArrayBuffer
         }
 
-        self.init(env: env, valueRef: bufValue)
+        self.init(ctx: ctx, valueRef: bufValue)
     }
 }
 
@@ -761,7 +768,7 @@ extension JXValue {
     /// Tests whether a JavaScript value’s type is the `ArrayBuffer` type.
     public var isArrayBuffer: Bool {
         get throws {
-            try isInstance(of: env.arrayBufferPrototype)
+            try isInstance(of: ctx.arrayBufferPrototype)
         }
     }
 
@@ -779,11 +786,11 @@ extension JXValue {
     /// Copy the bytes of `ArrayBuffer`.
     public func copyBytes() throws -> Data? {
         guard try self.isArrayBuffer else { return nil }
-        let length = try env.trying {
-            JSObjectGetArrayBufferByteLength(env.context, value, $0)
+        let length = try ctx.trying {
+            JSObjectGetArrayBufferByteLength(ctx.context, value, $0)
         }
-        return try env.trying {
-            Data(bytes: JSObjectGetArrayBufferBytesPtr(env.context, value, $0), count: length!)
+        return try ctx.trying {
+            Data(bytes: JSObjectGetArrayBufferBytesPtr(ctx.context, value, $0), count: length!)
         }
     }
 }
@@ -811,9 +818,9 @@ extension JXValue {
     ///   - callback: The callback function.
     ///
     /// - Note: This object is callable as a function (due to `JSClassDefinition.callAsFunction`), but the JavaScript runtime doesn't treat it exactly like a function. For example, you cannot call "apply" on it. It could be better to use `JSObjectMakeFunctionWithCallback`, which may act more like a "true" JavaScript function.
-    public convenience init(newFunctionIn env: JXContext, callback: @escaping JXFunction) {
+    public convenience init(newFunctionIn ctx: JXContext, callback: @escaping JXFunction) {
         let info: UnsafeMutablePointer<JXFunctionInfo> = .allocate(capacity: 1)
-        info.initialize(to: JXFunctionInfo(context: env, callback: callback))
+        info.initialize(to: JXFunctionInfo(context: ctx, callback: callback))
 
         var def = JSClassDefinition()
         def.finalize = JXFunctionFinalize
@@ -824,17 +831,17 @@ extension JXValue {
         let _class = JSClassCreate(&def)
         defer { JSClassRelease(_class) }
 
-        // JSObjectMakeFunctionWithCallback(env.context, JSStringRef, JSObjectCallAsFunctionCallback)
-        self.init(env: env, valueRef: JSObjectMake(env.context, _class, info))
+        // JSObjectMakeFunctionWithCallback(ctx.context, JSStringRef, JSObjectCallAsFunctionCallback)
+        self.init(ctx: ctx, valueRef: JSObjectMake(ctx.context, _class, info))
     }
 
-    public static func createPromise(in env: JXContext) throws -> JXPromise {
+    public static func createPromise(in ctx: JXContext) throws -> JXPromise {
         var resolveRef: JSObjectRef?
         var rejectRef: JSObjectRef?
 
         // https://github.com/WebKit/WebKit/blob/b46f54e33e5cb968174e4d20392513e14d04839f/Source/JavaScriptCore/API/JSValue.mm#L158
-        guard let promise = try env.trying(function: {
-            JSObjectMakeDeferredPromise(env.context, &resolveRef, &rejectRef, $0)
+        guard let promise = try ctx.trying(function: {
+            JSObjectMakeDeferredPromise(ctx.context, &resolveRef, &rejectRef, $0)
         }) else {
             throw JXErrors.cannotCreatePromise
         }
@@ -842,34 +849,34 @@ extension JXValue {
         guard let resolve = resolveRef else {
             throw JXErrors.cannotCreatePromise
         }
-        let resolveFunction = JXValue(env: env, valueRef: resolve)
+        let resolveFunction = JXValue(ctx: ctx, valueRef: resolve)
 
         guard let reject = rejectRef else {
             throw JXErrors.cannotCreatePromise
         }
-        let rejectFunction = JXValue(env: env, valueRef: reject)
+        let rejectFunction = JXValue(ctx: ctx, valueRef: reject)
 
-        return (JXValue(env: env, valueRef: promise), resolveFunction, rejectFunction)
+        return (JXValue(ctx: ctx, valueRef: promise), resolveFunction, rejectFunction)
     }
 
     /// Creates a promise and executes it immediately
     /// - Parameters:
-    ///   - env: the context to use for creation
+    ///   - ctx: the context to use for creation
     ///   - executor: the executor callback
-    public convenience init(newPromiseIn env: JXContext, executor: (JXContext, _ resolve: JXValue, _ reject: JXValue) throws -> ()) throws {
-        let (promise, resolve, reject) = try Self.createPromise(in: env)
-        try executor(env, resolve, reject)
-        self.init(env: env, value: promise)
+    public convenience init(newPromiseIn ctx: JXContext, executor: (JXContext, _ resolve: JXValue, _ reject: JXValue) throws -> ()) throws {
+        let (promise, resolve, reject) = try Self.createPromise(in: ctx)
+        try executor(ctx, resolve, reject)
+        self.init(ctx: ctx, value: promise)
     }
 
-    public convenience init(newPromiseResolvedWithResult result: JXValue, in env: JXContext) throws {
-        try self.init(newPromiseIn: env) { jxc, resolve, reject in
+    public convenience init(newPromiseResolvedWithResult result: JXValue, in ctx: JXContext) throws {
+        try self.init(newPromiseIn: ctx) { jxc, resolve, reject in
             try resolve.call(withArguments: [result])
         }
     }
 
-    public convenience init(newPromiseRejectedWithResult reason: JXValue, in env: JXContext) throws {
-        try self.init(newPromiseIn: env) { jxc, resolve, reject in
+    public convenience init(newPromiseRejectedWithResult reason: JXValue, in ctx: JXContext) throws {
+        try self.init(newPromiseIn: ctx) { jxc, resolve, reject in
             try reject.call(withArguments: [reason])
         }
     }
@@ -891,18 +898,18 @@ private func JXFunctionFinalize(_ object: JSObjectRef?) -> Void {
 private func JXFunctionConstructor(_ jxc: JXContextRef?, _ object: JSObjectRef?, _ argumentCount: Int, _ arguments: UnsafePointer<JSValueRef?>?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> JSObjectRef? {
 
     let info = JSObjectGetPrivate(object).assumingMemoryBound(to: JXFunctionInfo.self)
-    let env = info.pointee.context
+    let ctx = info.pointee.context
 
     do {
-        let arguments = (0..<argumentCount).map { JXValue(env: env, valueRef: arguments![$0]!) }
-        let result = try info.pointee.callback(env, nil, arguments)
+        let arguments = (0..<argumentCount).map { JXValue(ctx: ctx, valueRef: arguments![$0]!) }
+        let result = try info.pointee.callback(ctx, nil, arguments)
 
-        let prototype = JSObjectGetPrototype(env.context, object)
-        JSObjectSetPrototype(env.context, result.value, prototype)
+        let prototype = JSObjectGetPrototype(ctx.context, object)
+        JSObjectSetPrototype(ctx.context, result.value, prototype)
 
         return result.value
     } catch let error {
-        let error = (error as? JXValueError)?.value ?? (try? JXValue(newErrorFromMessage: "\(error)", in: env))
+        let error = (error as? JXValueError)?.value ?? (try? JXValue(newErrorFromMessage: "\(error)", in: ctx))
         exception?.pointee = error?.value
         return nil
     }
@@ -911,15 +918,15 @@ private func JXFunctionConstructor(_ jxc: JXContextRef?, _ object: JSObjectRef?,
 private func JXFunctionCallback(_ jxc: JXContextRef?, _ object: JSObjectRef?, _ this: JSObjectRef?, _ argumentCount: Int, _ arguments: UnsafePointer<JSValueRef?>?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> JSValueRef? {
 
     let info = JSObjectGetPrivate(object).assumingMemoryBound(to: JXFunctionInfo.self)
-    let env = info.pointee.context
+    let ctx = info.pointee.context
 
     do {
-        let this = this.map { JXValue(env: env, valueRef: $0) }
-        let arguments = (0..<argumentCount).map { JXValue(env: env, valueRef: arguments![$0]!) }
-        let result = try info.pointee.callback(env, this, arguments)
+        let this = this.map { JXValue(ctx: ctx, valueRef: $0) }
+        let arguments = (0..<argumentCount).map { JXValue(ctx: ctx, valueRef: arguments![$0]!) }
+        let result = try info.pointee.callback(ctx, this, arguments)
         return result.value
     } catch let error {
-        let error = (error as? JXValueError)?.value ?? (try? JXValue(newErrorFromMessage: "\(error)", in: env))
+        let error = (error as? JXValueError)?.value ?? (try? JXValue(newErrorFromMessage: "\(error)", in: ctx))
         exception?.pointee = error?.value
         return nil
     }
@@ -927,10 +934,10 @@ private func JXFunctionCallback(_ jxc: JXContextRef?, _ object: JSObjectRef?, _ 
 
 private func JXFunctionInstanceOf(_ jxc: JXContextRef?, _ constructor: JSObjectRef?, _ possibleInstance: JSValueRef?, _ exception: UnsafeMutablePointer<JSValueRef?>?) -> Bool {
     let info = JSObjectGetPrivate(constructor).assumingMemoryBound(to: JXFunctionInfo.self)
-    let env = info.pointee.context
-    let pt1 = JSObjectGetPrototype(env.context, constructor)
-    let pt2 = JSObjectGetPrototype(env.context, possibleInstance)
-    return JSValueIsStrictEqual(env.context, pt1, pt2)
+    let ctx = info.pointee.context
+    let pt1 = JSObjectGetPrototype(ctx.context, constructor)
+    let pt2 = JSObjectGetPrototype(ctx.context, possibleInstance)
+    return JSValueIsStrictEqual(ctx.context, pt1, pt2)
 }
 
 
@@ -944,44 +951,44 @@ extension JXValue {
     ///
     /// - Returns: the key for the property that was defined
     @inlinable public func defineProperty(_ property: JXValue, _ descriptor: JXProperty) throws {
-        let desc = JXValue(newObjectIn: env)
+        let desc = JXValue(newObjectIn: ctx)
 
         if let value = descriptor.value {
             try desc.setProperty("value", value)
         }
 
         if let writable = descriptor.writable {
-            try desc.setProperty("writable", JXValue(bool: writable, in: env))
+            try desc.setProperty("writable", JXValue(bool: writable, in: ctx))
         }
 
         if let getter = descriptor._getter {
             try desc.setProperty("get", getter)
         } else if let getter = descriptor.getter {
-            try desc.setProperty("get", JXValue(newFunctionIn: env) { _, this, _ in try getter(this!) })
+            try desc.setProperty("get", JXValue(newFunctionIn: ctx) { _, this, _ in try getter(this!) })
         }
 
         if let setter = descriptor._setter {
             try desc.setProperty("set", setter)
         } else if let setter = descriptor.setter {
-            try desc.setProperty("set", JXValue(newFunctionIn: env) { context, this, arguments in
+            try desc.setProperty("set", JXValue(newFunctionIn: ctx) { context, this, arguments in
                 try setter(this!, arguments[0])
                 return JXValue(undefinedIn: context)
             })
         }
         
         if let configurable = descriptor.configurable {
-            try desc.setProperty("configurable", JXValue(bool: configurable, in: env))
+            try desc.setProperty("configurable", JXValue(bool: configurable, in: ctx))
         }
 
         if let enumerable = descriptor.enumerable {
-            try desc.setProperty("enumerable", JXValue(bool: enumerable, in: env))
+            try desc.setProperty("enumerable", JXValue(bool: enumerable, in: ctx))
         }
 
-        try env.objectPrototype.invokeMethod("defineProperty", withArguments: [self, property, desc])
+        try ctx.objectPrototype.invokeMethod("defineProperty", withArguments: [self, property, desc])
     }
 
     public func propertyDescriptor(_ property: JXValue) throws -> JXValue {
-        try env.objectPrototype.invokeMethod("getOwnPropertyDescriptor", withArguments: [self, property])
+        try ctx.objectPrototype.invokeMethod("getOwnPropertyDescriptor", withArguments: [self, property])
     }
 }
 

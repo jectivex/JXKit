@@ -1,7 +1,23 @@
 {
   "abstract" : [
     {
-      "text" : "No overview available.",
+      "text" : "Wraps an existing ",
+      "type" : "text"
+    },
+    {
+      "code" : "JSGlobalContextRef",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " in a ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXContext",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ". Address space will be shared between both contexts.",
       "type" : "text"
     }
   ],
@@ -9,38 +25,21 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/createPromise(in:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(ctx:strict:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC13createPromise2inAC7promise_AC15resolveFunctionAC06rejectH0tAA9JXContextC_tKFZ",
+    "externalID" : "s:5JXKit9JXContextC3ctx6strictA2C_Sbtcfc",
     "fragments" : [
       {
-        "kind" : "keyword",
-        "text" : "static"
-      },
-      {
-        "kind" : "text",
-        "text" : " "
-      },
-      {
-        "kind" : "keyword",
-        "text" : "func"
-      },
-      {
-        "kind" : "text",
-        "text" : " "
-      },
-      {
         "kind" : "identifier",
-        "text" : "createPromise"
+        "text" : "init"
       },
       {
         "kind" : "text",
@@ -48,7 +47,7 @@
       },
       {
         "kind" : "externalParam",
-        "text" : "in"
+        "text" : "ctx"
       },
       {
         "kind" : "text",
@@ -61,20 +60,24 @@
       },
       {
         "kind" : "text",
-        "text" : ") "
+        "text" : ", "
       },
       {
-        "kind" : "keyword",
-        "text" : "throws"
+        "kind" : "externalParam",
+        "text" : "strict"
       },
       {
         "kind" : "text",
-        "text" : " -> "
+        "text" : ": "
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit9JXPromisea",
-        "text" : "JXPromise"
+        "preciseIdentifier" : "s:Sb",
+        "text" : "Bool"
+      },
+      {
+        "kind" : "text",
+        "text" : ")"
       }
     ],
     "modules" : [
@@ -83,9 +86,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Type Method",
-    "symbolKind" : "method",
-    "title" : "createPromise(in:)"
+    "roleHeading" : "Initializer",
+    "symbolKind" : "init",
+    "title" : "init(ctx:strict:)"
   },
   "primaryContentSections" : [
     {
@@ -100,23 +103,7 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "static"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "keyword",
-              "text" : "func"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "identifier",
-              "text" : "createPromise"
+              "text" : "init"
             },
             {
               "kind" : "text",
@@ -124,14 +111,6 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "in"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "internalParam",
               "text" : "ctx"
             },
             {
@@ -146,26 +125,62 @@
             },
             {
               "kind" : "text",
-              "text" : ") "
+              "text" : ", "
             },
             {
-              "kind" : "keyword",
-              "text" : "throws"
+              "kind" : "externalParam",
+              "text" : "strict"
             },
             {
               "kind" : "text",
-              "text" : " -> "
+              "text" : ": "
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXPromise",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit9JXPromisea",
-              "text" : "JXPromise"
+              "preciseIdentifier" : "s:Sb",
+              "text" : "Bool"
+            },
+            {
+              "kind" : "text",
+              "text" : " = true)"
             }
           ]
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "kind" : "parameters",
+      "parameters" : [
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "the shared JXContext to use",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "env"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "whether to evaluate in strict mode",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "strict"
+        }
+      ]
     }
   ],
   "schemaVersion" : {
@@ -179,7 +194,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxvalue\/createpromise(in:)"
+        "\/documentation\/jxkit\/jxcontext\/init(ctx:strict:)"
       ],
       "traits" : [
         {
@@ -246,95 +261,33 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXPromise": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "typealias"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXPromise"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXPromise",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXPromise"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXPromise",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxpromise"
-},
-"doc://JXKit/documentation/JXKit/JXValue": {
+"doc://JXKit/documentation/JXKit/JXContext/init(ctx:strict:)": {
   "abstract" : [
     {
-      "text" : "A JavaScript object.",
+      "text" : "Wraps an existing ",
+      "type" : "text"
+    },
+    {
+      "code" : "JSGlobalContextRef",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " in a ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXContext",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ". Address space will be shared between both contexts.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
-      "kind" : "keyword",
-      "text" : "class"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
       "kind" : "identifier",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXValue"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXValue",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue"
-},
-"doc://JXKit/documentation/JXKit/JXValue/createPromise(in:)": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "static"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "createPromise"
+      "text" : "init"
     },
     {
       "kind" : "text",
@@ -342,7 +295,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "in"
+      "text" : "ctx"
     },
     {
       "kind" : "text",
@@ -355,28 +308,32 @@
     },
     {
       "kind" : "text",
-      "text" : ") "
+      "text" : ", "
     },
     {
-      "kind" : "keyword",
-      "text" : "throws"
+      "kind" : "externalParam",
+      "text" : "strict"
     },
     {
       "kind" : "text",
-      "text" : " -> "
+      "text" : ": "
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit9JXPromisea",
-      "text" : "JXPromise"
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/createPromise(in:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(ctx:strict:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "createPromise(in:)",
+  "title" : "init(ctx:strict:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/createpromise(in:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/init(ctx:strict:)"
 }
 }
 }

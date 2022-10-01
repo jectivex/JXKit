@@ -1,23 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Wraps an existing ",
-      "type" : "text"
-    },
-    {
-      "code" : "JSGlobalContextRef",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " in a ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ". Address space will be shared between both contexts.",
+      "text" : "No overview available.",
       "type" : "text"
     }
   ],
@@ -25,18 +9,26 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(env:strict:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(ctx:value:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit9JXContextC3env6strictA2C_Sbtcfc",
+    "externalID" : "s:5JXKit7JXValueC3ctx5valueAcA9JXContextC_ACtcfc",
     "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "convenience"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
       {
         "kind" : "identifier",
         "text" : "init"
@@ -47,7 +39,7 @@
       },
       {
         "kind" : "externalParam",
-        "text" : "env"
+        "text" : "ctx"
       },
       {
         "kind" : "text",
@@ -64,7 +56,7 @@
       },
       {
         "kind" : "externalParam",
-        "text" : "strict"
+        "text" : "value"
       },
       {
         "kind" : "text",
@@ -72,8 +64,8 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:Sb",
-        "text" : "Bool"
+        "preciseIdentifier" : "s:5JXKit7JXValueC",
+        "text" : "JXValue"
       },
       {
         "kind" : "text",
@@ -88,7 +80,7 @@
     "role" : "symbol",
     "roleHeading" : "Initializer",
     "symbolKind" : "init",
-    "title" : "init(env:strict:)"
+    "title" : "init(ctx:value:)"
   },
   "primaryContentSections" : [
     {
@@ -103,6 +95,14 @@
           "tokens" : [
             {
               "kind" : "keyword",
+              "text" : "convenience"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "keyword",
               "text" : "init"
             },
             {
@@ -111,7 +111,7 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "env"
+              "text" : "ctx"
             },
             {
               "kind" : "text",
@@ -129,58 +129,26 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "strict"
+              "text" : "value"
             },
             {
               "kind" : "text",
               "text" : ": "
             },
             {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:Sb",
-              "text" : "Bool"
+              "preciseIdentifier" : "s:5JXKit7JXValueC",
+              "text" : "JXValue"
             },
             {
               "kind" : "text",
-              "text" : " = true)"
+              "text" : ")"
             }
           ]
         }
       ],
       "kind" : "declarations"
-    },
-    {
-      "kind" : "parameters",
-      "parameters" : [
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "the shared JXContext to use",
-                  "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "env"
-        },
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "whether to evaluate in strict mode",
-                  "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "strict"
-        }
-      ]
     }
   ],
   "schemaVersion" : {
@@ -194,7 +162,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/init(env:strict:)"
+        "\/documentation\/jxkit\/jxvalue\/init(ctx:value:)"
       ],
       "traits" : [
         {
@@ -261,30 +229,53 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/init(env:strict:)": {
+"doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
     {
-      "text" : "Wraps an existing ",
-      "type" : "text"
-    },
-    {
-      "code" : "JSGlobalContextRef",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " in a ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ". Address space will be shared between both contexts.",
+      "text" : "A JavaScript object.",
       "type" : "text"
     }
   ],
   "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXValue"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXValue",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue"
+},
+"doc://JXKit/documentation/JXKit/JXValue/init(ctx:value:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "convenience"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
     {
       "kind" : "identifier",
       "text" : "init"
@@ -295,7 +286,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "env"
+      "text" : "ctx"
     },
     {
       "kind" : "text",
@@ -312,7 +303,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "strict"
+      "text" : "value"
     },
     {
       "kind" : "text",
@@ -320,20 +311,20 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
     },
     {
       "kind" : "text",
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(env:strict:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(ctx:value:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "init(env:strict:)",
+  "title" : "init(ctx:value:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/init(env:strict:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/init(ctx:value:)"
 }
 }
 }

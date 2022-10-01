@@ -21,7 +21,7 @@ public extension JXContext {
 extension JXValue {
     /// Uses a `JXValueDecoder` to decode the `Decodable`
     @inlinable public func toDecodable<T: Decodable>(ofType: T.Type) throws -> T {
-        try JXValueDecoder(context: env).decode(ofType, from: self)
+        try JXValueDecoder(context: ctx).decode(ofType, from: self)
     }
 }
 
@@ -761,7 +761,7 @@ fileprivate class __JSDecoder : Decoder {
     // MARK: - Initialization
     /// Initializes `self` with the given top-level container and options.
     fileprivate init(referencing container: JXValue, at codingPath: [CodingKey] = [], options: JXValueDecoder._Options) {
-        self.context = container.env
+        self.context = container.ctx
         self.storage = _ScriptDecodingStorage()
         self.storage.push(container: container)
         self.codingPath = codingPath
