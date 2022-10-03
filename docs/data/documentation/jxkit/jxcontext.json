@@ -151,7 +151,6 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/context",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/datePrototype",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/errorPrototype",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/exceptionHandler",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/global",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/objectPrototype",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/promisePrototype",
@@ -1057,65 +1056,6 @@
   "title" : "eval(_:this:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:)"
-},
-"doc://JXKit/documentation/JXKit/JXContext/exceptionHandler": {
-  "abstract" : [
-    {
-      "text" : "An exception handler for the given context",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "var"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "exceptionHandler"
-    },
-    {
-      "kind" : "text",
-      "text" : ": (("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit9JXContextC",
-      "text" : "JXContext"
-    },
-    {
-      "kind" : "text",
-      "text" : "?, "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    },
-    {
-      "kind" : "text",
-      "text" : "?) -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:s4Voida",
-      "text" : "Void"
-    },
-    {
-      "kind" : "text",
-      "text" : ")?"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/exceptionHandler",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "exceptionHandler",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/exceptionhandler"
 },
 "doc://JXKit/documentation/JXKit/JXContext/garbageCollect()": {
   "abstract" : [

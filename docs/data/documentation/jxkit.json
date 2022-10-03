@@ -141,7 +141,8 @@
       "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXKitBundle",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXKitBundleIdentifier",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXKitInfo"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXKitInfo",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JavaScriptCoreVersion"
       ],
       "title" : "Variables"
     },
@@ -773,6 +774,51 @@
   "title" : "JXValueRef",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalueref"
+},
+"doc://JXKit/documentation/JXKit/JavaScriptCoreVersion": {
+  "abstract" : [
+    {
+      "text" : "The runtime version of JavaScript core (e.g., ",
+      "type" : "text"
+    },
+    {
+      "code" : "40239623",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ")",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JavaScriptCoreVersion"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s5Int32V",
+      "text" : "Int32"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JavaScriptCoreVersion",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JavaScriptCoreVersion",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/javascriptcoreversion"
 },
 "https://trac.webkit.org/wiki/JavaScriptCore": {
   "identifier" : "https:\/\/trac.webkit.org\/wiki\/JavaScriptCore",

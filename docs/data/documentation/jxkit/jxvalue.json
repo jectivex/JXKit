@@ -171,7 +171,6 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dateValue",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dateValueISO",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dictionary",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/env",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isArray",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isArrayBuffer",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isBoolean",
@@ -1227,41 +1226,6 @@
   "title" : "dictionary",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/dictionary"
-},
-"doc://JXKit/documentation/JXKit/JXValue/env": {
-  "abstract" : [
-
-  ],
-  "deprecated" : true,
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "var"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "env"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit9JXContextC",
-      "text" : "JXContext"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/env",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "env",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/env"
 },
 "doc://JXKit/documentation/JXKit/JXValue/freeze()": {
   "abstract" : [
@@ -3547,7 +3511,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXValue/setProperty(_:_:)": {
   "abstract" : [
-
+    {
+      "text" : "Sets the property of the object to the given value",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -3587,6 +3554,15 @@
     {
       "kind" : "keyword",
       "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
     }
   ],
   "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)",
@@ -3649,6 +3625,15 @@
     {
       "kind" : "keyword",
       "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
     }
   ],
   "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(symbol:_:)",
