@@ -11,15 +11,6 @@ import CJSCore
 import FoundationNetworking
 #endif
 
-// MARK: JXValue
-
-extension JXValue {
-    @available(*, deprecated, renamed: "ctx")
-    public var env: JXContext {
-        ctx
-    }
-}
-
 /// A JavaScript object.
 ///
 /// This wraps a `JSObjectRef`, and is the equivalent of `JavaScriptCore.JSValue`
@@ -38,11 +29,6 @@ public class JXValue {
     }
 
     deinit {
-//        if self.isObject,
-//           !self.isFunction, // function store the callback in the private region
-//           let ptr = JSObjectGetPrivate(self.value) {
-//            ptr.deallocate()
-//        }
         JSValueUnprotect(ctx.context, value)
     }
 }
@@ -639,7 +625,12 @@ extension JXValue {
         }
     }
 
-    @inlinable public func setProperty(_ key: String, _ newValue: JXValue) throws {
+    /// Sets the property of the object to the given value
+    /// - Parameters:
+    ///   - key: the key name to set
+    ///   - newValue: the value of the property
+    /// - Returns: the value itself
+    @discardableResult @inlinable public func setProperty(_ key: String, _ newValue: JXValue) throws -> JXValue {
         if !isObject {
             throw JXErrors.propertyAccessNonObject
         }
@@ -649,6 +640,7 @@ extension JXValue {
         try ctx.trying {
             JSObjectSetProperty(ctx.context, value, property, newValue.value, 0, $0)
         }
+        return newValue
     }
 
     /// Sets the property specified by the symbol key.
@@ -656,7 +648,7 @@ extension JXValue {
     ///   - key: the name of the symbol to use
     ///   - newValue: the value to set the property
     /// - Returns:
-    @inlinable public func setProperty(symbol: JXValue, _ newValue: JXValue) throws {
+    @discardableResult @inlinable public func setProperty(symbol: JXValue, _ newValue: JXValue) throws -> JXValue {
         if !isObject {
             throw JXErrors.propertyAccessNonObject
         }
@@ -664,6 +656,7 @@ extension JXValue {
         try ctx.trying {
             JSObjectSetPropertyForKey(ctx.context, value, symbol.value, newValue.value, 0, $0)
         }
+        return newValue
     }
 }
 

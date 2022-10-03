@@ -26,9 +26,6 @@ open class JXContext {
     /// The underlying `JSGlobalContextRef` that is wrapped by this context
     public let context: JSGlobalContextRef
 
-    /// An exception handler for the given context
-    public var exceptionHandler: ((JXContext?, JXValue?) -> Void)?
-
     private var strictEvaluated: Bool = false
 
     /// Creates `JXContext` with the given `JXVM`.  `JXValue` references may be used interchangably with multiple instances of `JXContext` with the same `JXVM`, but sharing between  separate `JXVM`s will result in undefined behavior.
@@ -341,13 +338,16 @@ extension JXContext {
         try JXValue(newErrorFromMessage: "\(error)", in: self)
     }
 
-    /// Attempts the operation whose failure is expecter to set the given error pointer.
+    /// Attempts the operation whose failure is expected to set the given error pointer.
+    ///
+    /// When the error pointer is set, a ``JXError`` will be thrown.
     @inlinable internal func trying<T>(function: (UnsafeMutablePointer<JSValueRef?>) throws -> T?) throws -> T! {
         var errorPointer: JSValueRef?
         let result = try function(&errorPointer)
         if let errorPointer = errorPointer {
             throw JXError(ctx: self, valueRef: errorPointer)
+        } else {
+            return result
         }
-        return result
     }
 }

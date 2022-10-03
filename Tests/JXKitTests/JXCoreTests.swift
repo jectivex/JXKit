@@ -7,6 +7,12 @@ class JXCoreTests: XCTestCase {
         XCTAssertLessThanOrEqual(3_000_000, JXKitVersionNumber, "should have been version 3.0.0 or higher")
     }
 
+    func testJavaScriptCoreVersion() {
+        #if canImport(MachO)
+        XCTAssertLessThanOrEqual(40239623, JavaScriptCoreVersion)
+        #endif
+    }
+
     func testHobbled() {
 #if arch(x86_64)
         XCTAssertEqual(false, JXVM.isHobbled, "JIT permitted")

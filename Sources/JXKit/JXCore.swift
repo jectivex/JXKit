@@ -57,6 +57,13 @@ extension JXVM {
     }()
 }
 
+#if canImport(MachO)
+// TODO: how to implement this on Linux?
+import func MachO.NSVersionOfRunTimeLibrary
+/// The runtime version of JavaScript core (e.g., `40239623`)
+public let JavaScriptCoreVersion = NSVersionOfRunTimeLibrary("JavaScriptCore")
+#endif
+
 /// The underlying type that represents a value in the JavaScript environment
 public typealias JXValueRef = JSValueRef
 
