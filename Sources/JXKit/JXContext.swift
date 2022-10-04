@@ -293,7 +293,7 @@ extension JXContext {
         JXValue(symbol: String(value), in: self)
     }
 
-    /// Creates a new string with the given value in the context.
+    /// Creates a new javascriprt object in this context from the passed JSON string.
     @inlinable public func json<S: StringProtocol>(_ value: S) -> JXValue {
         JXValue(json: String(value), in: self) ?? undefined()
     }
