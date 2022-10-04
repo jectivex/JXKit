@@ -236,7 +236,6 @@
               "type" : "paragraph"
             }
           ],
-          "name" : "Note",
           "style" : "note",
           "type" : "aside"
         }
@@ -246,7 +245,7 @@
   ],
   "schemaVersion" : {
     "major" : 0,
-    "minor" : 3,
+    "minor" : 2,
     "patch" : 0
   },
   "sections" : [
