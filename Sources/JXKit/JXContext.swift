@@ -293,6 +293,11 @@ extension JXContext {
         JXValue(symbol: String(value), in: self)
     }
 
+    /// Creates a new string with the given value in the context.
+    @inlinable public func json<S: StringProtocol>(_ value: S) -> JXValue {
+        JXValue(json: String(value), in: self) ?? undefined()
+    }
+
     /// Creates a new object in this context and assigns it the given peer object.
     @inlinable public func object(peer: AnyObject? = nil) -> JXValue {
         guard let peer = peer else {

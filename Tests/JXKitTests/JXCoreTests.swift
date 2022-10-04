@@ -152,6 +152,17 @@ class JXCoreTests: XCTestCase {
         //XCTAssertEqual(try jxc.global[symbol: obj][symbol: container].numberValue, 3)
     }
 
+    func testJSONObject() throws {
+        let jxc = JXContext()
+        let obj = jxc.json(#"""
+        {
+            "abc": "def"
+        }
+        """#)
+        XCTAssertTrue(obj.isObject)
+        XCTAssertEqual(try obj.toJSON(), #"{"abc":"def"}"#)
+    }
+
     func testArrayBuffer() throws {
         let jxc = JXContext()
         
