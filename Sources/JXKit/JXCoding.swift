@@ -31,14 +31,14 @@ extension JXValue {
 extension JXValue {
     /// Adds the given object as the final element of this array
     func add(_ object: JXValue) throws {
-        guard try isArray else {
+        guard isArray else {
             throw JXErrors.addToNonArray
         }
         try self.setElement(object, at: UInt32(count))
     }
 
     func insert(_ object: JXValue, at index: Int) throws {
-        guard try isArray else {
+        guard isArray else {
             throw JXErrors.addToNonArray
         }
         for i in try (max(1, index)...count).reversed() {
@@ -570,7 +570,7 @@ fileprivate struct _JSKeyedEncodingContainer<K : CodingKey> : KeyedEncodingConta
 
     public mutating func nestedContainer<NestedKey>(keyedBy keyType: NestedKey.Type, forKey key: Key) -> KeyedEncodingContainer<NestedKey> {
         let dictionary = JXValue(newObjectIn: encoder.context)
-        try? self.container.setProperty(key.stringValue, dictionary)
+        _ = try? self.container.setProperty(key.stringValue, dictionary)
 
         self.codingPath.append(key)
         defer { self.codingPath.removeLast() }
@@ -665,7 +665,7 @@ fileprivate class __JSReferencingEncoder : JXEncoder {
             try? array.insert(value, at: index)
 
         case .dictionary(let dictionary, let key):
-            try? dictionary.setProperty(key, value)
+            _ = try? dictionary.setProperty(key, value)
         }
     }
 }
@@ -791,7 +791,7 @@ fileprivate class __JSDecoder : Decoder {
                                                                     debugDescription: "Cannot get unkeyed decoding container -- found null value instead."))
         }
 
-        guard try self.storage.topContainer.isArray else {
+        guard self.storage.topContainer.isArray else {
             throw DecodingError._typeMismatch(at: self.codingPath, expectation: [Any].self, reality: self.storage.topContainer)
         }
 
@@ -1123,7 +1123,7 @@ fileprivate struct _JSKeyedDecodingContainer<K : CodingKey> : KeyedDecodingConta
                                                                     debugDescription: "Cannot get nested unkeyed container -- no value found for key \"\(key.stringValue)\""))
         }
 
-        guard try value.isArray == true else {
+        guard value.isArray == true else {
             throw DecodingError._typeMismatch(at: self.codingPath, expectation: [Any].self, reality: value)
         }
 
@@ -1475,7 +1475,7 @@ fileprivate struct _ScriptUnkeyedDecodingContainer : UnkeyedDecodingContainer {
                                                                     debugDescription: "Cannot get keyed decoding container -- found null value instead."))
         }
 
-        guard (try? value.isArray) == true else {
+        guard value.isArray == true else {
             throw DecodingError._typeMismatch(at: self.codingPath, expectation: [Any].self, reality: value)
         }
 
