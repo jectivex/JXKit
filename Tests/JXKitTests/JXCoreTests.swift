@@ -9,7 +9,8 @@ class JXCoreTests: XCTestCase {
 
     func testJavaScriptCoreVersion() {
         #if canImport(MachO)
-        XCTAssertLessThanOrEqual(40239623, JavaScriptCoreVersion)
+        XCTAssertLessThanOrEqual(40174087, JavaScriptCoreVersion) // macOS 12
+        // XCTAssertLessThanOrEqual(40239623, JavaScriptCoreVersion) // macOS 13
         #endif
     }
 
