@@ -120,7 +120,7 @@ extension JXValue {
         self.init(ctx: ctx, valueRef: json)
     }
 
-    /// Creates a JavaScript `Date` object, as if by invoking the built-in `RegExp` constructor.
+    /// Creates a JavaScript `Date` object, as if by invoking the built-in `JSObjectMakeDate` constructor.
     ///
     /// - Parameters:
     ///   - value: The value to assign to the object.
@@ -299,10 +299,7 @@ extension JXValue {
 
     /// Tests whether a JavaScript value’s type is the array type.
     @inlinable public var isArray: Bool {
-        get throws {
-            let result = try ctx.arrayPrototype.invokeMethod("isArray", withArguments: [self])
-            return JSValueToBoolean(ctx.context, result.value)
-        }
+        JSValueIsArray(ctx.context, value)
     }
 
     /// Tests whether a JavaScript value’s type is the error type.
@@ -1097,7 +1094,7 @@ extension JXValue {
         if isSymbol { return .symbol }
         if (try? isDate) == true { return .date }
         if isString { return .string }
-        if (try? isArray) == true { return .array }
+        if isArray { return .array }
         if isObject { return .object }
         return nil
     }

@@ -120,7 +120,7 @@
   ],
   "schemaVersion" : {
     "major" : 0,
-    "minor" : 2,
+    "minor" : 3,
     "patch" : 0
   },
   "sections" : [
@@ -171,6 +171,7 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:method:this:priority:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/garbageCollect()",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/json(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/null()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/number(_:)-3hm3m",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/number(_:)-7xicn",
@@ -1305,6 +1306,69 @@
   "title" : "init(virtualMachine:strict:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/init(virtualmachine:strict:)"
+},
+"doc://JXKit/documentation/JXKit/JXContext/json(_:)": {
+  "abstract" : [
+    {
+      "text" : "v a ",
+      "type" : "text"
+    },
+    {
+      "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+      "isActive" : true,
+      "type" : "reference"
+    },
+    {
+      "text" : " from the given JSON string.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "json"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/json(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "json(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/json(_:)"
 },
 "doc://JXKit/documentation/JXKit/JXContext/null()": {
   "abstract" : [

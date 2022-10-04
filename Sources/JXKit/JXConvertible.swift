@@ -102,7 +102,7 @@ extension Optional : JXConvertible where Wrapped : JXConvertible {
 
 extension Array : JXConvertible where Element : JXConvertible {
     public static func makeJX(from value: JXValue) throws -> Self {
-        guard try value.isArray else {
+        guard value.isArray else {
             throw JXErrors.valueNotArray
         }
 

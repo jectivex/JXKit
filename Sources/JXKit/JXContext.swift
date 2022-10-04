@@ -93,6 +93,8 @@ public enum JXErrors : Error {
     case valueNotArray
     /// A synbolic key was attempted to be set, but the value was not a symbol
     case keyNotSymbol
+    /// An object could not be created from the given JSON
+    case cannotCreateFromJSON
 
     /// A conversion to another numic type failed
     case invalidNumericConversion(Double)
@@ -336,6 +338,16 @@ extension JXContext {
 
     @inlinable public func error<E: Error>(_ error: E) throws -> JXValue {
         try JXValue(newErrorFromMessage: "\(error)", in: self)
+    }
+
+    /// v a ``JXValue`` from the given JSON string.
+    /// - Parameter string: the JSON string to parse
+    /// - Returns: the value if it could be created
+    @inlinable public func json(_ string: String) throws -> JXValue {
+        if let value = JXValue(json: string, in: self) {
+            return value
+        }
+        throw JXErrors.cannotCreateFromJSON
     }
 
     /// Attempts the operation whose failure is expected to set the given error pointer.

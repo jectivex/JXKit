@@ -67,7 +67,7 @@ class JXCoreTests: XCTestCase {
 
         let result = try jxc.eval("[1 + 2, \"BMW\", \"Volvo\"]")
 
-        XCTAssertTrue(try result.isArray)
+        XCTAssertTrue(result.isArray)
 
         let length = try result["length"]
         XCTAssertEqual(try length.numberValue, 3)
@@ -394,5 +394,20 @@ class JXCoreTests: XCTestCase {
         }
 
         XCTAssertEqual(0, JXCoreTests.peerCount, "peer instances should have been deallocated")
+    }
+
+    func testJSON() throws {
+        let jxc = JXContext()
+        XCTAssertNoThrow(try jxc.json(#"{}"#))
+        XCTAssertNoThrow(try jxc.json(#"{"a":1}"#))
+        XCTAssertNoThrow(try jxc.json(#"{"b":false}"#))
+        XCTAssertNoThrow(try jxc.json(#"[1,2,3]"#))
+        XCTAssertNoThrow(try jxc.json(#"true"#))
+        XCTAssertNoThrow(try jxc.json(#"false"#))
+        XCTAssertNoThrow(try jxc.json(#"1.2"#))
+
+        XCTAssertThrowsError(try jxc.json(#"{"#))
+        XCTAssertThrowsError(try jxc.json(#"}"#))
+        XCTAssertThrowsError(try jxc.json(#"{x:1}"#))
     }
 }

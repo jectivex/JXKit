@@ -1,10 +1,4 @@
 {
-  "abstract" : [
-    {
-      "text" : "No overview available.",
-      "type" : "text"
-    }
-  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -91,7 +85,7 @@
   ],
   "schemaVersion" : {
     "major" : 0,
-    "minor" : 2,
+    "minor" : 3,
     "patch" : 0
   },
   "sections" : [
@@ -104,6 +98,7 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/asyncEvalMustReturnPromise",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/callOnNonFunction",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotCreateArrayBuffer",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotCreateFromJSON",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotCreatePromise",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/evaluationErrorString(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/evaluationErrorUnknown",
@@ -307,6 +302,34 @@
   "title" : "JXErrors.cannotCreateArrayBuffer",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerrors\/cannotcreatearraybuffer"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/cannotCreateFromJSON": {
+  "abstract" : [
+    {
+      "text" : "An object could not be created from the given JSON",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "cannotCreateFromJSON"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotCreateFromJSON",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.cannotCreateFromJSON",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/cannotcreatefromjson"
 },
 "doc://JXKit/documentation/JXKit/JXErrors/cannotCreatePromise": {
   "abstract" : [
