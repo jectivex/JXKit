@@ -1,0 +1,1031 @@
+{
+  "interfaceLanguages" : {
+    "swift" : [
+      {
+        "children" : [
+          {
+            "title" : "Essentials",
+            "type" : "groupMarker"
+          },
+          {
+            "path" : "\/documentation\/jxkit\/gettingstarted",
+            "title" : "Getting Started with JXKit",
+            "type" : "article"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/init(ctx:strict:)",
+                "title" : "init(ctx: JXContext, strict: Bool)",
+                "type" : "init"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/init(virtualmachine:strict:)",
+                "title" : "init(virtualMachine: JXVM, strict: Bool)",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/arraybufferprototype",
+                "title" : "var arrayBufferPrototype: JXValue",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/arrayprototype",
+                "title" : "var arrayPrototype: JXValue",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/context",
+                "title" : "let context: JSGlobalContextRef",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/dateprototype",
+                "title" : "var datePrototype: JXValue",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/errorprototype",
+                "title" : "var errorPrototype: JXValue",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/global",
+                "title" : "var global: JXValue",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/objectprototype",
+                "title" : "var objectPrototype: JXValue",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/promiseprototype",
+                "title" : "var promisePrototype: JXValue",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/strict",
+                "title" : "let strict: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/vm",
+                "title" : "let vm: JXVM",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/array(_:)",
+                "title" : "func array([JXValue]) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/boolean(_:)",
+                "title" : "func boolean(Bool) -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/check(_:sourceurl:startinglinenumber:)",
+                "title" : "func check(String, sourceURL: String?, startingLineNumber: Int) throws -> Bool",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/data(_:)",
+                "title" : "func data<D>(D) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/date(_:)",
+                "title" : "func date(Date) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/encode(_:)",
+                "title" : "func encode<T>(T) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/error(_:)",
+                "title" : "func error<E>(E) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/eval(_:method:this:priority:)",
+                "title" : "func eval(String, method: Bool, this: JXValue?, priority: TaskPriority) async throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:)",
+                "title" : "func eval(String, this: JXValue?) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/garbagecollect()",
+                "title" : "func garbageCollect()",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/json(_:)",
+                "title" : "func json(String) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/null()",
+                "title" : "func null() -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/number(_:)-3hm3m",
+                "title" : "func number<I>(I) -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/number(_:)-7xicn",
+                "title" : "func number<F>(F) -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/object(peer:)",
+                "title" : "func object(peer: AnyObject?) -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/string(_:)",
+                "title" : "func string<S>(S) -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/symbol(_:)",
+                "title" : "func symbol<S>(S) -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/undefined()",
+                "title" : "func undefined() -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/witharraybuffer(source:block:)",
+                "title" : "func withArrayBuffer<T>(source: Data, block: (JXValue) throws -> (T)) throws -> T",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/jxkit\/jxcontext",
+            "title" : "JXContext",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/init(ctx:value:)",
+                "title" : "convenience init(ctx: JXContext, value: JXValue)",
+                "type" : "init"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/init(newarraybufferwithbytes:in:)",
+                "title" : "convenience init<S>(newArrayBufferWithBytes: S, in: JXContext) throws",
+                "type" : "init"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/init(newarraybufferwithbytesnocopy:deallocator:in:)",
+                "title" : "convenience init(newArrayBufferWithBytesNoCopy: UnsafeMutableRawBufferPointer, deallocator: (UnsafeMutableRawBufferPointer) -> Void, in: JXContext) throws",
+                "type" : "init"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/init(newarraybufferwithlength:in:)",
+                "title" : "convenience init(newArrayBufferWithLength: Int, in: JXContext) throws",
+                "type" : "init"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/init(newfunctionin:callback:)",
+                "title" : "convenience init(newFunctionIn: JXContext, callback: JXFunction)",
+                "type" : "init"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/init(newpromisein:executor:)",
+                "title" : "convenience init(newPromiseIn: JXContext, executor: (JXContext, JXValue, JXValue) throws -> ()) throws",
+                "type" : "init"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/init(newpromiserejectedwithresult:in:)",
+                "title" : "convenience init(newPromiseRejectedWithResult: JXValue, in: JXContext) throws",
+                "type" : "init"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/init(newpromiseresolvedwithresult:in:)",
+                "title" : "convenience init(newPromiseResolvedWithResult: JXValue, in: JXContext) throws",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/array",
+                "title" : "var array: [JXValue]",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/booleanvalue",
+                "title" : "var booleanValue: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/bytelength",
+                "title" : "var byteLength: Int",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/count",
+                "title" : "var count: Int",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/ctx",
+                "title" : "let ctx: JXContext",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/datevalue",
+                "title" : "var dateValue: Date?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/datevalueiso",
+                "title" : "var dateValueISO: Date?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/dictionary",
+                "title" : "var dictionary: [String : JXValue]?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/isarray",
+                "title" : "var isArray: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/isarraybuffer",
+                "title" : "var isArrayBuffer: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/isboolean",
+                "title" : "var isBoolean: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/isconstructor",
+                "title" : "var isConstructor: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/isdate",
+                "title" : "var isDate: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/iserror",
+                "title" : "var isError: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/isextensible",
+                "title" : "var isExtensible: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/isfrozen",
+                "title" : "var isFrozen: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/isfunction",
+                "title" : "var isFunction: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/isnull",
+                "title" : "var isNull: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/isnumber",
+                "title" : "var isNumber: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/isobject",
+                "title" : "var isObject: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/ispromise",
+                "title" : "var isPromise: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/issealed",
+                "title" : "var isSealed: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/isstring",
+                "title" : "var isString: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/issymbol",
+                "title" : "var isSymbol: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/isundefined",
+                "title" : "var isUndefined: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/numbervalue",
+                "title" : "var numberValue: Double",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/peer",
+                "title" : "var peer: AnyObject?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/properties",
+                "title" : "var properties: [String]",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/prototype",
+                "title" : "var prototype: JXValue",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/stringvalue",
+                "title" : "var stringValue: String",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/type",
+                "title" : "var type: JXType?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/call(witharguments:this:)",
+                "title" : "func call(withArguments: [JXValue], this: JXValue?) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/construct(witharguments:)",
+                "title" : "func construct(withArguments: [JXValue]) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/convey(to:)",
+                "title" : "func convey<T>(to: T.Type) throws -> T",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/copybytes()",
+                "title" : "func copyBytes() throws -> Data?",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/defineproperty(_:_:)",
+                "title" : "func defineProperty(JXValue, JXProperty) throws",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/deleteproperty(_:)",
+                "title" : "func deleteProperty(JXValue) throws -> Bool",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/freeze()",
+                "title" : "func freeze() throws",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/getjxconvertible(from:)",
+                "title" : "func getJXConvertible(from: JXContext) -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/hasproperty(_:)-1e3mh",
+                "title" : "func hasProperty(JXValue) throws -> Bool",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/hasproperty(_:)-2ontd",
+                "title" : "func hasProperty(String) -> Bool",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/invokemethod(_:witharguments:)",
+                "title" : "func invokeMethod(String, withArguments: [JXValue]) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/isequal(to:)",
+                "title" : "func isEqual(to: JXValue) -> Bool",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/isequalwithtypecoercion(to:)",
+                "title" : "func isEqualWithTypeCoercion(to: JXValue) throws -> Bool",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/isinstance(of:)",
+                "title" : "func isInstance(of: JXValue) throws -> Bool",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/preventextensions()",
+                "title" : "func preventExtensions() throws",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/propertydescriptor(_:)",
+                "title" : "func propertyDescriptor(JXValue) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/removeproperty(_:)",
+                "title" : "func removeProperty(String) throws -> Bool",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/seal()",
+                "title" : "func seal() throws",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/set(_:convertible:)",
+                "title" : "func set<T>(String, convertible: T) throws",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/setelement(_:at:)",
+                "title" : "func setElement(JXValue, at: UInt32) throws",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/setproperty(_:_:)",
+                "title" : "func setProperty(String, JXValue) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/setproperty(symbol:_:)",
+                "title" : "func setProperty(symbol: JXValue, JXValue) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/todecodable(oftype:)",
+                "title" : "func toDecodable<T>(ofType: T.Type) throws -> T",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/tojson(indent:)",
+                "title" : "func toJSON(indent: UInt32) throws -> String",
+                "type" : "method"
+              },
+              {
+                "title" : "Subscripts",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/subscript(_:)-44yy0",
+                "title" : "subscript(UInt32) -> JXValue",
+                "type" : "subscript"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/subscript(_:)-8iv6o",
+                "title" : "subscript(String) -> JXValue",
+                "type" : "subscript"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/subscript(symbol:)",
+                "title" : "subscript(symbol _: JXValue) -> JXValue",
+                "type" : "subscript"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/createpromise(in:)",
+                "title" : "static func createPromise(in: JXContext) throws -> JXPromise",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/makejxconvertible(from:)",
+                "title" : "static func makeJXConvertible(from: JXValue) throws -> Self",
+                "type" : "method"
+              },
+              {
+                "title" : "Default Implementations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Instance Properties",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/jxkit\/jxvalue\/description",
+                    "title" : "var description: String",
+                    "type" : "property"
+                  }
+                ],
+                "path" : "\/documentation\/jxkit\/jxvalue\/customstringconvertible-implementations",
+                "title" : "CustomStringConvertible Implementations",
+                "type" : "symbol"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Instance Methods",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/jxkit\/jxvalue\/getjx(from:)",
+                    "title" : "func getJX(from: JXContext) -> JXValue",
+                    "type" : "method"
+                  },
+                  {
+                    "title" : "Type Methods",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/jxkit\/jxvalue\/makejx(from:)",
+                    "title" : "static func makeJX(from: JXValue) throws -> Self",
+                    "type" : "method"
+                  }
+                ],
+                "path" : "\/documentation\/jxkit\/jxvalue\/jxconvertible-implementations",
+                "title" : "JXConvertible Implementations",
+                "type" : "symbol"
+              }
+            ],
+            "path" : "\/documentation\/jxkit\/jxvalue",
+            "title" : "JXValue",
+            "type" : "class"
+          },
+          {
+            "title" : "Classes",
+            "type" : "groupMarker"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Default Implementations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Instance Properties",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/jxkit\/jxerror\/localizeddescription",
+                    "title" : "var localizedDescription: String",
+                    "type" : "property"
+                  }
+                ],
+                "path" : "\/documentation\/jxkit\/jxerror\/error-implementations",
+                "title" : "Error Implementations",
+                "type" : "symbol"
+              }
+            ],
+            "path" : "\/documentation\/jxkit\/jxerror",
+            "title" : "JXError",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvm\/init()",
+                "title" : "init()",
+                "type" : "init"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvm\/init(group:)",
+                "title" : "init(group: JSContextGroupRef)",
+                "type" : "init"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvm\/ishobbled",
+                "title" : "static let isHobbled: Bool",
+                "type" : "property"
+              }
+            ],
+            "path" : "\/documentation\/jxkit\/jxvm",
+            "title" : "JXVM",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalueerror\/init(value:)",
+                "title" : "init(value: JXValue) throws",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalueerror\/msg",
+                "title" : "let msg: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalueerror\/value",
+                "title" : "let value: JXValue",
+                "type" : "property"
+              }
+            ],
+            "path" : "\/documentation\/jxkit\/jxvalueerror",
+            "title" : "JXValueError",
+            "type" : "class"
+          },
+          {
+            "title" : "Protocols",
+            "type" : "groupMarker"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxconvertible\/getjx(from:)",
+                "title" : "func getJX(from: JXContext) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxconvertible\/makejx(from:)",
+                "title" : "static func makeJX(from: JXValue) throws -> Self",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/jxkit\/jxconvertible",
+            "title" : "JXConvertible",
+            "type" : "protocol"
+          },
+          {
+            "title" : "Structures",
+            "type" : "groupMarker"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxproperty\/init()",
+                "title" : "init()",
+                "type" : "init"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxproperty\/init(getter:setter:configurable:enumerable:)-1xr4t",
+                "title" : "init(getter: ((JXValue) throws -> JXValue)?, setter: ((JXValue, JXValue) throws -> Void)?, configurable: Bool?, enumerable: Bool?)",
+                "type" : "init"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxproperty\/init(getter:setter:configurable:enumerable:)-5oml4",
+                "title" : "init(getter: JXValue?, setter: JXValue?, configurable: Bool?, enumerable: Bool?) throws",
+                "type" : "init"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxproperty\/init(value:writable:configurable:enumerable:)",
+                "title" : "init(value: JXValue?, writable: Bool?, configurable: Bool?, enumerable: Bool?)",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxproperty\/configurable",
+                "title" : "var configurable: Bool?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxproperty\/enumerable",
+                "title" : "var enumerable: Bool?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxproperty\/getter",
+                "title" : "let getter: ((JXValue) throws -> JXValue)?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxproperty\/setter",
+                "title" : "let setter: ((JXValue, JXValue) throws -> Void)?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxproperty\/value",
+                "title" : "let value: JXValue?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxproperty\/writable",
+                "title" : "let writable: Bool?",
+                "type" : "property"
+              }
+            ],
+            "path" : "\/documentation\/jxkit\/jxproperty",
+            "title" : "JXProperty",
+            "type" : "struct"
+          },
+          {
+            "title" : "Variables",
+            "type" : "groupMarker"
+          },
+          {
+            "path" : "\/documentation\/jxkit\/jxkitbundle",
+            "title" : "let JXKitBundle: Bundle",
+            "type" : "var"
+          },
+          {
+            "path" : "\/documentation\/jxkit\/jxkitbundleidentifier",
+            "title" : "let JXKitBundleIdentifier: String!",
+            "type" : "var"
+          },
+          {
+            "path" : "\/documentation\/jxkit\/jxkitinfo",
+            "title" : "let JXKitInfo: NSDictionary?",
+            "type" : "var"
+          },
+          {
+            "path" : "\/documentation\/jxkit\/javascriptcoreversion",
+            "title" : "let JavaScriptCoreVersion: Int32",
+            "type" : "var"
+          },
+          {
+            "title" : "Type Aliases",
+            "type" : "groupMarker"
+          },
+          {
+            "path" : "\/documentation\/jxkit\/jxfunction",
+            "title" : "JXFunction",
+            "type" : "typealias"
+          },
+          {
+            "path" : "\/documentation\/jxkit\/jxpromise",
+            "title" : "JXPromise",
+            "type" : "typealias"
+          },
+          {
+            "path" : "\/documentation\/jxkit\/jxvalueref",
+            "title" : "JXValueRef",
+            "type" : "typealias"
+          },
+          {
+            "title" : "Enumerations",
+            "type" : "groupMarker"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Enumeration Cases",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/addtononarray",
+                "title" : "case addToNonArray",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/asyncevalmustreturnpromise",
+                "title" : "case asyncEvalMustReturnPromise",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/callonnonfunction",
+                "title" : "case callOnNonFunction",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/cannotcreatearraybuffer",
+                "title" : "case cannotCreateArrayBuffer",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/cannotcreatefromjson",
+                "title" : "case cannotCreateFromJSON",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/cannotcreatepromise",
+                "title" : "case cannotCreatePromise",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/evaluationerrorstring(_:)",
+                "title" : "case evaluationErrorString(String)",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/evaluationerrorunknown",
+                "title" : "case evaluationErrorUnknown",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/invalidasyncpromise",
+                "title" : "case invalidAsyncPromise",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/invalidnumericconversion(_:)",
+                "title" : "case invalidNumericConversion(Double)",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/jumpcontextinvalid",
+                "title" : "case jumpContextInvalid",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/keynotsymbol",
+                "title" : "case keyNotSymbol",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/minimumsystemversion",
+                "title" : "case minimumSystemVersion",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/missingresource(_:)",
+                "title" : "case missingResource(String)",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/propertyaccessnonobject",
+                "title" : "case propertyAccessNonObject",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/valuenotarray",
+                "title" : "case valueNotArray",
+                "type" : "case"
+              },
+              {
+                "title" : "Default Implementations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Instance Properties",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/jxkit\/jxerrors\/localizeddescription",
+                    "title" : "var localizedDescription: String",
+                    "type" : "property"
+                  }
+                ],
+                "path" : "\/documentation\/jxkit\/jxerrors\/error-implementations",
+                "title" : "Error Implementations",
+                "type" : "symbol"
+              }
+            ],
+            "path" : "\/documentation\/jxkit\/jxerrors",
+            "title" : "JXErrors",
+            "type" : "enum"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Enumeration Cases",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxtype\/array",
+                "title" : "case array",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxtype\/boolean",
+                "title" : "case boolean",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxtype\/buffer",
+                "title" : "case buffer",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxtype\/date",
+                "title" : "case date",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxtype\/number",
+                "title" : "case number",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxtype\/object",
+                "title" : "case object",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxtype\/string",
+                "title" : "case string",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxtype\/symbol",
+                "title" : "case symbol",
+                "type" : "case"
+              },
+              {
+                "title" : "Default Implementations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Operators",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/jxkit\/jxtype\/!=(_:_:)",
+                    "title" : "static func != (Self, Self) -> Bool",
+                    "type" : "op"
+                  }
+                ],
+                "path" : "\/documentation\/jxkit\/jxtype\/equatable-implementations",
+                "title" : "Equatable Implementations",
+                "type" : "symbol"
+              }
+            ],
+            "path" : "\/documentation\/jxkit\/jxtype",
+            "title" : "JXType",
+            "type" : "enum"
+          }
+        ],
+        "path" : "\/documentation\/jxkit",
+        "title" : "JXKit",
+        "type" : "module"
+      }
+    ]
+  },
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 1,
+    "patch" : 0
+  }
+}
