@@ -28,6 +28,24 @@ open class JXContext {
 
     private var strictEvaluated: Bool = false
 
+    /// Class for instances that can hold references to peers (which ``JSObjectGetPrivate`` needs to work)
+    @usableFromInline lazy var peerClass: JSClassRef = {
+        var def = JSClassDefinition()
+        def.finalize = {
+            if let ptr = JSObjectGetPrivate($0) {
+                // free any associated object that may be attached
+                ptr.assumingMemoryBound(to: AnyObject?.self).deinitialize(count: 1)
+                ptr.deallocate()
+            }
+        }
+        self.peerClassCreated = true
+        return JSClassCreate(&def)
+    }()
+
+    /// Whether we have instantated the peer class in this context or not
+    private var peerClassCreated = false
+
+
     /// Creates `JXContext` with the given `JXVM`.  `JXValue` references may be used interchangably with multiple instances of `JXContext` with the same `JXVM`, but sharing between  separate `JXVM`s will result in undefined behavior.
     /// - Parameters:
     ///   - vm: the shared virtual machine to use; defaults  to creating a new VM per context
@@ -50,6 +68,9 @@ open class JXContext {
     }
 
     deinit {
+        if peerClassCreated == true {
+            JSClassRelease(peerClass)
+        }
         JSGlobalContextRelease(context)
     }
 }
@@ -303,19 +324,7 @@ extension JXContext {
 
         let info: UnsafeMutablePointer<AnyObject?> = .allocate(capacity: 1)
         info.initialize(to: peer)
-
-        // we seem to need to assign a class definition in order to set the associated data for the object
-        var def = JSClassDefinition()
-        def.finalize = {
-            if let ptr = JSObjectGetPrivate($0) {
-                ptr.assumingMemoryBound(to: AnyObject?.self).deinitialize(count: 1)
-                ptr.deallocate()
-            }
-        }
-        let _class = JSClassCreate(&def)
-        defer { JSClassRelease(_class) }
-
-        let value = JXValue(ctx: self, valueRef: JSObjectMake(self.context, _class, info))
+        let value = JXValue(ctx: self, valueRef: JSObjectMake(self.context, peerClass, info))
         return value
     }
 

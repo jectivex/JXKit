@@ -53,6 +53,31 @@ class JXCoreTests: XCTestCase {
         XCTAssertEqual(try result.numberValue, 3)
     }
 
+    func testFunctionError() throws {
+        let jxc = JXContext()
+
+        enum CustomError : Error {
+            case someError
+        }
+
+        let myFunction = JXValue(newFunctionIn: jxc) { jxc, this, arguments in
+            throw CustomError.someError
+        }
+
+        XCTAssertTrue(myFunction.isFunction)
+        try jxc.global.setProperty("myFunction", myFunction)
+
+        do {
+            _ = try jxc.eval("myFunction()")
+            XCTFail("should have thrown an error")
+        } catch {
+            XCTAssertFalse(error is CustomError)
+            XCTAssertTrue(error is JXError)
+            XCTAssertEqual("JXError", String(describing: type(of: error)))
+        }
+    }
+
+
     func testCalculation() throws {
         let jxc = JXContext()
 
