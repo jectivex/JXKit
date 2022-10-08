@@ -1,18 +1,8 @@
-//
-//  JavaScript execution context & value types.
-//
-import Foundation
-#if canImport(FoundationNetworking)
-import FoundationNetworking
-#endif
-
 #if canImport(JavaScriptCore)
 import JavaScriptCore
 #else
 import CJSCore
 #endif
-
-// MARK: Virtual Machine
 
 /// A JavaScript virtual machine that is used by a `JXContextGroup` instance.
 ///
@@ -20,19 +10,22 @@ import CJSCore
 ///
 /// - Note: This wraps a `JSContextGroupRef`, and is the equivalent of `JavaScriptCore.JSVirtualMachine`
 public final class JXVM {
-    @usableFromInline let group: JSContextGroupRef
+    @usableFromInline let groupRef: JSContextGroupRef
 
     public init() {
-        self.group = JSContextGroupCreate()
+        self.groupRef = JSContextGroupCreate()
     }
 
-    public init(group: JSContextGroupRef) {
-        self.group = group
-        JSContextGroupRetain(group)
+    public init(groupRef: JSContextGroupRef) {
+        self.groupRef = groupRef
+        JSContextGroupRetain(groupRef)
     }
+
+    /// For use by service providers only.
+    public var spi: AnyObject?
 
     deinit {
-        JSContextGroupRelease(group)
+        JSContextGroupRelease(groupRef)
     }
 }
 
@@ -45,7 +38,7 @@ extension JXVM {
     ///
     /// See: [Allow Execution of JIT-compiled Code Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_cs_allow-jit)
     public static let isHobbled: Bool = {
-        // we could check for the hardened runtime's "com.apple.security.cs.allow-jit" property, but it is easier to just attempt to mmap PROT_WRITE|PROT_EXEC and see if it was successful
+        // We could check for the hardened runtime's "com.apple.security.cs.allow-jit" property, but it is easier to just attempt to mmap PROT_WRITE|PROT_EXEC and see if it was successful
 
         let ptr = mmap(nil, Int(getpagesize()), PROT_WRITE|PROT_EXEC, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0)
         if ptr == MAP_FAILED {
@@ -56,23 +49,3 @@ extension JXVM {
         }
     }()
 }
-
-#if canImport(MachO)
-// TODO: how to implement this on Linux?
-import func MachO.NSVersionOfRunTimeLibrary
-/// The runtime version of JavaScript core (e.g., `40239623`)
-public let JavaScriptCoreVersion = NSVersionOfRunTimeLibrary("JavaScriptCore")
-#endif
-
-/// The underlying type that represents a value in the JavaScript environment
-public typealias JXValueRef = JSValueRef
-
-@usableFromInline internal typealias JXContextRef = JSContextRef
-
-/// The underlying type that represents a string in the JavaScript environment
-@usableFromInline internal typealias JXStringRef = JSStringRef
-
-/// Work-in-progress, simply to highlight a line with a deprecation warning
-@available(*, deprecated, message: "work-in-progress")
-@usableFromInline internal func wip<T>(_ value: T) -> T { value }
-

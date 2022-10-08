@@ -1,40 +1,26 @@
-//
-//  Codable support for encoding/decoding to/from a JSObject in a JXContext
-//
-
 import Foundation
 
-extension JXValue {
-    /// Returns true if the value is either null or undefined
-    @inlinable var isNullOrUndefined: Bool {
-        isUndefined || isNull
-    }
-}
-
-public extension JXContext {
-    /// Encodes the given object into this context
-    func encode<T: Encodable>(_ value: T) throws -> JXValue {
+extension JXContext {
+    /// Encodes the given object into this context.
+    public func encode<T: Encodable>(_ value: T) throws -> JXValue {
         try JXValueEncoder(context: self).encode(value)
     }
 }
 
 extension JXValue {
-    /// Uses a `JXValueDecoder` to decode the `Decodable`
+    /// Uses a `JXValueDecoder` to decode the `Decodable`.
     @inlinable public func toDecodable<T: Decodable>(ofType: T.Type) throws -> T {
-        try JXValueDecoder(context: ctx).decode(ofType, from: self)
+        try JXValueDecoder(context: context).decode(ofType, from: self)
     }
 }
 
-
-// MARK: Encoding
-
 extension JXValue {
-    /// Adds the given object as the final element of this array
+    /// Adds the given object as the final element of this array.
     func add(_ object: JXValue) throws {
         guard isArray else {
             throw JXErrors.addToNonArray
         }
-        try self.setElement(object, at: UInt32(count))
+        try self.setElement(object, at: count)
     }
 
     func insert(_ object: JXValue, at index: Int) throws {
@@ -42,26 +28,24 @@ extension JXValue {
             throw JXErrors.addToNonArray
         }
         for i in try (max(1, index)...count).reversed() {
-            try setElement(self[UInt32(i-1)], at: UInt32(i)) // shift all the latter elements up by one
+            try setElement(self[i-1], at: i) // Shift all the latter elements up by one
         }
-        try setElement(object, at: UInt32(index)) // and fill in the index (JS permits assigning a non-existent index)
+        try setElement(object, at: index) // And fill in the index (JS permits assigning a non-existent index)
     }
 }
 
 class JXValueEncoder {
 
-    // MARK: - Options
-    
     /// The output format to write the script object data in. Defaults to `.binary`.
     // var outputFormat: Format = .binary
 
     /// Contextual user-provided information for use during encoding.
-    var userInfo: [CodingUserInfoKey : Any] = [:]
+    var userInfo: [CodingUserInfoKey: Any] = [:]
 
     /// Options set on the top-level encoder to pass down the encoding hierarchy.
     fileprivate struct _Options {
-        //let outputFormat: PropertyListSerialization.PropertyListFormat
-        let userInfo: [CodingUserInfoKey : Any]
+        // let outputFormat: PropertyListSerialization.PropertyListFormat
+        let userInfo: [CodingUserInfoKey: Any]
     }
 
     /// The options set on the top-level encoder.
@@ -71,30 +55,30 @@ class JXValueEncoder {
 
     @usableFromInline let context: JXContext
 
-    // MARK: - Constructing a script object Encoder
     /// Initializes `self` with default strategies.
     @inlinable public init(context: JXContext) {
         self.context = context
     }
 
-    // MARK: - Encoding Values
     /// Encodes the given top-level value and returns its script object representation.
     ///
-    /// - parameter value: The value to encode.
-    /// - returns: A new `Data` value containing the encoded script object data.
-    /// - throws: `EncodingError.invalidValue` if a non-conforming floating-point value is encountered during encoding, and the encoding strategy is `.throw`.
-    /// - throws: An error if any value throws an error during encoding.
-    @inlinable func encode<Value : Encodable>(_ value: Value) throws -> JXValue {
+    /// - Parameters:
+    ///   - value: The value to encode.
+    /// - Returns: A new `Data` value containing the encoded script object data.
+    /// - Throws: `EncodingError.invalidValue` if a non-conforming floating-point value is encountered during encoding, and the encoding strategy is `.throw`.
+    /// - Throws: An error if any value throws an error during encoding.
+    @inlinable func encode<Value: Encodable>(_ value: Value) throws -> JXValue {
         try encodeToTopLevelContainer(value)
     }
 
     /// Encodes the given top-level value and returns its script-type representation.
     ///
-    /// - parameter value: The value to encode.
-    /// - returns: A new top-level array or dictionary representing the value.
-    /// - throws: `EncodingError.invalidValue` if a non-conforming floating-point value is encountered during encoding, and the encoding strategy is `.throw`.
-    /// - throws: An error if any value throws an error during encoding.
-    @usableFromInline internal func encodeToTopLevelContainer<Value : Encodable>(_ value: Value) throws -> JXValue {
+    /// - Parameters:
+    ///   - value: The value to encode.
+    /// - Returns: A new top-level array or dictionary representing the value.
+    /// - Throws: `EncodingError.invalidValue` if a non-conforming floating-point value is encountered during encoding, and the encoding strategy is `.throw`.
+    /// - Throws: An error if any value throws an error during encoding.
+    @usableFromInline internal func encodeToTopLevelContainer<Value: Encodable>(_ value: Value) throws -> JXValue {
         let encoder = JXEncoder(context: context, options: self.options)
         guard let topLevel = try encoder.box_(value) else {
             throw EncodingError.invalidValue(value,
@@ -106,12 +90,9 @@ class JXValueEncoder {
     }
 }
 
-// MARK: - JXEncoder
-
-fileprivate class JXEncoder : Encoder {
+fileprivate class JXEncoder: Encoder {
     fileprivate let context: JXContext
 
-    // MARK: Properties
     /// The encoder's storage.
     fileprivate var storage: _ScriptEncodingStorage
 
@@ -122,11 +103,10 @@ fileprivate class JXEncoder : Encoder {
     fileprivate(set) public var codingPath: [CodingKey]
 
     /// Contextual user-provided information for use during encoding.
-    public var userInfo: [CodingUserInfoKey : Any] {
+    public var userInfo: [CodingUserInfoKey: Any] {
         return self.options.userInfo
     }
 
-    // MARK: - Initialization
     /// Initializes `self` with the given top-level encoder options.
     fileprivate init(context: JXContext, options: JXValueEncoder._Options, codingPath: [CodingKey] = []) {
         self.context = context
@@ -148,7 +128,6 @@ fileprivate class JXEncoder : Encoder {
         return self.storage.count == self.codingPath.count
     }
 
-    // MARK: - Encoder Methods
     public func container<Key>(keyedBy: Key.Type) -> KeyedEncodingContainer<Key> {
         // If an existing keyed container was already requested, return that one.
         let topContainer: JXValue
@@ -195,16 +174,13 @@ fileprivate class JXEncoder : Encoder {
 
 // MARK: - Encoding Storage and Containers
 fileprivate struct _ScriptEncodingStorage {
-    // MARK: Properties
     /// The container stack.
     /// Elements may be any one of the script types
     private(set) fileprivate var containers: [JXValue] = []
 
-    // MARK: - Initialization
     /// Initializes `self` with no containers.
     fileprivate init() {}
 
-    // MARK: - Modifying the Stack
     fileprivate var count: Int {
         return self.containers.count
     }
@@ -231,10 +207,7 @@ fileprivate struct _ScriptEncodingStorage {
     }
 }
 
-// MARK: - Encoding Containers
-
-fileprivate struct _ScriptUnkeyedEncodingContainer : UnkeyedEncodingContainer {
-    // MARK: Properties
+fileprivate struct _ScriptUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     /// A reference to the encoder we're writing to.
     private let encoder: JXEncoder
 
@@ -249,7 +222,6 @@ fileprivate struct _ScriptUnkeyedEncodingContainer : UnkeyedEncodingContainer {
         (try? container.count) ?? 0 // cannot throw, so need to ignore any errors
     }
 
-    // MARK: - Initialization
     /// Initializes `self` with the given references.
     fileprivate init(referencing encoder: JXEncoder, codingPath: [CodingKey], wrapping container: JXValue) {
         self.encoder = encoder
@@ -257,24 +229,23 @@ fileprivate struct _ScriptUnkeyedEncodingContainer : UnkeyedEncodingContainer {
         self.container = container
     }
 
-    // MARK: - UnkeyedEncodingContainer Methods
-    public mutating func encodeNil()             throws { try container.add(JXValue(nullIn: encoder.context)) }
-    public mutating func encode(_ value: Bool)   throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: Int)    throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: Int8)   throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: Int16)  throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: Int32)  throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: Int64)  throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: UInt)   throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: UInt8)  throws { try container.add(encoder.box(value)) }
+    public mutating func encodeNil() throws { try container.add(JXValue(nullIn: encoder.context)) }
+    public mutating func encode(_ value: Bool) throws { try container.add(encoder.box(value)) }
+    public mutating func encode(_ value: Int) throws { try container.add(encoder.box(value)) }
+    public mutating func encode(_ value: Int8) throws { try container.add(encoder.box(value)) }
+    public mutating func encode(_ value: Int16) throws { try container.add(encoder.box(value)) }
+    public mutating func encode(_ value: Int32) throws { try container.add(encoder.box(value)) }
+    public mutating func encode(_ value: Int64) throws { try container.add(encoder.box(value)) }
+    public mutating func encode(_ value: UInt) throws { try container.add(encoder.box(value)) }
+    public mutating func encode(_ value: UInt8) throws { try container.add(encoder.box(value)) }
     public mutating func encode(_ value: UInt16) throws { try container.add(encoder.box(value)) }
     public mutating func encode(_ value: UInt32) throws { try container.add(encoder.box(value)) }
     public mutating func encode(_ value: UInt64) throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: Float)  throws { try container.add(encoder.box(value)) }
+    public mutating func encode(_ value: Float) throws { try container.add(encoder.box(value)) }
     public mutating func encode(_ value: Double) throws { try container.add(encoder.box(value)) }
     public mutating func encode(_ value: String) throws { try container.add(encoder.box(value)) }
 
-    public mutating func encode<T : Encodable>(_ value: T) throws {
+    public mutating func encode<T: Encodable>(_ value: T) throws {
         self.encoder.codingPath.append(_JSKey(index: self.count))
         defer { self.encoder.codingPath.removeLast() }
         try self.container.add(self.encoder.box(value))
@@ -309,8 +280,7 @@ fileprivate struct _ScriptUnkeyedEncodingContainer : UnkeyedEncodingContainer {
     }
 }
 
-extension JXEncoder : SingleValueEncodingContainer {
-    // MARK: - SingleValueEncodingContainer Methods
+extension JXEncoder: SingleValueEncodingContainer {
     private func assertCanEncodeNewValue() {
         precondition(self.canEncodeNewValue, "Attempt to encode value through single value container when previously value already encoded.")
     }
@@ -390,39 +360,38 @@ extension JXEncoder : SingleValueEncodingContainer {
         self.storage.push(container: self.box(value))
     }
 
-    public func encode<T : Encodable>(_ value: T) throws {
+    public func encode<T: Encodable>(_ value: T) throws {
         assertCanEncodeNewValue()
         try self.storage.push(container: self.box(value))
     }
 }
 
-// MARK: - Concrete Value Representations
 extension JXEncoder {
 
     /// Returns the given value boxed in a container appropriate for pushing onto the container stack.
-    fileprivate func box(_ value: Bool)   -> JXValue {
+    fileprivate func box(_ value: Bool) -> JXValue {
         return JXValue(bool: value, in: context)
     }
 
-    fileprivate func box(_ value: Int)    -> JXValue {
+    fileprivate func box(_ value: Int) -> JXValue {
         return JXValue(double: .init(value), in: context)
     }
-    fileprivate func box(_ value: Int8)   -> JXValue {
+    fileprivate func box(_ value: Int8) -> JXValue {
         return JXValue(double: .init(value), in: context)
     }
-    fileprivate func box(_ value: Int16)  -> JXValue {
+    fileprivate func box(_ value: Int16) -> JXValue {
         return JXValue(double: .init(value), in: context)
     }
-    fileprivate func box(_ value: Int32)  -> JXValue {
+    fileprivate func box(_ value: Int32) -> JXValue {
         return JXValue(double: .init(value), in: context)
     }
-    fileprivate func box(_ value: Int64)  -> JXValue {
+    fileprivate func box(_ value: Int64) -> JXValue {
         return JXValue(double: .init(value), in: context)
     }
-    fileprivate func box(_ value: UInt)   -> JXValue {
+    fileprivate func box(_ value: UInt) -> JXValue {
         return JXValue(double: .init(value), in: context)
     }
-    fileprivate func box(_ value: UInt8)  -> JXValue {
+    fileprivate func box(_ value: UInt8) -> JXValue {
         return JXValue(double: .init(value), in: context)
     }
     fileprivate func box(_ value: UInt16) -> JXValue {
@@ -434,7 +403,7 @@ extension JXEncoder {
     fileprivate func box(_ value: UInt64) -> JXValue {
         return JXValue(double: .init(value), in: context)
     }
-    fileprivate func box(_ value: Float)  -> JXValue {
+    fileprivate func box(_ value: Float) -> JXValue {
         return JXValue(double: .init(value), in: context)
     }
     fileprivate func box(_ value: Double) -> JXValue {
@@ -444,11 +413,11 @@ extension JXEncoder {
         return JXValue(string: value, in: context)
     }
 
-    fileprivate func box<T : Encodable>(_ value: T) throws -> JXValue {
+    fileprivate func box<T: Encodable>(_ value: T) throws -> JXValue {
         return try self.box_(value) ?? JXValue(newObjectIn: context)
     }
 
-    fileprivate func box_<T : Encodable>(_ value: T) throws -> JXValue? {
+    fileprivate func box_<T: Encodable>(_ value: T) throws -> JXValue? {
         if let date = value as? Date {
             return try JXValue(date: date, in: context)
         }
@@ -457,7 +426,7 @@ extension JXEncoder {
             return try JXValue(newArrayBufferWithBytes: data, in: context)
         }
 
-        // this is some more code I am writing and reading and so there will be ore JSON
+        // This is some more code I am writing and reading and so there will be ore JSON
         // The value should request a container from the JXEncoder.
         let depth = self.storage.count
         do {
@@ -480,10 +449,9 @@ extension JXEncoder {
     }
 }
 
-fileprivate struct _JSKeyedEncodingContainer<K : CodingKey> : KeyedEncodingContainerProtocol {
+fileprivate struct _JSKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProtocol {
     typealias Key = K
 
-    // MARK: Properties
     /// A reference to the encoder we're writing to.
     private let encoder: JXEncoder
 
@@ -493,7 +461,6 @@ fileprivate struct _JSKeyedEncodingContainer<K : CodingKey> : KeyedEncodingConta
     /// The path of coding keys taken to get to this point in encoding.
     private(set) public var codingPath: [CodingKey]
 
-    // MARK: - Initialization
     /// Initializes `self` with the given references.
     fileprivate init(referencing encoder: JXEncoder, codingPath: [CodingKey], wrapping container: JXValue) {
         self.encoder = encoder
@@ -501,40 +468,39 @@ fileprivate struct _JSKeyedEncodingContainer<K : CodingKey> : KeyedEncodingConta
         self.container = container
     }
 
-    // MARK: - KeyedEncodingContainerProtocol Methods
     public mutating func encodeNil(forKey key: Key) throws {
         try container.setProperty(key.stringValue, JXValue(nullIn: encoder.context))
     }
 
-    public mutating func encode(_ value: Bool, forKey key: Key)   throws {
+    public mutating func encode(_ value: Bool, forKey key: Key) throws {
         try container.setProperty(key.stringValue, JXValue(bool: .init(value), in: encoder.context))
     }
 
-    public mutating func encode(_ value: Int, forKey key: Key)    throws {
+    public mutating func encode(_ value: Int, forKey key: Key) throws {
         try container.setProperty(key.stringValue, JXValue(double: .init(value), in: encoder.context))
     }
 
-    public mutating func encode(_ value: Int8, forKey key: Key)   throws {
+    public mutating func encode(_ value: Int8, forKey key: Key) throws {
         try container.setProperty(key.stringValue, JXValue(double: .init(value), in: encoder.context))
     }
 
-    public mutating func encode(_ value: Int16, forKey key: Key)  throws {
+    public mutating func encode(_ value: Int16, forKey key: Key) throws {
         try container.setProperty(key.stringValue, JXValue(double: .init(value), in: encoder.context))
     }
 
-    public mutating func encode(_ value: Int32, forKey key: Key)  throws {
+    public mutating func encode(_ value: Int32, forKey key: Key) throws {
         try container.setProperty(key.stringValue, JXValue(double: .init(value), in: encoder.context))
     }
 
-    public mutating func encode(_ value: Int64, forKey key: Key)  throws {
+    public mutating func encode(_ value: Int64, forKey key: Key) throws {
         try container.setProperty(key.stringValue, JXValue(double: .init(value), in: encoder.context))
     }
 
-    public mutating func encode(_ value: UInt, forKey key: Key)   throws {
+    public mutating func encode(_ value: UInt, forKey key: Key) throws {
         try container.setProperty(key.stringValue, JXValue(double: .init(value), in: encoder.context))
     }
 
-    public mutating func encode(_ value: UInt8, forKey key: Key)  throws {
+    public mutating func encode(_ value: UInt8, forKey key: Key) throws {
         try container.setProperty(key.stringValue, JXValue(double: .init(value), in: encoder.context))
     }
 
@@ -554,7 +520,7 @@ fileprivate struct _JSKeyedEncodingContainer<K : CodingKey> : KeyedEncodingConta
         try container.setProperty(key.stringValue, JXValue(string: value, in: encoder.context))
     }
 
-    public mutating func encode(_ value: Float, forKey key: Key)  throws {
+    public mutating func encode(_ value: Float, forKey key: Key) throws {
         try container.setProperty(key.stringValue, JXValue(double: .init(value), in: encoder.context))
     }
 
@@ -562,7 +528,7 @@ fileprivate struct _JSKeyedEncodingContainer<K : CodingKey> : KeyedEncodingConta
         try container.setProperty(key.stringValue, JXValue(double: value, in: encoder.context))
     }
 
-    public mutating func encode<T : Encodable>(_ value: T, forKey key: Key) throws {
+    public mutating func encode<T: Encodable>(_ value: T, forKey key: Key) throws {
         self.encoder.codingPath.append(key)
         defer { self.encoder.codingPath.removeLast() }
         try container.setProperty(key.stringValue, self.encoder.box(value))
@@ -602,11 +568,9 @@ fileprivate struct _JSKeyedEncodingContainer<K : CodingKey> : KeyedEncodingConta
 }
 
 
-// MARK: - __JSReferencingEncoder
-/// __JSReferencingEncoder is a special subclass of JXEncoder which has its own storage, but references the contents of a different encoder.
-/// It's used in superEncoder(), which returns a new encoder for encoding a superclass -- the lifetime of the encoder should not escape the scope it's created in, but it doesn't necessarily know when it's done being used (to write to the original container).
-fileprivate class __JSReferencingEncoder : JXEncoder {
-    // MARK: Reference types.
+/// `__JSReferencingEncoder` is a special subclass of JXEncoder which has its own storage, but references the contents of a different encoder.
+/// It's used in `superEncoder()`, which returns a new encoder for encoding a superclass -- the lifetime of the encoder should not escape the scope it's created in, but it doesn't necessarily know when it's done being used (to write to the original container).
+fileprivate class __JSReferencingEncoder: JXEncoder {
     /// The type of container we're referencing.
     private enum Reference {
         /// Referencing a specific index in an array container.
@@ -616,14 +580,12 @@ fileprivate class __JSReferencingEncoder : JXEncoder {
         case dictionary(JXValue, String)
     }
 
-    // MARK: - Properties
     /// The encoder we're referencing.
     private let encoder: JXEncoder
 
     /// The container reference itself.
     private let reference: Reference
 
-    // MARK: - Initialization
     /// Initializes `self` by referencing the given array container in the given encoder.
     fileprivate init(referencing encoder: JXEncoder, at index: Int, wrapping array: JXValue) {
         self.encoder = encoder
@@ -642,7 +604,6 @@ fileprivate class __JSReferencingEncoder : JXEncoder {
         self.codingPath.append(key)
     }
 
-    // MARK: - Coding Path Operations
     fileprivate override var canEncodeNewValue: Bool {
         // With a regular encoder, the storage and coding path grow together.
         // A referencing encoder, however, inherits its parents coding path, as well as the key it was created for.
@@ -650,7 +611,6 @@ fileprivate class __JSReferencingEncoder : JXEncoder {
         return self.storage.count == self.codingPath.count - self.encoder.codingPath.count - 1
     }
 
-    // MARK: - Deinitialization
     // Finalizes `self` by writing the contents of our storage to the referenced encoder's storage.
     deinit {
         let value: JXValue
@@ -670,19 +630,16 @@ fileprivate class __JSReferencingEncoder : JXEncoder {
     }
 }
 
-// MARK: Decoder
-
 /// `JXValueDecoder` facilitates the decoding of `JXValue` values into `Decodable` types.
 @usableFromInline class JXValueDecoder {
     @usableFromInline let context: JXContext
     
-    // MARK: Options
     /// Contextual user-provided information for use during decoding.
-    var userInfo: [CodingUserInfoKey : Any] = [:]
+    var userInfo: [CodingUserInfoKey: Any] = [:]
 
     /// Options set on the top-level encoder to pass down the decoding hierarchy.
     fileprivate struct _Options {
-        let userInfo: [CodingUserInfoKey : Any]
+        let userInfo: [CodingUserInfoKey: Any]
     }
 
     /// The options set on the top-level decoder.
@@ -690,45 +647,46 @@ fileprivate class __JSReferencingEncoder : JXEncoder {
         return _Options(userInfo: userInfo)
     }
 
-    // MARK: - Constructing a JXValue Decoder
     /// Initializes `self` with default strategies.
     public init(context: JXContext) {
         self.context = context
     }
 
-    // MARK: - Decoding Values
     /// Decodes a top-level value of the given type from the given script representation.
     ///
-    /// - parameter type: The type of the value to decode.
-    /// - parameter data: The data to decode from.
-    /// - returns: A value of the requested type.
-    /// - throws: `DecodingError.dataCorrupted` if values requested from the payload are corrupted, or if the given data is not a valid script object.
-    /// - throws: An error if any value throws an error during decoding.
-    @usableFromInline func decode<T : Decodable>(_ type: T.Type, from data: JXValue) throws -> T {
+    /// - Parameters:
+    ///   - type: The type of the value to decode.
+    ///   - data: The data to decode from.
+    /// - Returns: A value of the requested type.
+    /// - Throws: `DecodingError.dataCorrupted` if values requested from the payload are corrupted, or if the given data is not a valid script object.
+    /// - Throws: An error if any value throws an error during decoding.
+    @usableFromInline func decode<T: Decodable>(_ type: T.Type, from data: JXValue) throws -> T {
         var format: PropertyListSerialization.PropertyListFormat = .binary
         return try decode(type, from: data, format: &format)
     }
 
     /// Decodes a top-level value of the given type from the given script object representation.
     ///
-    /// - parameter type: The type of the value to decode.
-    /// - parameter data: The data to decode from.
-    /// - parameter format: The parsed script object format.
-    /// - returns: A value of the requested type along with the detected format of the script object.
-    /// - throws: `DecodingError.dataCorrupted` if values requested from the payload are corrupted, or if the given data is not a valid script object.
-    /// - throws: An error if any value throws an error during decoding.
-    @inlinable func decode<T : Decodable>(_ type: T.Type, from object: JXValue, format: inout PropertyListSerialization.PropertyListFormat) throws -> T {
+    /// - Parameters:
+    ///   - type: The type of the value to decode.
+    ///   - data: The data to decode from.
+    ///   - format: The parsed script object format.
+    /// - Returns: A value of the requested type along with the detected format of the script object.
+    /// - Throws: `DecodingError.dataCorrupted` if values requested from the payload are corrupted, or if the given data is not a valid script object.
+    /// - Throws: An error if any value throws an error during decoding.
+    @inlinable func decode<T: Decodable>(_ type: T.Type, from object: JXValue, format: inout PropertyListSerialization.PropertyListFormat) throws -> T {
         return try decode(type, fromTopLevel: object)
     }
 
     /// Decodes a top-level value of the given type from the given script object container (top-level array or dictionary).
     ///
-    /// - parameter type: The type of the value to decode.
-    /// - parameter container: The top-level script container.
-    /// - returns: A value of the requested type.
-    /// - throws: `DecodingError.dataCorrupted` if values requested from the payload are corrupted, or if the given data is not a valid script object.
-    /// - throws: An error if any value throws an error during decoding.
-    @usableFromInline internal func decode<T : Decodable>(_ type: T.Type, fromTopLevel container: JXValue) throws -> T {
+    /// - Parameters:
+    ///   - type: The type of the value to decode.
+    ///   - container: The top-level script container.
+    /// - Returns: A value of the requested type.
+    /// - Throws: `DecodingError.dataCorrupted` if values requested from the payload are corrupted, or if the given data is not a valid script object.
+    /// - Throws: An error if any value throws an error during decoding.
+    @usableFromInline internal func decode<T: Decodable>(_ type: T.Type, fromTopLevel container: JXValue) throws -> T {
         let decoder = __JSDecoder(referencing: container, options: self.options)
         guard let value = try decoder.unbox(container, as: type) else {
             throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: [], debugDescription: "The given data did not contain a top-level value."))
@@ -738,12 +696,9 @@ fileprivate class __JSReferencingEncoder : JXEncoder {
     }
 }
 
-// MARK: - __JSDecoder
-
-fileprivate class __JSDecoder : Decoder {
+fileprivate class __JSDecoder: Decoder {
     let context: JXContext
 
-    // MARK: Properties
     /// The decoder's storage.
     fileprivate var storage: _ScriptDecodingStorage
 
@@ -754,21 +709,19 @@ fileprivate class __JSDecoder : Decoder {
     fileprivate(set) public var codingPath: [CodingKey]
 
     /// Contextual user-provided information for use during encoding.
-    public var userInfo: [CodingUserInfoKey : Any] {
+    public var userInfo: [CodingUserInfoKey: Any] {
         return self.options.userInfo
     }
 
-    // MARK: - Initialization
     /// Initializes `self` with the given top-level container and options.
     fileprivate init(referencing container: JXValue, at codingPath: [CodingKey] = [], options: JXValueDecoder._Options) {
-        self.context = container.ctx
+        self.context = container.context
         self.storage = _ScriptDecodingStorage()
         self.storage.push(container: container)
         self.codingPath = codingPath
         self.options = options
     }
 
-    // MARK: - Decoder Methods
     public func container<Key>(keyedBy type: Key.Type) throws -> KeyedDecodingContainer<Key> {
         guard !(self.storage.topContainer.isNullOrUndefined) else {
             throw DecodingError.valueNotFound(KeyedDecodingContainer<Key>.self,
@@ -777,7 +730,7 @@ fileprivate class __JSDecoder : Decoder {
         }
 
         guard self.storage.topContainer.isObject else {
-            throw DecodingError._typeMismatch(at: self.codingPath, expectation: [String : Any].self, reality: self.storage.topContainer)
+            throw DecodingError._typeMismatch(at: self.codingPath, expectation: [String: Any].self, reality: self.storage.topContainer)
         }
 
         let container = try _JSKeyedDecodingContainer<Key>(referencing: self, wrapping: self.storage.topContainer.dictionary ?? [:])
@@ -805,18 +758,14 @@ fileprivate class __JSDecoder : Decoder {
     }
 }
 
-// MARK: - Decoding Storage
 fileprivate struct _ScriptDecodingStorage {
-    // MARK: Properties
     /// The container stack.
     /// Elements may be any one of the script types
     private(set) fileprivate var containers: [JXValue] = []
 
-    // MARK: - Initialization
     /// Initializes `self` with no containers.
     fileprivate init() {}
 
-    // MARK: - Modifying the Stack
     fileprivate var count: Int {
         return self.containers.count
     }
@@ -836,29 +785,25 @@ fileprivate struct _ScriptDecodingStorage {
     }
 }
 
-// MARK: Decoding Containers
-fileprivate struct _JSKeyedDecodingContainer<K : CodingKey> : KeyedDecodingContainerProtocol {
+fileprivate struct _JSKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProtocol {
     typealias Key = K
 
-    // MARK: Properties
     /// A reference to the decoder we're reading from.
     private let decoder: __JSDecoder
 
     /// A reference to the container we're reading from.
-    private let container: [String : JXValue]
+    private let container: [String: JXValue]
 
     /// The path of coding keys taken to get to this point in decoding.
     private(set) public var codingPath: [CodingKey]
 
-    // MARK: - Initialization
     /// Initializes `self` by referencing the given decoder and container.
-    fileprivate init(referencing decoder: __JSDecoder, wrapping container: [String : JXValue]) {
+    fileprivate init(referencing decoder: __JSDecoder, wrapping container: [String: JXValue]) {
         self.decoder = decoder
         self.container = container
         self.codingPath = decoder.codingPath
     }
 
-    // MARK: - KeyedDecodingContainerProtocol Methods
     public var allKeys: [Key] {
         return self.container.keys.compactMap { Key(stringValue: $0) }
     }
@@ -1080,7 +1025,7 @@ fileprivate struct _JSKeyedDecodingContainer<K : CodingKey> : KeyedDecodingConta
         return value
     }
 
-    public func decode<T : Decodable>(_ type: T.Type, forKey key: Key) throws -> T {
+    public func decode<T: Decodable>(_ type: T.Type, forKey key: Key) throws -> T {
         guard let entry = self.container[key.stringValue] else {
             throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "No value associated with key \(key) (\"\(key.stringValue)\")."))
         }
@@ -1106,7 +1051,7 @@ fileprivate struct _JSKeyedDecodingContainer<K : CodingKey> : KeyedDecodingConta
         }
 
         guard value.isObject else {
-            throw DecodingError._typeMismatch(at: self.codingPath, expectation: [String : Any].self, reality: value)
+            throw DecodingError._typeMismatch(at: self.codingPath, expectation: [String: Any].self, reality: value)
         }
 
         let container = try _JSKeyedDecodingContainer<NestedKey>(referencing: self.decoder, wrapping: value.dictionary ?? [:])
@@ -1149,8 +1094,7 @@ fileprivate struct _JSKeyedDecodingContainer<K : CodingKey> : KeyedDecodingConta
     }
 }
 
-fileprivate struct _ScriptUnkeyedDecodingContainer : UnkeyedDecodingContainer {
-    // MARK: Properties
+fileprivate struct _ScriptUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     /// A reference to the decoder we're reading from.
     private let decoder: __JSDecoder
 
@@ -1163,7 +1107,6 @@ fileprivate struct _ScriptUnkeyedDecodingContainer : UnkeyedDecodingContainer {
     /// The index of the element we're about to decode.
     private(set) public var currentIndex: Int
 
-    // MARK: - Initialization
     /// Initializes `self` by referencing the given decoder and container.
     fileprivate init(referencing decoder: __JSDecoder, wrapping container: [JXValue]) {
         self.decoder = decoder
@@ -1172,7 +1115,6 @@ fileprivate struct _ScriptUnkeyedDecodingContainer : UnkeyedDecodingContainer {
         self.currentIndex = 0
     }
 
-    // MARK: - UnkeyedDecodingContainer Methods
     public var count: Int? {
         return self.container.count
     }
@@ -1418,7 +1360,7 @@ fileprivate struct _ScriptUnkeyedDecodingContainer : UnkeyedDecodingContainer {
         return decoded
     }
 
-    public mutating func decode<T : Decodable>(_ type: T.Type) throws -> T {
+    public mutating func decode<T: Decodable>(_ type: T.Type) throws -> T {
         guard !self.isAtEnd else {
             throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath + [_JSKey(index: self.currentIndex)], debugDescription: "Unkeyed container is at end."))
         }
@@ -1450,7 +1392,7 @@ fileprivate struct _ScriptUnkeyedDecodingContainer : UnkeyedDecodingContainer {
         }
 
         guard value.isObject else {
-            throw DecodingError._typeMismatch(at: self.codingPath, expectation: [String : JXValue].self, reality: value)
+            throw DecodingError._typeMismatch(at: self.codingPath, expectation: [String: JXValue].self, reality: value)
         }
 
         self.currentIndex += 1
@@ -1499,8 +1441,7 @@ fileprivate struct _ScriptUnkeyedDecodingContainer : UnkeyedDecodingContainer {
     }
 }
 
-extension __JSDecoder : SingleValueDecodingContainer {
-    // MARK: SingleValueDecodingContainer Methods
+extension __JSDecoder: SingleValueDecodingContainer {
     private func expectNonNull<T>(_ type: T.Type) throws {
         if storage.topContainer.isNullOrUndefined {
             throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.codingPath, debugDescription: "Expected \(type) but found null value instead."))
@@ -1581,13 +1522,12 @@ extension __JSDecoder : SingleValueDecodingContainer {
         return try self.unbox(self.storage.topContainer, as: String.self)!
     }
 
-    public func decode<T : Decodable>(_ type: T.Type) throws -> T {
+    public func decode<T: Decodable>(_ type: T.Type) throws -> T {
         try expectNonNull(type)
         return try self.unbox(self.storage.topContainer, as: type)!
     }
 }
 
-// MARK: - Concrete Value Representations
 extension __JSDecoder {
     /// Returns the given value unboxed from a container.
     fileprivate func unbox(_ value: JXValue, as type: Bool.Type) throws -> Bool? {
@@ -1595,14 +1535,14 @@ extension __JSDecoder {
             throw DecodingError._typeMismatch(at: self.codingPath, expectation: type, reality: value)
         }
 
-        return value.booleanValue
+        return value.bool
     }
 
     fileprivate func unboxNumber(_ value: JXValue) throws -> Double {
         guard value.isNumber else {
             throw DecodingError._typeMismatch(at: self.codingPath, expectation: Double.self, reality: value)
         }
-        return try value.numberValue
+        return try value.double
     }
 
     fileprivate func unbox(_ value: JXValue, as type: Double.Type) throws -> Double? {
@@ -1614,15 +1554,15 @@ extension __JSDecoder {
             throw DecodingError._typeMismatch(at: self.codingPath, expectation: type, reality: value)
         }
 
-        return try value.stringValue
+        return try value.string
     }
 
     fileprivate func unbox(_ value: JXValue, as type: Date.Type) throws -> Date? {
-        guard try value.isDate, let date = try value.dateValue else {
+        guard try value.isDate else {
             throw DecodingError._typeMismatch(at: self.codingPath, expectation: type, reality: value)
         }
 
-        return date
+        return try value.date
     }
 
     fileprivate func unbox(_ value: JXValue, as type: Data.Type) throws -> Data? {
@@ -1633,7 +1573,7 @@ extension __JSDecoder {
         return data
     }
 
-    fileprivate func unbox<T : Decodable>(_ value: JXValue, as type: T.Type) throws -> T? {
+    fileprivate func unbox<T: Decodable>(_ value: JXValue, as type: T.Type) throws -> T? {
         if type == Date.self || type == NSDate.self {
             return try self.unbox(value, as: Date.self) as? T
         } else if type == Data.self || type == NSData.self {
@@ -1649,19 +1589,18 @@ extension __JSDecoder {
 extension DecodingError {
     /// Returns a `.typeMismatch` error describing the expected type.
     ///
-    /// - parameter path: The path of `CodingKey`s taken to decode a value of this type.
-    /// - parameter expectation: The type expected to be encountered.
-    /// - parameter reality: The value that was encountered instead of the expected type.
-    /// - returns: A `DecodingError` with the appropriate path and debug description.
+    /// - Parameters:
+    ///   - path: The path of `CodingKey`s taken to decode a value of this type.
+    ///   - expectation: The type expected to be encountered.
+    ///   - reality: The value that was encountered instead of the expected type.
+    /// - Returns: A `DecodingError` with the appropriate path and debug description.
     internal static func _typeMismatch(at path: [CodingKey], expectation: Any.Type, reality: Any) -> DecodingError {
         let description = "Expected to decode \(expectation) but found \(type(of: reality)) instead."
         return .typeMismatch(expectation, Context(codingPath: path, debugDescription: description))
     }
 }
 
-// MARK: Shared
-
-fileprivate struct _JSKey : CodingKey {
+fileprivate struct _JSKey: CodingKey {
     public var stringValue: String
     public var intValue: Int?
 
@@ -1682,4 +1621,3 @@ fileprivate struct _JSKey : CodingKey {
 
     fileprivate static let `super` = _JSKey(stringValue: "super")!
 }
-

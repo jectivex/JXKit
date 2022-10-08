@@ -27,7 +27,7 @@ class JXCoreTests: XCTestCase {
     func testFunction1() throws {
         let jxc = JXContext()
         let myFunction = JXValue(newFunctionIn: jxc) { jxc, this, arguments in
-            jxc.number(try arguments[0].numberValue + arguments[1].numberValue)
+            jxc.number(try arguments[0].int + arguments[1].int)
         }
 
         XCTAssertTrue(myFunction.isFunction)
@@ -35,13 +35,13 @@ class JXCoreTests: XCTestCase {
         let result = try myFunction.call(withArguments: [jxc.number(1), jxc.number(2)])
 
         XCTAssertTrue(result.isNumber)
-        XCTAssertEqual(try result.numberValue, 3)
+        XCTAssertEqual(try result.int, 3)
     }
 
     func testFunction2() throws {
         let jxc = JXContext()
         let myFunction = JXValue(newFunctionIn: jxc) { jxc, this, arguments in
-            jxc.number(try arguments[0].numberValue + arguments[1].numberValue)
+            jxc.number(try arguments[0].int + arguments[1].int)
         }
 
         XCTAssertTrue(myFunction.isFunction)
@@ -50,13 +50,13 @@ class JXCoreTests: XCTestCase {
         let result = try jxc.eval("myFunction(1, 2)")
 
         XCTAssertTrue(result.isNumber)
-        XCTAssertEqual(try result.numberValue, 3)
+        XCTAssertEqual(try result.int, 3)
     }
 
     func testFunctionError() throws {
         let jxc = JXContext()
 
-        enum CustomError : Error {
+        enum CustomError: Error {
             case someError
         }
 
@@ -84,7 +84,7 @@ class JXCoreTests: XCTestCase {
         let result = try jxc.eval("1 + 1")
 
         XCTAssertTrue(result.isNumber)
-        XCTAssertEqual(try result.numberValue, 2)
+        XCTAssertEqual(try result.int, 2)
     }
 
     func testArray() throws {
@@ -95,11 +95,11 @@ class JXCoreTests: XCTestCase {
         XCTAssertTrue(result.isArray)
 
         let length = try result["length"]
-        XCTAssertEqual(try length.numberValue, 3)
+        XCTAssertEqual(try length.int, 3)
 
-        XCTAssertEqual(try result[0].numberValue, 3)
-        XCTAssertEqual(try result[1].stringValue, "BMW")
-        XCTAssertEqual(try result[2].stringValue, "Volvo")
+        XCTAssertEqual(try result[0].int, 3)
+        XCTAssertEqual(try result[1].string, "BMW")
+        XCTAssertEqual(try result[2].string, "Volvo")
     }
 
     func testGetter() throws {
@@ -113,7 +113,7 @@ class JXCoreTests: XCTestCase {
 
         try jxc.global["obj"].defineProperty(jxc.string("three"), desc)
         let result = try jxc.eval("obj.three")
-        XCTAssertEqual(try result.numberValue, 3)
+        XCTAssertEqual(try result.int, 3)
     }
 
     func testSetter() throws {
@@ -130,19 +130,19 @@ class JXCoreTests: XCTestCase {
 
         try jxc.eval("obj.number = 5")
 
-        XCTAssertEqual(try jxc.global["obj"]["number"].numberValue, 5)
-        XCTAssertEqual(try jxc.global["obj"]["number_container"].numberValue, 5)
+        XCTAssertEqual(try jxc.global["obj"]["number"].int, 5)
+        XCTAssertEqual(try jxc.global["obj"]["number_container"].int, 5)
 
         try jxc.eval("obj.number = 3")
 
-        XCTAssertEqual(try jxc.global["obj"]["number"].numberValue, 3)
-        XCTAssertEqual(try jxc.global["obj"]["number_container"].numberValue, 3)
+        XCTAssertEqual(try jxc.global["obj"]["number"].int, 3)
+        XCTAssertEqual(try jxc.global["obj"]["number_container"].int, 3)
     }
 
     func testSymbols() throws {
         let jxc = JXContext()
 
-        let obj = jxc.symbol("obj") // the unique symbol for the object
+        let obj = jxc.symbol("obj") // The unique symbol for the object
 
         XCTAssertEqual(true, try jxc.global[symbol: obj].isUndefined)
         try jxc.global.setProperty(symbol: obj, jxc.object())
@@ -169,12 +169,12 @@ class JXCoreTests: XCTestCase {
 
         try jxc.eval("this[object_symbol].number = 5")
 
-        XCTAssertEqual(try gobj["number"].numberValue, 5)
+        XCTAssertEqual(try gobj["number"].int, 5)
 
         try jxc.eval("this[object_symbol].number = 3")
 
-        XCTAssertEqual(try jxc.global[symbol: obj]["number"].numberValue, 3)
-        //XCTAssertEqual(try jxc.global[symbol: obj][symbol: container].numberValue, 3)
+        XCTAssertEqual(try jxc.global[symbol: obj]["number"].int, 3)
+        //XCTAssertEqual(try jxc.global[symbol: obj][symbol: container].int, 3)
     }
 
     func testArrayBuffer() throws {
@@ -198,9 +198,9 @@ class JXCoreTests: XCTestCase {
                 return XCTFail("failed")
             }
             XCTAssertEqual(true, isView.isBoolean)
-            XCTAssertEqual(false, isView.booleanValue)
+            XCTAssertEqual(false, isView.bool)
 
-            XCTAssertEqual(.init(bufferSize), try? arrayBuffer["byteLength"].numberValue)
+            XCTAssertEqual(.init(bufferSize), try? arrayBuffer["byteLength"].int)
         }
     }
     
@@ -209,7 +209,7 @@ class JXCoreTests: XCTestCase {
 
         do {
             let vm = JXVM()
-            let jxc = JXContext(virtualMachine: vm)
+            let jxc = JXContext(vm: vm)
             var bytes: [UInt8] = [1, 2, 3, 4, 5, 6, 7, 8]
 
             try bytes.withUnsafeMutableBytes { bytes in
@@ -235,9 +235,9 @@ class JXCoreTests: XCTestCase {
 
         measure { // average: 0.000, relative standard deviation: 99.521%, values: [0.000434, 0.000037, 0.000959, 0.000050, 0.000471, 0.000048, 0.000394, 0.000048, 0.000389, 0.000047]
             let result: Double? = try? jxc.withArrayBuffer(source: data) { buffer in
-                XCTAssertEqual(true, try buffer["byteLength"].booleanValue)
+                XCTAssertEqual(true, try buffer["byteLength"].bool)
                 XCTAssertEqual(true, try buffer["slice"].isFunction)
-                return try buffer["byteLength"].numberValue
+                return try buffer["byteLength"].double
             }
             XCTAssertEqual(Double?.some(.init(size)), result)
         }
@@ -267,7 +267,7 @@ class JXCoreTests: XCTestCase {
         let jxc = JXContext()
 
         let myClass = JXValue(newFunctionIn: jxc) { jxc, this, arguments in
-            let result = try arguments[0].numberValue + arguments[1].numberValue
+            let result = try arguments[0].int + arguments[1].int
             let object = jxc.object()
             try object.setProperty("result", jxc.number(result))
 
@@ -281,7 +281,7 @@ class JXCoreTests: XCTestCase {
         let result = try jxc.eval("new myClass(1, 2)")
 
         XCTAssertTrue(result.isObject)
-        XCTAssertEqual(try result["result"].numberValue, 3)
+        XCTAssertEqual(try result["result"].int, 3)
 
         XCTAssertTrue(try result.isInstance(of: myClass))
     }
@@ -291,7 +291,7 @@ class JXCoreTests: XCTestCase {
 
         do {
             try jxc.global.setProperty("setTimeout", JXValue(newFunctionIn: jxc) { jxc, this, args in
-                print("setTimeout", try args.map({ try $0.stringValue }))
+                print("setTimeout", try args.map({ try $0.string }))
                 return jxc.number(0)
             })
 
@@ -306,18 +306,18 @@ class JXCoreTests: XCTestCase {
                 arr.push(2);
                 """)
 
-            XCTAssertGreaterThan(try result.numberValue, 0)
+            XCTAssertGreaterThan(try result.int, 0)
 
             // this appears to be fixed in macOS 13 and iOS 15
             // Bug 161942: Shouldn't drain the micro task queue when calling out
             // https://developer.apple.com/forums/thread/678277
 
             if #available(macOS 12, iOS 15, tvOS 15, *) {
-                XCTAssertEqual(2, try result.numberValue)
-                XCTAssertEqual([1.0, 2.0, 3.0], try jxc.global["arr"].array.map({ try $0.numberValue }))
+                XCTAssertEqual(2, try result.int)
+                XCTAssertEqual([1, 2, 3], try jxc.global["arr"].array.map({ try $0.int }))
             } else {
-                XCTAssertEqual(3, try result.numberValue)
-                XCTAssertEqual([1.0, 3.0, 2.0], try jxc.global["arr"].array.map({ try $0.numberValue }))
+                XCTAssertEqual(3, try result.int)
+                XCTAssertEqual([1, 3, 2], try jxc.global["arr"].array.map({ try $0.int }))
             }
         }
 
@@ -326,7 +326,7 @@ class JXCoreTests: XCTestCase {
             let resolvedPromise = try JXValue(newPromiseResolvedWithResult: jxc.string(str), in: jxc)
             try jxc.global.setProperty("prm", resolvedPromise)
             let _ = try jxc.eval("(async () => { this['cb'] = await prm; })();")
-            XCTAssertEqual(str, try jxc.global["cb"].stringValue)
+            XCTAssertEqual(str, try jxc.global["cb"].string)
         }
     }
 
@@ -347,7 +347,7 @@ class JXCoreTests: XCTestCase {
             XCTAssertEqual("TypeError: function is not a constructor (evaluating 'new Symbol('xxx')')", "\(error)")
         }
 
-        XCTAssertThrowsError(try jxc.eval("Symbol('xxx')").stringValue) { error in
+        XCTAssertThrowsError(try jxc.eval("Symbol('xxx')").string) { error in
             XCTAssertEqual("TypeError: Cannot convert a symbol to a string", "\(error)")
         }
 
@@ -372,7 +372,7 @@ class JXCoreTests: XCTestCase {
                 try jxc.eval(script)
                 return nil
             } catch let error as JXError {
-                return try error.stringValue
+                return try error.string
             } catch {
                 XCTFail("unexpected error type: \(error)")
                 return nil
@@ -388,7 +388,7 @@ class JXCoreTests: XCTestCase {
         XCTAssertEqual(try lint("1["), "SyntaxError: Unexpected end of script")
         XCTAssertEqual(try lint("1]"), "SyntaxError: Unexpected token \']\'. Parse error.")
 
-        // strict checks
+        // Strict checks
 
         XCTAssertEqual(try lint("use strict"), "SyntaxError: Unexpected identifier \'strict\'") // need to quote
         XCTAssertEqual(try lint("'use strict'\nmistypeVarible = 17"), "ReferenceError: Can\'t find variable: mistypeVarible")
