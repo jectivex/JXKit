@@ -197,7 +197,7 @@
         {
           "inlineContent" : [
             {
-              "text" : "",
+              "text" : "the value itself",
               "type" : "text"
             }
           ],

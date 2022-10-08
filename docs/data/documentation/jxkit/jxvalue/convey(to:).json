@@ -198,7 +198,7 @@
         {
           "inlineContent" : [
             {
-              "text" : "the conveyed instance",
+              "text" : "The conveyed instance.",
               "type" : "text"
             }
           ],
@@ -215,7 +215,7 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "the context to use",
+                  "text" : "The context to use.",
                   "type" : "text"
                 }
               ],

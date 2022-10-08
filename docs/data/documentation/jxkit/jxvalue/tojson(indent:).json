@@ -28,7 +28,7 @@
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC6toJSON6indentSSs6UInt32V_tKF",
+    "externalID" : "s:5JXKit7JXValueC6toJSON6indentSSSi_tKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -56,8 +56,8 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:s6UInt32V",
-        "text" : "UInt32"
+        "preciseIdentifier" : "s:Si",
+        "text" : "Int"
       },
       {
         "kind" : "text",
@@ -124,8 +124,8 @@
             },
             {
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:s6UInt32V",
-              "text" : "UInt32"
+              "preciseIdentifier" : "s:Si",
+              "text" : "Int"
             },
             {
               "kind" : "text",
@@ -262,8 +262,8 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:s6UInt32V",
-      "text" : "UInt32"
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
     },
     {
       "kind" : "text",

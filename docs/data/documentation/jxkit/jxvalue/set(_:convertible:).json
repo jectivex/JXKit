@@ -221,7 +221,7 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "the key to set",
+                  "text" : "The key to set.",
                   "type" : "text"
                 }
               ],
@@ -235,7 +235,7 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "the ",
+                  "text" : "The ",
                   "type" : "text"
                 },
                 {
@@ -243,7 +243,7 @@
                   "type" : "codeVoice"
                 },
                 {
-                  "text" : " to convert",
+                  "text" : " to convert.",
                   "type" : "text"
                 }
               ],

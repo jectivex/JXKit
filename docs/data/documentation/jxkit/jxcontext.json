@@ -139,8 +139,8 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(ctx:strict:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(virtualMachine:strict:)"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(context:strict:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(vm:strict:)"
       ],
       "title" : "Initializers"
     },
@@ -148,12 +148,13 @@
       "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/arrayBufferPrototype",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/arrayPrototype",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/context",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/contextRef",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/datePrototype",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/errorPrototype",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/global",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/objectPrototype",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/promisePrototype",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/spi",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/strict",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/vm"
       ],
@@ -163,7 +164,7 @@
       "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/array(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/boolean(_:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/check(_:sourceURL:startingLineNumber:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/checkSyntax(_:sourceURL:startingLineNumber:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/data(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/date(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/encode(_:)",
@@ -439,7 +440,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/boolean(_:)"
 },
-"doc://JXKit/documentation/JXKit/JXContext/check(_:sourceURL:startingLineNumber:)": {
+"doc://JXKit/documentation/JXKit/JXContext/checkSyntax(_:sourceURL:startingLineNumber:)": {
   "abstract" : [
     {
       "text" : "Checks for syntax errors in a string of JavaScript.",
@@ -457,7 +458,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "check"
+      "text" : "checkSyntax"
     },
     {
       "kind" : "text",
@@ -520,14 +521,14 @@
       "text" : "Bool"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/check(_:sourceURL:startingLineNumber:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/checkSyntax(_:sourceURL:startingLineNumber:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "check(_:sourceURL:startingLineNumber:)",
+  "title" : "checkSyntax(_:sourceURL:startingLineNumber:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/check(_:sourceurl:startinglinenumber:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/checksyntax(_:sourceurl:startinglinenumber:)"
 },
-"doc://JXKit/documentation/JXKit/JXContext/context": {
+"doc://JXKit/documentation/JXKit/JXContext/contextRef": {
   "abstract" : [
     {
       "text" : "The underlying ",
@@ -553,7 +554,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "context"
+      "text" : "contextRef"
     },
     {
       "kind" : "text",
@@ -565,12 +566,12 @@
       "text" : "JSGlobalContextRef"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/context",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/contextRef",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "context",
+  "title" : "contextRef",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/context"
+  "url" : "\/documentation\/jxkit\/jxcontext\/contextref"
 },
 "doc://JXKit/documentation/JXKit/JXContext/data(_:)": {
   "abstract" : [
@@ -721,7 +722,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/encode(_:)": {
   "abstract" : [
     {
-      "text" : "Encodes the given object into this context",
+      "text" : "Encodes the given object into this context.",
       "type" : "text"
     }
   ],
@@ -1127,7 +1128,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/global"
 },
-"doc://JXKit/documentation/JXKit/JXContext/init(ctx:strict:)": {
+"doc://JXKit/documentation/JXKit/JXContext/init(context:strict:)": {
   "abstract" : [
     {
       "text" : "Wraps an existing ",
@@ -1161,7 +1162,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "ctx"
+      "text" : "context"
     },
     {
       "kind" : "text",
@@ -1194,14 +1195,14 @@
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(ctx:strict:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(context:strict:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "init(ctx:strict:)",
+  "title" : "init(context:strict:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/init(ctx:strict:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/init(context:strict:)"
 },
-"doc://JXKit/documentation/JXKit/JXContext/init(virtualMachine:strict:)": {
+"doc://JXKit/documentation/JXKit/JXContext/init(vm:strict:)": {
   "abstract" : [
     {
       "text" : "Creates ",
@@ -1220,7 +1221,7 @@
       "type" : "codeVoice"
     },
     {
-      "text" : ".  ",
+      "text" : ". ",
       "type" : "text"
     },
     {
@@ -1267,7 +1268,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "virtualMachine"
+      "text" : "vm"
     },
     {
       "kind" : "text",
@@ -1300,17 +1301,17 @@
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(virtualMachine:strict:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(vm:strict:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "init(virtualMachine:strict:)",
+  "title" : "init(vm:strict:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/init(virtualmachine:strict:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/init(vm:strict:)"
 },
 "doc://JXKit/documentation/JXKit/JXContext/json(_:)": {
   "abstract" : [
     {
-      "text" : "v a ",
+      "text" : "Create a ",
       "type" : "text"
     },
     {
@@ -1648,6 +1649,47 @@
   "title" : "promisePrototype",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/promiseprototype"
+},
+"doc://JXKit/documentation/JXKit/JXContext/spi": {
+  "abstract" : [
+    {
+      "text" : "For use by service providers only.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "spi"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s9AnyObjecta",
+      "text" : "AnyObject"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/spi",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "spi",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/spi"
 },
 "doc://JXKit/documentation/JXKit/JXContext/strict": {
   "abstract" : [

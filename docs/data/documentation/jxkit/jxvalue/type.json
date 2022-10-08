@@ -1,4 +1,10 @@
 {
+  "abstract" : [
+    {
+      "text" : "The JavaScript type of this value.",
+      "type" : "text"
+    }
+  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -14,7 +20,7 @@
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC4typeAA6JXTypeOSgvp",
+    "externalID" : "s:5JXKit7JXValueC4typeAA6JXTypeOvp",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -36,10 +42,6 @@
         "kind" : "typeIdentifier",
         "preciseIdentifier" : "s:5JXKit6JXTypeO",
         "text" : "JXType"
-      },
-      {
-        "kind" : "text",
-        "text" : "?"
       }
     ],
     "modules" : [
@@ -87,7 +89,7 @@
             },
             {
               "kind" : "text",
-              "text" : "? { "
+              "text" : " { "
             },
             {
               "kind" : "keyword",
@@ -209,7 +211,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXValue/type": {
   "abstract" : [
-
+    {
+      "text" : "The JavaScript type of this value.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -232,10 +237,6 @@
       "kind" : "typeIdentifier",
       "preciseIdentifier" : "s:5JXKit6JXTypeO",
       "text" : "JXType"
-    },
-    {
-      "kind" : "text",
-      "text" : "?"
     }
   ],
   "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/type",

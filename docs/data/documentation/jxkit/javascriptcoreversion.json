@@ -9,7 +9,7 @@
       "type" : "codeVoice"
     },
     {
-      "text" : ")",
+      "text" : ").",
       "type" : "text"
     }
   ],
@@ -145,7 +145,7 @@
       "type" : "codeVoice"
     },
     {
-      "text" : ")",
+      "text" : ").",
       "type" : "text"
     }
   ],

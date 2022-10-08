@@ -186,7 +186,7 @@
 "doc://JXKit/documentation/JXKit/JXProperty": {
   "abstract" : [
     {
-      "text" : "A descriptor for property’s definition",
+      "text" : "A descriptor for property’s definition.",
       "type" : "text"
     }
   ],

@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "An symbol type",
+      "text" : "An symbol type.",
       "type" : "text"
     }
   ],
@@ -146,7 +146,7 @@
 "doc://JXKit/documentation/JXKit/JXType/symbol": {
   "abstract" : [
     {
-      "text" : "An symbol type",
+      "text" : "An symbol type.",
       "type" : "text"
     }
   ],

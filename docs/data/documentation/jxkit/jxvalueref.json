@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "The underlying type that represents a value in the JavaScript environment",
+      "text" : "The underlying type that represents a value in the JavaScript environment.",
       "type" : "text"
     }
   ],
@@ -126,7 +126,7 @@
 "doc://JXKit/documentation/JXKit/JXValueRef": {
   "abstract" : [
     {
-      "text" : "The underlying type that represents a value in the JavaScript environment",
+      "text" : "The underlying type that represents a value in the JavaScript environment.",
       "type" : "text"
     }
   ],

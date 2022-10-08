@@ -14,7 +14,7 @@
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC10setElement_2atyAC_s6UInt32VtKF",
+    "externalID" : "s:5JXKit7JXValueC10setElement_2atyAC_SitKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -51,8 +51,8 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:s6UInt32V",
-        "text" : "UInt32"
+        "preciseIdentifier" : "s:Si",
+        "text" : "Int"
       },
       {
         "kind" : "text",
@@ -144,8 +144,8 @@
             },
             {
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:s6UInt32V",
-              "text" : "UInt32"
+              "preciseIdentifier" : "s:Si",
+              "text" : "Int"
             },
             {
               "kind" : "text",
@@ -271,8 +271,8 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:s6UInt32V",
-      "text" : "UInt32"
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
     },
     {
       "kind" : "text",

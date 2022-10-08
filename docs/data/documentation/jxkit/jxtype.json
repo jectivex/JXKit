@@ -104,10 +104,13 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/boolean",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/buffer",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/date",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/null",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/number",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/object",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/other",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/string",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/symbol"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/symbol",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/undefined"
       ],
       "title" : "Enumeration Cases"
     },
@@ -314,6 +317,34 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxtype\/date"
 },
+"doc://JXKit/documentation/JXKit/JXType/null": {
+  "abstract" : [
+    {
+      "text" : "A null value.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "null"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/null",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXType.null",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxtype\/null"
+},
 "doc://JXKit/documentation/JXKit/JXType/number": {
   "abstract" : [
     {
@@ -345,7 +376,7 @@
 "doc://JXKit/documentation/JXKit/JXType/object": {
   "abstract" : [
     {
-      "text" : "An object type",
+      "text" : "An object type.",
       "type" : "text"
     }
   ],
@@ -369,6 +400,34 @@
   "title" : "JXType.object",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxtype\/object"
+},
+"doc://JXKit/documentation/JXKit/JXType/other": {
+  "abstract" : [
+    {
+      "text" : "A type not enumerated here.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "other"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/other",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXType.other",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxtype\/other"
 },
 "doc://JXKit/documentation/JXKit/JXType/string": {
   "abstract" : [
@@ -401,7 +460,7 @@
 "doc://JXKit/documentation/JXKit/JXType/symbol": {
   "abstract" : [
     {
-      "text" : "An symbol type",
+      "text" : "An symbol type.",
       "type" : "text"
     }
   ],
@@ -425,6 +484,34 @@
   "title" : "JXType.symbol",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxtype\/symbol"
+},
+"doc://JXKit/documentation/JXKit/JXType/undefined": {
+  "abstract" : [
+    {
+      "text" : "An undefined value.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "undefined"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/undefined",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXType.undefined",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxtype\/undefined"
 }
 }
 }

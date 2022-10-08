@@ -110,7 +110,7 @@
   "relationshipsSections" : [
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXEvalError",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
       ],
       "kind" : "relationships",
@@ -129,13 +129,13 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/getJX(from:)"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/toJX(in:)"
       ],
       "title" : "Instance Methods"
     },
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/makeJX(from:)"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/fromJX(_:)"
       ],
       "title" : "Type Methods"
     }
@@ -202,10 +202,80 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxconvertible"
 },
-"doc://JXKit/documentation/JXKit/JXConvertible/getJX(from:)": {
+"doc://JXKit/documentation/JXKit/JXConvertible/fromJX(_:)": {
   "abstract" : [
     {
-      "text" : "Converts this value into a JXContext",
+      "text" : "Converts a ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXValue",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " into this type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "fromJX"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "Self"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/fromJX(_:)",
+  "kind" : "symbol",
+  "required" : true,
+  "role" : "symbol",
+  "title" : "fromJX(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxconvertible\/fromjx(_:)"
+},
+"doc://JXKit/documentation/JXKit/JXConvertible/toJX(in:)": {
+  "abstract" : [
+    {
+      "text" : "Converts this value into a JXContext.",
       "type" : "text"
     }
   ],
@@ -220,7 +290,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "getJX"
+      "text" : "toJX"
     },
     {
       "kind" : "text",
@@ -228,7 +298,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "from"
+      "text" : "in"
     },
     {
       "kind" : "text",
@@ -257,85 +327,15 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/getJX(from:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/toJX(in:)",
   "kind" : "symbol",
   "required" : true,
   "role" : "symbol",
-  "title" : "getJX(from:)",
+  "title" : "toJX(in:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxconvertible\/getjx(from:)"
+  "url" : "\/documentation\/jxkit\/jxconvertible\/tojx(in:)"
 },
-"doc://JXKit/documentation/JXKit/JXConvertible/makeJX(from:)": {
-  "abstract" : [
-    {
-      "text" : "Converts this value into a JXContext",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "static"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "makeJX"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "from"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "text" : "Self"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible\/makeJX(from:)",
-  "kind" : "symbol",
-  "required" : true,
-  "role" : "symbol",
-  "title" : "makeJX(from:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxconvertible\/makejx(from:)"
-},
-"doc://JXKit/documentation/JXKit/JXError": {
+"doc://JXKit/documentation/JXKit/JXEvalError": {
   "abstract" : [
     {
       "text" : "An error thrown from JavaScript evaluation.",
@@ -353,21 +353,21 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXError"
+      "text" : "JXEvalError"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXEvalError",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXError"
+      "text" : "JXEvalError"
     }
   ],
   "role" : "symbol",
-  "title" : "JXError",
+  "title" : "JXEvalError",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerror"
+  "url" : "\/documentation\/jxkit\/jxevalerror"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [

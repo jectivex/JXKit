@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "An object type",
+      "text" : "An object type.",
       "type" : "text"
     }
   ],
@@ -146,7 +146,7 @@
 "doc://JXKit/documentation/JXKit/JXType/object": {
   "abstract" : [
     {
-      "text" : "An object type",
+      "text" : "An object type.",
       "type" : "text"
     }
   ],

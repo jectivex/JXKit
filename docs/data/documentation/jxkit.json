@@ -119,9 +119,8 @@
     },
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXVM",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValueError"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXEvalError",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXVM"
       ],
       "title" : "Classes"
     },
@@ -277,43 +276,12 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxconvertible"
 },
-"doc://JXKit/documentation/JXKit/JXError": {
-  "abstract" : [
-    {
-      "text" : "An error thrown from JavaScript evaluation.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXError"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXError"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXError",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerror"
-},
 "doc://JXKit/documentation/JXKit/JXErrors": {
   "abstract" : [
-
+    {
+      "text" : "JXKit framework errors.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -341,6 +309,40 @@
   "title" : "JXErrors",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerrors"
+},
+"doc://JXKit/documentation/JXKit/JXEvalError": {
+  "abstract" : [
+    {
+      "text" : "An error thrown from JavaScript evaluation.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXEvalError"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXEvalError",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXEvalError"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXEvalError",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxevalerror"
 },
 "doc://JXKit/documentation/JXKit/JXFunction": {
   "abstract" : [
@@ -569,7 +571,7 @@
 "doc://JXKit/documentation/JXKit/JXProperty": {
   "abstract" : [
     {
-      "text" : "A descriptor for property’s definition",
+      "text" : "A descriptor for property’s definition.",
       "type" : "text"
     }
   ],
@@ -710,41 +712,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue"
 },
-"doc://JXKit/documentation/JXKit/JXValueError": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXValueError"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValueError",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXValueError"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXValueError",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalueerror"
-},
 "doc://JXKit/documentation/JXKit/JXValueRef": {
   "abstract" : [
     {
-      "text" : "The underlying type that represents a value in the JavaScript environment",
+      "text" : "The underlying type that represents a value in the JavaScript environment.",
       "type" : "text"
     }
   ],
@@ -786,7 +757,7 @@
       "type" : "codeVoice"
     },
     {
-      "text" : ")",
+      "text" : ").",
       "type" : "text"
     }
   ],

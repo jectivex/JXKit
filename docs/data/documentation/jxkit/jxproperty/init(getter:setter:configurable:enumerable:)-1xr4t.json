@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Accessor Descriptor",
+      "text" : "Accessor descriptor.",
       "type" : "text"
     }
   ],
@@ -368,7 +368,7 @@
 "doc://JXKit/documentation/JXKit/JXProperty": {
   "abstract" : [
     {
-      "text" : "A descriptor for property’s definition",
+      "text" : "A descriptor for property’s definition.",
       "type" : "text"
     }
   ],
@@ -402,7 +402,7 @@
 "doc://JXKit/documentation/JXKit/JXProperty/init(getter:setter:configurable:enumerable:)-1xr4t": {
   "abstract" : [
     {
-      "text" : "Accessor Descriptor",
+      "text" : "Accessor descriptor.",
       "type" : "text"
     }
   ],

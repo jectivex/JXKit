@@ -102,6 +102,10 @@
             {
               "code" : "JavaScriptCore.JSValue",
               "type" : "codeVoice"
+            },
+            {
+              "text" : ".",
+              "type" : "text"
             }
           ],
           "type" : "paragraph"
@@ -113,7 +117,7 @@
   "relationshipsSections" : [
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXError"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXEvalError"
       ],
       "kind" : "relationships",
       "title" : "Inherited By",
@@ -150,7 +154,7 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(ctx:value:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(context:value:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newArrayBufferWithBytes:in:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newArrayBufferWithBytesNoCopy:deallocator:in:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(newArrayBufferWithLength:in:)",
@@ -164,13 +168,17 @@
     {
       "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/array",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/booleanValue",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/bool",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/byteLength",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/context",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/count",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/ctx",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dateValue",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dateValueISO",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/date",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dateISO",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dictionary",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/double",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/float",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/int",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/int64",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isArray",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isArrayBuffer",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isBoolean",
@@ -181,6 +189,7 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isFrozen",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isFunction",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isNull",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isNullOrUndefined",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isNumber",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isObject",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isPromise",
@@ -188,11 +197,10 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isString",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isSymbol",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isUndefined",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/numberValue",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/peer",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/properties",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/prototype",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/stringValue",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/string",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/type"
       ],
       "title" : "Instance Properties"
@@ -206,7 +214,6 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/defineProperty(_:_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/deleteProperty(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/freeze()",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/getJXConvertible(from:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/hasProperty(_:)-1e3mh",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/hasProperty(_:)-2ontd",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/invokeMethod(_:withArguments:)",
@@ -222,13 +229,14 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(symbol:_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/toDecodable(ofType:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/toJSON(indent:)"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/toJSON(indent:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/toJXConvertible(in:)"
       ],
       "title" : "Instance Methods"
     },
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/subscript(_:)-44yy0",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/subscript(_:)-6nlcq",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/subscript(_:)-8iv6o",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/subscript(symbol:)"
       ],
@@ -237,7 +245,7 @@
     {
       "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/createPromise(in:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/makeJXConvertible(from:)"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/fromJXConvertible(_:)"
       ],
       "title" : "Type Methods"
     },
@@ -365,7 +373,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxconvertible"
 },
-"doc://JXKit/documentation/JXKit/JXError": {
+"doc://JXKit/documentation/JXKit/JXEvalError": {
   "abstract" : [
     {
       "text" : "An error thrown from JavaScript evaluation.",
@@ -383,21 +391,21 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXError"
+      "text" : "JXEvalError"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXEvalError",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXError"
+      "text" : "JXEvalError"
     }
   ],
   "role" : "symbol",
-  "title" : "JXError",
+  "title" : "JXEvalError",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerror"
+  "url" : "\/documentation\/jxkit\/jxevalerror"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
@@ -496,7 +504,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/array"
 },
-"doc://JXKit/documentation/JXKit/JXValue/booleanValue": {
+"doc://JXKit/documentation/JXKit/JXValue/bool": {
   "abstract" : [
     {
       "text" : "Returns the JavaScript boolean value.",
@@ -514,7 +522,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "booleanValue"
+      "text" : "bool"
     },
     {
       "kind" : "text",
@@ -526,12 +534,12 @@
       "text" : "Bool"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/booleanValue",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/bool",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "booleanValue",
+  "title" : "bool",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/booleanvalue"
+  "url" : "\/documentation\/jxkit\/jxvalue\/bool"
 },
 "doc://JXKit/documentation/JXKit/JXValue/byteLength": {
   "abstract" : [
@@ -726,6 +734,40 @@
   "title" : "construct(withArguments:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/construct(witharguments:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/context": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "context"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/context",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "context",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/context"
 },
 "doc://JXKit/documentation/JXKit/JXValue/convey(to:)": {
   "abstract" : [
@@ -956,41 +998,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/createpromise(in:)"
 },
-"doc://JXKit/documentation/JXKit/JXValue/ctx": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "let"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "ctx"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit9JXContextC",
-      "text" : "JXContext"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/ctx",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "ctx",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/ctx"
-},
-"doc://JXKit/documentation/JXKit/JXValue/dateValue": {
+"doc://JXKit/documentation/JXKit/JXValue/date": {
   "abstract" : [
 
   ],
@@ -1005,7 +1013,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "dateValue"
+      "text" : "date"
     },
     {
       "kind" : "text",
@@ -1015,20 +1023,16 @@
       "kind" : "typeIdentifier",
       "preciseIdentifier" : "s:10Foundation4DateV",
       "text" : "Date"
-    },
-    {
-      "kind" : "text",
-      "text" : "?"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dateValue",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/date",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "dateValue",
+  "title" : "date",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/datevalue"
+  "url" : "\/documentation\/jxkit\/jxvalue\/date"
 },
-"doc://JXKit/documentation/JXKit/JXValue/dateValueISO": {
+"doc://JXKit/documentation/JXKit/JXValue/dateISO": {
   "abstract" : [
     {
       "text" : "Returns the JavaScript date value.",
@@ -1046,7 +1050,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "dateValueISO"
+      "text" : "dateISO"
     },
     {
       "kind" : "text",
@@ -1056,18 +1060,14 @@
       "kind" : "typeIdentifier",
       "preciseIdentifier" : "s:10Foundation4DateV",
       "text" : "Date"
-    },
-    {
-      "kind" : "text",
-      "text" : "?"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dateValueISO",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dateISO",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "dateValueISO",
+  "title" : "dateISO",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/datevalueiso"
+  "url" : "\/documentation\/jxkit\/jxvalue\/dateiso"
 },
 "doc://JXKit/documentation/JXKit/JXValue/defineProperty(_:_:)": {
   "abstract" : [
@@ -1227,6 +1227,80 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/dictionary"
 },
+"doc://JXKit/documentation/JXKit/JXValue/double": {
+  "abstract" : [
+    {
+      "text" : "Returns the JavaScript number value.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "double"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sd",
+      "text" : "Double"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/double",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "double",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/double"
+},
+"doc://JXKit/documentation/JXKit/JXValue/float": {
+  "abstract" : [
+    {
+      "text" : "Returns the JavaScript number value.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "float"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sf",
+      "text" : "Float"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/float",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "float",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/float"
+},
 "doc://JXKit/documentation/JXKit/JXValue/freeze()": {
   "abstract" : [
     {
@@ -1263,14 +1337,19 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/freeze()"
 },
-"doc://JXKit/documentation/JXKit/JXValue/getJXConvertible(from:)": {
+"doc://JXKit/documentation/JXKit/JXValue/fromJXConvertible(_:)": {
   "abstract" : [
-    {
-      "text" : "Converts this value into a JXContext",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
     {
       "kind" : "keyword",
       "text" : "func"
@@ -1281,41 +1360,40 @@
     },
     {
       "kind" : "identifier",
-      "text" : "getJXConvertible"
+      "text" : "fromJXConvertible"
     },
     {
       "kind" : "text",
       "text" : "("
     },
     {
-      "kind" : "externalParam",
-      "text" : "from"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit9JXContextC",
-      "text" : "JXContext"
-    },
-    {
-      "kind" : "text",
-      "text" : ") -> "
-    },
-    {
       "kind" : "typeIdentifier",
       "preciseIdentifier" : "s:5JXKit7JXValueC",
       "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "Self"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/getJXConvertible(from:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/fromJXConvertible(_:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "getJXConvertible(from:)",
+  "title" : "fromJXConvertible(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/getjxconvertible(from:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/fromjxconvertible(_:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue/hasProperty(_:)-1e3mh": {
   "abstract" : [
@@ -1417,7 +1495,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/hasproperty(_:)-2ontd"
 },
-"doc://JXKit/documentation/JXKit/JXValue/init(ctx:value:)": {
+"doc://JXKit/documentation/JXKit/JXValue/init(context:value:)": {
   "abstract" : [
 
   ],
@@ -1440,7 +1518,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "ctx"
+      "text" : "context"
     },
     {
       "kind" : "text",
@@ -1473,12 +1551,12 @@
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(ctx:value:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/init(context:value:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "init(ctx:value:)",
+  "title" : "init(context:value:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/init(ctx:value:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/init(context:value:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue/init(newArrayBufferWithBytes:in:)": {
   "abstract" : [
@@ -2042,6 +2120,80 @@
   "title" : "init(newPromiseResolvedWithResult:in:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/init(newpromiseresolvedwithresult:in:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue/int": {
+  "abstract" : [
+    {
+      "text" : "Returns the JavaScript number value.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "int"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/int",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "int",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/int"
+},
+"doc://JXKit/documentation/JXKit/JXValue/int64": {
+  "abstract" : [
+    {
+      "text" : "Returns the JavaScript number value.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "int64"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s5Int64V",
+      "text" : "Int64"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/int64",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "int64",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/int64"
 },
 "doc://JXKit/documentation/JXKit/JXValue/invokeMethod(_:withArguments:)": {
   "abstract" : [
@@ -2694,6 +2846,43 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/isnull"
 },
+"doc://JXKit/documentation/JXKit/JXValue/isNullOrUndefined": {
+  "abstract" : [
+    {
+      "text" : "Returns true if the value is either null or undefined.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isNullOrUndefined"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isNullOrUndefined",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isNullOrUndefined",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/isnullorundefined"
+},
 "doc://JXKit/documentation/JXKit/JXValue/isNumber": {
   "abstract" : [
     {
@@ -2949,109 +3138,6 @@
   "title" : "isUndefined",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/isundefined"
-},
-"doc://JXKit/documentation/JXKit/JXValue/makeJXConvertible(from:)": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "static"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "makeJXConvertible"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "from"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "text" : "Self"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/makeJXConvertible(from:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "makeJXConvertible(from:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/makejxconvertible(from:)"
-},
-"doc://JXKit/documentation/JXKit/JXValue/numberValue": {
-  "abstract" : [
-    {
-      "text" : "Returns the JavaScript number value.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "var"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "numberValue"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sd",
-      "text" : "Double"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/numberValue",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "numberValue",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/numbervalue"
 },
 "doc://JXKit/documentation/JXKit/JXValue/peer": {
   "abstract" : [
@@ -3490,8 +3576,8 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:s6UInt32V",
-      "text" : "UInt32"
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
     },
     {
       "kind" : "text",
@@ -3643,7 +3729,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/setproperty(symbol:_:)"
 },
-"doc://JXKit/documentation/JXKit/JXValue/stringValue": {
+"doc://JXKit/documentation/JXKit/JXValue/string": {
   "abstract" : [
     {
       "text" : "Returns the JavaScript string value.",
@@ -3661,7 +3747,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "stringValue"
+      "text" : "string"
     },
     {
       "kind" : "text",
@@ -3673,14 +3759,14 @@
       "text" : "String"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/stringValue",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/string",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "stringValue",
+  "title" : "string",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/stringvalue"
+  "url" : "\/documentation\/jxkit\/jxvalue\/string"
 },
-"doc://JXKit/documentation/JXKit/JXValue/subscript(_:)-44yy0": {
+"doc://JXKit/documentation/JXKit/JXValue/subscript(_:)-6nlcq": {
   "abstract" : [
     {
       "text" : "The value in object at index.",
@@ -3698,8 +3784,8 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:s6UInt32V",
-      "text" : "UInt32"
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
     },
     {
       "kind" : "text",
@@ -3711,12 +3797,12 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/subscript(_:)-44yy0",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/subscript(_:)-6nlcq",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "subscript(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/subscript(_:)-44yy0"
+  "url" : "\/documentation\/jxkit\/jxvalue\/subscript(_:)-6nlcq"
 },
 "doc://JXKit/documentation/JXKit/JXValue/subscript(_:)-8iv6o": {
   "abstract" : [
@@ -3819,6 +3905,10 @@
     {
       "code" : "Decodable",
       "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
     }
   ],
   "fragments" : [
@@ -3924,8 +4014,8 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:s6UInt32V",
-      "text" : "UInt32"
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
     },
     {
       "kind" : "text",
@@ -3952,9 +4042,66 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/tojson(indent:)"
 },
+"doc://JXKit/documentation/JXKit/JXValue/toJXConvertible(in:)": {
+  "abstract" : [
+    {
+      "text" : "Converts this value into a JXContext.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "toJXConvertible"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "in"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/toJXConvertible(in:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "toJXConvertible(in:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/tojxconvertible(in:)"
+},
 "doc://JXKit/documentation/JXKit/JXValue/type": {
   "abstract" : [
-
+    {
+      "text" : "The JavaScript type of this value.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -3977,10 +4124,6 @@
       "kind" : "typeIdentifier",
       "preciseIdentifier" : "s:5JXKit6JXTypeO",
       "text" : "JXType"
-    },
-    {
-      "kind" : "text",
-      "text" : "?"
     }
   ],
   "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/type",

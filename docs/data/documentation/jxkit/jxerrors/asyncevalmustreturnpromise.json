@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "An async call is expected to return a promise",
+      "text" : "An async call is expected to return a promise.",
       "type" : "text"
     }
   ],
@@ -111,7 +111,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXErrors": {
   "abstract" : [
-
+    {
+      "text" : "JXKit framework errors.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -143,7 +146,7 @@
 "doc://JXKit/documentation/JXKit/JXErrors/asyncEvalMustReturnPromise": {
   "abstract" : [
     {
-      "text" : "An async call is expected to return a promise",
+      "text" : "An async call is expected to return a promise.",
       "type" : "text"
     }
   ],

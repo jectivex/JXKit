@@ -233,7 +233,7 @@
         {
           "inlineContent" : [
             {
-              "text" : "the result of the closure",
+              "text" : "The result of the closure.",
               "type" : "text"
             }
           ],
@@ -250,7 +250,7 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "the data to use",
+                  "text" : "The data to use.",
                   "type" : "text"
                 }
               ],
@@ -264,7 +264,7 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "the block that passes the temporary JXValue wrapping the buffer data",
+                  "text" : "The block that passes the temporary JXValue wrapping the buffer data.",
                   "type" : "text"
                 }
               ],

@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Encodes the given object into this context",
+      "text" : "Encodes the given object into this context.",
       "type" : "text"
     }
   ],
@@ -263,7 +263,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/encode(_:)": {
   "abstract" : [
     {
-      "text" : "Encodes the given object into this context",
+      "text" : "Encodes the given object into this context.",
       "type" : "text"
     }
   ],

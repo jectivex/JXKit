@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Attempt to add to something that is not an array",
+      "text" : "Attempt to add to something that is not an array.",
       "type" : "text"
     }
   ],
@@ -111,7 +111,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXErrors": {
   "abstract" : [
-
+    {
+      "text" : "JXKit framework errors.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -143,7 +146,7 @@
 "doc://JXKit/documentation/JXKit/JXErrors/addToNonArray": {
   "abstract" : [
     {
-      "text" : "Attempt to add to something that is not an array",
+      "text" : "Attempt to add to something that is not an array.",
       "type" : "text"
     }
   ],

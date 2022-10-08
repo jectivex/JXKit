@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "v a ",
+      "text" : "Create a ",
       "type" : "text"
     },
     {
@@ -162,7 +162,7 @@
         {
           "inlineContent" : [
             {
-              "text" : "the value if it could be created",
+              "text" : "The value if it could be created.",
               "type" : "text"
             }
           ],
@@ -179,7 +179,7 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "the JSON string to parse",
+                  "text" : "The JSON string to parse.",
                   "type" : "text"
                 }
               ],
@@ -272,7 +272,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/json(_:)": {
   "abstract" : [
     {
-      "text" : "v a ",
+      "text" : "Create a ",
       "type" : "text"
     },
     {

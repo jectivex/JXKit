@@ -15,6 +15,10 @@
     {
       "code" : "Decodable",
       "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
     }
   ],
   "hierarchy" : {
@@ -278,6 +282,10 @@
     {
       "code" : "Decodable",
       "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
     }
   ],
   "fragments" : [

@@ -150,7 +150,7 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "ctx"
+              "text" : "context"
             },
             {
               "kind" : "text",
@@ -229,21 +229,21 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "the context to use for creation",
+                  "text" : "The context to use for creation.",
                   "type" : "text"
                 }
               ],
               "type" : "paragraph"
             }
           ],
-          "name" : "ctx"
+          "name" : "context"
         },
         {
           "content" : [
             {
               "inlineContent" : [
                 {
-                  "text" : "the executor callback",
+                  "text" : "The executor callback.",
                   "type" : "text"
                 }
               ],

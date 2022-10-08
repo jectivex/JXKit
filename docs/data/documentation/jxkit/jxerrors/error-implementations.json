@@ -68,7 +68,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXErrors": {
   "abstract" : [
-
+    {
+      "text" : "JXKit framework errors.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

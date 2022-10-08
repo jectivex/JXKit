@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "A conversion to another numic type failed",
+      "text" : "A conversion to another numic type failed.",
       "type" : "text"
     }
   ],
@@ -137,7 +137,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXErrors": {
   "abstract" : [
-
+    {
+      "text" : "JXKit framework errors.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -169,7 +172,7 @@
 "doc://JXKit/documentation/JXKit/JXErrors/invalidNumericConversion(_:)": {
   "abstract" : [
     {
-      "text" : "A conversion to another numic type failed",
+      "text" : "A conversion to another numic type failed.",
       "type" : "text"
     }
   ],

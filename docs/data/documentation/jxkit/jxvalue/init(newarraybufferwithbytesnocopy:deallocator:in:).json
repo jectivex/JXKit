@@ -217,7 +217,7 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "ctx"
+              "text" : "context"
             },
             {
               "kind" : "text",

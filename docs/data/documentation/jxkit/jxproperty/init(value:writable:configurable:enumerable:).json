@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Data Descriptor",
+      "text" : "Data descriptor.",
       "type" : "text"
     }
   ],
@@ -269,7 +269,7 @@
 "doc://JXKit/documentation/JXKit/JXProperty": {
   "abstract" : [
     {
-      "text" : "A descriptor for property’s definition",
+      "text" : "A descriptor for property’s definition.",
       "type" : "text"
     }
   ],
@@ -303,7 +303,7 @@
 "doc://JXKit/documentation/JXKit/JXProperty/init(value:writable:configurable:enumerable:)": {
   "abstract" : [
     {
-      "text" : "Data Descriptor",
+      "text" : "Data descriptor.",
       "type" : "text"
     }
   ],
