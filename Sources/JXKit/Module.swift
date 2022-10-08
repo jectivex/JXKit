@@ -3,8 +3,6 @@ import class Foundation.NSDictionary
 
 // This class supports extracting the version information of the runtime.
 
-// MARK: JXKit Module Metadata
-
 /// The bundle for the `JXKit` module.
 public let JXKitBundle = Foundation.Bundle.module
 

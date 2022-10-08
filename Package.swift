@@ -19,7 +19,7 @@ let targets: [Target] = [
             .linkedLibrary("ASL", .when(platforms: [.windows])),
         ])
 ]
-#else // no native JavaScriptCore falls back to javascriptcoregtk
+#else // No native JavaScriptCore falls back to javascriptcoregtk
 let targets: [Target] = [
     .systemLibrary(name: "CJSCore", 
         pkgConfig: "javascriptcoregtk-4.0", 

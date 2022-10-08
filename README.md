@@ -21,11 +21,11 @@ Browse the [API Documentation].
 Functions can be accessed (and cached) to be invoked directly with codable arguments:
 
 ```swift
-let ctx = JXContext()
-let hypot = try ctx.global["Math"]["hypot"]
+let context = JXContext()
+let hypot = try context.global["Math"]["hypot"]
 assert(hypot.isFunction == true)
-let result = try hypot.call(withArguments: try [ctx.encode(3), ctx.encode(4)])
-let hypotValue = try result.numberValue
+let result = try hypot.call(withArguments: try [context.encode(3), context.encode(4)])
+let hypotValue = try result.double
 assert(hypotValue == 5)
 ```
 
@@ -37,15 +37,15 @@ The above invocation of `Math.hypot` can instead be performed by wrapping the ar
 
 ```swift
 /// An example of invoking `Math.hypot` in a wrapper function that takes an encodable argument and returns a Decodable retult.
-struct AB : Encodable { let a, b: Double }
-struct C : Decodable { let c: Double }
+struct AB: Encodable { let a, b: Double }
+struct C: Decodable { let c: Double }
 
-let ctx = JXContext()
+let context = JXContext()
 
-let hypot = try ctx.eval("(function(args) { return { c: Math.hypot(args.a, args.b) }; })")
+let hypot = try context.eval("(function(args) { return { c: Math.hypot(args.a, args.b) }; })")
 assert(hypot.isFunction == true)
 
-let result: C = try hypot.call(withArguments: [ctx.encode(AB(a: 3, b: 4))]).toDecodable(ofType: C.self)
+let result: C = try hypot.call(withArguments: [context.encode(AB(a: 3, b: 4))]).toDecodable(ofType: C.self)
 assert(result.c == 5)
 ```
 
@@ -68,7 +68,7 @@ import JXKit
 
 let jxc = JXContext()
 let value: JXValue = try jxc.eval("1+2")
-assert(try value.numberValue == 3)
+assert(try value.int == 3)
 ```
 
 ## Installation
