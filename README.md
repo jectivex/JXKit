@@ -5,11 +5,15 @@
 ![Platform][SwiftPlatforms]
 <!-- [![](https://tokei.rs/b1/github/jectivex/JXKit)](https://github.com/jectivex/JXKit) -->
 
-A pure swift interface the `JavaScriptCore` C API with support for `Encodable` & `Decodable`.
+JXKit is a cross-plarform swift module for interfacing with
+`JavaScriptCore`. It provides a fluent API for working with an embedded
+[`JXContext`](https://www.jective.org/JXKit/documentation/jxkit/jxcontext),
+including script evaluation, error handling, and Codable mashalling.
 
-Browse the [API Documentation].
+JXKit is cross-platform for Darwin (macOS/iOS) and Linux,
+with experimental support for Windows and Android.
 
-This permits JSC to be used on platforms where the Objective-C runtime is unavailable (e.g., Linux).
+JSC to be used on platforms where the Objective-C runtime is unavailable (e.g., Linux).
 
 
 ## API
@@ -133,11 +137,11 @@ Projects that are based on JXKit:
 
 
 [Swift Package Manager]: https://swift.org/package-manager
-[API Documentation]: https://www.jective.org/JKKit/documentation/jkkit/
+[API Documentation]: https://www.jective.org/JXKit/documentation/jxkit/
 
-[ProjectLink]: https://github.com/jectivex/JKKit
-[ActionsLink]: https://github.com/jectivex/JKKit/actions
-[API Documentation]: https://www.jective.org/JKKit/documentation/jack/
+[ProjectLink]: https://github.com/jectivex/JXKit
+[ActionsLink]: https://github.com/jectivex/JXKit/actions
+[API Documentation]: https://www.jective.org/JXKit/documentation/jxkit/
 
 [Swift]: https://swift.org/
 [OpenCombine]: https://github.com/OpenCombine/OpenCombine
