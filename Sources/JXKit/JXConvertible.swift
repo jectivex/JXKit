@@ -29,7 +29,7 @@ extension Decodable where Self: JXConvertible {
     }
 
     public static func fromJX(_ value: JXValue) throws -> Self {
-        try fromJX(value)
+        try fromJXCodable(value)
     }
 }
 
