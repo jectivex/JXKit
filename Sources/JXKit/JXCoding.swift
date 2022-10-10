@@ -14,26 +14,6 @@ extension JXValue {
     }
 }
 
-extension JXValue {
-    /// Adds the given object as the final element of this array.
-    func add(_ object: JXValue) throws {
-        guard isArray else {
-            throw JXErrors.addToNonArray
-        }
-        try self.setElement(object, at: count)
-    }
-
-    func insert(_ object: JXValue, at index: Int) throws {
-        guard isArray else {
-            throw JXErrors.addToNonArray
-        }
-        for i in try (max(1, index)...count).reversed() {
-            try setElement(self[i-1], at: i) // Shift all the latter elements up by one
-        }
-        try setElement(object, at: index) // And fill in the index (JS permits assigning a non-existent index)
-    }
-}
-
 class JXValueEncoder {
 
     /// The output format to write the script object data in. Defaults to `.binary`.
@@ -229,26 +209,26 @@ fileprivate struct _ScriptUnkeyedEncodingContainer: UnkeyedEncodingContainer {
         self.container = container
     }
 
-    public mutating func encodeNil() throws { try container.add(JXValue(nullIn: encoder.context)) }
-    public mutating func encode(_ value: Bool) throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: Int) throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: Int8) throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: Int16) throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: Int32) throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: Int64) throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: UInt) throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: UInt8) throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: UInt16) throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: UInt32) throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: UInt64) throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: Float) throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: Double) throws { try container.add(encoder.box(value)) }
-    public mutating func encode(_ value: String) throws { try container.add(encoder.box(value)) }
+    public mutating func encodeNil() throws { try container.addElement(JXValue(nullIn: encoder.context)) }
+    public mutating func encode(_ value: Bool) throws { try container.addElement(encoder.box(value)) }
+    public mutating func encode(_ value: Int) throws { try container.addElement(encoder.box(value)) }
+    public mutating func encode(_ value: Int8) throws { try container.addElement(encoder.box(value)) }
+    public mutating func encode(_ value: Int16) throws { try container.addElement(encoder.box(value)) }
+    public mutating func encode(_ value: Int32) throws { try container.addElement(encoder.box(value)) }
+    public mutating func encode(_ value: Int64) throws { try container.addElement(encoder.box(value)) }
+    public mutating func encode(_ value: UInt) throws { try container.addElement(encoder.box(value)) }
+    public mutating func encode(_ value: UInt8) throws { try container.addElement(encoder.box(value)) }
+    public mutating func encode(_ value: UInt16) throws { try container.addElement(encoder.box(value)) }
+    public mutating func encode(_ value: UInt32) throws { try container.addElement(encoder.box(value)) }
+    public mutating func encode(_ value: UInt64) throws { try container.addElement(encoder.box(value)) }
+    public mutating func encode(_ value: Float) throws { try container.addElement(encoder.box(value)) }
+    public mutating func encode(_ value: Double) throws { try container.addElement(encoder.box(value)) }
+    public mutating func encode(_ value: String) throws { try container.addElement(encoder.box(value)) }
 
     public mutating func encode<T: Encodable>(_ value: T) throws {
         self.encoder.codingPath.append(_JSKey(index: self.count))
         defer { self.encoder.codingPath.removeLast() }
-        try self.container.add(self.encoder.box(value))
+        try self.container.addElement(self.encoder.box(value))
     }
 
     public mutating func nestedContainer<NestedKey>(keyedBy keyType: NestedKey.Type) -> KeyedEncodingContainer<NestedKey> {
@@ -256,7 +236,7 @@ fileprivate struct _ScriptUnkeyedEncodingContainer: UnkeyedEncodingContainer {
         defer { self.codingPath.removeLast() }
 
         let dictionary = JXValue(newObjectIn: encoder.context)
-        try? self.container.add(dictionary)
+        try? self.container.addElement(dictionary)
 
         let container = _JSKeyedEncodingContainer<NestedKey>(referencing: self.encoder, codingPath: self.codingPath, wrapping: dictionary)
         return KeyedEncodingContainer(container)
@@ -268,7 +248,7 @@ fileprivate struct _ScriptUnkeyedEncodingContainer: UnkeyedEncodingContainer {
 
         do {
             let array = try JXValue(newArrayIn: encoder.context) // force unwrap?
-            try self.container.add(array)
+            try self.container.addElement(array)
             return _ScriptUnkeyedEncodingContainer(referencing: self.encoder, codingPath: self.codingPath, wrapping: array)
         } catch {
             fatalError("Failed to pushUnkeyedContainer: \(error)")
@@ -622,7 +602,7 @@ fileprivate class __JSReferencingEncoder: JXEncoder {
 
         switch self.reference {
         case .array(let array, let index):
-            try? array.insert(value, at: index)
+            try? array.insertElement(value, at: index)
 
         case .dictionary(let dictionary, let key):
             _ = try? dictionary.setProperty(key, value)
@@ -733,7 +713,7 @@ fileprivate class __JSDecoder: Decoder {
             throw DecodingError._typeMismatch(at: self.codingPath, expectation: [String: Any].self, reality: self.storage.topContainer)
         }
 
-        let container = try _JSKeyedDecodingContainer<Key>(referencing: self, wrapping: self.storage.topContainer.dictionary ?? [:])
+        let container = try _JSKeyedDecodingContainer<Key>(referencing: self, wrapping: self.storage.topContainer.dictionary)
         return KeyedDecodingContainer(container)
     }
 
@@ -1054,7 +1034,7 @@ fileprivate struct _JSKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContain
             throw DecodingError._typeMismatch(at: self.codingPath, expectation: [String: Any].self, reality: value)
         }
 
-        let container = try _JSKeyedDecodingContainer<NestedKey>(referencing: self.decoder, wrapping: value.dictionary ?? [:])
+        let container = try _JSKeyedDecodingContainer<NestedKey>(referencing: self.decoder, wrapping: value.dictionary)
         return KeyedDecodingContainer(container)
     }
 
@@ -1396,7 +1376,7 @@ fileprivate struct _ScriptUnkeyedDecodingContainer: UnkeyedDecodingContainer {
         }
 
         self.currentIndex += 1
-        let container = try _JSKeyedDecodingContainer<NestedKey>(referencing: self.decoder, wrapping: value.dictionary ?? [:])
+        let container = try _JSKeyedDecodingContainer<NestedKey>(referencing: self.decoder, wrapping: value.dictionary)
         return KeyedDecodingContainer(container)
     }
 

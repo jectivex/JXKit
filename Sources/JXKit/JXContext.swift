@@ -41,6 +41,7 @@ open class JXContext {
     private var peerClassCreated = false
 
     /// Creates `JXContext` with the given `JXVM`. `JXValue` references may be used interchangably with multiple instances of `JXContext` with the same `JXVM`, but sharing between  separate `JXVM`s will result in undefined behavior.
+    ///
     /// - Parameters:
     ///   - vm: The shared virtual machine to use; defaults  to creating a new VM per context.
     ///   - strict: Whether to evaluate in strict mode.
@@ -51,6 +52,7 @@ open class JXContext {
     }
 
     /// Wraps an existing `JSGlobalContextRef` in a `JXContext`. Address space will be shared between both contexts.
+    ///
     /// - Parameters:
     ///   - context: The shared JXContext to use.
     ///   - strict: Whether to evaluate in strict mode.
@@ -70,7 +72,7 @@ open class JXContext {
     }
 
     /// For use by service providers only.
-    public var spi: AnyObject?
+    public var spi: JXContextSPI?
 }
 
 extension JXContext {
@@ -148,10 +150,8 @@ extension JXContext {
     ///   - script: The script to check for syntax errors.
     ///   - sourceURL: A URL for the script's source file. This is only used when reporting exceptions. Pass `nil` to omit source file information in exceptions.
     ///   - startingLineNumber: An integer value specifying the script's starting line number in the file located at sourceURL. This is only used when reporting exceptions.
-    ///
     /// - Returns: true if the script is syntactically correct; otherwise false.
     @inlinable public func checkSyntax(_ script: String, sourceURL URLString: String? = nil, startingLineNumber: Int = 0) throws -> Bool {
-
         let script = script.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(script) }
 
@@ -174,7 +174,8 @@ extension JXContext {
         JXValue(context: self, valueRef: JSContextGetGlobalObject(contextRef))
     }
 
-    /// Invokes the given closure with the bytes without copying
+    /// Invokes the given closure with the bytes without copying.
+    ///
     /// - Parameters:
     ///   - source: The data to use.
     ///   - block: The block that passes the temporary JXValue wrapping the buffer data.
@@ -189,42 +190,42 @@ extension JXContext {
         }
     }
 
-    /// Returns the global "Object" prototype
+    /// Returns the global "Object" prototype.
     public var objectPrototype: JXValue {
         get throws {
             try global["Object"]
         }
     }
 
-    /// Returns the global "Date" prototype
+    /// Returns the global "Date" prototype.
     public var datePrototype: JXValue {
         get throws {
             try global["Date"]
         }
     }
 
-    /// Returns the global "Array" prototype
+    /// Returns the global "Array" prototype.
     public var arrayPrototype: JXValue {
         get throws {
             try global["Array"]
         }
     }
 
-    /// Returns the global "ArrayBuffer" prototype
+    /// Returns the global "ArrayBuffer" prototype.
     public var arrayBufferPrototype: JXValue {
         get throws {
             try global["ArrayBuffer"]
         }
     }
 
-    /// Returns the global "Error" prototype
+    /// Returns the global "Error" prototype.
     public var errorPrototype: JXValue {
         get throws {
             try global["Error"]
         }
     }
 
-    /// Returns the global "Promise" prototype
+    /// Returns the global "Promise" prototype.
     public var promisePrototype: JXValue {
         get throws {
             try global["Promise"]
@@ -278,7 +279,19 @@ extension JXContext {
         return value
     }
 
-    /// Creates a new array in the environment
+    /// Creates an object with the given dictionary of properties.
+    ///
+    /// - Parameters:
+    ///   - properties: A dictionary of properties, such as that created by `JXValue.dictionary`.
+    @inlinable public func object(fromDictionary properties: [String: JXValue]) throws -> JXValue {
+        let object = self.object()
+        try properties.forEach { entry in
+            try object.setProperty(entry.key, entry.value)
+        }
+        return object
+    }
+
+    /// Creates a new array in this context.
     @inlinable public func array(_ values: [JXValue]) throws -> JXValue {
         let array = try JXValue(newArrayIn: self)
         for (index, value) in values.enumerated() {
@@ -299,7 +312,54 @@ extension JXContext {
         try JXValue(newErrorFromMessage: "\(error)", in: self)
     }
 
+    /// Attempts to convey the given value into this JavaScript context.
+    ///
+    /// - Throws: `JXErrors.cannotConvey` if the type cannot be conveyed to JavaScript.
+    /// - Seealso: `JXValue.convey` to convey back from JavaScript.
+    public func convey(_ value: Any?) throws -> JXValue {
+        guard let value else {
+            return null()
+        }
+        guard let spi = self.spi else {
+            return try conveyIfConvertible(value) ?? conveyEncodable(value)
+        }
+
+        // Break down the value so that we can pass individual array and dict elements through our service provider
+        if let jxValue = value as? JXValue {
+            return jxValue
+        } else if let array = value as? [Any] {
+            let jxArray = try array.map { try convey($0) }
+            return try self.array(jxArray)
+        } else if let dictionary = value as? [String: Any] {
+            let jxDictionary = try dictionary.reduce(into: [:]) { result, entry in
+                result[entry.key] = try convey(entry.value)
+            }
+            return try object(fromDictionary: jxDictionary)
+        } else if let jxValue = try conveyIfConvertible(value) {
+            return jxValue
+        } else if let jxValue = try spi.toJX(value, in: self) {
+            return jxValue
+        } else {
+            return try conveyEncodable(value)
+        }
+    }
+
+    private func conveyIfConvertible(_ value: Any) throws -> JXValue? {
+        guard let convertible = value as? JXConvertible else {
+            return nil
+        }
+        return try convertible.toJX(in: self)
+    }
+
+    private func conveyEncodable(_ value: Any) throws -> JXValue {
+        guard let encodable = value as? Encodable else {
+            throw JXErrors.cannotConvey(type(of: value))
+        }
+        return try encode(encodable)
+    }
+
     /// Create a ``JXValue`` from the given JSON string.
+    ///
     /// - Parameters:
     ///   - string: The JSON string to parse.
     /// - Returns: The value if it could be created.
@@ -321,5 +381,21 @@ extension JXContext {
         } else {
             return result
         }
+    }
+}
+
+/// Optional service provider integration points.
+public protocol JXContextSPI {
+    func toJX<T>(_ value: T, in context: JXContext) throws -> JXValue?
+    func fromJX<T>(_ value: JXValue, to type: T.Type) throws -> T?
+}
+
+extension JXContextSPI {
+    public func toJX<T>(_ value: T, in context: JXContext) throws -> JXValue? {
+        return nil
+    }
+
+    public func fromJX<T>(_ value: JXValue, to type: T.Type) throws -> T? {
+        return nil
     }
 }
