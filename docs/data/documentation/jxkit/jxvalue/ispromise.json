@@ -1,4 +1,10 @@
 {
+  "abstract" : [
+    {
+      "text" : "Tests whether a JavaScript value’s type is the promise type.",
+      "type" : "text"
+    }
+  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -178,7 +184,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXValue/isPromise": {
   "abstract" : [
-
+    {
+      "text" : "Tests whether a JavaScript value’s type is the promise type.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

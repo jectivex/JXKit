@@ -1,26 +1,21 @@
 {
-  "abstract" : [
-    {
-      "text" : "Attempts to convey the given result from the JS environment.",
-      "type" : "text"
-    }
-  ],
   "hierarchy" : {
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/fromJX(_:to:)-76xn8"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/fromJX(_:to:)-9it9v"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC6convey2toxxm_tKAA13JXConvertibleRzlF",
+    "externalID" : "s:5JXKit12JXContextSPIPAAE6fromJX_2toqd__SgAA7JXValueC_qd__mtKlF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,7 +27,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "convey"
+        "text" : "fromJX"
       },
       {
         "kind" : "text",
@@ -45,6 +40,15 @@
       {
         "kind" : "text",
         "text" : ">("
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:5JXKit7JXValueC",
+        "text" : "JXValue"
+      },
+      {
+        "kind" : "text",
+        "text" : ", "
       },
       {
         "kind" : "externalParam",
@@ -73,6 +77,10 @@
       {
         "kind" : "typeIdentifier",
         "text" : "T"
+      },
+      {
+        "kind" : "text",
+        "text" : "?"
       }
     ],
     "modules" : [
@@ -83,7 +91,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "convey(to:)"
+    "title" : "fromJX(_:to:)"
   },
   "primaryContentSections" : [
     {
@@ -106,7 +114,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "convey"
+              "text" : "fromJX"
             },
             {
               "kind" : "text",
@@ -119,6 +127,32 @@
             {
               "kind" : "text",
               "text" : ">("
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "_"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "internalParam",
+              "text" : "value"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5JXKit7JXValueC",
+              "text" : "JXValue"
+            },
+            {
+              "kind" : "text",
+              "text" : ", "
             },
             {
               "kind" : "externalParam",
@@ -142,7 +176,7 @@
             },
             {
               "kind" : "text",
-              "text" : ".Type = T.self) "
+              "text" : ".Type) "
             },
             {
               "kind" : "keyword",
@@ -158,73 +192,12 @@
             },
             {
               "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "keyword",
-              "text" : "where"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "text" : "T"
-            },
-            {
-              "kind" : "text",
-              "text" : " : "
-            },
-            {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit13JXConvertibleP",
-              "text" : "JXConvertible"
+              "text" : "?"
             }
           ]
         }
       ],
       "kind" : "declarations"
-    },
-    {
-      "content" : [
-        {
-          "anchor" : "return-value",
-          "level" : 2,
-          "text" : "Return Value",
-          "type" : "heading"
-        },
-        {
-          "inlineContent" : [
-            {
-              "text" : "The conveyed instance.",
-              "type" : "text"
-            }
-          ],
-          "type" : "paragraph"
-        }
-      ],
-      "kind" : "content"
-    },
-    {
-      "kind" : "parameters",
-      "parameters" : [
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "The context to use.",
-                  "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "context"
-        }
-      ]
     }
   ],
   "schemaVersion" : {
@@ -238,7 +211,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxvalue\/convey(to:)"
+        "\/documentation\/jxkit\/jxcontextspi\/fromjx(_:to:)-9it9v"
       ],
       "traits" : [
         {
@@ -263,10 +236,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXConvertible": {
+"doc://JXKit/documentation/JXKit/JXContextSPI": {
   "abstract" : [
     {
-      "text" : "A type that can move back and forth between Swift and JavaScipt, either through direct reference or by serialization.",
+      "text" : "Optional service provider integration points.",
       "type" : "text"
     }
   ],
@@ -281,21 +254,179 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXConvertible"
+      "text" : "JXContextSPI"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXConvertible"
+      "text" : "JXContextSPI"
     }
   ],
   "role" : "symbol",
-  "title" : "JXConvertible",
+  "title" : "JXContextSPI",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxconvertible"
+  "url" : "\/documentation\/jxkit\/jxcontextspi"
+},
+"doc://JXKit/documentation/JXKit/JXContextSPI/fromJX(_:to:)-76xn8": {
+  "abstract" : [
+
+  ],
+  "defaultImplementations" : 1,
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "fromJX"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "to"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : ".Type) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/fromJX(_:to:)-76xn8",
+  "kind" : "symbol",
+  "required" : true,
+  "role" : "symbol",
+  "title" : "fromJX(_:to:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontextspi\/fromjx(_:to:)-76xn8"
+},
+"doc://JXKit/documentation/JXKit/JXContextSPI/fromJX(_:to:)-9it9v": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "fromJX"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "to"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : ".Type) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/fromJX(_:to:)-9it9v",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "fromJX(_:to:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontextspi\/fromjx(_:to:)-9it9v"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
@@ -330,74 +461,6 @@
   "title" : "JXValue",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue"
-},
-"doc://JXKit/documentation/JXKit/JXValue/convey(to:)": {
-  "abstract" : [
-    {
-      "text" : "Attempts to convey the given result from the JS environment.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "convey"
-    },
-    {
-      "kind" : "text",
-      "text" : "<"
-    },
-    {
-      "kind" : "genericParameter",
-      "text" : "T"
-    },
-    {
-      "kind" : "text",
-      "text" : ">("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "to"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "text" : "T"
-    },
-    {
-      "kind" : "text",
-      "text" : ".Type) "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "text" : "T"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "convey(to:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/convey(to:)"
 }
 }
 }

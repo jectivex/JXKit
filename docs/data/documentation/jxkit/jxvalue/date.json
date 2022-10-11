@@ -1,4 +1,10 @@
 {
+  "abstract" : [
+    {
+      "text" : "Returns the JavaScript date value.",
+      "type" : "text"
+    }
+  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -178,7 +184,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXValue/date": {
   "abstract" : [
-
+    {
+      "text" : "Returns the JavaScript date value.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

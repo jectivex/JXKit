@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Returns the JavaScript object as dictionary.",
+      "text" : "Returns the JavaScript object as a dictionary.",
       "type" : "text"
     }
   ],
@@ -20,7 +20,7 @@
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC10dictionarySDySSACGSgvp",
+    "externalID" : "s:5JXKit7JXValueC10dictionarySDySSACGvp",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -54,7 +54,7 @@
       },
       {
         "kind" : "text",
-        "text" : "]?"
+        "text" : "]"
       }
     ],
     "modules" : [
@@ -111,7 +111,7 @@
             },
             {
               "kind" : "text",
-              "text" : "]? { "
+              "text" : "] { "
             },
             {
               "kind" : "keyword",
@@ -208,7 +208,7 @@
 "doc://JXKit/documentation/JXKit/JXValue/dictionary": {
   "abstract" : [
     {
-      "text" : "Returns the JavaScript object as dictionary.",
+      "text" : "Returns the JavaScript object as a dictionary.",
       "type" : "text"
     }
   ],
@@ -245,7 +245,7 @@
     },
     {
       "kind" : "text",
-      "text" : "]?"
+      "text" : "]"
     }
   ],
   "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dictionary",

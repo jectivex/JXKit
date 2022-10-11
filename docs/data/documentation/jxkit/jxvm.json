@@ -188,12 +188,6 @@
     },
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXVM\/spi"
-      ],
-      "title" : "Instance Properties"
-    },
-    {
-      "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXVM\/isHobbled"
       ],
       "title" : "Type Properties"
@@ -388,47 +382,6 @@
   "title" : "isHobbled",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvm\/ishobbled"
-},
-"doc://JXKit/documentation/JXKit/JXVM/spi": {
-  "abstract" : [
-    {
-      "text" : "For use by service providers only.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "var"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "spi"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:s9AnyObjecta",
-      "text" : "AnyObject"
-    },
-    {
-      "kind" : "text",
-      "text" : "?"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXVM\/spi",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "spi",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvm\/spi"
 }
 }
 }

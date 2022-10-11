@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "The promise returned from an async call is not value.",
+      "text" : "The promise returned from an async call is not valid.",
       "type" : "text"
     }
   ],
@@ -146,7 +146,7 @@
 "doc://JXKit/documentation/JXKit/JXErrors/invalidAsyncPromise": {
   "abstract" : [
     {
-      "text" : "The promise returned from an async call is not value.",
+      "text" : "The promise returned from an async call is not valid.",
       "type" : "text"
     }
   ],

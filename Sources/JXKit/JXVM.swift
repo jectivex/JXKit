@@ -25,9 +25,6 @@ public final class JXVM {
         JSContextGroupRetain(groupRef)
     }
 
-    /// For use by service providers only.
-    public var spi: AnyObject?
-
     deinit {
         JSContextGroupRelease(groupRef)
     }

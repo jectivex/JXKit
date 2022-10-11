@@ -74,7 +74,7 @@
               },
               {
                 "path" : "\/documentation\/jxkit\/jxcontext\/spi",
-                "title" : "var spi: AnyObject?",
+                "title" : "var spi: JXContextSPI?",
                 "type" : "property"
               },
               {
@@ -104,6 +104,11 @@
               {
                 "path" : "\/documentation\/jxkit\/jxcontext\/checksyntax(_:sourceurl:startinglinenumber:)",
                 "title" : "func checkSyntax(String, sourceURL: String?, startingLineNumber: Int) throws -> Bool",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/convey(_:)",
+                "title" : "func convey(Any?) throws -> JXValue",
                 "type" : "method"
               },
               {
@@ -159,6 +164,11 @@
               {
                 "path" : "\/documentation\/jxkit\/jxcontext\/number(_:)-7xicn",
                 "title" : "func number<F>(F) -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/object(fromdictionary:)",
+                "title" : "func object(fromDictionary: [String : JXValue]) throws -> JXValue",
                 "type" : "method"
               },
               {
@@ -278,7 +288,7 @@
               },
               {
                 "path" : "\/documentation\/jxkit\/jxvalue\/dictionary",
-                "title" : "var dictionary: [String : JXValue]?",
+                "title" : "var dictionary: [String : JXValue]",
                 "type" : "property"
               },
               {
@@ -294,6 +304,11 @@
               {
                 "path" : "\/documentation\/jxkit\/jxvalue\/int",
                 "title" : "var int: Int",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/int32",
+                "title" : "var int32: Int32",
                 "type" : "property"
               },
               {
@@ -417,8 +432,28 @@
                 "type" : "property"
               },
               {
+                "path" : "\/documentation\/jxkit\/jxvalue\/uint",
+                "title" : "var uint: UInt",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/uint32",
+                "title" : "var uint32: UInt32",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/uint64",
+                "title" : "var uint64: UInt64",
+                "type" : "property"
+              },
+              {
                 "title" : "Instance Methods",
                 "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/addelement(_:)",
+                "title" : "func addElement(JXValue) throws",
+                "type" : "method"
               },
               {
                 "path" : "\/documentation\/jxkit\/jxvalue\/call(witharguments:this:)",
@@ -431,8 +466,33 @@
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxvalue\/convey(to:)",
+                "path" : "\/documentation\/jxkit\/jxvalue\/convey(to:)-25bx9",
+                "title" : "func convey<T>(to: [T].Type) throws -> [T]",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/convey(to:)-3yphp",
+                "title" : "func convey<T>(to: Optional<[String : T]>.Type) throws -> [String : T]?",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/convey(to:)-4i2u8",
+                "title" : "func convey<T>(to: [String : T].Type) throws -> [String : T]",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/convey(to:)-5gqqa",
+                "title" : "func convey<T>(to: Optional<[T]>.Type) throws -> [T]?",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/convey(to:)-7a0fh",
                 "title" : "func convey<T>(to: T.Type) throws -> T",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/convey(to:)-7c55a",
+                "title" : "func convey<T>(to: Optional<T>.Type) throws -> T?",
                 "type" : "method"
               },
               {
@@ -463,6 +523,11 @@
               {
                 "path" : "\/documentation\/jxkit\/jxvalue\/hasproperty(_:)-2ontd",
                 "title" : "func hasProperty(String) -> Bool",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/insertelement(_:at:)",
+                "title" : "func insertElement(JXValue, at: Int) throws",
                 "type" : "method"
               },
               {
@@ -503,11 +568,6 @@
               {
                 "path" : "\/documentation\/jxkit\/jxvalue\/seal()",
                 "title" : "func seal() throws",
-                "type" : "method"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxvalue\/set(_:convertible:)",
-                "title" : "func set<T>(String, convertible: T) throws",
                 "type" : "method"
               },
               {
@@ -671,15 +731,6 @@
                 "type" : "init"
               },
               {
-                "title" : "Instance Properties",
-                "type" : "groupMarker"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxvm\/spi",
-                "title" : "var spi: AnyObject?",
-                "type" : "property"
-              },
-              {
                 "title" : "Type Properties",
                 "type" : "groupMarker"
               },
@@ -696,6 +747,53 @@
           {
             "title" : "Protocols",
             "type" : "groupMarker"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "children" : [
+                      {
+                        "path" : "\/documentation\/jxkit\/jxcontextspi\/fromjx(_:to:)-9it9v",
+                        "title" : "func fromJX<T>(JXValue, to: T.Type) throws -> T?",
+                        "type" : "method"
+                      }
+                    ],
+                    "title" : "JXContextSPI Implementations",
+                    "type" : "groupMarker"
+                  }
+                ],
+                "path" : "\/documentation\/jxkit\/jxcontextspi\/fromjx(_:to:)-76xn8",
+                "title" : "func fromJX<T>(JXValue, to: T.Type) throws -> T?",
+                "type" : "method"
+              },
+              {
+                "children" : [
+                  {
+                    "children" : [
+                      {
+                        "path" : "\/documentation\/jxkit\/jxcontextspi\/tojx(_:in:)-2ouuf",
+                        "title" : "func toJX<T>(T, in: JXContext) throws -> JXValue?",
+                        "type" : "method"
+                      }
+                    ],
+                    "title" : "JXContextSPI Implementations",
+                    "type" : "groupMarker"
+                  }
+                ],
+                "path" : "\/documentation\/jxkit\/jxcontextspi\/tojx(_:in:)-7rs1v",
+                "title" : "func toJX<T>(T, in: JXContext) throws -> JXValue?",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/jxkit\/jxcontextspi",
+            "title" : "JXContextSPI",
+            "type" : "protocol"
           },
           {
             "children" : [
@@ -845,18 +943,13 @@
                 "type" : "groupMarker"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxerrors\/addtononarray",
-                "title" : "case addToNonArray",
-                "type" : "case"
-              },
-              {
                 "path" : "\/documentation\/jxkit\/jxerrors\/asyncevalmustreturnpromise",
                 "title" : "case asyncEvalMustReturnPromise",
                 "type" : "case"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxerrors\/callonnonfunction",
-                "title" : "case callOnNonFunction",
+                "path" : "\/documentation\/jxkit\/jxerrors\/cannotconvey(_:)",
+                "title" : "case cannotConvey(Any.Type)",
                 "type" : "case"
               },
               {
@@ -885,6 +978,11 @@
                 "type" : "case"
               },
               {
+                "path" : "\/documentation\/jxkit\/jxerrors\/invalidrawvalue(_:)",
+                "title" : "case invalidRawValue(String)",
+                "type" : "case"
+              },
+              {
                 "path" : "\/documentation\/jxkit\/jxerrors\/jumpcontextinvalid",
                 "title" : "case jumpContextInvalid",
                 "type" : "case"
@@ -895,11 +993,6 @@
                 "type" : "case"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxerrors\/propertyaccessnonobject",
-                "title" : "case propertyAccessNonObject",
-                "type" : "case"
-              },
-              {
                 "path" : "\/documentation\/jxkit\/jxerrors\/valuenotarray",
                 "title" : "case valueNotArray",
                 "type" : "case"
@@ -907,6 +1000,21 @@
               {
                 "path" : "\/documentation\/jxkit\/jxerrors\/valuenotdate",
                 "title" : "case valueNotDate",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/valuenotfunction",
+                "title" : "case valueNotFunction",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/valuenotnumber",
+                "title" : "case valueNotNumber",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/valuenotobject",
+                "title" : "case valueNotObject",
                 "type" : "case"
               },
               {

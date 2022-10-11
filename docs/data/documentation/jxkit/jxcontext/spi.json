@@ -19,7 +19,7 @@
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit9JXContextC3spiyXlSgvp",
+    "externalID" : "s:5JXKit9JXContextC3spiAA0B3SPI_pSgvp",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -39,8 +39,8 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:s9AnyObjecta",
-        "text" : "AnyObject"
+        "preciseIdentifier" : "s:5JXKit12JXContextSPIP",
+        "text" : "JXContextSPI"
       },
       {
         "kind" : "text",
@@ -85,9 +85,10 @@
               "text" : ": "
             },
             {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:s9AnyObjecta",
-              "text" : "AnyObject"
+              "preciseIdentifier" : "s:5JXKit12JXContextSPIP",
+              "text" : "JXContextSPI"
             },
             {
               "kind" : "text",
@@ -203,8 +204,8 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:s9AnyObjecta",
-      "text" : "AnyObject"
+      "preciseIdentifier" : "s:5JXKit12JXContextSPIP",
+      "text" : "JXContextSPI"
     },
     {
       "kind" : "text",
@@ -217,6 +218,40 @@
   "title" : "spi",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/spi"
+},
+"doc://JXKit/documentation/JXKit/JXContextSPI": {
+  "abstract" : [
+    {
+      "text" : "Optional service provider integration points.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "protocol"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXContextSPI"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXContextSPI"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXContextSPI",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontextspi"
 }
 }
 }

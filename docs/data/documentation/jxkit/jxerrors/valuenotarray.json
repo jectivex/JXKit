@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Expected an array for conversion.",
+      "text" : "Expected a JavaScript array.",
       "type" : "text"
     }
   ],
@@ -146,7 +146,7 @@
 "doc://JXKit/documentation/JXKit/JXErrors/valueNotArray": {
   "abstract" : [
     {
-      "text" : "Expected an array for conversion.",
+      "text" : "Expected a JavaScript array.",
       "type" : "text"
     }
   ],

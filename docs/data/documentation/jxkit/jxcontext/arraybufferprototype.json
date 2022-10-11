@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Returns the global “ArrayBuffer” prototype",
+      "text" : "Returns the global “ArrayBuffer” prototype.",
       "type" : "text"
     }
   ],
@@ -194,7 +194,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/arrayBufferPrototype": {
   "abstract" : [
     {
-      "text" : "Returns the global “ArrayBuffer” prototype",
+      "text" : "Returns the global “ArrayBuffer” prototype.",
       "type" : "text"
     }
   ],

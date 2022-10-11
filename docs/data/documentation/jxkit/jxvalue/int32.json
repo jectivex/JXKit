@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Attempt to invoke a non-function object.",
+      "text" : "Returns the JavaScript number value.",
       "type" : "text"
     }
   ],
@@ -9,21 +9,22 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/callOnNonFunction"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/int32"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit8JXErrorsO17callOnNonFunctionyA2CmF",
+    "extendedModule" : "JXKit",
+    "externalID" : "s:5JXKit7JXValueC5int32s5Int32Vvp",
     "fragments" : [
       {
         "kind" : "keyword",
-        "text" : "case"
+        "text" : "var"
       },
       {
         "kind" : "text",
@@ -31,7 +32,16 @@
       },
       {
         "kind" : "identifier",
-        "text" : "callOnNonFunction"
+        "text" : "int32"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:s5Int32V",
+        "text" : "Int32"
       }
     ],
     "modules" : [
@@ -40,9 +50,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Case",
-    "symbolKind" : "case",
-    "title" : "JXErrors.callOnNonFunction"
+    "roleHeading" : "Instance Property",
+    "symbolKind" : "property",
+    "title" : "int32"
   },
   "primaryContentSections" : [
     {
@@ -57,7 +67,7 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "case"
+              "text" : "var"
             },
             {
               "kind" : "text",
@@ -65,7 +75,36 @@
             },
             {
               "kind" : "identifier",
-              "text" : "callOnNonFunction"
+              "text" : "int32"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:s5Int32V",
+              "text" : "Int32"
+            },
+            {
+              "kind" : "text",
+              "text" : " { "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "get"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "throws"
+            },
+            {
+              "kind" : "text",
+              "text" : " }"
             }
           ]
         }
@@ -84,7 +123,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxerrors\/callonnonfunction"
+        "\/documentation\/jxkit\/jxvalue\/int32"
       ],
       "traits" : [
         {
@@ -109,17 +148,17 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXErrors": {
+"doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
     {
-      "text" : "JXKit framework errors.",
+      "text" : "A JavaScript object.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "enum"
+      "text" : "class"
     },
     {
       "kind" : "text",
@@ -127,33 +166,33 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXValue"
     }
   ],
   "role" : "symbol",
-  "title" : "JXErrors",
+  "title" : "JXValue",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors"
+  "url" : "\/documentation\/jxkit\/jxvalue"
 },
-"doc://JXKit/documentation/JXKit/JXErrors/callOnNonFunction": {
+"doc://JXKit/documentation/JXKit/JXValue/int32": {
   "abstract" : [
     {
-      "text" : "Attempt to invoke a non-function object.",
+      "text" : "Returns the JavaScript number value.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "case"
+      "text" : "var"
     },
     {
       "kind" : "text",
@@ -161,15 +200,24 @@
     },
     {
       "kind" : "identifier",
-      "text" : "callOnNonFunction"
+      "text" : "int32"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s5Int32V",
+      "text" : "Int32"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/callOnNonFunction",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/int32",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "JXErrors.callOnNonFunction",
+  "title" : "int32",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors\/callonnonfunction"
+  "url" : "\/documentation\/jxkit\/jxvalue\/int32"
 }
 }
 }

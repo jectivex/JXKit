@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Invokes the given closure with the bytes without copying",
+      "text" : "Invokes the given closure with the bytes without copying.",
       "type" : "text"
     }
   ],
@@ -357,7 +357,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/withArrayBuffer(source:block:)": {
   "abstract" : [
     {
-      "text" : "Invokes the given closure with the bytes without copying",
+      "text" : "Invokes the given closure with the bytes without copying.",
       "type" : "text"
     }
   ],

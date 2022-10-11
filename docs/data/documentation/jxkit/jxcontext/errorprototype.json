@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Returns the global “Error” prototype",
+      "text" : "Returns the global “Error” prototype.",
       "type" : "text"
     }
   ],
@@ -194,7 +194,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/errorPrototype": {
   "abstract" : [
     {
-      "text" : "Returns the global “Error” prototype",
+      "text" : "Returns the global “Error” prototype.",
       "type" : "text"
     }
   ],

@@ -3,14 +3,6 @@
     {
       "text" : "Calls an object as a constructor.",
       "type" : "text"
-    },
-    {
-      "text" : " ",
-      "type" : "text"
-    },
-    {
-      "text" : "a",
-      "type" : "text"
     }
   ],
   "hierarchy" : {
@@ -273,14 +265,6 @@
   "abstract" : [
     {
       "text" : "Calls an object as a constructor.",
-      "type" : "text"
-    },
-    {
-      "text" : " ",
-      "type" : "text"
-    },
-    {
-      "text" : "a",
       "type" : "text"
     }
   ],

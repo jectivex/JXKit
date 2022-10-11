@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Sets the property of the object to the given value",
+      "text" : "Sets the property of the object to the given value.",
       "type" : "text"
     }
   ],
@@ -312,7 +312,7 @@
 "doc://JXKit/documentation/JXKit/JXValue/setProperty(_:_:)": {
   "abstract" : [
     {
-      "text" : "Sets the property of the object to the given value",
+      "text" : "Sets the property of the object to the given value.",
       "type" : "text"
     }
   ],

@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Attempt to access a property on an instance that is not an object.",
+      "text" : "Expected a JavaScript function.",
       "type" : "text"
     }
   ],
@@ -15,11 +15,11 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/propertyAccessNonObject"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/valueNotFunction"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit8JXErrorsO23propertyAccessNonObjectyA2CmF",
+    "externalID" : "s:5JXKit8JXErrorsO16valueNotFunctionyA2CmF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -31,7 +31,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "propertyAccessNonObject"
+        "text" : "valueNotFunction"
       }
     ],
     "modules" : [
@@ -42,7 +42,7 @@
     "role" : "symbol",
     "roleHeading" : "Case",
     "symbolKind" : "case",
-    "title" : "JXErrors.propertyAccessNonObject"
+    "title" : "JXErrors.valueNotFunction"
   },
   "primaryContentSections" : [
     {
@@ -65,7 +65,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "propertyAccessNonObject"
+              "text" : "valueNotFunction"
             }
           ]
         }
@@ -84,7 +84,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxerrors\/propertyaccessnonobject"
+        "\/documentation\/jxkit\/jxerrors\/valuenotfunction"
       ],
       "traits" : [
         {
@@ -143,10 +143,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerrors"
 },
-"doc://JXKit/documentation/JXKit/JXErrors/propertyAccessNonObject": {
+"doc://JXKit/documentation/JXKit/JXErrors/valueNotFunction": {
   "abstract" : [
     {
-      "text" : "Attempt to access a property on an instance that is not an object.",
+      "text" : "Expected a JavaScript function.",
       "type" : "text"
     }
   ],
@@ -161,15 +161,15 @@
     },
     {
       "kind" : "identifier",
-      "text" : "propertyAccessNonObject"
+      "text" : "valueNotFunction"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/propertyAccessNonObject",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/valueNotFunction",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "JXErrors.propertyAccessNonObject",
+  "title" : "JXErrors.valueNotFunction",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors\/propertyaccessnonobject"
+  "url" : "\/documentation\/jxkit\/jxerrors\/valuenotfunction"
 }
 }
 }

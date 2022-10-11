@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Creates a new array in the environment",
+      "text" : "Creates a new array in this context.",
       "type" : "text"
     }
   ],
@@ -225,7 +225,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/array(_:)": {
   "abstract" : [
     {
-      "text" : "Creates a new array in the environment",
+      "text" : "Creates a new array in this context.",
       "type" : "text"
     }
   ],

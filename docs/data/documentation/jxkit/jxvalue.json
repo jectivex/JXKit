@@ -178,6 +178,7 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/double",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/float",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/int",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/int32",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/int64",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isArray",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isArrayBuffer",
@@ -201,21 +202,31 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/properties",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/prototype",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/string",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/type"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/type",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/uint",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/uint32",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/uint64"
       ],
       "title" : "Instance Properties"
     },
     {
       "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/addElement(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/call(withArguments:this:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/construct(withArguments:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)-25bx9",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)-3yphp",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)-4i2u8",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)-5gqqa",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)-7a0fh",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)-7c55a",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/copyBytes()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/defineProperty(_:_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/deleteProperty(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/freeze()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/hasProperty(_:)-1e3mh",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/hasProperty(_:)-2ontd",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/insertElement(_:at:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/invokeMethod(_:withArguments:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isEqual(to:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isEqualWithTypeCoercion(to:)",
@@ -224,7 +235,6 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/propertyDescriptor(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/removeProperty(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/seal()",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/set(_:convertible:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setElement(_:at:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(symbol:_:)",
@@ -463,6 +473,51 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/jxconvertible-implementations"
 },
+"doc://JXKit/documentation/JXKit/JXValue/addElement(_:)": {
+  "abstract" : [
+    {
+      "text" : "Adds the given object as the final element of this array.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "addElement"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/addElement(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "addElement(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/addelement(_:)"
+},
 "doc://JXKit/documentation/JXKit/JXValue/array": {
   "abstract" : [
     {
@@ -670,14 +725,6 @@
     {
       "text" : "Calls an object as a constructor.",
       "type" : "text"
-    },
-    {
-      "text" : " ",
-      "type" : "text"
-    },
-    {
-      "text" : "a",
-      "type" : "text"
     }
   ],
   "fragments" : [
@@ -769,10 +816,352 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/context"
 },
-"doc://JXKit/documentation/JXKit/JXValue/convey(to:)": {
+"doc://JXKit/documentation/JXKit/JXValue/convey(to:)-25bx9": {
   "abstract" : [
     {
-      "text" : "Attempts to convey the given result from the JS environment.",
+      "text" : "Attempts to convey this JavaScript value to a specified array type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "convey"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "to"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : "].Type) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : "]"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)-25bx9",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "convey(to:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/convey(to:)-25bx9"
+},
+"doc://JXKit/documentation/JXKit/JXValue/convey(to:)-3yphp": {
+  "abstract" : [
+    {
+      "text" : "Attempts to convey this JavaScript value to a specified optional dictionary type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "convey"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "to"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sq",
+      "text" : "Optional"
+    },
+    {
+      "kind" : "text",
+      "text" : "<["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : " : "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : "]>.Type) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : " : "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : "]?"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)-3yphp",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "convey(to:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/convey(to:)-3yphp"
+},
+"doc://JXKit/documentation/JXKit/JXValue/convey(to:)-4i2u8": {
+  "abstract" : [
+    {
+      "text" : "Attempts to convey this JavaScript value to a specified dictionary type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "convey"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "to"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : " : "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : "].Type) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : " : "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : "]"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)-4i2u8",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "convey(to:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/convey(to:)-4i2u8"
+},
+"doc://JXKit/documentation/JXKit/JXValue/convey(to:)-5gqqa": {
+  "abstract" : [
+    {
+      "text" : "Attempts to convey this JavaScript value to a specified optional array type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "convey"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "to"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sq",
+      "text" : "Optional"
+    },
+    {
+      "kind" : "text",
+      "text" : "<["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : "]>.Type) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : "]?"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)-5gqqa",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "convey(to:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/convey(to:)-5gqqa"
+},
+"doc://JXKit/documentation/JXKit/JXValue/convey(to:)-7a0fh": {
+  "abstract" : [
+    {
+      "text" : "Attempts to convey this JavaScript value to a specified type.",
       "type" : "text"
     }
   ],
@@ -830,12 +1219,93 @@
       "text" : "T"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)-7a0fh",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "convey(to:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/convey(to:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/convey(to:)-7a0fh"
+},
+"doc://JXKit/documentation/JXKit/JXValue/convey(to:)-7c55a": {
+  "abstract" : [
+    {
+      "text" : "Attempts to convey this JavaScript value to a specified optional type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "convey"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "to"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sq",
+      "text" : "Optional"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : ">.Type) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)-7c55a",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "convey(to:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/convey(to:)-7c55a"
 },
 "doc://JXKit/documentation/JXKit/JXValue/copyBytes()": {
   "abstract" : [
@@ -1000,7 +1470,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXValue/date": {
   "abstract" : [
-
+    {
+      "text" : "Returns the JavaScript date value.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -1180,7 +1653,7 @@
 "doc://JXKit/documentation/JXKit/JXValue/dictionary": {
   "abstract" : [
     {
-      "text" : "Returns the JavaScript object as dictionary.",
+      "text" : "Returns the JavaScript object as a dictionary.",
       "type" : "text"
     }
   ],
@@ -1217,7 +1690,7 @@
     },
     {
       "kind" : "text",
-      "text" : "]?"
+      "text" : "]"
     }
   ],
   "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/dictionary",
@@ -2121,6 +2594,68 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/init(newpromiseresolvedwithresult:in:)"
 },
+"doc://JXKit/documentation/JXKit/JXValue/insertElement(_:at:)": {
+  "abstract" : [
+    {
+      "text" : "Inserts the given object into this array, shifting subsequent elements.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "insertElement"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "at"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/insertElement(_:at:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "insertElement(_:at:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/insertelement(_:at:)"
+},
 "doc://JXKit/documentation/JXKit/JXValue/int": {
   "abstract" : [
     {
@@ -2157,6 +2692,43 @@
   "title" : "int",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/int"
+},
+"doc://JXKit/documentation/JXKit/JXValue/int32": {
+  "abstract" : [
+    {
+      "text" : "Returns the JavaScript number value.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "int32"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s5Int32V",
+      "text" : "Int32"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/int32",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "int32",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/int32"
 },
 "doc://JXKit/documentation/JXKit/JXValue/int64": {
   "abstract" : [
@@ -2959,7 +3531,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXValue/isPromise": {
   "abstract" : [
-
+    {
+      "text" : "Tests whether a JavaScript value’s type is the promise type.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -3459,86 +4034,12 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/seal()"
 },
-"doc://JXKit/documentation/JXKit/JXValue/set(_:convertible:)": {
-  "abstract" : [
-    {
-      "text" : "Sets a ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXConvertible",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " in this value object.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "set"
-    },
-    {
-      "kind" : "text",
-      "text" : "<"
-    },
-    {
-      "kind" : "genericParameter",
-      "text" : "T"
-    },
-    {
-      "kind" : "text",
-      "text" : ">("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "convertible"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "text" : "T"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/set(_:convertible:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "set(_:convertible:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/set(_:convertible:)"
-},
 "doc://JXKit/documentation/JXKit/JXValue/setElement(_:at:)": {
   "abstract" : [
-
+    {
+      "text" : "Set an element of this array, overwriting any previous element.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -3598,7 +4099,7 @@
 "doc://JXKit/documentation/JXKit/JXValue/setProperty(_:_:)": {
   "abstract" : [
     {
-      "text" : "Sets the property of the object to the given value",
+      "text" : "Sets the property of the object to the given value.",
       "type" : "text"
     }
   ],
@@ -4132,6 +4633,117 @@
   "title" : "type",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/type"
+},
+"doc://JXKit/documentation/JXKit/JXValue/uint": {
+  "abstract" : [
+    {
+      "text" : "Returns the JavaScript number value.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "uint"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Su",
+      "text" : "UInt"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/uint",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "uint",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/uint"
+},
+"doc://JXKit/documentation/JXKit/JXValue/uint32": {
+  "abstract" : [
+    {
+      "text" : "Returns the JavaScript number value.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "uint32"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s6UInt32V",
+      "text" : "UInt32"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/uint32",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "uint32",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/uint32"
+},
+"doc://JXKit/documentation/JXKit/JXValue/uint64": {
+  "abstract" : [
+    {
+      "text" : "Returns the JavaScript number value.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "uint64"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s6UInt64V",
+      "text" : "UInt64"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/uint64",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "uint64",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/uint64"
 },
 "doc://JXKit/s23CustomStringConvertibleP": {
   "identifier" : "doc:\/\/JXKit\/s23CustomStringConvertibleP",

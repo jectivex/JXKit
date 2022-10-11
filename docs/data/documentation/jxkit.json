@@ -126,6 +126,7 @@
     },
     {
       "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible"
       ],
       "title" : "Protocols"
@@ -241,6 +242,40 @@
   "title" : "JXContext",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
+},
+"doc://JXKit/documentation/JXKit/JXContextSPI": {
+  "abstract" : [
+    {
+      "text" : "Optional service provider integration points.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "protocol"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXContextSPI"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXContextSPI"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXContextSPI",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontextspi"
 },
 "doc://JXKit/documentation/JXKit/JXConvertible": {
   "abstract" : [

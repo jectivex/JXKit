@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "A conversion to another numic type failed.",
+      "text" : "A conversion to another numic type or min\/max range failed.",
       "type" : "text"
     }
   ],
@@ -172,7 +172,7 @@
 "doc://JXKit/documentation/JXKit/JXErrors/invalidNumericConversion(_:)": {
   "abstract" : [
     {
-      "text" : "A conversion to another numic type failed.",
+      "text" : "A conversion to another numic type or min\/max range failed.",
       "type" : "text"
     }
   ],

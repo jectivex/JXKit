@@ -100,19 +100,21 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/addToNonArray",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/asyncEvalMustReturnPromise",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/callOnNonFunction",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotConvey(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotCreateArrayBuffer",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotCreateFromJSON",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotCreatePromise",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidAsyncPromise",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidNumericConversion(_:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidRawValue(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/jumpContextInvalid",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/keyNotSymbol",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/propertyAccessNonObject",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/valueNotArray",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/valueNotDate"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/valueNotDate",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/valueNotFunction",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/valueNotNumber",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/valueNotObject"
       ],
       "title" : "Enumeration Cases"
     },
@@ -197,34 +199,6 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerrors\/error-implementations"
 },
-"doc://JXKit/documentation/JXKit/JXErrors/addToNonArray": {
-  "abstract" : [
-    {
-      "text" : "Attempt to add to something that is not an array.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "case"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "addToNonArray"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/addToNonArray",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "JXErrors.addToNonArray",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors\/addtononarray"
-},
 "doc://JXKit/documentation/JXKit/JXErrors/asyncEvalMustReturnPromise": {
   "abstract" : [
     {
@@ -253,10 +227,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerrors\/asyncevalmustreturnpromise"
 },
-"doc://JXKit/documentation/JXKit/JXErrors/callOnNonFunction": {
+"doc://JXKit/documentation/JXKit/JXErrors/cannotConvey(_:)": {
   "abstract" : [
     {
-      "text" : "Attempt to invoke a non-function object.",
+      "text" : "Cannot convey this type to or from JavaScript.",
       "type" : "text"
     }
   ],
@@ -271,15 +245,27 @@
     },
     {
       "kind" : "identifier",
-      "text" : "callOnNonFunction"
+      "text" : "cannotConvey"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : ".Type)"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/callOnNonFunction",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotConvey(_:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "JXErrors.callOnNonFunction",
+  "title" : "JXErrors.cannotConvey(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors\/callonnonfunction"
+  "url" : "\/documentation\/jxkit\/jxerrors\/cannotconvey(_:)"
 },
 "doc://JXKit/documentation/JXKit/JXErrors/cannotCreateArrayBuffer": {
   "abstract" : [
@@ -368,7 +354,7 @@
 "doc://JXKit/documentation/JXKit/JXErrors/invalidAsyncPromise": {
   "abstract" : [
     {
-      "text" : "The promise returned from an async call is not value.",
+      "text" : "The promise returned from an async call is not valid.",
       "type" : "text"
     }
   ],
@@ -396,7 +382,7 @@
 "doc://JXKit/documentation/JXKit/JXErrors/invalidNumericConversion(_:)": {
   "abstract" : [
     {
-      "text" : "A conversion to another numic type failed.",
+      "text" : "A conversion to another numic type or min\/max range failed.",
       "type" : "text"
     }
   ],
@@ -433,6 +419,55 @@
   "title" : "JXErrors.invalidNumericConversion(_:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerrors\/invalidnumericconversion(_:)"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/invalidRawValue(_:)": {
+  "abstract" : [
+    {
+      "text" : "A value could not be used to create a ",
+      "type" : "text"
+    },
+    {
+      "code" : "RawRepresentable",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "invalidRawValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidRawValue(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.invalidRawValue(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/invalidrawvalue(_:)"
 },
 "doc://JXKit/documentation/JXKit/JXErrors/jumpContextInvalid": {
   "abstract" : [
@@ -490,38 +525,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerrors\/keynotsymbol"
 },
-"doc://JXKit/documentation/JXKit/JXErrors/propertyAccessNonObject": {
-  "abstract" : [
-    {
-      "text" : "Attempt to access a property on an instance that is not an object.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "case"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "propertyAccessNonObject"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/propertyAccessNonObject",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "JXErrors.propertyAccessNonObject",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors\/propertyaccessnonobject"
-},
 "doc://JXKit/documentation/JXKit/JXErrors/valueNotArray": {
   "abstract" : [
     {
-      "text" : "Expected an array for conversion.",
+      "text" : "Expected a JavaScript array.",
       "type" : "text"
     }
   ],
@@ -549,7 +556,7 @@
 "doc://JXKit/documentation/JXKit/JXErrors/valueNotDate": {
   "abstract" : [
     {
-      "text" : "Expected a date for conversion.",
+      "text" : "Expected a JavaScript date.",
       "type" : "text"
     }
   ],
@@ -573,6 +580,90 @@
   "title" : "JXErrors.valueNotDate",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerrors\/valuenotdate"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/valueNotFunction": {
+  "abstract" : [
+    {
+      "text" : "Expected a JavaScript function.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "valueNotFunction"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/valueNotFunction",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.valueNotFunction",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/valuenotfunction"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/valueNotNumber": {
+  "abstract" : [
+    {
+      "text" : "Expected a JavaScript number.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "valueNotNumber"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/valueNotNumber",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.valueNotNumber",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/valuenotnumber"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/valueNotObject": {
+  "abstract" : [
+    {
+      "text" : "Expected a JavaScript object.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "valueNotObject"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/valueNotObject",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.valueNotObject",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/valuenotobject"
 },
 "doc://JXKit/s5ErrorP": {
   "identifier" : "doc:\/\/JXKit\/s5ErrorP",

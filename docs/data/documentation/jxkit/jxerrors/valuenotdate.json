@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Expected a date for conversion.",
+      "text" : "Expected a JavaScript date.",
       "type" : "text"
     }
   ],
@@ -146,7 +146,7 @@
 "doc://JXKit/documentation/JXKit/JXErrors/valueNotDate": {
   "abstract" : [
     {
-      "text" : "Expected a date for conversion.",
+      "text" : "Expected a JavaScript date.",
       "type" : "text"
     }
   ],

@@ -435,4 +435,80 @@ class JXCoreTests: XCTestCase {
         XCTAssertThrowsError(try jxc.json(#"}"#))
         XCTAssertThrowsError(try jxc.json(#"{x:1}"#))
     }
+
+    func testConvey() throws {
+        let jxc = JXContext()
+        try conveyTest(with: jxc)
+    }
+
+    private struct _Codable: Codable, Equatable {
+        let x: Int
+    }
+
+    func testConveyWithSPI() throws {
+        class _SPI: JXContextSPI {
+            var toJXWasInvoked = false
+            var fromJXWasInvoked = false
+
+            func toJX<T>(_ value: T, in context: JXContext) throws -> JXValue? {
+                toJXWasInvoked = true
+                // Should only be invoked on non-convertible types, and the only
+                // type we test is Codable
+                XCTAssertFalse(value is JXConvertible)
+                XCTAssertTrue(value is _Codable)
+                return nil
+            }
+
+            func fromJX<T>(_ value: JXValue, to type: T.Type) throws -> T? {
+                fromJXWasInvoked = true
+                // Should only be invoked on non-convertible types, and the only
+                // type we test is Codable
+                XCTAssertFalse(type is JXConvertible.Type)
+                XCTAssertTrue(type is _Codable.Type)
+                return nil
+            }
+        }
+
+        let jxc = JXContext()
+        let spi = _SPI()
+        jxc.spi = spi
+        try conveyTest(with: jxc)
+        XCTAssertTrue(spi.toJXWasInvoked)
+        XCTAssertTrue(spi.fromJXWasInvoked)
+    }
+
+    private func conveyTest(with jxc: JXContext) throws {
+        XCTAssertEqual(try jxc.convey(true).convey(), true)
+        XCTAssertEqual(try jxc.convey("string").convey(), "string")
+        XCTAssertEqual(try jxc.convey(1.0).convey(), 1.0)
+        XCTAssertEqual(try jxc.convey(Float(1.0)).convey(), Float(1.0))
+        XCTAssertEqual(try jxc.convey(1).convey(), 1)
+        XCTAssertEqual(try jxc.convey(Int32(1)).convey(), Int32(1))
+        XCTAssertEqual(try jxc.convey(Int64(1)).convey(), Int64(1))
+        XCTAssertEqual(try jxc.convey(UInt(1)).convey(), UInt(1))
+        XCTAssertEqual(try jxc.convey(UInt32(1)).convey(), UInt32(1))
+        XCTAssertEqual(try jxc.convey(UInt64(1)).convey(), UInt64(1))
+
+        XCTAssertEqual(try jxc.convey([1, 2]).convey(), [1, 2])
+        XCTAssertEqual(try jxc.convey(["x": 1]).convey(), ["x": 1])
+        XCTAssertEqual(try jxc.convey(["x": [1, 2]]).convey(), ["x": [1, 2]])
+
+        let optint1: Int? = 1
+        let optintnil: Int? = nil
+        XCTAssertEqual(try jxc.convey(optint1).convey(), optint1)
+        XCTAssertEqual(try jxc.convey(optintnil).convey(), optintnil)
+
+        let optarray1: [Int]? = [1]
+        let optarraynil: [Int]? = nil
+        XCTAssertEqual(try jxc.convey(optarray1).convey(), optarray1)
+        XCTAssertEqual(try jxc.convey(optarraynil).convey(), optarraynil)
+
+        let codable = _Codable(x: 1)
+        let optcodable1: _Codable? = _Codable(x: 1)
+        let optcodablenil: _Codable? = nil
+        XCTAssertEqual(try jxc.convey(codable).convey(), codable)
+        XCTAssertEqual(try jxc.convey(["c": codable]).convey(), ["c": codable])
+        XCTAssertEqual(try jxc.convey(optcodable1).convey(), optcodable1)
+        XCTAssertEqual(try jxc.convey(optcodablenil).convey(), optcodablenil)
+    }
 }

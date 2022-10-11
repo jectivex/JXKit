@@ -1,7 +1,15 @@
 {
   "abstract" : [
     {
-      "text" : "For use by service providers only.",
+      "text" : "A value could not be used to create a ",
+      "type" : "text"
+    },
+    {
+      "code" : "RawRepresentable",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
       "type" : "text"
     }
   ],
@@ -9,21 +17,21 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXVM"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXVM\/spi"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidRawValue(_:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit4JXVMC3spiyXlSgvp",
+    "externalID" : "s:5JXKit8JXErrorsO15invalidRawValueyACSScACmF",
     "fragments" : [
       {
         "kind" : "keyword",
-        "text" : "var"
+        "text" : "case"
       },
       {
         "kind" : "text",
@@ -31,20 +39,20 @@
       },
       {
         "kind" : "identifier",
-        "text" : "spi"
+        "text" : "invalidRawValue"
       },
       {
         "kind" : "text",
-        "text" : ": "
+        "text" : "("
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:s9AnyObjecta",
-        "text" : "AnyObject"
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
       },
       {
         "kind" : "text",
-        "text" : "?"
+        "text" : ")"
       }
     ],
     "modules" : [
@@ -53,9 +61,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Instance Property",
-    "symbolKind" : "property",
-    "title" : "spi"
+    "roleHeading" : "Case",
+    "symbolKind" : "case",
+    "title" : "JXErrors.invalidRawValue(_:)"
   },
   "primaryContentSections" : [
     {
@@ -70,7 +78,7 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "var"
+              "text" : "case"
             },
             {
               "kind" : "text",
@@ -78,20 +86,20 @@
             },
             {
               "kind" : "identifier",
-              "text" : "spi"
+              "text" : "invalidRawValue"
             },
             {
               "kind" : "text",
-              "text" : ": "
+              "text" : "("
             },
             {
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:s9AnyObjecta",
-              "text" : "AnyObject"
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
             },
             {
               "kind" : "text",
-              "text" : "?"
+              "text" : ")"
             }
           ]
         }
@@ -110,7 +118,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxvm\/spi"
+        "\/documentation\/jxkit\/jxerrors\/invalidrawvalue(_:)"
       ],
       "traits" : [
         {
@@ -135,25 +143,17 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXVM": {
+"doc://JXKit/documentation/JXKit/JXErrors": {
   "abstract" : [
     {
-      "text" : "A JavaScript virtual machine that is used by a ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXContextGroup",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " instance.",
+      "text" : "JXKit framework errors.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "class"
+      "text" : "enum"
     },
     {
       "kind" : "text",
@@ -161,33 +161,41 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXVM"
+      "text" : "JXErrors"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXVM",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXVM"
+      "text" : "JXErrors"
     }
   ],
   "role" : "symbol",
-  "title" : "JXVM",
+  "title" : "JXErrors",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvm"
+  "url" : "\/documentation\/jxkit\/jxerrors"
 },
-"doc://JXKit/documentation/JXKit/JXVM/spi": {
+"doc://JXKit/documentation/JXKit/JXErrors/invalidRawValue(_:)": {
   "abstract" : [
     {
-      "text" : "For use by service providers only.",
+      "text" : "A value could not be used to create a ",
+      "type" : "text"
+    },
+    {
+      "code" : "RawRepresentable",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "var"
+      "text" : "case"
     },
     {
       "kind" : "text",
@@ -195,28 +203,28 @@
     },
     {
       "kind" : "identifier",
-      "text" : "spi"
+      "text" : "invalidRawValue"
     },
     {
       "kind" : "text",
-      "text" : ": "
+      "text" : "("
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:s9AnyObjecta",
-      "text" : "AnyObject"
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
     },
     {
       "kind" : "text",
-      "text" : "?"
+      "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXVM\/spi",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidRawValue(_:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "spi",
+  "title" : "JXErrors.invalidRawValue(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvm\/spi"
+  "url" : "\/documentation\/jxkit\/jxerrors\/invalidrawvalue(_:)"
 }
 }
 }

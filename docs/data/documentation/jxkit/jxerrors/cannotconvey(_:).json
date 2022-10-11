@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Attempt to add to something that is not an array.",
+      "text" : "Cannot convey this type to or from JavaScript.",
       "type" : "text"
     }
   ],
@@ -15,11 +15,11 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/addToNonArray"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotConvey(_:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit8JXErrorsO13addToNonArrayyA2CmF",
+    "externalID" : "s:5JXKit8JXErrorsO12cannotConveyyACypXpcACmF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -31,7 +31,19 @@
       },
       {
         "kind" : "identifier",
-        "text" : "addToNonArray"
+        "text" : "cannotConvey"
+      },
+      {
+        "kind" : "text",
+        "text" : "("
+      },
+      {
+        "kind" : "keyword",
+        "text" : "Any"
+      },
+      {
+        "kind" : "text",
+        "text" : ".Type)"
       }
     ],
     "modules" : [
@@ -42,7 +54,7 @@
     "role" : "symbol",
     "roleHeading" : "Case",
     "symbolKind" : "case",
-    "title" : "JXErrors.addToNonArray"
+    "title" : "JXErrors.cannotConvey(_:)"
   },
   "primaryContentSections" : [
     {
@@ -65,7 +77,19 @@
             },
             {
               "kind" : "identifier",
-              "text" : "addToNonArray"
+              "text" : "cannotConvey"
+            },
+            {
+              "kind" : "text",
+              "text" : "("
+            },
+            {
+              "kind" : "keyword",
+              "text" : "Any"
+            },
+            {
+              "kind" : "text",
+              "text" : ".Type)"
             }
           ]
         }
@@ -84,7 +108,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxerrors\/addtononarray"
+        "\/documentation\/jxkit\/jxerrors\/cannotconvey(_:)"
       ],
       "traits" : [
         {
@@ -143,10 +167,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerrors"
 },
-"doc://JXKit/documentation/JXKit/JXErrors/addToNonArray": {
+"doc://JXKit/documentation/JXKit/JXErrors/cannotConvey(_:)": {
   "abstract" : [
     {
-      "text" : "Attempt to add to something that is not an array.",
+      "text" : "Cannot convey this type to or from JavaScript.",
       "type" : "text"
     }
   ],
@@ -161,15 +185,27 @@
     },
     {
       "kind" : "identifier",
-      "text" : "addToNonArray"
+      "text" : "cannotConvey"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : ".Type)"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/addToNonArray",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotConvey(_:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "JXErrors.addToNonArray",
+  "title" : "JXErrors.cannotConvey(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors\/addtononarray"
+  "url" : "\/documentation\/jxkit\/jxerrors\/cannotconvey(_:)"
 }
 }
 }
