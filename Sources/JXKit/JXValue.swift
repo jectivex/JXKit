@@ -188,6 +188,18 @@ extension JXValue {
     }
 }
 
+// We intentionally do not implement Equatable and Hashable to avoid confusion around the semantics of equatability.
+//
+//extension JXValue: Equatable, Hashable {
+//    public static func == (lhs: JXKit.JXValue, rhs: JXKit.JXValue) -> Bool {
+//        lhs.value == rhs.value
+//    }
+//
+//    public func hash(into hasher: inout Hasher) {
+//        value.hash(into: &hasher)
+//    }
+//}
+
 extension JXValue: CustomStringConvertible {
 
     @inlinable public var description: String {
@@ -289,6 +301,7 @@ extension JXValue {
         }
     }
 
+    /// Tests whether a JavaScript value’s type is the promise type.
     @inlinable public var isPromise: Bool {
         get throws {
             try isInstance(of: context.promisePrototype)
@@ -385,24 +398,59 @@ extension JXValue {
     /// Returns the JavaScript number value.
     @inlinable public var float: Float {
         get throws {
+            return try Float(double)
+        }
+    }
+
+    private var doubleForIntegerConversion: Double {
+        get throws {
             let dbl = try double
-            return Float(dbl)
+            guard !dbl.isNaN && !dbl.isSignalingNaN && !dbl.isInfinite else {
+                throw JXErrors.invalidNumericConversion(dbl)
+            }
+            return dbl
         }
     }
 
     /// Returns the JavaScript number value.
-    @inlinable public var int: Int {
+    public var int: Int {
         get throws {
-            let dbl = try double
-            return dbl.isNaN || dbl.isSignalingNaN || dbl.isInfinite == true ? 0 : Int(dbl)
+            return try Int(doubleForIntegerConversion)
         }
     }
 
     /// Returns the JavaScript number value.
-    @inlinable public var int64: Int64 {
+    public var int32: Int32 {
         get throws {
-            let dbl = try double
-            return dbl.isNaN || dbl.isSignalingNaN || dbl.isInfinite == true ? 0 : Int64(dbl)
+            return try Int32(doubleForIntegerConversion)
+        }
+    }
+
+    /// Returns the JavaScript number value.
+    public var int64: Int64 {
+        get throws {
+            return try Int64(doubleForIntegerConversion)
+        }
+    }
+
+    /// Returns the JavaScript number value.
+    public var uint: UInt {
+        get throws {
+            return try UInt(doubleForIntegerConversion)
+        }
+    }
+
+    /// Returns the JavaScript number value.
+    public var uint32: UInt32 {
+        get throws {
+            return try UInt32(doubleForIntegerConversion)
+        }
+    }
+
+    /// Returns the JavaScript number value.
+    public var uint64: UInt64 {
+        get throws {
+            return try UInt64(doubleForIntegerConversion)
         }
     }
 
@@ -417,6 +465,7 @@ extension JXValue {
         }
     }
 
+    /// Returns the JavaScript date value.
     @inlinable public var date: Date {
         get throws {
             //try dateMS
@@ -454,11 +503,69 @@ extension JXValue {
         }
     }
 
-    /// Returns the JavaScript object as dictionary.
-    @inlinable public var dictionary: [String: JXValue]? {
+    /// Returns the JavaScript object as a dictionary.
+    @inlinable public var dictionary: [String: JXValue] {
         get throws {
-            !isObject ? nil : try self.properties.reduce(into: [:]) { $0[$1] = try self[$1] }
+            try self.properties.reduce(into: [:]) { result, property in
+                result[property] = try self[property]
+            }
         }
+    }
+}
+
+// When conveying to a specified type, we use function overloads to access the desired optional, array, or dictionary element type.
+// That allows any service provider to get dibs on converting individual elements before our JXConvertible and Codable fallbacks take over.
+extension JXValue {
+
+    /// Attempts to convey this JavaScript value to a specified type.
+    ///
+    /// - Throws: `JXErrors.cannotConvey` if the type cannot be conveyed.
+    public func convey<T>(to type: T.Type = T.self) throws -> T {
+        if let convertibleType = type as? JXConvertible.Type {
+            return try convertibleType.fromJX(self) as! T
+        } else if let value = try context.spi?.fromJX(self, to: type) {
+            return value
+        } else if let decodableType = type as? Decodable.Type {
+            return try self.toDecodable(ofType: decodableType) as! T
+        } else {
+            throw JXErrors.cannotConvey(type)
+        }
+    }
+
+    /// Attempts to convey this JavaScript value to a specified optional type.
+    public func convey<T>(to type: Optional<T>.Type = Optional<T>.self) throws -> T? {
+        guard !isNull else {
+            return nil
+        }
+        return try convey(to: T.self)
+    }
+
+    /// Attempts to convey this JavaScript value to a specified array type.
+    public func convey<T>(to type: [T].Type = [T].self) throws -> [T] {
+        try self.array.map { try $0.convey(to: T.self) }
+    }
+
+    /// Attempts to convey this JavaScript value to a specified optional array type.
+    public func convey<T>(to type: Optional<[T]>.Type = Optional<[T]>.self) throws -> [T]? {
+        guard !isNull else {
+            return nil
+        }
+        return try convey(to: [T].self)
+    }
+
+    /// Attempts to convey this JavaScript value to a specified dictionary type.
+    public func convey<T>(to type: [String: T].Type = [String: T].self) throws -> [String: T] {
+        try self.dictionary.reduce(into: [:]) { result, entry in
+            result[entry.key] = try entry.value.convey(to: T.self)
+        }
+    }
+
+    /// Attempts to convey this JavaScript value to a specified optional dictionary type.
+    public func convey<T>(to type: Optional<[String: T]>.Type = Optional<[String: T]>.self) throws -> [String: T]? {
+        guard !isNull else {
+            return nil
+        }
+        return try convey(to: [String: T].self)
     }
 }
 
@@ -473,7 +580,7 @@ extension JXValue {
     @discardableResult @inlinable public func call(withArguments arguments: [JXValue] = [], this: JXValue? = nil) throws -> JXValue {
         if !isFunction {
             // we should have already validated that it is a function
-            throw JXErrors.callOnNonFunction
+            throw JXErrors.valueNotFunction
         }
         let result = try context.trying {
             JSObjectCallAsFunction(context.contextRef, valueRef, this?.valueRef, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.valueRef }, $0)
@@ -485,7 +592,7 @@ extension JXValue {
     }
 
     /// Calls an object as a constructor.
-    ///a
+    ///
     /// - Parameters:
     ///   - arguments: The arguments pass to the function.
     /// - Returns: The object that results from calling object as a constructor.
@@ -624,7 +731,7 @@ extension JXValue {
     @inlinable public subscript(symbol symbol: JXValue) -> JXValue {
         get throws {
             if !isObject {
-                throw JXErrors.propertyAccessNonObject
+                throw JXErrors.valueNotObject
             }
             if !symbol.isSymbol {
                 throw JXErrors.keyNotSymbol
@@ -636,14 +743,15 @@ extension JXValue {
         }
     }
 
-    /// Sets the property of the object to the given value
+    /// Sets the property of the object to the given value.
+    ///
     /// - Parameters:
     ///   - key: the key name to set
     ///   - newValue: the value of the property
     /// - Returns: the value itself
     @discardableResult @inlinable public func setProperty(_ key: String, _ newValue: JXValue) throws -> JXValue {
         if !isObject {
-            throw JXErrors.propertyAccessNonObject
+            throw JXErrors.valueNotObject
         }
 
         let property = JSStringCreateWithUTF8CString(key)
@@ -655,13 +763,14 @@ extension JXValue {
     }
 
     /// Sets the property specified by the symbol key.
+    ///
     /// - Parameters:
     ///   - key: the name of the symbol to use
     ///   - newValue: the value to set the property
     /// - Returns: the value itself
     @discardableResult @inlinable public func setProperty(symbol: JXValue, _ newValue: JXValue) throws -> JXValue {
         if !isObject {
-            throw JXErrors.propertyAccessNonObject
+            throw JXErrors.valueNotObject
         }
 
         try context.trying {
@@ -689,10 +798,24 @@ extension JXValue {
         }
     }
 
+    /// Set an element of this array, overwriting any previous element.
     @inlinable public func setElement(_ element: JXValue, at index: Int) throws {
         try context.trying {
             JSObjectSetPropertyAtIndex(context.contextRef, valueRef, UInt32(index), element.valueRef, $0)
         }
+    }
+
+    /// Adds the given object as the final element of this array.
+    @inlinable public func addElement(_ object: JXValue) throws {
+        try self.setElement(object, at: count)
+    }
+
+    /// Inserts the given object into this array, shifting subsequent elements.
+    @inlinable public func insertElement(_ object: JXValue, at index: Int) throws {
+        for i in try (max(1, index)...count).reversed() {
+            try setElement(self[i-1], at: i) // Shift all the latter elements up by one
+        }
+        try setElement(object, at: index) // And fill in the index (JS permits assigning a non-existent index)
     }
 }
 

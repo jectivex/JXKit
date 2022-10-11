@@ -30,7 +30,7 @@ let hypot = try context.global["Math"]["hypot"]
 assert(hypot.isFunction == true)
 let result = try hypot.call(withArguments: try [context.encode(3), context.encode(4)])
 let hypotValue = try result.double
-assert(hypotValue == 5)
+assert(hypotValue == 5.0)
 ```
 
 ### Codable passing
@@ -62,7 +62,7 @@ import JavaScriptCore
 
 let jsc = JSContext()
 let value: JSValue = jsc.evaluateScript("1+2")
-assert(value.doubleValue == 3)
+assert(value.int == 3)
 ```
 
 becomes:

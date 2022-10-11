@@ -11,17 +11,6 @@ public protocol JXConvertible {
     func toJX(in context: JXContext) throws -> JXValue
 }
 
-
-extension JXValue {
-    /// Attempts to convey the given result from the JS environment.
-    /// - Parameters:
-    ///   - context: The context to use.
-    /// - Returns: The conveyed instance.
-    public func convey<T: JXConvertible>(to type: T.Type = T.self) throws -> T {
-        try T.fromJX(self)
-    }
-}
-
 /// Default implementation of ``JXConvertible`` will be to encode and decode ``Codable`` instances between Swift & JS.
 extension Decodable where Self: JXConvertible {
     public static func fromJXCodable(_ value: JXValue) throws -> Self {
@@ -42,18 +31,6 @@ extension Encodable where Self: JXConvertible {
         try toJXCodable(in: context)
     }
 }
-
-// We intentionally do not implement Equatable and Hashable to avoid confusion around the semantics of equatability.
-//
-//extension JXValue: Equatable, Hashable {
-//    public static func == (lhs: JXKit.JXValue, rhs: JXKit.JXValue) -> Bool {
-//        lhs.value == rhs.value
-//    }
-//
-//    public func hash(into hasher: inout Hasher) {
-//        value.hash(into: &hasher)
-//    }
-//}
 
 extension JXValue: JXConvertible {
     public static func fromJXConvertible(_ value: JXValue) throws -> Self {
@@ -106,9 +83,7 @@ extension Array: JXConvertible where Element: JXConvertible {
         guard value.isArray else {
             throw JXErrors.valueNotArray
         }
-
         let arrayValue = try value.array
-
         return try arrayValue.map({ jx in
             try Element.fromJX(jx)
         })
@@ -121,12 +96,160 @@ extension Array: JXConvertible where Element: JXConvertible {
     }
 }
 
-extension JXValue {
-    /// Sets a `JXConvertible` in this value object.
-    /// - Parameters:
-    ///   - key: The key to set.
-    ///   - object: The `JXConvertible` to convert.
-    public func set<T: JXConvertible>(_ key: String, convertible object: T) throws {
-        try setProperty(key, object.toJX(in: self.context))
+extension Dictionary: JXConvertible where Key == String, Value: JXConvertible {
+    public static func fromJX(_ value: JXValue) throws -> Dictionary<Key, Value> {
+        guard value.isObject else {
+            throw JXErrors.valueNotObject
+        }
+        let jxDictionary = try value.dictionary
+        return try jxDictionary.reduce(into: [:]) { result, entry in
+            result[entry.key] = try Value.fromJX(entry.value)
+        }
+    }
+
+    public func toJX(in context: JXContext) throws -> JXValue {
+        let jxDictionary = try self.reduce(into: [:]) { result, entry in
+            result[entry.key] = try entry.value.toJX(in: context)
+        }
+        return try context.object(fromDictionary: jxDictionary)
     }
 }
+
+extension RawRepresentable where RawValue: JXConvertible {
+    public static func fromJXRaw(_ value: JXValue) throws -> Self {
+        guard let newSelf = Self(rawValue: try .fromJX(value)) else {
+            throw JXErrors.invalidRawValue(try value.string)
+        }
+        return newSelf
+    }
+
+    public func toJXRaw(in context: JXContext) throws -> JXValue {
+        try self.rawValue.toJX(in: context)
+    }
+
+    public static func fromJX(_ value: JXValue) throws -> Self {
+        try fromJXRaw(value)
+    }
+
+    public func toJX(in context: JXContext) throws -> JXValue {
+        try toJXRaw(in: context)
+    }
+}
+
+extension Bool: JXConvertible {
+    public static func fromJX(_ value: JXValue) throws -> Self { return value.bool }
+    public func toJX(in context: JXContext) -> JXValue { context.boolean(self) }
+}
+
+extension String: JXConvertible {
+    public static func fromJX(_ value: JXValue) throws -> Self { try value.string }
+    public func toJX(in context: JXContext) -> JXValue { context.string(self) }
+}
+
+extension Int: JXConvertible {
+    public static func fromJX(_ value: JXValue) throws -> Self { try value.int }
+    public func toJX(in context: JXContext) -> JXValue { context.number(self) }
+}
+
+extension Int32: JXConvertible {
+    public static func fromJX(_ value: JXValue) throws -> Self { try value.int32 }
+    public func toJX(in context: JXContext) -> JXValue { context.number(self) }
+}
+
+extension Int64: JXConvertible {
+    public static func fromJX(_ value: JXValue) throws -> Self { try value.int64 }
+    public func toJX(in context: JXContext) -> JXValue { context.number(self) }
+}
+
+extension UInt: JXConvertible {
+    public static func fromJX(_ value: JXValue) throws -> Self { try value.uint }
+    public func toJX(in context: JXContext) -> JXValue { context.number(self) }
+}
+
+extension UInt32: JXConvertible {
+    public static func fromJX(_ value: JXValue) throws -> Self { try value.uint32 }
+    public func toJX(in context: JXContext) -> JXValue { context.number(self) }
+}
+
+extension UInt64: JXConvertible {
+    public static func fromJX(_ value: JXValue) throws -> Self { try value.uint64 }
+    public func toJX(in context: JXContext) -> JXValue { context.number(self) }
+}
+
+extension Double: JXConvertible {
+    public static func fromJX(_ value: JXValue) throws -> Self { try value.double }
+    public func toJX(in context: JXContext) -> JXValue { context.number(self) }
+}
+
+extension Float: JXConvertible {
+    public static func fromJX(_ value: JXValue) throws -> Self { try value.float }
+    public func toJX(in context: JXContext) -> JXValue { context.number(self) }
+}
+
+#if canImport(CoreGraphics)
+import typealias CoreGraphics.CGFloat
+
+extension CGFloat: JXConvertible {
+    public static func fromJX(_ value: JXValue) throws -> Self { try value.double }
+    public func toJX(in context: JXContext) -> JXValue { context.number(self) }
+}
+#endif
+
+#if canImport(Foundation)
+import struct Foundation.Date
+
+extension Date: JXConvertible {
+    public static func fromJX(_ value: JXValue) throws -> Self { try value.date }
+    public func toJX(in context: JXContext) throws -> JXValue { try context.date(self) }
+}
+#endif
+
+#if canImport(Foundation)
+import struct Foundation.Data
+
+extension Data: JXConvertible {
+    public static func fromJX(_ value: JXValue) throws -> Self {
+//        if value.isArrayBuffer { // fast track
+//            #warning("TODO: array buffer")
+//            fatalError("array buffer") // TODO
+//        } else
+        if value.isArray { // slow track
+            // copy the array manually
+            let length = try value["length"]
+
+            let count = try length.double
+            guard length.isNumber, let max = UInt32(exactly: count) else {
+                throw JXErrors.valueNotArray
+            }
+
+            let data: [UInt8] = try (0..<max).map { index in
+                let element = try value[.init(index)]
+                guard element.isNumber else {
+                    throw JXErrors.valueNotNumber
+                }
+                let num = try element.double
+                guard num <= .init(UInt8.max), num >= .init(UInt8.min), let byte = UInt8(exactly: num) else {
+                    throw JXErrors.invalidNumericConversion(num)
+                }
+
+                return byte
+            }
+
+            return Data(data)
+        } else {
+            throw JXErrors.valueNotArray
+        }
+    }
+
+    public func toJX(in context: JXContext) throws -> JXValue {
+        var d = self
+        return try d.withUnsafeMutableBytes { bytes in
+            try JXValue(newArrayBufferWithBytesNoCopy: bytes,
+                deallocator: { _ in
+                    //print("buffer deallocated")
+                },
+                in: context)
+        }
+    }
+}
+#endif
