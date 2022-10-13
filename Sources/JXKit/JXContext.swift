@@ -386,12 +386,12 @@ extension JXContext {
 
 /// Optional service provider integration points.
 public protocol JXContextSPI {
-    func toJX<T>(_ value: T, in context: JXContext) throws -> JXValue?
+    func toJX(_ value: Any, in context: JXContext) throws -> JXValue?
     func fromJX<T>(_ value: JXValue, to type: T.Type) throws -> T?
 }
 
 extension JXContextSPI {
-    public func toJX<T>(_ value: T, in context: JXContext) throws -> JXValue? {
+    public func toJX(_ value: Any, in context: JXContext) throws -> JXValue? {
         return nil
     }
 
