@@ -1,21 +1,27 @@
 {
+  "defaultImplementationsSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/toJX(_:in:)-2zrk7"
+      ],
+      "title" : "JXContextSPI Implementations"
+    }
+  ],
   "hierarchy" : {
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/toJX(_:in:)-7rs1v"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/toJX(_:in:)-2ouuf"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/toJX(_:in:)-7j35f"
   },
   "kind" : "symbol",
   "metadata" : {
-    "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit12JXContextSPIPAAE4toJX_2inAA7JXValueCSgqd___AA0B0CtKlF",
+    "externalID" : "s:5JXKit12JXContextSPIP4toJX_2inAA7JXValueCSgyp_AA0B0CtKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -31,19 +37,11 @@
       },
       {
         "kind" : "text",
-        "text" : "<"
+        "text" : "("
       },
       {
-        "kind" : "genericParameter",
-        "text" : "T"
-      },
-      {
-        "kind" : "text",
-        "text" : ">("
-      },
-      {
-        "kind" : "typeIdentifier",
-        "text" : "T"
+        "kind" : "keyword",
+        "text" : "Any"
       },
       {
         "kind" : "text",
@@ -89,6 +87,7 @@
         "name" : "JXKit"
       }
     ],
+    "required" : true,
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
@@ -119,15 +118,7 @@
             },
             {
               "kind" : "text",
-              "text" : "<"
-            },
-            {
-              "kind" : "genericParameter",
-              "text" : "T"
-            },
-            {
-              "kind" : "text",
-              "text" : ">("
+              "text" : "("
             },
             {
               "kind" : "externalParam",
@@ -146,8 +137,8 @@
               "text" : ": "
             },
             {
-              "kind" : "typeIdentifier",
-              "text" : "T"
+              "kind" : "keyword",
+              "text" : "Any"
             },
             {
               "kind" : "text",
@@ -214,7 +205,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontextspi\/tojx(_:in:)-2ouuf"
+        "\/documentation\/jxkit\/jxcontextspi\/tojx(_:in:)-7j35f"
       ],
       "traits" : [
         {
@@ -315,7 +306,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontextspi"
 },
-"doc://JXKit/documentation/JXKit/JXContextSPI/toJX(_:in:)-2ouuf": {
+"doc://JXKit/documentation/JXKit/JXContextSPI/toJX(_:in:)-2zrk7": {
   "abstract" : [
 
   ],
@@ -334,19 +325,11 @@
     },
     {
       "kind" : "text",
-      "text" : "<"
+      "text" : "("
     },
     {
-      "kind" : "genericParameter",
-      "text" : "T"
-    },
-    {
-      "kind" : "text",
-      "text" : ">("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "text" : "T"
+      "kind" : "keyword",
+      "text" : "Any"
     },
     {
       "kind" : "text",
@@ -387,14 +370,14 @@
       "text" : "?"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/toJX(_:in:)-2ouuf",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/toJX(_:in:)-2zrk7",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "toJX(_:in:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontextspi\/tojx(_:in:)-2ouuf"
+  "url" : "\/documentation\/jxkit\/jxcontextspi\/tojx(_:in:)-2zrk7"
 },
-"doc://JXKit/documentation/JXKit/JXContextSPI/toJX(_:in:)-7rs1v": {
+"doc://JXKit/documentation/JXKit/JXContextSPI/toJX(_:in:)-7j35f": {
   "abstract" : [
 
   ],
@@ -414,19 +397,11 @@
     },
     {
       "kind" : "text",
-      "text" : "<"
+      "text" : "("
     },
     {
-      "kind" : "genericParameter",
-      "text" : "T"
-    },
-    {
-      "kind" : "text",
-      "text" : ">("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "text" : "T"
+      "kind" : "keyword",
+      "text" : "Any"
     },
     {
       "kind" : "text",
@@ -467,13 +442,13 @@
       "text" : "?"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/toJX(_:in:)-7rs1v",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/toJX(_:in:)-7j35f",
   "kind" : "symbol",
   "required" : true,
   "role" : "symbol",
   "title" : "toJX(_:in:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontextspi\/tojx(_:in:)-7rs1v"
+  "url" : "\/documentation\/jxkit\/jxcontextspi\/tojx(_:in:)-7j35f"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [

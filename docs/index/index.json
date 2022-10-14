@@ -777,8 +777,8 @@
                   {
                     "children" : [
                       {
-                        "path" : "\/documentation\/jxkit\/jxcontextspi\/tojx(_:in:)-2ouuf",
-                        "title" : "func toJX<T>(T, in: JXContext) throws -> JXValue?",
+                        "path" : "\/documentation\/jxkit\/jxcontextspi\/tojx(_:in:)-2zrk7",
+                        "title" : "func toJX(Any, in: JXContext) throws -> JXValue?",
                         "type" : "method"
                       }
                     ],
@@ -786,8 +786,8 @@
                     "type" : "groupMarker"
                   }
                 ],
-                "path" : "\/documentation\/jxkit\/jxcontextspi\/tojx(_:in:)-7rs1v",
-                "title" : "func toJX<T>(T, in: JXContext) throws -> JXValue?",
+                "path" : "\/documentation\/jxkit\/jxcontextspi\/tojx(_:in:)-7j35f",
+                "title" : "func toJX(Any, in: JXContext) throws -> JXValue?",
                 "type" : "method"
               }
             ],

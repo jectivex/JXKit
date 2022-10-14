@@ -90,7 +90,7 @@
     {
       "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/fromJX(_:to:)-76xn8",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/toJX(_:in:)-7rs1v"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/toJX(_:in:)-7j35f"
       ],
       "title" : "Instance Methods"
     }
@@ -237,7 +237,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontextspi\/fromjx(_:to:)-76xn8"
 },
-"doc://JXKit/documentation/JXKit/JXContextSPI/toJX(_:in:)-7rs1v": {
+"doc://JXKit/documentation/JXKit/JXContextSPI/toJX(_:in:)-7j35f": {
   "abstract" : [
 
   ],
@@ -257,19 +257,11 @@
     },
     {
       "kind" : "text",
-      "text" : "<"
+      "text" : "("
     },
     {
-      "kind" : "genericParameter",
-      "text" : "T"
-    },
-    {
-      "kind" : "text",
-      "text" : ">("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "text" : "T"
+      "kind" : "keyword",
+      "text" : "Any"
     },
     {
       "kind" : "text",
@@ -310,13 +302,13 @@
       "text" : "?"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/toJX(_:in:)-7rs1v",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/toJX(_:in:)-7j35f",
   "kind" : "symbol",
   "required" : true,
   "role" : "symbol",
   "title" : "toJX(_:in:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontextspi\/tojx(_:in:)-7rs1v"
+  "url" : "\/documentation\/jxkit\/jxcontextspi\/tojx(_:in:)-7j35f"
 }
 }
 }

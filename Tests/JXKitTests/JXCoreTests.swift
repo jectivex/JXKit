@@ -450,7 +450,7 @@ class JXCoreTests: XCTestCase {
             var toJXWasInvoked = false
             var fromJXWasInvoked = false
 
-            func toJX<T>(_ value: T, in context: JXContext) throws -> JXValue? {
+            func toJX(_ value: Any, in context: JXContext) throws -> JXValue? {
                 toJXWasInvoked = true
                 // Should only be invoked on non-convertible types, and the only
                 // type we test is Codable
