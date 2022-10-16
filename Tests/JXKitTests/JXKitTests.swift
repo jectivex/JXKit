@@ -32,5 +32,42 @@ final class JXKitTests: XCTestCase {
         XCTAssertEqual("NaN", try jxc.eval("['10', '10', '10'].map(parseInt)").array.dropFirst().first?.string)
         XCTAssertEqual(2, try jxc.eval("['10', '10', '10'].map(parseInt)").array.last?.double)
     }
-}
 
+    func testProxy() throws {
+        let jxc = JXContext()
+
+        // create a proxy that acts as a map what sorted an uppercase form of the string
+        let value: JXValue = try jxc.eval("""
+        var proxyMap = new Proxy(new Map(), {
+          // The 'get' function allows you to modify the value returned
+          // when accessing properties on the proxy
+          get: function(target, name) {
+            if (name === 'set') {
+              // Return a custom function for Map.set that sets
+              // an upper-case version of the value.
+              return function(key, value) {
+                return target.set(key, value.toUpperCase());
+              };
+            }
+            else {
+              var value = target[name];
+              // If the value is a function, return a function that
+              // is bound to the original target. Otherwise the function
+              // would be called with the Proxy as 'this' and Map
+              // functions do not work unless the 'this' is the Map.
+              if (value instanceof Function) {
+                return value.bind(target);
+              }
+              // Return the normal property value for everything else
+              return value;
+            }
+          }
+        });
+
+        proxyMap.set(0, 'foo');
+        proxyMap.get(0);
+        """)
+
+        XCTAssertEqual("FOO", try value.string)
+    }
+}
