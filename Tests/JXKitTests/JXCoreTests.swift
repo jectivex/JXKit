@@ -511,4 +511,53 @@ class JXCoreTests: XCTestCase {
         XCTAssertEqual(try jxc.convey(optcodable1).convey(), optcodable1)
         XCTAssertEqual(try jxc.convey(optcodablenil).convey(), optcodablenil)
     }
+
+    func testConveyConvenienceFuncs() throws {
+        let jxc = JXContext()
+        let jxstring1 = jxc.string("jxstring1")
+        let jxstring2 = jxc.string("jxstring2")
+        let jxstringArray = try jxc.array([jxstring1, jxstring2])
+        let stringArray = try jxc.array(["jxstring1", "jxstring2"])
+        let jxconveyedArray: [String] = try jxstringArray.convey()
+        let conveyedArray: [String] = try stringArray.convey()
+        XCTAssertEqual(jxconveyedArray, conveyedArray)
+        XCTAssertEqual(conveyedArray[0], "jxstring1")
+        XCTAssertEqual(conveyedArray[1], "jxstring2")
+
+        try jxstringArray.addElement(jxc.string("jxstring3"))
+        try jxstringArray.addElement("jxstring4")
+        let conveyedAddedArray: [String] = try jxstringArray.convey()
+        XCTAssertEqual(conveyedAddedArray.count, 4)
+        XCTAssertEqual(conveyedAddedArray[2], "jxstring3")
+        XCTAssertEqual(conveyedAddedArray[3], "jxstring4")
+
+        let emptyarray = try jxc.array([])
+        XCTAssertEqual(0, try emptyarray.count)
+    }
+
+    func testEvalWithArguments() throws {
+        let jxc = JXContext()
+        var result = try jxc.eval("$0 + $1", withArguments: [1, 2])
+        XCTAssertEqual(try result.int, 3)
+        XCTAssertTrue(try jxc.global["$0"].isUndefined)
+        XCTAssertTrue(try jxc.global["$1"].isUndefined)
+
+        result = try jxc.eval("$0 + $1 + $2", withArguments: ["a", 1, "c"])
+        XCTAssertEqual(try result.string, "a1c")
+    }
+
+    func testNew() throws {
+        let jxc = JXContext()
+        try jxc.eval("""
+class C {
+    name;
+    constructor(name) {
+        this.name = name;
+    }
+}
+""")
+        let cinstance = try jxc.new("C", withArguments: ["foo"])
+        XCTAssertEqual(try cinstance["name"].string, "foo")
+        XCTAssertEqual(try cinstance["constructor"]["name"].string, "C")
+    }
 }

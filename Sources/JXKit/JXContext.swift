@@ -77,8 +77,11 @@ open class JXContext {
 
 extension JXContext {
 
-    /// Evaulates the JavaScript.
-    @discardableResult public func eval(_ script: String, this: JXValue? = nil) throws -> JXValue {
+    /// Evaluates the JavaScript.
+    ///
+    /// - Parameters:
+    ///   - arguments: Arguments to make available to the executing JavaScript as vars with names '$0, $1, ...'.
+    @discardableResult public func eval(_ script: String, this: JXValue? = nil, withArguments arguments: [JXValue] = []) throws -> JXValue {
         if strict == true && strictEvaluated == false {
             let useStrict = "\"use strict\";\n" // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
             let script = useStrict.withCString(JSStringCreateWithUTF8CString)
@@ -90,22 +93,36 @@ extension JXContext {
         }
 
         let script = script.withCString(JSStringCreateWithUTF8CString)
-
         defer { JSStringRelease(script) }
 
+        let properties: [(name: String, value: JXValue)] = arguments.enumerated().map { ("$\($0)", $1) }
+        try properties.forEach { try global.setProperty($0.name, $0.value) }
         let result = try trying {
             JSEvaluateScript(contextRef, script, this?.valueRef, nil, 0, $0)
         }
+        try properties.forEach { try global.removeProperty($0.name) }
 
         return result.map { JXValue(context: self, valueRef: $0) } ?? JXValue(undefinedIn: self)
     }
 
-    /// Asynchronously evaulates the given script.
+    /// Evaluates the JavaScript.
+    ///
+    /// - Parameters:
+    ///   - arguments: Arguments to make available to the executing JavaScript as vars with names '$0, $1, ...'. The arguments will be `conveyed` to `JXValues`.
+    @discardableResult public func eval(_ script: String, this: JXValue? = nil, withArguments arguments: [Any]) throws -> JXValue {
+        let jxarguments = try arguments.map { try convey($0) }
+        return try eval(script, this: this, withArguments: jxarguments)
+    }
+
+    /// Asynchronously evaluates the given script.
     ///
     /// The script is expected to return a `Promise` either directly or through the implicit promise
     /// that is created in async calls.
-    @discardableResult public func eval(_ script: String, method: Bool = true, this: JXValue? = nil, priority: TaskPriority) async throws -> JXValue {
-        let promise = try eval(script, this: this)
+    ///
+    /// - Parameters:
+    ///   - arguments: Arguments to make available to the executing JavaScript as vars with names '$0, $1, ...'.
+    @discardableResult public func eval(_ script: String, this: JXValue? = nil, priority: TaskPriority, withArguments arguments: [JXValue] = []) async throws -> JXValue {
+        let promise = try eval(script, this: this, withArguments: arguments)
         guard try promise.isPromise else {
             throw JXErrors.asyncEvalMustReturnPromise
         }
@@ -142,6 +159,18 @@ extension JXContext {
                 return c.resume(throwing: error)
             }
         }
+    }
+
+    /// Asynchronously evaluates the given script.
+    ///
+    /// The script is expected to return a `Promise` either directly or through the implicit promise
+    /// that is created in async calls.
+    ///
+    /// - Parameters:
+    ///   - arguments: Arguments to make available to the executing JavaScript as vars with names '$0, $1, ...'. The arguments will be `conveyed` to `JXValues`.
+    @discardableResult public func eval(_ script: String, this: JXValue? = nil, priority: TaskPriority, withArguments arguments: [Any]) async throws -> JXValue {
+        let jxarguments = try arguments.map { try convey($0) }
+        return try await eval(script, this: this, priority: priority, withArguments: jxarguments)
     }
 
     /// Checks for syntax errors in a string of JavaScript.
@@ -291,6 +320,36 @@ extension JXContext {
         return object
     }
 
+    /// Creates an object with the given dictionary of properties.
+    @inlinable public func object(fromDictionary properties: [String: Any]) throws -> JXValue {
+        let jxproperties = try properties.reduce(into: [:]) { result, entry in
+            result[entry.key] = try convey(entry.value)
+        }
+        return try object(fromDictionary: jxproperties)
+    }
+
+    /// Creates an instance of the named class or constructor function.
+    ///
+    /// - Parameters:
+    ///   - typeName: Class or constructor function name.
+    ///   - arguments: The arguments to pass to the constructor.
+    @inlinable public func `new`(_ typeName: String, withArguments arguments: [JXValue] = []) throws -> JXValue {
+        // The only way to create a new class instance is with 'new X(...)', so generate that code
+        let argumentsString = (0..<arguments.count).map({ "$\($0)" }).joined(separator: ",")
+        let code = "new \(typeName)(\(argumentsString))"
+        return try eval(code, withArguments: arguments)
+    }
+
+    /// Creates an instance of the named class or constructor function.
+    ///
+    /// - Parameters:
+    ///   - typeName: Class or constructor function name.
+    ///   - arguments: The arguments to pass to the constructor. The arguments will be `conveyed` to `JXValues`.
+    @inlinable public func `new`(_ typeName: String, withArguments arguments: [Any]) throws -> JXValue {
+        let jxarguments = try arguments.map { try convey($0) }
+        return try self.new(typeName, withArguments: jxarguments)
+    }
+
     /// Creates a new array in this context.
     @inlinable public func array(_ values: [JXValue]) throws -> JXValue {
         let array = try JXValue(newArrayIn: self)
@@ -298,6 +357,12 @@ extension JXContext {
             try array.setElement(value, at: index)
         }
         return array
+    }
+
+    /// Creates a new array in this context.
+    @inlinable public func array(_ values: [Any]) throws -> JXValue {
+        let jxvalues = try values.map { try convey($0) }
+        return try array(jxvalues)
     }
 
     @inlinable public func date(_ value: Date) throws -> JXValue {
