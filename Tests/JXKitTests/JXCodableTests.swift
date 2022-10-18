@@ -58,6 +58,7 @@ final class JXCodableTests: XCTestCase {
             try rt(equal: false, NumStruct(num: .nan))
             try rt(equal: false, NumStruct(num: .signalingNaN))
 
+            try rt(URL(string:"http://127.0.0.1/abc")!)
 
             struct StringStruct: Codable, Equatable {
                 var str: String?
@@ -103,6 +104,14 @@ final class JXCodableTests: XCTestCase {
         let date = try jxc.encode(Date(timeIntervalSince1970: 1234))
         XCTAssertEqual("Thu, 01 Jan 1970 00:20:34 GMT", try date.invokeMethod("toGMTString", withArguments: []).string)
     }
+
+    func testCodableURL() throws {
+            let jxc = JXContext()
+            let url = URL(string: "http://127.0.0.1/abc")!
+            let urlValue = try jxc.encode(url)
+            XCTAssertEqual("http://127.0.0.1/abc", try urlValue.string)
+            XCTAssertEqual(url, try urlValue.url)
+        }
 
     /// An example of invoking `Math.hypot` directly with numeric arguments
     func testCodableParams() throws {

@@ -27,6 +27,8 @@ public enum JXErrors: Error {
     /// Expected a JavaScript array.
     case valueNotArray
     /// Expected a JavaScript date.
+    case valueNotURL
+    /// Expected a JavaScript function.
     case valueNotDate
     /// Expected a JavaScript function.
     case valueNotFunction

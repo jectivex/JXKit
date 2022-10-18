@@ -398,6 +398,11 @@ extension JXEncoder {
     }
 
     fileprivate func box_<T: Encodable>(_ value: T) throws -> JXValue? {
+
+        if let url = value as? URL {
+            return try JXValue(url: url, in: context)
+        }
+
         if let date = value as? Date {
             return try JXValue(date: date, in: context)
         }
@@ -1537,6 +1542,18 @@ extension __JSDecoder {
         return try value.string
     }
 
+    fileprivate func unbox(_ value: JXValue, as type: URL.Type) throws -> URL? {
+        guard value.isString else {
+            throw DecodingError._typeMismatch(at: self.codingPath, expectation: type, reality: value)
+        }
+        let urlString = try value.string
+        guard let url = URL(string: urlString) else {
+            throw DecodingError._typeMismatch(at: self.codingPath, expectation: type, reality: value)
+        }
+
+        return url
+    }
+
     fileprivate func unbox(_ value: JXValue, as type: Date.Type) throws -> Date? {
         guard try value.isDate else {
             throw DecodingError._typeMismatch(at: self.codingPath, expectation: type, reality: value)
@@ -1554,7 +1571,9 @@ extension __JSDecoder {
     }
 
     fileprivate func unbox<T: Decodable>(_ value: JXValue, as type: T.Type) throws -> T? {
-        if type == Date.self || type == NSDate.self {
+        if type == URL.self || type == NSURL.self {
+            return try self.unbox(value, as: URL.self) as? T
+        } else if type == Date.self || type == NSDate.self {
             return try self.unbox(value, as: Date.self) as? T
         } else if type == Data.self || type == NSData.self {
             return try self.unbox(value, as: Data.self) as? T

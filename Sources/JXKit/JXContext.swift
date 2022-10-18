@@ -307,6 +307,10 @@ extension JXContext {
         return array
     }
 
+    @inlinable public func url(_ value: URL) throws -> JXValue {
+         try JXValue(url: value, in: self)
+    }
+
     @inlinable public func date(_ value: Date) throws -> JXValue {
         try JXValue(date: value, in: self)
     }

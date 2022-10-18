@@ -113,6 +113,17 @@ extension JXValue {
         self.init(context: context, valueRef: json)
     }
 
+    /// Creates a JavaScript `URL` object, as if by invoking the built-in `RegExp` constructor.
+    ///
+    /// - Parameters:
+    ///   - value: The value to assign to the object.
+    ///   - context: The execution context to use.
+    @usableFromInline internal convenience init(url value: URL, in ctx: JXContext) throws {
+        let value = value.absoluteString.withCString(JSStringCreateWithUTF8CString)
+        defer { JSStringRelease(value) }
+        self.init(context: ctx, valueRef: JSValueMakeString(ctx.contextRef, value))
+    }
+
     /// Creates a JavaScript `Date` object, as if by invoking the built-in `JSObjectMakeDate` constructor.
     ///
     /// - Parameters:
@@ -471,6 +482,22 @@ extension JXValue {
             return str.map(String.init) ?? ""
         }
     }
+
+    /// Returns the JavaScript string value.
+      @inlinable public var url: URL {
+          get throws {
+              let str = try context.trying {
+                  JSValueToStringCopy(context.contextRef, valueRef, $0)
+              }
+              defer { str.map(JSStringRelease) }
+              guard let str,
+                let url = URL(string: str) else {
+                  throw JXErrors.valueNotURL
+              }
+              return url
+          }
+      }
+
 
     /// Returns the JavaScript date value.
     @inlinable public var date: Date {
@@ -944,6 +971,14 @@ extension String {
     /// Creates a `Swift.String` from a `JXStringRef`
     @inlinable internal init(_ str: JXStringRef) {
         self.init(utf16CodeUnits: JSStringGetCharactersPtr(str), count: JSStringGetLength(str))
+    }
+}
+
+extension URL {
+    /// Creates a `Swift.URL` from a `JXStringRef`
+    @inlinable internal init?(string: JXStringRef) {
+        let rawURL = String(string)
+        self.init(string: rawURL)
     }
 }
 
