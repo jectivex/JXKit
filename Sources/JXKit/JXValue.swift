@@ -301,7 +301,9 @@ extension JXValue {
         }
     }
 
-    /// Tests whether a JavaScript value’s type is the promise type.
+    /// Tests whether a JavaScript value’s type is the `Promise` type by seeing it if is an instance of ``JXContext//promisePrototype``.
+    ///
+    /// See: [MDN Promise Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
     @inlinable public var isPromise: Bool {
         get throws {
             try isInstance(of: context.promisePrototype)
@@ -333,6 +335,8 @@ extension JXValue {
     /// Whether or not the given object is frozen.
     ///
     /// An object is frozen if and only if it is not extensible, all its properties are non-configurable, and all its data properties (that is, properties which are not accessor properties with getter or setter components) are non-writable.
+    ///
+    /// See: [MDN Object.isFrozen Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isFrozen)
     @inlinable public var isFrozen: Bool {
         get throws {
             try context.objectPrototype.invokeMethod("isFrozen", withArguments: [self]).bool
@@ -342,6 +346,8 @@ extension JXValue {
     /// The Object.isExtensible() method determines if an object is extensible (whether it can have new properties added to it).
     ///
     /// Objects are extensible by default: they can have new properties added to them, and their `Prototype` can be re-assigned. An object can be marked as non-extensible using one of ``preventExtensions()`, `seal()`, `freeze()`, or `Reflect.preventExtensions()`.
+    ///
+    /// See: [MDN Object.isExtensible Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isExtensible)
     @inlinable public var isExtensible: Bool {
         get throws {
             try context.objectPrototype.invokeMethod("isExtensible", withArguments: [self]).bool
@@ -351,22 +357,29 @@ extension JXValue {
     /// The Object.isSealed() method determines if an object is sealed.
     ///
     /// Returns true if the object is sealed, otherwise false. An object is sealed if it is not extensible and if all its properties are non-configurable and therefore not removable (but not necessarily non-writable).
+    ///
+    /// See: [MDN Object.isSealed Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isSealed)
     @inlinable public var isSealed: Bool {
         get throws {
             try context.objectPrototype.invokeMethod("isSealed", withArguments: [self]).bool
         }
     }
 
-    /// The Object.freeze() method freezes an object. Freezing an object prevents extensions and makes existing properties non-writable and non-configurable. A frozen object can no longer be changed: new properties cannot be added, existing properties cannot be removed, their enumerability, configurability, writability, or value cannot be changed, and the object's prototype cannot be re-assigned. freeze() returns the same object that was passed in.
+    /// The Object.freeze() method freezes an object.
+    ///
+    /// Freezing an object prevents extensions and makes existing properties non-writable and non-configurable. A frozen object can no longer be changed: new properties cannot be added, existing properties cannot be removed, their enumerability, configurability, writability, or value cannot be changed, and the object's prototype cannot be re-assigned. freeze() returns the same object that was passed in.
     ///
     /// Freezing an object is equivalent to preventing extensions and then changing all existing properties' descriptors' configurable to false — and for data properties, writable to false as well. Nothing can be added to or removed from the properties set of a frozen object. Any attempt to do so will fail, either silently or by throwing a TypeError exception (most commonly, but not exclusively, when in strict mode).
     ///
     /// For data properties of a frozen object, their values cannot be changed since the writable and configurable attributes are set to false. Accessor properties (getters and setters) work the same — the property value returned by the getter may still change, and the setter can still be called without throwing errors when setting the property. Note that values that are objects can still be modified, unless they are also frozen. As an object, an array can be frozen; after doing so, its elements cannot be altered and no elements can be added to or removed from the array.
+    ///
+    /// See: [MDN Object.freeze Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
     @inlinable public func freeze() throws {
         try context.objectPrototype.invokeMethod("freeze", withArguments: [self])
     }
 
     /// The Object.preventExtensions() method prevents new properties from ever being added to an object (i.e. prevents future extensions to the object). It also prevents the object's prototype from being re-assigned.
+    ///
     /// An object is extensible if new properties can be added to it. Object.preventExtensions() marks an object as no longer extensible, so that it will never have properties beyond the ones it had at the time it was marked as non-extensible. Note that the properties of a non-extensible object, in general, may still be deleted. Attempting to add new properties to a non-extensible object will fail, either silently or, in strict mode, throwing a TypeError.
     ///
     /// Unlike Object.seal() and Object.freeze(), Object.preventExtensions() invokes an intrinsic JavaScript behavior and cannot be replaced with a composition of several other operations. It also has its Reflect counterpart (which only exists for intrinsic operations), Reflect.preventExtensions().
@@ -376,11 +389,19 @@ extension JXValue {
     /// This method makes the [[Prototype]] of the target immutable; any [[Prototype]] re-assignment will throw a TypeError. This behavior is specific to the internal [[Prototype]] property; other properties of the target object will remain mutable.
     ///
     /// There is no way to make an object extensible again once it has been made non-extensible.
+    ///
+    /// See: [MDN Object.preventExtensions Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions)
     @inlinable public func preventExtensions() throws {
         try context.objectPrototype.invokeMethod("preventExtensions", withArguments: [self])
     }
 
-    /// The Object.seal() method seals an object. Sealing an object prevents extensions and makes existing properties non-configurable. A sealed object has a fixed set of properties: new properties cannot be added, existing properties cannot be removed, their enumerability and configurability cannot be changed, and its prototype cannot be re-assigned. Values of existing properties can still be changed as long as they are writable. seal() returns the same object that was passed in.
+    /// The Object.seal() method seals an object. Sealing an object prevents extensions and makes existing properties non-configurable.
+    ///
+    ///  A sealed object has a fixed set of properties: new properties cannot be added, existing properties cannot be removed, their enumerability and configurability cannot be changed, and its prototype cannot be re-assigned.
+    ///
+    ///  Values of existing properties can still be changed as long as they are writable. seal() returns the same object that was passed in.
+    ///
+    /// See: [MDN Object.seal Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal)
     @inlinable public func seal() throws {
         try context.objectPrototype.invokeMethod("seal", withArguments: [self])
     }
@@ -388,12 +409,12 @@ extension JXValue {
 
 extension JXValue {
 
-    /// Returns the JavaScript boolean value.
+    /// Converts a JavaScript value to a Boolean and returns the resulting Boolean.
     @inlinable public var bool: Bool {
         JSValueToBoolean(context.contextRef, valueRef)
     }
 
-    /// Returns the JavaScript number value.
+    /// Converts a JavaScript value to a number and returns the resulting number.
     @inlinable public var double: Double {
         get throws {
             try context.trying {
@@ -490,6 +511,8 @@ extension JXValue {
     //    }
 
     /// Returns the JavaScript date value.
+    ///
+    /// See: [MDN Date.toISOString Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
     @inlinable public var dateISO: Date {
         get throws {
             if !(try isDate) {
@@ -540,6 +563,8 @@ extension JXValue {
     }
 
     /// Attempts to convey this JavaScript value to a specified optional type.
+    ///
+    /// This will convey `null` (but not `undefined`) as `T?.none`
     public func convey<T>(to type: Optional<T>.Type = Optional<T>.self) throws -> T? {
         guard !isNull else {
             return nil
@@ -910,7 +935,9 @@ extension JXValue {
 }
 
 extension JXValue {
-    /// Tests whether a JavaScript value’s type is the `ArrayBuffer` type.
+    /// Tests whether a JavaScript value’s type is the `ArrayBuffer` type by seeing it if is an instance of ``JXContext//arrayBufferPrototype``.
+    ///
+    /// See: [MDN ArrayBuffer Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
     public var isArrayBuffer: Bool {
         get throws {
             try isInstance(of: context.arrayBufferPrototype)

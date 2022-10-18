@@ -79,12 +79,12 @@ final class JXKitTests: XCTestCase {
         try dict.setProperty("y", ctx.string("qrs"))
 
         // create a proxy that upper-cases all string property gets and lower-cases all property sets
-        let proxy = try dict.proxy { ctx, obj, args in
-            //try args[0][args[1].string]
-            try ctx.string(args[0][args[1].string].string.uppercased())
-        } set: { ctx, obj, args in
-            //try args[0].setProperty(args[1].string, args[2])
-            try args[0].setProperty(args[1].string, ctx.string(args[2].string.lowercased()))
+        let proxy = try dict.proxy { ctx, this, args in
+            let (obj, prop) = (args[0], args[1])
+            return try ctx.string(obj[prop.string].string.uppercased())
+        } set: { ctx, this, args in
+            let (obj, prop, value) = (args[0], args[1], args[2])
+            return try obj.setProperty(prop.string, ctx.string(value.string.lowercased()))
         }
 
         XCTAssertEqual("abc", try dict["x"].string)
@@ -96,6 +96,25 @@ final class JXKitTests: XCTestCase {
         try proxy.setProperty("z", ctx.string("YoLo"))
         XCTAssertEqual("YOLO", try proxy["z"].string)
         XCTAssertEqual("yolo", try dict["z"].string)
+    }
 
+    func testCustomConvertible() throws {
+        let ctx = JXContext()
+
+        let obj = ctx.object()
+        let url = URL(string: "https://www.example.com")!
+        try obj.setProperty("x", url.toJXCodable(in: ctx))
+    }
+}
+
+/// An example of a custom type conforming to ``JXConvertible``
+extension URL : JXConvertible {
+    public func toJX(in context: JXContext) -> JXValue {
+        context.string(self.absoluteString)
+    }
+
+    public static func fromJX(_ value: JXValue) throws -> Self {
+        if let url = try URL(string: value.string) { return url }
+        throw JXEvalError(context: value.context, value: value.context.string("Unable to create URL from string"))
     }
 }

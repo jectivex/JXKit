@@ -191,6 +191,10 @@ extension JXContext {
     }
 
     /// Returns the global "Object" prototype.
+    ///
+    /// The Object type represents one of JavaScript's data types. It is used to store various keyed collections and more complex entities. Objects can be created using the Object() constructor or the object initializer / literal syntax.
+    ///
+    /// See: [MDN Object Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
     public var objectPrototype: JXValue {
         get throws {
             try global["Object"]
@@ -198,6 +202,10 @@ extension JXContext {
     }
 
     /// Returns the global "Date" prototype.
+    ///
+    /// JavaScript Date objects represent a single moment in time in a platform-independent format. Date objects contain a Number that represents milliseconds since 1 January 1970 UTC.
+    ///
+    /// See: [MDN Date Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
     public var datePrototype: JXValue {
         get throws {
             try global["Date"]
@@ -205,6 +213,10 @@ extension JXContext {
     }
 
     /// Returns the global "Array" prototype.
+    ///
+    /// The Array object, as with arrays in other programming languages, enables storing a collection of multiple items under a single variable name, and has members for performing common array operations.
+    ///
+    /// See: [MDN Array Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
     public var arrayPrototype: JXValue {
         get throws {
             try global["Array"]
@@ -212,6 +224,14 @@ extension JXContext {
     }
 
     /// Returns the global "ArrayBuffer" prototype.
+    ///
+    /// The ArrayBuffer object is used to represent a generic, fixed-length raw binary data buffer.
+    ///
+    /// It is an array of bytes, often referred to in other languages as a "byte array". You cannot directly manipulate the contents of an ArrayBuffer; instead, you create one of the typed array objects or a DataView object which represents the buffer in a specific format, and use that to read and write the contents of the buffer.
+    ///
+    /// The ArrayBuffer() constructor creates a new ArrayBuffer of the given length in bytes. You can also get an array buffer from existing data, for example, from a Base64 string or from a local file.
+    ///
+    /// See: [MDN ArrayBuffer Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
     public var arrayBufferPrototype: JXValue {
         get throws {
             try global["ArrayBuffer"]
@@ -219,6 +239,10 @@ extension JXContext {
     }
 
     /// Returns the global "Error" prototype.
+    ///
+    /// Error objects are thrown when runtime errors occur. The Error object can also be used as a base object for user-defined exceptions.
+    ///
+    /// See: [MDN Error Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
     public var errorPrototype: JXValue {
         get throws {
             try global["Error"]
@@ -226,6 +250,12 @@ extension JXContext {
     }
 
     /// Returns the global "Promise" prototype.
+    ///
+    /// The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+    ///
+    /// A Promise is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason. This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a promise to supply the value at some point in the future.
+    ///
+    /// See: [MDN Promise Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
     public var promisePrototype: JXValue {
         get throws {
             try global["Promise"]
@@ -233,6 +263,12 @@ extension JXContext {
     }
 
     /// Returns the global "Proxy" prototype.
+    ///
+    /// The Proxy object enables you to create a proxy for another object, which can intercept and redefine fundamental operations for that object.
+    ///
+    /// The Proxy object allows you to create an object that can be used in place of the original object, but which may redefine fundamental Object operations like getting, setting, and defining properties. Proxy objects are commonly used to log property accesses, validate, format, or sanitize inputs, and so on.
+    ///
+    /// See: [MDN Proxy Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
     public var proxyPrototype: JXValue {
         get throws {
             try global["Proxy"]
