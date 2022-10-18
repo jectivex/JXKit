@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Returns the JavaScript number value.",
+      "text" : "Converts a JavaScript value to a number and returns the resulting number.",
       "type" : "text"
     }
   ],
@@ -185,7 +185,7 @@
 "doc://JXKit/documentation/JXKit/JXValue/double": {
   "abstract" : [
     {
-      "text" : "Returns the JavaScript number value.",
+      "text" : "Converts a JavaScript value to a number and returns the resulting number.",
       "type" : "text"
     }
   ],

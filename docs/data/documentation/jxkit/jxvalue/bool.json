@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Returns the JavaScript boolean value.",
+      "text" : "Converts a JavaScript value to a Boolean and returns the resulting Boolean.",
       "type" : "text"
     }
   ],
@@ -177,7 +177,7 @@
 "doc://JXKit/documentation/JXKit/JXValue/bool": {
   "abstract" : [
     {
-      "text" : "Returns the JavaScript boolean value.",
+      "text" : "Converts a JavaScript value to a Boolean and returns the resulting Boolean.",
       "type" : "text"
     }
   ],

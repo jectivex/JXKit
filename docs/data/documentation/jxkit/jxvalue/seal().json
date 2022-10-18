@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "The Object.seal() method seals an object. Sealing an object prevents extensions and makes existing properties non-configurable. A sealed object has a fixed set of properties: new properties cannot be added, existing properties cannot be removed, their enumerability and configurability cannot be changed, and its prototype cannot be re-assigned. Values of existing properties can still be changed as long as they are writable. seal() returns the same object that was passed in.",
+      "text" : "The Object.seal() method seals an object. Sealing an object prevents extensions and makes existing properties non-configurable.",
       "type" : "text"
     }
   ],
@@ -88,6 +88,49 @@
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "discussion",
+          "level" : 2,
+          "text" : "Discussion",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "A sealed object has a fixed set of properties: new properties cannot be added, existing properties cannot be removed, their enumerability and configurability cannot be changed, and its prototype cannot be re-assigned.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "Values of existing properties can still be changed as long as they are writable. seal() returns the same object that was passed in.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "See: ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/JavaScript\/Reference\/Global_Objects\/Object\/seal",
+              "isActive" : true,
+              "type" : "reference"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -163,7 +206,7 @@
 "doc://JXKit/documentation/JXKit/JXValue/seal()": {
   "abstract" : [
     {
-      "text" : "The Object.seal() method seals an object. Sealing an object prevents extensions and makes existing properties non-configurable. A sealed object has a fixed set of properties: new properties cannot be added, existing properties cannot be removed, their enumerability and configurability cannot be changed, and its prototype cannot be re-assigned. Values of existing properties can still be changed as long as they are writable. seal() returns the same object that was passed in.",
+      "text" : "The Object.seal() method seals an object. Sealing an object prevents extensions and makes existing properties non-configurable.",
       "type" : "text"
     }
   ],
@@ -195,6 +238,18 @@
   "title" : "seal()",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/seal()"
+},
+"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal": {
+  "identifier" : "https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/JavaScript\/Reference\/Global_Objects\/Object\/seal",
+  "title" : "MDN Object.seal Documentation",
+  "titleInlineContent" : [
+    {
+      "text" : "MDN Object.seal Documentation",
+      "type" : "text"
+    }
+  ],
+  "type" : "link",
+  "url" : "https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/JavaScript\/Reference\/Global_Objects\/Object\/seal"
 }
 }
 }

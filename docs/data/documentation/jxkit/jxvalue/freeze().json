@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "The Object.freeze() method freezes an object. Freezing an object prevents extensions and makes existing properties non-writable and non-configurable. A frozen object can no longer be changed: new properties cannot be added, existing properties cannot be removed, their enumerability, configurability, writability, or value cannot be changed, and the object’s prototype cannot be re-assigned. freeze() returns the same object that was passed in.",
+      "text" : "The Object.freeze() method freezes an object.",
       "type" : "text"
     }
   ],
@@ -100,6 +100,15 @@
         {
           "inlineContent" : [
             {
+              "text" : "Freezing an object prevents extensions and makes existing properties non-writable and non-configurable. A frozen object can no longer be changed: new properties cannot be added, existing properties cannot be removed, their enumerability, configurability, writability, or value cannot be changed, and the object’s prototype cannot be re-assigned. freeze() returns the same object that was passed in.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "inlineContent" : [
+            {
               "text" : "Freezing an object is equivalent to preventing extensions and then changing all existing properties’ descriptors’ configurable to false — and for data properties, writable to false as well. Nothing can be added to or removed from the properties set of a frozen object. Any attempt to do so will fail, either silently or by throwing a TypeError exception (most commonly, but not exclusively, when in strict mode).",
               "type" : "text"
             }
@@ -111,6 +120,20 @@
             {
               "text" : "For data properties of a frozen object, their values cannot be changed since the writable and configurable attributes are set to false. Accessor properties (getters and setters) work the same — the property value returned by the getter may still change, and the setter can still be called without throwing errors when setting the property. Note that values that are objects can still be modified, unless they are also frozen. As an object, an array can be frozen; after doing so, its elements cannot be altered and no elements can be added to or removed from the array.",
               "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "See: ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/JavaScript\/Reference\/Global_Objects\/Object\/freeze",
+              "isActive" : true,
+              "type" : "reference"
             }
           ],
           "type" : "paragraph"
@@ -192,7 +215,7 @@
 "doc://JXKit/documentation/JXKit/JXValue/freeze()": {
   "abstract" : [
     {
-      "text" : "The Object.freeze() method freezes an object. Freezing an object prevents extensions and makes existing properties non-writable and non-configurable. A frozen object can no longer be changed: new properties cannot be added, existing properties cannot be removed, their enumerability, configurability, writability, or value cannot be changed, and the object’s prototype cannot be re-assigned. freeze() returns the same object that was passed in.",
+      "text" : "The Object.freeze() method freezes an object.",
       "type" : "text"
     }
   ],
@@ -224,6 +247,18 @@
   "title" : "freeze()",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/freeze()"
+},
+"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze": {
+  "identifier" : "https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/JavaScript\/Reference\/Global_Objects\/Object\/freeze",
+  "title" : "MDN Object.freeze Documentation",
+  "titleInlineContent" : [
+    {
+      "text" : "MDN Object.freeze Documentation",
+      "type" : "text"
+    }
+  ],
+  "type" : "link",
+  "url" : "https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/JavaScript\/Reference\/Global_Objects\/Object\/freeze"
 }
 }
 }

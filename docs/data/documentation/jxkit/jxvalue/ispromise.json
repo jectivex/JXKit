@@ -1,7 +1,23 @@
 {
   "abstract" : [
     {
-      "text" : "Tests whether a JavaScript value’s type is the promise type.",
+      "text" : "Tests whether a JavaScript value’s type is the ",
+      "type" : "text"
+    },
+    {
+      "code" : "Promise",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " type by seeing it if is an instance of ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXContext\/\/promisePrototype",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
       "type" : "text"
     }
   ],
@@ -110,6 +126,31 @@
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "discussion",
+          "level" : 2,
+          "text" : "Discussion",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "See: ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/JavaScript\/Reference\/Global_Objects\/Promise",
+              "isActive" : true,
+              "type" : "reference"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -185,7 +226,23 @@
 "doc://JXKit/documentation/JXKit/JXValue/isPromise": {
   "abstract" : [
     {
-      "text" : "Tests whether a JavaScript value’s type is the promise type.",
+      "text" : "Tests whether a JavaScript value’s type is the ",
+      "type" : "text"
+    },
+    {
+      "code" : "Promise",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " type by seeing it if is an instance of ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXContext\/\/promisePrototype",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
       "type" : "text"
     }
   ],
@@ -218,6 +275,18 @@
   "title" : "isPromise",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/ispromise"
+},
+"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise": {
+  "identifier" : "https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/JavaScript\/Reference\/Global_Objects\/Promise",
+  "title" : "MDN Promise Documentation",
+  "titleInlineContent" : [
+    {
+      "text" : "MDN Promise Documentation",
+      "type" : "text"
+    }
+  ],
+  "type" : "link",
+  "url" : "https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/JavaScript\/Reference\/Global_Objects\/Promise"
 }
 }
 }

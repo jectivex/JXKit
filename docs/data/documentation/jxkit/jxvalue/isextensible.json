@@ -143,6 +143,20 @@
             }
           ],
           "type" : "paragraph"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "See: ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/JavaScript\/Reference\/Global_Objects\/Object\/isExtensible",
+              "isActive" : true,
+              "type" : "reference"
+            }
+          ],
+          "type" : "paragraph"
         }
       ],
       "kind" : "content"
@@ -254,6 +268,18 @@
   "title" : "isExtensible",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/isextensible"
+},
+"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isExtensible": {
+  "identifier" : "https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/JavaScript\/Reference\/Global_Objects\/Object\/isExtensible",
+  "title" : "MDN Object.isExtensible Documentation",
+  "titleInlineContent" : [
+    {
+      "text" : "MDN Object.isExtensible Documentation",
+      "type" : "text"
+    }
+  ],
+  "type" : "link",
+  "url" : "https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/JavaScript\/Reference\/Global_Objects\/Object\/isExtensible"
 }
 }
 }

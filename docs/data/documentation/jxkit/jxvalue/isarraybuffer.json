@@ -9,7 +9,15 @@
       "type" : "codeVoice"
     },
     {
-      "text" : " type.",
+      "text" : " type by seeing it if is an instance of ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXContext\/\/arrayBufferPrototype",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
       "type" : "text"
     }
   ],
@@ -118,6 +126,31 @@
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "discussion",
+          "level" : 2,
+          "text" : "Discussion",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "See: ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/JavaScript\/Reference\/Global_Objects\/ArrayBuffer",
+              "isActive" : true,
+              "type" : "reference"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -201,7 +234,15 @@
       "type" : "codeVoice"
     },
     {
-      "text" : " type.",
+      "text" : " type by seeing it if is an instance of ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXContext\/\/arrayBufferPrototype",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
       "type" : "text"
     }
   ],
@@ -234,6 +275,18 @@
   "title" : "isArrayBuffer",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/isarraybuffer"
+},
+"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer": {
+  "identifier" : "https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/JavaScript\/Reference\/Global_Objects\/ArrayBuffer",
+  "title" : "MDN ArrayBuffer Documentation",
+  "titleInlineContent" : [
+    {
+      "text" : "MDN ArrayBuffer Documentation",
+      "type" : "text"
+    }
+  ],
+  "type" : "link",
+  "url" : "https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/JavaScript\/Reference\/Global_Objects\/ArrayBuffer"
 }
 }
 }
