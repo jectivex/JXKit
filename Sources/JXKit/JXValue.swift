@@ -308,6 +308,13 @@ extension JXValue {
         }
     }
 
+    /// Tests whether a JavaScript value’s type is the promise type.
+    @inlinable public var isProxy: Bool {
+        get throws {
+            try isInstance(of: context.proxyPrototype)
+        }
+    }
+
     /// Tests whether a JavaScript value’s type is the array type.
     @inlinable public var isArray: Bool {
         JSValueIsArray(context.contextRef, valueRef)
@@ -831,6 +838,18 @@ extension JXValue {
 }
 
 extension JXValue {
+    /// Creates a JavaScript `Proxy` object wrapping this object and intercepting all property getters and setters.
+    public func proxy(get getter: @escaping JXFunction, set setter: @escaping JXFunction) throws -> JXValue {
+        let ctx = self.context
+        let handler = ctx.object()
+        try handler.setProperty("get", JXValue(newFunctionIn: ctx, callback: getter))
+        try handler.setProperty("set", JXValue(newFunctionIn: ctx, callback: setter))
+        let proxy = try context.proxyPrototype.construct(withArguments: [self, handler])
+        return proxy
+    }
+}
+
+extension JXValue {
 
     /// Creates a JavaScript `ArrayBuffer` object.
     ///
@@ -929,7 +948,7 @@ extension String {
 }
 
 /// A function definition, used when defining callbacks.
-public typealias JXFunction = (JXContext, JXValue?, [JXValue]) throws -> JXValue
+public typealias JXFunction = (_ ctx: JXContext, _ obj: JXValue?, _ args: [JXValue]) throws -> JXValue
 
 extension JXValue {
     /// Creates a JavaScript value of the function type.
