@@ -73,6 +73,11 @@
                 "type" : "property"
               },
               {
+                "path" : "\/documentation\/jxkit\/jxcontext\/proxyprototype",
+                "title" : "var proxyPrototype: JXValue",
+                "type" : "property"
+              },
+              {
                 "path" : "\/documentation\/jxkit\/jxcontext\/spi",
                 "title" : "var spi: JXContextSPI?",
                 "type" : "property"
@@ -387,6 +392,11 @@
                 "type" : "property"
               },
               {
+                "path" : "\/documentation\/jxkit\/jxvalue\/isproxy",
+                "title" : "var isProxy: Bool",
+                "type" : "property"
+              },
+              {
                 "path" : "\/documentation\/jxkit\/jxvalue\/issealed",
                 "title" : "var isSealed: Bool",
                 "type" : "property"
@@ -558,6 +568,11 @@
               {
                 "path" : "\/documentation\/jxkit\/jxvalue\/propertydescriptor(_:)",
                 "title" : "func propertyDescriptor(JXValue) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/proxy(get:set:)",
+                "title" : "func proxy(get: JXFunction, set: JXFunction) throws -> JXValue",
                 "type" : "method"
               },
               {

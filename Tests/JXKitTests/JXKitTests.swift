@@ -70,4 +70,30 @@ final class JXKitTests: XCTestCase {
 
         XCTAssertEqual("FOO", try value.string)
     }
+
+    func testProxyProperties() throws {
+        let ctx = JXContext()
+
+        let dict = ctx.object()
+        try dict.setProperty("x", ctx.string("abc"))
+        try dict.setProperty("y", ctx.string("qrs"))
+
+        // create a proxy that upper-cases all string property gets and lower-cases all property sets
+        let proxy = try dict.proxy { ctx, obj, args in
+            try ctx.string(args[0][args[1].string].string.uppercased())
+        } set: { ctx, obj, args in
+            try args[0].setProperty(args[1].string, ctx.string(args[2].string.lowercased()))
+        }
+
+        XCTAssertEqual("abc", try dict["x"].string)
+        XCTAssertEqual("qrs", try dict["y"].string)
+
+        XCTAssertEqual("ABC", try proxy["x"].string)
+        XCTAssertEqual("QRS", try proxy["y"].string)
+
+        try proxy.setProperty("z", ctx.string("YoLo"))
+        XCTAssertEqual("YOLO", try proxy["z"].string)
+        XCTAssertEqual("yolo", try dict["z"].string)
+
+    }
 }

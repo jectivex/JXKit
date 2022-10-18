@@ -232,6 +232,13 @@ extension JXContext {
         }
     }
 
+    /// Returns the global "Proxy" prototype.
+    public var proxyPrototype: JXValue {
+        get throws {
+            try global["Proxy"]
+        }
+    }
+
     /// Creates a new `null` instance in the context.
     @inlinable public func null() -> JXValue {
         JXValue(nullIn: self)

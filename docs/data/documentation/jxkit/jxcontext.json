@@ -154,6 +154,7 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/global",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/objectPrototype",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/promisePrototype",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/proxyPrototype",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/spi",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/strict",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/vm"
@@ -1775,6 +1776,43 @@
   "title" : "promisePrototype",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/promiseprototype"
+},
+"doc://JXKit/documentation/JXKit/JXContext/proxyPrototype": {
+  "abstract" : [
+    {
+      "text" : "Returns the global “Proxy” prototype.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "proxyPrototype"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/proxyPrototype",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "proxyPrototype",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/proxyprototype"
 },
 "doc://JXKit/documentation/JXKit/JXContext/spi": {
   "abstract" : [

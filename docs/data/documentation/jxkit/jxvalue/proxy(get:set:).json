@@ -1,0 +1,414 @@
+{
+  "abstract" : [
+    {
+      "text" : "Creates a JavaScript ",
+      "type" : "text"
+    },
+    {
+      "code" : "Proxy",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " object wrapping this object and intercepting all property getters and setters.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/JXKit\/documentation\/JXKit",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/proxy(get:set:)"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "extendedModule" : "JXKit",
+    "externalID" : "s:5JXKit7JXValueC5proxy3get3setA2cA9JXContextC_ACSgSayACGtKc_AcH_AiJtKctKF",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "func"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "proxy"
+      },
+      {
+        "kind" : "text",
+        "text" : "("
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "get"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:5JXKit10JXFunctiona",
+        "text" : "JXFunction"
+      },
+      {
+        "kind" : "text",
+        "text" : ", "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "set"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:5JXKit10JXFunctiona",
+        "text" : "JXFunction"
+      },
+      {
+        "kind" : "text",
+        "text" : ") "
+      },
+      {
+        "kind" : "keyword",
+        "text" : "throws"
+      },
+      {
+        "kind" : "text",
+        "text" : " -> "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:5JXKit7JXValueC",
+        "text" : "JXValue"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "JXKit"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Instance Method",
+    "symbolKind" : "method",
+    "title" : "proxy(get:set:)"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "macOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "func"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "proxy"
+            },
+            {
+              "kind" : "text",
+              "text" : "("
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "get"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "internalParam",
+              "text" : "getter"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "@escaping"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXFunction",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5JXKit10JXFunctiona",
+              "text" : "JXFunction"
+            },
+            {
+              "kind" : "text",
+              "text" : ", "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "set"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "internalParam",
+              "text" : "setter"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "@escaping"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXFunction",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5JXKit10JXFunctiona",
+              "text" : "JXFunction"
+            },
+            {
+              "kind" : "text",
+              "text" : ") "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "throws"
+            },
+            {
+              "kind" : "text",
+              "text" : " -> "
+            },
+            {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5JXKit7JXValueC",
+              "text" : "JXValue"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/jxkit\/jxvalue\/proxy(get:set:)"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://JXKit/documentation/JXKit": {
+  "abstract" : [
+    {
+      "text" : "Cross-platform interface to JavaScriptCore in fluent Swift.",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "JXKit",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit"
+},
+"doc://JXKit/documentation/JXKit/JXFunction": {
+  "abstract" : [
+    {
+      "text" : "A function definition, used when defining callbacks.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "typealias"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXFunction"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXFunction",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXFunction"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXFunction",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxfunction"
+},
+"doc://JXKit/documentation/JXKit/JXValue": {
+  "abstract" : [
+    {
+      "text" : "A JavaScript object.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXValue"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXValue",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue"
+},
+"doc://JXKit/documentation/JXKit/JXValue/proxy(get:set:)": {
+  "abstract" : [
+    {
+      "text" : "Creates a JavaScript ",
+      "type" : "text"
+    },
+    {
+      "code" : "Proxy",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " object wrapping this object and intercepting all property getters and setters.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "proxy"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "get"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit10JXFunctiona",
+      "text" : "JXFunction"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "set"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit10JXFunctiona",
+      "text" : "JXFunction"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/proxy(get:set:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "proxy(get:set:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/proxy(get:set:)"
+}
+}
+}

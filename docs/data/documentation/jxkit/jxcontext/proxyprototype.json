@@ -1,0 +1,266 @@
+{
+  "abstract" : [
+    {
+      "text" : "Returns the global “Proxy” prototype.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/JXKit\/documentation\/JXKit",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/proxyPrototype"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "extendedModule" : "JXKit",
+    "externalID" : "s:5JXKit9JXContextC14proxyPrototypeAA7JXValueCvp",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "var"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "proxyPrototype"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:5JXKit7JXValueC",
+        "text" : "JXValue"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "JXKit"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Instance Property",
+    "symbolKind" : "property",
+    "title" : "proxyPrototype"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "macOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "var"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "proxyPrototype"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5JXKit7JXValueC",
+              "text" : "JXValue"
+            },
+            {
+              "kind" : "text",
+              "text" : " { "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "get"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "throws"
+            },
+            {
+              "kind" : "text",
+              "text" : " }"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/jxkit\/jxcontext\/proxyprototype"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://JXKit/documentation/JXKit": {
+  "abstract" : [
+    {
+      "text" : "Cross-platform interface to JavaScriptCore in fluent Swift.",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "JXKit",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit"
+},
+"doc://JXKit/documentation/JXKit/JXContext": {
+  "abstract" : [
+    {
+      "text" : "A JavaScript execution context. This is a cross-platform analogue to the Objective-C ",
+      "type" : "text"
+    },
+    {
+      "code" : "JavaScriptCore.JSContext",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXContext"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXContext"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXContext",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext"
+},
+"doc://JXKit/documentation/JXKit/JXContext/proxyPrototype": {
+  "abstract" : [
+    {
+      "text" : "Returns the global “Proxy” prototype.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "proxyPrototype"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/proxyPrototype",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "proxyPrototype",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/proxyprototype"
+},
+"doc://JXKit/documentation/JXKit/JXValue": {
+  "abstract" : [
+    {
+      "text" : "A JavaScript object.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXValue"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXValue",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue"
+}
+}
+}

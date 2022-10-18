@@ -194,6 +194,7 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isNumber",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isObject",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isPromise",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isProxy",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isSealed",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isString",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isSymbol",
@@ -233,6 +234,7 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isInstance(of:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/preventExtensions()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/propertyDescriptor(_:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/proxy(get:set:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/removeProperty(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/seal()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setElement(_:at:)",
@@ -3566,6 +3568,43 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/ispromise"
 },
+"doc://JXKit/documentation/JXKit/JXValue/isProxy": {
+  "abstract" : [
+    {
+      "text" : "Tests whether a JavaScript value’s type is the promise type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isProxy"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isProxy",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isProxy",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/isproxy"
+},
 "doc://JXKit/documentation/JXKit/JXValue/isSealed": {
   "abstract" : [
     {
@@ -3943,6 +3982,93 @@
   "title" : "prototype",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/prototype"
+},
+"doc://JXKit/documentation/JXKit/JXValue/proxy(get:set:)": {
+  "abstract" : [
+    {
+      "text" : "Creates a JavaScript ",
+      "type" : "text"
+    },
+    {
+      "code" : "Proxy",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " object wrapping this object and intercepting all property getters and setters.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "proxy"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "get"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit10JXFunctiona",
+      "text" : "JXFunction"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "set"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit10JXFunctiona",
+      "text" : "JXFunction"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/proxy(get:set:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "proxy(get:set:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/proxy(get:set:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue/removeProperty(_:)": {
   "abstract" : [
