@@ -98,7 +98,7 @@ Swift code.
               targets: ["MyPackage"]),
       ],
       dependencies: [
-          .package(name: "JXKit", url: "https://github.com/jectivex/JXKit.git", .upToNextMajor(from: "2.0")),
+          .package(name: "JXKit", url: "https://github.com/jectivex/JXKit.git", .upToNextMajor(from: "3.0.0")),
       ],
       targets: [
           .target(

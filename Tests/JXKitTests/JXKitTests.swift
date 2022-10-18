@@ -80,8 +80,10 @@ final class JXKitTests: XCTestCase {
 
         // create a proxy that upper-cases all string property gets and lower-cases all property sets
         let proxy = try dict.proxy { ctx, obj, args in
+            //try args[0][args[1].string]
             try ctx.string(args[0][args[1].string].string.uppercased())
         } set: { ctx, obj, args in
+            //try args[0].setProperty(args[1].string, args[2])
             try args[0].setProperty(args[1].string, ctx.string(args[2].string.lowercased()))
         }
 
