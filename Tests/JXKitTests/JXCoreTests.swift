@@ -535,15 +535,22 @@ class JXCoreTests: XCTestCase {
         XCTAssertEqual(0, try emptyarray.count)
     }
 
-    func testEvalWithArguments() throws {
+    func testWithValues() throws {
         let jxc = JXContext()
-        var result = try jxc.eval("$0 + $1", withArguments: [1, 2])
+        var result = try jxc.withValues([1, 2]) { try jxc.eval("$0 + $1") }
         XCTAssertEqual(try result.int, 3)
         XCTAssertTrue(try jxc.global["$0"].isUndefined)
         XCTAssertTrue(try jxc.global["$1"].isUndefined)
 
-        result = try jxc.eval("$0 + $1 + $2", withArguments: ["a", 1, "c"])
+        result = try jxc.withValues("a", 1, "c") { try jxc.eval("$0 + $1 + $2") }
         XCTAssertEqual(try result.string, "a1c")
+
+        do {
+            let _ = try jxc.withValues(1) { try jxc.eval("*= $0") }
+            XCTFail("eval should have thrown syntax error")
+        } catch {
+            XCTAssertTrue(try jxc.global["$0"].isUndefined)
+        }
     }
 
     func testNew() throws {

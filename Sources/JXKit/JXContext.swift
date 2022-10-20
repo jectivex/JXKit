@@ -78,10 +78,7 @@ open class JXContext {
 extension JXContext {
 
     /// Evaluates the JavaScript.
-    ///
-    /// - Parameters:
-    ///   - arguments: Arguments to make available to the executing JavaScript as vars with names '$0, $1, ...'.
-    @discardableResult public func eval(_ script: String, this: JXValue? = nil, withArguments arguments: [JXValue] = []) throws -> JXValue {
+    @discardableResult public func eval(_ script: String, this: JXValue? = nil) throws -> JXValue {
         if strict == true && strictEvaluated == false {
             let useStrict = "\"use strict\";\n" // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
             let script = useStrict.withCString(JSStringCreateWithUTF8CString)
@@ -94,24 +91,10 @@ extension JXContext {
 
         let script = script.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(script) }
-
-        let properties: [(name: String, value: JXValue)] = arguments.enumerated().map { ("$\($0)", $1) }
-        try properties.forEach { try global.setProperty($0.name, $0.value) }
         let result = try trying {
             JSEvaluateScript(contextRef, script, this?.valueRef, nil, 0, $0)
         }
-        try properties.forEach { try global.removeProperty($0.name) }
-
         return result.map { JXValue(context: self, valueRef: $0) } ?? JXValue(undefinedIn: self)
-    }
-
-    /// Evaluates the JavaScript.
-    ///
-    /// - Parameters:
-    ///   - arguments: Arguments to make available to the executing JavaScript as vars with names '$0, $1, ...'. The arguments will be `conveyed` to `JXValues`.
-    @discardableResult public func eval(_ script: String, this: JXValue? = nil, withArguments arguments: [Any]) throws -> JXValue {
-        let jxarguments = try arguments.map { try convey($0) }
-        return try eval(script, this: this, withArguments: jxarguments)
     }
 
     /// Asynchronously evaluates the given script.
@@ -121,8 +104,8 @@ extension JXContext {
     ///
     /// - Parameters:
     ///   - arguments: Arguments to make available to the executing JavaScript as vars with names '$0, $1, ...'.
-    @discardableResult public func eval(_ script: String, this: JXValue? = nil, priority: TaskPriority, withArguments arguments: [JXValue] = []) async throws -> JXValue {
-        let promise = try eval(script, this: this, withArguments: arguments)
+    @discardableResult public func eval(_ script: String, this: JXValue? = nil, priority: TaskPriority) async throws -> JXValue {
+        let promise = try eval(script, this: this)
         guard try promise.isPromise else {
             throw JXErrors.asyncEvalMustReturnPromise
         }
@@ -161,18 +144,6 @@ extension JXContext {
         }
     }
 
-    /// Asynchronously evaluates the given script.
-    ///
-    /// The script is expected to return a `Promise` either directly or through the implicit promise
-    /// that is created in async calls.
-    ///
-    /// - Parameters:
-    ///   - arguments: Arguments to make available to the executing JavaScript as vars with names '$0, $1, ...'. The arguments will be `conveyed` to `JXValues`.
-    @discardableResult public func eval(_ script: String, this: JXValue? = nil, priority: TaskPriority, withArguments arguments: [Any]) async throws -> JXValue {
-        let jxarguments = try arguments.map { try convey($0) }
-        return try await eval(script, this: this, priority: priority, withArguments: jxarguments)
-    }
-
     /// Checks for syntax errors in a string of JavaScript.
     ///
     /// - Parameters:
@@ -201,6 +172,51 @@ extension JXContext {
     /// The global object.
     public var global: JXValue {
         JXValue(context: self, valueRef: JSContextGetGlobalObject(contextRef))
+    }
+
+    /// Makes the given values available as properties on the global object during the execution of the code within the given closure.
+    ///
+    /// - Parameters:
+    ///   - values: Values to set on the global object. The values will be named $0, $1, $2, ...
+    ///   - execute: The code to execute using the given values.
+    /// - Returns: The result of the closure.
+    @discardableResult public func withValues<R>(_ values: [JXValue], execute: () throws -> R) rethrows -> R {
+        try values.enumerated().forEach { try global.setProperty("$\($0.offset)", $0.element) }
+        defer {
+            (0..<values.count).forEach { do { try global.removeProperty("$\($0)") } catch {} }
+        }
+        return try execute()
+    }
+
+    /// Makes the given values available as properties on the global object during the execution of the code within the given closure.
+    ///
+    /// - Parameters:
+    ///   - values: Values to set on the global object. The values will be named $0, $1, $2, ...
+    ///   - execute: The code to execute using the given values.
+    /// - Returns: The result of the closure.
+    @discardableResult public func withValues<R>(_ values: JXValue..., execute: () throws -> R) rethrows -> R {
+        return try withValues(values, execute: execute)
+    }
+
+    /// Makes the given values available as properties on the global object during the execution of the code within the given closure.
+    ///
+    /// - Parameters:
+    ///   - values: Values to set on the global object. The values will be named $0, $1, $2, ... The values will be `conveyed` to `JXValues`.
+    ///   - execute: The code to execute using the given values.
+    /// - Returns: The result of the closure.
+    @discardableResult public func withValues<R>(_ values: [Any], execute: () throws -> R) rethrows -> R {
+        let jxvalues = try values.map { try convey($0) }
+        return try withValues(jxvalues, execute: execute)
+    }
+
+    /// Makes the given values available as properties on the global object during the execution of the code within the given closure.
+    ///
+    /// - Parameters:
+    ///   - values: Values to set on the global object. The values will be named $0, $1, $2, ... The values will be `conveyed` to `JXValues`.
+    ///   - execute: The code to execute using the given values.
+    /// - Returns: The result of the closure.
+    @discardableResult public func withValues<R>(_ values: Any..., execute: () throws -> R) rethrows -> R {
+        return try withValues(values, execute: execute)
     }
 
     /// Invokes the given closure with the bytes without copying.
@@ -337,7 +353,7 @@ extension JXContext {
         // The only way to create a new class instance is with 'new X(...)', so generate that code
         let argumentsString = (0..<arguments.count).map({ "$\($0)" }).joined(separator: ",")
         let code = "new \(typeName)(\(argumentsString))"
-        return try eval(code, withArguments: arguments)
+        return try withValues(arguments) { try eval(code) }
     }
 
     /// Creates an instance of the named class or constructor function.
