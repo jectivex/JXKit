@@ -90,10 +90,13 @@ extension JXContext {
         }
 
         let script = script.withCString(JSStringCreateWithUTF8CString)
+
         defer { JSStringRelease(script) }
+
         let result = try trying {
             JSEvaluateScript(contextRef, script, this?.valueRef, nil, 0, $0)
         }
+
         return result.map { JXValue(context: self, valueRef: $0) } ?? JXValue(undefinedIn: self)
     }
 
@@ -101,9 +104,6 @@ extension JXContext {
     ///
     /// The script is expected to return a `Promise` either directly or through the implicit promise
     /// that is created in async calls.
-    ///
-    /// - Parameters:
-    ///   - arguments: Arguments to make available to the executing JavaScript as vars with names '$0, $1, ...'.
     @discardableResult public func eval(_ script: String, this: JXValue? = nil, priority: TaskPriority) async throws -> JXValue {
         let promise = try eval(script, this: this)
         guard try promise.isPromise else {
