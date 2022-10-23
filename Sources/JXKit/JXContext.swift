@@ -77,7 +77,7 @@ open class JXContext {
 
 extension JXContext {
 
-    /// Evaulates the JavaScript.
+    /// Evaluates the JavaScript.
     @discardableResult public func eval(_ script: String, this: JXValue? = nil) throws -> JXValue {
         if strict == true && strictEvaluated == false {
             let useStrict = "\"use strict\";\n" // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
@@ -100,11 +100,11 @@ extension JXContext {
         return result.map { JXValue(context: self, valueRef: $0) } ?? JXValue(undefinedIn: self)
     }
 
-    /// Asynchronously evaulates the given script.
+    /// Asynchronously evaluates the given script.
     ///
     /// The script is expected to return a `Promise` either directly or through the implicit promise
     /// that is created in async calls.
-    @discardableResult public func eval(_ script: String, method: Bool = true, this: JXValue? = nil, priority: TaskPriority) async throws -> JXValue {
+    @discardableResult public func eval(_ script: String, this: JXValue? = nil, priority: TaskPriority) async throws -> JXValue {
         let promise = try eval(script, this: this)
         guard try promise.isPromise else {
             throw JXErrors.asyncEvalMustReturnPromise
@@ -172,6 +172,51 @@ extension JXContext {
     /// The global object.
     public var global: JXValue {
         JXValue(context: self, valueRef: JSContextGetGlobalObject(contextRef))
+    }
+
+    /// Makes the given values available as properties on the global object during the execution of the code within the given closure.
+    ///
+    /// - Parameters:
+    ///   - values: Values to set on the global object. The values will be named $0, $1, $2, ...
+    ///   - execute: The code to execute using the given values.
+    /// - Returns: The result of the closure.
+    @discardableResult public func withValues<R>(_ values: [JXValue], execute: () throws -> R) rethrows -> R {
+        try values.enumerated().forEach { try global.setProperty("$\($0.offset)", $0.element) }
+        defer {
+            (0..<values.count).forEach { do { try global.removeProperty("$\($0)") } catch {} }
+        }
+        return try execute()
+    }
+
+    /// Makes the given values available as properties on the global object during the execution of the code within the given closure.
+    ///
+    /// - Parameters:
+    ///   - values: Values to set on the global object. The values will be named $0, $1, $2, ...
+    ///   - execute: The code to execute using the given values.
+    /// - Returns: The result of the closure.
+    @discardableResult public func withValues<R>(_ values: JXValue..., execute: () throws -> R) rethrows -> R {
+        return try withValues(values, execute: execute)
+    }
+
+    /// Makes the given values available as properties on the global object during the execution of the code within the given closure.
+    ///
+    /// - Parameters:
+    ///   - values: Values to set on the global object. The values will be named $0, $1, $2, ... The values will be `conveyed` to `JXValues`.
+    ///   - execute: The code to execute using the given values.
+    /// - Returns: The result of the closure.
+    @discardableResult public func withValues<R>(_ values: [Any], execute: () throws -> R) rethrows -> R {
+        let jxvalues = try values.map { try convey($0) }
+        return try withValues(jxvalues, execute: execute)
+    }
+
+    /// Makes the given values available as properties on the global object during the execution of the code within the given closure.
+    ///
+    /// - Parameters:
+    ///   - values: Values to set on the global object. The values will be named $0, $1, $2, ... The values will be `conveyed` to `JXValues`.
+    ///   - execute: The code to execute using the given values.
+    /// - Returns: The result of the closure.
+    @discardableResult public func withValues<R>(_ values: Any..., execute: () throws -> R) rethrows -> R {
+        return try withValues(values, execute: execute)
     }
 
     /// Invokes the given closure with the bytes without copying.
@@ -334,6 +379,36 @@ extension JXContext {
         return object
     }
 
+    /// Creates an object with the given dictionary of properties.
+    @inlinable public func object(fromDictionary properties: [String: Any]) throws -> JXValue {
+        let jxproperties = try properties.reduce(into: [:]) { result, entry in
+            result[entry.key] = try convey(entry.value)
+        }
+        return try object(fromDictionary: jxproperties)
+    }
+
+    /// Creates an instance of the named class or constructor function.
+    ///
+    /// - Parameters:
+    ///   - typeName: Class or constructor function name.
+    ///   - arguments: The arguments to pass to the constructor.
+    @inlinable public func `new`(_ typeName: String, withArguments arguments: [JXValue] = []) throws -> JXValue {
+        // The only way to create a new class instance is with 'new X(...)', so generate that code
+        let argumentsString = (0..<arguments.count).map({ "$\($0)" }).joined(separator: ",")
+        let code = "new \(typeName)(\(argumentsString))"
+        return try withValues(arguments) { try eval(code) }
+    }
+
+    /// Creates an instance of the named class or constructor function.
+    ///
+    /// - Parameters:
+    ///   - typeName: Class or constructor function name.
+    ///   - arguments: The arguments to pass to the constructor. The arguments will be `conveyed` to `JXValues`.
+    @inlinable public func `new`(_ typeName: String, withArguments arguments: [Any]) throws -> JXValue {
+        let jxarguments = try arguments.map { try convey($0) }
+        return try self.new(typeName, withArguments: jxarguments)
+    }
+
     /// Creates a new array in this context.
     @inlinable public func array(_ values: [JXValue]) throws -> JXValue {
         let array = try JXValue(newArrayIn: self)
@@ -341,6 +416,12 @@ extension JXContext {
             try array.setElement(value, at: index)
         }
         return array
+    }
+
+    /// Creates a new array in this context.
+    @inlinable public func array(_ values: [Any]) throws -> JXValue {
+        let jxvalues = try values.map { try convey($0) }
+        return try array(jxvalues)
     }
 
     @inlinable public func date(_ value: Date) throws -> JXValue {

@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Calls an object as a function.",
+      "text" : "Sets the property of the object to the given value.",
       "type" : "text"
     }
   ],
@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/call(withArguments:this:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)-2b8yz"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC4call13withArguments4thisACSayACG_ACSgtKF",
+    "externalID" : "s:5JXKit7JXValueC11setPropertyyACSS_yptKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,45 +32,28 @@
       },
       {
         "kind" : "identifier",
-        "text" : "call"
+        "text" : "setProperty"
       },
       {
         "kind" : "text",
         "text" : "("
       },
       {
-        "kind" : "externalParam",
-        "text" : "withArguments"
-      },
-      {
-        "kind" : "text",
-        "text" : ": ["
-      },
-      {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
       },
       {
         "kind" : "text",
-        "text" : "], "
+        "text" : ", "
       },
       {
-        "kind" : "externalParam",
-        "text" : "this"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
+        "kind" : "keyword",
+        "text" : "Any"
       },
       {
         "kind" : "text",
-        "text" : "?) "
+        "text" : ") "
       },
       {
         "kind" : "keyword",
@@ -94,7 +77,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "call(withArguments:this:)"
+    "title" : "setProperty(_:_:)"
   },
   "primaryContentSections" : [
     {
@@ -125,7 +108,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "call"
+              "text" : "setProperty"
             },
             {
               "kind" : "text",
@@ -133,7 +116,7 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "withArguments"
+              "text" : "_"
             },
             {
               "kind" : "text",
@@ -141,39 +124,44 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "arguments"
-            },
-            {
-              "kind" : "text",
-              "text" : ": ["
-            },
-            {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
-            },
-            {
-              "kind" : "text",
-              "text" : "] = [], "
-            },
-            {
-              "kind" : "externalParam",
-              "text" : "this"
+              "text" : "key"
             },
             {
               "kind" : "text",
               "text" : ": "
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
             },
             {
               "kind" : "text",
-              "text" : "? = nil) "
+              "text" : ", "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "_"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "internalParam",
+              "text" : "newValue"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "Any"
+            },
+            {
+              "kind" : "text",
+              "text" : ") "
             },
             {
               "kind" : "keyword",
@@ -205,7 +193,7 @@
         {
           "inlineContent" : [
             {
-              "text" : "The object that results from calling object as a function",
+              "text" : "The value itself.",
               "type" : "text"
             }
           ],
@@ -222,41 +210,33 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "The arguments pass to the function.",
+                  "text" : "The key name to set.",
                   "type" : "text"
                 }
               ],
               "type" : "paragraph"
             }
           ],
-          "name" : "arguments"
+          "name" : "key"
         },
         {
           "content" : [
             {
               "inlineContent" : [
                 {
-                  "text" : "The object to use as ",
+                  "text" : "The value of the property. The value will be ",
                   "type" : "text"
                 },
                 {
-                  "code" : "this",
+                  "code" : "conveyed",
                   "type" : "codeVoice"
                 },
                 {
-                  "text" : ", or ",
+                  "text" : " to a ",
                   "type" : "text"
                 },
                 {
-                  "code" : "nil",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : " to use the global object as ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "this",
+                  "code" : "JXValue",
                   "type" : "codeVoice"
                 },
                 {
@@ -267,7 +247,7 @@
               "type" : "paragraph"
             }
           ],
-          "name" : "this"
+          "name" : "newValue"
         }
       ]
     }
@@ -283,7 +263,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxvalue\/call(witharguments:this:)"
+        "\/documentation\/jxkit\/jxvalue\/setproperty(_:_:)-2b8yz"
       ],
       "traits" : [
         {
@@ -342,10 +322,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue"
 },
-"doc://JXKit/documentation/JXKit/JXValue/call(withArguments:this:)": {
+"doc://JXKit/documentation/JXKit/JXValue/setProperty(_:_:)-2b8yz": {
   "abstract" : [
     {
-      "text" : "Calls an object as a function.",
+      "text" : "Sets the property of the object to the given value.",
       "type" : "text"
     }
   ],
@@ -360,45 +340,28 @@
     },
     {
       "kind" : "identifier",
-      "text" : "call"
+      "text" : "setProperty"
     },
     {
       "kind" : "text",
       "text" : "("
     },
     {
-      "kind" : "externalParam",
-      "text" : "withArguments"
-    },
-    {
-      "kind" : "text",
-      "text" : ": ["
-    },
-    {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
     },
     {
       "kind" : "text",
-      "text" : "], "
+      "text" : ", "
     },
     {
-      "kind" : "externalParam",
-      "text" : "this"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
+      "kind" : "keyword",
+      "text" : "Any"
     },
     {
       "kind" : "text",
-      "text" : "?) "
+      "text" : ") "
     },
     {
       "kind" : "keyword",
@@ -414,12 +377,12 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/call(withArguments:this:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)-2b8yz",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "call(withArguments:this:)",
+  "title" : "setProperty(_:_:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/call(witharguments:this:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/setproperty(_:_:)-2b8yz"
 }
 }
 }

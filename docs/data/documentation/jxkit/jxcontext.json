@@ -163,7 +163,8 @@
     },
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/array(_:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/array(_:)-2llxz",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/array(_:)-34kek",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/boolean(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/checkSyntax(_:sourceURL:startingLineNumber:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/convey(_:)",
@@ -171,19 +172,26 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/date(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/encode(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/error(_:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:method:this:priority:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:priority:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/garbageCollect()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/json(_:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/new(_:withArguments:)-1xova",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/new(_:withArguments:)-3fkrm",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/null()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/number(_:)-3hm3m",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/number(_:)-7xicn",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(fromDictionary:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(fromDictionary:)-97yvg",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(fromDictionary:)-y0ba",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(peer:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/string(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/symbol(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/undefined()",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withArrayBuffer(source:block:)"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withArrayBuffer(source:block:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-1q2y0",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-2z1rf",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-73utz",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-7fry6"
       ],
       "title" : "Instance Methods"
     }
@@ -269,7 +277,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/array(_:)": {
+"doc://JXKit/documentation/JXKit/JXContext/array(_:)-2llxz": {
   "abstract" : [
     {
       "text" : "Creates a new array in this context.",
@@ -316,12 +324,65 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/array(_:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/array(_:)-2llxz",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "array(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/array(_:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/array(_:)-2llxz"
+},
+"doc://JXKit/documentation/JXKit/JXContext/array(_:)-34kek": {
+  "abstract" : [
+    {
+      "text" : "Creates a new array in this context.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "array"
+    },
+    {
+      "kind" : "text",
+      "text" : "(["
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : "]) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/array(_:)-34kek",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "array(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/array(_:)-34kek"
 },
 "doc://JXKit/documentation/JXKit/JXContext/arrayBufferPrototype": {
   "abstract" : [
@@ -931,123 +992,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/errorprototype"
 },
-"doc://JXKit/documentation/JXKit/JXContext/eval(_:method:this:priority:)": {
-  "abstract" : [
-    {
-      "text" : "Asynchronously evaulates the given script.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "eval"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "method"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "this"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    },
-    {
-      "kind" : "text",
-      "text" : "?, "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "priority"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:ScP",
-      "text" : "TaskPriority"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "async"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:method:this:priority:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "eval(_:method:this:priority:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:method:this:priority:)"
-},
 "doc://JXKit/documentation/JXKit/JXContext/eval(_:this:)": {
   "abstract" : [
     {
-      "text" : "Evaulates the JavaScript.",
+      "text" : "Evaluates the JavaScript.",
       "type" : "text"
     }
   ],
@@ -1114,6 +1062,102 @@
   "title" : "eval(_:this:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:)"
+},
+"doc://JXKit/documentation/JXKit/JXContext/eval(_:this:priority:)": {
+  "abstract" : [
+    {
+      "text" : "Asynchronously evaluates the given script.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "eval"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "this"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "priority"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ScP",
+      "text" : "TaskPriority"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "async"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:priority:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "eval(_:this:priority:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:priority:)"
 },
 "doc://JXKit/documentation/JXKit/JXContext/garbageCollect()": {
   "abstract" : [
@@ -1427,6 +1471,147 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/json(_:)"
 },
+"doc://JXKit/documentation/JXKit/JXContext/new(_:withArguments:)-1xova": {
+  "abstract" : [
+    {
+      "text" : "Creates an instance of the named class or constructor function.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "new"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "withArguments"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : "]) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/new(_:withArguments:)-1xova",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "new(_:withArguments:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/new(_:witharguments:)-1xova"
+},
+"doc://JXKit/documentation/JXKit/JXContext/new(_:withArguments:)-3fkrm": {
+  "abstract" : [
+    {
+      "text" : "Creates an instance of the named class or constructor function.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "new"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "withArguments"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "]) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/new(_:withArguments:)-3fkrm",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "new(_:withArguments:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/new(_:witharguments:)-3fkrm"
+},
 "doc://JXKit/documentation/JXKit/JXContext/null()": {
   "abstract" : [
     {
@@ -1578,7 +1763,77 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/number(_:)-7xicn"
 },
-"doc://JXKit/documentation/JXKit/JXContext/object(fromDictionary:)": {
+"doc://JXKit/documentation/JXKit/JXContext/object(fromDictionary:)-97yvg": {
+  "abstract" : [
+    {
+      "text" : "Creates an object with the given dictionary of properties.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "object"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "fromDictionary"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : " : "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : "]) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(fromDictionary:)-97yvg",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "object(fromDictionary:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/object(fromdictionary:)-97yvg"
+},
+"doc://JXKit/documentation/JXKit/JXContext/object(fromDictionary:)-y0ba": {
   "abstract" : [
     {
       "text" : "Creates an object with the given dictionary of properties.",
@@ -1642,12 +1897,12 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(fromDictionary:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(fromDictionary:)-y0ba",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "object(fromDictionary:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/object(fromdictionary:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/object(fromdictionary:)-y0ba"
 },
 "doc://JXKit/documentation/JXKit/JXContext/object(peer:)": {
   "abstract" : [
@@ -2189,6 +2444,344 @@
   "title" : "withArrayBuffer(source:block:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/witharraybuffer(source:block:)"
+},
+"doc://JXKit/documentation/JXKit/JXContext/withValues(_:execute:)-1q2y0": {
+  "abstract" : [
+    {
+      "text" : "Makes the given values available as properties on the global object during the execution of the code within the given closure.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "withValues"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "R"
+    },
+    {
+      "kind" : "text",
+      "text" : ">(["
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : "], "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "execute"
+    },
+    {
+      "kind" : "text",
+      "text" : ": () "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "R"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "rethrows"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "R"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-1q2y0",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "withValues(_:execute:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-1q2y0"
+},
+"doc://JXKit/documentation/JXKit/JXContext/withValues(_:execute:)-2z1rf": {
+  "abstract" : [
+    {
+      "text" : "Makes the given values available as properties on the global object during the execution of the code within the given closure.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "withValues"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "R"
+    },
+    {
+      "kind" : "text",
+      "text" : ">(["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "], "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "execute"
+    },
+    {
+      "kind" : "text",
+      "text" : ": () "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "R"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "rethrows"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "R"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-2z1rf",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "withValues(_:execute:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-2z1rf"
+},
+"doc://JXKit/documentation/JXKit/JXContext/withValues(_:execute:)-73utz": {
+  "abstract" : [
+    {
+      "text" : "Makes the given values available as properties on the global object during the execution of the code within the given closure.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "withValues"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "R"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : "..., "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "execute"
+    },
+    {
+      "kind" : "text",
+      "text" : ": () "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "R"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "rethrows"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "R"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-73utz",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "withValues(_:execute:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-73utz"
+},
+"doc://JXKit/documentation/JXKit/JXContext/withValues(_:execute:)-7fry6": {
+  "abstract" : [
+    {
+      "text" : "Makes the given values available as properties on the global object during the execution of the code within the given closure.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "withValues"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "R"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "..., "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "execute"
+    },
+    {
+      "kind" : "text",
+      "text" : ": () "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "R"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "rethrows"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "R"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-7fry6",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "withValues(_:execute:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-7fry6"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [

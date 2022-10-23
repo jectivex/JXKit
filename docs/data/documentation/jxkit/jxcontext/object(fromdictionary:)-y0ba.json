@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Calls an object as a constructor.",
+      "text" : "Creates an object with the given dictionary of properties.",
       "type" : "text"
     }
   ],
@@ -9,18 +9,18 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/construct(withArguments:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(fromDictionary:)-y0ba"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC9construct13withArgumentsACSayACG_tKF",
+    "externalID" : "s:5JXKit9JXContextC6object14fromDictionaryAA7JXValueCSDySSAGG_tKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,7 +32,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "construct"
+        "text" : "object"
       },
       {
         "kind" : "text",
@@ -40,11 +40,20 @@
       },
       {
         "kind" : "externalParam",
-        "text" : "withArguments"
+        "text" : "fromDictionary"
       },
       {
         "kind" : "text",
         "text" : ": ["
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
+      },
+      {
+        "kind" : "text",
+        "text" : " : "
       },
       {
         "kind" : "typeIdentifier",
@@ -77,7 +86,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "construct(withArguments:)"
+    "title" : "object(fromDictionary:)"
   },
   "primaryContentSections" : [
     {
@@ -100,7 +109,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "construct"
+              "text" : "object"
             },
             {
               "kind" : "text",
@@ -108,7 +117,7 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "withArguments"
+              "text" : "fromDictionary"
             },
             {
               "kind" : "text",
@@ -116,11 +125,20 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "arguments"
+              "text" : "properties"
             },
             {
               "kind" : "text",
               "text" : ": ["
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : " : "
             },
             {
               "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
@@ -152,26 +170,6 @@
       "kind" : "declarations"
     },
     {
-      "content" : [
-        {
-          "anchor" : "return-value",
-          "level" : 2,
-          "text" : "Return Value",
-          "type" : "heading"
-        },
-        {
-          "inlineContent" : [
-            {
-              "text" : "The object that results from calling object as a constructor.",
-              "type" : "text"
-            }
-          ],
-          "type" : "paragraph"
-        }
-      ],
-      "kind" : "content"
-    },
-    {
       "kind" : "parameters",
       "parameters" : [
         {
@@ -179,14 +177,22 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "The arguments pass to the function.",
+                  "text" : "A dictionary of properties, such as that created by ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "JXValue.dictionary",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : ".",
                   "type" : "text"
                 }
               ],
               "type" : "paragraph"
             }
           ],
-          "name" : "arguments"
+          "name" : "properties"
         }
       ]
     }
@@ -202,7 +208,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxvalue\/construct(witharguments:)"
+        "\/documentation\/jxkit\/jxcontext\/object(fromdictionary:)-y0ba"
       ],
       "traits" : [
         {
@@ -226,6 +232,119 @@
   "title" : "JXKit",
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
+},
+"doc://JXKit/documentation/JXKit/JXContext": {
+  "abstract" : [
+    {
+      "text" : "A JavaScript execution context. This is a cross-platform analogue to the Objective-C ",
+      "type" : "text"
+    },
+    {
+      "code" : "JavaScriptCore.JSContext",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXContext"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXContext"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXContext",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext"
+},
+"doc://JXKit/documentation/JXKit/JXContext/object(fromDictionary:)-y0ba": {
+  "abstract" : [
+    {
+      "text" : "Creates an object with the given dictionary of properties.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "object"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "fromDictionary"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : " : "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "]) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(fromDictionary:)-y0ba",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "object(fromDictionary:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/object(fromdictionary:)-y0ba"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
@@ -260,68 +379,6 @@
   "title" : "JXValue",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue"
-},
-"doc://JXKit/documentation/JXKit/JXValue/construct(withArguments:)": {
-  "abstract" : [
-    {
-      "text" : "Calls an object as a constructor.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "construct"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "withArguments"
-    },
-    {
-      "kind" : "text",
-      "text" : ": ["
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    },
-    {
-      "kind" : "text",
-      "text" : "]) "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/construct(withArguments:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "construct(withArguments:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/construct(witharguments:)"
 }
 }
 }

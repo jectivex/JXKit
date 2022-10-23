@@ -606,7 +606,7 @@ extension JXValue {
     /// Calls an object as a function.
     ///
     /// - Parameters:
-    ///   - arguments: The arguments pass to the function.
+    ///   - arguments: The arguments to pass to the function.
     ///   - this: The object to use as `this`, or `nil` to use the global object as `this`.
     /// - Returns: The object that results from calling object as a function
     @discardableResult @inlinable public func call(withArguments arguments: [JXValue] = [], this: JXValue? = nil) throws -> JXValue {
@@ -623,27 +623,60 @@ extension JXValue {
         } ?? JXValue(undefinedIn: context)
     }
 
+    /// Calls an object as a function.
+    ///
+    /// - Parameters:
+    ///   - arguments: The arguments to pass to the function. The arguments will be `conveyed` to `JXValues`.
+    ///   - this: The object to use as `this`, or `nil` to use the global object as `this`.
+    /// - Returns: The object that results from calling object as a function
+    @discardableResult @inlinable public func call(withArguments arguments: [Any], this: JXValue? = nil) throws -> JXValue {
+        let jxarguments = try arguments.map { try context.convey($0) }
+        return try call(withArguments: jxarguments, this: this)
+    }
+
     /// Calls an object as a constructor.
     ///
     /// - Parameters:
-    ///   - arguments: The arguments pass to the function.
+    ///   - arguments: The arguments to pass to the function.
     /// - Returns: The object that results from calling object as a constructor.
-    @inlinable public func construct(withArguments arguments: [JXValue]) throws -> JXValue {
+    @inlinable public func construct(withArguments arguments: [JXValue] = []) throws -> JXValue {
         let result = try context.trying {
             JSObjectCallAsConstructor(context.contextRef, valueRef, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.valueRef }, $0)
         }
         return result.map { JXValue(context: context, valueRef: $0) } ?? JXValue(undefinedIn: context)
     }
 
+    /// Calls an object as a constructor.
+    ///
+    /// - Parameters:
+    ///   - arguments: The arguments to pass to the function. The arguments will be `conveyed` to `JXValues`.
+    /// - Returns: The object that results from calling object as a constructor.
+    @inlinable public func construct(withArguments arguments: [Any]) throws -> JXValue {
+        let jxarguments = try arguments.map { try context.convey($0) }
+        return try construct(withArguments: jxarguments)
+    }
+
     /// Invoke an object's method.
     ///
     /// - Parameters:
-    ///   - name: The name of method.
-    ///   - arguments: The arguments pass to the function.
+    ///   - name: The name of the method.
+    ///   - arguments: The arguments to pass to the function.
     /// - Returns: The object that results from calling the method.
     @discardableResult
-    @inlinable public func invokeMethod(_ name: String, withArguments arguments: [JXValue]) throws -> JXValue {
+    @inlinable public func invokeMethod(_ name: String, withArguments arguments: [JXValue] = []) throws -> JXValue {
         try self[name].call(withArguments: arguments, this: self)
+    }
+
+    /// Invoke an object's method.
+    ///
+    /// - Parameters:
+    ///   - name: The name of the method.
+    ///   - arguments: The arguments to pass to the function. The arguments will be `conveyed` to `JXValues`.
+    /// - Returns: The object that results from calling the method.
+    @discardableResult
+    @inlinable public func invokeMethod(_ name: String, withArguments arguments: [Any]) throws -> JXValue {
+        let jxarguments = try arguments.map { try context.convey($0) }
+        return try invokeMethod(name, withArguments: jxarguments)
     }
 }
 
@@ -778,9 +811,9 @@ extension JXValue {
     /// Sets the property of the object to the given value.
     ///
     /// - Parameters:
-    ///   - key: the key name to set
-    ///   - newValue: the value of the property
-    /// - Returns: the value itself
+    ///   - key: The key name to set.
+    ///   - newValue: The value of the property.
+    /// - Returns: The value itself.
     @discardableResult @inlinable public func setProperty(_ key: String, _ newValue: JXValue) throws -> JXValue {
         if !isObject {
             throw JXErrors.valueNotObject
@@ -794,12 +827,22 @@ extension JXValue {
         return newValue
     }
 
+    /// Sets the property of the object to the given value.
+    ///
+    /// - Parameters:
+    ///   - key: The key name to set.
+    ///   - newValue: The value of the property. The value will be `conveyed` to a `JXValue`.
+    /// - Returns: The value itself.
+    @discardableResult @inlinable public func setProperty(_ key: String, _ newValue: Any) throws -> JXValue {
+        return try setProperty(key, context.convey(newValue))
+    }
+
     /// Sets the property specified by the symbol key.
     ///
     /// - Parameters:
-    ///   - key: the name of the symbol to use
-    ///   - newValue: the value to set the property
-    /// - Returns: the value itself
+    ///   - key: The name of the symbol to use.
+    ///   - newValue: The value to set the property.
+    /// - Returns: The value itself.
     @discardableResult @inlinable public func setProperty(symbol: JXValue, _ newValue: JXValue) throws -> JXValue {
         if !isObject {
             throw JXErrors.valueNotObject
@@ -809,6 +852,16 @@ extension JXValue {
             JSObjectSetPropertyForKey(context.contextRef, valueRef, symbol.valueRef, newValue.valueRef, 0, $0)
         }
         return newValue
+    }
+
+    /// Sets the property specified by the symbol key.
+    ///
+    /// - Parameters:
+    ///   - key: The name of the symbol to use.
+    ///   - newValue: The value to set the property. The value will be `conveyed` to a `JXValue`.
+    /// - Returns: The value itself.
+    @discardableResult @inlinable public func setProperty(symbol: JXValue, _ newValue: Any) throws -> JXValue {
+        return try setProperty(symbol: symbol, context.convey(newValue))
     }
 }
 
@@ -837,9 +890,19 @@ extension JXValue {
         }
     }
 
+    /// Set an element of this array, overwriting any previous element.
+    @inlinable public func setElement(_ element: Any, at index: Int) throws {
+        try setElement(context.convey(element), at: index)
+    }
+
     /// Adds the given object as the final element of this array.
     @inlinable public func addElement(_ object: JXValue) throws {
-        try self.setElement(object, at: count)
+        try setElement(object, at: count)
+    }
+
+    /// Adds the given object as the final element of this array.
+    @inlinable public func addElement(_ object: Any) throws {
+        try addElement(context.convey(object))
     }
 
     /// Inserts the given object into this array, shifting subsequent elements.
@@ -848,6 +911,11 @@ extension JXValue {
             try setElement(self[i-1], at: i) // Shift all the latter elements up by one
         }
         try setElement(object, at: index) // And fill in the index (JS permits assigning a non-existent index)
+    }
+
+    /// Inserts the given object into this array, shifting subsequent elements.
+    @inlinable public func insertElement(_ object: Any, at index: Int) throws {
+        try insertElement(context.convey(object), at: index)
     }
 }
 

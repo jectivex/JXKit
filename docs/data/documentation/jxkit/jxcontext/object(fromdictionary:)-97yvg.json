@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Asynchronously evaulates the given script.",
+      "text" : "Creates an object with the given dictionary of properties.",
       "type" : "text"
     }
   ],
@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:method:this:priority:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(fromDictionary:)-97yvg"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC4eval_6method4this8priorityAA7JXValueCSS_SbAISgScPtYaKF",
+    "externalID" : "s:5JXKit9JXContextC6object14fromDictionaryAA7JXValueCSDySSypG_tKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,11 +32,19 @@
       },
       {
         "kind" : "identifier",
-        "text" : "eval"
+        "text" : "object"
       },
       {
         "kind" : "text",
         "text" : "("
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "fromDictionary"
+      },
+      {
+        "kind" : "text",
+        "text" : ": ["
       },
       {
         "kind" : "typeIdentifier",
@@ -45,66 +53,15 @@
       },
       {
         "kind" : "text",
-        "text" : ", "
-      },
-      {
-        "kind" : "externalParam",
-        "text" : "method"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:Sb",
-        "text" : "Bool"
-      },
-      {
-        "kind" : "text",
-        "text" : ", "
-      },
-      {
-        "kind" : "externalParam",
-        "text" : "this"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
-      },
-      {
-        "kind" : "text",
-        "text" : "?, "
-      },
-      {
-        "kind" : "externalParam",
-        "text" : "priority"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:ScP",
-        "text" : "TaskPriority"
-      },
-      {
-        "kind" : "text",
-        "text" : ") "
+        "text" : " : "
       },
       {
         "kind" : "keyword",
-        "text" : "async"
+        "text" : "Any"
       },
       {
         "kind" : "text",
-        "text" : " "
+        "text" : "]) "
       },
       {
         "kind" : "keyword",
@@ -128,7 +85,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "eval(_:method:this:priority:)"
+    "title" : "object(fromDictionary:)"
   },
   "primaryContentSections" : [
     {
@@ -142,14 +99,6 @@
           ],
           "tokens" : [
             {
-              "kind" : "attribute",
-              "text" : "@discardableResult"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
               "kind" : "keyword",
               "text" : "func"
             },
@@ -159,7 +108,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "eval"
+              "text" : "object"
             },
             {
               "kind" : "text",
@@ -167,7 +116,7 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "_"
+              "text" : "fromDictionary"
             },
             {
               "kind" : "text",
@@ -175,11 +124,11 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "script"
+              "text" : "properties"
             },
             {
               "kind" : "text",
-              "text" : ": "
+              "text" : ": ["
             },
             {
               "kind" : "typeIdentifier",
@@ -188,67 +137,15 @@
             },
             {
               "kind" : "text",
-              "text" : ", "
-            },
-            {
-              "kind" : "externalParam",
-              "text" : "method"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:Sb",
-              "text" : "Bool"
-            },
-            {
-              "kind" : "text",
-              "text" : " = true, "
-            },
-            {
-              "kind" : "externalParam",
-              "text" : "this"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
-            },
-            {
-              "kind" : "text",
-              "text" : "? = nil, "
-            },
-            {
-              "kind" : "externalParam",
-              "text" : "priority"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:ScP",
-              "text" : "TaskPriority"
-            },
-            {
-              "kind" : "text",
-              "text" : ") "
+              "text" : " : "
             },
             {
               "kind" : "keyword",
-              "text" : "async"
+              "text" : "Any"
             },
             {
               "kind" : "text",
-              "text" : " "
+              "text" : "]) "
             },
             {
               "kind" : "keyword",
@@ -268,42 +165,6 @@
         }
       ],
       "kind" : "declarations"
-    },
-    {
-      "content" : [
-        {
-          "anchor" : "discussion",
-          "level" : 2,
-          "text" : "Discussion",
-          "type" : "heading"
-        },
-        {
-          "inlineContent" : [
-            {
-              "text" : "The script is expected to return a ",
-              "type" : "text"
-            },
-            {
-              "code" : "Promise",
-              "type" : "codeVoice"
-            },
-            {
-              "text" : " either directly or through the implicit promise",
-              "type" : "text"
-            },
-            {
-              "text" : " ",
-              "type" : "text"
-            },
-            {
-              "text" : "that is created in async calls.",
-              "type" : "text"
-            }
-          ],
-          "type" : "paragraph"
-        }
-      ],
-      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -317,7 +178,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/eval(_:method:this:priority:)"
+        "\/documentation\/jxkit\/jxcontext\/object(fromdictionary:)-97yvg"
       ],
       "traits" : [
         {
@@ -384,10 +245,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/eval(_:method:this:priority:)": {
+"doc://JXKit/documentation/JXKit/JXContext/object(fromDictionary:)-97yvg": {
   "abstract" : [
     {
-      "text" : "Asynchronously evaulates the given script.",
+      "text" : "Creates an object with the given dictionary of properties.",
       "type" : "text"
     }
   ],
@@ -402,11 +263,19 @@
     },
     {
       "kind" : "identifier",
-      "text" : "eval"
+      "text" : "object"
     },
     {
       "kind" : "text",
       "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "fromDictionary"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
     },
     {
       "kind" : "typeIdentifier",
@@ -415,66 +284,15 @@
     },
     {
       "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "method"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "this"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    },
-    {
-      "kind" : "text",
-      "text" : "?, "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "priority"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:ScP",
-      "text" : "TaskPriority"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
+      "text" : " : "
     },
     {
       "kind" : "keyword",
-      "text" : "async"
+      "text" : "Any"
     },
     {
       "kind" : "text",
-      "text" : " "
+      "text" : "]) "
     },
     {
       "kind" : "keyword",
@@ -490,12 +308,12 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:method:this:priority:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(fromDictionary:)-97yvg",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "eval(_:method:this:priority:)",
+  "title" : "object(fromDictionary:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:method:this:priority:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/object(fromdictionary:)-97yvg"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [

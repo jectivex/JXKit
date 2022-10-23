@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Evaluates the JavaScript.",
+      "text" : "Asynchronously evaluates the given script.",
       "type" : "text"
     }
   ],
@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:priority:)"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC4eval_4thisAA7JXValueCSS_AGSgtKF",
+    "externalID" : "s:5JXKit9JXContextC4eval_4this8priorityAA7JXValueCSS_AHSgScPtYaKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -62,7 +62,32 @@
       },
       {
         "kind" : "text",
-        "text" : "?) "
+        "text" : "?, "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "priority"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:ScP",
+        "text" : "TaskPriority"
+      },
+      {
+        "kind" : "text",
+        "text" : ") "
+      },
+      {
+        "kind" : "keyword",
+        "text" : "async"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
       },
       {
         "kind" : "keyword",
@@ -86,7 +111,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "eval(_:this:)"
+    "title" : "eval(_:this:priority:)"
   },
   "primaryContentSections" : [
     {
@@ -164,7 +189,32 @@
             },
             {
               "kind" : "text",
-              "text" : "? = nil) "
+              "text" : "? = nil, "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "priority"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:ScP",
+              "text" : "TaskPriority"
+            },
+            {
+              "kind" : "text",
+              "text" : ") "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "async"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
             },
             {
               "kind" : "keyword",
@@ -184,6 +234,42 @@
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "discussion",
+          "level" : 2,
+          "text" : "Discussion",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "The script is expected to return a ",
+              "type" : "text"
+            },
+            {
+              "code" : "Promise",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " either directly or through the implicit promise",
+              "type" : "text"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "text" : "that is created in async calls.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -197,7 +283,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/eval(_:this:)"
+        "\/documentation\/jxkit\/jxcontext\/eval(_:this:priority:)"
       ],
       "traits" : [
         {
@@ -264,10 +350,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/eval(_:this:)": {
+"doc://JXKit/documentation/JXKit/JXContext/eval(_:this:priority:)": {
   "abstract" : [
     {
-      "text" : "Evaluates the JavaScript.",
+      "text" : "Asynchronously evaluates the given script.",
       "type" : "text"
     }
   ],
@@ -312,7 +398,32 @@
     },
     {
       "kind" : "text",
-      "text" : "?) "
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "priority"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ScP",
+      "text" : "TaskPriority"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "async"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
     },
     {
       "kind" : "keyword",
@@ -328,12 +439,12 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:priority:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "eval(_:this:)",
+  "title" : "eval(_:this:priority:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:priority:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [

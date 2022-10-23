@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Sets the property of the object to the given value.",
+      "text" : "Makes the given values available as properties on the global object during the execution of the code within the given closure.",
       "type" : "text"
     }
   ],
@@ -9,18 +9,18 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-73utz"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC11setPropertyyACSS_ACtKF",
+    "externalID" : "s:5JXKit9JXContextC10withValues_7executexypd_xyKXEtKlF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,29 +32,35 @@
       },
       {
         "kind" : "identifier",
-        "text" : "setProperty"
+        "text" : "withValues"
       },
       {
         "kind" : "text",
-        "text" : "("
+        "text" : "<"
       },
       {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:SS",
-        "text" : "String"
-      },
-      {
-        "kind" : "text",
-        "text" : ", "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
+        "kind" : "genericParameter",
+        "text" : "R"
       },
       {
         "kind" : "text",
-        "text" : ") "
+        "text" : ">("
+      },
+      {
+        "kind" : "keyword",
+        "text" : "Any"
+      },
+      {
+        "kind" : "text",
+        "text" : "..., "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "execute"
+      },
+      {
+        "kind" : "text",
+        "text" : ": () "
       },
       {
         "kind" : "keyword",
@@ -66,8 +72,23 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
+        "text" : "R"
+      },
+      {
+        "kind" : "text",
+        "text" : ") "
+      },
+      {
+        "kind" : "keyword",
+        "text" : "rethrows"
+      },
+      {
+        "kind" : "text",
+        "text" : " -> "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "text" : "R"
       }
     ],
     "modules" : [
@@ -78,7 +99,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "setProperty(_:_:)"
+    "title" : "withValues(_:execute:)"
   },
   "primaryContentSections" : [
     {
@@ -109,11 +130,19 @@
             },
             {
               "kind" : "identifier",
-              "text" : "setProperty"
+              "text" : "withValues"
             },
             {
               "kind" : "text",
-              "text" : "("
+              "text" : "<"
+            },
+            {
+              "kind" : "genericParameter",
+              "text" : "R"
+            },
+            {
+              "kind" : "text",
+              "text" : ">("
             },
             {
               "kind" : "externalParam",
@@ -125,46 +154,27 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "key"
+              "text" : "values"
             },
             {
               "kind" : "text",
               "text" : ": "
             },
             {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:SS",
-              "text" : "String"
+              "kind" : "keyword",
+              "text" : "Any"
             },
             {
               "kind" : "text",
-              "text" : ", "
+              "text" : "..., "
             },
             {
               "kind" : "externalParam",
-              "text" : "_"
+              "text" : "execute"
             },
             {
               "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "internalParam",
-              "text" : "newValue"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
-            },
-            {
-              "kind" : "text",
-              "text" : ") "
+              "text" : ": () "
             },
             {
               "kind" : "keyword",
@@ -175,10 +185,24 @@
               "text" : " -> "
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
+              "text" : "R"
+            },
+            {
+              "kind" : "text",
+              "text" : ") "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "rethrows"
+            },
+            {
+              "kind" : "text",
+              "text" : " -> "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "text" : "R"
             }
           ]
         }
@@ -196,7 +220,7 @@
         {
           "inlineContent" : [
             {
-              "text" : "the value itself",
+              "text" : "The result of the closure.",
               "type" : "text"
             }
           ],
@@ -213,28 +237,44 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "the key name to set",
+                  "text" : "Values to set on the global object. The values will be named $0, $1, $2, … The values will be ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "conveyed",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : " to ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "JXValues",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : ".",
                   "type" : "text"
                 }
               ],
               "type" : "paragraph"
             }
           ],
-          "name" : "key"
+          "name" : "values"
         },
         {
           "content" : [
             {
               "inlineContent" : [
                 {
-                  "text" : "the value of the property",
+                  "text" : "The code to execute using the given values.",
                   "type" : "text"
                 }
               ],
               "type" : "paragraph"
             }
           ],
-          "name" : "newValue"
+          "name" : "execute"
         }
       ]
     }
@@ -250,7 +290,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxvalue\/setproperty(_:_:)"
+        "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-73utz"
       ],
       "traits" : [
         {
@@ -275,10 +315,18 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXValue": {
+"doc://JXKit/documentation/JXKit/JXContext": {
   "abstract" : [
     {
-      "text" : "A JavaScript object.",
+      "text" : "A JavaScript execution context. This is a cross-platform analogue to the Objective-C ",
+      "type" : "text"
+    },
+    {
+      "code" : "JavaScriptCore.JSContext",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
       "type" : "text"
     }
   ],
@@ -293,26 +341,26 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXValue"
+      "text" : "JXContext"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXValue"
+      "text" : "JXContext"
     }
   ],
   "role" : "symbol",
-  "title" : "JXValue",
+  "title" : "JXContext",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue"
+  "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXValue/setProperty(_:_:)": {
+"doc://JXKit/documentation/JXKit/JXContext/withValues(_:execute:)-73utz": {
   "abstract" : [
     {
-      "text" : "Sets the property of the object to the given value.",
+      "text" : "Makes the given values available as properties on the global object during the execution of the code within the given closure.",
       "type" : "text"
     }
   ],
@@ -327,29 +375,35 @@
     },
     {
       "kind" : "identifier",
-      "text" : "setProperty"
+      "text" : "withValues"
     },
     {
       "kind" : "text",
-      "text" : "("
+      "text" : "<"
     },
     {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
+      "kind" : "genericParameter",
+      "text" : "R"
     },
     {
       "kind" : "text",
-      "text" : ") "
+      "text" : ">("
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : "..., "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "execute"
+    },
+    {
+      "kind" : "text",
+      "text" : ": () "
     },
     {
       "kind" : "keyword",
@@ -361,16 +415,31 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
+      "text" : "R"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "rethrows"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "R"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-73utz",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "setProperty(_:_:)",
+  "title" : "withValues(_:execute:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/setproperty(_:_:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-73utz"
 }
 }
 }

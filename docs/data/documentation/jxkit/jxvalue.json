@@ -212,9 +212,12 @@
     },
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/addElement(_:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/call(withArguments:this:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/construct(withArguments:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/addElement(_:)-5lev1",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/addElement(_:)-5ul7f",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/call(withArguments:this:)-1x7gk",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/call(withArguments:this:)-7zt51",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/construct(withArguments:)-4n82x",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/construct(withArguments:)-7o3lb",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)-25bx9",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)-3yphp",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)-4i2u8",
@@ -227,8 +230,10 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/freeze()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/hasProperty(_:)-1e3mh",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/hasProperty(_:)-2ontd",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/insertElement(_:at:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/invokeMethod(_:withArguments:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/insertElement(_:at:)-2x01w",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/insertElement(_:at:)-9qbtd",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/invokeMethod(_:withArguments:)-3nh5",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/invokeMethod(_:withArguments:)-974hn",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isEqual(to:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isEqualWithTypeCoercion(to:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isInstance(of:)",
@@ -237,9 +242,12 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/proxy(get:set:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/removeProperty(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/seal()",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setElement(_:at:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(symbol:_:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setElement(_:at:)-4gb93",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setElement(_:at:)-990j9",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)-2b8yz",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)-5hy7z",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(symbol:_:)-2lwkl",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(symbol:_:)-9aha9",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/toDecodable(ofType:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/toJSON(indent:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/toJXConvertible(in:)"
@@ -475,7 +483,51 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/jxconvertible-implementations"
 },
-"doc://JXKit/documentation/JXKit/JXValue/addElement(_:)": {
+"doc://JXKit/documentation/JXKit/JXValue/addElement(_:)-5lev1": {
+  "abstract" : [
+    {
+      "text" : "Adds the given object as the final element of this array.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "addElement"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/addElement(_:)-5lev1",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "addElement(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/addelement(_:)-5lev1"
+},
+"doc://JXKit/documentation/JXKit/JXValue/addElement(_:)-5ul7f": {
   "abstract" : [
     {
       "text" : "Adds the given object as the final element of this array.",
@@ -513,12 +565,12 @@
       "text" : "throws"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/addElement(_:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/addElement(_:)-5ul7f",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "addElement(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/addelement(_:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/addelement(_:)-5ul7f"
 },
 "doc://JXKit/documentation/JXKit/JXValue/array": {
   "abstract" : [
@@ -643,7 +695,85 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/bytelength"
 },
-"doc://JXKit/documentation/JXKit/JXValue/call(withArguments:this:)": {
+"doc://JXKit/documentation/JXKit/JXValue/call(withArguments:this:)-1x7gk": {
+  "abstract" : [
+    {
+      "text" : "Calls an object as a function.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "call"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "withArguments"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : "], "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "this"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "?) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/call(withArguments:this:)-1x7gk",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "call(withArguments:this:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/call(witharguments:this:)-1x7gk"
+},
+"doc://JXKit/documentation/JXKit/JXValue/call(withArguments:this:)-7zt51": {
   "abstract" : [
     {
       "text" : "Calls an object as a function.",
@@ -715,14 +845,75 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/call(withArguments:this:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/call(withArguments:this:)-7zt51",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "call(withArguments:this:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/call(witharguments:this:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/call(witharguments:this:)-7zt51"
 },
-"doc://JXKit/documentation/JXKit/JXValue/construct(withArguments:)": {
+"doc://JXKit/documentation/JXKit/JXValue/construct(withArguments:)-4n82x": {
+  "abstract" : [
+    {
+      "text" : "Calls an object as a constructor.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "construct"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "withArguments"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : "]) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/construct(withArguments:)-4n82x",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "construct(withArguments:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/construct(witharguments:)-4n82x"
+},
+"doc://JXKit/documentation/JXKit/JXValue/construct(withArguments:)-7o3lb": {
   "abstract" : [
     {
       "text" : "Calls an object as a constructor.",
@@ -777,12 +968,12 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/construct(withArguments:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/construct(withArguments:)-7o3lb",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "construct(withArguments:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/construct(witharguments:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/construct(witharguments:)-7o3lb"
 },
 "doc://JXKit/documentation/JXKit/JXValue/context": {
   "abstract" : [
@@ -2596,7 +2787,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/init(newpromiseresolvedwithresult:in:)"
 },
-"doc://JXKit/documentation/JXKit/JXValue/insertElement(_:at:)": {
+"doc://JXKit/documentation/JXKit/JXValue/insertElement(_:at:)-2x01w": {
   "abstract" : [
     {
       "text" : "Inserts the given object into this array, shifting subsequent elements.",
@@ -2651,12 +2842,73 @@
       "text" : "throws"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/insertElement(_:at:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/insertElement(_:at:)-2x01w",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "insertElement(_:at:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/insertelement(_:at:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/insertelement(_:at:)-2x01w"
+},
+"doc://JXKit/documentation/JXKit/JXValue/insertElement(_:at:)-9qbtd": {
+  "abstract" : [
+    {
+      "text" : "Inserts the given object into this array, shifting subsequent elements.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "insertElement"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "at"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/insertElement(_:at:)-9qbtd",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "insertElement(_:at:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/insertelement(_:at:)-9qbtd"
 },
 "doc://JXKit/documentation/JXKit/JXValue/int": {
   "abstract" : [
@@ -2769,7 +3021,77 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/int64"
 },
-"doc://JXKit/documentation/JXKit/JXValue/invokeMethod(_:withArguments:)": {
+"doc://JXKit/documentation/JXKit/JXValue/invokeMethod(_:withArguments:)-3nh5": {
+  "abstract" : [
+    {
+      "text" : "Invoke an object’s method.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "invokeMethod"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "withArguments"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : "]) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/invokeMethod(_:withArguments:)-3nh5",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "invokeMethod(_:withArguments:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/invokemethod(_:witharguments:)-3nh5"
+},
+"doc://JXKit/documentation/JXKit/JXValue/invokeMethod(_:withArguments:)-974hn": {
   "abstract" : [
     {
       "text" : "Invoke an object’s method.",
@@ -2833,12 +3155,12 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/invokeMethod(_:withArguments:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/invokeMethod(_:withArguments:)-974hn",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "invokeMethod(_:withArguments:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/invokemethod(_:witharguments:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/invokemethod(_:witharguments:)-974hn"
 },
 "doc://JXKit/documentation/JXKit/JXValue/isArray": {
   "abstract" : [
@@ -4176,7 +4498,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/seal()"
 },
-"doc://JXKit/documentation/JXKit/JXValue/setElement(_:at:)": {
+"doc://JXKit/documentation/JXKit/JXValue/setElement(_:at:)-4gb93": {
   "abstract" : [
     {
       "text" : "Set an element of this array, overwriting any previous element.",
@@ -4231,14 +4553,137 @@
       "text" : "throws"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setElement(_:at:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setElement(_:at:)-4gb93",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "setElement(_:at:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/setelement(_:at:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/setelement(_:at:)-4gb93"
 },
-"doc://JXKit/documentation/JXKit/JXValue/setProperty(_:_:)": {
+"doc://JXKit/documentation/JXKit/JXValue/setElement(_:at:)-990j9": {
+  "abstract" : [
+    {
+      "text" : "Set an element of this array, overwriting any previous element.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setElement"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "at"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setElement(_:at:)-990j9",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "setElement(_:at:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/setelement(_:at:)-990j9"
+},
+"doc://JXKit/documentation/JXKit/JXValue/setProperty(_:_:)-2b8yz": {
+  "abstract" : [
+    {
+      "text" : "Sets the property of the object to the given value.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setProperty"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)-2b8yz",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "setProperty(_:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/setproperty(_:_:)-2b8yz"
+},
+"doc://JXKit/documentation/JXKit/JXValue/setProperty(_:_:)-5hy7z": {
   "abstract" : [
     {
       "text" : "Sets the property of the object to the given value.",
@@ -4294,14 +4739,14 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)-5hy7z",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "setProperty(_:_:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/setproperty(_:_:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/setproperty(_:_:)-5hy7z"
 },
-"doc://JXKit/documentation/JXKit/JXValue/setProperty(symbol:_:)": {
+"doc://JXKit/documentation/JXKit/JXValue/setProperty(symbol:_:)-2lwkl": {
   "abstract" : [
     {
       "text" : "Sets the property specified by the symbol key.",
@@ -4365,12 +4810,82 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(symbol:_:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(symbol:_:)-2lwkl",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "setProperty(symbol:_:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/setproperty(symbol:_:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/setproperty(symbol:_:)-2lwkl"
+},
+"doc://JXKit/documentation/JXKit/JXValue/setProperty(symbol:_:)-9aha9": {
+  "abstract" : [
+    {
+      "text" : "Sets the property specified by the symbol key.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setProperty"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "symbol"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(symbol:_:)-9aha9",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "setProperty(symbol:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/setproperty(symbol:_:)-9aha9"
 },
 "doc://JXKit/documentation/JXKit/JXValue/string": {
   "abstract" : [

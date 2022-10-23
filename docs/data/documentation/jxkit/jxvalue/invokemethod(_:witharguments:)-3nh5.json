@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Creates an object with the given dictionary of properties.",
+      "text" : "Invoke an object’s method.",
       "type" : "text"
     }
   ],
@@ -9,18 +9,18 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(fromDictionary:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/invokeMethod(_:withArguments:)-3nh5"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC6object14fromDictionaryAA7JXValueCSDySSAGG_tKF",
+    "externalID" : "s:5JXKit7JXValueC12invokeMethod_13withArgumentsACSS_SayypGtKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,19 +32,11 @@
       },
       {
         "kind" : "identifier",
-        "text" : "object"
+        "text" : "invokeMethod"
       },
       {
         "kind" : "text",
         "text" : "("
-      },
-      {
-        "kind" : "externalParam",
-        "text" : "fromDictionary"
-      },
-      {
-        "kind" : "text",
-        "text" : ": ["
       },
       {
         "kind" : "typeIdentifier",
@@ -53,12 +45,19 @@
       },
       {
         "kind" : "text",
-        "text" : " : "
+        "text" : ", "
       },
       {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
+        "kind" : "externalParam",
+        "text" : "withArguments"
+      },
+      {
+        "kind" : "text",
+        "text" : ": ["
+      },
+      {
+        "kind" : "keyword",
+        "text" : "Any"
       },
       {
         "kind" : "text",
@@ -86,7 +85,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "object(fromDictionary:)"
+    "title" : "invokeMethod(_:withArguments:)"
   },
   "primaryContentSections" : [
     {
@@ -100,6 +99,14 @@
           ],
           "tokens" : [
             {
+              "kind" : "attribute",
+              "text" : "@discardableResult"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
               "kind" : "keyword",
               "text" : "func"
             },
@@ -109,7 +116,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "object"
+              "text" : "invokeMethod"
             },
             {
               "kind" : "text",
@@ -117,7 +124,7 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "fromDictionary"
+              "text" : "_"
             },
             {
               "kind" : "text",
@@ -125,11 +132,11 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "properties"
+              "text" : "name"
             },
             {
               "kind" : "text",
-              "text" : ": ["
+              "text" : ": "
             },
             {
               "kind" : "typeIdentifier",
@@ -138,13 +145,27 @@
             },
             {
               "kind" : "text",
-              "text" : " : "
+              "text" : ", "
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
+              "kind" : "externalParam",
+              "text" : "withArguments"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "internalParam",
+              "text" : "arguments"
+            },
+            {
+              "kind" : "text",
+              "text" : ": ["
+            },
+            {
+              "kind" : "keyword",
+              "text" : "Any"
             },
             {
               "kind" : "text",
@@ -170,6 +191,26 @@
       "kind" : "declarations"
     },
     {
+      "content" : [
+        {
+          "anchor" : "return-value",
+          "level" : 2,
+          "text" : "Return Value",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "The object that results from calling the method.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
+    },
+    {
       "kind" : "parameters",
       "parameters" : [
         {
@@ -177,11 +218,33 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "A dictionary of properties, such as that created by ",
+                  "text" : "The name of the method.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "name"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The arguments to pass to the function. The arguments will be ",
                   "type" : "text"
                 },
                 {
-                  "code" : "JXValue.dictionary",
+                  "code" : "conveyed",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : " to ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "JXValues",
                   "type" : "codeVoice"
                 },
                 {
@@ -192,7 +255,7 @@
               "type" : "paragraph"
             }
           ],
-          "name" : "properties"
+          "name" : "arguments"
         }
       ]
     }
@@ -208,7 +271,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/object(fromdictionary:)"
+        "\/documentation\/jxkit\/jxvalue\/invokemethod(_:witharguments:)-3nh5"
       ],
       "traits" : [
         {
@@ -232,119 +295,6 @@
   "title" : "JXKit",
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
-},
-"doc://JXKit/documentation/JXKit/JXContext": {
-  "abstract" : [
-    {
-      "text" : "A JavaScript execution context. This is a cross-platform analogue to the Objective-C ",
-      "type" : "text"
-    },
-    {
-      "code" : "JavaScriptCore.JSContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXContext"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXContext"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXContext",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext"
-},
-"doc://JXKit/documentation/JXKit/JXContext/object(fromDictionary:)": {
-  "abstract" : [
-    {
-      "text" : "Creates an object with the given dictionary of properties.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "object"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "fromDictionary"
-    },
-    {
-      "kind" : "text",
-      "text" : ": ["
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : " : "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    },
-    {
-      "kind" : "text",
-      "text" : "]) "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(fromDictionary:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "object(fromDictionary:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/object(fromdictionary:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
@@ -379,6 +329,76 @@
   "title" : "JXValue",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue"
+},
+"doc://JXKit/documentation/JXKit/JXValue/invokeMethod(_:withArguments:)-3nh5": {
+  "abstract" : [
+    {
+      "text" : "Invoke an object’s method.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "invokeMethod"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "withArguments"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : "]) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/invokeMethod(_:withArguments:)-3nh5",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "invokeMethod(_:withArguments:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/invokemethod(_:witharguments:)-3nh5"
 }
 }
 }

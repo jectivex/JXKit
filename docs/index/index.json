@@ -97,8 +97,13 @@
                 "type" : "groupMarker"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxcontext\/array(_:)",
+                "path" : "\/documentation\/jxkit\/jxcontext\/array(_:)-2llxz",
                 "title" : "func array([JXValue]) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/array(_:)-34kek",
+                "title" : "func array([Any]) throws -> JXValue",
                 "type" : "method"
               },
               {
@@ -137,13 +142,13 @@
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxcontext\/eval(_:method:this:priority:)",
-                "title" : "func eval(String, method: Bool, this: JXValue?, priority: TaskPriority) async throws -> JXValue",
+                "path" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:)",
+                "title" : "func eval(String, this: JXValue?) throws -> JXValue",
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:)",
-                "title" : "func eval(String, this: JXValue?) throws -> JXValue",
+                "path" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:priority:)",
+                "title" : "func eval(String, this: JXValue?, priority: TaskPriority) async throws -> JXValue",
                 "type" : "method"
               },
               {
@@ -154,6 +159,16 @@
               {
                 "path" : "\/documentation\/jxkit\/jxcontext\/json(_:)",
                 "title" : "func json(String) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/new(_:witharguments:)-1xova",
+                "title" : "func new(String, withArguments: [Any]) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/new(_:witharguments:)-3fkrm",
+                "title" : "func new(String, withArguments: [JXValue]) throws -> JXValue",
                 "type" : "method"
               },
               {
@@ -172,7 +187,12 @@
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxcontext\/object(fromdictionary:)",
+                "path" : "\/documentation\/jxkit\/jxcontext\/object(fromdictionary:)-97yvg",
+                "title" : "func object(fromDictionary: [String : Any]) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/object(fromdictionary:)-y0ba",
                 "title" : "func object(fromDictionary: [String : JXValue]) throws -> JXValue",
                 "type" : "method"
               },
@@ -199,6 +219,26 @@
               {
                 "path" : "\/documentation\/jxkit\/jxcontext\/witharraybuffer(source:block:)",
                 "title" : "func withArrayBuffer<T>(source: Data, block: (JXValue) throws -> (T)) throws -> T",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-1q2y0",
+                "title" : "func withValues<R>([Any], execute: () throws -> R) rethrows -> R",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-2z1rf",
+                "title" : "func withValues<R>([JXValue], execute: () throws -> R) rethrows -> R",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-73utz",
+                "title" : "func withValues<R>(Any..., execute: () throws -> R) rethrows -> R",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-7fry6",
+                "title" : "func withValues<R>(JXValue..., execute: () throws -> R) rethrows -> R",
                 "type" : "method"
               }
             ],
@@ -461,17 +501,32 @@
                 "type" : "groupMarker"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxvalue\/addelement(_:)",
+                "path" : "\/documentation\/jxkit\/jxvalue\/addelement(_:)-5lev1",
+                "title" : "func addElement(Any) throws",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/addelement(_:)-5ul7f",
                 "title" : "func addElement(JXValue) throws",
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxvalue\/call(witharguments:this:)",
+                "path" : "\/documentation\/jxkit\/jxvalue\/call(witharguments:this:)-1x7gk",
+                "title" : "func call(withArguments: [Any], this: JXValue?) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/call(witharguments:this:)-7zt51",
                 "title" : "func call(withArguments: [JXValue], this: JXValue?) throws -> JXValue",
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxvalue\/construct(witharguments:)",
+                "path" : "\/documentation\/jxkit\/jxvalue\/construct(witharguments:)-4n82x",
+                "title" : "func construct(withArguments: [Any]) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/construct(witharguments:)-7o3lb",
                 "title" : "func construct(withArguments: [JXValue]) throws -> JXValue",
                 "type" : "method"
               },
@@ -536,12 +591,22 @@
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxvalue\/insertelement(_:at:)",
+                "path" : "\/documentation\/jxkit\/jxvalue\/insertelement(_:at:)-2x01w",
                 "title" : "func insertElement(JXValue, at: Int) throws",
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxvalue\/invokemethod(_:witharguments:)",
+                "path" : "\/documentation\/jxkit\/jxvalue\/insertelement(_:at:)-9qbtd",
+                "title" : "func insertElement(Any, at: Int) throws",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/invokemethod(_:witharguments:)-3nh5",
+                "title" : "func invokeMethod(String, withArguments: [Any]) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/invokemethod(_:witharguments:)-974hn",
                 "title" : "func invokeMethod(String, withArguments: [JXValue]) throws -> JXValue",
                 "type" : "method"
               },
@@ -586,18 +651,33 @@
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxvalue\/setelement(_:at:)",
+                "path" : "\/documentation\/jxkit\/jxvalue\/setelement(_:at:)-4gb93",
                 "title" : "func setElement(JXValue, at: Int) throws",
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxvalue\/setproperty(_:_:)",
+                "path" : "\/documentation\/jxkit\/jxvalue\/setelement(_:at:)-990j9",
+                "title" : "func setElement(Any, at: Int) throws",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/setproperty(_:_:)-2b8yz",
+                "title" : "func setProperty(String, Any) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/setproperty(_:_:)-5hy7z",
                 "title" : "func setProperty(String, JXValue) throws -> JXValue",
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxvalue\/setproperty(symbol:_:)",
+                "path" : "\/documentation\/jxkit\/jxvalue\/setproperty(symbol:_:)-2lwkl",
                 "title" : "func setProperty(symbol: JXValue, JXValue) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/setproperty(symbol:_:)-9aha9",
+                "title" : "func setProperty(symbol: JXValue, Any) throws -> JXValue",
                 "type" : "method"
               },
               {

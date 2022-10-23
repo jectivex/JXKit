@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Evaluates the JavaScript.",
+      "text" : "Makes the given values available as properties on the global object during the execution of the code within the given closure.",
       "type" : "text"
     }
   ],
@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-1q2y0"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC4eval_4thisAA7JXValueCSS_AGSgtKF",
+    "externalID" : "s:5JXKit9JXContextC10withValues_7executexSayypG_xyKXEtKlF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,37 +32,35 @@
       },
       {
         "kind" : "identifier",
-        "text" : "eval"
+        "text" : "withValues"
       },
       {
         "kind" : "text",
-        "text" : "("
+        "text" : "<"
       },
       {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:SS",
-        "text" : "String"
+        "kind" : "genericParameter",
+        "text" : "R"
       },
       {
         "kind" : "text",
-        "text" : ", "
+        "text" : ">(["
+      },
+      {
+        "kind" : "keyword",
+        "text" : "Any"
+      },
+      {
+        "kind" : "text",
+        "text" : "], "
       },
       {
         "kind" : "externalParam",
-        "text" : "this"
+        "text" : "execute"
       },
       {
         "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
-      },
-      {
-        "kind" : "text",
-        "text" : "?) "
+        "text" : ": () "
       },
       {
         "kind" : "keyword",
@@ -74,8 +72,23 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
+        "text" : "R"
+      },
+      {
+        "kind" : "text",
+        "text" : ") "
+      },
+      {
+        "kind" : "keyword",
+        "text" : "rethrows"
+      },
+      {
+        "kind" : "text",
+        "text" : " -> "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "text" : "R"
       }
     ],
     "modules" : [
@@ -86,7 +99,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "eval(_:this:)"
+    "title" : "withValues(_:execute:)"
   },
   "primaryContentSections" : [
     {
@@ -117,11 +130,19 @@
             },
             {
               "kind" : "identifier",
-              "text" : "eval"
+              "text" : "withValues"
             },
             {
               "kind" : "text",
-              "text" : "("
+              "text" : "<"
+            },
+            {
+              "kind" : "genericParameter",
+              "text" : "R"
+            },
+            {
+              "kind" : "text",
+              "text" : ">("
             },
             {
               "kind" : "externalParam",
@@ -133,38 +154,27 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "script"
+              "text" : "values"
             },
             {
               "kind" : "text",
-              "text" : ": "
+              "text" : ": ["
             },
             {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:SS",
-              "text" : "String"
+              "kind" : "keyword",
+              "text" : "Any"
             },
             {
               "kind" : "text",
-              "text" : ", "
+              "text" : "], "
             },
             {
               "kind" : "externalParam",
-              "text" : "this"
+              "text" : "execute"
             },
             {
               "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
-            },
-            {
-              "kind" : "text",
-              "text" : "? = nil) "
+              "text" : ": () "
             },
             {
               "kind" : "keyword",
@@ -175,15 +185,98 @@
               "text" : " -> "
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
+              "text" : "R"
+            },
+            {
+              "kind" : "text",
+              "text" : ") "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "rethrows"
+            },
+            {
+              "kind" : "text",
+              "text" : " -> "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "text" : "R"
             }
           ]
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "return-value",
+          "level" : 2,
+          "text" : "Return Value",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "The result of the closure.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
+    },
+    {
+      "kind" : "parameters",
+      "parameters" : [
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "Values to set on the global object. The values will be named $0, $1, $2, … The values will be ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "conveyed",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : " to ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "JXValues",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : ".",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "values"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The code to execute using the given values.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "execute"
+        }
+      ]
     }
   ],
   "schemaVersion" : {
@@ -197,7 +290,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/eval(_:this:)"
+        "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-1q2y0"
       ],
       "traits" : [
         {
@@ -264,10 +357,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/eval(_:this:)": {
+"doc://JXKit/documentation/JXKit/JXContext/withValues(_:execute:)-1q2y0": {
   "abstract" : [
     {
-      "text" : "Evaluates the JavaScript.",
+      "text" : "Makes the given values available as properties on the global object during the execution of the code within the given closure.",
       "type" : "text"
     }
   ],
@@ -282,37 +375,35 @@
     },
     {
       "kind" : "identifier",
-      "text" : "eval"
+      "text" : "withValues"
     },
     {
       "kind" : "text",
-      "text" : "("
+      "text" : "<"
     },
     {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
+      "kind" : "genericParameter",
+      "text" : "R"
     },
     {
       "kind" : "text",
-      "text" : ", "
+      "text" : ">(["
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : "], "
     },
     {
       "kind" : "externalParam",
-      "text" : "this"
+      "text" : "execute"
     },
     {
       "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    },
-    {
-      "kind" : "text",
-      "text" : "?) "
+      "text" : ": () "
     },
     {
       "kind" : "keyword",
@@ -324,50 +415,31 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "eval(_:this:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:)"
-},
-"doc://JXKit/documentation/JXKit/JXValue": {
-  "abstract" : [
-    {
-      "text" : "A JavaScript object.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
+      "text" : "R"
     },
     {
       "kind" : "text",
-      "text" : " "
+      "text" : ") "
     },
     {
-      "kind" : "identifier",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
-  "kind" : "symbol",
-  "navigatorTitle" : [
+      "kind" : "keyword",
+      "text" : "rethrows"
+    },
     {
-      "kind" : "identifier",
-      "text" : "JXValue"
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "R"
     }
   ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-1q2y0",
+  "kind" : "symbol",
   "role" : "symbol",
-  "title" : "JXValue",
+  "title" : "withValues(_:execute:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue"
+  "url" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-1q2y0"
 }
 }
 }

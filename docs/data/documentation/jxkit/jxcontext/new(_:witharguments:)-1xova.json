@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Creates a new array in this context.",
+      "text" : "Creates an instance of the named class or constructor function.",
       "type" : "text"
     }
   ],
@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/array(_:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/new(_:withArguments:)-1xova"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC5arrayyAA7JXValueCSayAFGKF",
+    "externalID" : "s:5JXKit9JXContextC3new_13withArgumentsAA7JXValueCSS_SayypGtKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,16 +32,32 @@
       },
       {
         "kind" : "identifier",
-        "text" : "array"
+        "text" : "new"
       },
       {
         "kind" : "text",
-        "text" : "(["
+        "text" : "("
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
+      },
+      {
+        "kind" : "text",
+        "text" : ", "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "withArguments"
+      },
+      {
+        "kind" : "text",
+        "text" : ": ["
+      },
+      {
+        "kind" : "keyword",
+        "text" : "Any"
       },
       {
         "kind" : "text",
@@ -69,7 +85,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "array(_:)"
+    "title" : "new(_:withArguments:)"
   },
   "primaryContentSections" : [
     {
@@ -92,7 +108,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "array"
+              "text" : "new"
             },
             {
               "kind" : "text",
@@ -108,17 +124,40 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "values"
+              "text" : "typeName"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : ", "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "withArguments"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "internalParam",
+              "text" : "arguments"
             },
             {
               "kind" : "text",
               "text" : ": ["
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
+              "kind" : "keyword",
+              "text" : "Any"
             },
             {
               "kind" : "text",
@@ -142,6 +181,55 @@
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "kind" : "parameters",
+      "parameters" : [
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "Class or constructor function name.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "typeName"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The arguments to pass to the constructor. The arguments will be ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "conveyed",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : " to ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "JXValues",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : ".",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "arguments"
+        }
+      ]
     }
   ],
   "schemaVersion" : {
@@ -155,7 +243,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/array(_:)"
+        "\/documentation\/jxkit\/jxcontext\/new(_:witharguments:)-1xova"
       ],
       "traits" : [
         {
@@ -222,10 +310,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/array(_:)": {
+"doc://JXKit/documentation/JXKit/JXContext/new(_:withArguments:)-1xova": {
   "abstract" : [
     {
-      "text" : "Creates a new array in this context.",
+      "text" : "Creates an instance of the named class or constructor function.",
       "type" : "text"
     }
   ],
@@ -240,16 +328,32 @@
     },
     {
       "kind" : "identifier",
-      "text" : "array"
+      "text" : "new"
     },
     {
       "kind" : "text",
-      "text" : "(["
+      "text" : "("
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "withArguments"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
     },
     {
       "kind" : "text",
@@ -269,12 +373,12 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/array(_:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/new(_:withArguments:)-1xova",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "array(_:)",
+  "title" : "new(_:withArguments:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/array(_:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/new(_:witharguments:)-1xova"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [

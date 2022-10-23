@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Evaluates the JavaScript.",
+      "text" : "Creates an instance of the named class or constructor function.",
       "type" : "text"
     }
   ],
@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/new(_:withArguments:)-3fkrm"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC4eval_4thisAA7JXValueCSS_AGSgtKF",
+    "externalID" : "s:5JXKit9JXContextC3new_13withArgumentsAA7JXValueCSS_SayAGGtKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,7 +32,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "eval"
+        "text" : "new"
       },
       {
         "kind" : "text",
@@ -49,11 +49,11 @@
       },
       {
         "kind" : "externalParam",
-        "text" : "this"
+        "text" : "withArguments"
       },
       {
         "kind" : "text",
-        "text" : ": "
+        "text" : ": ["
       },
       {
         "kind" : "typeIdentifier",
@@ -62,7 +62,7 @@
       },
       {
         "kind" : "text",
-        "text" : "?) "
+        "text" : "]) "
       },
       {
         "kind" : "keyword",
@@ -86,7 +86,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "eval(_:this:)"
+    "title" : "new(_:withArguments:)"
   },
   "primaryContentSections" : [
     {
@@ -100,14 +100,6 @@
           ],
           "tokens" : [
             {
-              "kind" : "attribute",
-              "text" : "@discardableResult"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
               "kind" : "keyword",
               "text" : "func"
             },
@@ -117,7 +109,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "eval"
+              "text" : "new"
             },
             {
               "kind" : "text",
@@ -133,7 +125,7 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "script"
+              "text" : "typeName"
             },
             {
               "kind" : "text",
@@ -150,11 +142,19 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "this"
+              "text" : "withArguments"
             },
             {
               "kind" : "text",
-              "text" : ": "
+              "text" : " "
+            },
+            {
+              "kind" : "internalParam",
+              "text" : "arguments"
+            },
+            {
+              "kind" : "text",
+              "text" : ": ["
             },
             {
               "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
@@ -164,7 +164,7 @@
             },
             {
               "kind" : "text",
-              "text" : "? = nil) "
+              "text" : "] = []) "
             },
             {
               "kind" : "keyword",
@@ -184,6 +184,39 @@
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "kind" : "parameters",
+      "parameters" : [
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "Class or constructor function name.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "typeName"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The arguments to pass to the constructor.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "arguments"
+        }
+      ]
     }
   ],
   "schemaVersion" : {
@@ -197,7 +230,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/eval(_:this:)"
+        "\/documentation\/jxkit\/jxcontext\/new(_:witharguments:)-3fkrm"
       ],
       "traits" : [
         {
@@ -264,10 +297,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/eval(_:this:)": {
+"doc://JXKit/documentation/JXKit/JXContext/new(_:withArguments:)-3fkrm": {
   "abstract" : [
     {
-      "text" : "Evaluates the JavaScript.",
+      "text" : "Creates an instance of the named class or constructor function.",
       "type" : "text"
     }
   ],
@@ -282,7 +315,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "eval"
+      "text" : "new"
     },
     {
       "kind" : "text",
@@ -299,11 +332,11 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "this"
+      "text" : "withArguments"
     },
     {
       "kind" : "text",
-      "text" : ": "
+      "text" : ": ["
     },
     {
       "kind" : "typeIdentifier",
@@ -312,7 +345,7 @@
     },
     {
       "kind" : "text",
-      "text" : "?) "
+      "text" : "]) "
     },
     {
       "kind" : "keyword",
@@ -328,12 +361,12 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/new(_:withArguments:)-3fkrm",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "eval(_:this:)",
+  "title" : "new(_:withArguments:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/new(_:witharguments:)-3fkrm"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [

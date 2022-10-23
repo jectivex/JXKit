@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Adds the given object as the final element of this array.",
+      "text" : "Sets the property of the object to the given value.",
       "type" : "text"
     }
   ],
@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/addElement(_:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)-5hy7z"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC10addElementyyACKF",
+    "externalID" : "s:5JXKit7JXValueC11setPropertyyACSS_ACtKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,11 +32,20 @@
       },
       {
         "kind" : "identifier",
-        "text" : "addElement"
+        "text" : "setProperty"
       },
       {
         "kind" : "text",
         "text" : "("
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
+      },
+      {
+        "kind" : "text",
+        "text" : ", "
       },
       {
         "kind" : "typeIdentifier",
@@ -50,6 +59,15 @@
       {
         "kind" : "keyword",
         "text" : "throws"
+      },
+      {
+        "kind" : "text",
+        "text" : " -> "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:5JXKit7JXValueC",
+        "text" : "JXValue"
       }
     ],
     "modules" : [
@@ -60,7 +78,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "addElement(_:)"
+    "title" : "setProperty(_:_:)"
   },
   "primaryContentSections" : [
     {
@@ -74,6 +92,14 @@
           ],
           "tokens" : [
             {
+              "kind" : "attribute",
+              "text" : "@discardableResult"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
               "kind" : "keyword",
               "text" : "func"
             },
@@ -83,7 +109,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "addElement"
+              "text" : "setProperty"
             },
             {
               "kind" : "text",
@@ -99,7 +125,32 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "object"
+              "text" : "key"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : ", "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "_"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "internalParam",
+              "text" : "newValue"
             },
             {
               "kind" : "text",
@@ -118,11 +169,74 @@
             {
               "kind" : "keyword",
               "text" : "throws"
+            },
+            {
+              "kind" : "text",
+              "text" : " -> "
+            },
+            {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5JXKit7JXValueC",
+              "text" : "JXValue"
             }
           ]
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "return-value",
+          "level" : 2,
+          "text" : "Return Value",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "The value itself.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
+    },
+    {
+      "kind" : "parameters",
+      "parameters" : [
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The key name to set.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "key"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The value of the property.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "newValue"
+        }
+      ]
     }
   ],
   "schemaVersion" : {
@@ -136,7 +250,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxvalue\/addelement(_:)"
+        "\/documentation\/jxkit\/jxvalue\/setproperty(_:_:)-5hy7z"
       ],
       "traits" : [
         {
@@ -195,10 +309,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue"
 },
-"doc://JXKit/documentation/JXKit/JXValue/addElement(_:)": {
+"doc://JXKit/documentation/JXKit/JXValue/setProperty(_:_:)-5hy7z": {
   "abstract" : [
     {
-      "text" : "Adds the given object as the final element of this array.",
+      "text" : "Sets the property of the object to the given value.",
       "type" : "text"
     }
   ],
@@ -213,11 +327,20 @@
     },
     {
       "kind" : "identifier",
-      "text" : "addElement"
+      "text" : "setProperty"
     },
     {
       "kind" : "text",
       "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
     },
     {
       "kind" : "typeIdentifier",
@@ -231,14 +354,23 @@
     {
       "kind" : "keyword",
       "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/addElement(_:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setProperty(_:_:)-5hy7z",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "addElement(_:)",
+  "title" : "setProperty(_:_:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/addelement(_:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/setproperty(_:_:)-5hy7z"
 }
 }
 }
