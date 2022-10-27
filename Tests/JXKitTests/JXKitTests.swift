@@ -31,6 +31,8 @@ final class JXKitTests: XCTestCase {
         XCTAssertEqual(10, try jxc.eval("['10', '10', '10'].map(parseInt)").array.first?.double)
         XCTAssertEqual("NaN", try jxc.eval("['10', '10', '10'].map(parseInt)").array.dropFirst().first?.string)
         XCTAssertEqual(2, try jxc.eval("['10', '10', '10'].map(parseInt)").array.last?.double)
+
+        XCTAssertEqual("Ƕe110", try jxc.eval(#"'Ƕ'+"e"+1+1+0"#).string)
     }
 
     func testProxy() throws {
