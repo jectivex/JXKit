@@ -571,7 +571,12 @@
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxvalue\/deleteproperty(_:)",
+                "path" : "\/documentation\/jxkit\/jxvalue\/deleteproperty(_:)-940oz",
+                "title" : "func deleteProperty(String) throws -> Bool",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/deleteproperty(_:)-9mtef",
                 "title" : "func deleteProperty(JXValue) throws -> Bool",
                 "type" : "method"
               },
@@ -638,11 +643,6 @@
               {
                 "path" : "\/documentation\/jxkit\/jxvalue\/proxy(get:set:)",
                 "title" : "func proxy(get: JXFunction, set: JXFunction) throws -> JXValue",
-                "type" : "method"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxvalue\/removeproperty(_:)",
-                "title" : "func removeProperty(String) throws -> Bool",
                 "type" : "method"
               },
               {
@@ -848,6 +848,24 @@
               {
                 "title" : "Instance Methods",
                 "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "children" : [
+                      {
+                        "path" : "\/documentation\/jxkit\/jxcontextspi\/eval(_:this:in:)-46ulh",
+                        "title" : "func eval(String, this: JXValue?, in: JXContext) throws -> JXValue?",
+                        "type" : "method"
+                      }
+                    ],
+                    "title" : "JXContextSPI Implementations",
+                    "type" : "groupMarker"
+                  }
+                ],
+                "path" : "\/documentation\/jxkit\/jxcontextspi\/eval(_:this:in:)-1a9hy",
+                "title" : "func eval(String, this: JXValue?, in: JXContext) throws -> JXValue?",
+                "type" : "method"
               },
               {
                 "children" : [

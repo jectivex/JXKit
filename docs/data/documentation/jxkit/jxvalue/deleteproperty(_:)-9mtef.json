@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/removeProperty(_:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/deleteProperty(_:)-9mtef"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC14removePropertyySbSSKF",
+    "externalID" : "s:5JXKit7JXValueC14deletePropertyySbACKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,7 +32,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "removeProperty"
+        "text" : "deleteProperty"
       },
       {
         "kind" : "text",
@@ -40,8 +40,8 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:SS",
-        "text" : "String"
+        "preciseIdentifier" : "s:5JXKit7JXValueC",
+        "text" : "JXValue"
       },
       {
         "kind" : "text",
@@ -69,7 +69,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "removeProperty(_:)"
+    "title" : "deleteProperty(_:)"
   },
   "primaryContentSections" : [
     {
@@ -100,7 +100,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "removeProperty"
+              "text" : "deleteProperty"
             },
             {
               "kind" : "text",
@@ -123,9 +123,10 @@
               "text" : ": "
             },
             {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:SS",
-              "text" : "String"
+              "preciseIdentifier" : "s:5JXKit7JXValueC",
+              "text" : "JXValue"
             },
             {
               "kind" : "text",
@@ -200,7 +201,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxvalue\/removeproperty(_:)"
+        "\/documentation\/jxkit\/jxvalue\/deleteproperty(_:)-9mtef"
       ],
       "traits" : [
         {
@@ -259,7 +260,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue"
 },
-"doc://JXKit/documentation/JXKit/JXValue/removeProperty(_:)": {
+"doc://JXKit/documentation/JXKit/JXValue/deleteProperty(_:)-9mtef": {
   "abstract" : [
     {
       "text" : "Deletes a property from an object.",
@@ -277,7 +278,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "removeProperty"
+      "text" : "deleteProperty"
     },
     {
       "kind" : "text",
@@ -285,8 +286,8 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
     },
     {
       "kind" : "text",
@@ -306,12 +307,12 @@
       "text" : "Bool"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/removeProperty(_:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/deleteProperty(_:)-9mtef",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "removeProperty(_:)",
+  "title" : "deleteProperty(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/removeproperty(_:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/deleteproperty(_:)-9mtef"
 }
 }
 }

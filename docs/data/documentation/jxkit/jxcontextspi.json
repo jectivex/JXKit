@@ -89,6 +89,7 @@
   "topicSections" : [
     {
       "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/eval(_:this:in:)-1a9hy",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/fromJX(_:to:)-76xn8",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/toJX(_:in:)-7j35f"
       ],
@@ -156,6 +157,97 @@
   "title" : "JXContextSPI",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontextspi"
+},
+"doc://JXKit/documentation/JXKit/JXContextSPI/eval(_:this:in:)-1a9hy": {
+  "abstract" : [
+
+  ],
+  "defaultImplementations" : 1,
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "eval"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "this"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "in"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/eval(_:this:in:)-1a9hy",
+  "kind" : "symbol",
+  "required" : true,
+  "role" : "symbol",
+  "title" : "eval(_:this:in:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontextspi\/eval(_:this:in:)-1a9hy"
 },
 "doc://JXKit/documentation/JXKit/JXContextSPI/fromJX(_:to:)-76xn8": {
   "abstract" : [

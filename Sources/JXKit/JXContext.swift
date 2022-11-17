@@ -88,15 +88,18 @@ extension JXContext {
             }
             strictEvaluated = true
         }
+        
+        // Allow SPI to perform pre-eval actions or even e.g. execute macros
+        if let spiResult = try spi?.eval(script, this: this, in: self) {
+            return spiResult
+        }
 
         let script = script.withCString(JSStringCreateWithUTF8CString)
-
         defer { JSStringRelease(script) }
 
         let result = try trying {
             JSEvaluateScript(contextRef, script, this?.valueRef, nil, 0, $0)
         }
-
         return result.map { JXValue(context: self, valueRef: $0) } ?? JXValue(undefinedIn: self)
     }
 
@@ -183,7 +186,7 @@ extension JXContext {
     @discardableResult public func withValues<R>(_ values: [JXValue], execute: () throws -> R) rethrows -> R {
         try values.enumerated().forEach { try global.setProperty("$\($0.offset)", $0.element) }
         defer {
-            (0..<values.count).forEach { do { try global.removeProperty("$\($0)") } catch {} }
+            (0..<values.count).forEach { do { try global.deleteProperty("$\($0)") } catch {} }
         }
         return try execute()
     }
@@ -448,7 +451,7 @@ extension JXContext {
             return try conveyIfConvertible(value) ?? conveyEncodable(value)
         }
 
-        // Break down the value so that we can pass individual array and dict elements through our service provider
+        // Break down the value so that we can pass individual array and dict elements through our SPI
         if let jxValue = value as? JXValue {
             return jxValue
         } else if let array = value as? [Any] {
@@ -510,11 +513,16 @@ extension JXContext {
 
 /// Optional service provider integration points.
 public protocol JXContextSPI {
+    func eval(_ script: String, this: JXValue?, in: JXContext) throws -> JXValue?
     func toJX(_ value: Any, in context: JXContext) throws -> JXValue?
     func fromJX<T>(_ value: JXValue, to type: T.Type) throws -> T?
 }
 
 extension JXContextSPI {
+    public func eval(_ script: String, this: JXValue?, in: JXContext) throws -> JXValue? {
+        return nil
+    }
+        
     public func toJX(_ value: Any, in context: JXContext) throws -> JXValue? {
         return nil
     }

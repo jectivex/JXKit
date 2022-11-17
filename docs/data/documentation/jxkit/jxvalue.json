@@ -226,7 +226,8 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)-7c55a",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/copyBytes()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/defineProperty(_:_:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/deleteProperty(_:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/deleteProperty(_:)-940oz",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/deleteProperty(_:)-9mtef",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/freeze()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/hasProperty(_:)-1e3mh",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/hasProperty(_:)-2ontd",
@@ -240,7 +241,6 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/preventExtensions()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/propertyDescriptor(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/proxy(get:set:)",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/removeProperty(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/seal()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setElement(_:at:)-4gb93",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/setElement(_:at:)-990j9",
@@ -1789,10 +1789,64 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/defineproperty(_:_:)"
 },
-"doc://JXKit/documentation/JXKit/JXValue/deleteProperty(_:)": {
+"doc://JXKit/documentation/JXKit/JXValue/deleteProperty(_:)-940oz": {
   "abstract" : [
     {
-      "text" : "Deletes a property from an object or array.",
+      "text" : "Deletes a property from an object.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "deleteProperty"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/deleteProperty(_:)-940oz",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "deleteProperty(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/deleteproperty(_:)-940oz"
+},
+"doc://JXKit/documentation/JXKit/JXValue/deleteProperty(_:)-9mtef": {
+  "abstract" : [
+    {
+      "text" : "Deletes a property from an object.",
       "type" : "text"
     }
   ],
@@ -1836,12 +1890,12 @@
       "text" : "Bool"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/deleteProperty(_:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/deleteProperty(_:)-9mtef",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "deleteProperty(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/deleteproperty(_:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/deleteproperty(_:)-9mtef"
 },
 "doc://JXKit/documentation/JXKit/JXValue/dictionary": {
   "abstract" : [
@@ -4407,60 +4461,6 @@
   "title" : "proxy(get:set:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/proxy(get:set:)"
-},
-"doc://JXKit/documentation/JXKit/JXValue/removeProperty(_:)": {
-  "abstract" : [
-    {
-      "text" : "Deletes a property from an object.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "removeProperty"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/removeProperty(_:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "removeProperty(_:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/removeproperty(_:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue/seal()": {
   "abstract" : [

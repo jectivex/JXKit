@@ -740,20 +740,6 @@ extension JXValue {
         return JSObjectHasProperty(context.contextRef, valueRef, property)
     }
 
-    /// Deletes a property from an object.
-    ///
-    /// - Parameters:
-    ///   - property: The property's name.
-    /// - Returns: true if the delete operation succeeds, otherwise false.
-    @discardableResult
-    @inlinable public func removeProperty(_ property: String) throws -> Bool {
-        let property = property.withCString(JSStringCreateWithUTF8CString)
-        defer { JSStringRelease(property) }
-        return try context.trying {
-            JSObjectDeleteProperty(context.contextRef, valueRef, property, $0)
-        }
-    }
-
     /// Checks if a property exists
     ///
     /// - Parameters:
@@ -766,8 +752,22 @@ extension JXValue {
             JSObjectHasPropertyForKey(context.contextRef, valueRef, property.valueRef, $0)
         }
     }
+    
+    /// Deletes a property from an object.
+    ///
+    /// - Parameters:
+    ///   - property: The property's name.
+    /// - Returns: true if the delete operation succeeds, otherwise false.
+    @discardableResult
+    @inlinable public func deleteProperty(_ property: String) throws -> Bool {
+        let property = property.withCString(JSStringCreateWithUTF8CString)
+        defer { JSStringRelease(property) }
+        return try context.trying {
+            JSObjectDeleteProperty(context.contextRef, valueRef, property, $0)
+        }
+    }
 
-    /// Deletes a property from an object or array.
+    /// Deletes a property from an object.
     ///
     /// - Parameters:
     ///   - property: The property's name.

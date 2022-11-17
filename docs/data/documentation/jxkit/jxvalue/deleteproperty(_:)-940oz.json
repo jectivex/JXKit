@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Deletes a property from an object or array.",
+      "text" : "Deletes a property from an object.",
       "type" : "text"
     }
   ],
@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/deleteProperty(_:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/deleteProperty(_:)-940oz"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC14deletePropertyySbACKF",
+    "externalID" : "s:5JXKit7JXValueC14deletePropertyySbSSKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -40,8 +40,8 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
       },
       {
         "kind" : "text",
@@ -123,10 +123,9 @@
               "text" : ": "
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
             },
             {
               "kind" : "text",
@@ -201,7 +200,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxvalue\/deleteproperty(_:)"
+        "\/documentation\/jxkit\/jxvalue\/deleteproperty(_:)-940oz"
       ],
       "traits" : [
         {
@@ -260,10 +259,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue"
 },
-"doc://JXKit/documentation/JXKit/JXValue/deleteProperty(_:)": {
+"doc://JXKit/documentation/JXKit/JXValue/deleteProperty(_:)-940oz": {
   "abstract" : [
     {
-      "text" : "Deletes a property from an object or array.",
+      "text" : "Deletes a property from an object.",
       "type" : "text"
     }
   ],
@@ -286,8 +285,8 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
     },
     {
       "kind" : "text",
@@ -307,12 +306,12 @@
       "text" : "Bool"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/deleteProperty(_:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/deleteProperty(_:)-940oz",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "deleteProperty(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/deleteproperty(_:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/deleteproperty(_:)-940oz"
 }
 }
 }
