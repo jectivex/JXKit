@@ -31,25 +31,19 @@ jobs:
     runs-on: macos-12
     steps:
       - uses: actions/checkout@v2
-      - run: |
-            xcodebuild clean test \
-              -configuration Release \
-              -scheme "JXKit" \
-              -sdk "iphonesimulator" \
-              -destination "platform=iOS Simulator,name=iPhone 14" \
-              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
+      - name: Test (Debug)
+        run: xcodebuild clean test -configuration Debug -scheme "JXKit" -sdk "appletvsimulator" -destination "platform=iOS Simulator,name=iPhone 14 Pro" 
+      - name: Test (Release)
+        run: xcodebuild clean test -configuration Release -scheme "JXKit" -sdk "appletvsimulator" -destination "platform=iOS Simulator,name=iPhone 14 Pro" 
 
   tvos:
     runs-on: macos-12
     steps:
       - uses: actions/checkout@v2
-      - run: |
-            xcodebuild clean test \
-              -configuration Release \
-              -scheme "JXKit" \
-              -sdk "appletvsimulator" \
-              -destination "platform=tvOS Simulator,name=Apple TV" \
-              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
+      - name: Test (Debug)
+        run: xcodebuild clean test -configuration Debug -scheme "JXKit" -sdk "appletvsimulator" -destination "platform=tvOS Simulator,name=Apple TV" 
+      - name: Test (Release)
+        run: xcodebuild clean test -configuration Release -scheme "JXKit" -sdk "appletvsimulator" -destination "platform=tvOS Simulator,name=Apple TV" 
 
   macos:
     runs-on: macos-12
@@ -74,8 +68,6 @@ jobs:
           # insert the docc dependency
           sed -I "" 's;^    dependencies: \[;    dependencies: [ .package(name: "swift-docc-plugin", url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"), ;1' Package.swift
 
-          # cannot keep Documentation.docc in Sources/JXKit/ due to bug
-          mv Documentation.docc Sources/JXKit/
           swift package --allow-writing-to-directory docs \
             generate-documentation --target JXKit \
             --disable-indexing \
