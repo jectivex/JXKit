@@ -60,65 +60,6 @@ jobs:
       - name: Test (Release)
         run: swift test -v --configuration release -Xswiftc -enable-testing
 
-  windows:
-    # installer seems to no longer work as of Swift 5.6
-    if: false
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - uses: seanmiddleditch/gha-setup-vsdevenv@master
-        # not needed anymore?
-        if: true
-
-      # https://www.swift.org/download/#windows
-      - name: Install Required Dependencies
-        # winget not installed?
-        if: false
-        run: |
-          winget install Git.Git
-          winget install Python.Python.3 --version 3.10.2150.0
-
-          curl -sOL https://aka.ms/vs/16/release/vs_community.exe
-          start /w vs_community.exe --passive --wait --norestart --nocache --installPath "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community" --add Microsoft.VisualStudio.Component.Windows10SDK.19041 --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64
-          del /q vs_community.exe
-          pip install six
-
-      - name: Install Install swift-5.6.3-RELEASE
-        run: |
-          Install-Binary -Url "https://swift.org/builds/swift-5.6.3-release/windows10/swift-5.6.3-RELEASE/swift-5.6.3-RELEASE-windows10.exe" -Name "installer.exe" -ArgumentList ("-q")
-
-      - name: Set Environment Variables
-        run: |
-          echo "SDKROOT=C:\Library\Developer\Platforms\Windows.platform\Developer\SDKs\Windows.sdk" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-          echo "DEVELOPER_DIR=C:\Library\Developer" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-      - name: Adjust Paths
-        run: |
-          echo "C:\Library\Swift-development\bin;C:\Library\icu-67\usr\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          echo "C:\Library\Developer\Toolchains\unknown-Asserts-development.xctoolchain\usr\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-      - name: Install Supporting Files
-        run: |
-          Copy-Item "$env:SDKROOT\usr\share\ucrt.modulemap" -destination "$env:UniversalCRTSdkDir\Include\$env:UCRTVersion\ucrt\module.modulemap"
-          Copy-Item "$env:SDKROOT\usr\share\visualc.modulemap" -destination "$env:VCToolsInstallDir\include\module.modulemap"
-          Copy-Item "$env:SDKROOT\usr\share\visualc.apinotes" -destination "$env:VCToolsInstallDir\include\visualc.apinotes"
-          Copy-Item "$env:SDKROOT\usr\share\winsdk.modulemap" -destination "$env:UniversalCRTSdkDir\Include\$env:UCRTVersion\um\module.modulemap"
-
-      - name: Swift Version
-        run: swift --version
-
-      - name: Install JavaScriptCore.dll
-        run: |
-          Install-Binary -Url "https://secure-appldnld.apple.com/itunes12/001-97787-20210421-F0E5A3C2-A2C9-11EB-A40B-A128318AD179/iTunes64Setup.exe" -Name "iTunes64Setup.exe" -ArgumentList ("-q")
-
-      - name: Build (Debug)
-        run: swift build -v -c debug
-      - name: Build (Release)
-        run: swift build -v -c release
-      - name: Test (Debug)
-        run: swift test -v --configuration debug --enable-test-discovery
-      - name: Test (Release)
-        run: swift test -v --configuration release -Xswiftc -enable-testing --enable-test-discovery
-
   api-doc:
     runs-on: macos-12 # needed to be able to document SwiftUI
     timeout-minutes: 20
@@ -133,6 +74,8 @@ jobs:
           # insert the docc dependency
           sed -I "" 's;^    dependencies: \[;    dependencies: [ .package(name: "swift-docc-plugin", url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"), ;1' Package.swift
 
+          # cannot keep Documentation.docc in Sources/JXKit/ due to bug
+          mv Documentation.docc Sources/JXKit/
           swift package --allow-writing-to-directory docs \
             generate-documentation --target JXKit \
             --disable-indexing \
