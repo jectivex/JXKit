@@ -145,8 +145,7 @@ Projects that are based on JXKit:
 
 [Swift]: https://swift.org/
 [OpenCombine]: https://github.com/OpenCombine/OpenCombine
-[JXKit]: https://github.com/jectivex/JXKit
-[Jack]: https://github.com/jectivex/Jack
+[JXBridge]: https://github.com/jectivex/JXBridge
 [JavaScriptCore]: https://trac.webkit.org/wiki/JavaScriptCore
 
 [GitHubActionBadge]: https://img.shields.io/github/workflow/status/jectivex/JXKit/JXKit%20CI
@@ -155,3 +154,7 @@ Projects that are based on JXKit:
 [Swift5Link]: https://developer.apple.com/swift/
 [SwiftPlatforms]: https://img.shields.io/badge/Platforms-macOS%20|%20iOS%20|%20tvOS%20|%20Linux-teal.svg
 
+## TODO
+
+- Better reporting of errors from async code / Promises.
+- Async-save version of `JXContext.withValues`.
