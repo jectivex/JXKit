@@ -207,7 +207,7 @@ extension JXContext {
     ///   - values: Values to set on the global object. The values will be named $0, $1, $2, ... The values will be `conveyed` to `JXValues`.
     ///   - execute: The code to execute using the given values.
     /// - Returns: The result of the closure.
-    @discardableResult public func withValues<R>(_ values: [Any], execute: () throws -> R) rethrows -> R {
+    @discardableResult public func withValues<R>(_ values: [Any?], execute: () throws -> R) rethrows -> R {
         let jxvalues = try values.map { try convey($0) }
         return try withValues(jxvalues, execute: execute)
     }
@@ -218,7 +218,7 @@ extension JXContext {
     ///   - values: Values to set on the global object. The values will be named $0, $1, $2, ... The values will be `conveyed` to `JXValues`.
     ///   - execute: The code to execute using the given values.
     /// - Returns: The result of the closure.
-    @discardableResult public func withValues<R>(_ values: Any..., execute: () throws -> R) rethrows -> R {
+    @discardableResult public func withValues<R>(_ values: Any?..., execute: () throws -> R) rethrows -> R {
         return try withValues(values, execute: execute)
     }
 

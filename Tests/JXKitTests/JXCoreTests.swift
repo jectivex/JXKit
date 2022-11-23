@@ -551,6 +551,12 @@ class JXCoreTests: XCTestCase {
         } catch {
             XCTAssertTrue(try jxc.global["$0"].isUndefined)
         }
+        
+        try jxc.withValues(1, nil, 3) {
+            XCTAssertEqual(try jxc.eval("$0").int, 1)
+            XCTAssertTrue(try jxc.eval("$1").isNull)
+            XCTAssertEqual(try jxc.eval("$2").int, 3)
+        }
     }
 
     func testNew() throws {
