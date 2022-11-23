@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-73utz"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-87ai5"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC10withValues_7executexypd_xyKXEtKlF",
+    "externalID" : "s:5JXKit9JXContextC10withValues_7executexypSgd_xyKXEtKlF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -52,7 +52,7 @@
       },
       {
         "kind" : "text",
-        "text" : "..., "
+        "text" : "?..., "
       },
       {
         "kind" : "externalParam",
@@ -166,7 +166,7 @@
             },
             {
               "kind" : "text",
-              "text" : "..., "
+              "text" : "?..., "
             },
             {
               "kind" : "externalParam",
@@ -290,7 +290,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-73utz"
+        "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-87ai5"
       ],
       "traits" : [
         {
@@ -357,7 +357,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/withValues(_:execute:)-73utz": {
+"doc://JXKit/documentation/JXKit/JXContext/withValues(_:execute:)-87ai5": {
   "abstract" : [
     {
       "text" : "Makes the given values available as properties on the global object during the execution of the code within the given closure.",
@@ -395,7 +395,7 @@
     },
     {
       "kind" : "text",
-      "text" : "..., "
+      "text" : "?..., "
     },
     {
       "kind" : "externalParam",
@@ -434,12 +434,12 @@
       "text" : "R"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-73utz",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-87ai5",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "withValues(_:execute:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-73utz"
+  "url" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-87ai5"
 }
 }
 }

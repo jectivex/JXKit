@@ -222,23 +222,23 @@
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-1q2y0",
-                "title" : "func withValues<R>([Any], execute: () throws -> R) rethrows -> R",
-                "type" : "method"
-              },
-              {
                 "path" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-2z1rf",
                 "title" : "func withValues<R>([JXValue], execute: () throws -> R) rethrows -> R",
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-73utz",
-                "title" : "func withValues<R>(Any..., execute: () throws -> R) rethrows -> R",
+                "path" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-7fry6",
+                "title" : "func withValues<R>(JXValue..., execute: () throws -> R) rethrows -> R",
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-7fry6",
-                "title" : "func withValues<R>(JXValue..., execute: () throws -> R) rethrows -> R",
+                "path" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-87ai5",
+                "title" : "func withValues<R>(Any?..., execute: () throws -> R) rethrows -> R",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-8xdgs",
+                "title" : "func withValues<R>([Any?], execute: () throws -> R) rethrows -> R",
                 "type" : "method"
               }
             ],
