@@ -553,6 +553,13 @@ extension JXValue {
     public func convey<T>(to type: T.Type = T.self) throws -> T {
         if let convertibleType = type as? JXConvertible.Type {
             return try convertibleType.fromJX(self) as! T
+        } else if let rawRepresentableType = type as? any RawRepresentable.Type {
+            return try conveyRawRepresentable(to: rawRepresentableType) as! T
+        } else if type is ().Type {
+            if isUndefined {
+                return () as! T
+            }
+            throw JXErrors.cannotConvey(type)
         } else if let value = try context.spi?.fromJX(self, to: type) {
             return value
         } else if let decodableType = type as? Decodable.Type {
@@ -561,43 +568,13 @@ extension JXValue {
             throw JXErrors.cannotConvey(type)
         }
     }
-
-    /// Attempts to convey this JavaScript value to a specified optional type.
-    ///
-    /// This will convey `null` (but not `undefined`) as `T?.none`
-    public func convey<T>(to type: Optional<T>.Type = Optional<T>.self) throws -> T? {
-        guard !isNull else {
-            return nil
+    
+    private func conveyRawRepresentable<T: RawRepresentable>(to type: T.Type) throws -> T {
+        let rawValue = try convey(to: T.RawValue.self)
+        guard let ret = T(rawValue: rawValue) else {
+            throw JXErrors.invalidRawValue(String(describing: rawValue))
         }
-        return try convey(to: T.self)
-    }
-
-    /// Attempts to convey this JavaScript value to a specified array type.
-    public func convey<T>(to type: [T].Type = [T].self) throws -> [T] {
-        try self.array.map { try $0.convey(to: T.self) }
-    }
-
-    /// Attempts to convey this JavaScript value to a specified optional array type.
-    public func convey<T>(to type: Optional<[T]>.Type = Optional<[T]>.self) throws -> [T]? {
-        guard !isNull else {
-            return nil
-        }
-        return try convey(to: [T].self)
-    }
-
-    /// Attempts to convey this JavaScript value to a specified dictionary type.
-    public func convey<T>(to type: [String: T].Type = [String: T].self) throws -> [String: T] {
-        try self.dictionary.reduce(into: [:]) { result, entry in
-            result[entry.key] = try entry.value.convey(to: T.self)
-        }
-    }
-
-    /// Attempts to convey this JavaScript value to a specified optional dictionary type.
-    public func convey<T>(to type: Optional<[String: T]>.Type = Optional<[String: T]>.self) throws -> [String: T]? {
-        guard !isNull else {
-            return nil
-        }
-        return try convey(to: [String: T].self)
+        return ret
     }
 }
 
@@ -735,6 +712,7 @@ extension JXValue {
     ///   - property: The property's name.
     /// - Returns: true if the object has `property`, otherwise false.
     @inlinable public func hasProperty(_ property: String) -> Bool {
+        if !isObject { return false }
         let property = property.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(property) }
         return JSObjectHasProperty(context.contextRef, valueRef, property)
