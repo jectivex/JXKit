@@ -447,35 +447,20 @@ extension JXContext {
         guard let value else {
             return null()
         }
-        guard let spi = self.spi else {
-            return try conveyIfConvertible(value) ?? conveyEncodable(value)
-        }
-
-        // Break down the value so that we can pass individual array and dict elements through our SPI
-        if let jxValue = value as? JXValue {
-            return jxValue
-        } else if let array = value as? [Any] {
-            let jxArray = try array.map { try convey($0) }
-            return try self.array(jxArray)
-        } else if let dictionary = value as? [String: Any] {
-            let jxDictionary = try dictionary.reduce(into: [:]) { result, entry in
-                result[entry.key] = try convey(entry.value)
-            }
-            return try object(fromDictionary: jxDictionary)
-        } else if let jxValue = try conveyIfConvertible(value) {
-            return jxValue
-        } else if let jxValue = try spi.toJX(value, in: self) {
-            return jxValue
-        } else {
-            return try conveyEncodable(value)
-        }
+        return try conveyIfConvertible(value) ?? spi?.toJX(value, in: self) ?? conveyEncodable(value)
     }
 
     private func conveyIfConvertible(_ value: Any) throws -> JXValue? {
-        guard let convertible = value as? JXConvertible else {
-            return nil
+        if let convertible = value as? JXConvertible {
+            return try convertible.toJX(in: self)
         }
-        return try convertible.toJX(in: self)
+        if let rawRepresentable = value as? (any RawRepresentable) {
+            return try convey(rawRepresentable.rawValue)
+        }
+        if value is () {
+            return undefined()
+        }
+        return nil
     }
 
     private func conveyEncodable(_ value: Any) throws -> JXValue {

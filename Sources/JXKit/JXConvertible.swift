@@ -1,8 +1,6 @@
 import Foundation
 
 /// A type that can move back and forth between Swift and JavaScipt, either through direct reference or by serialization.
-///
-/// In order to export Swift properties to the JS context, the types must conform to ``JXConvertible``.`
 public protocol JXConvertible {
     /// Converts a `JXValue` into this type.
     static func fromJX(_ value: JXValue) throws -> Self
@@ -11,128 +9,83 @@ public protocol JXConvertible {
     func toJX(in context: JXContext) throws -> JXValue
 }
 
-/// Default implementation of ``JXConvertible`` will be to encode and decode ``Codable`` instances between Swift & JS.
 extension Decodable where Self: JXConvertible {
-    public static func fromJXCodable(_ value: JXValue) throws -> Self {
-        try value.toDecodable(ofType: Self.self)
-    }
-
     public static func fromJX(_ value: JXValue) throws -> Self {
-        try fromJXCodable(value)
+        try value.toDecodable(ofType: Self.self)
     }
 }
 
 extension Encodable where Self: JXConvertible {
-    public func toJXCodable(in context: JXContext) throws -> JXValue {
-        try context.encode(self)
-    }
-
     public func toJX(in context: JXContext) throws -> JXValue {
-        try toJXCodable(in: context)
+        try context.encode(self)
     }
 }
 
 extension JXValue: JXConvertible {
-    public static func fromJXConvertible(_ value: JXValue) throws -> Self {
+    public static func fromJX(_ value: JXValue) throws -> Self {
         guard let value = value as? Self else {
             throw JXErrors.jumpContextInvalid
         }
         return value
     }
 
-    /// Converts this value into a JXContext.
-    public func toJXConvertible(in context: JXContext) -> JXValue {
+    public func toJX(in context: JXContext) -> JXValue {
         self
     }
-
-
-    public static func fromJX(_ value: JXValue) throws -> Self {
-        try fromJXConvertible(value)
-    }
-
-    public func toJX(in context: JXContext) -> JXValue {
-        toJXConvertible(in: context)
-    }
-
 }
 
-extension Optional: JXConvertible where Wrapped: JXConvertible {
-    public static func fromJXOptional(_ value: JXValue) throws -> Self {
-        if value.isNull {
-            return .none
-        } else {
-            return try Wrapped.fromJX(value)
-        }
-    }
-
-    public func toJXOptional(in context: JXContext) throws -> JXValue {
-        try self?.toJX(in: context) ?? context.null()
-    }
-
+extension Optional: JXConvertible {
     public static func fromJX(_ value: JXValue) throws -> Self {
-        try fromJXOptional(value)
+        guard !value.isNull else {
+            return .none
+        }
+        return .some(try value.convey(to: Wrapped.self))
     }
 
     public func toJX(in context: JXContext) throws -> JXValue {
-        try toJXOptional(in: context)
+        switch self {
+        case .none:
+            return context.null()
+        case .some(let value):
+            return try context.convey(value)
+        }
     }
 }
 
-extension Array: JXConvertible where Element: JXConvertible {
+extension Array: JXConvertible {
     public static func fromJX(_ value: JXValue) throws -> Self {
         guard value.isArray else {
             throw JXErrors.valueNotArray
         }
         let arrayValue = try value.array
         return try arrayValue.map({ jx in
-            try Element.fromJX(jx)
+            try jx.convey(to: Element.self)
         })
     }
 
     public func toJX(in context: JXContext) throws -> JXValue {
         try context.array(self.map({ x in
-            try x.toJX(in: context)
+            try context.convey(x)
         }))
     }
 }
 
-extension Dictionary: JXConvertible where Key == String, Value: JXConvertible {
+extension Dictionary: JXConvertible where Key == String {
     public static func fromJX(_ value: JXValue) throws -> Dictionary<Key, Value> {
         guard value.isObject else {
             throw JXErrors.valueNotObject
         }
         let jxDictionary = try value.dictionary
         return try jxDictionary.reduce(into: [:]) { result, entry in
-            result[entry.key] = try Value.fromJX(entry.value)
+            result[entry.key] = try entry.value.convey(to: Value.self)
         }
     }
 
     public func toJX(in context: JXContext) throws -> JXValue {
         let jxDictionary = try self.reduce(into: [:]) { result, entry in
-            result[entry.key] = try entry.value.toJX(in: context)
+            result[entry.key] = try context.convey(entry.value)
         }
         return try context.object(fromDictionary: jxDictionary)
-    }
-}
-
-extension RawRepresentable where RawValue: JXConvertible {
-    public static func fromJXRaw(_ value: JXValue) throws -> Self {
-        guard let newSelf = Self(rawValue: try .fromJX(value)) else {
-            throw JXErrors.invalidRawValue(try value.string)
-        }
-        return newSelf
-    }
-
-    public func toJXRaw(in context: JXContext) throws -> JXValue {
-        try self.rawValue.toJX(in: context)
-    }
-
-    public static func fromJX(_ value: JXValue) throws -> Self {
-        try fromJXRaw(value)
-    }
-
-    public func toJX(in context: JXContext) throws -> JXValue {
-        try toJXRaw(in: context)
     }
 }
 

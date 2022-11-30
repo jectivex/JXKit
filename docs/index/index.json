@@ -531,33 +531,8 @@
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxvalue\/convey(to:)-25bx9",
-                "title" : "func convey<T>(to: [T].Type) throws -> [T]",
-                "type" : "method"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxvalue\/convey(to:)-3yphp",
-                "title" : "func convey<T>(to: Optional<[String : T]>.Type) throws -> [String : T]?",
-                "type" : "method"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxvalue\/convey(to:)-4i2u8",
-                "title" : "func convey<T>(to: [String : T].Type) throws -> [String : T]",
-                "type" : "method"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxvalue\/convey(to:)-5gqqa",
-                "title" : "func convey<T>(to: Optional<[T]>.Type) throws -> [T]?",
-                "type" : "method"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxvalue\/convey(to:)-7a0fh",
+                "path" : "\/documentation\/jxkit\/jxvalue\/convey(to:)",
                 "title" : "func convey<T>(to: T.Type) throws -> T",
-                "type" : "method"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxvalue\/convey(to:)-7c55a",
-                "title" : "func convey<T>(to: Optional<T>.Type) throws -> T?",
                 "type" : "method"
               },
               {
@@ -691,11 +666,6 @@
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxvalue\/tojxconvertible(in:)",
-                "title" : "func toJXConvertible(in: JXContext) -> JXValue",
-                "type" : "method"
-              },
-              {
                 "title" : "Subscripts",
                 "type" : "groupMarker"
               },
@@ -721,11 +691,6 @@
               {
                 "path" : "\/documentation\/jxkit\/jxvalue\/createpromise(in:)",
                 "title" : "static func createPromise(in: JXContext) throws -> JXPromise",
-                "type" : "method"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxvalue\/fromjxconvertible(_:)",
-                "title" : "static func fromJXConvertible(JXValue) throws -> Self",
                 "type" : "method"
               },
               {
@@ -1078,6 +1043,11 @@
               {
                 "path" : "\/documentation\/jxkit\/jxerrors\/cannotcreatepromise",
                 "title" : "case cannotCreatePromise",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerrors\/invalidargumentcount",
+                "title" : "case invalidArgumentCount",
                 "type" : "case"
               },
               {

@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Converts this value into a JXContext.",
+      "text" : "Attempts to convey this JavaScript value to a specified type.",
       "type" : "text"
     }
   ],
@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/toJXConvertible(in:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC15toJXConvertible2inAcA9JXContextC_tF",
+    "externalID" : "s:5JXKit7JXValueC6convey2toxxm_tKlF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,15 +32,23 @@
       },
       {
         "kind" : "identifier",
-        "text" : "toJXConvertible"
+        "text" : "convey"
       },
       {
         "kind" : "text",
-        "text" : "("
+        "text" : "<"
+      },
+      {
+        "kind" : "genericParameter",
+        "text" : "T"
+      },
+      {
+        "kind" : "text",
+        "text" : ">("
       },
       {
         "kind" : "externalParam",
-        "text" : "in"
+        "text" : "to"
       },
       {
         "kind" : "text",
@@ -48,17 +56,23 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit9JXContextC",
-        "text" : "JXContext"
+        "text" : "T"
       },
       {
         "kind" : "text",
-        "text" : ") -> "
+        "text" : ".Type) "
+      },
+      {
+        "kind" : "keyword",
+        "text" : "throws"
+      },
+      {
+        "kind" : "text",
+        "text" : " -> "
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
+        "text" : "T"
       }
     ],
     "modules" : [
@@ -69,7 +83,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "toJXConvertible(in:)"
+    "title" : "convey(to:)"
   },
   "primaryContentSections" : [
     {
@@ -92,15 +106,23 @@
             },
             {
               "kind" : "identifier",
-              "text" : "toJXConvertible"
+              "text" : "convey"
             },
             {
               "kind" : "text",
-              "text" : "("
+              "text" : "<"
+            },
+            {
+              "kind" : "genericParameter",
+              "text" : "T"
+            },
+            {
+              "kind" : "text",
+              "text" : ">("
             },
             {
               "kind" : "externalParam",
-              "text" : "in"
+              "text" : "to"
             },
             {
               "kind" : "text",
@@ -108,32 +130,71 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "context"
+              "text" : "type"
             },
             {
               "kind" : "text",
               "text" : ": "
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit9JXContextC",
-              "text" : "JXContext"
+              "text" : "T"
             },
             {
               "kind" : "text",
-              "text" : ") -> "
+              "text" : ".Type = T.self) "
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+              "kind" : "keyword",
+              "text" : "throws"
+            },
+            {
+              "kind" : "text",
+              "text" : " -> "
+            },
+            {
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
+              "text" : "T"
             }
           ]
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "discussion",
+          "level" : 2,
+          "text" : "Discussion",
+          "type" : "heading"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "",
+                  "type" : "text"
+                },
+                {
+                  "code" : "JXErrors.cannotConvey",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : " if the type cannot be conveyed.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "Throws",
+          "style" : "note",
+          "type" : "aside"
+        }
+      ],
+      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -147,7 +208,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxvalue\/tojxconvertible(in:)"
+        "\/documentation\/jxkit\/jxvalue\/convey(to:)"
       ],
       "traits" : [
         {
@@ -171,48 +232,6 @@
   "title" : "JXKit",
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
-},
-"doc://JXKit/documentation/JXKit/JXContext": {
-  "abstract" : [
-    {
-      "text" : "A JavaScript execution context. This is a cross-platform analogue to the Objective-C ",
-      "type" : "text"
-    },
-    {
-      "code" : "JavaScriptCore.JSContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXContext"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXContext"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXContext",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
@@ -248,10 +267,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue"
 },
-"doc://JXKit/documentation/JXKit/JXValue/toJXConvertible(in:)": {
+"doc://JXKit/documentation/JXKit/JXValue/convey(to:)": {
   "abstract" : [
     {
-      "text" : "Converts this value into a JXContext.",
+      "text" : "Attempts to convey this JavaScript value to a specified type.",
       "type" : "text"
     }
   ],
@@ -266,15 +285,23 @@
     },
     {
       "kind" : "identifier",
-      "text" : "toJXConvertible"
+      "text" : "convey"
     },
     {
       "kind" : "text",
-      "text" : "("
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "T"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
     },
     {
       "kind" : "externalParam",
-      "text" : "in"
+      "text" : "to"
     },
     {
       "kind" : "text",
@@ -282,25 +309,31 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit9JXContextC",
-      "text" : "JXContext"
+      "text" : "T"
     },
     {
       "kind" : "text",
-      "text" : ") -> "
+      "text" : ".Type) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
+      "text" : "T"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/toJXConvertible(in:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/convey(to:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "toJXConvertible(in:)",
+  "title" : "convey(to:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/tojxconvertible(in:)"
+  "url" : "\/documentation\/jxkit\/jxvalue\/convey(to:)"
 }
 }
 }

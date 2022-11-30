@@ -105,7 +105,7 @@ final class JXKitTests: XCTestCase {
 
         let obj = ctx.object()
         let url = URL(string: "https://www.example.com")!
-        try obj.setProperty("x", url.toJXCodable(in: ctx))
+        try obj.setProperty("x", url.toJX(in: ctx))
     }
 }
 

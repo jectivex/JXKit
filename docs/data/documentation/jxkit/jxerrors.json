@@ -105,6 +105,7 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotCreateArrayBuffer",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotCreateFromJSON",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotCreatePromise",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidArgumentCount",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidAsyncPromise",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidNumericConversion(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidRawValue(_:)",
@@ -350,6 +351,34 @@
   "title" : "JXErrors.cannotCreatePromise",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerrors\/cannotcreatepromise"
+},
+"doc://JXKit/documentation/JXKit/JXErrors/invalidArgumentCount": {
+  "abstract" : [
+    {
+      "text" : "Wrong number of arguments passed to conveyed native function.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "invalidArgumentCount"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidArgumentCount",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXErrors.invalidArgumentCount",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerrors\/invalidargumentcount"
 },
 "doc://JXKit/documentation/JXKit/JXErrors/invalidAsyncPromise": {
   "abstract" : [

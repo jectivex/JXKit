@@ -440,6 +440,11 @@ class JXCoreTests: XCTestCase {
         let jxc = JXContext()
         try conveyTest(with: jxc)
     }
+    
+    private enum _Enum: String, RawRepresentable {
+        case x
+        case y
+    }
 
     private struct _Codable: Codable, Equatable {
         let x: Int
@@ -478,6 +483,7 @@ class JXCoreTests: XCTestCase {
     }
 
     private func conveyTest(with jxc: JXContext) throws {
+        XCTAssertTrue(try jxc.convey(()).isUndefined)
         XCTAssertEqual(try jxc.convey(true).convey(), true)
         XCTAssertEqual(try jxc.convey("string").convey(), "string")
         XCTAssertEqual(try jxc.convey(1.0).convey(), 1.0)
@@ -502,6 +508,13 @@ class JXCoreTests: XCTestCase {
         let optarraynil: [Int]? = nil
         XCTAssertEqual(try jxc.convey(optarray1).convey(), optarray1)
         XCTAssertEqual(try jxc.convey(optarraynil).convey(), optarraynil)
+        
+        let rawRepresentable = _Enum.x
+        let optrawRepresentable: _Enum? = .y
+        let optrawRepresentableNil: _Enum? = nil
+        XCTAssertEqual(try jxc.convey(rawRepresentable).convey(), rawRepresentable)
+        XCTAssertEqual(try jxc.convey(optrawRepresentable).convey(), optrawRepresentable)
+        XCTAssertEqual(try jxc.convey(optrawRepresentableNil).convey(), optrawRepresentableNil)
 
         let codable = _Codable(x: 1)
         let optcodable1: _Codable? = _Codable(x: 1)

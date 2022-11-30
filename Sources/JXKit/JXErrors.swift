@@ -14,6 +14,8 @@ public enum JXErrors: Error {
     case cannotConvey(Any.Type)
     /// An async call is expected to return a promise.
     case asyncEvalMustReturnPromise
+    /// Wrong number of arguments passed to conveyed native function.
+    case invalidArgumentCount
     /// The promise returned from an async call is not valid.
     case invalidAsyncPromise
     /// A conversion to another numic type or min/max range failed.

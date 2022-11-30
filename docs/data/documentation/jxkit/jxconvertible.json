@@ -76,35 +76,6 @@
         }
       ],
       "kind" : "declarations"
-    },
-    {
-      "content" : [
-        {
-          "anchor" : "overview",
-          "level" : 2,
-          "text" : "Overview",
-          "type" : "heading"
-        },
-        {
-          "inlineContent" : [
-            {
-              "text" : "In order to export Swift properties to the JS context, the types must conform to ",
-              "type" : "text"
-            },
-            {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible",
-              "isActive" : true,
-              "type" : "reference"
-            },
-            {
-              "text" : ".`",
-              "type" : "text"
-            }
-          ],
-          "type" : "paragraph"
-        }
-      ],
-      "kind" : "content"
     }
   ],
   "relationshipsSections" : [
