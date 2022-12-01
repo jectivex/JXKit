@@ -22,6 +22,7 @@ open class JXContext {
     public let contextRef: JSGlobalContextRef
 
     private var strictEvaluated: Bool = false
+    private var tryingRecursionGuard = false
 
     /// Class for instances that can hold references to peers (which ``JSObjectGetPrivate`` needs to work)
     @usableFromInline lazy var peerClass: JSClassRef = {
@@ -79,6 +80,14 @@ extension JXContext {
 
     /// Evaluates the JavaScript.
     @discardableResult public func eval(_ script: String, this: JXValue? = nil) throws -> JXValue {
+        do {
+            return try evalPrivate(script, this: this)
+        } catch {
+            throw JXError(cause: error, script: script)
+        }
+    }
+    
+    private func evalPrivate(_ script: String, this: JXValue?) throws -> JXValue {
         if strict == true && strictEvaluated == false {
             let useStrict = "\"use strict\";\n" // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
             let script = useStrict.withCString(JSStringCreateWithUTF8CString)
@@ -110,36 +119,49 @@ extension JXContext {
     @discardableResult public func eval(_ script: String, this: JXValue? = nil, priority: TaskPriority) async throws -> JXValue {
         let promise = try eval(script, this: this)
         guard try promise.isPromise else {
-            throw JXErrors.asyncEvalMustReturnPromise
+            throw JXError.asyncEvalMustReturnPromise(promise)
         }
-
+        do {
+            return try await evalPromise(promise, this: this, priority: priority)
+        } catch {
+            throw JXError(cause: error, script: script)
+        }
+    }
+    
+    private func evalPromise(_ promise: JXValue, this: JXValue?, priority: TaskPriority) async throws -> JXValue {
         let then = try promise["then"]
         guard then.isFunction else {
-            throw JXErrors.invalidAsyncPromise
+            throw JXError(message: "The returned Promise does not have a 'then' function")
         }
 
         return try await withCheckedThrowingContinuation { [weak self] c in
             do {
                 guard let self = self else {
-                    return c.resume(throwing: JXErrors.cannotCreatePromise)
+                    return c.resume(throwing: JXError(message: "The JXContext was deallocated during the 'JXContext.eval(...) async' call"))
                 }
-
+                
                 let fulfilled = JXValue(newFunctionIn: self) { jxc, this, args in
                     c.resume(returning: args.first ?? JXValue(undefinedIn: jxc))
                     return JXValue(undefinedIn: jxc)
                 }
-
+                
                 let rejected = JXValue(newFunctionIn: self) { jxc, this, arg in
-                    c.resume(throwing: arg.first.map({ JXEvalError(context: jxc, valueRef: $0.valueRef) }) ?? JXErrors.cannotCreatePromise)
+                    let error: JXError
+                    if let jsError = arg.first {
+                        error = JXError(jsError: jsError)
+                    } else {
+                        error = JXError(message: "The returned Promise was rejected")
+                    }
+                    c.resume(throwing: error)
                     return JXValue(undefinedIn: jxc)
                 }
-
+                
                 let presult = try then.call(withArguments: [fulfilled, rejected], this: promise)
-
+                
                 // then() should return a promise as well
                 if try !presult.isPromise {
                     // We can't throw here because it could complete the promise multiple times
-                    throw JXErrors.asyncEvalMustReturnPromise
+                    throw JXError.asyncEvalMustReturnPromise(presult)
                 }
             } catch {
                 return c.resume(throwing: error)
@@ -154,7 +176,7 @@ extension JXContext {
     ///   - sourceURL: A URL for the script's source file. This is only used when reporting exceptions. Pass `nil` to omit source file information in exceptions.
     ///   - startingLineNumber: An integer value specifying the script's starting line number in the file located at sourceURL. This is only used when reporting exceptions.
     /// - Returns: true if the script is syntactically correct; otherwise false.
-    @inlinable public func checkSyntax(_ script: String, sourceURL URLString: String? = nil, startingLineNumber: Int = 0) throws -> Bool {
+    public func checkSyntax(_ script: String, sourceURL URLString: String? = nil, startingLineNumber: Int = 0) throws -> Bool {
         let script = script.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(script) }
 
@@ -435,14 +457,16 @@ extension JXContext {
         try JXValue(newArrayBufferWithBytes: value, in: self)
     }
 
+    /// Create a JavaScript Error with the given cause.
+    ///
+    /// - Seealso: ``JXValue/cause``
     @inlinable public func error<E: Error>(_ error: E) throws -> JXValue {
-        try JXValue(newErrorFromMessage: "\(error)", in: self)
+        try JXValue(newErrorFromCause: error, in: self)
     }
 
     /// Attempts to convey the given value into this JavaScript context.
     ///
-    /// - Throws: `JXErrors.cannotConvey` if the type cannot be conveyed to JavaScript.
-    /// - Seealso: `JXValue.convey` to convey back from JavaScript.
+    /// - Seealso: ``JXValue/convey(to:)`` to convey back from JavaScript.
     public func convey(_ value: Any?) throws -> JXValue {
         guard let value else {
             return null()
@@ -465,7 +489,8 @@ extension JXContext {
 
     private func conveyEncodable(_ value: Any) throws -> JXValue {
         guard let encodable = value as? Encodable else {
-            throw JXErrors.cannotConvey(type(of: value))
+            // Encodable is our last fallback; this value cannot be conveyed
+            throw JXError(message: "Unable to convey native value '\(String(describing: value))' of type '\(String(describing: type(of: value)))' to a JavaScript value")
         }
         return try encode(encodable)
     }
@@ -479,17 +504,27 @@ extension JXContext {
         if let value = JXValue(json: string, in: self) {
             return value
         }
-        throw JXErrors.cannotCreateFromJSON
+        throw JXError(message: "Unable to create a JavaScript value from the given JSON", script: string)
     }
 
     /// Attempts the operation whose failure is expected to set the given error pointer.
     ///
-    /// When the error pointer is set, a ``JXEvalError`` will be thrown.
-    @inlinable internal func trying<T>(function: (UnsafeMutablePointer<JSValueRef?>) throws -> T?) throws -> T! {
+    /// When the error pointer is set, a ``JXError`` will be thrown.
+    @usableFromInline internal func trying<T>(function: (UnsafeMutablePointer<JSValueRef?>) throws -> T?) throws -> T! {
         var errorPointer: JSValueRef?
         let result = try function(&errorPointer)
         if let errorPointer = errorPointer {
-            throw JXEvalError(context: self, valueRef: errorPointer)
+            // Creating a JXError from the errorPointer may involve calling functions that throw errors,
+            // though the errors are all handled internally. Guard against infinite recursion by short-
+            // circuiting those cases
+            if tryingRecursionGuard {
+                return result
+            } else {
+                tryingRecursionGuard = true
+                defer { tryingRecursionGuard = false }
+                let error = JXValue(context: self, valueRef: errorPointer)
+                throw JXError(jsError: error)
+            }
         } else {
             return result
         }

@@ -18,9 +18,3 @@ public typealias JXValueRef = JSValueRef
 
 /// The underlying type that represents a string in the JavaScript environment.
 @usableFromInline internal typealias JXStringRef = JSStringRef
-
-/// Work-in-progress, simply to highlight a line with a deprecation warning.
-@available(*, deprecated, message: "work-in-progress")
-@usableFromInline internal func wip<T>(_ value: T) -> T { value }
-
-

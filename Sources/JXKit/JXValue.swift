@@ -38,7 +38,6 @@ extension JXValue {
         formatter.timeZone = TimeZone(abbreviation: "UTC")
         return formatter
     }()
-
 }
 
 extension JXValue {
@@ -139,14 +138,23 @@ extension JXValue {
         }
         self.init(context: context, valueRef: object!)
     }
-
+    
     /// Creates a JavaScript `Error` object, as if by invoking the built-in `Error` constructor.
     ///
     /// - Parameters:
     ///   - message: The error message.
     ///   - context: The execution context to use.
-    @usableFromInline internal convenience init(newErrorFromMessage message: String, in context: JXContext) throws {
-        let arguments = [JXValue(string: message, in: context)]
+    @usableFromInline internal convenience init(newErrorFromCause cause: Error, in context: JXContext) throws {
+        // If the cause itself has a cause, use that as the JS error message so that if this is a JXError
+        // caused by a native error, any JS catch block can test for the original native error message,
+        // without the added JX context
+        let rootCause = (cause as? JXError)?.cause ?? cause
+        let messageValue =  context.string("\(rootCause)")
+        // Error's second constructor param is an options object with a 'cause' property of any type.
+        // Use this to transfer the original cause as a peer
+        let causeValue = context.object()
+        try causeValue.setProperty("cause", context.object(peer: JXErrorPeer(error: cause)))
+        let arguments = [messageValue, causeValue]
         let object = try context.trying {
             JSObjectMakeError(context.contextRef, arguments.count, arguments.map { $0.valueRef }, $0)
         }
@@ -203,29 +211,38 @@ extension JXValue {
 extension JXValue: CustomStringConvertible {
 
     @inlinable public var description: String {
-        if self.isUndefined {
+        switch self.type {
+        case .undefined:
             return "undefined"
-        }
-        if self.isNull {
+        case .null:
             return "null"
-        }
-        if self.isBoolean {
+        case .boolean:
             return "\(self.bool)"
-        }
-        if self.isNumber {
+        case .number:
             return ((try? self.double) ?? .nan).description
+        case .string:
+            return (try? self.string) ?? "<string>"
+        case .symbol:
+            return (try? self.string) ?? "<symbol>"
+        case .array:
+            return "<array>"
+        case .date:
+            return (try? self.string) ?? "<date>"
+        case .arrayBuffer:
+            return "<arrayBuffer>"
+        case .promise:
+            return "<promise>"
+        case .error:
+            return (try? self.string) ?? "<error>"
+        case .constructor:
+            return "<constructor: \((try? self.string) ?? "?")>"
+        case .function:
+            return "<function: \((try? self.string) ?? "?")>"
+        case .object:
+            return (try? self.string) ?? "<object>"
+        case .other:
+            return "<other>"
         }
-        if self.isString {
-            return (try? self.string) ?? "string"
-        }
-        if (try? self.isError) == true {
-            return (try? self.string) ?? "error"
-        }
-
-        // Better to not invoke a method from `description`
-        //return try! self.invokeMethod("toString", withArguments: []).string!
-        
-        return "[JXValue]"
     }
 }
 
@@ -307,13 +324,6 @@ extension JXValue {
     @inlinable public var isPromise: Bool {
         get throws {
             try isInstance(of: context.promisePrototype)
-        }
-    }
-
-    /// Tests whether a JavaScript value’s type is the promise type.
-    @inlinable public var isProxy: Bool {
-        get throws {
-            try isInstance(of: context.proxyPrototype)
         }
     }
 
@@ -434,7 +444,7 @@ extension JXValue {
         get throws {
             let dbl = try double
             guard !dbl.isNaN && !dbl.isSignalingNaN && !dbl.isInfinite else {
-                throw JXErrors.invalidNumericConversion(dbl)
+                throw JXError.invalidNumericConversion(self, to: dbl)
             }
             return dbl
         }
@@ -516,11 +526,11 @@ extension JXValue {
     @inlinable public var dateISO: Date {
         get throws {
             if !(try isDate) {
-                throw JXErrors.valueNotDate
+                throw JXError.valueNotDate(self)
             }
             let result = try invokeMethod("toISOString", withArguments: [])
             guard let date = try JXValue.rfc3339.date(from: result.string) else {
-                throw JXErrors.valueNotDate
+                throw JXError.valueNotDate(self)
             }
             return date
         }
@@ -548,8 +558,6 @@ extension JXValue {
 extension JXValue {
 
     /// Attempts to convey this JavaScript value to a specified type.
-    ///
-    /// - Throws: `JXErrors.cannotConvey` if the type cannot be conveyed.
     public func convey<T>(to type: T.Type = T.self) throws -> T {
         if let convertibleType = type as? JXConvertible.Type {
             return try convertibleType.fromJX(self) as! T
@@ -559,20 +567,20 @@ extension JXValue {
             if isUndefined {
                 return () as! T
             }
-            throw JXErrors.cannotConvey(type)
+            throw JXError(message: "Cannot convey JavaScript value '\(description)' to Void. Expected 'undefined'")
         } else if let value = try context.spi?.fromJX(self, to: type) {
             return value
         } else if let decodableType = type as? Decodable.Type {
             return try self.toDecodable(ofType: decodableType) as! T
         } else {
-            throw JXErrors.cannotConvey(type)
+            throw JXError(message: "Unable to convey JavaScript value '\(description)' to type '\(String(describing: type))'")
         }
     }
     
     private func conveyRawRepresentable<T: RawRepresentable>(to type: T.Type) throws -> T {
         let rawValue = try convey(to: T.RawValue.self)
         guard let ret = T(rawValue: rawValue) else {
-            throw JXErrors.invalidRawValue(String(describing: rawValue))
+            throw JXError(message: "Raw value '\(rawValue)' is not valid for RawRepresentable type '\(type)'")
         }
         return ret
     }
@@ -589,15 +597,19 @@ extension JXValue {
     @discardableResult @inlinable public func call(withArguments arguments: [JXValue] = [], this: JXValue? = nil) throws -> JXValue {
         if !isFunction {
             // we should have already validated that it is a function
-            throw JXErrors.valueNotFunction
+            throw JXError.valueNotFunction(self)
         }
-        let result = try context.trying {
-            JSObjectCallAsFunction(context.contextRef, valueRef, this?.valueRef, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.valueRef }, $0)
+        do {
+            let result = try context.trying {
+                JSObjectCallAsFunction(context.contextRef, valueRef, this?.valueRef, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.valueRef }, $0)
+            }
+            return result.map {
+                let v = JXValue(context: context, valueRef: $0)
+                return v
+            } ?? JXValue(undefinedIn: context)
+        } catch {
+            throw JXError(cause: error, script: (try? self.string))
         }
-        return result.map {
-            let v = JXValue(context: context, valueRef: $0)
-            return v
-        } ?? JXValue(undefinedIn: context)
     }
 
     /// Calls an object as a function.
@@ -617,10 +629,14 @@ extension JXValue {
     ///   - arguments: The arguments to pass to the function.
     /// - Returns: The object that results from calling object as a constructor.
     @inlinable public func construct(withArguments arguments: [JXValue] = []) throws -> JXValue {
-        let result = try context.trying {
-            JSObjectCallAsConstructor(context.contextRef, valueRef, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.valueRef }, $0)
+        do {
+            let result = try context.trying {
+                JSObjectCallAsConstructor(context.contextRef, valueRef, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.valueRef }, $0)
+            }
+            return result.map { JXValue(context: context, valueRef: $0) } ?? JXValue(undefinedIn: context)
+        } catch {
+            throw JXError(cause: error, script: (try? self.string))
         }
-        return result.map { JXValue(context: context, valueRef: $0) } ?? JXValue(undefinedIn: context)
     }
 
     /// Calls an object as a constructor.
@@ -774,10 +790,10 @@ extension JXValue {
     @inlinable public subscript(symbol symbol: JXValue) -> JXValue {
         get throws {
             if !isObject {
-                throw JXErrors.valueNotObject
+                throw JXError.valueNotPropertiesObject(self, property: symbol.description)
             }
             if !symbol.isSymbol {
-                throw JXErrors.keyNotSymbol
+                throw JXError.valueNotSymbol(symbol)
             }
             let result = try context.trying {
                 JSObjectGetPropertyForKey(context.contextRef, valueRef, symbol.valueRef, $0)
@@ -794,7 +810,7 @@ extension JXValue {
     /// - Returns: The value itself.
     @discardableResult @inlinable public func setProperty(_ key: String, _ newValue: JXValue) throws -> JXValue {
         if !isObject {
-            throw JXErrors.valueNotObject
+            throw JXError.valueNotPropertiesObject(self, property: key)
         }
 
         let property = JSStringCreateWithUTF8CString(key)
@@ -823,7 +839,7 @@ extension JXValue {
     /// - Returns: The value itself.
     @discardableResult @inlinable public func setProperty(symbol: JXValue, _ newValue: JXValue) throws -> JXValue {
         if !isObject {
-            throw JXErrors.valueNotObject
+            throw JXError.valueNotPropertiesObject(self, property: symbol.description)
         }
 
         try context.trying {
@@ -954,7 +970,7 @@ extension JXValue {
         }
 
         guard let value = value else {
-            throw JXErrors.cannotCreateArrayBuffer
+            throw JXError.cannotCreateArrayBuffer()
         }
 
         self.init(context: context, valueRef: value)
@@ -973,7 +989,7 @@ extension JXValue {
         guard let bufValue = try context.trying(function: {
             JSObjectMakeArrayBufferWithBytesNoCopy(context.contextRef, buffer, bytes.count, { buffer, _ in buffer?.deallocate() }, nil, $0)
         }) else {
-            throw JXErrors.cannotCreateArrayBuffer
+            throw JXError.cannotCreateArrayBuffer()
         }
 
         self.init(context: context, valueRef: bufValue)
@@ -993,11 +1009,12 @@ extension JXValue {
     /// The length (in bytes) of the `ArrayBuffer`.
     public var byteLength: Int {
         get throws {
-            let num = try self["byteLength"].double
+            let byteLengthValue = try self["byteLength"]
+            let num = try byteLengthValue.double
             if let int = Int(exactly: num) {
                 return int
             }
-            throw JXErrors.invalidNumericConversion(num)
+            throw JXError.invalidNumericConversion(byteLengthValue, to: num)
         }
     }
 
@@ -1055,16 +1072,16 @@ extension JXValue {
         guard let promise = try context.trying(function: {
             JSObjectMakeDeferredPromise(context.contextRef, &resolveRef, &rejectRef, $0)
         }) else {
-            throw JXErrors.cannotCreatePromise
+            throw JXError.cannotCreatePromise()
         }
 
         guard let resolve = resolveRef else {
-            throw JXErrors.cannotCreatePromise
+            throw JXError.cannotCreatePromise()
         }
         let resolveFunction = JXValue(context: context, valueRef: resolve)
 
         guard let reject = rejectRef else {
-            throw JXErrors.cannotCreatePromise
+            throw JXError.cannotCreatePromise()
         }
         let rejectFunction = JXValue(context: context, valueRef: reject)
 
@@ -1120,8 +1137,8 @@ private func JXFunctionConstructor(_ jxc: JXContextRef?, _ object: JSObjectRef?,
         JSObjectSetPrototype(context.contextRef, result.valueRef, prototype)
 
         return result.valueRef
-    } catch let error {
-        let error = try? JXValue(newErrorFromMessage: "\(error)", in: context)
+    } catch {
+        let error = try? JXValue(newErrorFromCause: error, in: context)
         exception?.pointee = error?.valueRef
         return nil
     }
@@ -1137,8 +1154,8 @@ private func JXFunctionCallback(_ jxc: JXContextRef?, _ object: JSObjectRef?, _ 
         let arguments = (0..<argumentCount).map { JXValue(context: context, valueRef: arguments![$0]!) }
         let result = try info.pointee.callback(context, this, arguments)
         return result.valueRef
-    } catch let error {
-        let error = try? JXValue(newErrorFromMessage: "\(error)", in: context)
+    } catch {
+        let error = try? JXValue(newErrorFromCause: error, in: context)
         exception?.pointee = error?.valueRef
         return nil
     }
@@ -1153,17 +1170,25 @@ private func JXFunctionInstanceOf(_ jxc: JXContextRef?, _ constructor: JSObjectR
 }
 
 extension JXValue {
-    /// A peer is an instance of `AnyObject` that is created from ``JXContext.object`` with a peer argument.
+    /// A peer is an instance of `AnyObject` that is created from ``JXContext/object(peer:)`` with a peer argument.
     ///
     /// The peer cannot be changed once an object has been initialized with it.
     public var peer: AnyObject? {
         get {
-            guard isObject,
-                  !isFunction,
-                  let ptr = JSObjectGetPrivate(valueRef) else {
+            guard isObject, !isFunction, let ptr = JSObjectGetPrivate(valueRef) else {
                 return nil
             }
             return ptr.assumingMemoryBound(to: AnyObject?.self).pointee
+        }
+    }
+    
+    /// The cause passed to ``JXContext/error(_:)``.
+    public var cause: Error? {
+        get {
+            guard let causeValue = try? self["cause"], let errorPeer = causeValue.peer as? JXErrorPeer else {
+                return nil
+            }
+            return errorPeer.error
         }
     }
 }

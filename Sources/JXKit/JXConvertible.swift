@@ -24,7 +24,7 @@ extension Encodable where Self: JXConvertible {
 extension JXValue: JXConvertible {
     public static func fromJX(_ value: JXValue) throws -> Self {
         guard let value = value as? Self else {
-            throw JXErrors.jumpContextInvalid
+            throw JXError(message: "The JXValue bound instance was not retained")
         }
         return value
     }
@@ -55,7 +55,7 @@ extension Optional: JXConvertible {
 extension Array: JXConvertible {
     public static func fromJX(_ value: JXValue) throws -> Self {
         guard value.isArray else {
-            throw JXErrors.valueNotArray
+            throw JXError.valueNotArray(value)
         }
         let arrayValue = try value.array
         return try arrayValue.map({ jx in
@@ -73,7 +73,7 @@ extension Array: JXConvertible {
 extension Dictionary: JXConvertible where Key == String {
     public static func fromJX(_ value: JXValue) throws -> Dictionary<Key, Value> {
         guard value.isObject else {
-            throw JXErrors.valueNotObject
+            throw JXError.valueNotObject(value)
         }
         let jxDictionary = try value.dictionary
         return try jxDictionary.reduce(into: [:]) { result, entry in
@@ -172,17 +172,17 @@ extension Data: JXConvertible {
 
             let count = try length.double
             guard length.isNumber, let max = UInt32(exactly: count) else {
-                throw JXErrors.valueNotArray
+                throw JXError.valueNotArray(value)
             }
 
             let data: [UInt8] = try (0..<max).map { index in
                 let element = try value[.init(index)]
                 guard element.isNumber else {
-                    throw JXErrors.valueNotNumber
+                    throw JXError(message: "Expected a JavaScript data array, but encountered non-number element '\(element.description)'")
                 }
                 let num = try element.double
                 guard num <= .init(UInt8.max), num >= .init(UInt8.min), let byte = UInt8(exactly: num) else {
-                    throw JXErrors.invalidNumericConversion(num)
+                    throw JXError(message: "Expected a JavaScript data array, but encountered element with invalid value '\(num)'")
                 }
 
                 return byte
@@ -190,7 +190,7 @@ extension Data: JXConvertible {
 
             return Data(data)
         } else {
-            throw JXErrors.valueNotArray
+            throw JXError.valueNotArray(value)
         }
     }
 
