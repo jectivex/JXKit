@@ -1,29 +1,31 @@
 {
-  "abstract" : [
-    {
-      "text" : "A conversion to another numic type or min\/max range failed.",
-      "type" : "text"
-    }
-  ],
   "hierarchy" : {
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXError"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidNumericConversion(_:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/internalError(_:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit8JXErrorsO24invalidNumericConversionyACSdcACmF",
+    "externalID" : "s:5JXKit7JXErrorV13internalErroryACSSFZ",
     "fragments" : [
       {
         "kind" : "keyword",
-        "text" : "case"
+        "text" : "static"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "keyword",
+        "text" : "func"
       },
       {
         "kind" : "text",
@@ -31,7 +33,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "invalidNumericConversion"
+        "text" : "internalError"
       },
       {
         "kind" : "text",
@@ -39,12 +41,17 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:Sd",
-        "text" : "Double"
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
       },
       {
         "kind" : "text",
-        "text" : ")"
+        "text" : ") -> "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:5JXKit7JXErrorV",
+        "text" : "JXError"
       }
     ],
     "modules" : [
@@ -53,9 +60,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Case",
-    "symbolKind" : "case",
-    "title" : "JXErrors.invalidNumericConversion(_:)"
+    "roleHeading" : "Type Method",
+    "symbolKind" : "method",
+    "title" : "internalError(_:)"
   },
   "primaryContentSections" : [
     {
@@ -70,7 +77,15 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "case"
+              "text" : "static"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "func"
             },
             {
               "kind" : "text",
@@ -78,20 +93,42 @@
             },
             {
               "kind" : "identifier",
-              "text" : "invalidNumericConversion"
+              "text" : "internalError"
             },
             {
               "kind" : "text",
               "text" : "("
             },
             {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:Sd",
-              "text" : "Double"
+              "kind" : "externalParam",
+              "text" : "_"
             },
             {
               "kind" : "text",
-              "text" : ")"
+              "text" : " "
+            },
+            {
+              "kind" : "internalParam",
+              "text" : "message"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : ") -> "
+            },
+            {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5JXKit7JXErrorV",
+              "text" : "JXError"
             }
           ]
         }
@@ -110,7 +147,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxerrors\/invalidnumericconversion(_:)"
+        "\/documentation\/jxkit\/jxerror\/internalerror(_:)"
       ],
       "traits" : [
         {
@@ -135,17 +172,17 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXErrors": {
+"doc://JXKit/documentation/JXKit/JXError": {
   "abstract" : [
     {
-      "text" : "JXKit framework errors.",
+      "text" : "An error thrown from JXKit.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "enum"
+      "text" : "struct"
     },
     {
       "kind" : "text",
@@ -153,33 +190,38 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXError"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXError"
     }
   ],
   "role" : "symbol",
-  "title" : "JXErrors",
+  "title" : "JXError",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors"
+  "url" : "\/documentation\/jxkit\/jxerror"
 },
-"doc://JXKit/documentation/JXKit/JXErrors/invalidNumericConversion(_:)": {
+"doc://JXKit/documentation/JXKit/JXError/internalError(_:)": {
   "abstract" : [
-    {
-      "text" : "A conversion to another numic type or min\/max range failed.",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "case"
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
     },
     {
       "kind" : "text",
@@ -187,7 +229,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "invalidNumericConversion"
+      "text" : "internalError"
     },
     {
       "kind" : "text",
@@ -195,20 +237,25 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sd",
-      "text" : "Double"
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
     },
     {
       "kind" : "text",
-      "text" : ")"
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXErrorV",
+      "text" : "JXError"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidNumericConversion(_:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/internalError(_:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "JXErrors.invalidNumericConversion(_:)",
+  "title" : "internalError(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors\/invalidnumericconversion(_:)"
+  "url" : "\/documentation\/jxkit\/jxerror\/internalerror(_:)"
 }
 }
 }

@@ -117,14 +117,6 @@
   "relationshipsSections" : [
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXEvalError"
-      ],
-      "kind" : "relationships",
-      "title" : "Inherited By",
-      "type" : "inheritedBy"
-    },
-    {
-      "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible",
         "doc:\/\/JXKit\/s23CustomStringConvertibleP"
       ],
@@ -170,6 +162,7 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/array",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/bool",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/byteLength",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/cause",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/context",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/count",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/date",
@@ -194,7 +187,6 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isNumber",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isObject",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isPromise",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isProxy",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isSealed",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isString",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isSymbol",
@@ -352,6 +344,121 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
+"doc://JXKit/documentation/JXKit/JXContext/error(_:)": {
+  "abstract" : [
+    {
+      "text" : "Create a JavaScript Error with the given cause.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "error"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "E"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "E"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/error(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "error(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/error(_:)"
+},
+"doc://JXKit/documentation/JXKit/JXContext/object(peer:)": {
+  "abstract" : [
+    {
+      "text" : "Creates a new object in this context and assigns it the given peer object.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "object"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "peer"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s9AnyObjecta",
+      "text" : "AnyObject"
+    },
+    {
+      "kind" : "text",
+      "text" : "?) -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(peer:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "object(peer:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/object(peer:)"
+},
 "doc://JXKit/documentation/JXKit/JXConvertible": {
   "abstract" : [
     {
@@ -385,40 +492,6 @@
   "title" : "JXConvertible",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxconvertible"
-},
-"doc://JXKit/documentation/JXKit/JXEvalError": {
-  "abstract" : [
-    {
-      "text" : "An error thrown from JavaScript evaluation.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXEvalError"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXEvalError",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXEvalError"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXEvalError",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxevalerror"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
@@ -844,6 +917,56 @@
   "title" : "call(withArguments:this:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/call(witharguments:this:)-7zt51"
+},
+"doc://JXKit/documentation/JXKit/JXValue/cause": {
+  "abstract" : [
+    {
+      "text" : "The cause passed to ",
+      "type" : "text"
+    },
+    {
+      "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/error(_:)",
+      "isActive" : true,
+      "type" : "reference"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "cause"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s5ErrorP",
+      "text" : "Error"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/cause",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "cause",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/cause"
 },
 "doc://JXKit/documentation/JXKit/JXValue/construct(withArguments:)-4n82x": {
   "abstract" : [
@@ -3480,43 +3603,6 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/ispromise"
 },
-"doc://JXKit/documentation/JXKit/JXValue/isProxy": {
-  "abstract" : [
-    {
-      "text" : "Tests whether a JavaScript value’s type is the promise type.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "var"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "isProxy"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isProxy",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "isProxy",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/isproxy"
-},
 "doc://JXKit/documentation/JXKit/JXValue/isSealed": {
   "abstract" : [
     {
@@ -3680,8 +3766,9 @@
       "type" : "text"
     },
     {
-      "code" : "JXContext.object",
-      "type" : "codeVoice"
+      "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(peer:)",
+      "isActive" : true,
+      "type" : "reference"
     },
     {
       "text" : " with a peer argument.",

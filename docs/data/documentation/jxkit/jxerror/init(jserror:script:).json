@@ -1,63 +1,61 @@
 {
-  "abstract" : [
-    {
-      "text" : "Attempts to convey the given value into this JavaScript context.",
-      "type" : "text"
-    }
-  ],
   "hierarchy" : {
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXError"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/convey(_:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/init(jsError:script:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC6conveyyAA7JXValueCypSgKF",
+    "externalID" : "s:5JXKit7JXErrorV7jsError6scriptAcA7JXValueC_SSSgtcfc",
     "fragments" : [
       {
-        "kind" : "keyword",
-        "text" : "func"
-      },
-      {
-        "kind" : "text",
-        "text" : " "
-      },
-      {
         "kind" : "identifier",
-        "text" : "convey"
+        "text" : "init"
       },
       {
         "kind" : "text",
         "text" : "("
       },
       {
-        "kind" : "keyword",
-        "text" : "Any"
+        "kind" : "externalParam",
+        "text" : "jsError"
       },
       {
         "kind" : "text",
-        "text" : "?) "
-      },
-      {
-        "kind" : "keyword",
-        "text" : "throws"
-      },
-      {
-        "kind" : "text",
-        "text" : " -> "
+        "text" : ": "
       },
       {
         "kind" : "typeIdentifier",
         "preciseIdentifier" : "s:5JXKit7JXValueC",
         "text" : "JXValue"
+      },
+      {
+        "kind" : "text",
+        "text" : ", "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "script"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
+      },
+      {
+        "kind" : "text",
+        "text" : "?)"
       }
     ],
     "modules" : [
@@ -66,9 +64,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Instance Method",
-    "symbolKind" : "method",
-    "title" : "convey(_:)"
+    "roleHeading" : "Initializer",
+    "symbolKind" : "init",
+    "title" : "init(jsError:script:)"
   },
   "primaryContentSections" : [
     {
@@ -83,15 +81,7 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "func"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "identifier",
-              "text" : "convey"
+              "text" : "init"
             },
             {
               "kind" : "text",
@@ -99,41 +89,38 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "_"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "internalParam",
-              "text" : "value"
+              "text" : "jsError"
             },
             {
               "kind" : "text",
               "text" : ": "
             },
             {
-              "kind" : "keyword",
-              "text" : "Any"
-            },
-            {
-              "kind" : "text",
-              "text" : "?) "
-            },
-            {
-              "kind" : "keyword",
-              "text" : "throws"
-            },
-            {
-              "kind" : "text",
-              "text" : " -> "
-            },
-            {
               "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
               "preciseIdentifier" : "s:5JXKit7JXValueC",
               "text" : "JXValue"
+            },
+            {
+              "kind" : "text",
+              "text" : ", "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "script"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : "? = nil)"
             }
           ]
         }
@@ -152,7 +139,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/convey(_:)"
+        "\/documentation\/jxkit\/jxerror\/init(jserror:script:)"
       ],
       "traits" : [
         {
@@ -177,25 +164,17 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXContext": {
+"doc://JXKit/documentation/JXKit/JXError": {
   "abstract" : [
     {
-      "text" : "A JavaScript execution context. This is a cross-platform analogue to the Objective-C ",
-      "type" : "text"
-    },
-    {
-      "code" : "JavaScriptCore.JSContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
+      "text" : "An error thrown from JXKit.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "class"
+      "text" : "struct"
     },
     {
       "kind" : "text",
@@ -203,74 +182,76 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXContext"
+      "text" : "JXError"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXContext"
+      "text" : "JXError"
     }
   ],
   "role" : "symbol",
-  "title" : "JXContext",
+  "title" : "JXError",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext"
+  "url" : "\/documentation\/jxkit\/jxerror"
 },
-"doc://JXKit/documentation/JXKit/JXContext/convey(_:)": {
+"doc://JXKit/documentation/JXKit/JXError/init(jsError:script:)": {
   "abstract" : [
-    {
-      "text" : "Attempts to convey the given value into this JavaScript context.",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
     {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
       "kind" : "identifier",
-      "text" : "convey"
+      "text" : "init"
     },
     {
       "kind" : "text",
       "text" : "("
     },
     {
-      "kind" : "keyword",
-      "text" : "Any"
+      "kind" : "externalParam",
+      "text" : "jsError"
     },
     {
       "kind" : "text",
-      "text" : "?) "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
+      "text" : ": "
     },
     {
       "kind" : "typeIdentifier",
       "preciseIdentifier" : "s:5JXKit7JXValueC",
       "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "script"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?)"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/convey(_:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/init(jsError:script:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "convey(_:)",
+  "title" : "init(jsError:script:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/convey(_:)"
+  "url" : "\/documentation\/jxkit\/jxerror\/init(jserror:script:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [

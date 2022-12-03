@@ -1,29 +1,23 @@
 {
-  "abstract" : [
-    {
-      "text" : "This can occur when the bound instance is not retained anywhere.",
-      "type" : "text"
-    }
-  ],
   "hierarchy" : {
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXError"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/jumpContextInvalid"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/message"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit8JXErrorsO18jumpContextInvalidyA2CmF",
+    "externalID" : "s:5JXKit7JXErrorV7messageSSvp",
     "fragments" : [
       {
         "kind" : "keyword",
-        "text" : "case"
+        "text" : "var"
       },
       {
         "kind" : "text",
@@ -31,7 +25,16 @@
       },
       {
         "kind" : "identifier",
-        "text" : "jumpContextInvalid"
+        "text" : "message"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
       }
     ],
     "modules" : [
@@ -40,9 +43,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Case",
-    "symbolKind" : "case",
-    "title" : "JXErrors.jumpContextInvalid"
+    "roleHeading" : "Instance Property",
+    "symbolKind" : "property",
+    "title" : "message"
   },
   "primaryContentSections" : [
     {
@@ -57,7 +60,7 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "case"
+              "text" : "var"
             },
             {
               "kind" : "text",
@@ -65,7 +68,16 @@
             },
             {
               "kind" : "identifier",
-              "text" : "jumpContextInvalid"
+              "text" : "message"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
             }
           ]
         }
@@ -84,7 +96,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxerrors\/jumpcontextinvalid"
+        "\/documentation\/jxkit\/jxerror\/message"
       ],
       "traits" : [
         {
@@ -109,17 +121,17 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXErrors": {
+"doc://JXKit/documentation/JXKit/JXError": {
   "abstract" : [
     {
-      "text" : "JXKit framework errors.",
+      "text" : "An error thrown from JXKit.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "enum"
+      "text" : "struct"
     },
     {
       "kind" : "text",
@@ -127,33 +139,30 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXError"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXError"
     }
   ],
   "role" : "symbol",
-  "title" : "JXErrors",
+  "title" : "JXError",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors"
+  "url" : "\/documentation\/jxkit\/jxerror"
 },
-"doc://JXKit/documentation/JXKit/JXErrors/jumpContextInvalid": {
+"doc://JXKit/documentation/JXKit/JXError/message": {
   "abstract" : [
-    {
-      "text" : "This can occur when the bound instance is not retained anywhere.",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "case"
+      "text" : "var"
     },
     {
       "kind" : "text",
@@ -161,15 +170,24 @@
     },
     {
       "kind" : "identifier",
-      "text" : "jumpContextInvalid"
+      "text" : "message"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/jumpContextInvalid",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/message",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "JXErrors.jumpContextInvalid",
+  "title" : "message",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors\/jumpcontextinvalid"
+  "url" : "\/documentation\/jxkit\/jxerror\/message"
 }
 }
 }

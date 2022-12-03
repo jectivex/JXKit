@@ -98,6 +98,8 @@ final class JXKitTests: XCTestCase {
         try proxy.setProperty("z", ctx.string("YoLo"))
         XCTAssertEqual("YOLO", try proxy["z"].string)
         XCTAssertEqual("yolo", try dict["z"].string)
+        
+        XCTAssertTrue(proxy.isObject)
     }
 
     func testCustomConvertible() throws {
@@ -117,6 +119,6 @@ extension URL : JXConvertible {
 
     public static func fromJX(_ value: JXValue) throws -> Self {
         if let url = try URL(string: value.string) { return url }
-        throw JXEvalError(context: value.context, value: value.context.string("Unable to create URL from string"))
+        throw JXError(message: "Unable to create URL from value '\(value.description)'")
     }
 }

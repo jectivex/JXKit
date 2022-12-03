@@ -101,13 +101,17 @@
     {
       "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/array",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/arrayBuffer",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/boolean",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/buffer",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/constructor",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/date",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/error",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/function",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/null",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/number",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/object",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/other",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/promise",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/string",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/symbol",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/undefined"
@@ -233,6 +237,34 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxtype\/array"
 },
+"doc://JXKit/documentation/JXKit/JXType/arrayBuffer": {
+  "abstract" : [
+    {
+      "text" : "An array buffer type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "arrayBuffer"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/arrayBuffer",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXType.arrayBuffer",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxtype\/arraybuffer"
+},
 "doc://JXKit/documentation/JXKit/JXType/boolean": {
   "abstract" : [
     {
@@ -261,10 +293,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxtype\/boolean"
 },
-"doc://JXKit/documentation/JXKit/JXType/buffer": {
+"doc://JXKit/documentation/JXKit/JXType/constructor": {
   "abstract" : [
     {
-      "text" : "A buffer type",
+      "text" : "A constructor type.",
       "type" : "text"
     }
   ],
@@ -279,15 +311,15 @@
     },
     {
       "kind" : "identifier",
-      "text" : "buffer"
+      "text" : "constructor"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/buffer",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/constructor",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "JXType.buffer",
+  "title" : "JXType.constructor",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxtype\/buffer"
+  "url" : "\/documentation\/jxkit\/jxtype\/constructor"
 },
 "doc://JXKit/documentation/JXKit/JXType/date": {
   "abstract" : [
@@ -316,6 +348,62 @@
   "title" : "JXType.date",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxtype\/date"
+},
+"doc://JXKit/documentation/JXKit/JXType/error": {
+  "abstract" : [
+    {
+      "text" : "An Error type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "error"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/error",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXType.error",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxtype\/error"
+},
+"doc://JXKit/documentation/JXKit/JXType/function": {
+  "abstract" : [
+    {
+      "text" : "A function type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "function"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/function",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXType.function",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxtype\/function"
 },
 "doc://JXKit/documentation/JXKit/JXType/null": {
   "abstract" : [
@@ -428,6 +516,34 @@
   "title" : "JXType.other",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxtype\/other"
+},
+"doc://JXKit/documentation/JXKit/JXType/promise": {
+  "abstract" : [
+    {
+      "text" : "A Promise type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "promise"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/promise",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "JXType.promise",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxtype\/promise"
 },
 "doc://JXKit/documentation/JXKit/JXType/string": {
   "abstract" : [

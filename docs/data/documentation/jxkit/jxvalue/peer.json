@@ -13,8 +13,9 @@
       "type" : "text"
     },
     {
-      "code" : "JXContext.object",
-      "type" : "codeVoice"
+      "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(peer:)",
+      "isActive" : true,
+      "type" : "reference"
     },
     {
       "text" : " with a peer argument.",
@@ -180,6 +181,60 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
+"doc://JXKit/documentation/JXKit/JXContext/object(peer:)": {
+  "abstract" : [
+    {
+      "text" : "Creates a new object in this context and assigns it the given peer object.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "object"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "peer"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s9AnyObjecta",
+      "text" : "AnyObject"
+    },
+    {
+      "kind" : "text",
+      "text" : "?) -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(peer:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "object(peer:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/object(peer:)"
+},
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
     {
@@ -229,8 +284,9 @@
       "type" : "text"
     },
     {
-      "code" : "JXContext.object",
-      "type" : "codeVoice"
+      "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(peer:)",
+      "isActive" : true,
+      "type" : "reference"
     },
     {
       "text" : " with a peer argument.",

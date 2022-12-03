@@ -1,49 +1,52 @@
 {
-  "abstract" : [
-    {
-      "text" : "A value could not be used to create a ",
-      "type" : "text"
-    },
-    {
-      "code" : "RawRepresentable",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
-      "type" : "text"
-    }
-  ],
   "hierarchy" : {
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXError"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidRawValue(_:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/init(cause:script:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit8JXErrorsO15invalidRawValueyACSScACmF",
+    "externalID" : "s:5JXKit7JXErrorV5cause6scriptACs5Error_p_SSSgtcfc",
     "fragments" : [
       {
-        "kind" : "keyword",
-        "text" : "case"
-      },
-      {
-        "kind" : "text",
-        "text" : " "
-      },
-      {
         "kind" : "identifier",
-        "text" : "invalidRawValue"
+        "text" : "init"
       },
       {
         "kind" : "text",
         "text" : "("
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "cause"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:s5ErrorP",
+        "text" : "Error"
+      },
+      {
+        "kind" : "text",
+        "text" : ", "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "script"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
       },
       {
         "kind" : "typeIdentifier",
@@ -52,7 +55,7 @@
       },
       {
         "kind" : "text",
-        "text" : ")"
+        "text" : "?)"
       }
     ],
     "modules" : [
@@ -61,9 +64,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Case",
-    "symbolKind" : "case",
-    "title" : "JXErrors.invalidRawValue(_:)"
+    "roleHeading" : "Initializer",
+    "symbolKind" : "init",
+    "title" : "init(cause:script:)"
   },
   "primaryContentSections" : [
     {
@@ -78,19 +81,36 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "case"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "identifier",
-              "text" : "invalidRawValue"
+              "text" : "init"
             },
             {
               "kind" : "text",
               "text" : "("
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "cause"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:s5ErrorP",
+              "text" : "Error"
+            },
+            {
+              "kind" : "text",
+              "text" : ", "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "script"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
             },
             {
               "kind" : "typeIdentifier",
@@ -99,7 +119,7 @@
             },
             {
               "kind" : "text",
-              "text" : ")"
+              "text" : "? = nil)"
             }
           ]
         }
@@ -118,7 +138,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxerrors\/invalidrawvalue(_:)"
+        "\/documentation\/jxkit\/jxerror\/init(cause:script:)"
       ],
       "traits" : [
         {
@@ -143,17 +163,17 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXErrors": {
+"doc://JXKit/documentation/JXKit/JXError": {
   "abstract" : [
     {
-      "text" : "JXKit framework errors.",
+      "text" : "An error thrown from JXKit.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "enum"
+      "text" : "struct"
     },
     {
       "kind" : "text",
@@ -161,53 +181,59 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXError"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXError"
     }
   ],
   "role" : "symbol",
-  "title" : "JXErrors",
+  "title" : "JXError",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors"
+  "url" : "\/documentation\/jxkit\/jxerror"
 },
-"doc://JXKit/documentation/JXKit/JXErrors/invalidRawValue(_:)": {
+"doc://JXKit/documentation/JXKit/JXError/init(cause:script:)": {
   "abstract" : [
-    {
-      "text" : "A value could not be used to create a ",
-      "type" : "text"
-    },
-    {
-      "code" : "RawRepresentable",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
     {
-      "kind" : "keyword",
-      "text" : "case"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
       "kind" : "identifier",
-      "text" : "invalidRawValue"
+      "text" : "init"
     },
     {
       "kind" : "text",
       "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "cause"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s5ErrorP",
+      "text" : "Error"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "script"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
     },
     {
       "kind" : "typeIdentifier",
@@ -216,15 +242,15 @@
     },
     {
       "kind" : "text",
-      "text" : ")"
+      "text" : "?)"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/invalidRawValue(_:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/init(cause:script:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "JXErrors.invalidRawValue(_:)",
+  "title" : "init(cause:script:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors\/invalidrawvalue(_:)"
+  "url" : "\/documentation\/jxkit\/jxerror\/init(cause:script:)"
 }
 }
 }

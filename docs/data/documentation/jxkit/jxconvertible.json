@@ -81,7 +81,6 @@
   "relationshipsSections" : [
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXEvalError",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
       ],
       "kind" : "relationships",
@@ -305,40 +304,6 @@
   "title" : "toJX(in:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxconvertible\/tojx(in:)"
-},
-"doc://JXKit/documentation/JXKit/JXEvalError": {
-  "abstract" : [
-    {
-      "text" : "An error thrown from JavaScript evaluation.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXEvalError"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXEvalError",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXEvalError"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXEvalError",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxevalerror"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [

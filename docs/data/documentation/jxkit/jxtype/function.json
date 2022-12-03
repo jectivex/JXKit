@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "A synbolic key was attempted to be set, but the value was not a symbol.",
+      "text" : "A function type.",
       "type" : "text"
     }
   ],
@@ -9,17 +9,17 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXType"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/keyNotSymbol"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/function"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit8JXErrorsO12keyNotSymbolyA2CmF",
+    "externalID" : "s:5JXKit6JXTypeO8functionyA2CmF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -31,7 +31,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "keyNotSymbol"
+        "text" : "function"
       }
     ],
     "modules" : [
@@ -42,7 +42,7 @@
     "role" : "symbol",
     "roleHeading" : "Case",
     "symbolKind" : "case",
-    "title" : "JXErrors.keyNotSymbol"
+    "title" : "JXType.function"
   },
   "primaryContentSections" : [
     {
@@ -65,7 +65,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "keyNotSymbol"
+              "text" : "function"
             }
           ]
         }
@@ -84,7 +84,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxerrors\/keynotsymbol"
+        "\/documentation\/jxkit\/jxtype\/function"
       ],
       "traits" : [
         {
@@ -109,10 +109,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXErrors": {
+"doc://JXKit/documentation/JXKit/JXType": {
   "abstract" : [
     {
-      "text" : "JXKit framework errors.",
+      "text" : "A type of JavaScript instance.",
       "type" : "text"
     }
   ],
@@ -127,26 +127,26 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXType"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXType"
     }
   ],
   "role" : "symbol",
-  "title" : "JXErrors",
+  "title" : "JXType",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors"
+  "url" : "\/documentation\/jxkit\/jxtype"
 },
-"doc://JXKit/documentation/JXKit/JXErrors/keyNotSymbol": {
+"doc://JXKit/documentation/JXKit/JXType/function": {
   "abstract" : [
     {
-      "text" : "A synbolic key was attempted to be set, but the value was not a symbol.",
+      "text" : "A function type.",
       "type" : "text"
     }
   ],
@@ -161,15 +161,15 @@
     },
     {
       "kind" : "identifier",
-      "text" : "keyNotSymbol"
+      "text" : "function"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/keyNotSymbol",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/function",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "JXErrors.keyNotSymbol",
+  "title" : "JXType.function",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors\/keynotsymbol"
+  "url" : "\/documentation\/jxkit\/jxtype\/function"
 }
 }
 }

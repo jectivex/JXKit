@@ -312,6 +312,11 @@
                 "type" : "property"
               },
               {
+                "path" : "\/documentation\/jxkit\/jxvalue\/cause",
+                "title" : "var cause: Error?",
+                "type" : "property"
+              },
+              {
                 "path" : "\/documentation\/jxkit\/jxvalue\/context",
                 "title" : "let context: JXContext",
                 "type" : "property"
@@ -429,11 +434,6 @@
               {
                 "path" : "\/documentation\/jxkit\/jxvalue\/ispromise",
                 "title" : "var isPromise: Bool",
-                "type" : "property"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxvalue\/isproxy",
-                "title" : "var isProxy: Bool",
                 "type" : "property"
               },
               {
@@ -750,33 +750,6 @@
           {
             "children" : [
               {
-                "title" : "Default Implementations",
-                "type" : "groupMarker"
-              },
-              {
-                "children" : [
-                  {
-                    "title" : "Instance Properties",
-                    "type" : "groupMarker"
-                  },
-                  {
-                    "path" : "\/documentation\/jxkit\/jxevalerror\/localizeddescription",
-                    "title" : "var localizedDescription: String",
-                    "type" : "property"
-                  }
-                ],
-                "path" : "\/documentation\/jxkit\/jxevalerror\/error-implementations",
-                "title" : "Error Implementations",
-                "type" : "symbol"
-              }
-            ],
-            "path" : "\/documentation\/jxkit\/jxevalerror",
-            "title" : "JXEvalError",
-            "type" : "class"
-          },
-          {
-            "children" : [
-              {
                 "title" : "Initializers",
                 "type" : "groupMarker"
               },
@@ -909,6 +882,125 @@
                 "type" : "groupMarker"
               },
               {
+                "path" : "\/documentation\/jxkit\/jxerror\/init(cause:script:)",
+                "title" : "init(cause: Error, script: String?)",
+                "type" : "init"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerror\/init(jserror:script:)",
+                "title" : "init(jsError: JXValue, script: String?)",
+                "type" : "init"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerror\/init(message:script:)",
+                "title" : "init(message: String, script: String?)",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerror\/cause",
+                "title" : "var cause: Error?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerror\/description",
+                "title" : "var description: String",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerror\/jserrorstring",
+                "title" : "var jsErrorString: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerror\/localizeddescription-2y5bh",
+                "title" : "var localizedDescription: String",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerror\/message",
+                "title" : "var message: String",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerror\/script",
+                "title" : "var script: String?",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerror\/internalerror(_:)",
+                "title" : "static func internalError(String) -> JXError",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerror\/valuenotarray(_:)",
+                "title" : "static func valueNotArray(JXValue) -> JXError",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerror\/valuenotdate(_:)",
+                "title" : "static func valueNotDate(JXValue) -> JXError",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerror\/valuenotfunction(_:)",
+                "title" : "static func valueNotFunction(JXValue) -> JXError",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerror\/valuenotobject(_:)",
+                "title" : "static func valueNotObject(JXValue) -> JXError",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerror\/valuenotpropertiesobject(_:property:)",
+                "title" : "static func valueNotPropertiesObject(JXValue, property: String) -> JXError",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerror\/valuenotsymbol(_:)",
+                "title" : "static func valueNotSymbol(JXValue) -> JXError",
+                "type" : "method"
+              },
+              {
+                "title" : "Default Implementations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Instance Properties",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/jxkit\/jxerror\/localizeddescription-5eovv",
+                    "title" : "var localizedDescription: String",
+                    "type" : "property"
+                  }
+                ],
+                "path" : "\/documentation\/jxkit\/jxerror\/error-implementations",
+                "title" : "Error Implementations",
+                "type" : "symbol"
+              }
+            ],
+            "path" : "\/documentation\/jxkit\/jxerror",
+            "title" : "JXError",
+            "type" : "struct"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
                 "path" : "\/documentation\/jxkit\/jxproperty\/init()",
                 "title" : "init()",
                 "type" : "init"
@@ -1021,119 +1113,13 @@
                 "type" : "groupMarker"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxerrors\/asyncevalmustreturnpromise",
-                "title" : "case asyncEvalMustReturnPromise",
-                "type" : "case"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxerrors\/cannotconvey(_:)",
-                "title" : "case cannotConvey(Any.Type)",
-                "type" : "case"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxerrors\/cannotcreatearraybuffer",
-                "title" : "case cannotCreateArrayBuffer",
-                "type" : "case"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxerrors\/cannotcreatefromjson",
-                "title" : "case cannotCreateFromJSON",
-                "type" : "case"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxerrors\/cannotcreatepromise",
-                "title" : "case cannotCreatePromise",
-                "type" : "case"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxerrors\/invalidargumentcount",
-                "title" : "case invalidArgumentCount",
-                "type" : "case"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxerrors\/invalidasyncpromise",
-                "title" : "case invalidAsyncPromise",
-                "type" : "case"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxerrors\/invalidnumericconversion(_:)",
-                "title" : "case invalidNumericConversion(Double)",
-                "type" : "case"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxerrors\/invalidrawvalue(_:)",
-                "title" : "case invalidRawValue(String)",
-                "type" : "case"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxerrors\/jumpcontextinvalid",
-                "title" : "case jumpContextInvalid",
-                "type" : "case"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxerrors\/keynotsymbol",
-                "title" : "case keyNotSymbol",
-                "type" : "case"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxerrors\/valuenotarray",
-                "title" : "case valueNotArray",
-                "type" : "case"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxerrors\/valuenotdate",
-                "title" : "case valueNotDate",
-                "type" : "case"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxerrors\/valuenotfunction",
-                "title" : "case valueNotFunction",
-                "type" : "case"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxerrors\/valuenotnumber",
-                "title" : "case valueNotNumber",
-                "type" : "case"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxerrors\/valuenotobject",
-                "title" : "case valueNotObject",
-                "type" : "case"
-              },
-              {
-                "title" : "Default Implementations",
-                "type" : "groupMarker"
-              },
-              {
-                "children" : [
-                  {
-                    "title" : "Instance Properties",
-                    "type" : "groupMarker"
-                  },
-                  {
-                    "path" : "\/documentation\/jxkit\/jxerrors\/localizeddescription",
-                    "title" : "var localizedDescription: String",
-                    "type" : "property"
-                  }
-                ],
-                "path" : "\/documentation\/jxkit\/jxerrors\/error-implementations",
-                "title" : "Error Implementations",
-                "type" : "symbol"
-              }
-            ],
-            "path" : "\/documentation\/jxkit\/jxerrors",
-            "title" : "JXErrors",
-            "type" : "enum"
-          },
-          {
-            "children" : [
-              {
-                "title" : "Enumeration Cases",
-                "type" : "groupMarker"
-              },
-              {
                 "path" : "\/documentation\/jxkit\/jxtype\/array",
                 "title" : "case array",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxtype\/arraybuffer",
+                "title" : "case arrayBuffer",
                 "type" : "case"
               },
               {
@@ -1142,13 +1128,23 @@
                 "type" : "case"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxtype\/buffer",
-                "title" : "case buffer",
+                "path" : "\/documentation\/jxkit\/jxtype\/constructor",
+                "title" : "case constructor",
                 "type" : "case"
               },
               {
                 "path" : "\/documentation\/jxkit\/jxtype\/date",
                 "title" : "case date",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxtype\/error",
+                "title" : "case error",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxtype\/function",
+                "title" : "case function",
                 "type" : "case"
               },
               {
@@ -1169,6 +1165,11 @@
               {
                 "path" : "\/documentation\/jxkit\/jxtype\/other",
                 "title" : "case other",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxtype\/promise",
+                "title" : "case promise",
                 "type" : "case"
               },
               {

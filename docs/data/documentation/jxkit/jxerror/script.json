@@ -1,29 +1,23 @@
 {
-  "abstract" : [
-    {
-      "text" : "Expected a JavaScript function.",
-      "type" : "text"
-    }
-  ],
   "hierarchy" : {
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXError"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/valueNotFunction"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/script"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit8JXErrorsO16valueNotFunctionyA2CmF",
+    "externalID" : "s:5JXKit7JXErrorV6scriptSSSgvp",
     "fragments" : [
       {
         "kind" : "keyword",
-        "text" : "case"
+        "text" : "var"
       },
       {
         "kind" : "text",
@@ -31,7 +25,20 @@
       },
       {
         "kind" : "identifier",
-        "text" : "valueNotFunction"
+        "text" : "script"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
+      },
+      {
+        "kind" : "text",
+        "text" : "?"
       }
     ],
     "modules" : [
@@ -40,9 +47,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Case",
-    "symbolKind" : "case",
-    "title" : "JXErrors.valueNotFunction"
+    "roleHeading" : "Instance Property",
+    "symbolKind" : "property",
+    "title" : "script"
   },
   "primaryContentSections" : [
     {
@@ -57,7 +64,7 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "case"
+              "text" : "var"
             },
             {
               "kind" : "text",
@@ -65,7 +72,20 @@
             },
             {
               "kind" : "identifier",
-              "text" : "valueNotFunction"
+              "text" : "script"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : "?"
             }
           ]
         }
@@ -84,7 +104,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxerrors\/valuenotfunction"
+        "\/documentation\/jxkit\/jxerror\/script"
       ],
       "traits" : [
         {
@@ -109,17 +129,17 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXErrors": {
+"doc://JXKit/documentation/JXKit/JXError": {
   "abstract" : [
     {
-      "text" : "JXKit framework errors.",
+      "text" : "An error thrown from JXKit.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "enum"
+      "text" : "struct"
     },
     {
       "kind" : "text",
@@ -127,33 +147,30 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXError"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXError"
     }
   ],
   "role" : "symbol",
-  "title" : "JXErrors",
+  "title" : "JXError",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors"
+  "url" : "\/documentation\/jxkit\/jxerror"
 },
-"doc://JXKit/documentation/JXKit/JXErrors/valueNotFunction": {
+"doc://JXKit/documentation/JXKit/JXError/script": {
   "abstract" : [
-    {
-      "text" : "Expected a JavaScript function.",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "case"
+      "text" : "var"
     },
     {
       "kind" : "text",
@@ -161,15 +178,28 @@
     },
     {
       "kind" : "identifier",
-      "text" : "valueNotFunction"
+      "text" : "script"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/valueNotFunction",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/script",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "JXErrors.valueNotFunction",
+  "title" : "script",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors\/valuenotfunction"
+  "url" : "\/documentation\/jxkit\/jxerror\/script"
 }
 }
 }

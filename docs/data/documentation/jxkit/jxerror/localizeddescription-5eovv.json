@@ -1,7 +1,15 @@
 {
   "abstract" : [
     {
-      "text" : "Cannot convey this type to or from JavaScript.",
+      "text" : "Inherited from ",
+      "type" : "text"
+    },
+    {
+      "code" : "Error.localizedDescription",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
       "type" : "text"
     }
   ],
@@ -9,21 +17,23 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/Error-Implementations"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotConvey(_:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/localizedDescription-5eovv"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit8JXErrorsO12cannotConveyyACypXpcACmF",
+    "extendedModule" : "Swift",
+    "externalID" : "s:s5ErrorP10FoundationE20localizedDescriptionSSvp::SYNTHESIZED::s:5JXKit7JXErrorV",
     "fragments" : [
       {
         "kind" : "keyword",
-        "text" : "case"
+        "text" : "var"
       },
       {
         "kind" : "text",
@@ -31,19 +41,16 @@
       },
       {
         "kind" : "identifier",
-        "text" : "cannotConvey"
+        "text" : "localizedDescription"
       },
       {
         "kind" : "text",
-        "text" : "("
+        "text" : ": "
       },
       {
-        "kind" : "keyword",
-        "text" : "Any"
-      },
-      {
-        "kind" : "text",
-        "text" : ".Type)"
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
       }
     ],
     "modules" : [
@@ -52,9 +59,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Case",
-    "symbolKind" : "case",
-    "title" : "JXErrors.cannotConvey(_:)"
+    "roleHeading" : "Instance Property",
+    "symbolKind" : "property",
+    "title" : "localizedDescription"
   },
   "primaryContentSections" : [
     {
@@ -69,7 +76,7 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "case"
+              "text" : "var"
             },
             {
               "kind" : "text",
@@ -77,19 +84,28 @@
             },
             {
               "kind" : "identifier",
-              "text" : "cannotConvey"
+              "text" : "localizedDescription"
             },
             {
               "kind" : "text",
-              "text" : "("
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : " { "
             },
             {
               "kind" : "keyword",
-              "text" : "Any"
+              "text" : "get"
             },
             {
               "kind" : "text",
-              "text" : ".Type)"
+              "text" : " }"
             }
           ]
         }
@@ -108,7 +124,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxerrors\/cannotconvey(_:)"
+        "\/documentation\/jxkit\/jxerror\/localizeddescription-5eovv"
       ],
       "traits" : [
         {
@@ -133,17 +149,17 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXErrors": {
+"doc://JXKit/documentation/JXKit/JXError": {
   "abstract" : [
     {
-      "text" : "JXKit framework errors.",
+      "text" : "An error thrown from JXKit.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "enum"
+      "text" : "struct"
     },
     {
       "kind" : "text",
@@ -151,33 +167,41 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXError"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXError"
     }
   ],
   "role" : "symbol",
-  "title" : "JXErrors",
+  "title" : "JXError",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors"
+  "url" : "\/documentation\/jxkit\/jxerror"
 },
-"doc://JXKit/documentation/JXKit/JXErrors/cannotConvey(_:)": {
+"doc://JXKit/documentation/JXKit/JXError/Error-Implementations": {
   "abstract" : [
-    {
-      "text" : "Cannot convey this type to or from JavaScript.",
-      "type" : "text"
-    }
+
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/Error-Implementations",
+  "kind" : "article",
+  "role" : "collectionGroup",
+  "title" : "Error Implementations",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerror\/error-implementations"
+},
+"doc://JXKit/documentation/JXKit/JXError/localizedDescription-5eovv": {
+  "abstract" : [
+
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "case"
+      "text" : "var"
     },
     {
       "kind" : "text",
@@ -185,27 +209,24 @@
     },
     {
       "kind" : "identifier",
-      "text" : "cannotConvey"
+      "text" : "localizedDescription"
     },
     {
       "kind" : "text",
-      "text" : "("
+      "text" : ": "
     },
     {
-      "kind" : "keyword",
-      "text" : "Any"
-    },
-    {
-      "kind" : "text",
-      "text" : ".Type)"
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotConvey(_:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/localizedDescription-5eovv",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "JXErrors.cannotConvey(_:)",
+  "title" : "localizedDescription",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors\/cannotconvey(_:)"
+  "url" : "\/documentation\/jxkit\/jxerror\/localizeddescription-5eovv"
 }
 }
 }

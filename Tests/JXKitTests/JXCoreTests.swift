@@ -72,8 +72,8 @@ class JXCoreTests: XCTestCase {
             XCTFail("should have thrown an error")
         } catch {
             XCTAssertFalse(error is CustomError)
-            XCTAssertTrue(error is JXEvalError)
-            XCTAssertEqual("JXEvalError", String(describing: type(of: error)))
+            XCTAssertTrue(error is JXError)
+            XCTAssertTrue((error as? JXError)?.cause is CustomError)
         }
     }
 
@@ -344,7 +344,7 @@ class JXCoreTests: XCTestCase {
         //XCTAssertEqual("xxx", try jxc.eval("Symbol('xxx')"))
 
         XCTAssertThrowsError(try jxc.eval("new Symbol('xxx')")) { error in
-            XCTAssertEqual("TypeError: function is not a constructor (evaluating 'new Symbol('xxx')')", "\(error)")
+            XCTAssertEqual("TypeError: function is not a constructor (evaluating 'new Symbol('xxx')') <<script: new Symbol('xxx') >>", "\(error)")
         }
 
         XCTAssertThrowsError(try jxc.eval("Symbol('xxx')").string) { error in
@@ -360,38 +360,35 @@ class JXCoreTests: XCTestCase {
        try jxc.withArrayBuffer(source: Data([1,2,3]), block: { val in
            XCTAssertEqual(true, try val.isArrayBuffer)
        })
-
-//        XCTAssertEqual(true, try JXValue(newErrorFromMessage: "", in: jxc).isError)
-
     }
 
     func testCheck() throws {
-        func lint(_ script: String, strict: Bool = false) throws -> String? {
+        func lint(_ script: String, strict: Bool = false) throws -> String {
             do {
                 let jxc = JXContext(strict: strict)
                 try jxc.eval(script)
-                return nil
-            } catch let error as JXEvalError {
-                return try error.string
+                return ""
+            } catch let error as JXError {
+                return error.description
             } catch {
                 XCTFail("unexpected error type: \(error)")
-                return nil
+                return ""
             }
         }
 
-        XCTAssertEqual(try lint("1"), nil)
-        XCTAssertEqual(try lint("1.1"), nil)
-        XCTAssertEqual(try lint("Math.PI.x"), nil)
+        XCTAssertEqual(try lint("1"), "")
+        XCTAssertEqual(try lint("1.1"), "")
+        XCTAssertEqual(try lint("Math.PI.x"), "")
 
-        XCTAssertEqual(try lint("Math.PIE.x"), "TypeError: undefined is not an object (evaluating \'Math.PIE.x\')")
-        XCTAssertEqual(try lint("1X"), "SyntaxError: No identifiers allowed directly after numeric literal")
-        XCTAssertEqual(try lint("1["), "SyntaxError: Unexpected end of script")
-        XCTAssertEqual(try lint("1]"), "SyntaxError: Unexpected token \']\'. Parse error.")
+        XCTAssertEqual(try lint("Math.PIE.x"), "TypeError: undefined is not an object (evaluating \'Math.PIE.x\') <<script: Math.PIE.x >>")
+        XCTAssertEqual(try lint("1X"), "SyntaxError: No identifiers allowed directly after numeric literal <<script: 1X >>")
+        XCTAssertEqual(try lint("1["), "SyntaxError: Unexpected end of script <<script: 1[ >>")
+        XCTAssertEqual(try lint("1]"), "SyntaxError: Unexpected token \']\'. Parse error. <<script: 1] >>")
 
         // Strict checks
 
-        XCTAssertEqual(try lint("use strict"), "SyntaxError: Unexpected identifier \'strict\'") // need to quote
-        XCTAssertEqual(try lint("'use strict'\nmistypeVarible = 17"), "ReferenceError: Can\'t find variable: mistypeVarible")
+        XCTAssertEqual(try lint("use strict"), "SyntaxError: Unexpected identifier \'strict\' <<script: use strict >>") // need to quote
+        XCTAssertEqual(try lint("'use strict'\nmistypeVarible = 17"), "ReferenceError: Can\'t find variable: mistypeVarible <<script: 'use strict'\nmistypeVarible = 17 >>")
     }
 
 

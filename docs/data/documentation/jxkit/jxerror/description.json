@@ -1,7 +1,15 @@
 {
   "abstract" : [
     {
-      "text" : "Unable to create a new array buffer.",
+      "text" : "Inherited from ",
+      "type" : "text"
+    },
+    {
+      "code" : "CustomStringConvertible.description",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
       "type" : "text"
     }
   ],
@@ -9,21 +17,21 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXError"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotCreateArrayBuffer"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/description"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit8JXErrorsO23cannotCreateArrayBufferyA2CmF",
+    "externalID" : "s:5JXKit7JXErrorV11descriptionSSvp",
     "fragments" : [
       {
         "kind" : "keyword",
-        "text" : "case"
+        "text" : "var"
       },
       {
         "kind" : "text",
@@ -31,7 +39,16 @@
       },
       {
         "kind" : "identifier",
-        "text" : "cannotCreateArrayBuffer"
+        "text" : "description"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
       }
     ],
     "modules" : [
@@ -40,9 +57,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Case",
-    "symbolKind" : "case",
-    "title" : "JXErrors.cannotCreateArrayBuffer"
+    "roleHeading" : "Instance Property",
+    "symbolKind" : "property",
+    "title" : "description"
   },
   "primaryContentSections" : [
     {
@@ -57,7 +74,7 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "case"
+              "text" : "var"
             },
             {
               "kind" : "text",
@@ -65,7 +82,28 @@
             },
             {
               "kind" : "identifier",
-              "text" : "cannotCreateArrayBuffer"
+              "text" : "description"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : " { "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "get"
+            },
+            {
+              "kind" : "text",
+              "text" : " }"
             }
           ]
         }
@@ -84,7 +122,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxerrors\/cannotcreatearraybuffer"
+        "\/documentation\/jxkit\/jxerror\/description"
       ],
       "traits" : [
         {
@@ -109,17 +147,17 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXErrors": {
+"doc://JXKit/documentation/JXKit/JXError": {
   "abstract" : [
     {
-      "text" : "JXKit framework errors.",
+      "text" : "An error thrown from JXKit.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "enum"
+      "text" : "struct"
     },
     {
       "kind" : "text",
@@ -127,33 +165,30 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXError"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXError"
     }
   ],
   "role" : "symbol",
-  "title" : "JXErrors",
+  "title" : "JXError",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors"
+  "url" : "\/documentation\/jxkit\/jxerror"
 },
-"doc://JXKit/documentation/JXKit/JXErrors/cannotCreateArrayBuffer": {
+"doc://JXKit/documentation/JXKit/JXError/description": {
   "abstract" : [
-    {
-      "text" : "Unable to create a new array buffer.",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "case"
+      "text" : "var"
     },
     {
       "kind" : "text",
@@ -161,15 +196,24 @@
     },
     {
       "kind" : "identifier",
-      "text" : "cannotCreateArrayBuffer"
+      "text" : "description"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/cannotCreateArrayBuffer",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/description",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "JXErrors.cannotCreateArrayBuffer",
+  "title" : "description",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors\/cannotcreatearraybuffer"
+  "url" : "\/documentation\/jxkit\/jxerror\/description"
 }
 }
 }

@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Tests whether a JavaScript value’s type is the promise type.",
+      "text" : "A constructor type.",
       "type" : "text"
     }
   ],
@@ -9,22 +9,21 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXType"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isProxy"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/constructor"
   },
   "kind" : "symbol",
   "metadata" : {
-    "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit7JXValueC7isProxySbvp",
+    "externalID" : "s:5JXKit6JXTypeO11constructoryA2CmF",
     "fragments" : [
       {
         "kind" : "keyword",
-        "text" : "var"
+        "text" : "case"
       },
       {
         "kind" : "text",
@@ -32,16 +31,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "isProxy"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:Sb",
-        "text" : "Bool"
+        "text" : "constructor"
       }
     ],
     "modules" : [
@@ -50,9 +40,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Instance Property",
-    "symbolKind" : "property",
-    "title" : "isProxy"
+    "roleHeading" : "Case",
+    "symbolKind" : "case",
+    "title" : "JXType.constructor"
   },
   "primaryContentSections" : [
     {
@@ -67,7 +57,7 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "var"
+              "text" : "case"
             },
             {
               "kind" : "text",
@@ -75,36 +65,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "isProxy"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:Sb",
-              "text" : "Bool"
-            },
-            {
-              "kind" : "text",
-              "text" : " { "
-            },
-            {
-              "kind" : "keyword",
-              "text" : "get"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "keyword",
-              "text" : "throws"
-            },
-            {
-              "kind" : "text",
-              "text" : " }"
+              "text" : "constructor"
             }
           ]
         }
@@ -123,7 +84,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxvalue\/isproxy"
+        "\/documentation\/jxkit\/jxtype\/constructor"
       ],
       "traits" : [
         {
@@ -148,17 +109,17 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXValue": {
+"doc://JXKit/documentation/JXKit/JXType": {
   "abstract" : [
     {
-      "text" : "A JavaScript object.",
+      "text" : "A type of JavaScript instance.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "class"
+      "text" : "enum"
     },
     {
       "kind" : "text",
@@ -166,33 +127,33 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXValue"
+      "text" : "JXType"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXValue"
+      "text" : "JXType"
     }
   ],
   "role" : "symbol",
-  "title" : "JXValue",
+  "title" : "JXType",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue"
+  "url" : "\/documentation\/jxkit\/jxtype"
 },
-"doc://JXKit/documentation/JXKit/JXValue/isProxy": {
+"doc://JXKit/documentation/JXKit/JXType/constructor": {
   "abstract" : [
     {
-      "text" : "Tests whether a JavaScript value’s type is the promise type.",
+      "text" : "A constructor type.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "var"
+      "text" : "case"
     },
     {
       "kind" : "text",
@@ -200,24 +161,15 @@
     },
     {
       "kind" : "identifier",
-      "text" : "isProxy"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
+      "text" : "constructor"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isProxy",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/constructor",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "isProxy",
+  "title" : "JXType.constructor",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/isproxy"
+  "url" : "\/documentation\/jxkit\/jxtype\/constructor"
 }
 }
 }

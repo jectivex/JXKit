@@ -119,7 +119,6 @@
     },
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXEvalError",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXVM"
       ],
       "title" : "Classes"
@@ -133,6 +132,7 @@
     },
     {
       "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXProperty"
       ],
       "title" : "Structures"
@@ -156,7 +156,6 @@
     },
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType"
       ],
       "title" : "Enumerations"
@@ -311,17 +310,17 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxconvertible"
 },
-"doc://JXKit/documentation/JXKit/JXErrors": {
+"doc://JXKit/documentation/JXKit/JXError": {
   "abstract" : [
     {
-      "text" : "JXKit framework errors.",
+      "text" : "An error thrown from JXKit.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "enum"
+      "text" : "struct"
     },
     {
       "kind" : "text",
@@ -329,55 +328,21 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXError"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXError"
     }
   ],
   "role" : "symbol",
-  "title" : "JXErrors",
+  "title" : "JXError",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors"
-},
-"doc://JXKit/documentation/JXKit/JXEvalError": {
-  "abstract" : [
-    {
-      "text" : "An error thrown from JavaScript evaluation.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXEvalError"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXEvalError",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXEvalError"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXEvalError",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxevalerror"
+  "url" : "\/documentation\/jxkit\/jxerror"
 },
 "doc://JXKit/documentation/JXKit/JXFunction": {
   "abstract" : [

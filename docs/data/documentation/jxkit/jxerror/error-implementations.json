@@ -3,13 +3,13 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXEvalError"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXError"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXEvalError\/Error-Implementations"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/Error-Implementations"
   },
   "kind" : "article",
   "metadata" : {
@@ -33,7 +33,7 @@
     {
       "generated" : true,
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXEvalError\/localizedDescription"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/localizedDescription-5eovv"
       ],
       "title" : "Instance Properties"
     }
@@ -41,7 +41,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxevalerror\/error-implementations"
+        "\/documentation\/jxkit\/jxerror\/error-implementations"
       ],
       "traits" : [
         {
@@ -66,17 +66,17 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXEvalError": {
+"doc://JXKit/documentation/JXKit/JXError": {
   "abstract" : [
     {
-      "text" : "An error thrown from JavaScript evaluation.",
+      "text" : "An error thrown from JXKit.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "class"
+      "text" : "struct"
     },
     {
       "kind" : "text",
@@ -84,23 +84,23 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXEvalError"
+      "text" : "JXError"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXEvalError",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXEvalError"
+      "text" : "JXError"
     }
   ],
   "role" : "symbol",
-  "title" : "JXEvalError",
+  "title" : "JXError",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxevalerror"
+  "url" : "\/documentation\/jxkit\/jxerror"
 },
-"doc://JXKit/documentation/JXKit/JXEvalError/localizedDescription": {
+"doc://JXKit/documentation/JXKit/JXError/localizedDescription-5eovv": {
   "abstract" : [
 
   ],
@@ -127,12 +127,12 @@
       "text" : "String"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXEvalError\/localizedDescription",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/localizedDescription-5eovv",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "localizedDescription",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxevalerror\/localizeddescription"
+  "url" : "\/documentation\/jxkit\/jxerror\/localizeddescription-5eovv"
 }
 }
 }

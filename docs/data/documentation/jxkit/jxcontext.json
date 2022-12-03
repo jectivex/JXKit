@@ -899,7 +899,10 @@
 },
 "doc://JXKit/documentation/JXKit/JXContext/error(_:)": {
   "abstract" : [
-
+    {
+      "text" : "Create a JavaScript Error with the given cause.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

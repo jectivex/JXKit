@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "An async call is expected to return a promise.",
+      "text" : "An array buffer type.",
       "type" : "text"
     }
   ],
@@ -9,17 +9,17 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXType"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/asyncEvalMustReturnPromise"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/arrayBuffer"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit8JXErrorsO26asyncEvalMustReturnPromiseyA2CmF",
+    "externalID" : "s:5JXKit6JXTypeO11arrayBufferyA2CmF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -31,7 +31,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "asyncEvalMustReturnPromise"
+        "text" : "arrayBuffer"
       }
     ],
     "modules" : [
@@ -42,7 +42,7 @@
     "role" : "symbol",
     "roleHeading" : "Case",
     "symbolKind" : "case",
-    "title" : "JXErrors.asyncEvalMustReturnPromise"
+    "title" : "JXType.arrayBuffer"
   },
   "primaryContentSections" : [
     {
@@ -65,7 +65,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "asyncEvalMustReturnPromise"
+              "text" : "arrayBuffer"
             }
           ]
         }
@@ -84,7 +84,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxerrors\/asyncevalmustreturnpromise"
+        "\/documentation\/jxkit\/jxtype\/arraybuffer"
       ],
       "traits" : [
         {
@@ -109,10 +109,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXErrors": {
+"doc://JXKit/documentation/JXKit/JXType": {
   "abstract" : [
     {
-      "text" : "JXKit framework errors.",
+      "text" : "A type of JavaScript instance.",
       "type" : "text"
     }
   ],
@@ -127,26 +127,26 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXType"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXErrors"
+      "text" : "JXType"
     }
   ],
   "role" : "symbol",
-  "title" : "JXErrors",
+  "title" : "JXType",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors"
+  "url" : "\/documentation\/jxkit\/jxtype"
 },
-"doc://JXKit/documentation/JXKit/JXErrors/asyncEvalMustReturnPromise": {
+"doc://JXKit/documentation/JXKit/JXType/arrayBuffer": {
   "abstract" : [
     {
-      "text" : "An async call is expected to return a promise.",
+      "text" : "An array buffer type.",
       "type" : "text"
     }
   ],
@@ -161,15 +161,15 @@
     },
     {
       "kind" : "identifier",
-      "text" : "asyncEvalMustReturnPromise"
+      "text" : "arrayBuffer"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXErrors\/asyncEvalMustReturnPromise",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXType\/arrayBuffer",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "JXErrors.asyncEvalMustReturnPromise",
+  "title" : "JXType.arrayBuffer",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerrors\/asyncevalmustreturnpromise"
+  "url" : "\/documentation\/jxkit\/jxtype\/arraybuffer"
 }
 }
 }
