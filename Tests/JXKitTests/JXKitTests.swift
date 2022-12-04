@@ -119,6 +119,6 @@ extension URL : JXConvertible {
 
     public static func fromJX(_ value: JXValue) throws -> Self {
         if let url = try URL(string: value.string) { return url }
-        throw JXError(message: "Unable to create URL from value '\(value.description)'")
+        throw JXError(message: "Unable to create URL from value '\(value)'")
     }
 }
