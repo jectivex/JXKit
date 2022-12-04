@@ -51,35 +51,35 @@ public struct JXError: Error, CustomStringConvertible, @unchecked Sendable {
     }
     
     @inlinable public static func valueNotArray(_ value: JXValue) -> JXError {
-        return JXError(message: "Expected a JavaScript array but received '\(value.description)'")
+        return JXError(message: "Expected a JavaScript array but received '\(value)'")
     }
     
     @inlinable public static func valueNotObject(_ value: JXValue) -> JXError {
-        return JXError(message: "Expected a JavaScript object but received '\(value.description)'")
+        return JXError(message: "Expected a JavaScript object but received '\(value)'")
     }
     
     @inlinable public static func valueNotPropertiesObject(_ value: JXValue, property: String) -> JXError {
-        return JXError(message: "Attempt to accesss property '\(property)' on JavaScript value '\(value.description)'. This value is not an object")
+        return JXError(message: "Attempt to accesss property '\(property)' on JavaScript value '\(value)'. This value is not an object")
     }
     
     @inlinable public static func valueNotDate(_ value: JXValue) -> JXError {
-        return JXError(message: "Expected a JavaScript date but received '\(value.description)'")
+        return JXError(message: "Expected a JavaScript date but received '\(value)'")
     }
     
     @inlinable public static func valueNotFunction(_ value: JXValue) -> JXError {
-        return JXError(message: "Expected a JavaScript function but received '\(value.description)'")
+        return JXError(message: "Expected a JavaScript function but received '\(value)'")
     }
     
     @inlinable public static func valueNotSymbol(_ value: JXValue) -> JXError {
-        return JXError(message: "Expected a JavaScript symbol but received '\(value.description)'")
+        return JXError(message: "Expected a JavaScript symbol but received '\(value)'")
     }
     
     @inlinable static func asyncEvalMustReturnPromise(_ value: JXValue) -> JXError {
-        return JXError(message: "The JavaScript supplied to 'JXContext.eval(...) async' must return a Promise. Returned '\(value.description)")
+        return JXError(message: "The JavaScript supplied to 'JXContext.eval(...) async' must return a Promise. Returned '\(value)")
     }
     
     @inlinable static func invalidNumericConversion(_ value: JXValue, to number: Double) -> JXError {
-        return JXError(message: "JavaScript value '\(value.description)' converted to invalid number '\(number)'")
+        return JXError(message: "JavaScript value '\(value)' converted to invalid number '\(number)'")
     }
     
     @inlinable static func cannotCreatePromise() -> JXError {

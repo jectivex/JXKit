@@ -178,7 +178,7 @@ extension Data: JXConvertible {
             let data: [UInt8] = try (0..<max).map { index in
                 let element = try value[.init(index)]
                 guard element.isNumber else {
-                    throw JXError(message: "Expected a JavaScript data array, but encountered non-number element '\(element.description)'")
+                    throw JXError(message: "Expected a JavaScript data array, but encountered non-number element '\(element)'")
                 }
                 let num = try element.double
                 guard num <= .init(UInt8.max), num >= .init(UInt8.min), let byte = UInt8(exactly: num) else {
