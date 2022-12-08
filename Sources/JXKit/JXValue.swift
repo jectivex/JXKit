@@ -573,7 +573,7 @@ extension JXValue {
         } else if let decodableType = type as? Decodable.Type {
             return try self.toDecodable(ofType: decodableType) as! T
         } else {
-            throw JXError(message: "Unable to convey JavaScript value '\(description)' to type '\(String(describing: type))'")
+            throw JXError.cannotConvey(type, spi: context.spi, format: "Unable to convey JavaScript value '\(description)' to type '%@'")
         }
     }
     
