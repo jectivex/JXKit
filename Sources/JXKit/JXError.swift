@@ -82,6 +82,15 @@ public struct JXError: Error, CustomStringConvertible, @unchecked Sendable {
         return JXError(message: "JavaScript value '\(value)' converted to invalid number '\(number)'")
     }
     
+    @inlinable static func cannotConvey(_ type: Any.Type, spi: JXContextSPI?, format: String) -> JXError {
+        let typeString = String(describing: type)
+        var message = String(format: format, typeString)
+        if let detail = spi?.errorDetail(conveying: type) {
+            message = "\(message). \(detail)"
+        }
+        return JXError(message: message)
+    }
+    
     @inlinable static func cannotCreatePromise() -> JXError {
         return JXError(message: "Unable to create JavaScript Promise")
     }

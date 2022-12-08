@@ -792,6 +792,24 @@
                   {
                     "children" : [
                       {
+                        "path" : "\/documentation\/jxkit\/jxcontextspi\/errordetail(conveying:)-12j7u",
+                        "title" : "func errorDetail(conveying: Any.Type) -> String?",
+                        "type" : "method"
+                      }
+                    ],
+                    "title" : "JXContextSPI Implementations",
+                    "type" : "groupMarker"
+                  }
+                ],
+                "path" : "\/documentation\/jxkit\/jxcontextspi\/errordetail(conveying:)-4afj4",
+                "title" : "func errorDetail(conveying: Any.Type) -> String?",
+                "type" : "method"
+              },
+              {
+                "children" : [
+                  {
+                    "children" : [
+                      {
                         "path" : "\/documentation\/jxkit\/jxcontextspi\/eval(_:this:in:)-46ulh",
                         "title" : "func eval(String, this: JXValue?, in: JXContext) throws -> JXValue?",
                         "type" : "method"

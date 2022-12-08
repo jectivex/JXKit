@@ -89,6 +89,7 @@
   "topicSections" : [
     {
       "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/errorDetail(conveying:)-4afj4",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/eval(_:this:in:)-1a9hy",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/fromJX(_:to:)-76xn8",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/toJX(_:in:)-7j35f"
@@ -157,6 +158,62 @@
   "title" : "JXContextSPI",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontextspi"
+},
+"doc://JXKit/documentation/JXKit/JXContextSPI/errorDetail(conveying:)-4afj4": {
+  "abstract" : [
+
+  ],
+  "defaultImplementations" : 1,
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "errorDetail"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "conveying"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : ".Type) -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/errorDetail(conveying:)-4afj4",
+  "kind" : "symbol",
+  "required" : true,
+  "role" : "symbol",
+  "title" : "errorDetail(conveying:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontextspi\/errordetail(conveying:)-4afj4"
 },
 "doc://JXKit/documentation/JXKit/JXContextSPI/eval(_:this:in:)-1a9hy": {
   "abstract" : [

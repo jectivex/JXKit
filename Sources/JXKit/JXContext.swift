@@ -490,7 +490,7 @@ extension JXContext {
     private func conveyEncodable(_ value: Any) throws -> JXValue {
         guard let encodable = value as? Encodable else {
             // Encodable is our last fallback; this value cannot be conveyed
-            throw JXError(message: "Unable to convey native value '\(String(describing: value))' of type '\(String(describing: type(of: value)))' to a JavaScript value")
+            throw JXError.cannotConvey(type(of: value), spi: spi, format: "Unable to convey native value '\(String(describing: value))' of type '%@' to a JavaScript value")
         }
         return try encode(encodable)
     }
@@ -536,6 +536,7 @@ public protocol JXContextSPI {
     func eval(_ script: String, this: JXValue?, in: JXContext) throws -> JXValue?
     func toJX(_ value: Any, in context: JXContext) throws -> JXValue?
     func fromJX<T>(_ value: JXValue, to type: T.Type) throws -> T?
+    func errorDetail(conveying type: Any.Type) -> String?
 }
 
 extension JXContextSPI {
@@ -548,6 +549,10 @@ extension JXContextSPI {
     }
 
     public func fromJX<T>(_ value: JXValue, to type: T.Type) throws -> T? {
+        return nil
+    }
+    
+    public func errorDetail(conveying type: Any.Type) -> String? {
         return nil
     }
 }
