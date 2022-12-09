@@ -491,6 +491,9 @@ class JXCoreTests: XCTestCase {
         XCTAssertEqual(try jxc.convey(UInt(1)).convey(), UInt(1))
         XCTAssertEqual(try jxc.convey(UInt32(1)).convey(), UInt32(1))
         XCTAssertEqual(try jxc.convey(UInt64(1)).convey(), UInt64(1))
+        
+        XCTAssertEqual(try jxc.convey(Double.infinity).convey(), Double.infinity)
+        XCTAssertEqual(try jxc.eval("Infinity").double, Double.infinity)
 
         XCTAssertEqual(try jxc.convey([1, 2]).convey(), [1, 2])
         XCTAssertEqual(try jxc.convey(["x": 1]).convey(), ["x": 1])
