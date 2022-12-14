@@ -26,6 +26,11 @@ final class JXKitTests: XCTestCase {
 
         XCTAssertEqual(true, try jxc.eval("1.0 === 1.0000000000000001").bool)
 
+        XCTAssertEqual(",,,,,,,,,,,,,,,", try jxc.eval("Array(16)").string)
+        XCTAssertEqual("watwatwatwatwatwatwatwatwatwatwatwatwatwatwat", try jxc.eval("Array(16).join('wat')").string)
+        XCTAssertEqual("wat1wat1wat1wat1wat1wat1wat1wat1wat1wat1wat1wat1wat1wat1wat1", try jxc.eval("Array(16).join('wat' + 1)").string)
+        XCTAssertEqual("NaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaN Batman!", try jxc.eval("Array(16).join('wat' - 1) + ' Batman!'").string)
+
         XCTAssertEqual(1, try jxc.eval("let y = {}; y[[]] = 1; Object.keys(y)").array.count)
 
         XCTAssertEqual(10, try jxc.eval("['10', '10', '10'].map(parseInt)").array.first?.double)
