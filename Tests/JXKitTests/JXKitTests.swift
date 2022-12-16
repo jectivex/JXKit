@@ -40,6 +40,20 @@ final class JXKitTests: XCTestCase {
         XCTAssertEqual("Ƕe110", try jxc.eval(#"'Ƕ'+"e"+1+1+0"#).string)
     }
 
+    /// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat
+    func testIntl() throws {
+        let jxc = JXContext()
+
+        XCTAssertEqual("12,34 €", try jxc.eval("new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(12.34)").string)
+        XCTAssertEqual("¥46", try jxc.eval("new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(45.678)").string)
+        XCTAssertEqual("65.4", try jxc.eval("new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(65.4321)").string)
+
+        XCTAssertEqual("10/24/2022", try jxc.eval("new Intl.DateTimeFormat('en-US', {timeZone: 'UTC'}).format(new Date('2022-10-24'))").string)
+        XCTAssertEqual("24/10/2022", try jxc.eval("new Intl.DateTimeFormat('fr-FR', {timeZone: 'UTC'}).format(new Date('2022-10-24'))").string)
+
+
+    }
+
     func testProxy() throws {
         let jxc = JXContext()
 
