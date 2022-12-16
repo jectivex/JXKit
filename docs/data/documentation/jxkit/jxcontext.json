@@ -139,7 +139,6 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(context:strict:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(vm:strict:)"
       ],
       "title" : "Initializers"
@@ -1230,80 +1229,6 @@
   "title" : "global",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/global"
-},
-"doc://JXKit/documentation/JXKit/JXContext/init(context:strict:)": {
-  "abstract" : [
-    {
-      "text" : "Wraps an existing ",
-      "type" : "text"
-    },
-    {
-      "code" : "JSGlobalContextRef",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " in a ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ". Address space will be shared between both contexts.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "identifier",
-      "text" : "init"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "context"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit9JXContextC",
-      "text" : "JXContext"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "strict"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    },
-    {
-      "kind" : "text",
-      "text" : ")"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(context:strict:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "init(context:strict:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/init(context:strict:)"
 },
 "doc://JXKit/documentation/JXKit/JXContext/init(vm:strict:)": {
   "abstract" : [

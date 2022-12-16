@@ -19,11 +19,6 @@
                 "type" : "groupMarker"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxcontext\/init(context:strict:)",
-                "title" : "init(context: JXContext, strict: Bool)",
-                "type" : "init"
-              },
-              {
                 "path" : "\/documentation\/jxkit\/jxcontext\/init(vm:strict:)",
                 "title" : "init(vm: JXVM, strict: Bool)",
                 "type" : "init"
