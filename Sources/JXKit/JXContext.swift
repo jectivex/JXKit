@@ -52,19 +52,6 @@ open class JXContext {
         self.strict = strict
     }
 
-    /// Wraps an existing `JSGlobalContextRef` in a `JXContext`. Address space will be shared between both contexts.
-    ///
-    /// - Parameters:
-    ///   - context: The shared JXContext to use.
-    ///   - strict: Whether to evaluate in strict mode.
-    public init(context: JXContext, strict: Bool = true) {
-        self.vm = JXVM(groupRef: JSContextGetGroup(context.contextRef))
-        self.contextRef = context.contextRef
-        self.strict = strict
-        self.spi = context.spi
-        JSGlobalContextRetain(context.contextRef)
-    }
-
     deinit {
         if peerClassCreated == true {
             JSClassRelease(peerClass)
