@@ -754,6 +754,9 @@ extension JXValue {
     /// - Returns: true if the delete operation succeeds, otherwise false.
     @discardableResult
     @inlinable public func deleteProperty(_ property: String) throws -> Bool {
+        guard hasProperty(property) else {
+            return false
+        }
         let property = property.withCString(JSStringCreateWithUTF8CString)
         defer { JSStringRelease(property) }
         return try context.trying {
