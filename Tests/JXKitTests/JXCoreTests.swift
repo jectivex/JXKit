@@ -23,6 +23,19 @@ class JXCoreTests: XCTestCase {
         XCTFail("unexpected architecture")
 #endif
     }
+    
+    func testProperties() throws {
+        let jxc = JXContext()
+        let prop = "prop"
+        XCTAssertFalse(jxc.global.hasProperty(prop))
+        XCTAssertTrue(try jxc.global[prop].isUndefined)
+        XCTAssertFalse(try jxc.global.deleteProperty(prop))
+        
+        XCTAssertFalse(try jxc.global.setProperty(prop, jxc.object()).isUndefined)
+        XCTAssertTrue(jxc.global.hasProperty(prop))
+        XCTAssertFalse(try jxc.global[prop].isUndefined)
+        XCTAssertTrue(try jxc.global.deleteProperty(prop))
+    }
 
     func testFunction1() throws {
         let jxc = JXContext()
