@@ -40,7 +40,7 @@ public struct JXError: Error, CustomStringConvertible, @unchecked Sendable {
     
     private var scriptDescription: String {
         let prefixLength = 256
-        guard let script = self.script, !script.isEmpty else {
+        guard let script, !script.isEmpty else {
             return ""
         }
         return script.count > prefixLength ? " <<script: \(script.prefix(prefixLength))... >>" : " <<script: \(script) >>"
