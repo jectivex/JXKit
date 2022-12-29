@@ -1,7 +1,3 @@
-import Foundation
-#if canImport(FoundationNetworking)
-import FoundationNetworking
-#endif
 #if canImport(JavaScriptCore)
 import JavaScriptCore
 #else

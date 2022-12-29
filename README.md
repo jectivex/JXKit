@@ -157,4 +157,3 @@ Projects that are based on JXKit:
 ## TODO
 
 - Better reporting of errors from async code / Promises.
-- Async-save version of `JXContext.withValues`.

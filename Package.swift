@@ -37,7 +37,6 @@ let package = Package(
     dependencies: [
     ],
     targets: targets + [
-        .testTarget(name: "JXKitTests", 
-            dependencies: ["JXKit"])
+        .testTarget(name: "JXKitTests", dependencies: ["JXKit"], resources: [.copy("jsmodules")])
     ]
 )
