@@ -220,11 +220,13 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/hasProperty(_:)-2ontd",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/insertElement(_:at:)-2x01w",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/insertElement(_:at:)-9qbtd",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/integrate(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/invokeMethod(_:withArguments:)-3nh5",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/invokeMethod(_:withArguments:)-974hn",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isEqual(to:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isEqualWithTypeCoercion(to:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/isInstance(of:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/keyPath(_:createIntermediates:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/preventExtensions()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/propertyDescriptor(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/proxy(get:set:)",
@@ -2710,6 +2712,51 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/int64"
 },
+"doc://JXKit/documentation/JXKit/JXValue/integrate(_:)": {
+  "abstract" : [
+    {
+      "text" : "Import the properties of the given value into this value.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "integrate"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/integrate(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "integrate(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/integrate(_:)"
+},
 "doc://JXKit/documentation/JXKit/JXValue/invokeMethod(_:withArguments:)-3nh5": {
   "abstract" : [
     {
@@ -3750,6 +3797,98 @@
   "title" : "isUndefined",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/isundefined"
+},
+"doc://JXKit/documentation/JXKit/JXValue/keyPath(_:createIntermediates:)": {
+  "abstract" : [
+    {
+      "text" : "Traverse a ‘.’-separated key path, returning the object hosting the final property as well as the name of that property.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "keyPath"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "createIntermediates"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> (parent"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ", property"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/keyPath(_:createIntermediates:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "keyPath(_:createIntermediates:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/keypath(_:createintermediates:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue/peer": {
   "abstract" : [

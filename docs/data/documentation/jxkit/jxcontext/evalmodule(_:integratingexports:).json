@@ -1,55 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Creates ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " with the given ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXVM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ". ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXValue",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " references may be used interchangably with multiple instances of ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " with the same ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXVM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ", but sharing between  separate ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXVM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : "s will result in undefined behavior.",
+      "text" : "Evaluate the given JavaScript with module semantics, returning its exports.",
       "type" : "text"
     }
   ],
@@ -63,32 +15,33 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(vm:strict:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/evalModule(_:integratingExports:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit9JXContextC2vm6strictAcA4JXVMC_Sbtcfc",
+    "extendedModule" : "JXKit",
+    "externalID" : "s:5JXKit9JXContextC10evalModule_18integratingExportsAA7JXValueCSS_SSSgtKF",
     "fragments" : [
       {
+        "kind" : "keyword",
+        "text" : "func"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
         "kind" : "identifier",
-        "text" : "init"
+        "text" : "evalModule"
       },
       {
         "kind" : "text",
         "text" : "("
       },
       {
-        "kind" : "externalParam",
-        "text" : "vm"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
-      },
-      {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit4JXVMC",
-        "text" : "JXVM"
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
       },
       {
         "kind" : "text",
@@ -96,7 +49,7 @@
       },
       {
         "kind" : "externalParam",
-        "text" : "strict"
+        "text" : "integratingExports"
       },
       {
         "kind" : "text",
@@ -104,12 +57,25 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:Sb",
-        "text" : "Bool"
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
       },
       {
         "kind" : "text",
-        "text" : ")"
+        "text" : "?) "
+      },
+      {
+        "kind" : "keyword",
+        "text" : "throws"
+      },
+      {
+        "kind" : "text",
+        "text" : " -> "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:5JXKit7JXValueC",
+        "text" : "JXValue"
       }
     ],
     "modules" : [
@@ -118,9 +84,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Initializer",
-    "symbolKind" : "init",
-    "title" : "init(vm:strict:)"
+    "roleHeading" : "Instance Method",
+    "symbolKind" : "method",
+    "title" : "evalModule(_:integratingExports:)"
   },
   "primaryContentSections" : [
     {
@@ -134,8 +100,24 @@
           ],
           "tokens" : [
             {
+              "kind" : "attribute",
+              "text" : "@discardableResult"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
               "kind" : "keyword",
-              "text" : "init"
+              "text" : "func"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "evalModule"
             },
             {
               "kind" : "text",
@@ -143,25 +125,40 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "vm"
+              "text" : "_"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "internalParam",
+              "text" : "script"
             },
             {
               "kind" : "text",
               "text" : ": "
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXVM",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit4JXVMC",
-              "text" : "JXVM"
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
             },
             {
               "kind" : "text",
-              "text" : " = JXVM(), "
+              "text" : ", "
             },
             {
               "kind" : "externalParam",
-              "text" : "strict"
+              "text" : "integratingExports"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "internalParam",
+              "text" : "keyPath"
             },
             {
               "kind" : "text",
@@ -169,12 +166,26 @@
             },
             {
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:Sb",
-              "text" : "Bool"
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
             },
             {
               "kind" : "text",
-              "text" : " = true)"
+              "text" : "? = nil) "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "throws"
+            },
+            {
+              "kind" : "text",
+              "text" : " -> "
+            },
+            {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5JXKit7JXValueC",
+              "text" : "JXValue"
             }
           ]
         }
@@ -189,28 +200,22 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "The shared virtual machine to use; defaults  to creating a new VM per context.",
+                  "text" : "If given, the module exports will be integrated into the object at this key path from ",
                   "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "vm"
-        },
-        {
-          "content" : [
-            {
-              "inlineContent" : [
+                },
                 {
-                  "text" : "Whether to evaluate in strict mode.",
+                  "code" : "global",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : ".",
                   "type" : "text"
                 }
               ],
               "type" : "paragraph"
             }
           ],
-          "name" : "strict"
+          "name" : "keyPath"
         }
       ]
     }
@@ -226,7 +231,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/init(vm:strict:)"
+        "\/documentation\/jxkit\/jxcontext\/evalmodule(_:integratingexports:)"
       ],
       "traits" : [
         {
@@ -293,82 +298,34 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/init(vm:strict:)": {
+"doc://JXKit/documentation/JXKit/JXContext/evalModule(_:integratingExports:)": {
   "abstract" : [
     {
-      "text" : "Creates ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " with the given ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXVM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ". ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXValue",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " references may be used interchangably with multiple instances of ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " with the same ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXVM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ", but sharing between  separate ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXVM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : "s will result in undefined behavior.",
+      "text" : "Evaluate the given JavaScript with module semantics, returning its exports.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
       "kind" : "identifier",
-      "text" : "init"
+      "text" : "evalModule"
     },
     {
       "kind" : "text",
       "text" : "("
     },
     {
-      "kind" : "externalParam",
-      "text" : "vm"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit4JXVMC",
-      "text" : "JXVM"
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
     },
     {
       "kind" : "text",
@@ -376,7 +333,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "strict"
+      "text" : "integratingExports"
     },
     {
       "kind" : "text",
@@ -384,33 +341,38 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
     },
     {
       "kind" : "text",
-      "text" : ")"
+      "text" : "?) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(vm:strict:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/evalModule(_:integratingExports:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "init(vm:strict:)",
+  "title" : "evalModule(_:integratingExports:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/init(vm:strict:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/evalmodule(_:integratingexports:)"
 },
-"doc://JXKit/documentation/JXKit/JXVM": {
+"doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
     {
-      "text" : "A JavaScript virtual machine that is used by a ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXContextGroup",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " instance.",
+      "text" : "A JavaScript object.",
       "type" : "text"
     }
   ],
@@ -425,21 +387,21 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXVM"
+      "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXVM",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXVM"
+      "text" : "JXValue"
     }
   ],
   "role" : "symbol",
-  "title" : "JXVM",
+  "title" : "JXValue",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvm"
+  "url" : "\/documentation\/jxkit\/jxvalue"
 }
 }
 }

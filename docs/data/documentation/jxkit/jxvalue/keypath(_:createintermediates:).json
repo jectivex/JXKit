@@ -1,0 +1,385 @@
+{
+  "abstract" : [
+    {
+      "text" : "Traverse a ‘.’-separated key path, returning the object hosting the final property as well as the name of that property.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/JXKit\/documentation\/JXKit",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/keyPath(_:createIntermediates:)"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "extendedModule" : "JXKit",
+    "externalID" : "s:5JXKit7JXValueC7keyPath_19createIntermediatesAC6parent_SS8propertytSS_SbtKF",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "func"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "keyPath"
+      },
+      {
+        "kind" : "text",
+        "text" : "("
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
+      },
+      {
+        "kind" : "text",
+        "text" : ", "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "createIntermediates"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:Sb",
+        "text" : "Bool"
+      },
+      {
+        "kind" : "text",
+        "text" : ") "
+      },
+      {
+        "kind" : "keyword",
+        "text" : "throws"
+      },
+      {
+        "kind" : "text",
+        "text" : " -> (parent"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:5JXKit7JXValueC",
+        "text" : "JXValue"
+      },
+      {
+        "kind" : "text",
+        "text" : ", property"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
+      },
+      {
+        "kind" : "text",
+        "text" : ")"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "JXKit"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Instance Method",
+    "symbolKind" : "method",
+    "title" : "keyPath(_:createIntermediates:)"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "macOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "func"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "keyPath"
+            },
+            {
+              "kind" : "text",
+              "text" : "("
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "_"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "internalParam",
+              "text" : "keyPath"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : ", "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "createIntermediates"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:Sb",
+              "text" : "Bool"
+            },
+            {
+              "kind" : "text",
+              "text" : " = false) "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "throws"
+            },
+            {
+              "kind" : "text",
+              "text" : " -> (parent"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5JXKit7JXValueC",
+              "text" : "JXValue"
+            },
+            {
+              "kind" : "text",
+              "text" : ", property"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : ")"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/jxkit\/jxvalue\/keypath(_:createintermediates:)"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://JXKit/documentation/JXKit": {
+  "abstract" : [
+    {
+      "text" : "Cross-platform interface to JavaScriptCore in fluent Swift.",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "JXKit",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit"
+},
+"doc://JXKit/documentation/JXKit/JXValue": {
+  "abstract" : [
+    {
+      "text" : "A JavaScript object.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXValue"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXValue",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue"
+},
+"doc://JXKit/documentation/JXKit/JXValue/keyPath(_:createIntermediates:)": {
+  "abstract" : [
+    {
+      "text" : "Traverse a ‘.’-separated key path, returning the object hosting the final property as well as the name of that property.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "keyPath"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "createIntermediates"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> (parent"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ", property"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/keyPath(_:createIntermediates:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "keyPath(_:createIntermediates:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/keypath(_:createintermediates:)"
+}
+}
+}

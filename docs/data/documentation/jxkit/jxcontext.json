@@ -139,7 +139,13 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(vm:strict:)"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct"
+      ],
+      "title" : "Structures"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(vm:configuration:)"
       ],
       "title" : "Initializers"
     },
@@ -147,6 +153,7 @@
       "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/arrayBufferPrototype",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/arrayPrototype",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/configuration-swift.property",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/contextRef",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/datePrototype",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/errorPrototype",
@@ -155,7 +162,6 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/promisePrototype",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/proxyPrototype",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/spi",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/strict",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/vm"
       ],
       "title" : "Instance Properties"
@@ -173,6 +179,13 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/error(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:priority:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:root:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:root:priority:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(resource:this:root:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(resource:this:root:priority:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/evalModule(_:integratingExports:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/evalModule(_:integratingExports:root:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/evalModule(resource:integratingExports:root:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/garbageCollect()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/json(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/new(_:withArguments:)-1xova",
@@ -183,8 +196,10 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(fromDictionary:)-97yvg",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(fromDictionary:)-y0ba",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/object(peer:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/onScriptsDidChange(perform:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/string(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/symbol(_:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/trackingScriptAccess(perform:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/undefined()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withArrayBuffer(source:block:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-2z1rf",
@@ -275,6 +290,40 @@
   "title" : "JXContext",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
+},
+"doc://JXKit/documentation/JXKit/JXContext/Configuration-swift.struct": {
+  "abstract" : [
+    {
+      "text" : "Context configuration.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "Configuration"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Configuration"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXContext.Configuration",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct"
 },
 "doc://JXKit/documentation/JXKit/JXContext/array(_:)-2llxz": {
   "abstract" : [
@@ -590,6 +639,52 @@
   "title" : "checkSyntax(_:sourceURL:startingLineNumber:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/checksyntax(_:sourceurl:startinglinenumber:)"
+},
+"doc://JXKit/documentation/JXKit/JXContext/configuration-swift.property": {
+  "abstract" : [
+    {
+      "text" : "Context confguration.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "configuration"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC13ConfigurationV",
+      "text" : "Configuration"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/configuration-swift.property",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "configuration",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.property"
 },
 "doc://JXKit/documentation/JXKit/JXContext/contextRef": {
   "abstract" : [
@@ -1161,6 +1256,679 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:priority:)"
 },
+"doc://JXKit/documentation/JXKit/JXContext/eval(_:this:root:)": {
+  "abstract" : [
+    {
+      "text" : "Evaluates the JavaScript.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "eval"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "this"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "root"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10Foundation3URLV",
+      "text" : "URL"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:root:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "eval(_:this:root:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:root:)"
+},
+"doc://JXKit/documentation/JXKit/JXContext/eval(_:this:root:priority:)": {
+  "abstract" : [
+    {
+      "text" : "Asynchronously evaluates the given script.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "eval"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "this"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "root"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10Foundation3URLV",
+      "text" : "URL"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "priority"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ScP",
+      "text" : "TaskPriority"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "async"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:root:priority:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "eval(_:this:root:priority:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:root:priority:)"
+},
+"doc://JXKit/documentation/JXKit/JXContext/eval(resource:this:root:)": {
+  "abstract" : [
+    {
+      "text" : "Evaluate the JavaScript contained in the script in the given resource.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "eval"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "resource"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "this"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "root"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10Foundation3URLV",
+      "text" : "URL"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(resource:this:root:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "eval(resource:this:root:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/eval(resource:this:root:)"
+},
+"doc://JXKit/documentation/JXKit/JXContext/eval(resource:this:root:priority:)": {
+  "abstract" : [
+    {
+      "text" : "Asynchronously evaluate the JavaScript contained in the script in the given resource.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "eval"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "resource"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "this"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "root"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10Foundation3URLV",
+      "text" : "URL"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "priority"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ScP",
+      "text" : "TaskPriority"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "async"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(resource:this:root:priority:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "eval(resource:this:root:priority:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/eval(resource:this:root:priority:)"
+},
+"doc://JXKit/documentation/JXKit/JXContext/evalModule(_:integratingExports:)": {
+  "abstract" : [
+    {
+      "text" : "Evaluate the given JavaScript with module semantics, returning its exports.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "evalModule"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "integratingExports"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?) "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/evalModule(_:integratingExports:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "evalModule(_:integratingExports:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/evalmodule(_:integratingexports:)"
+},
+"doc://JXKit/documentation/JXKit/JXContext/evalModule(_:integratingExports:root:)": {
+  "abstract" : [
+    {
+      "text" : "Evaluate the given JavaScript with module semantics, returning its exports.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "evalModule"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "integratingExports"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "root"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10Foundation3URLV",
+      "text" : "URL"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/evalModule(_:integratingExports:root:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "evalModule(_:integratingExports:root:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/evalmodule(_:integratingexports:root:)"
+},
+"doc://JXKit/documentation/JXKit/JXContext/evalModule(resource:integratingExports:root:)": {
+  "abstract" : [
+    {
+      "text" : "Evaluate the JavaScript contained in the given resource with module semantics, returning its exports.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "evalModule"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "resource"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "integratingExports"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "root"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10Foundation3URLV",
+      "text" : "URL"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/evalModule(resource:integratingExports:root:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "evalModule(resource:integratingExports:root:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/evalmodule(resource:integratingexports:root:)"
+},
 "doc://JXKit/documentation/JXKit/JXContext/garbageCollect()": {
   "abstract" : [
     {
@@ -1230,7 +1998,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/global"
 },
-"doc://JXKit/documentation/JXKit/JXContext/init(vm:strict:)": {
+"doc://JXKit/documentation/JXKit/JXContext/init(vm:configuration:)": {
   "abstract" : [
     {
       "text" : "Creates ",
@@ -1313,7 +2081,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "strict"
+      "text" : "configuration"
     },
     {
       "kind" : "text",
@@ -1321,20 +2089,29 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC13ConfigurationV",
+      "text" : "Configuration"
     },
     {
       "kind" : "text",
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(vm:strict:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(vm:configuration:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "init(vm:strict:)",
+  "title" : "init(vm:configuration:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/init(vm:strict:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/init(vm:configuration:)"
 },
 "doc://JXKit/documentation/JXKit/JXContext/json(_:)": {
   "abstract" : [
@@ -1923,6 +2700,90 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/objectprototype"
 },
+"doc://JXKit/documentation/JXKit/JXContext/onScriptsDidChange(perform:)": {
+  "abstract" : [
+    {
+      "text" : "Listen for changes to JavaScript script resource IDs, if change monitoring is supported by the ",
+      "type" : "text"
+    },
+    {
+      "code" : "JXScriptLoader",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "onScriptsDidChange"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "perform"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sh",
+      "text" : "Set"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ">) -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit13JXCancellableC",
+      "text" : "JXCancellable"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/onScriptsDidChange(perform:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "onScriptsDidChange(perform:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/onscriptsdidchange(perform:)"
+},
 "doc://JXKit/documentation/JXKit/JXContext/promisePrototype": {
   "abstract" : [
     {
@@ -2038,51 +2899,6 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/spi"
 },
-"doc://JXKit/documentation/JXKit/JXContext/strict": {
-  "abstract" : [
-    {
-      "text" : "Whether scripts evaluated by this context should be assessed in ",
-      "type" : "text"
-    },
-    {
-      "code" : "strict",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " mode.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "let"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "strict"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/strict",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "strict",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/strict"
-},
 "doc://JXKit/documentation/JXKit/JXContext/string(_:)": {
   "abstract" : [
     {
@@ -2188,6 +3004,112 @@
   "title" : "symbol(_:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/symbol(_:)"
+},
+"doc://JXKit/documentation/JXKit/JXContext/trackingScriptAccess(perform:)": {
+  "abstract" : [
+    {
+      "text" : "Perform the given code while tracking its access to JavaScript script resource IDs.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "trackingScriptAccess"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "V"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "perform"
+    },
+    {
+      "kind" : "text",
+      "text" : ": () "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "V"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> (accessed"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sh",
+      "text" : "Set"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ">, value"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "V"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/trackingScriptAccess(perform:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "trackingScriptAccess(perform:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/trackingscriptaccess(perform:)"
 },
 "doc://JXKit/documentation/JXKit/JXContext/undefined()": {
   "abstract" : [

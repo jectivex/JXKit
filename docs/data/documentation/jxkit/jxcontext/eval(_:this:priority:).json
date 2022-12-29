@@ -254,15 +254,7 @@
               "type" : "codeVoice"
             },
             {
-              "text" : " either directly or through the implicit promise",
-              "type" : "text"
-            },
-            {
-              "text" : " ",
-              "type" : "text"
-            },
-            {
-              "text" : "that is created in async calls.",
+              "text" : " either directly or through the implicit promise that is created in async calls.",
               "type" : "text"
             }
           ],

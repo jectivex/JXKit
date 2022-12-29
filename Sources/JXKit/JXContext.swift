@@ -4,24 +4,63 @@ import JavaScriptCore
 #else
 import CJSCore
 #endif
-#if canImport(FoundationNetworking)
-import FoundationNetworking
+#if canImport(Foundation)
+import Foundation
 #endif
 
 /// A JavaScript execution context. This is a cross-platform analogue to the Objective-C `JavaScriptCore.JSContext`.
 ///
 /// This wraps a `JSGlobalContextRef`, and is the equivalent of `JavaScriptCore.JSContext`
 open class JXContext {
+    /// Context configuration.
+    public struct Configuration {
+        /// Whether scripts evaluated by this context should be assessed in `strict` mode. Defaults to `true`.
+        public var strict: Bool
+        
+        /// Whether hot reloading of JavaScript script resources is enabled.
+        public var isHotReloadEnabled: Bool {
+#if canImport(Foundation)
+            return scriptLoader.didChange != nil
+#else
+            return false
+#endif
+        }
+
+#if canImport(Foundation)
+        /// Whether `require` module support is enabled. Defaults to `true`.
+        public var moduleRequireEnabled: Bool
+        
+        /// Configure a global script loader to use as the default when no loader is provided to the `Configuration`.
+        ///
+        /// - Seealso: ``JXContext/Configuration/scriptLoader``
+        public static var defaultScriptLoader: JXScriptLoader = DefaultScriptLoader()
+
+        /// The script loader to use for loading JavaScript script files. If the loader vends a non-nil `didChange` listener collection, hot reloading will be enabled.
+        public var scriptLoader: JXScriptLoader
+        
+        public init(strict: Bool = true, moduleRequireEnabled: Bool = true, scriptLoader: JXScriptLoader = Self.defaultScriptLoader) {
+            self.strict = strict
+            self.moduleRequireEnabled = moduleRequireEnabled
+            self.scriptLoader = scriptLoader
+        }
+#else
+        public init(strict: Bool = true) {
+            self.strict = strict
+        }
+#endif
+    }
+    
     /// The virtual machine associated with this context
     public let vm: JXVM
 
-    /// Whether scripts evaluated by this context should be assessed in `strict` mode.
-    public let strict: Bool
+    /// Context confguration.
+    public let configuration: Configuration
 
     /// The underlying `JSGlobalContextRef` that is wrapped by this context
     public let contextRef: JSGlobalContextRef
 
-    private var strictEvaluated: Bool = false
+    private lazy var scriptManager = ScriptManager(context: self)
+    private var strictEvaluated = false
     private var tryingRecursionGuard = false
 
     /// Class for instances that can hold references to peers (which ``JSObjectGetPrivate`` needs to work)
@@ -45,11 +84,11 @@ open class JXContext {
     ///
     /// - Parameters:
     ///   - vm: The shared virtual machine to use; defaults  to creating a new VM per context.
-    ///   - strict: Whether to evaluate in strict mode.
-    public init(vm: JXVM = JXVM(), strict: Bool = true) {
+    ///   - configuration: Context configuration.
+    public init(vm: JXVM = JXVM(), configuration: Configuration = Configuration()) {
         self.vm = vm
         self.contextRef = JSGlobalContextCreateInGroup(vm.groupRef, nil)
-        self.strict = strict
+        self.configuration = configuration
     }
 
     deinit {
@@ -64,7 +103,6 @@ open class JXContext {
 }
 
 extension JXContext {
-
     /// Evaluates the JavaScript.
     @discardableResult public func eval(_ script: String, this: JXValue? = nil) throws -> JXValue {
         do {
@@ -73,9 +111,52 @@ extension JXContext {
             throw JXError(cause: error, script: script)
         }
     }
+
+    /// Asynchronously evaluates the given script.
+    ///
+    /// The script is expected to return a `Promise` either directly or through the implicit promise that is created in async calls.
+    @discardableResult public func eval(_ script: String, this: JXValue? = nil, priority: TaskPriority) async throws -> JXValue {
+        let promise = try eval(script, this: this)
+        do {
+            return try await evalPromise(promise, this: this, priority: priority)
+        } catch {
+            throw JXError(cause: error, script: script)
+        }
+    }
+    
+#if canImport(Foundation)
+    /// Evaluates the JavaScript.
+    ///
+    /// - Parameters:
+    ///   - root: The root of the JavaScript resources, typically `Bundle.module.resourceURL` for a Swift package. This is used to locate any scripts referenced via `require`
+    @discardableResult public func eval(_ script: String, this: JXValue? = nil, root: URL) throws -> JXValue {
+        do {
+            return try scriptManager.withRoot(root) { _ in
+                return try evalPrivate(script, this: this)
+            }
+        } catch {
+            throw JXError(cause: error, script: script)
+        }
+    }
+
+    /// Asynchronously evaluates the given script.
+    ///
+    /// The script is expected to return a `Promise` either directly or through the implicit promise that is created in async calls.
+    ///
+    /// - Parameters:
+    ///   - root: The root of the JavaScript resources, typically `Bundle.module.resourceURL` for a Swift package. This is used to locate any scripts referenced via `require`
+    @discardableResult public func eval(_ script: String, this: JXValue? = nil, root: URL, priority: TaskPriority) async throws -> JXValue {
+        let promise = try eval(script, this: this, root: root)
+        do {
+            return try await evalPromise(promise, this: this, priority: priority)
+        } catch {
+            throw JXError(cause: error, script: script)
+        }
+    }
+#endif
     
     private func evalPrivate(_ script: String, this: JXValue?) throws -> JXValue {
-        if strict == true && strictEvaluated == false {
+        if configuration.strict == true && !strictEvaluated {
             let useStrict = "\"use strict\";\n" // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
             let script = useStrict.withCString(JSStringCreateWithUTF8CString)
             defer { JSStringRelease(script) }
@@ -98,24 +179,11 @@ extension JXContext {
         }
         return result.map { JXValue(context: self, valueRef: $0) } ?? JXValue(undefinedIn: self)
     }
-
-    /// Asynchronously evaluates the given script.
-    ///
-    /// The script is expected to return a `Promise` either directly or through the implicit promise
-    /// that is created in async calls.
-    @discardableResult public func eval(_ script: String, this: JXValue? = nil, priority: TaskPriority) async throws -> JXValue {
-        let promise = try eval(script, this: this)
+    
+    private func evalPromise(_ promise: JXValue, this: JXValue?, priority: TaskPriority) async throws -> JXValue {
         guard try promise.isPromise else {
             throw JXError.asyncEvalMustReturnPromise(promise)
         }
-        do {
-            return try await evalPromise(promise, this: this, priority: priority)
-        } catch {
-            throw JXError(cause: error, script: script)
-        }
-    }
-    
-    private func evalPromise(_ promise: JXValue, this: JXValue?, priority: TaskPriority) async throws -> JXValue {
         let then = try promise["then"]
         guard then.isFunction else {
             throw JXError(message: "The returned Promise does not have a 'then' function")
@@ -193,9 +261,21 @@ extension JXContext {
     ///   - execute: The code to execute using the given values.
     /// - Returns: The result of the closure.
     @discardableResult public func withValues<R>(_ values: [JXValue], execute: () throws -> R) rethrows -> R {
-        try values.enumerated().forEach { try global.setProperty("$\($0.offset)", $0.element) }
+        let propertyNames = (0..<values.count).map { "$\($0)"}
+        let previousValues = try propertyNames.map { global.hasProperty($0) ? try global[$0] : nil }
+        try values.enumerated().forEach { try global.setProperty(propertyNames[$0.offset], $0.element) }
         defer {
-            (0..<values.count).forEach { do { try global.deleteProperty("$\($0)") } catch {} }
+            previousValues.enumerated().forEach {
+                let propertyName = propertyNames[$0.offset]
+                do {
+                    if let value = $0.element {
+                        try global.setProperty(propertyName, value)
+                    } else {
+                        try global.deleteProperty(propertyName)
+                    }
+                } catch {
+                }
+            }
         }
         return try execute()
     }
@@ -518,11 +598,84 @@ extension JXContext {
     }
 }
 
+extension JXContext {
+    /// Evaluate the given JavaScript with module semantics, returning its exports.
+    ///
+    /// - Parameters:
+    ///   - keyPath: If given, the module exports will be integrated into the object at this key path from `global`.
+    @discardableResult public func evalModule(_ script: String, integratingExports keyPath: String? = nil) throws -> JXValue {
+        return try scriptManager.evalModule(script, integratingExports: keyPath)
+    }
+
+#if canImport(Foundation)
+    /// Evaluate the JavaScript contained in the script in the given resource.
+    ///
+    /// - Parameters:
+    ///   - resource: The JavaScript file to load, in the form `/path/file.js` or `/path/file`. Note the leading `/` because the resource path is not being interpreted relative to another resource.
+    ///   - root: The root of the JavaScript resources, typically `Bundle.module.resourceURL` for a Swift package. This is used to locate the resource and any scripts it references via `require`.
+    @discardableResult public func eval(resource: String, this: JXValue? = nil, root: URL) throws -> JXValue {
+        return try scriptManager.withRoot(root) { sm in
+            return try sm.eval(resource: resource, this: this)
+        }
+    }
+    
+    /// Asynchronously evaluate the JavaScript contained in the script in the given resource.
+    ///
+    /// The script is expected to return a `Promise` either directly or through the implicit promise that is created in async calls.
+    ///
+    /// - Parameters:
+    ///   - resource: The JavaScript file to load, in the form `/path/file.js` or `/path/file`. Note the leading `/` because the resource path is not being interpreted relative to another resource.
+    ///   - root: The root of the JavaScript resources, typically `Bundle.module.resourceURL` for a Swift package. This is used to locate the resource and any scripts it references via `require`.
+    @discardableResult public func eval(resource: String, this: JXValue? = nil, root: URL, priority: TaskPriority) async throws -> JXValue {
+        let promise = try eval(resource: resource, this: this, root: root)
+        return try await evalPromise(promise, this: this, priority: priority)
+    }
+    
+    /// Evaluate the given JavaScript with module semantics, returning its exports.
+    ///
+    /// - Parameters:
+    ///   - keyPath: If given, the module exports will be integrated into the object at this key path from `global`.
+    ///   - root: The root of the JavaScript resources, typically `Bundle.module.resourceURL` for a Swift package. This is used to locate any scripts referenced via `require`.
+    @discardableResult public func evalModule(_ script: String, integratingExports keyPath: String? = nil, root: URL) throws -> JXValue {
+        return try scriptManager.withRoot(root) { sm in
+            return try sm.evalModule(script, integratingExports: keyPath)
+        }
+    }
+    
+    /// Evaluate the JavaScript contained in the given resource with module semantics, returning its exports.
+    ///
+    /// - Parameters:
+    ///   - resource: The JavaScript file to load, in the form `/path/file.js` or `/path/file`. Note the leading `/` because the resource path is not being interpreted relative to another resource.
+    ///   - keyPath: If given, the module exports will be integrated into the object at this key path from `global`.
+    ///   - root: The root of the JavaScript resources, typically `Bundle.module.resourceURL` for a Swift package. This is used to locate the resource and any scripts it references via `require`.
+    @discardableResult public func evalModule(resource: String, integratingExports keyPath: String? = nil, root: URL) throws -> JXValue {
+        return try scriptManager.withRoot(root) { sm in
+            return try sm.evalModule(resource: resource, integratingExports: keyPath)
+        }
+    }
+    
+    /// Listen for changes to JavaScript script resource IDs, if change monitoring is supported by the `JXScriptLoader`.
+    public func onScriptsDidChange(perform: @escaping (Set<String>) -> Void) -> JXCancellable? {
+        return scriptManager.didChange.add(perform)
+    }
+    
+    /// Perform the given code while tracking its access to JavaScript script resource IDs.
+    public func trackingScriptAccess<V>(perform: @escaping () throws -> V) throws -> (accessed: Set<String>, value: V) {
+        var accessed = Set<String>()
+        let subscription = scriptManager.didAccess.add { accessed.formUnion($0) }
+        defer { subscription.cancel() }
+        let value = try perform()
+        return (accessed, value)
+    }
+#endif
+}
+
 /// Optional service provider integration points.
 public protocol JXContextSPI {
     func eval(_ script: String, this: JXValue?, in: JXContext) throws -> JXValue?
     func toJX(_ value: Any, in context: JXContext) throws -> JXValue?
     func fromJX<T>(_ value: JXValue, to type: T.Type) throws -> T?
+    func require(_ value: JXValue) throws -> String?
     func errorDetail(conveying type: Any.Type) -> String?
 }
 
@@ -536,6 +689,10 @@ extension JXContextSPI {
     }
 
     public func fromJX<T>(_ value: JXValue, to type: T.Type) throws -> T? {
+        return nil
+    }
+    
+    public func require(_ value: JXValue) throws -> String? {
         return nil
     }
     

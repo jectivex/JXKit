@@ -1,0 +1,534 @@
+{
+  "abstract" : [
+    {
+      "text" : "Evaluate the JavaScript contained in the given resource with module semantics, returning its exports.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/JXKit\/documentation\/JXKit",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/evalModule(resource:integratingExports:root:)"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "extendedModule" : "JXKit",
+    "externalID" : "s:5JXKit9JXContextC10evalModule8resource18integratingExports4rootAA7JXValueCSS_SSSg10Foundation3URLVtKF",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "func"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "evalModule"
+      },
+      {
+        "kind" : "text",
+        "text" : "("
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "resource"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
+      },
+      {
+        "kind" : "text",
+        "text" : ", "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "integratingExports"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
+      },
+      {
+        "kind" : "text",
+        "text" : "?, "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "root"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:10Foundation3URLV",
+        "text" : "URL"
+      },
+      {
+        "kind" : "text",
+        "text" : ") "
+      },
+      {
+        "kind" : "keyword",
+        "text" : "throws"
+      },
+      {
+        "kind" : "text",
+        "text" : " -> "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:5JXKit7JXValueC",
+        "text" : "JXValue"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "JXKit"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Instance Method",
+    "symbolKind" : "method",
+    "title" : "evalModule(resource:integratingExports:root:)"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "macOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "attribute",
+              "text" : "@discardableResult"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "func"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "evalModule"
+            },
+            {
+              "kind" : "text",
+              "text" : "("
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "resource"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : ", "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "integratingExports"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "internalParam",
+              "text" : "keyPath"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : "? = nil, "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "root"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:10Foundation3URLV",
+              "text" : "URL"
+            },
+            {
+              "kind" : "text",
+              "text" : ") "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "throws"
+            },
+            {
+              "kind" : "text",
+              "text" : " -> "
+            },
+            {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5JXKit7JXValueC",
+              "text" : "JXValue"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    },
+    {
+      "kind" : "parameters",
+      "parameters" : [
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The JavaScript file to load, in the form ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "\/path\/file.js",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : " or ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "\/path\/file",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : ". Note the leading ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "\/",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : " because the resource path is not being interpreted relative to another resource.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "resource"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "If given, the module exports will be integrated into the object at this key path from ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "global",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : ".",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "keyPath"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The root of the JavaScript resources, typically ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "Bundle.module.resourceURL",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : " for a Swift package. This is used to locate the resource and any scripts it references via ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "require",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : ".",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "root"
+        }
+      ]
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/jxkit\/jxcontext\/evalmodule(resource:integratingexports:root:)"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://JXKit/documentation/JXKit": {
+  "abstract" : [
+    {
+      "text" : "Cross-platform interface to JavaScriptCore in fluent Swift.",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "JXKit",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit"
+},
+"doc://JXKit/documentation/JXKit/JXContext": {
+  "abstract" : [
+    {
+      "text" : "A JavaScript execution context. This is a cross-platform analogue to the Objective-C ",
+      "type" : "text"
+    },
+    {
+      "code" : "JavaScriptCore.JSContext",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXContext"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXContext"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXContext",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext"
+},
+"doc://JXKit/documentation/JXKit/JXContext/evalModule(resource:integratingExports:root:)": {
+  "abstract" : [
+    {
+      "text" : "Evaluate the JavaScript contained in the given resource with module semantics, returning its exports.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "evalModule"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "resource"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "integratingExports"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "root"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10Foundation3URLV",
+      "text" : "URL"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/evalModule(resource:integratingExports:root:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "evalModule(resource:integratingExports:root:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/evalmodule(resource:integratingexports:root:)"
+},
+"doc://JXKit/documentation/JXKit/JXValue": {
+  "abstract" : [
+    {
+      "text" : "A JavaScript object.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "JXValue"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "JXValue"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXValue",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue"
+}
+}
+}
