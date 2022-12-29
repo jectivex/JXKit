@@ -120,7 +120,6 @@
     },
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/contextDeallocated()",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/internalError(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/valueNotArray(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/valueNotDate(_:)",
@@ -249,48 +248,6 @@
   "title" : "cause",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerror\/cause"
-},
-"doc://JXKit/documentation/JXKit/JXError/contextDeallocated()": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "static"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "contextDeallocated"
-    },
-    {
-      "kind" : "text",
-      "text" : "() -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXErrorV",
-      "text" : "JXError"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/contextDeallocated()",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "contextDeallocated()",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerror\/contextdeallocated()"
 },
 "doc://JXKit/documentation/JXKit/JXError/description": {
   "abstract" : [

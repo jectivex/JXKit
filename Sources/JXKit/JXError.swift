@@ -50,10 +50,6 @@ public struct JXError: Error, CustomStringConvertible, @unchecked Sendable {
         return JXError(message: "Internal error: \(message)")
     }
     
-    @inlinable public static func contextDeallocated() -> JXError {
-        return JXError(message: "The JXContext has been deallocated")
-    }
-    
     @inlinable public static func valueNotArray(_ value: JXValue) -> JXError {
         return JXError(message: "Expected a JavaScript array but received '\(value)'")
     }
@@ -101,18 +97,6 @@ public struct JXError: Error, CustomStringConvertible, @unchecked Sendable {
     
     @inlinable static func cannotCreateArrayBuffer() -> JXError {
         return JXError(message: "Unable to create JavaScript array buffer")
-    }
-    
-    @inlinable static func scriptNotFound(_ resource: String) -> JXError {
-        return JXError(message: "Unable to locate script '\(resource)'")
-    }
-    
-    @inlinable static func unknownScriptRelativeTo(for resource: String) -> JXError {
-        return JXError(message: "Unable to locate script '\(resource)'. This appears to be a relative path, but it was not referenced from another script with a known path. Prefix with '/' to use an absolute path")
-    }
-    
-    @inlinable static func unknownScriptRoot(for resource: String) -> JXError {
-        return JXError(message: "Unable to locate script '\(resource)'. Unknown script root. Are you attempting to use 'require' from an 'eval' call without specifying a root URL?")
     }
 }
 

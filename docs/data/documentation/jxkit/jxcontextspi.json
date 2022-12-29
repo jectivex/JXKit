@@ -92,7 +92,6 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/errorDetail(conveying:)-4afj4",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/eval(_:this:in:)-1a9hy",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/fromJX(_:to:)-76xn8",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/require(_:)-5ml6n",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/toJX(_:in:)-7j35f"
       ],
       "title" : "Instance Methods"
@@ -386,63 +385,6 @@
   "title" : "fromJX(_:to:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontextspi\/fromjx(_:to:)-76xn8"
-},
-"doc://JXKit/documentation/JXKit/JXContextSPI/require(_:)-5ml6n": {
-  "abstract" : [
-
-  ],
-  "defaultImplementations" : 1,
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "require"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : "?"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI\/require(_:)-5ml6n",
-  "kind" : "symbol",
-  "required" : true,
-  "role" : "symbol",
-  "title" : "require(_:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontextspi\/require(_:)-5ml6n"
 },
 "doc://JXKit/documentation/JXKit/JXContextSPI/toJX(_:in:)-7j35f": {
   "abstract" : [

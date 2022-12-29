@@ -119,8 +119,6 @@
     },
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXCancellable",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXListenerCollection",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXVM"
       ],
       "title" : "Classes"
@@ -128,8 +126,7 @@
     {
       "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXScriptLoader"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXConvertible"
       ],
       "title" : "Protocols"
     },
@@ -202,48 +199,6 @@
   "title" : "Getting Started with JXKit",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/gettingstarted"
-},
-"doc://JXKit/documentation/JXKit/JXCancellable": {
-  "abstract" : [
-    {
-      "text" : "Type similar to ",
-      "type" : "text"
-    },
-    {
-      "code" : "Combine.Cancellable",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " that is used to cancel subscriptions to events.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXCancellable"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXCancellable",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXCancellable"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXCancellable",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcancellable"
 },
 "doc://JXKit/documentation/JXKit/JXContext": {
   "abstract" : [
@@ -582,40 +537,6 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxkitinfo"
 },
-"doc://JXKit/documentation/JXKit/JXListenerCollection": {
-  "abstract" : [
-    {
-      "text" : "An ordered collection of event listeners.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXListenerCollection"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXListenerCollection",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXListenerCollection"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXListenerCollection",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxlistenercollection"
-},
 "doc://JXKit/documentation/JXKit/JXPromise": {
   "abstract" : [
 
@@ -680,40 +601,6 @@
   "title" : "JXProperty",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxproperty"
-},
-"doc://JXKit/documentation/JXKit/JXScriptLoader": {
-  "abstract" : [
-    {
-      "text" : "Load JavaScript files.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "protocol"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXScriptLoader"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXScriptLoader",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXScriptLoader"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXScriptLoader",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxscriptloader"
 },
 "doc://JXKit/documentation/JXKit/JXType": {
   "abstract" : [
