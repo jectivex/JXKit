@@ -5,7 +5,7 @@ Cross-platform interface to JavaScriptCore in fluent Swift.
 ## Overview
 
 By using `JXKit`, you can create and manage a JavaScript
-execution engine from Swift, and interface between the script envrionment
+execution engine from Swift, and interface between the script environment
 using simple Swift types.
 
 

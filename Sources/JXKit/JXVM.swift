@@ -6,6 +6,9 @@ import JavaScriptCore
 #else
 import CJSCore
 #endif
+#if canImport(Glibc)
+import Glibc
+#endif
 
 /// A JavaScript virtual machine that is used by a `JXContextGroup` instance.
 ///
