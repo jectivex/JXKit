@@ -4,9 +4,6 @@ import JavaScriptCore
 #else
 import CJSCore
 #endif
-#if canImport(FoundationNetworking)
-import FoundationNetworking
-#endif
 
 /// A JavaScript object.
 ///
@@ -860,6 +857,16 @@ extension JXValue {
     @discardableResult @inlinable public func setProperty(symbol: JXValue, _ newValue: Any) throws -> JXValue {
         return try setProperty(symbol: symbol, context.convey(newValue))
     }
+    
+    /// Import the properties of the given value into this value.
+    public func integrate(_ value: JXValue) throws {
+        guard value.isObject else {
+            return
+        }
+        for entry in try value.dictionary {
+            try setProperty(entry.key, entry.value)
+        }
+    }
 }
 
 extension JXValue {
@@ -913,6 +920,30 @@ extension JXValue {
     /// Inserts the given object into this array, shifting subsequent elements.
     @inlinable public func insertElement(_ object: Any, at index: Int) throws {
         try insertElement(context.convey(object), at: index)
+    }
+}
+
+extension JXValue {
+    /// Traverse a '.'-separated key path, returning the object hosting the final property as well as the name of that property.
+    public func keyPath(_ keyPath: String, createIntermediates: Bool = false) throws -> (parent: JXValue, property: String) {
+        let tokens = keyPath.split(separator: ".")
+        guard tokens.count > 1 && !isUndefined else {
+            return (self, keyPath)
+        }
+        
+        let property = String(tokens.last!)
+        var parent = self
+        for i in 0..<(tokens.count - 1) {
+            let token = String(tokens[i])
+            if parent.hasProperty(token) {
+                parent = try parent[token]
+            } else if createIntermediates {
+                parent = try parent.setProperty(token, context.object())
+            } else {
+                return (context.undefined(), property)
+            }
+        }
+        return (parent, property)
     }
 }
 

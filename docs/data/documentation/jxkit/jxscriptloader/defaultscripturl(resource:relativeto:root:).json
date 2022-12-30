@@ -1,26 +1,20 @@
 {
-  "abstract" : [
-    {
-      "text" : "Checks for syntax errors in a string of JavaScript.",
-      "type" : "text"
-    }
-  ],
   "hierarchy" : {
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXScriptLoader"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/checkSyntax(_:sourceURL:startingLineNumber:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXScriptLoader\/defaultScriptURL(resource:relativeTo:root:)"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC11checkSyntax_9sourceURL18startingLineNumberSbSS_SSSgSitKF",
+    "externalID" : "s:5JXKit14JXScriptLoaderPAAE16defaultScriptURL8resource10relativeTo4root10Foundation0F0VSS_AJSgAJtKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,11 +26,19 @@
       },
       {
         "kind" : "identifier",
-        "text" : "checkSyntax"
+        "text" : "defaultScriptURL"
       },
       {
         "kind" : "text",
         "text" : "("
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "resource"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
       },
       {
         "kind" : "typeIdentifier",
@@ -49,7 +51,7 @@
       },
       {
         "kind" : "externalParam",
-        "text" : "sourceURL"
+        "text" : "relativeTo"
       },
       {
         "kind" : "text",
@@ -57,8 +59,8 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:SS",
-        "text" : "String"
+        "preciseIdentifier" : "s:10Foundation3URLV",
+        "text" : "URL"
       },
       {
         "kind" : "text",
@@ -66,7 +68,7 @@
       },
       {
         "kind" : "externalParam",
-        "text" : "startingLineNumber"
+        "text" : "root"
       },
       {
         "kind" : "text",
@@ -74,8 +76,8 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:Si",
-        "text" : "Int"
+        "preciseIdentifier" : "s:10Foundation3URLV",
+        "text" : "URL"
       },
       {
         "kind" : "text",
@@ -91,8 +93,8 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:Sb",
-        "text" : "Bool"
+        "preciseIdentifier" : "s:10Foundation3URLV",
+        "text" : "URL"
       }
     ],
     "modules" : [
@@ -103,7 +105,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "checkSyntax(_:sourceURL:startingLineNumber:)"
+    "title" : "defaultScriptURL(resource:relativeTo:root:)"
   },
   "primaryContentSections" : [
     {
@@ -126,7 +128,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "checkSyntax"
+              "text" : "defaultScriptURL"
             },
             {
               "kind" : "text",
@@ -134,15 +136,7 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "_"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "internalParam",
-              "text" : "script"
+              "text" : "resource"
             },
             {
               "kind" : "text",
@@ -159,15 +153,7 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "sourceURL"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "internalParam",
-              "text" : "URLString"
+              "text" : "relativeTo"
             },
             {
               "kind" : "text",
@@ -175,16 +161,16 @@
             },
             {
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:SS",
-              "text" : "String"
+              "preciseIdentifier" : "s:10Foundation3URLV",
+              "text" : "URL"
             },
             {
               "kind" : "text",
-              "text" : "? = nil, "
+              "text" : "?, "
             },
             {
               "kind" : "externalParam",
-              "text" : "startingLineNumber"
+              "text" : "root"
             },
             {
               "kind" : "text",
@@ -192,12 +178,12 @@
             },
             {
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:Si",
-              "text" : "Int"
+              "preciseIdentifier" : "s:10Foundation3URLV",
+              "text" : "URL"
             },
             {
               "kind" : "text",
-              "text" : " = 0) "
+              "text" : ") "
             },
             {
               "kind" : "keyword",
@@ -209,88 +195,13 @@
             },
             {
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:Sb",
-              "text" : "Bool"
+              "preciseIdentifier" : "s:10Foundation3URLV",
+              "text" : "URL"
             }
           ]
         }
       ],
       "kind" : "declarations"
-    },
-    {
-      "content" : [
-        {
-          "anchor" : "return-value",
-          "level" : 2,
-          "text" : "Return Value",
-          "type" : "heading"
-        },
-        {
-          "inlineContent" : [
-            {
-              "text" : "true if the script is syntactically correct; otherwise false.",
-              "type" : "text"
-            }
-          ],
-          "type" : "paragraph"
-        }
-      ],
-      "kind" : "content"
-    },
-    {
-      "kind" : "parameters",
-      "parameters" : [
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "The script to check for syntax errors.",
-                  "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "script"
-        },
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "A URL for the script’s source file. This is only used when reporting exceptions. Pass ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "nil",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : " to omit source file information in exceptions.",
-                  "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "sourceURL"
-        },
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "An integer value specifying the script’s starting line number in the file located at sourceURL. This is only used when reporting exceptions.",
-                  "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "startingLineNumber"
-        }
-      ]
     }
   ],
   "schemaVersion" : {
@@ -304,7 +215,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/checksyntax(_:sourceurl:startinglinenumber:)"
+        "\/documentation\/jxkit\/jxscriptloader\/defaultscripturl(resource:relativeto:root:)"
       ],
       "traits" : [
         {
@@ -329,25 +240,17 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXContext": {
+"doc://JXKit/documentation/JXKit/JXScriptLoader": {
   "abstract" : [
     {
-      "text" : "A JavaScript execution context. This is a cross-platform analogue to the Objective-C ",
-      "type" : "text"
-    },
-    {
-      "code" : "JavaScriptCore.JSContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
+      "text" : "Load JavaScript files.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "class"
+      "text" : "protocol"
     },
     {
       "kind" : "text",
@@ -355,28 +258,25 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXContext"
+      "text" : "JXScriptLoader"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXScriptLoader",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXContext"
+      "text" : "JXScriptLoader"
     }
   ],
   "role" : "symbol",
-  "title" : "JXContext",
+  "title" : "JXScriptLoader",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext"
+  "url" : "\/documentation\/jxkit\/jxscriptloader"
 },
-"doc://JXKit/documentation/JXKit/JXContext/checkSyntax(_:sourceURL:startingLineNumber:)": {
+"doc://JXKit/documentation/JXKit/JXScriptLoader/defaultScriptURL(resource:relativeTo:root:)": {
   "abstract" : [
-    {
-      "text" : "Checks for syntax errors in a string of JavaScript.",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
     {
@@ -389,11 +289,19 @@
     },
     {
       "kind" : "identifier",
-      "text" : "checkSyntax"
+      "text" : "defaultScriptURL"
     },
     {
       "kind" : "text",
       "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "resource"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
     },
     {
       "kind" : "typeIdentifier",
@@ -406,7 +314,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "sourceURL"
+      "text" : "relativeTo"
     },
     {
       "kind" : "text",
@@ -414,8 +322,8 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
+      "preciseIdentifier" : "s:10Foundation3URLV",
+      "text" : "URL"
     },
     {
       "kind" : "text",
@@ -423,7 +331,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "startingLineNumber"
+      "text" : "root"
     },
     {
       "kind" : "text",
@@ -431,8 +339,8 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
+      "preciseIdentifier" : "s:10Foundation3URLV",
+      "text" : "URL"
     },
     {
       "kind" : "text",
@@ -448,16 +356,16 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
+      "preciseIdentifier" : "s:10Foundation3URLV",
+      "text" : "URL"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/checkSyntax(_:sourceURL:startingLineNumber:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXScriptLoader\/defaultScriptURL(resource:relativeTo:root:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "checkSyntax(_:sourceURL:startingLineNumber:)",
+  "title" : "defaultScriptURL(resource:relativeTo:root:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/checksyntax(_:sourceurl:startinglinenumber:)"
+  "url" : "\/documentation\/jxkit\/jxscriptloader\/defaultscripturl(resource:relativeto:root:)"
 }
 }
 }

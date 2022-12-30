@@ -15,12 +15,65 @@
           {
             "children" : [
               {
+                "title" : "Structures",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Initializers",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/init(strict:modulerequireenabled:scriptloader:)",
+                    "title" : "init(strict: Bool, moduleRequireEnabled: Bool, scriptLoader: JXScriptLoader)",
+                    "type" : "init"
+                  },
+                  {
+                    "title" : "Instance Properties",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/isdynamicreloadenabled",
+                    "title" : "var isDynamicReloadEnabled: Bool",
+                    "type" : "property"
+                  },
+                  {
+                    "path" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/modulerequireenabled",
+                    "title" : "var moduleRequireEnabled: Bool",
+                    "type" : "property"
+                  },
+                  {
+                    "path" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/scriptloader",
+                    "title" : "var scriptLoader: JXScriptLoader",
+                    "type" : "property"
+                  },
+                  {
+                    "path" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/strict",
+                    "title" : "var strict: Bool",
+                    "type" : "property"
+                  },
+                  {
+                    "title" : "Type Properties",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/defaultscriptloader",
+                    "title" : "static var defaultScriptLoader: JXScriptLoader",
+                    "type" : "property"
+                  }
+                ],
+                "path" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct",
+                "title" : "JXContext.Configuration",
+                "type" : "struct"
+              },
+              {
                 "title" : "Initializers",
                 "type" : "groupMarker"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxcontext\/init(vm:strict:)",
-                "title" : "init(vm: JXVM, strict: Bool)",
+                "path" : "\/documentation\/jxkit\/jxcontext\/init(vm:configuration:)",
+                "title" : "init(vm: JXVM, configuration: JXContext.Configuration)",
                 "type" : "init"
               },
               {
@@ -35,6 +88,11 @@
               {
                 "path" : "\/documentation\/jxkit\/jxcontext\/arrayprototype",
                 "title" : "var arrayPrototype: JXValue",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.property",
+                "title" : "let configuration: JXContext.Configuration",
                 "type" : "property"
               },
               {
@@ -78,11 +136,6 @@
                 "type" : "property"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxcontext\/strict",
-                "title" : "let strict: Bool",
-                "type" : "property"
-              },
-              {
                 "path" : "\/documentation\/jxkit\/jxcontext\/vm",
                 "title" : "let vm: JXVM",
                 "type" : "property"
@@ -107,8 +160,8 @@
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxcontext\/checksyntax(_:sourceurl:startinglinenumber:)",
-                "title" : "func checkSyntax(String, sourceURL: String?, startingLineNumber: Int) throws -> Bool",
+                "path" : "\/documentation\/jxkit\/jxcontext\/checksyntax(_:source:startinglinenumber:)",
+                "title" : "func checkSyntax(String, source: String?, startingLineNumber: Int) throws -> Bool",
                 "type" : "method"
               },
               {
@@ -137,13 +190,33 @@
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:)",
-                "title" : "func eval(String, this: JXValue?) throws -> JXValue",
+                "path" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:root:)",
+                "title" : "func eval(String, this: JXValue?, root: URL?) throws -> JXValue",
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:priority:)",
-                "title" : "func eval(String, this: JXValue?, priority: TaskPriority) async throws -> JXValue",
+                "path" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:root:priority:)",
+                "title" : "func eval(String, this: JXValue?, root: URL?, priority: TaskPriority) async throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/eval(resource:this:root:)",
+                "title" : "func eval(resource: String, this: JXValue?, root: URL) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/eval(resource:this:root:priority:)",
+                "title" : "func eval(resource: String, this: JXValue?, root: URL, priority: TaskPriority) async throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/evalmodule(_:integratingexports:root:)",
+                "title" : "func evalModule(String, integratingExports: String?, root: URL?) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/evalmodule(resource:integratingexports:root:)",
+                "title" : "func evalModule(resource: String, integratingExports: String?, root: URL) throws -> JXValue",
                 "type" : "method"
               },
               {
@@ -197,6 +270,11 @@
                 "type" : "method"
               },
               {
+                "path" : "\/documentation\/jxkit\/jxcontext\/onscriptsdidchange(perform:)",
+                "title" : "func onScriptsDidChange(perform: (Set<String>) -> Void) -> JXCancellable?",
+                "type" : "method"
+              },
+              {
                 "path" : "\/documentation\/jxkit\/jxcontext\/string(_:)",
                 "title" : "func string<S>(S) -> JXValue",
                 "type" : "method"
@@ -204,6 +282,11 @@
               {
                 "path" : "\/documentation\/jxkit\/jxcontext\/symbol(_:)",
                 "title" : "func symbol<S>(S) -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/trackingscriptaccess(perform:)",
+                "title" : "func trackingScriptAccess<V>(perform: () throws -> V) throws -> (accessed: Set<String>, value: V)",
                 "type" : "method"
               },
               {
@@ -576,6 +659,11 @@
                 "type" : "method"
               },
               {
+                "path" : "\/documentation\/jxkit\/jxvalue\/integrate(_:)",
+                "title" : "func integrate(JXValue) throws",
+                "type" : "method"
+              },
+              {
                 "path" : "\/documentation\/jxkit\/jxvalue\/invokemethod(_:witharguments:)-3nh5",
                 "title" : "func invokeMethod(String, withArguments: [Any]) throws -> JXValue",
                 "type" : "method"
@@ -598,6 +686,11 @@
               {
                 "path" : "\/documentation\/jxkit\/jxvalue\/isinstance(of:)",
                 "title" : "func isInstance(of: JXValue) throws -> Bool",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/keypath(_:createintermediates:)",
+                "title" : "func keyPath(String, createIntermediates: Bool) throws -> (parent: JXValue, property: String)",
                 "type" : "method"
               },
               {
@@ -745,6 +838,52 @@
           {
             "children" : [
               {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcancellable\/cancel()",
+                "title" : "func cancel()",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/jxkit\/jxcancellable",
+            "title" : "JXCancellable",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxlistenercollection\/init()",
+                "title" : "init()",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxlistenercollection\/add(_:)",
+                "title" : "func add(T) -> JXCancellable",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxlistenercollection\/foreach(perform:)",
+                "title" : "func forEach(perform: (T) throws -> Void) rethrows",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/jxkit\/jxlistenercollection",
+            "title" : "JXListenerCollection",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
                 "title" : "Initializers",
                 "type" : "groupMarker"
               },
@@ -841,6 +980,24 @@
                   {
                     "children" : [
                       {
+                        "path" : "\/documentation\/jxkit\/jxcontextspi\/require(_:)-5w884",
+                        "title" : "func require(JXValue) throws -> String?",
+                        "type" : "method"
+                      }
+                    ],
+                    "title" : "JXContextSPI Implementations",
+                    "type" : "groupMarker"
+                  }
+                ],
+                "path" : "\/documentation\/jxkit\/jxcontextspi\/require(_:)-5ml6n",
+                "title" : "func require(JXValue) throws -> String?",
+                "type" : "method"
+              },
+              {
+                "children" : [
+                  {
+                    "children" : [
+                      {
                         "path" : "\/documentation\/jxkit\/jxcontextspi\/tojx(_:in:)-2zrk7",
                         "title" : "func toJX(Any, in: JXContext) throws -> JXValue?",
                         "type" : "method"
@@ -882,6 +1039,85 @@
             ],
             "path" : "\/documentation\/jxkit\/jxconvertible",
             "title" : "JXConvertible",
+            "type" : "protocol"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "children" : [
+                      {
+                        "path" : "\/documentation\/jxkit\/jxscriptloader\/didchange-2xgtp",
+                        "title" : "var didChange: JXListenerCollection<(Set<URL>) -> Void>?",
+                        "type" : "property"
+                      }
+                    ],
+                    "title" : "JXScriptLoader Implementations",
+                    "type" : "groupMarker"
+                  }
+                ],
+                "path" : "\/documentation\/jxkit\/jxscriptloader\/didchange-12kpy",
+                "title" : "var didChange: JXListenerCollection<(Set<URL>) -> Void>?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxscriptloader\/defaultloadscript(from:)",
+                "title" : "func defaultLoadScript(from: URL) throws -> (url: URL, script: String)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxscriptloader\/defaultscripturl(resource:relativeto:root:)",
+                "title" : "func defaultScriptURL(resource: String, relativeTo: URL?, root: URL) throws -> URL",
+                "type" : "method"
+              },
+              {
+                "children" : [
+                  {
+                    "children" : [
+                      {
+                        "path" : "\/documentation\/jxkit\/jxscriptloader\/loadscript(from:)-6l1nh",
+                        "title" : "func loadScript(from: URL) throws -> String?",
+                        "type" : "method"
+                      }
+                    ],
+                    "title" : "JXScriptLoader Implementations",
+                    "type" : "groupMarker"
+                  }
+                ],
+                "path" : "\/documentation\/jxkit\/jxscriptloader\/loadscript(from:)-911ij",
+                "title" : "func loadScript(from: URL) throws -> String?",
+                "type" : "method"
+              },
+              {
+                "children" : [
+                  {
+                    "children" : [
+                      {
+                        "path" : "\/documentation\/jxkit\/jxscriptloader\/scripturl(resource:relativeto:root:)-5mpax",
+                        "title" : "func scriptURL(resource: String, relativeTo: URL?, root: URL) throws -> URL",
+                        "type" : "method"
+                      }
+                    ],
+                    "title" : "JXScriptLoader Implementations",
+                    "type" : "groupMarker"
+                  }
+                ],
+                "path" : "\/documentation\/jxkit\/jxscriptloader\/scripturl(resource:relativeto:root:)-1cwmf",
+                "title" : "func scriptURL(resource: String, relativeTo: URL?, root: URL) throws -> URL",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/jxkit\/jxscriptloader",
+            "title" : "JXScriptLoader",
             "type" : "protocol"
           },
           {
@@ -946,6 +1182,11 @@
               {
                 "title" : "Type Methods",
                 "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxerror\/contextdeallocated()",
+                "title" : "static func contextDeallocated() -> JXError",
+                "type" : "method"
               },
               {
                 "path" : "\/documentation\/jxkit\/jxerror\/internalerror(_:)",

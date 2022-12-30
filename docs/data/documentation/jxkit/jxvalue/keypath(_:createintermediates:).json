@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Asynchronously evaluates the given script.",
+      "text" : "Traverse a ‘.’-separated key path, returning the object hosting the final property as well as the name of that property.",
       "type" : "text"
     }
   ],
@@ -9,18 +9,18 @@
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:priority:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/keyPath(_:createIntermediates:)"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC4eval_4this8priorityAA7JXValueCSS_AHSgScPtYaKF",
+    "externalID" : "s:5JXKit7JXValueC7keyPath_19createIntermediatesAC6parent_SS8propertytSS_SbtKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,7 +32,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "eval"
+        "text" : "keyPath"
       },
       {
         "kind" : "text",
@@ -49,7 +49,7 @@
       },
       {
         "kind" : "externalParam",
-        "text" : "this"
+        "text" : "createIntermediates"
       },
       {
         "kind" : "text",
@@ -57,25 +57,8 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
-      },
-      {
-        "kind" : "text",
-        "text" : "?, "
-      },
-      {
-        "kind" : "externalParam",
-        "text" : "priority"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:ScP",
-        "text" : "TaskPriority"
+        "preciseIdentifier" : "s:Sb",
+        "text" : "Bool"
       },
       {
         "kind" : "text",
@@ -83,24 +66,37 @@
       },
       {
         "kind" : "keyword",
-        "text" : "async"
-      },
-      {
-        "kind" : "text",
-        "text" : " "
-      },
-      {
-        "kind" : "keyword",
         "text" : "throws"
       },
       {
         "kind" : "text",
-        "text" : " -> "
+        "text" : " -> (parent"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
       },
       {
         "kind" : "typeIdentifier",
         "preciseIdentifier" : "s:5JXKit7JXValueC",
         "text" : "JXValue"
+      },
+      {
+        "kind" : "text",
+        "text" : ", property"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
+      },
+      {
+        "kind" : "text",
+        "text" : ")"
       }
     ],
     "modules" : [
@@ -111,7 +107,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "eval(_:this:priority:)"
+    "title" : "keyPath(_:createIntermediates:)"
   },
   "primaryContentSections" : [
     {
@@ -125,14 +121,6 @@
           ],
           "tokens" : [
             {
-              "kind" : "attribute",
-              "text" : "@discardableResult"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
               "kind" : "keyword",
               "text" : "func"
             },
@@ -142,7 +130,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "eval"
+              "text" : "keyPath"
             },
             {
               "kind" : "text",
@@ -158,7 +146,7 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "script"
+              "text" : "keyPath"
             },
             {
               "kind" : "text",
@@ -175,25 +163,7 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "this"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
-            },
-            {
-              "kind" : "text",
-              "text" : "? = nil, "
-            },
-            {
-              "kind" : "externalParam",
-              "text" : "priority"
+              "text" : "createIntermediates"
             },
             {
               "kind" : "text",
@@ -201,20 +171,12 @@
             },
             {
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:ScP",
-              "text" : "TaskPriority"
+              "preciseIdentifier" : "s:Sb",
+              "text" : "Bool"
             },
             {
               "kind" : "text",
-              "text" : ") "
-            },
-            {
-              "kind" : "keyword",
-              "text" : "async"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
+              "text" : " = false) "
             },
             {
               "kind" : "keyword",
@@ -222,54 +184,39 @@
             },
             {
               "kind" : "text",
-              "text" : " -> "
+              "text" : " -> (parent"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
             },
             {
               "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
               "preciseIdentifier" : "s:5JXKit7JXValueC",
               "text" : "JXValue"
+            },
+            {
+              "kind" : "text",
+              "text" : ", property"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : ")"
             }
           ]
         }
       ],
       "kind" : "declarations"
-    },
-    {
-      "content" : [
-        {
-          "anchor" : "discussion",
-          "level" : 2,
-          "text" : "Discussion",
-          "type" : "heading"
-        },
-        {
-          "inlineContent" : [
-            {
-              "text" : "The script is expected to return a ",
-              "type" : "text"
-            },
-            {
-              "code" : "Promise",
-              "type" : "codeVoice"
-            },
-            {
-              "text" : " either directly or through the implicit promise",
-              "type" : "text"
-            },
-            {
-              "text" : " ",
-              "type" : "text"
-            },
-            {
-              "text" : "that is created in async calls.",
-              "type" : "text"
-            }
-          ],
-          "type" : "paragraph"
-        }
-      ],
-      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -283,7 +230,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/eval(_:this:priority:)"
+        "\/documentation\/jxkit\/jxvalue\/keypath(_:createintermediates:)"
       ],
       "traits" : [
         {
@@ -307,144 +254,6 @@
   "title" : "JXKit",
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
-},
-"doc://JXKit/documentation/JXKit/JXContext": {
-  "abstract" : [
-    {
-      "text" : "A JavaScript execution context. This is a cross-platform analogue to the Objective-C ",
-      "type" : "text"
-    },
-    {
-      "code" : "JavaScriptCore.JSContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "JXContext"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "JXContext"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "JXContext",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext"
-},
-"doc://JXKit/documentation/JXKit/JXContext/eval(_:this:priority:)": {
-  "abstract" : [
-    {
-      "text" : "Asynchronously evaluates the given script.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "eval"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "this"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    },
-    {
-      "kind" : "text",
-      "text" : "?, "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "priority"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:ScP",
-      "text" : "TaskPriority"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "async"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:priority:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "eval(_:this:priority:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:priority:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
@@ -479,6 +288,98 @@
   "title" : "JXValue",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue"
+},
+"doc://JXKit/documentation/JXKit/JXValue/keyPath(_:createIntermediates:)": {
+  "abstract" : [
+    {
+      "text" : "Traverse a ‘.’-separated key path, returning the object hosting the final property as well as the name of that property.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "keyPath"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "createIntermediates"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> (parent"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ", property"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/keyPath(_:createIntermediates:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "keyPath(_:createIntermediates:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxvalue\/keypath(_:createintermediates:)"
 }
 }
 }

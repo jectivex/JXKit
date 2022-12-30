@@ -1,26 +1,33 @@
 {
   "abstract" : [
     {
-      "text" : "Evaluates the JavaScript.",
+      "text" : "Load the script from the given URL.",
       "type" : "text"
+    }
+  ],
+  "defaultImplementationsSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXScriptLoader\/loadScript(from:)-6l1nh"
+      ],
+      "title" : "JXScriptLoader Implementations"
     }
   ],
   "hierarchy" : {
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXScriptLoader"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXScriptLoader\/loadScript(from:)-911ij"
   },
   "kind" : "symbol",
   "metadata" : {
-    "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC4eval_4thisAA7JXValueCSS_AGSgtKF",
+    "externalID" : "s:5JXKit14JXScriptLoaderP10loadScript4fromSSSg10Foundation3URLV_tKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,24 +39,15 @@
       },
       {
         "kind" : "identifier",
-        "text" : "eval"
+        "text" : "loadScript"
       },
       {
         "kind" : "text",
         "text" : "("
       },
       {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:SS",
-        "text" : "String"
-      },
-      {
-        "kind" : "text",
-        "text" : ", "
-      },
-      {
         "kind" : "externalParam",
-        "text" : "this"
+        "text" : "from"
       },
       {
         "kind" : "text",
@@ -57,12 +55,12 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
+        "preciseIdentifier" : "s:10Foundation3URLV",
+        "text" : "URL"
       },
       {
         "kind" : "text",
-        "text" : "?) "
+        "text" : ") "
       },
       {
         "kind" : "keyword",
@@ -74,8 +72,12 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
+      },
+      {
+        "kind" : "text",
+        "text" : "?"
       }
     ],
     "modules" : [
@@ -83,10 +85,11 @@
         "name" : "JXKit"
       }
     ],
+    "required" : true,
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "eval(_:this:)"
+    "title" : "loadScript(from:)"
   },
   "primaryContentSections" : [
     {
@@ -100,14 +103,6 @@
           ],
           "tokens" : [
             {
-              "kind" : "attribute",
-              "text" : "@discardableResult"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
               "kind" : "keyword",
               "text" : "func"
             },
@@ -117,7 +112,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "eval"
+              "text" : "loadScript"
             },
             {
               "kind" : "text",
@@ -125,7 +120,7 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "_"
+              "text" : "from"
             },
             {
               "kind" : "text",
@@ -133,7 +128,7 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "script"
+              "text" : "url"
             },
             {
               "kind" : "text",
@@ -141,30 +136,12 @@
             },
             {
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:SS",
-              "text" : "String"
+              "preciseIdentifier" : "s:10Foundation3URLV",
+              "text" : "URL"
             },
             {
               "kind" : "text",
-              "text" : ", "
-            },
-            {
-              "kind" : "externalParam",
-              "text" : "this"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
-            },
-            {
-              "kind" : "text",
-              "text" : "? = nil) "
+              "text" : ") "
             },
             {
               "kind" : "keyword",
@@ -175,10 +152,13 @@
               "text" : " -> "
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : "?"
             }
           ]
         }
@@ -197,7 +177,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/eval(_:this:)"
+        "\/documentation\/jxkit\/jxscriptloader\/loadscript(from:)-911ij"
       ],
       "traits" : [
         {
@@ -222,25 +202,17 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
 },
-"doc://JXKit/documentation/JXKit/JXContext": {
+"doc://JXKit/documentation/JXKit/JXScriptLoader": {
   "abstract" : [
     {
-      "text" : "A JavaScript execution context. This is a cross-platform analogue to the Objective-C ",
-      "type" : "text"
-    },
-    {
-      "code" : "JavaScriptCore.JSContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
+      "text" : "Load JavaScript files.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "class"
+      "text" : "protocol"
     },
     {
       "kind" : "text",
@@ -248,28 +220,25 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXContext"
+      "text" : "JXScriptLoader"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXScriptLoader",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXContext"
+      "text" : "JXScriptLoader"
     }
   ],
   "role" : "symbol",
-  "title" : "JXContext",
+  "title" : "JXScriptLoader",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext"
+  "url" : "\/documentation\/jxkit\/jxscriptloader"
 },
-"doc://JXKit/documentation/JXKit/JXContext/eval(_:this:)": {
+"doc://JXKit/documentation/JXKit/JXScriptLoader/loadScript(from:)-6l1nh": {
   "abstract" : [
-    {
-      "text" : "Evaluates the JavaScript.",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
     {
@@ -282,24 +251,15 @@
     },
     {
       "kind" : "identifier",
-      "text" : "eval"
+      "text" : "loadScript"
     },
     {
       "kind" : "text",
       "text" : "("
     },
     {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
       "kind" : "externalParam",
-      "text" : "this"
+      "text" : "from"
     },
     {
       "kind" : "text",
@@ -307,12 +267,12 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
+      "preciseIdentifier" : "s:10Foundation3URLV",
+      "text" : "URL"
     },
     {
       "kind" : "text",
-      "text" : "?) "
+      "text" : ") "
     },
     {
       "kind" : "keyword",
@@ -324,28 +284,33 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXScriptLoader\/loadScript(from:)-6l1nh",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "eval(_:this:)",
+  "title" : "loadScript(from:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:)"
+  "url" : "\/documentation\/jxkit\/jxscriptloader\/loadscript(from:)-6l1nh"
 },
-"doc://JXKit/documentation/JXKit/JXValue": {
+"doc://JXKit/documentation/JXKit/JXScriptLoader/loadScript(from:)-911ij": {
   "abstract" : [
     {
-      "text" : "A JavaScript object.",
+      "text" : "Load the script from the given URL.",
       "type" : "text"
     }
   ],
+  "defaultImplementations" : 1,
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "class"
+      "text" : "func"
     },
     {
       "kind" : "text",
@@ -353,21 +318,54 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
-  "kind" : "symbol",
-  "navigatorTitle" : [
+      "text" : "loadScript"
+    },
     {
-      "kind" : "identifier",
-      "text" : "JXValue"
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "from"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10Foundation3URLV",
+      "text" : "URL"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "throws"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
     }
   ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXScriptLoader\/loadScript(from:)-911ij",
+  "kind" : "symbol",
+  "required" : true,
   "role" : "symbol",
-  "title" : "JXValue",
+  "title" : "loadScript(from:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue"
+  "url" : "\/documentation\/jxkit\/jxscriptloader\/loadscript(from:)-911ij"
 }
 }
 }

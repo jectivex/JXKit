@@ -1,15 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Whether scripts evaluated by this context should be assessed in ",
-      "type" : "text"
-    },
-    {
-      "code" : "strict",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " mode.",
+      "text" : "Context confguration.",
       "type" : "text"
     }
   ],
@@ -23,11 +15,11 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/strict"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/configuration-swift.property"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit9JXContextC6strictSbvp",
+    "externalID" : "s:5JXKit9JXContextC13configurationAC13ConfigurationVvp",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -39,7 +31,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "strict"
+        "text" : "configuration"
       },
       {
         "kind" : "text",
@@ -47,8 +39,17 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:Sb",
-        "text" : "Bool"
+        "preciseIdentifier" : "s:5JXKit9JXContextC",
+        "text" : "JXContext"
+      },
+      {
+        "kind" : "text",
+        "text" : "."
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:5JXKit9JXContextC13ConfigurationV",
+        "text" : "Configuration"
       }
     ],
     "modules" : [
@@ -59,7 +60,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Property",
     "symbolKind" : "property",
-    "title" : "strict"
+    "title" : "configuration"
   },
   "primaryContentSections" : [
     {
@@ -82,16 +83,27 @@
             },
             {
               "kind" : "identifier",
-              "text" : "strict"
+              "text" : "configuration"
             },
             {
               "kind" : "text",
               "text" : ": "
             },
             {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:Sb",
-              "text" : "Bool"
+              "preciseIdentifier" : "s:5JXKit9JXContextC",
+              "text" : "JXContext"
+            },
+            {
+              "kind" : "text",
+              "text" : "."
+            },
+            {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5JXKit9JXContextC13ConfigurationV",
+              "text" : "Configuration"
             }
           ]
         }
@@ -110,7 +122,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/strict"
+        "\/documentation\/jxkit\/jxcontext\/configuration-swift.property"
       ],
       "traits" : [
         {
@@ -177,18 +189,44 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/strict": {
+"doc://JXKit/documentation/JXKit/JXContext/Configuration-swift.struct": {
   "abstract" : [
     {
-      "text" : "Whether scripts evaluated by this context should be assessed in ",
+      "text" : "Context configuration.",
       "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
     },
     {
-      "code" : "strict",
-      "type" : "codeVoice"
+      "kind" : "text",
+      "text" : " "
     },
     {
-      "text" : " mode.",
+      "kind" : "identifier",
+      "text" : "Configuration"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Configuration"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXContext.Configuration",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct"
+},
+"doc://JXKit/documentation/JXKit/JXContext/configuration-swift.property": {
+  "abstract" : [
+    {
+      "text" : "Context confguration.",
       "type" : "text"
     }
   ],
@@ -203,7 +241,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "strict"
+      "text" : "configuration"
     },
     {
       "kind" : "text",
@@ -211,16 +249,25 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC13ConfigurationV",
+      "text" : "Configuration"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/strict",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/configuration-swift.property",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "strict",
+  "title" : "configuration",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/strict"
+  "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.property"
 }
 }
 }

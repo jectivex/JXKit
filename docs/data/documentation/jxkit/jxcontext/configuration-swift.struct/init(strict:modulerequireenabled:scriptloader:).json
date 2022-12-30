@@ -1,73 +1,20 @@
 {
-  "abstract" : [
-    {
-      "text" : "Creates ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " with the given ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXVM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ". ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXValue",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " references may be used interchangably with multiple instances of ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " with the same ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXVM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ", but sharing between  separate ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXVM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : "s will result in undefined behavior.",
-      "type" : "text"
-    }
-  ],
   "hierarchy" : {
     "paths" : [
       [
         "doc:\/\/JXKit\/documentation\/JXKit",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(vm:strict:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/init(strict:moduleRequireEnabled:scriptLoader:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit9JXContextC2vm6strictAcA4JXVMC_Sbtcfc",
+    "externalID" : "s:5JXKit9JXContextC13ConfigurationV6strict20moduleRequireEnabled12scriptLoaderAESb_SbAA08JXScriptI0_ptcfc",
     "fragments" : [
       {
         "kind" : "identifier",
@@ -76,23 +23,6 @@
       {
         "kind" : "text",
         "text" : "("
-      },
-      {
-        "kind" : "externalParam",
-        "text" : "vm"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit4JXVMC",
-        "text" : "JXVM"
-      },
-      {
-        "kind" : "text",
-        "text" : ", "
       },
       {
         "kind" : "externalParam",
@@ -109,6 +39,40 @@
       },
       {
         "kind" : "text",
+        "text" : ", "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "moduleRequireEnabled"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:Sb",
+        "text" : "Bool"
+      },
+      {
+        "kind" : "text",
+        "text" : ", "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "scriptLoader"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:5JXKit14JXScriptLoaderP",
+        "text" : "JXScriptLoader"
+      },
+      {
+        "kind" : "text",
         "text" : ")"
       }
     ],
@@ -120,7 +84,7 @@
     "role" : "symbol",
     "roleHeading" : "Initializer",
     "symbolKind" : "init",
-    "title" : "init(vm:strict:)"
+    "title" : "init(strict:moduleRequireEnabled:scriptLoader:)"
   },
   "primaryContentSections" : [
     {
@@ -143,24 +107,6 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "vm"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXVM",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit4JXVMC",
-              "text" : "JXVM"
-            },
-            {
-              "kind" : "text",
-              "text" : " = JXVM(), "
-            },
-            {
-              "kind" : "externalParam",
               "text" : "strict"
             },
             {
@@ -174,45 +120,47 @@
             },
             {
               "kind" : "text",
-              "text" : " = true)"
+              "text" : " = true, "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "moduleRequireEnabled"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:Sb",
+              "text" : "Bool"
+            },
+            {
+              "kind" : "text",
+              "text" : " = true, "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "scriptLoader"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXScriptLoader",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5JXKit14JXScriptLoaderP",
+              "text" : "JXScriptLoader"
+            },
+            {
+              "kind" : "text",
+              "text" : " = Self.defaultScriptLoader)"
             }
           ]
         }
       ],
       "kind" : "declarations"
-    },
-    {
-      "kind" : "parameters",
-      "parameters" : [
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "The shared virtual machine to use; defaults  to creating a new VM per context.",
-                  "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "vm"
-        },
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "Whether to evaluate in strict mode.",
-                  "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "strict"
-        }
-      ]
     }
   ],
   "schemaVersion" : {
@@ -226,7 +174,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/init(vm:strict:)"
+        "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/init(strict:modulerequireenabled:scriptloader:)"
       ],
       "traits" : [
         {
@@ -293,60 +241,43 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/init(vm:strict:)": {
+"doc://JXKit/documentation/JXKit/JXContext/Configuration-swift.struct": {
   "abstract" : [
     {
-      "text" : "Creates ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " with the given ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXVM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ". ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXValue",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " references may be used interchangably with multiple instances of ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXContext",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " with the same ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXVM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ", but sharing between  separate ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXVM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : "s will result in undefined behavior.",
+      "text" : "Context configuration.",
       "type" : "text"
     }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "Configuration"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Configuration"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "JXContext.Configuration",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct"
+},
+"doc://JXKit/documentation/JXKit/JXContext/Configuration-swift.struct/init(strict:moduleRequireEnabled:scriptLoader:)": {
+  "abstract" : [
+
   ],
   "fragments" : [
     {
@@ -356,23 +287,6 @@
     {
       "kind" : "text",
       "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "vm"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit4JXVMC",
-      "text" : "JXVM"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
     },
     {
       "kind" : "externalParam",
@@ -389,35 +303,61 @@
     },
     {
       "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "moduleRequireEnabled"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "scriptLoader"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit14JXScriptLoaderP",
+      "text" : "JXScriptLoader"
+    },
+    {
+      "kind" : "text",
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/init(vm:strict:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/init(strict:moduleRequireEnabled:scriptLoader:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "init(vm:strict:)",
+  "title" : "init(strict:moduleRequireEnabled:scriptLoader:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/init(vm:strict:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/init(strict:modulerequireenabled:scriptloader:)"
 },
-"doc://JXKit/documentation/JXKit/JXVM": {
+"doc://JXKit/documentation/JXKit/JXScriptLoader": {
   "abstract" : [
     {
-      "text" : "A JavaScript virtual machine that is used by a ",
-      "type" : "text"
-    },
-    {
-      "code" : "JXContextGroup",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " instance.",
+      "text" : "Load JavaScript files.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "class"
+      "text" : "protocol"
     },
     {
       "kind" : "text",
@@ -425,21 +365,21 @@
     },
     {
       "kind" : "identifier",
-      "text" : "JXVM"
+      "text" : "JXScriptLoader"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXVM",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXScriptLoader",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "JXVM"
+      "text" : "JXScriptLoader"
     }
   ],
   "role" : "symbol",
-  "title" : "JXVM",
+  "title" : "JXScriptLoader",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvm"
+  "url" : "\/documentation\/jxkit\/jxscriptloader"
 }
 }
 }

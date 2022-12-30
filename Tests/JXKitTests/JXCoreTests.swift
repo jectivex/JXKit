@@ -8,10 +8,10 @@ class JXCoreTests: XCTestCase {
     }
 
     func testJavaScriptCoreVersion() {
-        #if canImport(MachO)
+#if canImport(MachO)
         XCTAssertLessThanOrEqual(40174087, JavaScriptCoreVersion) // macOS 12
         // XCTAssertLessThanOrEqual(40239623, JavaScriptCoreVersion) // macOS 13
-        #endif
+#endif
     }
 
     func testHobbled() {
@@ -378,7 +378,7 @@ class JXCoreTests: XCTestCase {
     func testCheck() throws {
         func lint(_ script: String, strict: Bool = false) throws -> String {
             do {
-                let jxc = JXContext(strict: strict)
+                let jxc = JXContext(configuration: .init(strict: strict))
                 try jxc.eval(script)
                 return ""
             } catch let error as JXError {
@@ -563,10 +563,12 @@ class JXCoreTests: XCTestCase {
 
     func testWithValues() throws {
         let jxc = JXContext()
+        
+        try jxc.global.setProperty("$1", 100)
         var result = try jxc.withValues([1, 2]) { try jxc.eval("$0 + $1") }
         XCTAssertEqual(try result.int, 3)
         XCTAssertTrue(try jxc.global["$0"].isUndefined)
-        XCTAssertTrue(try jxc.global["$1"].isUndefined)
+        XCTAssertEqual(try jxc.global["$1"].int, 100)
 
         result = try jxc.withValues("a", 1, "c") { try jxc.eval("$0 + $1 + $2") }
         XCTAssertEqual(try result.string, "a1c")
