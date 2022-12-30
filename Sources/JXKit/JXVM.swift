@@ -1,3 +1,6 @@
+#if canImport(Foundation)
+import Foundation
+#endif
 #if canImport(JavaScriptCore)
 import JavaScriptCore
 #else
@@ -26,6 +29,7 @@ public final class JXVM {
     }
 }
 
+#if canImport(Foundation)
 extension JXVM {
     /// Whether the `JavaScriptCore` implementation on the current platform phohibits writable and executable memory (`mmap(MAP_JIT)`), thereby disabling the fast-path of the JavaScriptCore framework.
     ///
@@ -46,3 +50,4 @@ extension JXVM {
         }
     }()
 }
+#endif
