@@ -23,9 +23,9 @@ jobs:
       - run: pkg-config --libs javascriptcoregtk-4.0
       - uses: actions/checkout@v2
       - name: Test (Debug)
-        run: swift test -v --configuration debug
+        run: swift test --configuration debug
       - name: Test (Release)
-        run: swift test -v --configuration release -Xswiftc -enable-testing
+        run: swift test --configuration release -Xswiftc -enable-testing
 
   ios:
     runs-on: macos-12
@@ -50,9 +50,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Test (Debug)
-        run: swift test -v --configuration debug
+        run: swift test --configuration debug
       - name: Test (Release)
-        run: swift test -v --configuration release -Xswiftc -enable-testing
+        run: swift test --configuration release -Xswiftc -enable-testing
 
   api-doc:
     runs-on: macos-12 # needed to be able to document SwiftUI
