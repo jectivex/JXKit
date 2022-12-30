@@ -182,17 +182,20 @@ final class ScriptManager {
         }
         // If something other than a file path is given, maybe the SPI can turn it into a key path
         // that the requiring script is dependent on
-        guard let keyPath = try value.context.spi?.require(value) else {
+        guard try recordKeyPathReference(value) else {
             throw JXError(message: "'require' expects a file path string")
         }
-        recordKeyPathReference(keyPath)
         return value
     }
-    
-    private func recordKeyPathReference(_ keyPath: String) {
+
+    /// Record that the given key path was accessed.
+    @discardableResult func recordKeyPathReference(_ value: JXValue) throws -> Bool {
+        guard let keyPath = try value.context.spi?.require(value) else {
+            return false
+        }
         didAccess.forEach { $0([keyPath]) }
         guard context?.configuration.isDynamicReloadEnabled == true, let referencedBy = evalStack.last?.key else {
-            return
+            return true
         }
         // Record which JS modules 'require' a key path just as we record which JS modules
         // 'require' other JS modules. Key paths can change when any scripts they integrate change
@@ -200,6 +203,7 @@ final class ScriptManager {
         if module.referencedBy(key: referencedBy) {
             moduleCache[keyPath] = module
         }
+        return true
     }
     
     private func key(for url: URL) -> String {
