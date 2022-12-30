@@ -453,7 +453,13 @@ extension JXContext {
     /// - Parameters:
     ///   - typeName: Class or constructor function name.
     ///   - arguments: The arguments to pass to the constructor.
-    @inlinable public func `new`(_ typeName: String, withArguments arguments: [JXValue] = []) throws -> JXValue {
+    public func `new`(_ typeName: String, withArguments arguments: [JXValue] = []) throws -> JXValue {
+        // If the type name represents a key path, send an access event in case we have listeners.
+        // This way devs don't have to explicitly require() a path in order to create a new object from it
+        let (parent, _) = try global.keyPath(typeName)
+        if parent !== global {
+            try scriptManager.recordKeyPathReference(parent)
+        }
         // The only way to create a new class instance is with 'new X(...)', so generate that code
         let argumentsString = (0..<arguments.count).map({ "$\($0)" }).joined(separator: ",")
         let code = "new \(typeName)(\(argumentsString))"
