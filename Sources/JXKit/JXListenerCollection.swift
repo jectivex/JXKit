@@ -26,4 +26,9 @@ public final class JXListenerCollection<T> {
             .sorted { $0.key < $1.key }
             .forEach { try perform($0.value) }
     }
+
+    /// Whether there are no listeners.
+    public var isEmpty: Bool {
+        return listeners.isEmpty
+    }
 }
