@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Evaluates the JavaScript.",
+      "text" : "Evaluate the given JavaScript.",
       "type" : "text"
     }
   ],
@@ -220,8 +220,64 @@
       "kind" : "declarations"
     },
     {
+      "content" : [
+        {
+          "anchor" : "return-value",
+          "level" : 2,
+          "text" : "Return Value",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "The result of executing the JavaScript.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
+    },
+    {
       "kind" : "parameters",
       "parameters" : [
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The JavaScript code to evaluate.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "script"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "Substitute a custom value to act as JavaScript ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "this",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : " for the evaluation.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "this"
+        },
         {
           "content" : [
             {
@@ -231,16 +287,28 @@
                   "type" : "text"
                 },
                 {
+                  "code" : "Bundle.main.resourceURL",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : " or ",
+                  "type" : "text"
+                },
+                {
                   "code" : "Bundle.module.resourceURL",
                   "type" : "codeVoice"
                 },
                 {
-                  "text" : " for a Swift package. This is used to locate any scripts referenced via ",
+                  "text" : ". This is used to locate any scripts referenced via ",
                   "type" : "text"
                 },
                 {
                   "code" : "require",
                   "type" : "codeVoice"
+                },
+                {
+                  "text" : ".",
+                  "type" : "text"
                 }
               ],
               "type" : "paragraph"
@@ -249,6 +317,41 @@
           "name" : "root"
         }
       ]
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "discussion",
+          "level" : 2,
+          "text" : "Discussion",
+          "type" : "heading"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The JavaScript is executed in the global scope. For scoped execution, consider ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "evalClosure",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : ".",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "Warning",
+          "style" : "warning",
+          "type" : "aside"
+        }
+      ],
+      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -332,7 +435,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/eval(_:this:root:)": {
   "abstract" : [
     {
-      "text" : "Evaluates the JavaScript.",
+      "text" : "Evaluate the given JavaScript.",
       "type" : "text"
     }
   ],

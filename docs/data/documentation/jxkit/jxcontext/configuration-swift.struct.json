@@ -90,14 +90,14 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/init(strict:moduleRequireEnabled:scriptLoader:)"
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/init(strict:scriptLoader:log:)"
       ],
       "title" : "Initializers"
     },
     {
       "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/isDynamicReloadEnabled",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/moduleRequireEnabled",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/log",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/scriptLoader",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/strict"
       ],
@@ -105,6 +105,7 @@
     },
     {
       "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/defaultLog",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/defaultScriptLoader"
       ],
       "title" : "Type Properties"
@@ -214,6 +215,68 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct"
 },
+"doc://JXKit/documentation/JXKit/JXContext/Configuration-swift.struct/defaultLog": {
+  "abstract" : [
+    {
+      "text" : "Configure a global logging function for JX log messages. Defaults to using ",
+      "type" : "text"
+    },
+    {
+      "code" : "print",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "defaultLog"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/defaultLog",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "defaultLog",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/defaultlog"
+},
 "doc://JXKit/documentation/JXKit/JXContext/Configuration-swift.struct/defaultScriptLoader": {
   "abstract" : [
     {
@@ -267,7 +330,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/defaultscriptloader"
 },
-"doc://JXKit/documentation/JXKit/JXContext/Configuration-swift.struct/init(strict:moduleRequireEnabled:scriptLoader:)": {
+"doc://JXKit/documentation/JXKit/JXContext/Configuration-swift.struct/init(strict:scriptLoader:log:)": {
   "abstract" : [
 
   ],
@@ -299,23 +362,6 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "moduleRequireEnabled"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
       "text" : "scriptLoader"
     },
     {
@@ -329,15 +375,41 @@
     },
     {
       "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "log"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/init(strict:moduleRequireEnabled:scriptLoader:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/init(strict:scriptLoader:log:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "init(strict:moduleRequireEnabled:scriptLoader:)",
+  "title" : "init(strict:scriptLoader:log:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/init(strict:modulerequireenabled:scriptloader:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/init(strict:scriptloader:log:)"
 },
 "doc://JXKit/documentation/JXKit/JXContext/Configuration-swift.struct/isDynamicReloadEnabled": {
   "abstract" : [
@@ -376,26 +448,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/isdynamicreloadenabled"
 },
-"doc://JXKit/documentation/JXKit/JXContext/Configuration-swift.struct/moduleRequireEnabled": {
+"doc://JXKit/documentation/JXKit/JXContext/Configuration-swift.struct/log": {
   "abstract" : [
     {
-      "text" : "Whether ",
-      "type" : "text"
-    },
-    {
-      "code" : "require",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " module support is enabled. Defaults to ",
-      "type" : "text"
-    },
-    {
-      "code" : "true",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
+      "text" : "The logging function to use for JX log messages.",
       "type" : "text"
     }
   ],
@@ -410,24 +466,33 @@
     },
     {
       "kind" : "identifier",
-      "text" : "moduleRequireEnabled"
+      "text" : "log"
     },
     {
       "kind" : "text",
-      "text" : ": "
+      "text" : ": ("
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/moduleRequireEnabled",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/log",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "moduleRequireEnabled",
+  "title" : "log",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/modulerequireenabled"
+  "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/log"
 },
 "doc://JXKit/documentation/JXKit/JXContext/Configuration-swift.struct/scriptLoader": {
   "abstract" : [

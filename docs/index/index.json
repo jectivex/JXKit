@@ -25,8 +25,8 @@
                     "type" : "groupMarker"
                   },
                   {
-                    "path" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/init(strict:modulerequireenabled:scriptloader:)",
-                    "title" : "init(strict: Bool, moduleRequireEnabled: Bool, scriptLoader: JXScriptLoader)",
+                    "path" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/init(strict:scriptloader:log:)",
+                    "title" : "init(strict: Bool, scriptLoader: JXScriptLoader, log: (String) -> Void)",
                     "type" : "init"
                   },
                   {
@@ -39,8 +39,8 @@
                     "type" : "property"
                   },
                   {
-                    "path" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/modulerequireenabled",
-                    "title" : "var moduleRequireEnabled: Bool",
+                    "path" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/log",
+                    "title" : "var log: (String) -> Void",
                     "type" : "property"
                   },
                   {
@@ -56,6 +56,11 @@
                   {
                     "title" : "Type Properties",
                     "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/defaultlog",
+                    "title" : "static var defaultLog: (String) -> Void",
+                    "type" : "property"
                   },
                   {
                     "path" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/defaultscriptloader",
@@ -195,18 +200,28 @@
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:root:priority:)",
-                "title" : "func eval(String, this: JXValue?, root: URL?, priority: TaskPriority) async throws -> JXValue",
-                "type" : "method"
-              },
-              {
                 "path" : "\/documentation\/jxkit\/jxcontext\/eval(resource:this:root:)",
                 "title" : "func eval(resource: String, this: JXValue?, root: URL) throws -> JXValue",
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxcontext\/eval(resource:this:root:priority:)",
-                "title" : "func eval(resource: String, this: JXValue?, root: URL, priority: TaskPriority) async throws -> JXValue",
+                "path" : "\/documentation\/jxkit\/jxcontext\/evalclosure(_:witharguments:this:root:)-26evt",
+                "title" : "func evalClosure(String, withArguments: [Any?], this: JXValue?, root: URL?) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/evalclosure(_:witharguments:this:root:)-2upx",
+                "title" : "func evalClosure(String, withArguments: [JXValue], this: JXValue?, root: URL?) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/evalclosure(resource:witharguments:this:root:)-2ojw5",
+                "title" : "func evalClosure(resource: String, withArguments: [Any?], this: JXValue?, root: URL) throws -> JXValue",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxcontext\/evalclosure(resource:witharguments:this:root:)-8u9zm",
+                "title" : "func evalClosure(resource: String, withArguments: [JXValue], this: JXValue?, root: URL) throws -> JXValue",
                 "type" : "method"
               },
               {
@@ -285,8 +300,8 @@
                 "type" : "method"
               },
               {
-                "path" : "\/documentation\/jxkit\/jxcontext\/trackingscriptaccess(perform:)",
-                "title" : "func trackingScriptAccess<V>(perform: () throws -> V) throws -> (accessed: Set<String>, value: V)",
+                "path" : "\/documentation\/jxkit\/jxcontext\/trackingscriptsaccess(perform:)",
+                "title" : "func trackingScriptsAccess<V>(perform: () throws -> V) throws -> (accessed: Set<String>, value: V)",
                 "type" : "method"
               },
               {
@@ -297,26 +312,6 @@
               {
                 "path" : "\/documentation\/jxkit\/jxcontext\/witharraybuffer(source:block:)",
                 "title" : "func withArrayBuffer<T>(source: Data, block: (JXValue) throws -> (T)) throws -> T",
-                "type" : "method"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-2z1rf",
-                "title" : "func withValues<R>([JXValue], execute: () throws -> R) rethrows -> R",
-                "type" : "method"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-7fry6",
-                "title" : "func withValues<R>(JXValue..., execute: () throws -> R) rethrows -> R",
-                "type" : "method"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-87ai5",
-                "title" : "func withValues<R>(Any?..., execute: () throws -> R) rethrows -> R",
-                "type" : "method"
-              },
-              {
-                "path" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-8xdgs",
-                "title" : "func withValues<R>([Any?], execute: () throws -> R) rethrows -> R",
                 "type" : "method"
               }
             ],
@@ -586,6 +581,11 @@
               {
                 "path" : "\/documentation\/jxkit\/jxvalue\/addelement(_:)-5ul7f",
                 "title" : "func addElement(JXValue) throws",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxvalue\/awaitpromise(priority:)",
+                "title" : "func awaitPromise(priority: TaskPriority) async throws -> JXValue",
                 "type" : "method"
               },
               {
@@ -861,6 +861,15 @@
                 "path" : "\/documentation\/jxkit\/jxlistenercollection\/init()",
                 "title" : "init()",
                 "type" : "init"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/jxkit\/jxlistenercollection\/isempty",
+                "title" : "var isEmpty: Bool",
+                "type" : "property"
               },
               {
                 "title" : "Instance Methods",

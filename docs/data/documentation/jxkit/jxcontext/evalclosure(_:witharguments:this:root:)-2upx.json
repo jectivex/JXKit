@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Asynchronously evaluates the given script.",
+      "text" : "Evaluate the given JavaScript as a closure, giving it its own scope for local functions and vars.",
       "type" : "text"
     }
   ],
@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:root:priority:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/evalClosure(_:withArguments:this:root:)-2upx"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC4eval_4this4root8priorityAA7JXValueCSS_AISg10Foundation3URLVSgScPtYaKF",
+    "externalID" : "s:5JXKit9JXContextC11evalClosure_13withArguments4this4rootAA7JXValueCSS_SayAIGAISg10Foundation3URLVSgtKF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,7 +32,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "eval"
+        "text" : "evalClosure"
       },
       {
         "kind" : "text",
@@ -46,6 +46,23 @@
       {
         "kind" : "text",
         "text" : ", "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "withArguments"
+      },
+      {
+        "kind" : "text",
+        "text" : ": ["
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:5JXKit7JXValueC",
+        "text" : "JXValue"
+      },
+      {
+        "kind" : "text",
+        "text" : "], "
       },
       {
         "kind" : "externalParam",
@@ -79,32 +96,7 @@
       },
       {
         "kind" : "text",
-        "text" : "?, "
-      },
-      {
-        "kind" : "externalParam",
-        "text" : "priority"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:ScP",
-        "text" : "TaskPriority"
-      },
-      {
-        "kind" : "text",
-        "text" : ") "
-      },
-      {
-        "kind" : "keyword",
-        "text" : "async"
-      },
-      {
-        "kind" : "text",
-        "text" : " "
+        "text" : "?) "
       },
       {
         "kind" : "keyword",
@@ -128,7 +120,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "eval(_:this:root:priority:)"
+    "title" : "evalClosure(_:withArguments:this:root:)"
   },
   "primaryContentSections" : [
     {
@@ -159,7 +151,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "eval"
+              "text" : "evalClosure"
             },
             {
               "kind" : "text",
@@ -189,6 +181,32 @@
             {
               "kind" : "text",
               "text" : ", "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "withArguments"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "internalParam",
+              "text" : "arguments"
+            },
+            {
+              "kind" : "text",
+              "text" : ": ["
+            },
+            {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5JXKit7JXValueC",
+              "text" : "JXValue"
+            },
+            {
+              "kind" : "text",
+              "text" : "] = [], "
             },
             {
               "kind" : "externalParam",
@@ -223,32 +241,7 @@
             },
             {
               "kind" : "text",
-              "text" : "? = nil, "
-            },
-            {
-              "kind" : "externalParam",
-              "text" : "priority"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:ScP",
-              "text" : "TaskPriority"
-            },
-            {
-              "kind" : "text",
-              "text" : ") "
-            },
-            {
-              "kind" : "keyword",
-              "text" : "async"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
+              "text" : "? = nil) "
             },
             {
               "kind" : "keyword",
@@ -270,8 +263,94 @@
       "kind" : "declarations"
     },
     {
+      "content" : [
+        {
+          "anchor" : "return-value",
+          "level" : 2,
+          "text" : "Return Value",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "The value you ",
+              "type" : "text"
+            },
+            {
+              "code" : "return",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " from the given JavaScript, otherwise ",
+              "type" : "text"
+            },
+            {
+              "code" : "undefined",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : ".",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
+    },
+    {
       "kind" : "parameters",
       "parameters" : [
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The JavaScript code to evaluate.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "script"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "Array of values to make available to the script as $0, $1, etc.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "arguments"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "Substitute a custom value to act as JavaScript ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "this",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : " for the evaluation.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "this"
+        },
         {
           "content" : [
             {
@@ -281,16 +360,28 @@
                   "type" : "text"
                 },
                 {
+                  "code" : "Bundle.main.resourceURL",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : " or ",
+                  "type" : "text"
+                },
+                {
                   "code" : "Bundle.module.resourceURL",
                   "type" : "codeVoice"
                 },
                 {
-                  "text" : " for a Swift package. This is used to locate any scripts referenced via ",
+                  "text" : ". This is used to locate any scripts referenced via ",
                   "type" : "text"
                 },
                 {
                   "code" : "require",
                   "type" : "codeVoice"
+                },
+                {
+                  "text" : ".",
+                  "type" : "text"
                 }
               ],
               "type" : "paragraph"
@@ -299,34 +390,6 @@
           "name" : "root"
         }
       ]
-    },
-    {
-      "content" : [
-        {
-          "anchor" : "discussion",
-          "level" : 2,
-          "text" : "Discussion",
-          "type" : "heading"
-        },
-        {
-          "inlineContent" : [
-            {
-              "text" : "The script is expected to return a ",
-              "type" : "text"
-            },
-            {
-              "code" : "Promise",
-              "type" : "codeVoice"
-            },
-            {
-              "text" : " either directly or through the implicit promise that is created in async calls.",
-              "type" : "text"
-            }
-          ],
-          "type" : "paragraph"
-        }
-      ],
-      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -340,7 +403,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/eval(_:this:root:priority:)"
+        "\/documentation\/jxkit\/jxcontext\/evalclosure(_:witharguments:this:root:)-2upx"
       ],
       "traits" : [
         {
@@ -407,10 +470,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/eval(_:this:root:priority:)": {
+"doc://JXKit/documentation/JXKit/JXContext/evalClosure(_:withArguments:this:root:)-2upx": {
   "abstract" : [
     {
-      "text" : "Asynchronously evaluates the given script.",
+      "text" : "Evaluate the given JavaScript as a closure, giving it its own scope for local functions and vars.",
       "type" : "text"
     }
   ],
@@ -425,7 +488,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "eval"
+      "text" : "evalClosure"
     },
     {
       "kind" : "text",
@@ -439,6 +502,23 @@
     {
       "kind" : "text",
       "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "withArguments"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : "], "
     },
     {
       "kind" : "externalParam",
@@ -472,32 +552,7 @@
     },
     {
       "kind" : "text",
-      "text" : "?, "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "priority"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:ScP",
-      "text" : "TaskPriority"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "async"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
+      "text" : "?) "
     },
     {
       "kind" : "keyword",
@@ -513,12 +568,12 @@
       "text" : "JXValue"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:root:priority:)",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/evalClosure(_:withArguments:this:root:)-2upx",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "eval(_:this:root:priority:)",
+  "title" : "evalClosure(_:withArguments:this:root:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:root:priority:)"
+  "url" : "\/documentation\/jxkit\/jxcontext\/evalclosure(_:witharguments:this:root:)-2upx"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [
