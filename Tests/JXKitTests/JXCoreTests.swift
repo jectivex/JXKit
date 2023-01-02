@@ -561,30 +561,17 @@ class JXCoreTests: XCTestCase {
         XCTAssertEqual(0, try emptyarray.count)
     }
 
-    func testWithValues() throws {
+    func testClosureArguments() throws {
         let jxc = JXContext()
         
         try jxc.global.setProperty("$1", 100)
-        var result = try jxc.withValues([1, 2]) { try jxc.eval("$0 + $1") }
+        var result = try jxc.evalClosure("return $0 + $1", withArguments: [1, 2])
         XCTAssertEqual(try result.int, 3)
         XCTAssertTrue(try jxc.global["$0"].isUndefined)
         XCTAssertEqual(try jxc.global["$1"].int, 100)
 
-        result = try jxc.withValues("a", 1, "c") { try jxc.eval("$0 + $1 + $2") }
-        XCTAssertEqual(try result.string, "a1c")
-
-        do {
-            let _ = try jxc.withValues(1) { try jxc.eval("*= $0") }
-            XCTFail("eval should have thrown syntax error")
-        } catch {
-            XCTAssertTrue(try jxc.global["$0"].isUndefined)
-        }
-        
-        try jxc.withValues(1, nil, 3) {
-            XCTAssertEqual(try jxc.eval("$0").int, 1)
-            XCTAssertTrue(try jxc.eval("$1").isNull)
-            XCTAssertEqual(try jxc.eval("$2").int, 3)
-        }
+        result = try jxc.evalClosure("return $0 + $1 + $2", withArguments: ["a", 1, nil])
+        XCTAssertEqual(try result.string, "a1null")
     }
 
     func testNew() throws {
