@@ -194,7 +194,7 @@
             },
             {
               "kind" : "text",
-              "text" : " = Configuration())"
+              "text" : " = .default)"
             }
           ]
         }

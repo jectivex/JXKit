@@ -148,17 +148,10 @@ extension CGFloat: JXConvertible {
 }
 #endif
 
-#if canImport(Foundation)
-import struct Foundation.Date
-
 extension Date: JXConvertible {
     public static func fromJX(_ value: JXValue) throws -> Self { try value.date }
     public func toJX(in context: JXContext) throws -> JXValue { try context.date(self) }
 }
-#endif
-
-#if canImport(Foundation)
-import struct Foundation.Data
 
 extension Data: JXConvertible {
     public static func fromJX(_ value: JXValue) throws -> Self {
@@ -205,4 +198,3 @@ extension Data: JXConvertible {
         }
     }
 }
-#endif

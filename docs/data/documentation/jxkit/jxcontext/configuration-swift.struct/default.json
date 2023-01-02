@@ -1,23 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Whether ",
-      "type" : "text"
-    },
-    {
-      "code" : "require",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " module support is enabled. Defaults to ",
-      "type" : "text"
-    },
-    {
-      "code" : "true",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
+      "text" : "Configure the default configuration for new contexts.",
       "type" : "text"
     }
   ],
@@ -32,12 +16,20 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/moduleRequireEnabled"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/default"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit9JXContextC13ConfigurationV20moduleRequireEnabledSbvp",
+    "externalID" : "s:5JXKit9JXContextC13ConfigurationV7defaultAEvpZ",
     "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "static"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
       {
         "kind" : "keyword",
         "text" : "var"
@@ -48,7 +40,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "moduleRequireEnabled"
+        "text" : "`default`"
       },
       {
         "kind" : "text",
@@ -56,8 +48,17 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:Sb",
-        "text" : "Bool"
+        "preciseIdentifier" : "s:5JXKit9JXContextC",
+        "text" : "JXContext"
+      },
+      {
+        "kind" : "text",
+        "text" : "."
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:5JXKit9JXContextC13ConfigurationV",
+        "text" : "Configuration"
       }
     ],
     "modules" : [
@@ -66,9 +67,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Instance Property",
+    "roleHeading" : "Type Property",
     "symbolKind" : "property",
-    "title" : "moduleRequireEnabled"
+    "title" : "default"
   },
   "primaryContentSections" : [
     {
@@ -83,6 +84,14 @@
           "tokens" : [
             {
               "kind" : "keyword",
+              "text" : "static"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "keyword",
               "text" : "var"
             },
             {
@@ -91,16 +100,27 @@
             },
             {
               "kind" : "identifier",
-              "text" : "moduleRequireEnabled"
+              "text" : "`default`"
             },
             {
               "kind" : "text",
               "text" : ": "
             },
             {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:Sb",
-              "text" : "Bool"
+              "preciseIdentifier" : "s:5JXKit9JXContextC",
+              "text" : "JXContext"
+            },
+            {
+              "kind" : "text",
+              "text" : "."
+            },
+            {
+              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5JXKit9JXContextC13ConfigurationV",
+              "text" : "Configuration"
             }
           ]
         }
@@ -119,7 +139,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/modulerequireenabled"
+        "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/default"
       ],
       "traits" : [
         {
@@ -220,30 +240,22 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct"
 },
-"doc://JXKit/documentation/JXKit/JXContext/Configuration-swift.struct/moduleRequireEnabled": {
+"doc://JXKit/documentation/JXKit/JXContext/Configuration-swift.struct/default": {
   "abstract" : [
     {
-      "text" : "Whether ",
-      "type" : "text"
-    },
-    {
-      "code" : "require",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " module support is enabled. Defaults to ",
-      "type" : "text"
-    },
-    {
-      "code" : "true",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
+      "text" : "Configure the default configuration for new contexts.",
       "type" : "text"
     }
   ],
   "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
     {
       "kind" : "keyword",
       "text" : "var"
@@ -254,7 +266,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "moduleRequireEnabled"
+      "text" : "`default`"
     },
     {
       "kind" : "text",
@@ -262,16 +274,25 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
+      "preciseIdentifier" : "s:5JXKit9JXContextC",
+      "text" : "JXContext"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit9JXContextC13ConfigurationV",
+      "text" : "Configuration"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/moduleRequireEnabled",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/default",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "moduleRequireEnabled",
+  "title" : "default",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/modulerequireenabled"
+  "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/default"
 }
 }
 }

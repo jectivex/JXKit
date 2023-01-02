@@ -1,18 +1,4 @@
 {
-  "abstract" : [
-    {
-      "text" : "Configure a global script loader to use as the default when no loader is provided to the ",
-      "type" : "text"
-    },
-    {
-      "code" : "Configuration",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
-      "type" : "text"
-    }
-  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -24,31 +10,40 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/defaultScriptLoader"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/init(strict:scriptLoader:log:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit9JXContextC13ConfigurationV19defaultScriptLoaderAA08JXScriptF0_pvpZ",
+    "externalID" : "s:5JXKit9JXContextC13ConfigurationV6strict12scriptLoader3logAESb_AA08JXScriptF0_pSgySSctcfc",
     "fragments" : [
       {
-        "kind" : "keyword",
-        "text" : "static"
-      },
-      {
-        "kind" : "text",
-        "text" : " "
-      },
-      {
-        "kind" : "keyword",
-        "text" : "var"
-      },
-      {
-        "kind" : "text",
-        "text" : " "
-      },
-      {
         "kind" : "identifier",
-        "text" : "defaultScriptLoader"
+        "text" : "init"
+      },
+      {
+        "kind" : "text",
+        "text" : "("
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "strict"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:Sb",
+        "text" : "Bool"
+      },
+      {
+        "kind" : "text",
+        "text" : ", "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "scriptLoader"
       },
       {
         "kind" : "text",
@@ -58,6 +53,36 @@
         "kind" : "typeIdentifier",
         "preciseIdentifier" : "s:5JXKit14JXScriptLoaderP",
         "text" : "JXScriptLoader"
+      },
+      {
+        "kind" : "text",
+        "text" : "?, "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "log"
+      },
+      {
+        "kind" : "text",
+        "text" : ": ("
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
+      },
+      {
+        "kind" : "text",
+        "text" : ") -> "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:s4Voida",
+        "text" : "Void"
+      },
+      {
+        "kind" : "text",
+        "text" : ")"
       }
     ],
     "modules" : [
@@ -66,9 +91,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Type Property",
-    "symbolKind" : "property",
-    "title" : "defaultScriptLoader"
+    "roleHeading" : "Initializer",
+    "symbolKind" : "init",
+    "title" : "init(strict:scriptLoader:log:)"
   },
   "primaryContentSections" : [
     {
@@ -83,23 +108,32 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "static"
+              "text" : "init"
             },
             {
               "kind" : "text",
-              "text" : " "
+              "text" : "("
             },
             {
-              "kind" : "keyword",
-              "text" : "var"
+              "kind" : "externalParam",
+              "text" : "strict"
             },
             {
               "kind" : "text",
-              "text" : " "
+              "text" : ": "
             },
             {
-              "kind" : "identifier",
-              "text" : "defaultScriptLoader"
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:Sb",
+              "text" : "Bool"
+            },
+            {
+              "kind" : "text",
+              "text" : " = true, "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "scriptLoader"
             },
             {
               "kind" : "text",
@@ -110,6 +144,44 @@
               "kind" : "typeIdentifier",
               "preciseIdentifier" : "s:5JXKit14JXScriptLoaderP",
               "text" : "JXScriptLoader"
+            },
+            {
+              "kind" : "text",
+              "text" : "? = nil, "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "log"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "@escaping"
+            },
+            {
+              "kind" : "text",
+              "text" : " ("
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : ") -> "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:s4Voida",
+              "text" : "Void"
+            },
+            {
+              "kind" : "text",
+              "text" : " = { print($0) })"
             }
           ]
         }
@@ -128,7 +200,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/defaultscriptloader"
+        "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/init(strict:scriptloader:log:)"
       ],
       "traits" : [
         {
@@ -229,41 +301,39 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct"
 },
-"doc://JXKit/documentation/JXKit/JXContext/Configuration-swift.struct/defaultScriptLoader": {
+"doc://JXKit/documentation/JXKit/JXContext/Configuration-swift.struct/init(strict:scriptLoader:log:)": {
   "abstract" : [
-    {
-      "text" : "Configure a global script loader to use as the default when no loader is provided to the ",
-      "type" : "text"
-    },
-    {
-      "code" : "Configuration",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
     {
-      "kind" : "keyword",
-      "text" : "static"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "var"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
       "kind" : "identifier",
-      "text" : "defaultScriptLoader"
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "strict"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "scriptLoader"
     },
     {
       "kind" : "text",
@@ -273,14 +343,44 @@
       "kind" : "typeIdentifier",
       "preciseIdentifier" : "s:5JXKit14JXScriptLoaderP",
       "text" : "JXScriptLoader"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "log"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/defaultScriptLoader",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/init(strict:scriptLoader:log:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "defaultScriptLoader",
+  "title" : "init(strict:scriptLoader:log:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/defaultscriptloader"
+  "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/init(strict:scriptloader:log:)"
 },
 "doc://JXKit/documentation/JXKit/JXScriptLoader": {
   "abstract" : [

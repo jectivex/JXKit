@@ -1,4 +1,4 @@
-import struct Foundation.URL
+import Foundation
 
 /// Internal type to manage JavaScript script loading and caching.
 final class ScriptManager {
@@ -21,17 +21,78 @@ final class ScriptManager {
     
     /// Invoked when scripts are accessed.
     lazy var didAccess = JXListenerCollection<(Set<String>) -> Void>()
-    
-    /// Perform a set of operations where any given resources use the given root URL.
-    func withRoot(_ root: URL, perform: () throws -> JXValue) throws -> JXValue {
-        try initializeRequireFunction()
-        evalStack.append((nil, nil, root))
-        defer { evalStack.removeLast() }
-        return try perform()
+
+    /// Script source types.
+    enum SourceType {
+        case inline
+        case resource
     }
-    
-    /// Evaluate the given script as a JavaScript module, returning its exports.
-    func eval(resource: String, this: JXValue?) throws -> JXValue {
+
+    func eval(source: String, type: SourceType, this: JXValue?, root: URL?) throws -> JXValue {
+        return try evalWithRoot(root) {
+            switch type {
+            case .inline:
+                guard let context else {
+                    throw JXError.contextDeallocated()
+                }
+                return try context.evalInternal(script: source, this: this)
+            case .resource:
+                return try eval(resource: source, asClosure: false, withArguments: [], this: this)
+            }
+        }
+    }
+
+    func evalClosure(source: String, type: SourceType, withArguments arguments: [JXValue], this: JXValue?, root: URL?) throws -> JXValue {
+        return try evalWithRoot(root) {
+            switch type {
+            case .inline:
+                guard let context else {
+                    throw JXError.contextDeallocated()
+                }
+                return try context.evalInternal(script: toClosureScript(source, parameterCount: arguments.count), this: this).call(withArguments: arguments)
+            case .resource:
+                return try eval(resource: source, asClosure: true, withArguments: arguments, this: this)
+            }
+        }
+    }
+
+    func evalModule(source: String, type: SourceType, integratingExports keyPath: String?, root: URL?) throws -> JXValue {
+        return try evalWithRoot(root) {
+            switch type {
+            case .inline:
+                // We only need to treat this as a full cached module if we have to integrate it into a key path and
+                // it might include other key paths or modules, which means we'll need to re-integrate if a dependency changes.
+                // Otherwise we can treat it as transient
+                if keyPath != nil, context?.configuration.isDynamicReloadEnabled == true {
+                    return try evalModule(source: source, type: .inline, integratingExports: keyPath, evalState: evalStack.last)
+                } else {
+                    let exports = try evalTransientModule(source)
+                    try integrate(exports: exports, into: keyPath)
+                    return exports
+                }
+            case .resource:
+                return try evalModule(source: source, type: .resource, integratingExports: keyPath, evalState: evalStack.last)
+            }
+        }
+    }
+
+    private func evalWithRoot(_ root: URL?, perform: () throws -> JXValue) throws -> JXValue {
+        var popEvalStackIfNeeded = {}
+        if let root {
+            try initializeRequireFunction()
+            evalStack.append((nil, nil, root))
+            popEvalStackIfNeeded = { self.evalStack.removeLast() }
+        }
+        defer { popEvalStackIfNeeded() }
+        let result = try perform()
+        // Record key path references from script return values without requiring an explicit require().
+        // Thus listeners can detect that a simple script like 'return new namespace.value' may need re-eval
+        // when 'namespace' changes without having to add the complication of require(namespace)
+        try recordKeyPathReference(result)
+        return result
+    }
+
+    private func eval(resource: String, asClosure: Bool, withArguments arguments: [JXValue], this: JXValue?) throws -> JXValue {
         guard let context else {
             throw JXError.contextDeallocated()
         }
@@ -39,7 +100,7 @@ final class ScriptManager {
             throw JXError.unknownScriptRoot(for: resource)
         }
         let url = try context.configuration.scriptLoader.scriptURL(resource: resource, relativeTo: evalState.url, root: evalState.root)
-        guard let js = try context.configuration.scriptLoader.loadScript(from: url) else {
+        guard let script = try context.configuration.scriptLoader.loadScript(from: url) else {
             throw JXError.scriptNotFound(resource)
         }
         // Add this resource to the stack so that it is recorded as a referrer of any modules it requires.
@@ -48,55 +109,35 @@ final class ScriptManager {
         didAccess.forEach { $0([key]) }
         evalStack.append((key, url, evalState.root))
         defer { evalStack.removeLast() }
-        return try context.eval(js, this: this)
-    }
-    
-    /// Evaluate the given script as a JavaScript module, returning its exports.
-    ///
-    /// - Parameters:
-    ///   - keyPath: If given, the module exports will be integrated into the object at this key path from `global`.
-    func evalModule(_ script: String, integratingExports keyPath: String? = nil) throws -> JXValue {
-        // We only need to treat this as a full cached module if we have to integrate it into a key path and
-        // it might include other namespaces or modules, which means we'll need to re-integrate if a dependency changes.
-        // Otherwise we can treat it as transient
-        if keyPath != nil, context?.configuration.moduleRequireEnabled == true, context?.configuration.isDynamicReloadEnabled == true {
-            return try evalModule(script, resource: nil, integratingExports: keyPath, evalState: evalStack.last)
-        } else {
-            let exports = try evalTransientModule(script)
-            try integrate(exports: exports, into: keyPath)
-            return exports
+        guard asClosure else {
+            return try context.evalInternal(script: script, this: this)
         }
+        return try context.evalInternal(script: toClosureScript(script, parameterCount: arguments.count), this: this).call(withArguments: arguments)
     }
     
-    /// Evaluate the given resource as a JavaScript module, returning its exports.
-    ///
-    /// - Parameters:
-    ///   - keyPath: If given, the module exports will be integrated into the object at this key path from `global`.
-    func evalModule(resource: String, integratingExports keyPath: String? = nil) throws -> JXValue {
-        guard let evalState = evalStack.last else {
-            throw JXError.unknownScriptRoot(for: resource)
-        }
-        return try evalModule(nil, resource: resource, integratingExports: keyPath, evalState: evalState)
-    }
-    
-    private func evalModule(_ script: String?, resource: String?, integratingExports keyPath: String?, evalState: (key: String?, url: URL?, root: URL)?) throws -> JXValue {
+    private func evalModule(source: String, type: SourceType, integratingExports keyPath: String?, evalState: (key: String?, url: URL?, root: URL)?) throws -> JXValue {
         guard let context else {
             throw JXError.contextDeallocated()
         }
         
-        let js: String
+        let script: String
         var module: Module? = nil
         var url: URL? = nil
         var cacheKey: String? = nil
-        if let script {
-            js = script
+        switch type {
+        case .inline:
+            script = source
             if context.configuration.isDynamicReloadEnabled {
                 let key = "s\(scriptKeyGenerator)"
                 scriptKeyGenerator += 1
-                module = Module(key: key, type: .js(script, evalState?.root))
+                didAccess.forEach { $0([key]) }
+                module = Module(key: key, type: .inline(script, evalState?.root))
             }
-        } else if let resource, let evalState {
-            let scriptURL = try context.configuration.scriptLoader.scriptURL(resource: resource, relativeTo: evalState.url, root: evalState.root)
+        case .resource:
+            guard let evalState else {
+                throw JXError.unknownScriptRoot(for: source)
+            }
+            let scriptURL = try context.configuration.scriptLoader.scriptURL(resource: source, relativeTo: evalState.url, root: evalState.root)
             let key = key(for: scriptURL)
             didAccess.forEach { $0([key]) }
             
@@ -109,20 +150,16 @@ final class ScriptManager {
                     module.integratedInto(keyPath: keyPath)
                     moduleCache[key] = module
                 }
-                let exports = try module.exports(in: context)
-                try integrate(exports: exports, into: keyPath)
-                return exports
+                return try module.exports(in: context)
             }
             
-            guard let script = try context.configuration.scriptLoader.loadScript(from: scriptURL) else {
-                throw JXError.scriptNotFound(resource)
+            guard let js = try context.configuration.scriptLoader.loadScript(from: scriptURL) else {
+                throw JXError.scriptNotFound(source)
             }
-            module = Module(key: key, type: .jsResource(scriptURL, evalState.root))
-            js = script
+            script = js
+            module = Module(key: key, type: .resource(scriptURL, evalState.root))
             url = scriptURL
             cacheKey = key
-        } else {
-            throw JXError.internalError("script == nil && (resource == nil || evalState == nil)")
         }
         
         // Create a module reference before evaluating to avoid infinite recursion in the case of circular dependencies.
@@ -146,8 +183,8 @@ final class ScriptManager {
         }
         defer { popEvalStackIfNeeded() }
 
-        let moduleScript = try toModuleScript(js, cacheKey: cacheKey)
-        let exports = try context.eval(moduleScript)
+        let moduleScript = try toModuleScript(script, cacheKey: cacheKey)
+        let exports = try context.evalInternal(script: moduleScript, this: nil)
         try integrate(exports: exports, into: keyPath)
         return exports
     }
@@ -156,12 +193,9 @@ final class ScriptManager {
         guard !requireFunctionInitialized else {
             return
         }
-        requireFunctionInitialized = true
-        
         guard let context else {
             throw JXError.contextDeallocated()
         }
-        
         let require = JXValue(newFunctionIn: context) { [weak self] context, this, args in
             guard let self else {
                 return context.undefined()
@@ -173,12 +207,13 @@ final class ScriptManager {
         }
         try context.global.setProperty("require", require)
         try context.global.setProperty(Self.moduleExportsCacheObject, context.object())
+        requireFunctionInitialized = true
     }
     
     /// Logic for the `require` JavaScript module function.
     private func require(_ value: JXValue) throws -> JXValue {
         guard !value.isString else {
-            return try evalModule(resource: value.string)
+            return try evalModule(source: value.string, type: .resource, integratingExports: nil, evalState: evalStack.last)
         }
         // If something other than a file path is given, maybe the SPI can turn it into a key path
         // that the requiring script is dependent on
@@ -189,12 +224,19 @@ final class ScriptManager {
     }
 
     /// Record that the given key path was accessed.
-    @discardableResult func recordKeyPathReference(_ value: JXValue) throws -> Bool {
+    @discardableResult private func recordKeyPathReference(_ value: JXValue) throws -> Bool {
+        // This is called for every eval return value, so short circuit if we can
+        let referencedBy = evalStack.last?.key
+        let recordReference = referencedBy != nil && context?.configuration.isDynamicReloadEnabled == true
+        guard !didAccess.isEmpty || recordReference else {
+            return true
+        }
+
         guard let keyPath = try value.context.spi?.require(value) else {
             return false
         }
         didAccess.forEach { $0([keyPath]) }
-        guard context?.configuration.isDynamicReloadEnabled == true, let referencedBy = evalStack.last?.key else {
+        guard recordReference else {
             return true
         }
         // Record which JS modules 'require' a key path just as we record which JS modules
@@ -224,7 +266,7 @@ final class ScriptManager {
             throw JXError.contextDeallocated()
         }
         let moduleScript = try toModuleScript(script)
-        return try context.eval(moduleScript)
+        return try context.evalInternal(script: moduleScript, this: nil)
     }
     
     private func integrate(exports: JXValue, into keyPath: String?) throws {
@@ -234,8 +276,18 @@ final class ScriptManager {
         let (parent, property) = try exports.context.global.keyPath(keyPath)
         try parent[property].integrate(exports)
     }
-    
-    /// Return the JavaScript to run to evaluate the given script as a module.
+
+    private func toClosureScript(_ script: String, parameterCount: Int) -> String {
+        let parameterString = (0..<parameterCount).map { "$\($0)" }.joined(separator: ",")
+        let js = """
+(function(\(parameterString)) {
+    \(script)
+})
+"""
+        // print(js)
+        return js
+    }
+
     private func toModuleScript(_ script: String, cacheKey: String? = nil) throws -> String {
         try initializeImportFunction()
         let cacheExports: String
@@ -318,25 +370,24 @@ extension ScriptManager {
         didChange.forEach { $0(seenKeys) }
     }
     
-    // TODO: Error resiliency: use previous exports
     private func reloadModule(for key: String) {
         guard let module = moduleCache[key] else {
             return
         }
         switch module.type {
-        case .js(let script, let root):
+        case .inline(let script, let root):
             do {
-                print("Reloading JavaScript module script \(key)...")
+                context?.configuration.log("Reloading JavaScript module \(key)")
                 try reloadModule(module, script: script, url: nil, root: root)
             } catch {
-                print("JavaScript module reload error: \(error)")
+                context?.configuration.log("JavaScript module reload error: \(error)")
             }
-        case .jsResource(let url, let root):
+        case .resource(let url, let root):
             do {
-                print("Reloading JavaScript module at \(url.absoluteString)...")
+                context?.configuration.log("Reloading JavaScript module at \(url.absoluteString)")
                 try reloadModule(module, script: nil, url: url, root: root)
             } catch {
-                print("JavaScript module reload error: \(error)")
+                context?.configuration.log("JavaScript module reload error: \(error)")
             }
         case .integrated:
             // Nothing to do. JS modules will integrate when they reload
@@ -371,7 +422,7 @@ extension ScriptManager {
         defer { popEvalStackIfNeeded() }
 
         let moduleScript = try toModuleScript(js, cacheKey: cacheKey)
-        let exports = try context.eval(moduleScript)
+        let exports = try context.evalInternal(script: moduleScript, this: nil)
         for keyPath in module.integratedIntoKeyPaths {
             try integrate(exports: exports, into: keyPath)
         }
@@ -379,8 +430,8 @@ extension ScriptManager {
 }
 
 private enum ModuleType {
-    case js(String, URL?) // script, root URL
-    case jsResource(URL, URL) // resource URL, root URL
+    case inline(String, URL?) // script, root URL
+    case resource(URL, URL) // resource URL, root URL
     case integrated(String) // key path
 }
 
@@ -406,7 +457,7 @@ private struct Module {
     
     func exports(in context: JXContext) throws -> JXValue {
         switch type {
-        case .js, .jsResource:
+        case .inline, .resource:
             return try context.global[ScriptManager.moduleExportsCacheObject][key]
         case .integrated(let keyPath):
             let (parent, property) = try context.global.keyPath(keyPath)

@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Makes the given values available as properties on the global object during the execution of the code within the given closure.",
+      "text" : "Perform the given code while tracking its access to JavaScript script IDs.",
       "type" : "text"
     }
   ],
@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-87ai5"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/trackingScriptsAccess(perform:)"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC10withValues_7executexypSgd_xyKXEtKlF",
+    "externalID" : "s:5JXKit9JXContextC21trackingScriptsAccess7performShySSG8accessed_x5valuetxyKc_tKlF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,7 +32,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "withValues"
+        "text" : "trackingScriptsAccess"
       },
       {
         "kind" : "text",
@@ -40,23 +40,15 @@
       },
       {
         "kind" : "genericParameter",
-        "text" : "R"
+        "text" : "V"
       },
       {
         "kind" : "text",
         "text" : ">("
       },
       {
-        "kind" : "keyword",
-        "text" : "Any"
-      },
-      {
-        "kind" : "text",
-        "text" : "?..., "
-      },
-      {
         "kind" : "externalParam",
-        "text" : "execute"
+        "text" : "perform"
       },
       {
         "kind" : "text",
@@ -72,7 +64,7 @@
       },
       {
         "kind" : "typeIdentifier",
-        "text" : "R"
+        "text" : "V"
       },
       {
         "kind" : "text",
@@ -80,15 +72,45 @@
       },
       {
         "kind" : "keyword",
-        "text" : "rethrows"
+        "text" : "throws"
       },
       {
         "kind" : "text",
-        "text" : " -> "
+        "text" : " -> (accessed"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
       },
       {
         "kind" : "typeIdentifier",
-        "text" : "R"
+        "preciseIdentifier" : "s:Sh",
+        "text" : "Set"
+      },
+      {
+        "kind" : "text",
+        "text" : "<"
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
+      },
+      {
+        "kind" : "text",
+        "text" : ">, value"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "text" : "V"
+      },
+      {
+        "kind" : "text",
+        "text" : ")"
       }
     ],
     "modules" : [
@@ -99,7 +121,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "withValues(_:execute:)"
+    "title" : "trackingScriptsAccess(perform:)"
   },
   "primaryContentSections" : [
     {
@@ -113,14 +135,6 @@
           ],
           "tokens" : [
             {
-              "kind" : "attribute",
-              "text" : "@discardableResult"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
               "kind" : "keyword",
               "text" : "func"
             },
@@ -130,7 +144,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "withValues"
+              "text" : "trackingScriptsAccess"
             },
             {
               "kind" : "text",
@@ -138,7 +152,7 @@
             },
             {
               "kind" : "genericParameter",
-              "text" : "R"
+              "text" : "V"
             },
             {
               "kind" : "text",
@@ -146,15 +160,7 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "_"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "internalParam",
-              "text" : "values"
+              "text" : "perform"
             },
             {
               "kind" : "text",
@@ -162,19 +168,11 @@
             },
             {
               "kind" : "keyword",
-              "text" : "Any"
+              "text" : "@escaping"
             },
             {
               "kind" : "text",
-              "text" : "?..., "
-            },
-            {
-              "kind" : "externalParam",
-              "text" : "execute"
-            },
-            {
-              "kind" : "text",
-              "text" : ": () "
+              "text" : " () "
             },
             {
               "kind" : "keyword",
@@ -186,7 +184,7 @@
             },
             {
               "kind" : "typeIdentifier",
-              "text" : "R"
+              "text" : "V"
             },
             {
               "kind" : "text",
@@ -194,89 +192,50 @@
             },
             {
               "kind" : "keyword",
-              "text" : "rethrows"
+              "text" : "throws"
             },
             {
               "kind" : "text",
-              "text" : " -> "
+              "text" : " -> (accessed"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
             },
             {
               "kind" : "typeIdentifier",
-              "text" : "R"
+              "preciseIdentifier" : "s:Sh",
+              "text" : "Set"
+            },
+            {
+              "kind" : "text",
+              "text" : "<"
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : ">, value"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "text" : "V"
+            },
+            {
+              "kind" : "text",
+              "text" : ")"
             }
           ]
         }
       ],
       "kind" : "declarations"
-    },
-    {
-      "content" : [
-        {
-          "anchor" : "return-value",
-          "level" : 2,
-          "text" : "Return Value",
-          "type" : "heading"
-        },
-        {
-          "inlineContent" : [
-            {
-              "text" : "The result of the closure.",
-              "type" : "text"
-            }
-          ],
-          "type" : "paragraph"
-        }
-      ],
-      "kind" : "content"
-    },
-    {
-      "kind" : "parameters",
-      "parameters" : [
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "Values to set on the global object. The values will be named $0, $1, $2, … The values will be ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "conveyed",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : " to ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "JXValues",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : ".",
-                  "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "values"
-        },
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "The code to execute using the given values.",
-                  "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "execute"
-        }
-      ]
     }
   ],
   "schemaVersion" : {
@@ -290,7 +249,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-87ai5"
+        "\/documentation\/jxkit\/jxcontext\/trackingscriptsaccess(perform:)"
       ],
       "traits" : [
         {
@@ -357,10 +316,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/withValues(_:execute:)-87ai5": {
+"doc://JXKit/documentation/JXKit/JXContext/trackingScriptsAccess(perform:)": {
   "abstract" : [
     {
-      "text" : "Makes the given values available as properties on the global object during the execution of the code within the given closure.",
+      "text" : "Perform the given code while tracking its access to JavaScript script IDs.",
       "type" : "text"
     }
   ],
@@ -375,7 +334,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "withValues"
+      "text" : "trackingScriptsAccess"
     },
     {
       "kind" : "text",
@@ -383,23 +342,15 @@
     },
     {
       "kind" : "genericParameter",
-      "text" : "R"
+      "text" : "V"
     },
     {
       "kind" : "text",
       "text" : ">("
     },
     {
-      "kind" : "keyword",
-      "text" : "Any"
-    },
-    {
-      "kind" : "text",
-      "text" : "?..., "
-    },
-    {
       "kind" : "externalParam",
-      "text" : "execute"
+      "text" : "perform"
     },
     {
       "kind" : "text",
@@ -415,7 +366,7 @@
     },
     {
       "kind" : "typeIdentifier",
-      "text" : "R"
+      "text" : "V"
     },
     {
       "kind" : "text",
@@ -423,23 +374,53 @@
     },
     {
       "kind" : "keyword",
-      "text" : "rethrows"
+      "text" : "throws"
     },
     {
       "kind" : "text",
-      "text" : " -> "
+      "text" : " -> (accessed"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
     },
     {
       "kind" : "typeIdentifier",
-      "text" : "R"
+      "preciseIdentifier" : "s:Sh",
+      "text" : "Set"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ">, value"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "V"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-87ai5",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/trackingScriptsAccess(perform:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "withValues(_:execute:)",
+  "title" : "trackingScriptsAccess(perform:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-87ai5"
+  "url" : "\/documentation\/jxkit\/jxcontext\/trackingscriptsaccess(perform:)"
 }
 }
 }

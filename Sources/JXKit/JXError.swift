@@ -46,47 +46,47 @@ public struct JXError: Error, CustomStringConvertible, @unchecked Sendable {
         return script.count > prefixLength ? " <<script: \(script.prefix(prefixLength))... >>" : " <<script: \(script) >>"
     }
     
-    @inlinable public static func internalError(_ message: String) -> JXError {
+    public static func internalError(_ message: String) -> JXError {
         return JXError(message: "Internal error: \(message)")
     }
     
-    @inlinable public static func contextDeallocated() -> JXError {
+    public static func contextDeallocated() -> JXError {
         return JXError(message: "The JXContext has been deallocated")
     }
     
-    @inlinable public static func valueNotArray(_ value: JXValue) -> JXError {
+    public static func valueNotArray(_ value: JXValue) -> JXError {
         return JXError(message: "Expected a JavaScript array but received '\(value)'")
     }
     
-    @inlinable public static func valueNotObject(_ value: JXValue) -> JXError {
+    public static func valueNotObject(_ value: JXValue) -> JXError {
         return JXError(message: "Expected a JavaScript object but received '\(value)'")
     }
     
-    @inlinable public static func valueNotPropertiesObject(_ value: JXValue, property: String) -> JXError {
+    public static func valueNotPropertiesObject(_ value: JXValue, property: String) -> JXError {
         return JXError(message: "Attempt to accesss property '\(property)' on JavaScript value '\(value)'. This value is not an object")
     }
     
-    @inlinable public static func valueNotDate(_ value: JXValue) -> JXError {
+    public static func valueNotDate(_ value: JXValue) -> JXError {
         return JXError(message: "Expected a JavaScript date but received '\(value)'")
     }
     
-    @inlinable public static func valueNotFunction(_ value: JXValue) -> JXError {
+    public static func valueNotFunction(_ value: JXValue) -> JXError {
         return JXError(message: "Expected a JavaScript function but received '\(value)'")
     }
+
+    public static func valueNotPromise(_ value: JXValue) -> JXError {
+        return JXError(message: "Expected a JavaScript Promise but received '\(value)'")
+    }
     
-    @inlinable public static func valueNotSymbol(_ value: JXValue) -> JXError {
+    public static func valueNotSymbol(_ value: JXValue) -> JXError {
         return JXError(message: "Expected a JavaScript symbol but received '\(value)'")
     }
     
-    @inlinable static func asyncEvalMustReturnPromise(_ value: JXValue) -> JXError {
-        return JXError(message: "The JavaScript supplied to 'JXContext.eval(...) async' must return a Promise. Returned '\(value)")
-    }
-    
-    @inlinable static func invalidNumericConversion(_ value: JXValue, to number: Double) -> JXError {
+    static func invalidNumericConversion(_ value: JXValue, to number: Double) -> JXError {
         return JXError(message: "JavaScript value '\(value)' converted to invalid number '\(number)'")
     }
     
-    @inlinable static func cannotConvey(_ type: Any.Type, spi: JXContextSPI?, format: String) -> JXError {
+    static func cannotConvey(_ type: Any.Type, spi: JXContextSPI?, format: String) -> JXError {
         let typeString = String(describing: type)
         var message = String(format: format, typeString)
         if let detail = spi?.errorDetail(conveying: type) {
@@ -95,23 +95,23 @@ public struct JXError: Error, CustomStringConvertible, @unchecked Sendable {
         return JXError(message: message)
     }
     
-    @inlinable static func cannotCreatePromise() -> JXError {
+    static func cannotCreatePromise() -> JXError {
         return JXError(message: "Unable to create JavaScript Promise")
     }
     
-    @inlinable static func cannotCreateArrayBuffer() -> JXError {
+    static func cannotCreateArrayBuffer() -> JXError {
         return JXError(message: "Unable to create JavaScript array buffer")
     }
     
-    @inlinable static func scriptNotFound(_ resource: String) -> JXError {
+    static func scriptNotFound(_ resource: String) -> JXError {
         return JXError(message: "Unable to locate script '\(resource)'")
     }
     
-    @inlinable static func unknownScriptRelativeTo(for resource: String) -> JXError {
+    static func unknownScriptRelativeTo(for resource: String) -> JXError {
         return JXError(message: "Unable to locate script '\(resource)'. This appears to be a relative path, but it was not referenced from another script with a known path. Prefix with '/' to use an absolute path")
     }
     
-    @inlinable static func unknownScriptRoot(for resource: String) -> JXError {
+    static func unknownScriptRoot(for resource: String) -> JXError {
         return JXError(message: "Unable to locate script '\(resource)'. Unknown script root. Are you attempting to use 'require' from an 'eval' call without specifying a root URL?")
     }
 }

@@ -126,6 +126,7 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/valueNotDate(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/valueNotFunction(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/valueNotObject(_:)",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/valueNotPromise(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/valueNotPropertiesObject(_:property:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/valueNotSymbol(_:)"
       ],
@@ -889,6 +890,57 @@
   "title" : "valueNotObject(_:)",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerror\/valuenotobject(_:)"
+},
+"doc://JXKit/documentation/JXKit/JXError/valueNotPromise(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "valueNotPromise"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXValueC",
+      "text" : "JXValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5JXKit7JXErrorV",
+      "text" : "JXError"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/valueNotPromise(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "valueNotPromise(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/jxerror\/valuenotpromise(_:)"
 },
 "doc://JXKit/documentation/JXKit/JXError/valueNotPropertiesObject(_:property:)": {
   "abstract" : [

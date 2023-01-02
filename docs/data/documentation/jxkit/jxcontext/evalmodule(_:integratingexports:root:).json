@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Evaluate the given JavaScript with module semantics, returning its exports.",
+      "text" : "Evaluate the given JavaScript as a module.",
       "type" : "text"
     }
   ],
@@ -227,6 +227,30 @@
       "kind" : "declarations"
     },
     {
+      "content" : [
+        {
+          "anchor" : "return-value",
+          "level" : 2,
+          "text" : "Return Value",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "",
+              "type" : "text"
+            },
+            {
+              "code" : "module.exports",
+              "type" : "codeVoice"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
+    },
+    {
       "kind" : "parameters",
       "parameters" : [
         {
@@ -234,15 +258,21 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "If given, the module exports will be integrated into the object at this key path from ",
+                  "text" : "The JavaScript code to evaluate.",
                   "type" : "text"
-                },
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "script"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
                 {
-                  "code" : "global",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : ".",
+                  "text" : "A value the module integrates exports into.",
                   "type" : "text"
                 }
               ],
@@ -260,11 +290,19 @@
                   "type" : "text"
                 },
                 {
+                  "code" : "Bundle.main.resourceURL",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : " or ",
+                  "type" : "text"
+                },
+                {
                   "code" : "Bundle.module.resourceURL",
                   "type" : "codeVoice"
                 },
                 {
-                  "text" : " for a Swift package. This is used to locate any scripts referenced via ",
+                  "text" : ". This is used to locate any scripts referenced via ",
                   "type" : "text"
                 },
                 {
@@ -365,7 +403,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/evalModule(_:integratingExports:root:)": {
   "abstract" : [
     {
-      "text" : "Evaluate the given JavaScript with module semantics, returning its exports.",
+      "text" : "Evaluate the given JavaScript as a module.",
       "type" : "text"
     }
   ],
