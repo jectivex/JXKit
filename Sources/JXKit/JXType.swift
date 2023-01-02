@@ -34,7 +34,7 @@ public enum JXType: Hashable {
 
 extension JXValue {
     /// The JavaScript type of this value.
-    @inlinable public var type: JXType {
+    public var type: JXType {
         if isUndefined { return .undefined }
         if isNull { return .null }
         if isBoolean { return .boolean }

@@ -14,7 +14,7 @@ public let JavaScriptCoreVersion = NSVersionOfRunTimeLibrary("JavaScriptCore")
 /// The underlying type that represents a value in the JavaScript environment.
 public typealias JXValueRef = JSValueRef
 
-@usableFromInline internal typealias JXContextRef = JSContextRef
+typealias JXContextRef = JSContextRef
 
 /// The underlying type that represents a string in the JavaScript environment.
-@usableFromInline internal typealias JXStringRef = JSStringRef
+typealias JXStringRef = JSStringRef
