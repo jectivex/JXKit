@@ -1,11 +1,19 @@
 {
   "abstract" : [
     {
-      "text" : "Configure a global logging function for JX log messages. Defaults to using ",
+      "text" : "Whether ",
       "type" : "text"
     },
     {
-      "code" : "print",
+      "code" : "require",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " module support is enabled. Defaults to ",
+      "type" : "text"
+    },
+    {
+      "code" : "true",
       "type" : "codeVoice"
     },
     {
@@ -24,20 +32,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/defaultLog"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/moduleRequireEnabled"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:5JXKit9JXContextC13ConfigurationV10defaultLogyySScvpZ",
+    "externalID" : "s:5JXKit9JXContextC13ConfigurationV20moduleRequireEnabledSbvp",
     "fragments" : [
-      {
-        "kind" : "keyword",
-        "text" : "static"
-      },
-      {
-        "kind" : "text",
-        "text" : " "
-      },
       {
         "kind" : "keyword",
         "text" : "var"
@@ -48,25 +48,16 @@
       },
       {
         "kind" : "identifier",
-        "text" : "defaultLog"
+        "text" : "moduleRequireEnabled"
       },
       {
         "kind" : "text",
-        "text" : ": ("
+        "text" : ": "
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:SS",
-        "text" : "String"
-      },
-      {
-        "kind" : "text",
-        "text" : ") -> "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:s4Voida",
-        "text" : "Void"
+        "preciseIdentifier" : "s:Sb",
+        "text" : "Bool"
       }
     ],
     "modules" : [
@@ -75,9 +66,9 @@
       }
     ],
     "role" : "symbol",
-    "roleHeading" : "Type Property",
+    "roleHeading" : "Instance Property",
     "symbolKind" : "property",
-    "title" : "defaultLog"
+    "title" : "moduleRequireEnabled"
   },
   "primaryContentSections" : [
     {
@@ -92,14 +83,6 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "static"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "keyword",
               "text" : "var"
             },
             {
@@ -108,25 +91,16 @@
             },
             {
               "kind" : "identifier",
-              "text" : "defaultLog"
+              "text" : "moduleRequireEnabled"
             },
             {
               "kind" : "text",
-              "text" : ": ("
+              "text" : ": "
             },
             {
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:SS",
-              "text" : "String"
-            },
-            {
-              "kind" : "text",
-              "text" : ") -> "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:s4Voida",
-              "text" : "Void"
+              "preciseIdentifier" : "s:Sb",
+              "text" : "Bool"
             }
           ]
         }
@@ -145,7 +119,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/defaultlog"
+        "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/modulerequireenabled"
       ],
       "traits" : [
         {
@@ -246,14 +220,22 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct"
 },
-"doc://JXKit/documentation/JXKit/JXContext/Configuration-swift.struct/defaultLog": {
+"doc://JXKit/documentation/JXKit/JXContext/Configuration-swift.struct/moduleRequireEnabled": {
   "abstract" : [
     {
-      "text" : "Configure a global logging function for JX log messages. Defaults to using ",
+      "text" : "Whether ",
       "type" : "text"
     },
     {
-      "code" : "print",
+      "code" : "require",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " module support is enabled. Defaults to ",
+      "type" : "text"
+    },
+    {
+      "code" : "true",
       "type" : "codeVoice"
     },
     {
@@ -264,14 +246,6 @@
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "static"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "keyword",
       "text" : "var"
     },
     {
@@ -280,33 +254,24 @@
     },
     {
       "kind" : "identifier",
-      "text" : "defaultLog"
+      "text" : "moduleRequireEnabled"
     },
     {
       "kind" : "text",
-      "text" : ": ("
+      "text" : ": "
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ") -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:s4Voida",
-      "text" : "Void"
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/defaultLog",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/Configuration-swift.struct\/moduleRequireEnabled",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "defaultLog",
+  "title" : "moduleRequireEnabled",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/defaultlog"
+  "url" : "\/documentation\/jxkit\/jxcontext\/configuration-swift.struct\/modulerequireenabled"
 }
 }
 }

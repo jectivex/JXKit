@@ -584,23 +584,26 @@ extension JXValue {
 }
 
 extension JXValue {
-    
+
     /// Calls an object as a function.
     ///
     /// - Parameters:
     ///   - arguments: The arguments to pass to the function.
     ///   - this: The object to use as `this`, or `nil` to use the global object as `this`.
     /// - Returns: The object that results from calling object as a function
-    @discardableResult public func call(withArguments arguments: [JXValue] = [], this: JXValue? = nil) throws -> JXValue {
+    @discardableResult @inlinable public func call(withArguments arguments: [JXValue] = [], this: JXValue? = nil) throws -> JXValue {
         if !isFunction {
             // we should have already validated that it is a function
             throw JXError.valueNotFunction(self)
         }
         do {
-            let resultRef = try context.trying {
+            let result = try context.trying {
                 JSObjectCallAsFunction(context.contextRef, valueRef, this?.valueRef, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.valueRef }, $0)
             }
-            return resultRef.map({ JXValue(context: context, valueRef: $0) }) ?? JXValue(undefinedIn: context)
+            return result.map {
+                let v = JXValue(context: context, valueRef: $0)
+                return v
+            } ?? JXValue(undefinedIn: context)
         } catch {
             throw JXError(cause: error, script: (try? self.string))
         }
@@ -612,7 +615,7 @@ extension JXValue {
     ///   - arguments: The arguments to pass to the function. The arguments will be `conveyed` to `JXValues`.
     ///   - this: The object to use as `this`, or `nil` to use the global object as `this`.
     /// - Returns: The object that results from calling object as a function
-    @discardableResult public func call(withArguments arguments: [Any], this: JXValue? = nil) throws -> JXValue {
+    @discardableResult @inlinable public func call(withArguments arguments: [Any], this: JXValue? = nil) throws -> JXValue {
         let jxarguments = try arguments.map { try context.convey($0) }
         return try call(withArguments: jxarguments, this: this)
     }
@@ -624,10 +627,10 @@ extension JXValue {
     /// - Returns: The object that results from calling object as a constructor.
     @inlinable public func construct(withArguments arguments: [JXValue] = []) throws -> JXValue {
         do {
-            let resultRef = try context.trying {
+            let result = try context.trying {
                 JSObjectCallAsConstructor(context.contextRef, valueRef, arguments.count, arguments.isEmpty ? nil : arguments.map { $0.valueRef }, $0)
             }
-            return resultRef.map { JXValue(context: context, valueRef: $0) } ?? JXValue(undefinedIn: context)
+            return result.map { JXValue(context: context, valueRef: $0) } ?? JXValue(undefinedIn: context)
         } catch {
             throw JXError(cause: error, script: (try? self.string))
         }
@@ -649,7 +652,8 @@ extension JXValue {
     ///   - name: The name of the method.
     ///   - arguments: The arguments to pass to the function.
     /// - Returns: The object that results from calling the method.
-    @discardableResult public func invokeMethod(_ name: String, withArguments arguments: [JXValue] = []) throws -> JXValue {
+    @discardableResult
+    @inlinable public func invokeMethod(_ name: String, withArguments arguments: [JXValue] = []) throws -> JXValue {
         try self[name].call(withArguments: arguments, this: self)
     }
 
@@ -659,7 +663,8 @@ extension JXValue {
     ///   - name: The name of the method.
     ///   - arguments: The arguments to pass to the function. The arguments will be `conveyed` to `JXValues`.
     /// - Returns: The object that results from calling the method.
-    @discardableResult public func invokeMethod(_ name: String, withArguments arguments: [Any]) throws -> JXValue {
+    @discardableResult
+    @inlinable public func invokeMethod(_ name: String, withArguments arguments: [Any]) throws -> JXValue {
         let jxarguments = try arguments.map { try context.convey($0) }
         return try invokeMethod(name, withArguments: jxarguments)
     }
@@ -774,10 +779,10 @@ extension JXValue {
             if !isObject { return context.undefined() }
             let property = JSStringCreateWithUTF8CString(propertyName)
             defer { JSStringRelease(property) }
-            let resultRef = try context.trying {
+            let result = try context.trying {
                 JSObjectGetProperty(context.contextRef, valueRef, property, $0)
             }
-            return resultRef.map { JXValue(context: context, valueRef: $0) } ?? JXValue(undefinedIn: context)
+            return result.map { JXValue(context: context, valueRef: $0) } ?? JXValue(undefinedIn: context)
         }
     }
 
@@ -790,10 +795,10 @@ extension JXValue {
             if !symbol.isSymbol {
                 throw JXError.valueNotSymbol(symbol)
             }
-            let resultRef = try context.trying {
+            let result = try context.trying {
                 JSObjectGetPropertyForKey(context.contextRef, valueRef, symbol.valueRef, $0)
             }
-            return resultRef.map { JXValue(context: context, valueRef: $0) } ?? JXValue(undefinedIn: context)
+            return result.map { JXValue(context: context, valueRef: $0) } ?? JXValue(undefinedIn: context)
         }
     }
 
@@ -875,10 +880,10 @@ extension JXValue {
     /// The value in object at index.
     @inlinable public subscript(index: Int) -> JXValue {
         get throws {
-            let resultRef = try context.trying {
+            let result = try context.trying {
                 JSObjectGetPropertyAtIndex(context.contextRef, valueRef, UInt32(index), $0)
             }
-            return resultRef.map { JXValue(context: context, valueRef: $0) } ?? JXValue(undefinedIn: context)
+            return result.map { JXValue(context: context, valueRef: $0) } ?? JXValue(undefinedIn: context)
         }
     }
 
@@ -1091,51 +1096,6 @@ extension JXValue {
 
         // JSObjectMakeFunctionWithCallback(context.context, JSStringRef, JSObjectCallAsFunctionCallback)
         self.init(context: context, valueRef: JSObjectMake(context.contextRef, _class, info))
-    }
-
-    // Await the return of this value as a JavaScript `Promise`.
-    public func awaitPromise(priority: TaskPriority = .medium) async throws -> JXValue {
-        guard try isPromise else {
-            throw JXError.valueNotPromise(self)
-        }
-        let then = try self["then"]
-        guard then.isFunction else {
-            throw JXError(message: "The Promise does not have a 'then' function")
-        }
-
-        return try await withCheckedThrowingContinuation { [weak context] c in
-            do {
-                guard let context = context else {
-                    return c.resume(throwing: JXError(message: "The JXContext was deallocated during the 'awaitPromise(...) async' call"))
-                }
-
-                let fulfilled = JXValue(newFunctionIn: context) { jxc, this, args in
-                    c.resume(returning: args.first ?? JXValue(undefinedIn: jxc))
-                    return JXValue(undefinedIn: jxc)
-                }
-
-                let rejected = JXValue(newFunctionIn: context) { jxc, this, arg in
-                    let error: JXError
-                    if let jsError = arg.first {
-                        error = JXError(jsError: jsError)
-                    } else {
-                        error = JXError(message: "The returned Promise was rejected")
-                    }
-                    c.resume(throwing: error)
-                    return JXValue(undefinedIn: jxc)
-                }
-
-                let presult = try then.call(withArguments: [fulfilled, rejected], this: self)
-
-                // then() should return a promise as well
-                if try !presult.isPromise {
-                    // We can't throw here because it could complete the promise multiple times
-                    throw JXError.valueNotPromise(presult)
-                }
-            } catch {
-                return c.resume(throwing: error)
-            }
-        }
     }
 
     public static func createPromise(in context: JXContext) throws -> JXPromise {

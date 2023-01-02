@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Evaluate the JavaScript contained in the given resource with module semantics, returning its exports.",
+      "text" : "Makes the given values available as properties on the global object during the execution of the code within the given closure.",
       "type" : "text"
     }
   ],
@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/evalModule(resource:integratingExports:root:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-8xdgs"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC10evalModule8resource18integratingExports4rootAA7JXValueCSS_SSSg10Foundation3URLVtKF",
+    "externalID" : "s:5JXKit9JXContextC10withValues_7executexSayypSgG_xyKXEtKlF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,62 +32,35 @@
       },
       {
         "kind" : "identifier",
-        "text" : "evalModule"
+        "text" : "withValues"
       },
       {
         "kind" : "text",
-        "text" : "("
+        "text" : "<"
+      },
+      {
+        "kind" : "genericParameter",
+        "text" : "R"
+      },
+      {
+        "kind" : "text",
+        "text" : ">(["
+      },
+      {
+        "kind" : "keyword",
+        "text" : "Any"
+      },
+      {
+        "kind" : "text",
+        "text" : "?], "
       },
       {
         "kind" : "externalParam",
-        "text" : "resource"
+        "text" : "execute"
       },
       {
         "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:SS",
-        "text" : "String"
-      },
-      {
-        "kind" : "text",
-        "text" : ", "
-      },
-      {
-        "kind" : "externalParam",
-        "text" : "integratingExports"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:SS",
-        "text" : "String"
-      },
-      {
-        "kind" : "text",
-        "text" : "?, "
-      },
-      {
-        "kind" : "externalParam",
-        "text" : "root"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:10Foundation3URLV",
-        "text" : "URL"
-      },
-      {
-        "kind" : "text",
-        "text" : ") "
+        "text" : ": () "
       },
       {
         "kind" : "keyword",
@@ -99,8 +72,23 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
+        "text" : "R"
+      },
+      {
+        "kind" : "text",
+        "text" : ") "
+      },
+      {
+        "kind" : "keyword",
+        "text" : "rethrows"
+      },
+      {
+        "kind" : "text",
+        "text" : " -> "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "text" : "R"
       }
     ],
     "modules" : [
@@ -111,7 +99,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "evalModule(resource:integratingExports:root:)"
+    "title" : "withValues(_:execute:)"
   },
   "primaryContentSections" : [
     {
@@ -142,32 +130,23 @@
             },
             {
               "kind" : "identifier",
-              "text" : "evalModule"
+              "text" : "withValues"
             },
             {
               "kind" : "text",
-              "text" : "("
+              "text" : "<"
+            },
+            {
+              "kind" : "genericParameter",
+              "text" : "R"
+            },
+            {
+              "kind" : "text",
+              "text" : ">("
             },
             {
               "kind" : "externalParam",
-              "text" : "resource"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:SS",
-              "text" : "String"
-            },
-            {
-              "kind" : "text",
-              "text" : ", "
-            },
-            {
-              "kind" : "externalParam",
-              "text" : "integratingExports"
+              "text" : "_"
             },
             {
               "kind" : "text",
@@ -175,37 +154,27 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "keyPath"
+              "text" : "values"
             },
             {
               "kind" : "text",
-              "text" : ": "
+              "text" : ": ["
             },
             {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:SS",
-              "text" : "String"
+              "kind" : "keyword",
+              "text" : "Any"
             },
             {
               "kind" : "text",
-              "text" : "? = nil, "
+              "text" : "?], "
             },
             {
               "kind" : "externalParam",
-              "text" : "root"
+              "text" : "execute"
             },
             {
               "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:10Foundation3URLV",
-              "text" : "URL"
-            },
-            {
-              "kind" : "text",
-              "text" : ") "
+              "text" : ": () "
             },
             {
               "kind" : "keyword",
@@ -216,15 +185,49 @@
               "text" : " -> "
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
+              "text" : "R"
+            },
+            {
+              "kind" : "text",
+              "text" : ") "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "rethrows"
+            },
+            {
+              "kind" : "text",
+              "text" : " -> "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "text" : "R"
             }
           ]
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "return-value",
+          "level" : 2,
+          "text" : "Return Value",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "The result of the closure.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
     },
     {
       "kind" : "parameters",
@@ -234,49 +237,19 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "The JavaScript file to load, in the form ",
+                  "text" : "Values to set on the global object. The values will be named $0, $1, $2, … The values will be ",
                   "type" : "text"
                 },
                 {
-                  "code" : "\/path\/file.js",
+                  "code" : "conveyed",
                   "type" : "codeVoice"
                 },
                 {
-                  "text" : " or ",
+                  "text" : " to ",
                   "type" : "text"
                 },
                 {
-                  "code" : "\/path\/file",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : ". Note the leading ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "\/",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : " because the resource path is not being interpreted relative to another resource.",
-                  "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "resource"
-        },
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "If given, the module exports will be integrated into the object at this key path from ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "global",
+                  "code" : "JXValues",
                   "type" : "codeVoice"
                 },
                 {
@@ -287,37 +260,21 @@
               "type" : "paragraph"
             }
           ],
-          "name" : "keyPath"
+          "name" : "values"
         },
         {
           "content" : [
             {
               "inlineContent" : [
                 {
-                  "text" : "The root of the JavaScript resources, typically ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "Bundle.module.resourceURL",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : " for a Swift package. This is used to locate the resource and any scripts it references via ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "require",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : ".",
+                  "text" : "The code to execute using the given values.",
                   "type" : "text"
                 }
               ],
               "type" : "paragraph"
             }
           ],
-          "name" : "root"
+          "name" : "execute"
         }
       ]
     }
@@ -333,7 +290,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/evalmodule(resource:integratingexports:root:)"
+        "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-8xdgs"
       ],
       "traits" : [
         {
@@ -400,10 +357,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/evalModule(resource:integratingExports:root:)": {
+"doc://JXKit/documentation/JXKit/JXContext/withValues(_:execute:)-8xdgs": {
   "abstract" : [
     {
-      "text" : "Evaluate the JavaScript contained in the given resource with module semantics, returning its exports.",
+      "text" : "Makes the given values available as properties on the global object during the execution of the code within the given closure.",
       "type" : "text"
     }
   ],
@@ -418,62 +375,35 @@
     },
     {
       "kind" : "identifier",
-      "text" : "evalModule"
+      "text" : "withValues"
     },
     {
       "kind" : "text",
-      "text" : "("
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "R"
+    },
+    {
+      "kind" : "text",
+      "text" : ">(["
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : "?], "
     },
     {
       "kind" : "externalParam",
-      "text" : "resource"
+      "text" : "execute"
     },
     {
       "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "integratingExports"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : "?, "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "root"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:10Foundation3URLV",
-      "text" : "URL"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
+      "text" : ": () "
     },
     {
       "kind" : "keyword",
@@ -485,50 +415,31 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/evalModule(resource:integratingExports:root:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "evalModule(resource:integratingExports:root:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/evalmodule(resource:integratingexports:root:)"
-},
-"doc://JXKit/documentation/JXKit/JXValue": {
-  "abstract" : [
-    {
-      "text" : "A JavaScript object.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
+      "text" : "R"
     },
     {
       "kind" : "text",
-      "text" : " "
+      "text" : ") "
     },
     {
-      "kind" : "identifier",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
-  "kind" : "symbol",
-  "navigatorTitle" : [
+      "kind" : "keyword",
+      "text" : "rethrows"
+    },
     {
-      "kind" : "identifier",
-      "text" : "JXValue"
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "R"
     }
   ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-8xdgs",
+  "kind" : "symbol",
   "role" : "symbol",
-  "title" : "JXValue",
+  "title" : "withValues(_:execute:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue"
+  "url" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-8xdgs"
 }
 }
 }

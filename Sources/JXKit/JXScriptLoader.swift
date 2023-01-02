@@ -1,4 +1,4 @@
-import Foundation
+import struct Foundation.URL
 
 /// Load JavaScript files.
 public protocol JXScriptLoader {

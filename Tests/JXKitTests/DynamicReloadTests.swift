@@ -22,8 +22,8 @@ exports.add = function(x) {
     return x + 1;
 }
 """
-        let script = "const m = require('/test'); return m.add(2);"
-        var result = try context.evalClosure(script, root: rootURL)
+        let script = "var m = require('/test'); m.add(2);"
+        var result = try context.eval(script, root: rootURL)
         XCTAssertEqual(try result.int, 3);
         
         scriptLoader.scripts["test"] = """
@@ -32,7 +32,7 @@ exports.add = function(x) {
 }
 """
         scriptLoader.didChange?.forEach { $0([url]) }
-        result = try context.evalClosure(script, root: rootURL)
+        result = try context.eval(script, root: rootURL)
         XCTAssertEqual(try result.int, 4);
     }
     
@@ -49,8 +49,8 @@ exports.transform = function(x) {
     return m.add(x) * 2;
 }
 """
-        let script = "const m = require('/module'); return m.transform(2);"
-        var result = try context.evalClosure(script, root: rootURL)
+        let script = "var m = require('/module'); m.transform(2);"
+        var result = try context.eval(script, root: rootURL)
         XCTAssertEqual(try result.int, 6);
         
         scriptLoader.scripts["test"] = """
@@ -59,7 +59,7 @@ exports.add = function(x) {
 }
 """
         scriptLoader.didChange?.forEach { $0([url]) }
-        result = try context.evalClosure(script, root: rootURL)
+        result = try context.eval(script, root: rootURL)
         XCTAssertEqual(try result.int, 8);
     }
 }

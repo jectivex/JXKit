@@ -73,13 +73,13 @@ public struct JXError: Error, CustomStringConvertible, @unchecked Sendable {
     @inlinable public static func valueNotFunction(_ value: JXValue) -> JXError {
         return JXError(message: "Expected a JavaScript function but received '\(value)'")
     }
-
-    @inlinable static func valueNotPromise(_ value: JXValue) -> JXError {
-        return JXError(message: "Expected a JavaScript Promise but received '\(value)'")
-    }
     
     @inlinable public static func valueNotSymbol(_ value: JXValue) -> JXError {
         return JXError(message: "Expected a JavaScript symbol but received '\(value)'")
+    }
+    
+    @inlinable static func asyncEvalMustReturnPromise(_ value: JXValue) -> JXError {
+        return JXError(message: "The JavaScript supplied to 'JXContext.eval(...) async' must return a Promise. Returned '\(value)")
     }
     
     @inlinable static func invalidNumericConversion(_ value: JXValue, to number: Double) -> JXError {

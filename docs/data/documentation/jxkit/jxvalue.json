@@ -206,7 +206,6 @@
       "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/addElement(_:)-5lev1",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/addElement(_:)-5ul7f",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/awaitPromise(priority:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/call(withArguments:this:)-1x7gk",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/call(withArguments:this:)-7zt51",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/construct(withArguments:)-4n82x",
@@ -681,73 +680,6 @@
   "title" : "array",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue\/array"
-},
-"doc://JXKit/documentation/JXKit/JXValue/awaitPromise(priority:)": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "awaitPromise"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "priority"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:ScP",
-      "text" : "TaskPriority"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "async"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "throws"
-    },
-    {
-      "kind" : "text",
-      "text" : " -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue\/awaitPromise(priority:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "awaitPromise(priority:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue\/awaitpromise(priority:)"
 },
 "doc://JXKit/documentation/JXKit/JXValue/bool": {
   "abstract" : [

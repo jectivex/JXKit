@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Evaluates the JavaScript.",
+      "text" : "Perform the given code while tracking its access to JavaScript script resource IDs.",
       "type" : "text"
     }
   ],
@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:root:)"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/trackingScriptAccess(perform:)"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC4eval_4this4rootAA7JXValueCSS_AHSg10Foundation3URLVSgtKF",
+    "externalID" : "s:5JXKit9JXContextC20trackingScriptAccess7performShySSG8accessed_x5valuetxyKc_tKlF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,54 +32,27 @@
       },
       {
         "kind" : "identifier",
-        "text" : "eval"
+        "text" : "trackingScriptAccess"
       },
       {
         "kind" : "text",
-        "text" : "("
+        "text" : "<"
       },
       {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:SS",
-        "text" : "String"
+        "kind" : "genericParameter",
+        "text" : "V"
       },
       {
         "kind" : "text",
-        "text" : ", "
+        "text" : ">("
       },
       {
         "kind" : "externalParam",
-        "text" : "this"
+        "text" : "perform"
       },
       {
         "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
-      },
-      {
-        "kind" : "text",
-        "text" : "?, "
-      },
-      {
-        "kind" : "externalParam",
-        "text" : "root"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:10Foundation3URLV",
-        "text" : "URL"
-      },
-      {
-        "kind" : "text",
-        "text" : "?) "
+        "text" : ": () "
       },
       {
         "kind" : "keyword",
@@ -91,8 +64,53 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
+        "text" : "V"
+      },
+      {
+        "kind" : "text",
+        "text" : ") "
+      },
+      {
+        "kind" : "keyword",
+        "text" : "throws"
+      },
+      {
+        "kind" : "text",
+        "text" : " -> (accessed"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:Sh",
+        "text" : "Set"
+      },
+      {
+        "kind" : "text",
+        "text" : "<"
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
+      },
+      {
+        "kind" : "text",
+        "text" : ">, value"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "text" : "V"
+      },
+      {
+        "kind" : "text",
+        "text" : ")"
       }
     ],
     "modules" : [
@@ -103,7 +121,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "eval(_:this:root:)"
+    "title" : "trackingScriptAccess(perform:)"
   },
   "primaryContentSections" : [
     {
@@ -117,14 +135,6 @@
           ],
           "tokens" : [
             {
-              "kind" : "attribute",
-              "text" : "@discardableResult"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
               "kind" : "keyword",
               "text" : "func"
             },
@@ -134,71 +144,35 @@
             },
             {
               "kind" : "identifier",
-              "text" : "eval"
+              "text" : "trackingScriptAccess"
             },
             {
               "kind" : "text",
-              "text" : "("
+              "text" : "<"
+            },
+            {
+              "kind" : "genericParameter",
+              "text" : "V"
+            },
+            {
+              "kind" : "text",
+              "text" : ">("
             },
             {
               "kind" : "externalParam",
-              "text" : "_"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "internalParam",
-              "text" : "script"
+              "text" : "perform"
             },
             {
               "kind" : "text",
               "text" : ": "
             },
             {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:SS",
-              "text" : "String"
+              "kind" : "keyword",
+              "text" : "@escaping"
             },
             {
               "kind" : "text",
-              "text" : ", "
-            },
-            {
-              "kind" : "externalParam",
-              "text" : "this"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
-            },
-            {
-              "kind" : "text",
-              "text" : "? = nil, "
-            },
-            {
-              "kind" : "externalParam",
-              "text" : "root"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:10Foundation3URLV",
-              "text" : "URL"
-            },
-            {
-              "kind" : "text",
-              "text" : "? = nil) "
+              "text" : " () "
             },
             {
               "kind" : "keyword",
@@ -209,46 +183,59 @@
               "text" : " -> "
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
+              "text" : "V"
+            },
+            {
+              "kind" : "text",
+              "text" : ") "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "throws"
+            },
+            {
+              "kind" : "text",
+              "text" : " -> (accessed"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:Sh",
+              "text" : "Set"
+            },
+            {
+              "kind" : "text",
+              "text" : "<"
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : ">, value"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "text" : "V"
+            },
+            {
+              "kind" : "text",
+              "text" : ")"
             }
           ]
         }
       ],
       "kind" : "declarations"
-    },
-    {
-      "kind" : "parameters",
-      "parameters" : [
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "The root of the JavaScript resources, typically ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "Bundle.module.resourceURL",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : " for a Swift package. This is used to locate any scripts referenced via ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "require",
-                  "type" : "codeVoice"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "root"
-        }
-      ]
     }
   ],
   "schemaVersion" : {
@@ -262,7 +249,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/eval(_:this:root:)"
+        "\/documentation\/jxkit\/jxcontext\/trackingscriptaccess(perform:)"
       ],
       "traits" : [
         {
@@ -329,10 +316,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/eval(_:this:root:)": {
+"doc://JXKit/documentation/JXKit/JXContext/trackingScriptAccess(perform:)": {
   "abstract" : [
     {
-      "text" : "Evaluates the JavaScript.",
+      "text" : "Perform the given code while tracking its access to JavaScript script resource IDs.",
       "type" : "text"
     }
   ],
@@ -347,54 +334,27 @@
     },
     {
       "kind" : "identifier",
-      "text" : "eval"
+      "text" : "trackingScriptAccess"
     },
     {
       "kind" : "text",
-      "text" : "("
+      "text" : "<"
     },
     {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
+      "kind" : "genericParameter",
+      "text" : "V"
     },
     {
       "kind" : "text",
-      "text" : ", "
+      "text" : ">("
     },
     {
       "kind" : "externalParam",
-      "text" : "this"
+      "text" : "perform"
     },
     {
       "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    },
-    {
-      "kind" : "text",
-      "text" : "?, "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "root"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:10Foundation3URLV",
-      "text" : "URL"
-    },
-    {
-      "kind" : "text",
-      "text" : "?) "
+      "text" : ": () "
     },
     {
       "kind" : "keyword",
@@ -406,50 +366,61 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/eval(_:this:root:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "eval(_:this:root:)",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/eval(_:this:root:)"
-},
-"doc://JXKit/documentation/JXKit/JXValue": {
-  "abstract" : [
-    {
-      "text" : "A JavaScript object.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
+      "text" : "V"
     },
     {
       "kind" : "text",
-      "text" : " "
+      "text" : ") "
     },
     {
-      "kind" : "identifier",
-      "text" : "JXValue"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
-  "kind" : "symbol",
-  "navigatorTitle" : [
+      "kind" : "keyword",
+      "text" : "throws"
+    },
     {
-      "kind" : "identifier",
-      "text" : "JXValue"
+      "kind" : "text",
+      "text" : " -> (accessed"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sh",
+      "text" : "Set"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ">, value"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "V"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
     }
   ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/trackingScriptAccess(perform:)",
+  "kind" : "symbol",
   "role" : "symbol",
-  "title" : "JXValue",
+  "title" : "trackingScriptAccess(perform:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxvalue"
+  "url" : "\/documentation\/jxkit\/jxcontext\/trackingscriptaccess(perform:)"
 }
 }
 }

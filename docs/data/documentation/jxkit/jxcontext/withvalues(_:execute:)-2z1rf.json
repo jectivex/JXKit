@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Evaluate the given JavaScript as a closure, giving it its own scope for local functions and vars.",
+      "text" : "Makes the given values available as properties on the global object during the execution of the code within the given closure.",
       "type" : "text"
     }
   ],
@@ -15,12 +15,12 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/evalClosure(resource:withArguments:this:root:)-2ojw5"
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-2z1rf"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "JXKit",
-    "externalID" : "s:5JXKit9JXContextC11evalClosure8resource13withArguments4this4rootAA7JXValueCSS_SayypSgGAJSg10Foundation3URLVtKF",
+    "externalID" : "s:5JXKit9JXContextC10withValues_7executexSayAA7JXValueCG_xyKXEtKlF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,52 +32,19 @@
       },
       {
         "kind" : "identifier",
-        "text" : "evalClosure"
+        "text" : "withValues"
       },
       {
         "kind" : "text",
-        "text" : "("
+        "text" : "<"
       },
       {
-        "kind" : "externalParam",
-        "text" : "resource"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:SS",
-        "text" : "String"
+        "kind" : "genericParameter",
+        "text" : "R"
       },
       {
         "kind" : "text",
-        "text" : ", "
-      },
-      {
-        "kind" : "externalParam",
-        "text" : "withArguments"
-      },
-      {
-        "kind" : "text",
-        "text" : ": ["
-      },
-      {
-        "kind" : "keyword",
-        "text" : "Any"
-      },
-      {
-        "kind" : "text",
-        "text" : "?], "
-      },
-      {
-        "kind" : "externalParam",
-        "text" : "this"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
+        "text" : ">(["
       },
       {
         "kind" : "typeIdentifier",
@@ -86,24 +53,15 @@
       },
       {
         "kind" : "text",
-        "text" : "?, "
+        "text" : "], "
       },
       {
         "kind" : "externalParam",
-        "text" : "root"
+        "text" : "execute"
       },
       {
         "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:10Foundation3URLV",
-        "text" : "URL"
-      },
-      {
-        "kind" : "text",
-        "text" : ") "
+        "text" : ": () "
       },
       {
         "kind" : "keyword",
@@ -115,8 +73,23 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5JXKit7JXValueC",
-        "text" : "JXValue"
+        "text" : "R"
+      },
+      {
+        "kind" : "text",
+        "text" : ") "
+      },
+      {
+        "kind" : "keyword",
+        "text" : "rethrows"
+      },
+      {
+        "kind" : "text",
+        "text" : " -> "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "text" : "R"
       }
     ],
     "modules" : [
@@ -127,7 +100,7 @@
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
-    "title" : "evalClosure(resource:withArguments:this:root:)"
+    "title" : "withValues(_:execute:)"
   },
   "primaryContentSections" : [
     {
@@ -158,32 +131,23 @@
             },
             {
               "kind" : "identifier",
-              "text" : "evalClosure"
+              "text" : "withValues"
             },
             {
               "kind" : "text",
-              "text" : "("
+              "text" : "<"
+            },
+            {
+              "kind" : "genericParameter",
+              "text" : "R"
+            },
+            {
+              "kind" : "text",
+              "text" : ">("
             },
             {
               "kind" : "externalParam",
-              "text" : "resource"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:SS",
-              "text" : "String"
-            },
-            {
-              "kind" : "text",
-              "text" : ", "
-            },
-            {
-              "kind" : "externalParam",
-              "text" : "withArguments"
+              "text" : "_"
             },
             {
               "kind" : "text",
@@ -191,27 +155,11 @@
             },
             {
               "kind" : "internalParam",
-              "text" : "arguments"
+              "text" : "values"
             },
             {
               "kind" : "text",
               "text" : ": ["
-            },
-            {
-              "kind" : "keyword",
-              "text" : "Any"
-            },
-            {
-              "kind" : "text",
-              "text" : "?], "
-            },
-            {
-              "kind" : "externalParam",
-              "text" : "this"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
             },
             {
               "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
@@ -221,24 +169,15 @@
             },
             {
               "kind" : "text",
-              "text" : "? = nil, "
+              "text" : "], "
             },
             {
               "kind" : "externalParam",
-              "text" : "root"
+              "text" : "execute"
             },
             {
               "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:10Foundation3URLV",
-              "text" : "URL"
-            },
-            {
-              "kind" : "text",
-              "text" : ") "
+              "text" : ": () "
             },
             {
               "kind" : "keyword",
@@ -249,10 +188,24 @@
               "text" : " -> "
             },
             {
-              "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5JXKit7JXValueC",
-              "text" : "JXValue"
+              "text" : "R"
+            },
+            {
+              "kind" : "text",
+              "text" : ") "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "rethrows"
+            },
+            {
+              "kind" : "text",
+              "text" : " -> "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "text" : "R"
             }
           ]
         }
@@ -270,23 +223,7 @@
         {
           "inlineContent" : [
             {
-              "text" : "The value you ",
-              "type" : "text"
-            },
-            {
-              "code" : "return",
-              "type" : "codeVoice"
-            },
-            {
-              "text" : " from the given JavaScript, otherwise ",
-              "type" : "text"
-            },
-            {
-              "code" : "undefined",
-              "type" : "codeVoice"
-            },
-            {
-              "text" : ".",
+              "text" : "The result of the closure.",
               "type" : "text"
             }
           ],
@@ -303,88 +240,28 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "The JavaScript code to evaluate.",
+                  "text" : "Values to set on the global object. The values will be named $0, $1, $2, …",
                   "type" : "text"
                 }
               ],
               "type" : "paragraph"
             }
           ],
-          "name" : "script"
+          "name" : "values"
         },
         {
           "content" : [
             {
               "inlineContent" : [
                 {
-                  "text" : "Array of values to make available to the script as $0, $1, etc.",
+                  "text" : "The code to execute using the given values.",
                   "type" : "text"
                 }
               ],
               "type" : "paragraph"
             }
           ],
-          "name" : "arguments"
-        },
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "Substitute a custom value to act as JavaScript ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "this",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : " for the evaluation.",
-                  "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "this"
-        },
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "The root of the JavaScript resources, typically ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "Bundle.main.resourceURL",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : " or ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "Bundle.module.resourceURL",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : ". This is used to locate any scripts referenced via ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "require",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : ".",
-                  "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "root"
+          "name" : "execute"
         }
       ]
     }
@@ -400,7 +277,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/jxkit\/jxcontext\/evalclosure(resource:witharguments:this:root:)-2ojw5"
+        "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-2z1rf"
       ],
       "traits" : [
         {
@@ -467,10 +344,10 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxcontext"
 },
-"doc://JXKit/documentation/JXKit/JXContext/evalClosure(resource:withArguments:this:root:)-2ojw5": {
+"doc://JXKit/documentation/JXKit/JXContext/withValues(_:execute:)-2z1rf": {
   "abstract" : [
     {
-      "text" : "Evaluate the given JavaScript as a closure, giving it its own scope for local functions and vars.",
+      "text" : "Makes the given values available as properties on the global object during the execution of the code within the given closure.",
       "type" : "text"
     }
   ],
@@ -485,52 +362,19 @@
     },
     {
       "kind" : "identifier",
-      "text" : "evalClosure"
+      "text" : "withValues"
     },
     {
       "kind" : "text",
-      "text" : "("
+      "text" : "<"
     },
     {
-      "kind" : "externalParam",
-      "text" : "resource"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
+      "kind" : "genericParameter",
+      "text" : "R"
     },
     {
       "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "withArguments"
-    },
-    {
-      "kind" : "text",
-      "text" : ": ["
-    },
-    {
-      "kind" : "keyword",
-      "text" : "Any"
-    },
-    {
-      "kind" : "text",
-      "text" : "?], "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "this"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
+      "text" : ">(["
     },
     {
       "kind" : "typeIdentifier",
@@ -539,24 +383,15 @@
     },
     {
       "kind" : "text",
-      "text" : "?, "
+      "text" : "], "
     },
     {
       "kind" : "externalParam",
-      "text" : "root"
+      "text" : "execute"
     },
     {
       "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:10Foundation3URLV",
-      "text" : "URL"
-    },
-    {
-      "kind" : "text",
-      "text" : ") "
+      "text" : ": () "
     },
     {
       "kind" : "keyword",
@@ -568,16 +403,31 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5JXKit7JXValueC",
-      "text" : "JXValue"
+      "text" : "R"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "rethrows"
+    },
+    {
+      "kind" : "text",
+      "text" : " -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "R"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/evalClosure(resource:withArguments:this:root:)-2ojw5",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/withValues(_:execute:)-2z1rf",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "evalClosure(resource:withArguments:this:root:)",
+  "title" : "withValues(_:execute:)",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxcontext\/evalclosure(resource:witharguments:this:root:)-2ojw5"
+  "url" : "\/documentation\/jxkit\/jxcontext\/withvalues(_:execute:)-2z1rf"
 },
 "doc://JXKit/documentation/JXKit/JXValue": {
   "abstract" : [

@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Listen for changes to JavaScript script  IDs, if change monitoring is supported by the ",
+      "text" : "Listen for changes to JavaScript script resource IDs, if change monitoring is supported by the ",
       "type" : "text"
     },
     {
@@ -310,7 +310,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/onScriptsDidChange(perform:)": {
   "abstract" : [
     {
-      "text" : "Listen for changes to JavaScript script  IDs, if change monitoring is supported by the ",
+      "text" : "Listen for changes to JavaScript script resource IDs, if change monitoring is supported by the ",
       "type" : "text"
     },
     {

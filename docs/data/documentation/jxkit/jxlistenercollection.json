@@ -168,12 +168,6 @@
     },
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXListenerCollection\/isEmpty"
-      ],
-      "title" : "Instance Properties"
-    },
-    {
-      "identifiers" : [
         "doc:\/\/JXKit\/documentation\/JXKit\/JXListenerCollection\/add(_:)",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXListenerCollection\/forEach(perform:)"
       ],
@@ -376,43 +370,6 @@
   "title" : "init()",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxlistenercollection\/init()"
-},
-"doc://JXKit/documentation/JXKit/JXListenerCollection/isEmpty": {
-  "abstract" : [
-    {
-      "text" : "Whether there are no listeners.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "var"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "isEmpty"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    }
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXListenerCollection\/isEmpty",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "isEmpty",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxlistenercollection\/isempty"
 }
 }
 }
