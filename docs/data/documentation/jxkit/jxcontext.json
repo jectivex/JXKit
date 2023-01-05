@@ -1592,7 +1592,7 @@
 "doc://JXKit/documentation/JXKit/JXContext/evalClosure(resource:withArguments:this:root:)-8u9zm": {
   "abstract" : [
     {
-      "text" : "Evaluate the given JavaScript as a clsoure, giving it its own scope for local functions and vars.",
+      "text" : "Evaluate the given JavaScript as a closure, giving it its own scope for local functions and vars.",
       "type" : "text"
     }
   ],
