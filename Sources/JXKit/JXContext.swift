@@ -124,7 +124,7 @@ extension JXContext {
         return try scriptManager.evalClosure(source: script, type: .inline, withArguments: arguments, this: this, root: root)
     }
 
-    /// Evaluate the given JavaScript as a clsoure, giving it its own scope for local functions and vars.
+    /// Evaluate the given JavaScript as a closure, giving it its own scope for local functions and vars.
     ///
     /// - Parameters:
     ///   - script: The JavaScript code to evaluate.
