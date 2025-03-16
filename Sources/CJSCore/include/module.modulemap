@@ -1,5 +1,5 @@
 module CJSCore [system] [extern_c] {
-    umbrella header "/usr/include/webkitgtk-4.0/JavaScriptCore/JavaScript.h"
-    link "javascriptcoregtk-4.0"
+    umbrella header "/usr/include/webkitgtk-4.1/JavaScriptCore/JavaScript.h"
+    link "javascriptcoregtk-4.1"
     export *
 }

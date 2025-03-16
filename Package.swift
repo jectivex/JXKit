@@ -22,8 +22,8 @@ let targets: [Target] = [
 #else // No native JavaScriptCore falls back to javascriptcoregtk
 let targets: [Target] = [
     .systemLibrary(name: "CJSCore", 
-        pkgConfig: "javascriptcoregtk-4.0", 
-        providers: [.apt(["libjavascriptcoregtk-4.0-dev"]), .yum(["webkit2gtk"])]),
+        pkgConfig: "javascriptcoregtk-4.1", 
+        providers: [.apt(["libjavascriptcoregtk-4.1-dev"]), .yum(["webkit2gtk"])]),
     .target(name: "JXKit", dependencies: ["CJSCore"], resources: [.process("Resources")])
 ]
 #endif
