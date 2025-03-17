@@ -2,10 +2,10 @@ name: JXKit CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
     branches:
-      - '*'
+      - "*"
   workflow_dispatch:
 
 env:
@@ -30,18 +30,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Test (Debug)
-        run: xcodebuild clean test -configuration Debug -scheme "JXKit" -sdk "iphonesimulator" -destination "platform=iOS Simulator,name=iPhone 14 Pro" 
+        run: xcodebuild clean test -configuration Debug -scheme "JXKit" -sdk "iphonesimulator" -destination "platform=iOS Simulator,name=iPhone 14 Pro"
       - name: Test (Release)
-        run: xcodebuild clean test -configuration Release -scheme "JXKit" -sdk "iphonesimulator" -destination "platform=iOS Simulator,name=iPhone 14 Pro" 
+        run: xcodebuild clean test -configuration Release -scheme "JXKit" -sdk "iphonesimulator" -destination "platform=iOS Simulator,name=iPhone 14 Pro"
 
   tvos:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Test (Debug)
-        run: xcodebuild clean test -configuration Debug -scheme "JXKit" -sdk "appletvsimulator" -destination "platform=tvOS Simulator,name=Apple TV" 
+        run: xcodebuild clean test -configuration Debug -scheme "JXKit" -sdk "appletvsimulator" -destination "platform=tvOS Simulator,name=Apple TV"
       - name: Test (Release)
-        run: xcodebuild clean test -configuration Release -scheme "JXKit" -sdk "appletvsimulator" -destination "platform=tvOS Simulator,name=Apple TV" 
+        run: xcodebuild clean test -configuration Release -scheme "JXKit" -sdk "appletvsimulator" -destination "platform=tvOS Simulator,name=Apple TV"
 
   macos:
     runs-on: macos-latest
@@ -77,6 +77,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: '.'
-
-
+          publish_dir: "."
