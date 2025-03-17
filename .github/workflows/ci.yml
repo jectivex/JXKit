@@ -8,9 +8,6 @@ on:
       - "*"
   workflow_dispatch:
 
-env:
-  DEVELOPER_DIR: /Applications/Xcode_14.1.app/Contents/Developer
-
 jobs:
   linux:
     runs-on: ubuntu-latest
