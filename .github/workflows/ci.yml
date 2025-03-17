@@ -2,16 +2,11 @@ name: JXKit CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
     branches:
-      - '*'
-  schedule:
-    # run at 9AM & 9PM UTC
-    - cron:  '0 9,21 * * *'
-
-env:
-  DEVELOPER_DIR: /Applications/Xcode_14.1.app/Contents/Developer
+      - "*"
+  workflow_dispatch:
 
 jobs:
   linux:
@@ -19,8 +14,8 @@ jobs:
     steps:
       - run: sudo apt-get update
       - name: Install dependencies
-        run: sudo apt-get install -y libjavascriptcoregtk-4.0-dev
-      - run: pkg-config --libs javascriptcoregtk-4.0
+        run: sudo apt-get install -y libjavascriptcoregtk-4.1-dev
+      - run: pkg-config --libs javascriptcoregtk-4.1
       - uses: actions/checkout@v2
       - name: Test (Debug)
         run: swift test --configuration debug
@@ -28,25 +23,25 @@ jobs:
         run: swift test --configuration release -Xswiftc -enable-testing
 
   ios:
-    runs-on: macos-12
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Test (Debug)
-        run: xcodebuild clean test -configuration Debug -scheme "JXKit" -sdk "iphonesimulator" -destination "platform=iOS Simulator,name=iPhone 14 Pro" 
+        run: xcodebuild clean test -configuration Debug -scheme "JXKit" -sdk "iphonesimulator" -destination "platform=iOS Simulator,name=iPhone 16 Pro"
       - name: Test (Release)
-        run: xcodebuild clean test -configuration Release -scheme "JXKit" -sdk "iphonesimulator" -destination "platform=iOS Simulator,name=iPhone 14 Pro" 
+        run: xcodebuild clean test -configuration Release -scheme "JXKit" -sdk "iphonesimulator" -destination "platform=iOS Simulator,name=iPhone 16 Pro"
 
   tvos:
-    runs-on: macos-12
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Test (Debug)
-        run: xcodebuild clean test -configuration Debug -scheme "JXKit" -sdk "appletvsimulator" -destination "platform=tvOS Simulator,name=Apple TV" 
+        run: xcodebuild clean test -configuration Debug -scheme "JXKit" -sdk "appletvsimulator" -destination "platform=tvOS Simulator,name=Apple TV"
       - name: Test (Release)
-        run: xcodebuild clean test -configuration Release -scheme "JXKit" -sdk "appletvsimulator" -destination "platform=tvOS Simulator,name=Apple TV" 
+        run: xcodebuild clean test -configuration Release -scheme "JXKit" -sdk "appletvsimulator" -destination "platform=tvOS Simulator,name=Apple TV"
 
   macos:
-    runs-on: macos-12
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Test (Debug)
@@ -55,7 +50,7 @@ jobs:
         run: swift test --configuration release -Xswiftc -enable-testing
 
   api-doc:
-    runs-on: macos-12 # needed to be able to document SwiftUI
+    runs-on: macos-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v2
@@ -79,6 +74,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: '.'
-
-
+          publish_dir: "."

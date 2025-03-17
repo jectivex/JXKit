@@ -48,12 +48,7 @@ final class JXKitTests: XCTestCase {
         XCTAssertEqual("65.4", try jxc.eval("new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(65.4321)").string)
 
         let yen = "new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(45.678)"
-        // I'm guessing these are different values because they use combining marks differently
-#if os(Linux)
-        XCTAssertEqual("￥46", try jxc.eval(yen).string)
-#else
         XCTAssertEqual("¥46", try jxc.eval(yen).string)
-#endif
 
         XCTAssertEqual("10/24/2022", try jxc.eval("new Intl.DateTimeFormat('en-US', {timeZone: 'UTC'}).format(new Date('2022-10-24'))").string)
         XCTAssertEqual("24/10/2022", try jxc.eval("new Intl.DateTimeFormat('fr-FR', {timeZone: 'UTC'}).format(new Date('2022-10-24'))").string)
