@@ -11,6 +11,9 @@ import CJSCore
 open class JXContext {
     /// Context configuration.
     public struct Configuration {
+        /// Configure the default configuration for new contexts.
+        public static var `default` = Configuration()
+
         /// Whether scripts evaluated by this context should be assessed in `strict` mode. Defaults to `true`.
         public var strict: Bool
         
@@ -50,11 +53,11 @@ open class JXContext {
     public let contextRef: JSGlobalContextRef
 
     private lazy var scriptManager = ScriptManager(context: self)
-    private var strictEvaluated = false
+    private var evalInitialized = false
     private var tryingRecursionGuard = false
 
     /// Class for instances that can hold references to peers (which ``JSObjectGetPrivate`` needs to work)
-    @usableFromInline lazy var peerClass: JSClassRef = {
+    lazy var peerClass: JSClassRef = {
         var def = JSClassDefinition()
         def.finalize = {
             if let ptr = JSObjectGetPrivate($0) {
@@ -75,7 +78,7 @@ open class JXContext {
     /// - Parameters:
     ///   - vm: The shared virtual machine to use; defaults  to creating a new VM per context.
     ///   - configuration: Context configuration.
-    public init(vm: JXVM = JXVM(), configuration: Configuration = Configuration()) {
+    public init(vm: JXVM = JXVM(), configuration: Configuration = .default) {
         self.vm = vm
         self.contextRef = JSGlobalContextCreateInGroup(vm.groupRef, nil)
         self.configuration = configuration
@@ -195,7 +198,7 @@ extension JXContext {
             let script = useStrict.withCString(JSStringCreateWithUTF8CString)
             defer { JSStringRelease(script) }
             let _ = try trying {
-                JSEvaluateScript(contextRef, script, this?.valueRef, nil, 0, $0)
+                JSEvaluateScript(contextRef, script, nil, nil, 0, $0)
             }
             strictEvaluated = true
         }
@@ -216,6 +219,8 @@ extension JXContext {
         } catch {
             throw JXError(cause: error, script: script)
         }
+        try global["console"].setProperty("log", log)
+        evalInitialized = true
     }
     
     /// Checks for syntax errors in a string of JavaScript.
@@ -350,42 +355,42 @@ extension JXContext {
     }
 
     /// Creates a new `null` instance in the context.
-    @inlinable public func null() -> JXValue {
+    public func null() -> JXValue {
         JXValue(nullIn: self)
     }
 
     /// Creates a new `undefined` instance in the context.
-    @inlinable public func undefined() -> JXValue {
+    public func undefined() -> JXValue {
         JXValue(undefinedIn: self)
     }
 
     /// Creates a new boolean with the given value in the context.
-    @inlinable public func boolean(_ value: Bool) -> JXValue {
+    public func boolean(_ value: Bool) -> JXValue {
         JXValue(bool: value, in: self)
     }
 
     /// Creates a new number with the given value in the context.
-    @inlinable public func number<F: BinaryFloatingPoint>(_ value: F) -> JXValue {
+    public func number<F: BinaryFloatingPoint>(_ value: F) -> JXValue {
         JXValue(double: Double(value), in: self)
     }
 
     /// Creates a new number with the given value in the context.
-    @inlinable public func number<I: BinaryInteger>(_ value: I) -> JXValue {
+    public func number<I: BinaryInteger>(_ value: I) -> JXValue {
         JXValue(double: Double(value), in: self)
     }
 
     /// Creates a new string with the given value in the context.
-    @inlinable public func string<S: StringProtocol>(_ value: S) -> JXValue {
+    public func string<S: StringProtocol>(_ value: S) -> JXValue {
         JXValue(string: String(value), in: self)
     }
 
     /// Creates a new Symbol with the given name in the context.
-    @inlinable public func symbol<S: StringProtocol>(_ value: S) -> JXValue {
+    public func symbol<S: StringProtocol>(_ value: S) -> JXValue {
         JXValue(symbol: String(value), in: self)
     }
 
     /// Creates a new object in this context and assigns it the given peer object.
-    @inlinable public func object(peer: AnyObject? = nil) -> JXValue {
+    public func object(peer: AnyObject? = nil) -> JXValue {
         guard let peer = peer else {
             return JXValue(newObjectIn: self)
         }
@@ -400,7 +405,7 @@ extension JXContext {
     ///
     /// - Parameters:
     ///   - properties: A dictionary of properties, such as that created by `JXValue.dictionary`.
-    @inlinable public func object(fromDictionary properties: [String: JXValue]) throws -> JXValue {
+    public func object(fromDictionary properties: [String: JXValue]) throws -> JXValue {
         let object = self.object()
         try properties.forEach { entry in
             try object.setProperty(entry.key, entry.value)
@@ -409,7 +414,7 @@ extension JXContext {
     }
 
     /// Creates an object with the given dictionary of properties.
-    @inlinable public func object(fromDictionary properties: [String: Any]) throws -> JXValue {
+    public func object(fromDictionary properties: [String: Any]) throws -> JXValue {
         let jxproperties = try properties.reduce(into: [:]) { result, entry in
             result[entry.key] = try convey(entry.value)
         }
@@ -433,13 +438,13 @@ extension JXContext {
     /// - Parameters:
     ///   - typeName: Class or constructor function name.
     ///   - arguments: The arguments to pass to the constructor. The arguments will be `conveyed` to `JXValues`.
-    @inlinable public func `new`(_ typeName: String, withArguments arguments: [Any]) throws -> JXValue {
+    public func `new`(_ typeName: String, withArguments arguments: [Any]) throws -> JXValue {
         let jxarguments = try arguments.map { try convey($0) }
         return try self.new(typeName, withArguments: jxarguments)
     }
 
     /// Creates a new array in this context.
-    @inlinable public func array(_ values: [JXValue]) throws -> JXValue {
+    public func array(_ values: [JXValue]) throws -> JXValue {
         let array = try JXValue(newArrayIn: self)
         for (index, value) in values.enumerated() {
             try array.setElement(value, at: index)
@@ -448,23 +453,23 @@ extension JXContext {
     }
 
     /// Creates a new array in this context.
-    @inlinable public func array(_ values: [Any]) throws -> JXValue {
+    public func array(_ values: [Any]) throws -> JXValue {
         let jxvalues = try values.map { try convey($0) }
         return try array(jxvalues)
     }
 
-    @inlinable public func date(_ value: Date) throws -> JXValue {
+    public func date(_ value: Date) throws -> JXValue {
         try JXValue(date: value, in: self)
     }
 
-    @inlinable public func data<D: DataProtocol>(_ value: D) throws -> JXValue {
+    public func data<D: DataProtocol>(_ value: D) throws -> JXValue {
         try JXValue(newArrayBufferWithBytes: value, in: self)
     }
 
     /// Create a JavaScript Error with the given cause.
     ///
     /// - Seealso: ``JXValue/cause``
-    @inlinable public func error<E: Error>(_ error: E) throws -> JXValue {
+    public func error<E: Error>(_ error: E) throws -> JXValue {
         try JXValue(newErrorFromCause: error, in: self)
     }
 
@@ -504,7 +509,7 @@ extension JXContext {
     /// - Parameters:
     ///   - string: The JSON string to parse.
     /// - Returns: The value if it could be created.
-    @inlinable public func json(_ string: String) throws -> JXValue {
+    public func json(_ string: String) throws -> JXValue {
         if let value = JXValue(json: string, in: self) {
             return value
         }
@@ -514,7 +519,7 @@ extension JXContext {
     /// Attempts the operation whose failure is expected to set the given error pointer.
     ///
     /// When the error pointer is set, a ``JXError`` will be thrown.
-    @usableFromInline internal func trying<T>(function: (UnsafeMutablePointer<JSValueRef?>) throws -> T?) throws -> T! {
+    func trying<T>(function: (UnsafeMutablePointer<JSValueRef?>) throws -> T?) throws -> T! {
         var errorPointer: JSValueRef?
         let result = try function(&errorPointer)
         if let errorPointer = errorPointer {

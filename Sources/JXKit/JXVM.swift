@@ -14,7 +14,7 @@ import Glibc
 ///
 /// - Note: This wraps a `JSContextGroupRef`, and is the equivalent of `JavaScriptCore.JSVirtualMachine`
 public final class JXVM {
-    @usableFromInline let groupRef: JSContextGroupRef
+    let groupRef: JSContextGroupRef
 
     public init() {
         self.groupRef = JSContextGroupCreate()

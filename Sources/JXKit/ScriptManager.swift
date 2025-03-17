@@ -193,8 +193,6 @@ final class ScriptManager {
         guard !requireFunctionInitialized else {
             return
         }
-        requireFunctionInitialized = true
-        
         guard let context else {
             throw JXError.contextDeallocated()
         }
@@ -209,6 +207,7 @@ final class ScriptManager {
         }
         try context.global.setProperty("require", require)
         try context.global.setProperty(Self.moduleExportsCacheObject, context.object())
+        requireFunctionInitialized = true
     }
     
     /// Logic for the `require` JavaScript module function.

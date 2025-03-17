@@ -156,4 +156,5 @@ Projects that are based on JXKit:
 
 ## TODO
 
+- Consider evalClosureAsync variant for async code.
 - Better reporting of errors from async code / Promises.

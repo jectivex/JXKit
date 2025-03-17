@@ -2,8 +2,8 @@
 public struct JXProperty {
     public let value: JXValue?
     public let writable: Bool?
-    @usableFromInline internal let _getter: JXValue?
-    @usableFromInline internal let _setter: JXValue?
+    let _getter: JXValue?
+    let _setter: JXValue?
     public let getter: ((JXValue) throws -> JXValue)?
     public let setter: ((JXValue, JXValue) throws -> Void)?
     public var configurable: Bool? = nil
@@ -85,7 +85,7 @@ extension JXValue {
     ///   - property: The property's key, which can either be a string or a symbol.
     ///   - descriptor: The descriptor object.
     /// - Returns: the key for the property that was defined
-    @inlinable public func defineProperty(_ property: JXValue, _ descriptor: JXProperty) throws {
+    public func defineProperty(_ property: JXValue, _ descriptor: JXProperty) throws {
         let desc = JXValue(newObjectIn: context)
 
         if let value = descriptor.value {
