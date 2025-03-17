@@ -260,42 +260,6 @@
       "kind" : "declarations"
     },
     {
-      "content" : [
-        {
-          "anchor" : "return-value",
-          "level" : 2,
-          "text" : "Return Value",
-          "type" : "heading"
-        },
-        {
-          "inlineContent" : [
-            {
-              "text" : "The value you ",
-              "type" : "text"
-            },
-            {
-              "code" : "return",
-              "type" : "codeVoice"
-            },
-            {
-              "text" : " from the given JavaScript, otherwise ",
-              "type" : "text"
-            },
-            {
-              "code" : "undefined",
-              "type" : "codeVoice"
-            },
-            {
-              "text" : ".",
-              "type" : "text"
-            }
-          ],
-          "type" : "paragraph"
-        }
-      ],
-      "kind" : "content"
-    },
-    {
       "kind" : "parameters",
       "parameters" : [
         {
@@ -373,6 +337,42 @@
           "name" : "root"
         }
       ]
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "return-value",
+          "level" : 2,
+          "text" : "Return Value",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "The value you ",
+              "type" : "text"
+            },
+            {
+              "code" : "return",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " from the given JavaScript, otherwise ",
+              "type" : "text"
+            },
+            {
+              "code" : "undefined",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : ".",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
     }
   ],
   "schemaVersion" : {

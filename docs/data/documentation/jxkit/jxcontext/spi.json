@@ -35,7 +35,7 @@
       },
       {
         "kind" : "text",
-        "text" : ": "
+        "text" : ": (any "
       },
       {
         "kind" : "typeIdentifier",
@@ -44,7 +44,7 @@
       },
       {
         "kind" : "text",
-        "text" : "?"
+        "text" : ")?"
       }
     ],
     "modules" : [
@@ -82,7 +82,7 @@
             },
             {
               "kind" : "text",
-              "text" : ": "
+              "text" : ": (any "
             },
             {
               "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContextSPI",
@@ -92,7 +92,7 @@
             },
             {
               "kind" : "text",
-              "text" : "?"
+              "text" : ")?"
             }
           ]
         }
@@ -200,7 +200,7 @@
     },
     {
       "kind" : "text",
-      "text" : ": "
+      "text" : ": (any "
     },
     {
       "kind" : "typeIdentifier",
@@ -209,7 +209,7 @@
     },
     {
       "kind" : "text",
-      "text" : "?"
+      "text" : ")?"
     }
   ],
   "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXContext\/spi",

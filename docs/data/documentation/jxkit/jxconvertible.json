@@ -81,7 +81,23 @@
   "relationshipsSections" : [
     {
       "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue"
+        "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/Array",
+        "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/Bool",
+        "doc:\/\/JXKit\/documentation\/JXKit\/CoreFoundation\/CGFloat",
+        "doc:\/\/JXKit\/documentation\/JXKit\/Foundation\/Data",
+        "doc:\/\/JXKit\/documentation\/JXKit\/Foundation\/Date",
+        "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/Dictionary",
+        "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/Double",
+        "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/Float",
+        "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/Int",
+        "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/Int32",
+        "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/Int64",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXValue",
+        "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/Optional",
+        "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/String",
+        "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/UInt",
+        "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/UInt32",
+        "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/UInt64"
       ],
       "kind" : "relationships",
       "title" : "Conforming Types",
@@ -137,6 +153,102 @@
   "title" : "JXKit",
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
+},
+"doc://JXKit/documentation/JXKit/CoreFoundation/CGFloat": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:14CoreFoundation7CGFloatV",
+      "text" : "CGFloat"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/CoreFoundation\/CGFloat",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "CGFloat"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "CGFloat",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/corefoundation\/cgfloat"
+},
+"doc://JXKit/documentation/JXKit/Foundation/Data": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:10Foundation4DataV",
+      "text" : "Data"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/Foundation\/Data",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Data"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Data",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/foundation\/data"
+},
+"doc://JXKit/documentation/JXKit/Foundation/Date": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:10Foundation4DateV",
+      "text" : "Date"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/Foundation\/Date",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Date"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Date",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/foundation\/date"
 },
 "doc://JXKit/documentation/JXKit/JXConvertible": {
   "abstract" : [
@@ -338,6 +450,454 @@
   "title" : "JXValue",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxvalue"
+},
+"doc://JXKit/documentation/JXKit/Swift/Array": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:Sa",
+      "text" : "Array"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/Array",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Array"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Array",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/swift\/array"
+},
+"doc://JXKit/documentation/JXKit/Swift/Bool": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/Bool",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Bool"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Bool",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/swift\/bool"
+},
+"doc://JXKit/documentation/JXKit/Swift/Dictionary": {
+  "abstract" : [
+
+  ],
+  "conformance" : {
+    "availabilityPrefix" : [
+      {
+        "text" : "Available when",
+        "type" : "text"
+      }
+    ],
+    "conformancePrefix" : [
+      {
+        "text" : "Conforms when",
+        "type" : "text"
+      }
+    ],
+    "constraints" : [
+      {
+        "code" : "Key",
+        "type" : "codeVoice"
+      },
+      {
+        "text" : " is ",
+        "type" : "text"
+      },
+      {
+        "code" : "String",
+        "type" : "codeVoice"
+      },
+      {
+        "text" : ".",
+        "type" : "text"
+      }
+    ]
+  },
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:SD",
+      "text" : "Dictionary"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/Dictionary",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Dictionary"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Dictionary",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/swift\/dictionary"
+},
+"doc://JXKit/documentation/JXKit/Swift/Double": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:Sd",
+      "text" : "Double"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/Double",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Double"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Double",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/swift\/double"
+},
+"doc://JXKit/documentation/JXKit/Swift/Float": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:Sf",
+      "text" : "Float"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/Float",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Float"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Float",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/swift\/float"
+},
+"doc://JXKit/documentation/JXKit/Swift/Int": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/Int",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Int"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Int",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/swift\/int"
+},
+"doc://JXKit/documentation/JXKit/Swift/Int32": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:s5Int32V",
+      "text" : "Int32"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/Int32",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Int32"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Int32",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/swift\/int32"
+},
+"doc://JXKit/documentation/JXKit/Swift/Int64": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:s5Int64V",
+      "text" : "Int64"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/Int64",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Int64"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Int64",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/swift\/int64"
+},
+"doc://JXKit/documentation/JXKit/Swift/Optional": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:Sq",
+      "text" : "Optional"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/Optional",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Optional"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Optional",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/swift\/optional"
+},
+"doc://JXKit/documentation/JXKit/Swift/String": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/String",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "String"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "String",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/swift\/string"
+},
+"doc://JXKit/documentation/JXKit/Swift/UInt": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:Su",
+      "text" : "UInt"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/UInt",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "UInt"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "UInt",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/swift\/uint"
+},
+"doc://JXKit/documentation/JXKit/Swift/UInt32": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:s6UInt32V",
+      "text" : "UInt32"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/UInt32",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "UInt32"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "UInt32",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/swift\/uint32"
+},
+"doc://JXKit/documentation/JXKit/Swift/UInt64": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:s6UInt64V",
+      "text" : "UInt64"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/Swift\/UInt64",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "UInt64"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "UInt64",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/swift\/uint64"
 }
 }
 }

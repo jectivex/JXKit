@@ -83,7 +83,10 @@
     ],
     "modules" : [
       {
-        "name" : "JXKit"
+        "name" : "JXKit",
+        "relatedModules" : [
+          "Swift"
+        ]
       }
     ],
     "role" : "symbol",

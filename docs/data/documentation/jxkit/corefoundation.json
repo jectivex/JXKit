@@ -1,0 +1,114 @@
+{
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/JXKit\/documentation\/JXKit"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/JXKit\/documentation\/JXKit\/CoreFoundation"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:m:s:e:s:14CoreFoundation7CGFloatV5JXKitE6fromJXyAcD7JXValueCKFZ",
+    "modules" : [
+      {
+        "name" : "JXKit"
+      }
+    ],
+    "role" : "collection",
+    "roleHeading" : "Extended Module",
+    "symbolKind" : "extension",
+    "title" : "CoreFoundation"
+  },
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "topicSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/CoreFoundation\/CGFloat"
+      ],
+      "title" : "Extended Structures"
+    }
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/jxkit\/corefoundation"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://JXKit/documentation/JXKit": {
+  "abstract" : [
+    {
+      "text" : "Cross-platform interface to JavaScriptCore in fluent Swift.",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "JXKit",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit"
+},
+"doc://JXKit/documentation/JXKit/CoreFoundation": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/CoreFoundation",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "CoreFoundation",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/corefoundation"
+},
+"doc://JXKit/documentation/JXKit/CoreFoundation/CGFloat": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:14CoreFoundation7CGFloatV",
+      "text" : "CGFloat"
+    }
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/CoreFoundation\/CGFloat",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "CGFloat"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "CGFloat",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/corefoundation\/cgfloat"
+}
+}
+}

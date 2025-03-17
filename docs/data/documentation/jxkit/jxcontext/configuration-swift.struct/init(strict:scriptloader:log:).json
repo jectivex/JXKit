@@ -47,7 +47,7 @@
       },
       {
         "kind" : "text",
-        "text" : ": "
+        "text" : ": (any "
       },
       {
         "kind" : "typeIdentifier",
@@ -56,7 +56,7 @@
       },
       {
         "kind" : "text",
-        "text" : "?, "
+        "text" : ")?, "
       },
       {
         "kind" : "externalParam",
@@ -137,7 +137,7 @@
             },
             {
               "kind" : "text",
-              "text" : ": "
+              "text" : ": (any "
             },
             {
               "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXScriptLoader",
@@ -147,7 +147,7 @@
             },
             {
               "kind" : "text",
-              "text" : "? = nil, "
+              "text" : ")? = nil, "
             },
             {
               "kind" : "externalParam",
@@ -337,7 +337,7 @@
     },
     {
       "kind" : "text",
-      "text" : ": "
+      "text" : ": (any "
     },
     {
       "kind" : "typeIdentifier",
@@ -346,7 +346,7 @@
     },
     {
       "kind" : "text",
-      "text" : "?, "
+      "text" : ")?, "
     },
     {
       "kind" : "externalParam",

@@ -162,6 +162,14 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXType"
       ],
       "title" : "Enumerations"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/JXKit\/documentation\/JXKit\/CoreFoundation",
+        "doc:\/\/JXKit\/documentation\/JXKit\/Foundation",
+        "doc:\/\/JXKit\/documentation\/JXKit\/Swift"
+      ],
+      "title" : "Extended Modules"
     }
   ],
   "variants" : [
@@ -191,6 +199,28 @@
   "title" : "JXKit",
   "type" : "topic",
   "url" : "\/documentation\/jxkit"
+},
+"doc://JXKit/documentation/JXKit/CoreFoundation": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/CoreFoundation",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "CoreFoundation",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/corefoundation"
+},
+"doc://JXKit/documentation/JXKit/Foundation": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/Foundation",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "Foundation",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/foundation"
 },
 "doc://JXKit/documentation/JXKit/GettingStarted": {
   "abstract" : [
@@ -903,6 +933,17 @@
   "title" : "JavaScriptCoreVersion",
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/javascriptcoreversion"
+},
+"doc://JXKit/documentation/JXKit/Swift": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/Swift",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "Swift",
+  "type" : "topic",
+  "url" : "\/documentation\/jxkit\/swift"
 },
 "https://trac.webkit.org/wiki/JavaScriptCore": {
   "identifier" : "https:\/\/trac.webkit.org\/wiki\/JavaScriptCore",

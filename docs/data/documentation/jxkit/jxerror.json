@@ -112,7 +112,7 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/cause",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/description",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/jsErrorString",
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/localizedDescription-2y5bh",
+        "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/localizedDescription",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/message",
         "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/script"
       ],
@@ -131,13 +131,6 @@
         "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/valueNotSymbol(_:)"
       ],
       "title" : "Type Methods"
-    },
-    {
-      "generated" : true,
-      "identifiers" : [
-        "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/Error-Implementations"
-      ],
-      "title" : "Default Implementations"
     }
   ],
   "variants" : [
@@ -202,17 +195,6 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerror"
 },
-"doc://JXKit/documentation/JXKit/JXError/Error-Implementations": {
-  "abstract" : [
-
-  ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/Error-Implementations",
-  "kind" : "article",
-  "role" : "collectionGroup",
-  "title" : "Error Implementations",
-  "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerror\/error-implementations"
-},
 "doc://JXKit/documentation/JXKit/JXError/cause": {
   "abstract" : [
 
@@ -232,7 +214,7 @@
     },
     {
       "kind" : "text",
-      "text" : ": "
+      "text" : ": (any "
     },
     {
       "kind" : "typeIdentifier",
@@ -241,7 +223,7 @@
     },
     {
       "kind" : "text",
-      "text" : "?"
+      "text" : ")?"
     }
   ],
   "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/cause",
@@ -346,7 +328,7 @@
     },
     {
       "kind" : "text",
-      "text" : ": "
+      "text" : ": any "
     },
     {
       "kind" : "typeIdentifier",
@@ -581,7 +563,7 @@
   "type" : "topic",
   "url" : "\/documentation\/jxkit\/jxerror\/jserrorstring"
 },
-"doc://JXKit/documentation/JXKit/JXError/localizedDescription-2y5bh": {
+"doc://JXKit/documentation/JXKit/JXError/localizedDescription": {
   "abstract" : [
 
   ],
@@ -608,12 +590,12 @@
       "text" : "String"
     }
   ],
-  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/localizedDescription-2y5bh",
+  "identifier" : "doc:\/\/JXKit\/documentation\/JXKit\/JXError\/localizedDescription",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "localizedDescription",
   "type" : "topic",
-  "url" : "\/documentation\/jxkit\/jxerror\/localizeddescription-2y5bh"
+  "url" : "\/documentation\/jxkit\/jxerror\/localizeddescription"
 },
 "doc://JXKit/documentation/JXKit/JXError/message": {
   "abstract" : [

@@ -396,7 +396,7 @@ class JXCoreTests: XCTestCase {
         XCTAssertEqual(try lint("Math.PIE.x"), "TypeError: undefined is not an object (evaluating \'Math.PIE.x\') <<script: Math.PIE.x >>")
         XCTAssertEqual(try lint("1X"), "SyntaxError: No identifiers allowed directly after numeric literal <<script: 1X >>")
         XCTAssertEqual(try lint("1["), "SyntaxError: Unexpected end of script <<script: 1[ >>")
-        XCTAssertEqual(try lint("1]"), "SyntaxError: Unexpected token \']\'. Parse error. <<script: 1] >>")
+        XCTAssertEqual(try lint("1]"), "SyntaxError: Unexpected token \']\' <<script: 1] >>")
 
         // Strict checks
 
