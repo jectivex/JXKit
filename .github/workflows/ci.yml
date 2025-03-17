@@ -26,7 +26,7 @@ jobs:
         run: swift test --configuration release -Xswiftc -enable-testing
 
   ios:
-    runs-on: macos-12
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Test (Debug)
@@ -35,7 +35,7 @@ jobs:
         run: xcodebuild clean test -configuration Release -scheme "JXKit" -sdk "iphonesimulator" -destination "platform=iOS Simulator,name=iPhone 14 Pro" 
 
   tvos:
-    runs-on: macos-12
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Test (Debug)
@@ -44,7 +44,7 @@ jobs:
         run: xcodebuild clean test -configuration Release -scheme "JXKit" -sdk "appletvsimulator" -destination "platform=tvOS Simulator,name=Apple TV" 
 
   macos:
-    runs-on: macos-12
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Test (Debug)
@@ -53,7 +53,7 @@ jobs:
         run: swift test --configuration release -Xswiftc -enable-testing
 
   api-doc:
-    runs-on: macos-12 # needed to be able to document SwiftUI
+    runs-on: macos-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v2
