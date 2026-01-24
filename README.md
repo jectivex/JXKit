@@ -1,9 +1,7 @@
 # JXKit
 
-[![Build Status][GitHubActionBadge]][ActionsLink]
-[![Swift5 compatible][Swift5Badge]][Swift5Link] 
+[![JXKit CI](https://github.com/jectivex/JXKit/actions/workflows/ci.yml/badge.svg)](https://github.com/jectivex/JXKit/actions/workflows/ci.yml)
 ![Platform][SwiftPlatforms]
-<!-- [![](https://tokei.rs/b1/github/jectivex/JXKit)](https://github.com/jectivex/JXKit) -->
 
 JXKit is a cross-plarform swift module for interfacing with
 `JavaScriptCore`. It provides a fluent API for working with an embedded
@@ -147,8 +145,6 @@ Projects that are based on JXKit:
 [OpenCombine]: https://github.com/OpenCombine/OpenCombine
 [JXBridge]: https://github.com/jectivex/JXBridge
 [JavaScriptCore]: https://trac.webkit.org/wiki/JavaScriptCore
-
-[GitHubActionBadge]: https://img.shields.io/github/workflow/status/jectivex/JXKit/JXKit%20CI
 
 [Swift5Badge]: https://img.shields.io/badge/swift-5-orange.svg?style=flat
 [Swift5Link]: https://developer.apple.com/swift/
