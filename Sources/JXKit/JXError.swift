@@ -74,15 +74,15 @@ public struct JXError: Error, CustomStringConvertible, @unchecked Sendable {
         return JXError(message: "Expected a JavaScript function but received '\(value)'")
     }
 
-    public static func valueNotPromise(_ value: JXValue) -> JXError {
+    @inlinable static func valueNotPromise(_ value: JXValue) -> JXError {
         return JXError(message: "Expected a JavaScript Promise but received '\(value)'")
     }
     
-    public static func valueNotSymbol(_ value: JXValue) -> JXError {
+    @inlinable public static func valueNotSymbol(_ value: JXValue) -> JXError {
         return JXError(message: "Expected a JavaScript symbol but received '\(value)'")
     }
     
-    static func invalidNumericConversion(_ value: JXValue, to number: Double) -> JXError {
+    @inlinable static func invalidNumericConversion(_ value: JXValue, to number: Double) -> JXError {
         return JXError(message: "JavaScript value '\(value)' converted to invalid number '\(number)'")
     }
     

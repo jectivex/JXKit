@@ -22,15 +22,23 @@ open class JXContext {
             return scriptLoader.didChange != nil
         }
 
+        /// Configure a global script loader to use as the default when no loader is provided to the `Configuration`.
+        ///
+        /// - Seealso: ``JXContext/Configuration/scriptLoader``
+        public static var defaultScriptLoader: JXScriptLoader = DefaultScriptLoader()
+
         /// The script loader to use for loading JavaScript script files. If the loader vends a non-nil `didChange` listener collection, dynamic reloading will be enabled.
         public var scriptLoader: JXScriptLoader
+
+        /// Configure a global logging function for JX log messages. Defaults to using `print`.
+        public static var defaultLog: (String) -> Void = { print($0) }
 
         /// The logging function to use for JX log messages.
         public var log: (String) -> Void
         
-        public init(strict: Bool = true, scriptLoader: JXScriptLoader? = nil, log: @escaping (String) -> Void = { print($0) }) {
+        public init(strict: Bool = true, scriptLoader: JXScriptLoader = Self.defaultScriptLoader, log: @escaping (String) -> Void = Self.defaultLog) {
             self.strict = strict
-            self.scriptLoader = scriptLoader ?? DefaultScriptLoader()
+            self.scriptLoader = scriptLoader
             self.log = log
         }
     }
@@ -124,7 +132,7 @@ extension JXContext {
         return try scriptManager.evalClosure(source: script, type: .inline, withArguments: arguments, this: this, root: root)
     }
 
-    /// Evaluate the given JavaScript as a closure, giving it its own scope for local functions and vars.
+    /// Evaluate the given JavaScript as a clsoure, giving it its own scope for local functions and vars.
     ///
     /// - Parameters:
     ///   - script: The JavaScript code to evaluate.
@@ -185,7 +193,16 @@ extension JXContext {
 
     /// Internal function called by the `ScriptManager` to evaluate JavaScript code.
     func evalInternal(script: String, this: JXValue?) throws -> JXValue {
-        try initializeEval()
+        if configuration.strict == true && !strictEvaluated {
+            let useStrict = "\"use strict\";\n" // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
+            let script = useStrict.withCString(JSStringCreateWithUTF8CString)
+            defer { JSStringRelease(script) }
+            let _ = try trying {
+                JSEvaluateScript(contextRef, script, nil, nil, 0, $0)
+            }
+            strictEvaluated = true
+        }
+
         do {
             // Allow SPI to perform pre-eval actions or even e.g. execute macros
             if let spiResult = try spi?.eval(script, this: this, in: self) {
@@ -201,30 +218,6 @@ extension JXContext {
             return resultRef.map({ JXValue(context: self, valueRef: $0) }) ?? JXValue(undefinedIn: self)
         } catch {
             throw JXError(cause: error, script: script)
-        }
-    }
-
-    private func initializeEval() throws {
-        guard !evalInitialized else {
-            return
-        }
-        if configuration.strict {
-            let useStrict = "\"use strict\";\n" // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
-            let script = useStrict.withCString(JSStringCreateWithUTF8CString)
-            defer { JSStringRelease(script) }
-            let _ = try trying {
-                JSEvaluateScript(contextRef, script, nil, nil, 0, $0)
-            }
-        }
-        let log = JXValue(newFunctionIn: self) { [weak self] context, this, args in
-            guard let self else {
-                return context.undefined()
-            }
-            guard args.count == 1 else {
-                throw JXError(message: "'console.log' expects a single argument")
-            }
-            try self.configuration.log(args[0].string)
-            return self.undefined()
         }
         try global["console"].setProperty("log", log)
         evalInitialized = true
